@@ -1,12 +1,23 @@
 import nltk
 nltk.download('punkt_tab')
 from nltk.tokenize import word_tokenize
+import spacy
+es_nlp = spacy.load('es_core_news_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
+nlp = {
+    "es": es_nlp,
+    "an": es_nlp,
+    "oc": es_nlp,
+    "ast": es_nlp
+}
 import argparse
 from tqdm import tqdm
+spanish_punct = "¿¡"
 
 word_tokenize_langs = {
     "de": "german",
-    "hsb": "czech"
+    "hsb": "czech",
+    "ce": "czech",
+    "en": "english"
 }
 
 def prep(
@@ -22,22 +33,42 @@ def prep(
 
     pairs = list(zip(src, tgt))
     formatted_pairs = []
+    
+    if src_lang in nlp:
+        src_tokenize = spacy_tokenize
+    else:
+        assert src_lang in word_tokenize_langs
+        src_tokenize = nltk_tokenize
+    
+    if tgt_lang in nlp:
+        tgt_tokenize = spacy_tokenize
+    else:
+        assert tgt_lang in word_tokenize_langs
+        tgt_tokenize = nltk_tokenize
+
     for src, tgt in tqdm(pairs):
         # print("src")
-        tokenized_src = tokenize(src, lang=src_lang)
+        tokenized_src = src_tokenize(src, lang=src_lang)
         # print("tgt")
-        tokenized_tgt = tokenize(tgt, lang=tgt_lang)
+        tokenized_tgt = tgt_tokenize(tgt, lang=tgt_lang)
         formatted = tokenized_src.strip() + " ||| " + tokenized_tgt.strip()
         formatted_pairs.append(formatted)
     
     with open(out_f, "w") as outf:
         outf.write("\n".join(formatted_pairs) + "\n")
 
-def tokenize(line, lang):
-    global word_tokenize_langs
+def spacy_tokenize(line, lang):
+    # print(f"spacy_tokenize lang={lang}")
+    doc = nlp[lang](line)
+    tokens = [tok.text for tok in doc]
+    return " ".join(tokens)
+
+def nltk_tokenize(line, lang):
+    print(f"nltk_tokenize lang={lang}")
+    global word_tokenize_langs, spanish_punct
     wtlang = word_tokenize_langs[lang]
-    # print(f"word_tokenize lang='{wtlang}'")
-    return " ".join(word_tokenize(line, language=wtlang))
+    tokens = word_tokenize(line.strip(), language=wtlang)
+    return " ".join(tokens)
 
 def read_file(f):
     with open(f) as inf:
@@ -57,5 +88,6 @@ def get_args():
     return args
 
 if __name__ == "__main__":
+    print("prepare_for_fastlign.py")
     args = get_args()
     prep(args.src, args.tgt, args.out)

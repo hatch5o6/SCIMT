@@ -63,7 +63,7 @@ def read_file(f):
     return lines
 
 
-# lang1 and lang2 are the src and tgt we want in the end, i.e. Arabic and Maltese
+# lang1 and lang2 are the src and tgt we want in the end, e.g. Arabic and Maltese
 # com1 and com2 is the language in common, i.e. English
 def get_args():
     parser = argparse.ArgumentParser()
