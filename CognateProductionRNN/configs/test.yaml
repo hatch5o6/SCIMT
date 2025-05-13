@@ -1,0 +1,41 @@
+# data
+train: /home/hatch5o6/nobackup/archive/data/LRRomance/es-an/Combined/fastalign/word_list.an-es.cognates.0.5.txt
+val: /home/hatch5o6/nobackup/archive/data/CogNet/arg/CogNet-v2.0.arg.spa.val-s=1420.tsv
+test: /home/hatch5o6/nobackup/archive/data/CogNet/arg/CogNet-v2.0.arg.spa.test-s=1420.tsv
+lang_data: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/Langs/es-an/lang_data.txt
+src_lang: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/Langs/es-an/es
+tgt_lang: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/Langs/es-an/an
+src: es
+tgt: an
+# if the data is ```tgt ||| src ||| 0.0```, then set reverse=True
+reverse: True
+LIMIT: 100
+
+# reproducibility
+seed: 4890
+
+# encoder
+encoder_layers: 1
+encoder_hidden_size: 64
+encoder_dropout: 0.1
+
+# decoder
+decoder_layers: 1
+decoder_hidden_size: 64
+decoder_dropout: 0.1
+# teacher_forcing_ratio: 0.5
+
+# training
+learning_rate: 0.001
+batch_size: 50
+device: cpu
+early_stop: 10
+save_top_k: 2
+max_epochs: 100
+val_interval: 1
+
+# save
+save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/TEST_TRIAL_0
+
+# inference
+test_checkpoint:
