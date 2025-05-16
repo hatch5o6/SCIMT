@@ -11,7 +11,7 @@ from lightning.pytorch.callbacks import EarlyStopping, ModelCheckpoint, Learning
 from lightning.pytorch.loggers import CSVLogger
 from evaluate import calc_chrF, calc_bleu, calc_NED, calc_accuracy
 
-from data import *
+from data import Lang, get_dataloader, readData
 from model import *
 
 def train_model(config):
@@ -116,35 +116,9 @@ def train_model(config):
         val_dataloader,
     )
 
-
-def test_model(config):
-    print("train_model")
-    print("training config:")
-    for k, v in config.items():
-        print(f"{k}: {v}")
-
-    L.seed_everything(config["seed"], workers=True)
-
-    # read data
-    pairs = readData(
-        file_path = config["test"],
-        reverse=config["reverse"]
-    )
-    src_data = [src_seq for src_seq, _ in pairs]
-    tgt_data = [tgt_seq for _, tgt_seq in pairs]
-
-    # get test dataloader and langs
-    input_lang, output_lang, test_dataloader = get_dataloader(
-        file_path=config["test"],
-        lang1=config["src"],
-        lang2=config["tgt"],
-        input_lang_dir=config["src_lang"],
-        output_lang_dir=config["tgt_lang"],
-        reverse=config["reverse"], # if the data is ```lang1 (tgt) ||| lang2 (src) ||| 0.0```, then set reverse=True
-        batch_size=config["batch_size"],
-        device=config["device"],
-        shuffle=False
-    )
+def get_predictions(dataloader, config):
+    input_lang = Lang(name=config["src"], dir_path="src_lang")
+    output_lang = Lang(name=config["tgt"], dir_path="tgt_lang")
 
     model = Seq2Seq(
         encoder_layers=config["encoder_layers"],
@@ -173,12 +147,50 @@ def test_model(config):
 
     batch_predictions = trainer.predict(
         lightning_model,
-        dataloaders=test_dataloader
+        dataloaders=dataloader
     )
 
     predictions = []
     for b, batch in batch_predictions:
         predictions += batch
+
+    return predictions
+
+def inference(config):
+    print("inference")
+    pass
+
+def test_model(config):
+    print("test_model")
+    print("config:")
+    for k, v in config.items():
+        print(f"{k}: {v}")
+
+    L.seed_everything(config["seed"], workers=True)
+
+    # read data
+    pairs = readData(
+        file_path = config["test"],
+        reverse=config["reverse"]
+    )
+    src_data = [src_seq for src_seq, _ in pairs]
+    tgt_data = [tgt_seq for _, tgt_seq in pairs]
+
+    # get test dataloader and langs
+    _, _, test_dataloader = get_dataloader(
+        file_path=config["test"],
+        lang1=config["src"],
+        lang2=config["tgt"],
+        input_lang_dir=config["src_lang"],
+        output_lang_dir=config["tgt_lang"],
+        reverse=config["reverse"], # if the data is ```lang1 (tgt) ||| lang2 (src) ||| 0.0```, then set reverse=True
+        batch_size=config["batch_size"],
+        device=config["device"],
+        shuffle=False
+    )
+
+    predictions = get_predictions(test_dataloader, config)
+
     assert len(src_data) == len(tgt_data) == len(predictions)
 
     bleu_score = calc_bleu(predictions, [tgt_data])
@@ -348,7 +360,7 @@ def read_config(f):
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config")
-    parser.add_argument("--TEST", action="store_true")
+    parser.add_argument("--mode", choices=["TRAIN", "TEST", "INFERENCE"], default="TRAIN")
     args = parser.parse_args()
     print("Arguments:-")
     for k, v in vars(args).items():
@@ -361,7 +373,9 @@ if __name__ == "__main__":
     print("----------------------")
     args = get_args()
     config = read_config(args.config)
-    if args.TEST:
-        test_model(config=config)
-    else:
+    if args.mode == "TRAIN":
         train_model(config=config)
+    elif args.mode == "TEST":
+        test_model(config=config)
+    elif args.mode == "INFERENCE":
+        inference(config=config)
