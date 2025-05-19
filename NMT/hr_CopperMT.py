@@ -4,6 +4,7 @@ import shutil
 from tqdm import tqdm
 from string import punctuation
 punctuation += "-—¡¿؟؛،٪»«›‹”“〞❮❯❛❟%."
+import re
 
 import nltk
 nltk.download('punkt_tab')
@@ -70,11 +71,19 @@ def prepare_for_CopperMT(
     print("Formatting")
     just_words = []
     for line in tqdm(data):
-        words = word_tokenize(line, lang=hr_lang)
-        words = [clean_word(w).strip() for w in words]
-        just_words += [
+        tokens = line.split()
+        for token in tokens:
+            words = word_tokenize(token, lang=hr_lang)
+            words = [clean_word(w) for w in words]
+            just_words += [
             " ".join(w) for w in words 
             if w not in punctuation and w != ""]
+
+        # words = word_tokenize(line, lang=hr_lang)
+        # words = [clean_word(w) for w in words]
+        # just_words += [
+        #     " ".join(w) for w in words 
+        #     if w not in punctuation and w != ""]
 
     just_words = sorted(list(set(just_words)))
     just_words_out_f = os.path.join(out_dir, f"test_{hr_lang}_{lr_lang}.{hr_lang}")
@@ -85,7 +94,6 @@ def prepare_for_CopperMT(
     just_words_out_f_dummy_tgt = os.path.join(out_dir, f"test_{hr_lang}_{lr_lang}.{lr_lang}")
     make_file(just_words_out_f_dummy_tgt, times=len(just_words))
     
-
 def retrieve(
     data_f,
     CopperMT_results_f,
@@ -93,11 +101,14 @@ def retrieve(
     hr_lang,
     lr_lang,
 ):
+    NOT_IN_COPPER_MT_RESULTS = set()
+
     CopperMT_results = read_CopperMT_Results(CopperMT_results_f)
 
     with open(data_f) as inf:
         data = [line.strip() for line in inf.readlines()]
 
+    print("HR_LANG", hr_lang)
     if hr_lang in spacy_nlp:
         print(f"Using spacy_tokenize, lang={hr_lang}")
         word_tokenize = spacy_tokenize
@@ -109,12 +120,39 @@ def retrieve(
     print("Replacing words")
     new_data = []
     for line in tqdm(data):
-        line_words = word_tokenize(line, lang=hr_lang)
-        for word in line_words:
-            if word in CopperMT_results:
-                line = line.replace(word, CopperMT_results[word])
+        tokens = line.split()
+        for t, token in enumerate(tokens):
+            token_words = word_tokenize(token, lang=hr_lang)
+            for w, word in enumerate(token_words):
+                cleaned_word = clean_word(word)
+                assert cleaned_word in word
+                if cleaned_word in CopperMT_results:
+                    word = word.replace(cleaned_word, CopperMT_results[cleaned_word])
+                else:
+                    NOT_IN_COPPER_MT_RESULTS.add(cleaned_word)
+                token_words[w] = word
+            token = "".join(token_words)
+            tokens[t] = token
+        line = " ".join(tokens)
+
+        # line_words = word_tokenize(line, lang=hr_lang)
+        # for w, word in enumerate(line_words):
+        #     cleaned_word = clean_word(word)
+        #     assert cleaned_word in word
+        #     if cleaned_word in CopperMT_results:
+        #         word = word.replace(cleaned_word, CopperMT_results[cleaned_word])
+        #     else:
+        #         NOT_IN_COPPER_MT_RESULTS.add(cleaned_word)
+        #     line_words[w] = word.strip()
+        # line = " ".join(line_words).strip()
+            
         new_data.append(line)
+
+    print("NOT IN COPPER MT RESULTS")
+    for item in NOT_IN_COPPER_MT_RESULTS:
+        print(f"\t- '{item}'")
     
+    print("Writing final_results to", final_results_f)
     with open(final_results_f, "w") as outf:
         outf.write("\n".join(new_data) + "\n")
 
@@ -144,14 +182,18 @@ def read_CopperMT_Results(results_f):
     print("Blocking CopperMT")
     data = []
     block = []
-    for i, line in tqdm(enumerate(data_rows), len=len(data_rows)):
-        block.append(line.strip())
-        if i % 5 == 0:
+    for i, line in tqdm(enumerate(data_rows), total=len(data_rows)):
+        if i > 0 and i % 5 == 0:
             data.append(tuple(block))
             block = []
+        block.append(line.strip())
+
+    # print("Data")
+    # for i in data[:5]:
+    #     print(type(i), i)
 
     print("Getting Copper MT results")
-    results = {}
+    results = {'<unk>': []}
     for S, T, H, D, P in tqdm(data):
         assert S.startswith("S-")
         assert T.startswith("T-")
@@ -168,16 +210,26 @@ def read_CopperMT_Results(results_f):
 
         source = "".join(S.split())
         hyp = "".join(H.split())
-        assert source not in results
-        results[source] = hyp
+        if source in results:
+            print("SOURCE IN RESULTS")
+            print("source:", source)
+            print("hyp:", hyp)
+            print(f"results['{source}']:", results[source])
+        if source != "<unk>":
+            assert source not in results
+            results[source] = hyp
+        else:
+            if hyp not in results[source]:
+                results[source].append(hyp)
+        
     return results
 
 def clean_word(word):
-    while word[0] in punctuation and len(word) > 0:
+    while len(word) > 0 and word[0] in punctuation:
         word = word[1:]
-    while word[-1] in punctuation and len(word) > 0:
+    while len(word) > 0 and word[-1] in punctuation:
         word = word[:-1]
-    return word
+    return word.strip()
 
 def make_file(f, times=1):
     with open(f, "w") as outf:
@@ -189,15 +241,24 @@ def spacy_tokenize(line, lang):
     # print(f"spacy_tokenize lang={lang}")
     doc = spacy_nlp[lang](line)
     tokens = [tok.text for tok in doc]
-    return tokens
+    final_tokens = []
+    for tok in tokens:
+        subtoks = tok.split()
+        for subtok in subtoks:
+            final_tokens.append(subtok.strip())
+    return final_tokens
 
 def nltk_tokenize(line, lang):
     # print(f"nltk_tokenize lang={lang}")
     global word_tokenize_langs
     wtlang = word_tokenize_langs[lang]
     tokens = word_tokenize(line.strip(), language=wtlang)
-    return tokens
-
+    final_tokens = []
+    for tok in tokens:
+        subtoks = tok.split()
+        for subtok in subtoks:
+            final_tokens.append(subtok.strip())
+    return final_tokens
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -233,7 +294,7 @@ if __name__ == "__main__":
         print("RUNNING 'retrieve'")
         retrieve(
             data_f=args.data,
-            results_f=args.CopperMT_results,
+            CopperMT_results_f=args.CopperMT_results,
             final_results_f=args.out,
             hr_lang=args.hr_lang,
             lr_lang=args.lr_lang,

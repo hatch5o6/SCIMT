@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-source activate sound
-
 FILE=/home/hatch5o6/nobackup/archive/CopperMT/workspace/reference_models/bilingual/data/inference
 if [ -f $FILE ]; then
     rm -r $FILE
@@ -11,7 +9,6 @@ FILE=/home/hatch5o6/nobackup/archive/CopperMT/workspace/reference_models/bilingu
 if [ -f $FILE ]; then
     rm -r $FILE
 fi
-sleep 5
 
 HR_LANG=es
 LR_LANG=an
@@ -22,6 +19,7 @@ rm -r $COPPER_MT_PREP_OUT_DIR
 mkdir $COPPER_MT_PREP_OUT_DIR
 FINAL_RESULTS=/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/Combined/train/train.es.SC_es2an
 
+source activate sound
 python hr_CopperMT.py \
     --data $DATA \
     --out $COPPER_MT_PREP_OUT_DIR \
@@ -29,19 +27,18 @@ python hr_CopperMT.py \
     -lr $LR_LANG \
     --training_data $TRAIN_DATA
 
-# run CopperMT model
-source activate copper
-cd /home/hatch5o6/Cognate/code/CopperMT/CopperMT/pipeline
-sbatch main_nmt_bilingual_full_${HR_LANG}_${LR_LANG}.pred.sh --wait
-sleep 180 # should be done predicting by the time this up
+# # run CopperMT model
+# source activate copper
+# sbatch /home/hatch5o6/Cognate/code/CopperMT/CopperMT/pipeline/main_nmt_bilingual_full_${HR_LANG}_${LR_LANG}.pred.sh
+# wait
+# sleep 10
 
-# join back into sentences
-cd /home/hatch5o6/Cognate/code/NMT
-source activate sound
-python hr_CopperMT.py \
-    --function retrieve \
-    --data $DATA \
-    --CopperMT_results /home/hatch5o6/nobackup/archive/CopperMT/workspace/reference_models/bilingual/rnn_es-an/0/results/inference_checkpoint_best_es_an.an/generate-test.txt \
-    -hr $HR_LANG \
-    -lr $LR_LANG \
-    --out $FINAL_RESULTS 
+# # join back into sentences
+# source activate sound
+# python hr_CopperMT.py \
+#     --function retrieve \
+#     --data $DATA \
+#     --CopperMT_results /home/hatch5o6/nobackup/archive/CopperMT/workspace/reference_models/bilingual/rnn_es-an/0/results/inference_checkpoint_best_es_an.an/generate-test.txt \
+#     -hr $HR_LANG \
+#     -lr $LR_LANG \
+#     --out $FINAL_RESULTS

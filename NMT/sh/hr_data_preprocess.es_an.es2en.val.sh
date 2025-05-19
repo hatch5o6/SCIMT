@@ -16,11 +16,11 @@ sleep 5
 HR_LANG=es
 LR_LANG=an
 TRAIN_DATA=/home/hatch5o6/nobackup/archive/CopperMT/inputs/split_data/es_an/0
-DATA=/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/Combined/train/train.es
+DATA=/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/spa_Latn.dev
 COPPER_MT_PREP_OUT_DIR=/home/hatch5o6/nobackup/archive/CopperMT/inputs/split_data/es_an/inference
 rm -r $COPPER_MT_PREP_OUT_DIR
 mkdir $COPPER_MT_PREP_OUT_DIR
-FINAL_RESULTS=/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/Combined/train/train.es.SC_es2an
+FINAL_RESULTS=/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/spa_Latn.SC_es-an.dev
 
 python hr_CopperMT.py \
     --data $DATA \
