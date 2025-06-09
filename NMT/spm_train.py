@@ -4,6 +4,7 @@ import ast
 import random
 import os
 import shutil
+import json
 
 
 def train_spm_model(
@@ -45,8 +46,12 @@ def make_data(
 
     all_data = []
     for data_f, ratio in data_dict.items():
+        print("-----------------------------")
+        print("data_f:", data_f)
+        print("ratio:", ratio)
         data = read_f(data_f)
         random.shuffle(data)
+        print("size:", len(data))
 
         final_data = []
         size = round(ratio * training_data_size)
@@ -54,8 +59,11 @@ def make_data(
             final_data += data
         assert len(final_data) >= size
         final_data = final_data[:size]
+        print("After upsampling:", len(final_data))
         assert len(final_data) == size
         all_data += final_data
+    
+    print("\n\nALL DATA SIZE:", len(all_data))
     
     random.shuffle(all_data)
     print(f"Writing {len(all_data)} lines to", save_file)
@@ -64,7 +72,9 @@ def make_data(
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--data", required=True, help="dictionary of file paths mapping to ratio of final training data")
+    parser.add_argument("-l", "--langs", help="For when --data (the data_dict) is not passed. Comma-delimited list of langs. Will search for these inside of --folder and create a data_dict.")
+    parser.add_argument("-f", "--folder", help="For when --data (the data_dict) is not passed. Folder with lang data files: {lang}.txt")
+    parser.add_argument("-d", "--data", required=False, help="dictionary of file paths mapping to ratio of final training data")
     parser.add_argument("-n", "--training_data_size", type=int, default=12000)
     parser.add_argument("-s", "--save_dir", required=True)
     parser.add_argument("-m", "--spm_model_name", required=True)
@@ -73,6 +83,7 @@ def get_args():
     parser.add_argument("-c", "--character_coverage", type=float, default=1.0)
     parser.add_argument("-S", "--seed", type=int, default=1500),
     parser.add_argument("-u", "--user_defined_symbols", help="comma-delimited list of special tokens")
+    parser.add_argument("--SPLIT_ON_WS", choices=['true', 'false'])
     args = parser.parse_args()
     print("Arguments:-")
     for k, v in vars(args).items():
@@ -81,7 +92,28 @@ def get_args():
 
 if __name__ == "__main__":
     args = get_args()
-    data_dict = ast.literal_eval(args.data)
+    if args.data != None:
+        data_dict = ast.literal_eval(args.data)
+        print("READ DATA_DICT:")
+        print(json.dumps(data_dict, ensure_ascii=False, indent=2))
+    else:
+        assert args.langs is not None
+        assert args.folder is not None
+        langs = [l.strip() for l in args.langs.split(",")]
+        print("langs", langs)
+        data_list = []
+        for l in langs:
+            l_path = os.path.join(args.folder, f"{l}.txt")
+            if os.path.exists(l_path):
+                assert l_path not in data_list
+                data_list.append(l_path)
+        print("DATA LIST", data_list)
+        assert len(data_list) > 0
+        data_ratio = 1 / len(data_list)
+        data_dict = {f: data_ratio for f in data_list}
+        print("CREATED DATA_DICT FROM args.langs AND args.folder:")
+        print(json.dumps(data_dict, ensure_ascii=False, indent=2))
+    print("\n")
 
     if os.path.exists(args.save_dir):
         print("deleting", args.save_dir)
@@ -98,9 +130,17 @@ if __name__ == "__main__":
         seed=args.seed
     )
 
-    user_defined_symbols = [
+    data_dict_f = os.path.join(args.save_dir, "data_dict.json")
+    with open(data_dict_f, "w") as outf:
+        outf.write(json.dumps(data_dict, ensure_ascii=False, indent=2))
+
+    user_defined_symbols = []
+    if args.SPLIT_ON_WS == 'true':
+        user_defined_symbols.append('▁')
+    user_defined_symbols += [
         item.strip()
         for item in args.user_defined_symbols.split(",")
+        if item.strip() != ""
     ]
 
     train_spm_model(

@@ -9,7 +9,10 @@ class SPMTokenizer():
         eos="</s>",
         unk="<unk>",
         pad="<pad>",
+        VERBOSE=False
     ):
+        self.spm_name = spm_name
+        
         self.bos = bos
         self.eos = eos
         self.unk = unk
@@ -25,11 +28,13 @@ class SPMTokenizer():
             i: self.special_tokens[i]
             for i in range(len(self.special_tokens))
         }
-        print("SPECIAL TOKS:")
         self.vocab_size = len(self.idx2token)
-        for key, value in self.idx2token.items():
-            print(f"\t- {key}: '{value}'")
-        print("---------------")
+
+        if VERBOSE:
+            print("SPECIAL TOKS:")
+            for key, value in self.idx2token.items():
+                print(f"\t- {key}: '{value}'")
+            print("---------------")
 
         resume_tok_count = max(list(self.idx2token.keys())) + 1
         self.spm = spm.SentencePieceProcessor(model_file=spm_name + ".model")
@@ -42,10 +47,11 @@ class SPMTokenizer():
         })
         self.vocab_size = len(self.idx2token)
 
-        print("VOCABULARY:")
-        for key, value in self.idx2token.items():
-            print(f"\t- {key}: '{value}'")
-        print("--------------------")
+        if VERBOSE:
+            print("VOCABULARY:")
+            for key, value in self.idx2token.items():
+                print(f"\t- {key}: '{value}'")
+            print("--------------------")
 
         self.token2idx = {token:i for i, token in self.idx2token.items()}
         assert len(self.idx2token) == len(self.token2idx)
@@ -70,18 +76,20 @@ class SPMTokenizer():
         return idx_sequence, spm_sequence
 
 
-    def batch_tokenize(self, batch, return_tensor=False):
+    def batch_tokenize(self, batch, pad_batch=True, return_tensor=False):
         # tokenize
         batch = [
             self.tokenize(line)[0]
             for line in batch
         ]
         # pad sequences
-        max_seq = max([len(seq) for seq in batch])
-        for s, seq in enumerate(batch):
-            while len(seq) < max_seq:
-                seq.append(self.token2idx[self.pad])
-            batch[s] = seq
+        if pad_batch:
+            max_seq = max([len(seq) for seq in batch])
+            for s, seq in enumerate(batch):
+                while len(seq) < max_seq:
+                    seq.append(self.token2idx[self.pad])
+                batch[s] = seq
+        # make tensor
         if return_tensor:
             batch = torch.tensor(batch)
         return batch

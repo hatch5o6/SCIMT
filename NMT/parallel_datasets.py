@@ -47,43 +47,117 @@ class MultilingualDataset(Dataset):
             data_csv=None,
             append_src_lang_tok=False,
             append_tgt_lang_tok=True,
+            append_tgt_to_src=False,
             size=None,
-            seed=525
+            seed=525,
+            upsample=False,
+            shuffle=False,
+            limit_src_langs=None,
+            limit_tgt_langs=None,
+            CAN_RETURN_ZERO=False
         ):
         print("random seed:", seed)
         random.seed(seed)
 
         self.append_src_lang_tok = append_src_lang_tok
+        self.append_tgt_to_src = append_tgt_to_src
         self.append_tgt_lang_tok = append_tgt_lang_tok
+        self.shuffle = shuffle
+        self.CAN_RETURN_ZERO = CAN_RETURN_ZERO
 
-        src_lines, tgt_lines = self.read_csv(data_csv)
-        
+        self.limit_src_langs = limit_src_langs
+        if self.limit_src_langs != None:
+            assert isinstance(self.limit_src_langs, list)
+        self.limit_tgt_langs = limit_tgt_langs
+        if self.limit_tgt_langs != None:
+            assert isinstance(self.limit_tgt_langs, list)
+
+        print("MultilingualDataset READING CSV", data_csv)
+        src_lines, tgt_lines, SRC_PATHS, TGT_PATHS = self.read_csv(data_csv, upsample=upsample)
+
+        self.src_paths = SRC_PATHS
+        self.tgt_paths = TGT_PATHS
+    
         assert len(src_lines) == len(tgt_lines)
         pairs = list(zip(src_lines, tgt_lines))
-        random.shuffle(pairs)
+        print("MultilingualDataset TOTAL PAIRS:", len(pairs))
+        if self.shuffle:
+            random.shuffle(pairs)
         self.pairs = pairs
-
-    def read_csv(self, f):
+    
+    def read_csv(self, f, upsample=False):
         with open(f, newline='') as inf:
             rows = [row for row in csv.reader(inf)]
         header = rows[0]
         assert header == ["src_lang", "tgt_lang", "src_path", "tgt_path"]
 
-        src_lines = []
-        tgt_lines = []
+        data_by_pairs = {}
         rows = [tuple(row) for row in rows[1:]]
+        SRC_PATHS = []
+        TGT_PATHS = []
         for src_lang, tgt_lang, src_path, tgt_path in rows:
+            if self.limit_src_langs != None and src_lang not in self.limit_src_langs:
+                continue
+            if self.limit_tgt_langs != None and tgt_lang not in self.limit_tgt_langs:
+                continue
+
+            SRC_PATHS.append(src_path)
+            TGT_PATHS.append(tgt_path)
+
+            pair = (src_lang, tgt_lang)
+            if pair not in data_by_pairs:
+                data_by_pairs[pair] = []
+
             lang_src_lines = self.read_file(src_path)
             lang_tgt_lines = self.read_file(tgt_path)
             if self.append_src_lang_tok:
                 lang_src_lines = [f"<{src_lang}>" + line for line in lang_src_lines]
+            elif self.append_tgt_to_src:
+                lang_src_lines = [f"<{tgt_lang}>" + line for line in lang_src_lines]
             if self.append_tgt_lang_tok:
                 lang_tgt_lines = [f"<{tgt_lang}>" + line for line in lang_tgt_lines]
 
-            src_lines += lang_src_lines
-            tgt_lines += lang_tgt_lines
+            data_by_pairs[pair] += list(zip(lang_src_lines, lang_tgt_lines))
+        
+        MAX_SIZE = 0
+        for pair, pair_data in data_by_pairs.items():
+            if len(pair_data) > MAX_SIZE:
+                MAX_SIZE = len(pair_data)
+        if not self.CAN_RETURN_ZERO:
+            assert MAX_SIZE > 0
+        print("DATA MAX_SIZE =", MAX_SIZE)
 
-        return src_lines, tgt_lines
+        raw_data_size = 0
+        upsampled_size = 0
+        src_lines = []
+        tgt_lines = []
+        for pair, pair_data in data_by_pairs.items():
+            raw_data_size += len(pair_data)
+            if upsample:
+                print(f"UPSAMPLING {pair} ({len(pair_data)}) TO", MAX_SIZE)
+                pair_data = self.upsample_data(pair_data, MAX_SIZE)
+            upsampled_size += len(pair_data)
+            for src_line, tgt_line in pair_data:
+                src_lines.append(src_line.strip())
+                tgt_lines.append(tgt_line.strip())
+        
+        assert upsampled_size == len(src_lines) == len(tgt_lines)
+        print("RAW DATA SIZE:", raw_data_size)
+        print("UPSAMPLED SIZE:", upsampled_size)
+        print("RETURNING SRC PATHS", SRC_PATHS)
+        print("RETURNING TGT PATHS", TGT_PATHS)
+
+        return src_lines, tgt_lines, SRC_PATHS, TGT_PATHS
+
+    def upsample_data(self, data, final_size):
+        assert final_size >= len(data)
+        if self.shuffle:
+            random.shuffle(data)
+        while len(data) < final_size:
+            data += data
+        if len(data) > final_size:
+            data = data[:final_size]
+        return data
 
     def read_file(self, f, size=None):
         if not size:

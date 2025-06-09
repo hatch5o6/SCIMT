@@ -21,21 +21,33 @@ class LBART(L.LightningModule):
 
     def training_step(self, batch, batch_idx):
         src_segments, tgt_segments = batch
-        if batch_idx % 500 == 0:
-            print(f"\n########## train batch {batch_idx} ##########")
-            for s, srcseg in enumerate(src_segments):
-                tgtseg = tgt_segments[s]
+        VERBOSE = False
+        if self.config["verbose"]:
+            VERBOSE = True
+            freq = 500
+            break_after = 4
+        elif "little_verbose" in self.config and self.config["little_verbose"]:
+            VERBOSE = True
+            freq = 10000
+            break_after = 2
 
-                srctoks = self.src_tokenizer.tokenize(srcseg)
-                tgttoks = self.tgt_tokenizer.tokenize(tgtseg)
+        if VERBOSE:
+            if batch_idx % freq == 0:
+                print(f"\n########## train batch {batch_idx} ##########")
+                for s, srcseg in enumerate(src_segments):
+                    tgtseg = tgt_segments[s]
 
-                print("----------------")
-                print(f"{s} - SRC) '{srcseg}'")
-                print(f"{s} - SRC TOKS)", srctoks)
-                print(f"{s} - TGT) '{tgtseg}'")
-                print(f"{s} - TGT TOKS)", tgttoks)
-                if s == 4:
-                    break
+                    srctoks = self.src_tokenizer.tokenize(srcseg)
+                    tgttoks = self.tgt_tokenizer.tokenize(tgtseg)
+                    # src_toks = self.src_tokenizer.encode(srcseg).tokens
+
+                    print("----------------")
+                    print(f"{s} - SRC) '{srcseg}'")
+                    print(f"{s} - SRC TOKS)", srctoks)
+                    print(f"{s} - TGT) '{tgtseg}'")
+                    print(f"{s} - TGT TOKS)", tgttoks)
+                    if s == break_after:
+                        break
         
         src_segments_tensor = self.src_tokenizer.batch_tokenize(
             src_segments,
@@ -68,21 +80,32 @@ class LBART(L.LightningModule):
 
     def validation_step(self, batch, batch_idx):
         src_segments, tgt_segments = batch
+        VERBOSE = False
+        if self.config["verbose"]:
+            VERBOSE = True
+            freq = 1
+            break_after = 4
+        elif "little_verbose" in self.config and self.config["little_verbose"]:
+            VERBOSE = True
+            freq = 1
+            break_after = 1
 
-        print(f"\n########## val batch {batch_idx} ##########")
-        for s, srcseg in enumerate(src_segments):
-            tgtseg = tgt_segments[s]
+        if VERBOSE:
+            if batch_idx % freq == 0:
+                print(f"\n########## val batch {batch_idx} ##########")
+                for s, srcseg in enumerate(src_segments):
+                    tgtseg = tgt_segments[s]
 
-            srctoks = self.src_tokenizer.tokenize(srcseg)
-            tgttoks = self.tgt_tokenizer.tokenize(tgtseg)
+                    srctoks = self.src_tokenizer.tokenize(srcseg)
+                    tgttoks = self.tgt_tokenizer.tokenize(tgtseg)
 
-            print("----------------")
-            print(f"{s} - SRC) '{srcseg}'")
-            print(f"{s} - SRC TOKS)", srctoks)
-            print(f"{s} - TGT) '{tgtseg}'")
-            print(f"{s} - TGT TOKS)", tgttoks)
-            if s == 4:
-                break
+                    print("----------------")
+                    print(f"{s} - SRC) '{srcseg}'")
+                    print(f"{s} - SRC TOKS)", srctoks)
+                    print(f"{s} - TGT) '{tgtseg}'")
+                    print(f"{s} - TGT TOKS)", tgttoks)
+                    if s == break_after:
+                        break
         
         src_segments_tensor = self.src_tokenizer.batch_tokenize(
             src_segments,

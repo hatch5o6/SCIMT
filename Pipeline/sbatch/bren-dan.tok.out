@@ -1,0 +1,141 @@
+Starting-----------------------
+Tue Jun  3 02:46:14 PM MDT 2025
+-------------------------------
+Arguments:-
+    SPM_MODELS_DIR=/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws
+
+    SPM_TRAIN_SIZE=50000
+
+    SRC_LANGS=bren,es
+    SRC_TOK_NAME=bren_ws
+    TGT_LANGS=dan,en
+    TGT_TOK_NAME=dan_ws
+
+    TRAIN_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/bren-dan/train.csv
+    VAL_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/bren-dan_dev_test/val.csv
+    TEST_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/bren-dan_dev_test/test.csv
+    TOK_TRAIN_DATA_DIR=/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan
+
+    SPLIT_ON_WS=true
+    INCLUDE_LANG_TOKS=true
+    INCLUDE_PAD_TOK=true
+    SPECIAL_TOKS=null
+-------------------------------
+removing /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan
+############################
+# make_SC_training_data.py #
+############################
+Arguments:-
+	-train_csv: /home/hatch5o6/Cognate/code/NMT/data/bren-dan/train.csv
+	-val_csv: /home/hatch5o6/Cognate/code/NMT/data/bren-dan_dev_test/val.csv
+	-test_csv: /home/hatch5o6/Cognate/code/NMT/data/bren-dan_dev_test/test.csv
+	-out_dir: /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan
+------------------------------
+
+deleting /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan
+Writing bren data to /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/bren.txt
+Writing dan data to /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/dan.txt
+Writing es data to /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/es.txt
+Writing en data to /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/en.txt
+INCLUDING <pad> TOKEN
+INCLUDING LANG TOKENS
+    <bren>
+    <es>
+    <dan>
+    <en>
+SRC_USER_DEFINED_SYMBOLS_STR: <pad>,<bren>,<es>,<dan>,<en>
+TGT_USER_DEFINED_SYMBOLS_STR: <pad>,<bren>,<es>,<dan>,<en>
+
+Arguments:-
+	--langs = 'bren,es'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan'
+	--data = 'None'
+	--training_data_size = '50000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/bren_ws'
+	--spm_model_name = 'bren_ws'
+	--spm_vocab_size = '8000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>,<bren>,<es>,<dan>,<en>'
+	--SPLIT_ON_WS = 'true'
+langs ['bren', 'es']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/bren.txt', '/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/es.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/bren.txt": 0.5,
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/es.txt": 0.5
+}
+
+
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/bren_ws
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/bren.txt
+ratio: 0.5
+size: 13787
+After upsampling: 25000
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/es.txt
+ratio: 0.5
+size: 1012
+After upsampling: 25000
+
+
+ALL DATA SIZE: 50000
+Writing 50000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/bren_ws/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/bren_ws/bren_ws
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/bren_ws/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 8000
+character_coverage: 1.0
+user_defined_symbols: ['▁', '<pad>', '<bren>', '<es>', '<dan>', '<en>']
+Arguments:-
+	--langs = 'dan,en'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan'
+	--data = 'None'
+	--training_data_size = '50000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/dan_ws'
+	--spm_model_name = 'dan_ws'
+	--spm_vocab_size = '8000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>,<bren>,<es>,<dan>,<en>'
+	--SPLIT_ON_WS = 'true'
+langs ['dan', 'en']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/dan.txt', '/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/en.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/dan.txt": 0.5,
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/en.txt": 0.5
+}
+
+
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/dan_ws
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/dan.txt
+ratio: 0.5
+size: 13787
+After upsampling: 25000
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/en.txt
+ratio: 0.5
+size: 1012
+After upsampling: 25000
+
+
+ALL DATA SIZE: 50000
+Writing 50000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/dan_ws/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/dan_ws/dan_ws
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/bren_dan/dan_ws/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 8000
+character_coverage: 1.0
+user_defined_symbols: ['▁', '<pad>', '<bren>', '<es>', '<dan>', '<en>']
+Finished-----------------------
+Tue Jun  3 02:46:18 PM MDT 2025
+-------------------------------

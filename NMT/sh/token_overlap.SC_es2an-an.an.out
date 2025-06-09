@@ -1,0 +1,34 @@
+------------------------------
+###### token_overlap.py ######
+------------------------------
+Arguments:-
+	--data1 = '/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/Combined/train/train.an'
+	--spm1 = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_es2an.an/SC_es2an.an'
+	--data2 = '/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/Combined/train/train.es.SC_es2an'
+	--spm2 = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_es2an.an/SC_es2an.an'
+	--is_parallel = 'True'
+	--out = 'sh/token_overlap.SC_es2an.an.parallel.json'
+Calculating Jensen-Shanon Divergence
+TOKS: 7972
+JSD 0.09727779775857925
+SCIPY JSD 0.09727780212033237
+JSD: <class 'numpy.float64'> 0.09727780212033237
+Calculating Jaccard Similarity
+JACCARD: <class 'dict'> 0.9365278474661315
+------------------------------
+###### token_overlap.py ######
+------------------------------
+Arguments:-
+	--data1 = '/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/Combined/train/train.an'
+	--spm1 = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_es2an.an/SC_es2an.an'
+	--data2 = '/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/tgt.100k.SC_es2an.txt'
+	--spm2 = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_es2an.an/SC_es2an.an'
+	--is_parallel = 'False'
+	--out = 'sh/token_overlap.SC_es2an.an.json'
+Calculating Jensen-Shanon Divergence
+TOKS: 7975
+JSD 0.1749207079410553
+SCIPY JSD 0.17492069642941674
+JSD: <class 'numpy.float64'> 0.17492069642941674
+Calculating Jaccard Similarity
+JACCARD: <class 'dict'> 0.8751097178683386

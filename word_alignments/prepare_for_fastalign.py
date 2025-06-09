@@ -1,5 +1,4 @@
 import nltk
-nltk.download('punkt_tab')
 from nltk.tokenize import word_tokenize
 import spacy
 es_nlp = spacy.load('es_core_news_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
@@ -11,13 +10,13 @@ nlp = {
 }
 import argparse
 from tqdm import tqdm
-spanish_punct = "¿¡"
 
 word_tokenize_langs = {
     "de": "german",
     "hsb": "czech",
     "ce": "czech",
-    "en": "english"
+    "en": "english",
+    "fra": "french",
 }
 
 def prep(
@@ -36,14 +35,16 @@ def prep(
     
     if src_lang in nlp:
         src_tokenize = spacy_tokenize
+    elif src_lang in word_tokenize_langs:
+        src_tokenize = nltk_tokenize
     else:
-        assert src_lang in word_tokenize_langs
         src_tokenize = nltk_tokenize
     
     if tgt_lang in nlp:
         tgt_tokenize = spacy_tokenize
+    elif tgt_lang in word_tokenize_langs:
+        tgt_tokenize = nltk_tokenize
     else:
-        assert tgt_lang in word_tokenize_langs
         tgt_tokenize = nltk_tokenize
 
     for src, tgt in tqdm(pairs):
@@ -54,6 +55,7 @@ def prep(
         formatted = tokenized_src.strip() + " ||| " + tokenized_tgt.strip()
         formatted_pairs.append(formatted)
     
+    print("Writing prepare_for_fastalign.py output to", out_f)
     with open(out_f, "w") as outf:
         outf.write("\n".join(formatted_pairs) + "\n")
 
@@ -64,9 +66,9 @@ def spacy_tokenize(line, lang):
     return " ".join(tokens)
 
 def nltk_tokenize(line, lang):
-    print(f"nltk_tokenize lang={lang}")
-    global word_tokenize_langs, spanish_punct
-    wtlang = word_tokenize_langs[lang]
+    global word_tokenize_langs
+    wtlang = word_tokenize_langs.get(lang, "english")
+    # print(f"nltk_tokenize lang={wtlang}")
     tokens = word_tokenize(line.strip(), language=wtlang)
     return " ".join(tokens)
 
@@ -84,7 +86,7 @@ def get_args():
     print("arguments")
     for k, v in vars(args).items():
         print(f"{k}: '{v}'")
-    print("\n\n")
+    print("------------------\n\n")
     return args
 
 if __name__ == "__main__":

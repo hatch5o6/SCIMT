@@ -13,7 +13,7 @@
 #SBATCH --job-name=NMT.SC_es2an-an.en
 #SBATCH --qos=dw87
 
-rm -r /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/NMT.SC_es2an.en_TRIAL_s=1000
-python train.py \
-    --config configs/NMT.SC_es2an-an.en.yaml \
+nvidia-smi
+srun python train.py \
+    --config configs/an_en/NMT.SC_es2an-an.en.yaml \
     --mode TRAIN

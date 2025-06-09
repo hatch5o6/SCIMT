@@ -183,7 +183,7 @@ def get_args():
     print("arguments:")
     for k, v in vars(args).items():
         print(f"\t{k}: '{v}'")
-    print("\n")
+    print("---------------------\n\n")
     return args
 
 if __name__ == "__main__":
