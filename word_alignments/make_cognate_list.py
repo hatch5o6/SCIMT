@@ -47,14 +47,17 @@ def get_args():
     parser.add_argument("-l", "--word_list", required=True, help="word list created by make_word_alignments.py")
     parser.add_argument("-o", "--out")
     parser.add_argument("-t", "--theta", type=float, default=0.5, help="edit distance threshold for cognates")
+    parser.add_argument("--src", required=True)
+    parser.add_argument("--tgt", required=True)
     args = parser.parse_args()
-    print("make_cognate_list.py")
     print("arguments")
     for k, v in vars(args).items():
         print(f"\t{k}: {v}")
+    print("-------------------\n\n")
     return args
 
 if __name__ == "__main__":
+    print("make_cognate_list.py")
     args = get_args()
     word_list = []
     with open(args.word_list) as inf:
@@ -67,6 +70,16 @@ if __name__ == "__main__":
     if out is None:
         EXT = args.word_list.split(".")[-1]
         out = ".".join(args.word_list.split(".")[:-1]) + f".cognates.{args.theta}.{EXT}"
+    
     with open(out, "w") as outf:
         for word1, word2, distance in cognate_list:
             outf.write(f"{word1.strip()} ||| {word2.strip()} ||| {distance}\n")
+
+    # write parallel data
+    EXT = out.split(".")[-1]
+    src_out = out[:-len(EXT)] + f"parallel-{args.src}.{EXT}"
+    tgt_out = out[:-len(EXT)] + f"parallel-{args.tgt}.{EXT}"
+    with open(src_out, "w") as sf, open(tgt_out, "w") as tf:
+        for word1, word2, distance in cognate_list:
+            sf.write(word1.strip() + "\n")
+            tf.write(word2.strip() + "\n")

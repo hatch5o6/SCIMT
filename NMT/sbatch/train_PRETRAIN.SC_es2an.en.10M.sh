@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#SBATCH --time=72:00:00   # walltime.  hours:minutes:seconds
+#SBATCH --ntasks-per-node=4
+#SBATCH --nodes=1
+#SBATCH --mem=1024000M
+#SBATCH --gpus=4
+#SBATCH --mail-type=BEGIN
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-user thebrendanhatch@gmail.com
+#SBATCH --output /home/hatch5o6/Cognate/code/NMT/slurm_outputs/%x.out
+#SBATCH --job-name=PRETRAIN.SC_es2an.en.10M
+#SBATCH --qos=dw87
+
+nvidia-smi
+srun python train.py \
+    --config configs/an_en/PRETRAIN.SC_es2an.en.10M.yaml \
+    --mode TRAIN

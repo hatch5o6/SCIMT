@@ -107,7 +107,7 @@ def get_args():
     return args
 
 if __name__ == "__main__":
-    print("make_word_alignments.py")
+    print("make_word_alignments.OLD.py")
     args = get_args()
     with open(args.alignments) as inf:
         alignments = [line.strip() for line in inf]

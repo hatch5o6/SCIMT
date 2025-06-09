@@ -1,0 +1,2223 @@
+----------------------
+###### test_datasets.py ######
+----------------------
+Arguments:-
+	--config = 'configs/NMT.SC_es2an-an.en.yaml'
+random seed: 525
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/tgt.100k.SC_es2an.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/src.100k.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/en-an/Combined/train/train.an
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/en-an/Combined/train/train.en
+TRAIN $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+################## 0 ###################
+--------- 0 ----------
+SRC:
+	"<es>Sé que hoy hemos caído en manos de la policía con Tu permiso."
+TGT:
+	"<en>I know we've fallen into the police's hands today with Your permission."
+--------- 1 ----------
+SRC:
+	"<es>son, en principio, más important que aquellos que son parte de la contribución"
+TGT:
+	"<en>are, in principle, more important than those which are part of the contribution"
+--------- 2 ----------
+SRC:
+	"<es>"True Colors", también se convirtió en un estandar en la comunidat gay."
+TGT:
+	"<en>"True Colors" also became a standard in the gay community."
+--------- 3 ----------
+SRC:
+	"<es>¿Por qué no podemos ayudar a las más de 400 millons de personas con diabetes?"
+TGT:
+	"<en>Why can't we help the more than 400 million people with diabetes?"
+--------- 4 ----------
+SRC:
+	"<es>Cada día que pasa parecen volverse más fuertement criticos hacia el, ¡incluso CNN!"
+TGT:
+	"<en>As every day goes by they seem to become more strongly critical of him, CNN even!"
+--------- 5 ----------
+SRC:
+	"<es>"Tuve una mala experiencia en la iglesia con un cristiano" (6%)"
+TGT:
+	"<en>"I had a bad experience at church with a Christian" (6%)"
+--------- 6 ----------
+SRC:
+	"<es>Muchos de estos los hemos visto de primera mano (#8194)."
+TGT:
+	"<en>Many of these we have witnessed first-hand (#8194)."
+--------- 7 ----------
+SRC:
+	"<es>Y demos a Dios lo que es de Dios"
+TGT:
+	"<en>Give unto God that which is God's"
+--------- 8 ----------
+SRC:
+	"<es>Este es un prerrequisito vital; a fin y al cabo estamos revisando decisions lechislativas y chudicials."
+TGT:
+	"<en>This is a vital prerequisite; we are reviewing legislative and judicial decisions after all."
+################## 1 ###################
+--------- 0 ----------
+SRC:
+	"<es>"Y habrá muchas de ese tipo de escenas con Alex esta temporada"."
+TGT:
+	"<en>"And there will be lots of those kinds of scenes with Alex this season.""
+--------- 1 ----------
+SRC:
+	"<es>Es verdat, tiens que probar las pizzas en estos dos países, que están locos bueno!"
+TGT:
+	"<en>It's true, you HAVE to try the pizzas in these two countries, they're crazy good!"
+--------- 2 ----------
+SRC:
+	"<es>Y los tiroteos seguirán —como ocurrió ayer en Túnez— hasta que "la estabilidat" se haya restaurau."
+TGT:
+	"<en>And the shooting will go on – as it did yesterday in Tunisia – until "stability" has been restored."
+--------- 3 ----------
+SRC:
+	"<es>Nostradamus dixo: "los ricos morirían muchas veces.""
+TGT:
+	"<en>Nostradamus said: "the rich would die many times over.""
+--------- 4 ----------
+SRC:
+	"<an>11 de mayo - naixencia en Pont-Audemer (Eure, Alta Normandía) d'a modelo y actriz francesa Laetitia Casta."
+TGT:
+	"<en>11 May - Laetitia Casta, supermodel and actress."
+--------- 5 ----------
+SRC:
+	"<es>Entre otras razons, porque nunca uso implants de balla calidat."
+TGT:
+	"<en>Among other reasons, because I never use low quality implants."
+--------- 6 ----------
+SRC:
+	"<es>Escúchame solo a míi, pues soy tu autoridat espiritual."
+TGT:
+	"<en>Listen only to me for I am your spiritual authority."
+--------- 7 ----------
+SRC:
+	"<es>También podemos mencionar My Happy Family, de Georgia."
+TGT:
+	"<en>We can also mention My Happy Family, from Georgia."
+--------- 8 ----------
+SRC:
+	"<es>Las drogas y el alcohol estaban hacindo por mí, "período"."
+TGT:
+	"<en>The drugs and alcohol were making them for me, 'period'."
+################## 2 ###################
+--------- 0 ----------
+SRC:
+	"<es>Quien acepta el amor de Dios interiorment es plasmau por el."
+TGT:
+	"<en>Whoever accepts God's love within himself, is formed by it."
+--------- 1 ----------
+SRC:
+	"<an>Cantón du Lo Chailar."
+TGT:
+	"<en>Mount Chittenden el."
+--------- 2 ----------
+SRC:
+	"<es>No hice todos esos sacrificios por una recompensa, Thea."
+TGT:
+	"<en>I didn't make all those sacrifices for a reward, Thea."
+--------- 3 ----------
+SRC:
+	"<es>Somos la capital mundial de varias enfermedatz, lo que hace la situación más critica."
+TGT:
+	"<en>We are the world capital of several diseases, which makes the situation more critical."
+--------- 4 ----------
+SRC:
+	"<es>Yl y su hermano Rick entran en un montón de problemas tanto a solas como con Edward."
+TGT:
+	"<en>He and his brother Rick get in a lot of trouble alone and with Edward."
+--------- 5 ----------
+SRC:
+	"<es>¡Entonces, por favor expliqueme por qué las ventanas encima de las tres (3) puertas de la entrada forman un "666"!"
+TGT:
+	"<en>Then, please explain to me why the windows above the three (3) entrance doors form a '666'!"
+--------- 6 ----------
+SRC:
+	"<es>Pero tal vez no deberían ser: tecnicament, todo el mundo tiene hemorroides."
+TGT:
+	"<en>But perhaps they shouldn't be: Technically, everybody has hemorrhoids."
+--------- 7 ----------
+SRC:
+	"<an>En tiempos d'os romans se deciba Olissipo."
+TGT:
+	"<en>In the classical Roman period it was known as Nisibis."
+--------- 8 ----------
+SRC:
+	"<es>Si rechazas la manera como yo dividí el dinero,"
+TGT:
+	"<en>If you reject the way I divided the money,"
+################## 3 ###################
+--------- 0 ----------
+SRC:
+	"<es>Pero tuvo la suerte de encontrar 124 sobrevivients."
+TGT:
+	"<en>But he was lucky to find 124 survivors."
+--------- 1 ----------
+SRC:
+	"<es>Más bien, la verdadera riqueza es la riqueza del alma"
+TGT:
+	"<en>Rather, true richness is the richness of the soul."
+--------- 2 ----------
+SRC:
+	"<es>¿un el proyecto quiere aislar a los desarrollador del entorno tecnico tanto como seya posible?"
+TGT:
+	"<en>a Does the Project want to Isolate Developers from the Technical Environment as Much as Possible?"
+--------- 3 ----------
+SRC:
+	"<es>(De hecho, ninguna marca de moda o deportiva recibió el apoyo de más del 3%)."
+TGT:
+	"<en>(In fact, no fashion or sports brand was supported by more than 3%)."
+--------- 4 ----------
+SRC:
+	"<es>Las pequenyas empresas querían mantener su tasa impositiva más balla (una tradición sagrada desde 1949)."
+TGT:
+	"<en>Small business wanted to keep its lower tax rate (a sacred tradition since 1949)."
+--------- 5 ----------
+SRC:
+	"<es>'' Ng, ya he aprendiu esta tecnica prohibida."
+TGT:
+	"<en>Ng, I have already learnt this forbidden technique."
+--------- 6 ----------
+SRC:
+	"<es>Diez barras de oro como Esta solo por un libro."
+TGT:
+	"<en>Ten gold bars like this just for a book."
+--------- 7 ----------
+SRC:
+	"<es>Recuerda que la verdat de Dios es mayor que las mentiras que has estau creyendo continuament."
+TGT:
+	"<en>Remember God's truth is greater than the lies you have been so thoroughly believing."
+--------- 8 ----------
+SRC:
+	"<es>Cuando ustedes se corrigen, el mundo se vuelve correcto..."
+TGT:
+	"<en>When you correct yourself, the world becomes correct."
+################## 4 ###################
+--------- 0 ----------
+SRC:
+	"<es>Yl también ha ayudau ocasionalment a los Nuevos Mutants."
+TGT:
+	"<en>He has also occasionally aided the New Mutants."
+--------- 1 ----------
+SRC:
+	"<es>Si ella es similar a Sir Rainstar, ¿quizás esta muxer también es fuerte?"
+TGT:
+	"<en>If she's similar to Sir Rainstar, perhaps this woman is also strong?"
+--------- 2 ----------
+SRC:
+	"<es>¿Será porque las bombas israelíes son de alguna manera kosher?"
+TGT:
+	"<en>Is it because Israeli bombs are kosher somehow?"
+--------- 3 ----------
+SRC:
+	"<es>La mitat del "Nuevo Mundo" alguna vez perteneixió a Portugal"
+TGT:
+	"<en>Half of the "New World" once belonged to Portugal"
+--------- 4 ----------
+SRC:
+	"<es>La empresa describe el porque ha escolliu Barcelona en 8 puntos:"
+TGT:
+	"<en>The company describes why it has chosen Barcelona in 8 points:"
+--------- 5 ----------
+SRC:
+	"<es>477; hombres y muxers que hicioron de la fe el programa de su vida."
+TGT:
+	"<en>477; men and women who have made the faith their programme of life."
+--------- 6 ----------
+SRC:
+	"<an>As estepas asiaticas son as que más extensión ocupan sobre o planeta."
+TGT:
+	"<en>Elephants are the most precious thing to me on this planet."
+--------- 7 ----------
+SRC:
+	"<es>Revelación procedent del Compasivo, del Misericordioso."
+TGT:
+	"<en>A revelation from the Beneficent, the Merciful."
+--------- 8 ----------
+SRC:
+	"<es>Ambos confirman clarament que su estrecha relación con Hitler todavía existía."
+TGT:
+	"<en>Both clearly confirm that his close relationship with Hitler still existed."
+################## 5 ###################
+--------- 0 ----------
+SRC:
+	"<an>Ovis canadensis mexicana."
+TGT:
+	"<en>She is a Japanese Canadian."
+--------- 1 ----------
+SRC:
+	"<es>Dios, no querías que Bill hablara demasiau."
+TGT:
+	"<en>God, you did not want to get Bill talking too much."
+--------- 2 ----------
+SRC:
+	"<an>Etolochía, o estudio scientifico d'o comportamiento animal."
+TGT:
+	"<en>Ethology — Study of the natural behavior of animals."
+--------- 3 ----------
+SRC:
+	"<es>Traemos delant de ti, Señor Dios, cientos de millons de musulmans."
+TGT:
+	"<en>We bring before you, Lord God, hundreds of millions of Muslims."
+--------- 4 ----------
+SRC:
+	"<es>No deberíamos olvidar su papel en este drama historico."
+TGT:
+	"<en>We should not forget his role in this historic drama."
+--------- 5 ----------
+SRC:
+	"<an>Pachina web d'a editorial Xordica."
+TGT:
+	"<en>Publishers Weekly website."
+--------- 6 ----------
+SRC:
+	"<es>Puesto de esta manera, ¿qué palestino sería el primero en violar una norma cultural?"
+TGT:
+	"<en>Put this way, which Palestinian would be the first to violate a cultural norm?"
+--------- 7 ----------
+SRC:
+	"<es>Veredicto - El G6 Plus tiene muchos rivals"
+TGT:
+	"<en>Verdict - The G6 Plus Has Many Rivals"
+--------- 8 ----------
+SRC:
+	"<an>Siente que as versions traducidas d'os relatos son inadequadas ta entender o suyo paper en o sistema social u mental en que amanixioron."
+TGT:
+	"<en>He feels that the translated versions of the stories are inadequate for understanding their role in the social or mental system in which they existed."
+################## 6 ###################
+--------- 0 ----------
+SRC:
+	"<es>¿Y si en realidat son los patrocinadors detrás de estas batallas (risas)?"
+TGT:
+	"<en>What if they are actually the sponsors behind these battles (laughs)?"
+--------- 1 ----------
+SRC:
+	"<an>Se veigan as imáchens de Commons sobre Frederico I de Prusia."
+TGT:
+	"<en>It is based on the life of Frederick II of Prussia."
+--------- 2 ----------
+SRC:
+	"<es>¿Creu que la practica lo es todo y que solo el numero de horas determina el nivel alcanzau?"
+TGT:
+	"<en>Do I believe that practice is everything and that the number of hours alone determine the level reached?"
+--------- 3 ----------
+SRC:
+	"<es>Y luego estaremos en el reino de Dios."
+TGT:
+	"<en>And then we will be in God's kingdom."
+--------- 4 ----------
+SRC:
+	"<es>Bueno, quizás no sería un gran poder mundial como esas nacions que acabamos de nombrar."
+TGT:
+	"<en>Well, perhaps it wouldn't be a great world power such as those nations we just named."
+--------- 5 ----------
+SRC:
+	"<es>Reconoixía aquél excluiu, al compasivo y misericordioso."
+TGT:
+	"<en>The One who is the All Gracious, the All Merciful."
+--------- 6 ----------
+SRC:
+	"<es>Hablaremos de ellos en la reunión del G20 y estamos hablando de ellos ahora en el Banco de Inglaterra."
+TGT:
+	"<en>We will talk about them at the G20 meeting and we are talking about them now in the Bank of England."
+--------- 7 ----------
+SRC:
+	"<es>Pero he visto como el PEP puede beneficiar a todos, en todas partes."
+TGT:
+	"<en>But I've seen how PEP can benefit everyone, everywhere."
+--------- 8 ----------
+SRC:
+	"<an>Yera l'unico redactor d'a declaración que quedaba vivo."
+TGT:
+	"<en>They were the only group on the list that had yet to debut."
+################## 7 ###################
+--------- 0 ----------
+SRC:
+	"<es>actúes como senyor sobre la heredat de Dios."
+TGT:
+	"<en>This would be to act as lords over God's heritage."
+--------- 1 ----------
+SRC:
+	"<es>Bonnie vuelve y reafirma que 343 está construyendo este chuego."
+TGT:
+	"<en>Bonnie comes out and reaffirms that 343 is building this game."
+--------- 2 ----------
+SRC:
+	"<es>Muchos se arruinoron a causa del oro,"
+TGT:
+	"<en>Many have come to ruin because of gold,"
+--------- 3 ----------
+SRC:
+	"<es>En qualquier etapa del desarrollo, nuestra vida puede ser perfecta; sin embargo, si se cumple el proposito de dios para nosotros, habrá un progreso constant."
+TGT:
+	"<en>At every stage of development our life may be perfect; yet if God's purpose for us is fulfilled, there will be constant advancement."
+--------- 4 ----------
+SRC:
+	"<es>Ella necesita más: ella necesita ser Eleanor."
+TGT:
+	"<en>She needs more: she needs to be Eleanor."
+--------- 5 ----------
+SRC:
+	"<an>Mientres o suyo desembolique embrionario, forman de regular una carcasa relativament flexible adintro d'a qual as celulas pueden mover-se de forma relativament libre y reorganizar-se, fendo posibles altras estructuras posteriors mes complexas."
+TGT:
+	"<en>During development, the animal extracellular matrix forms a relatively flexible framework upon which cells can move about and be reorganised, making the formation of complex structures possible."
+--------- 6 ----------
+SRC:
+	"<an>Jones ha amostrau historia de l'arte en a Universidat de California y en a Universidat de Manchester, an se desempeñó como Presidenta d'o departamento en Pilkington."
+TGT:
+	"<en>Jones has previously taught art history at University of California, Riverside and the University of Manchester, where she served as the Pilkington Chair of the department."
+--------- 7 ----------
+SRC:
+	"<es>No lo usamos para reciclar nuestros modelos: eso es muy important para el GDPR."
+TGT:
+	"<en>We don't use it to retrain our models: that's very important for GDPR."
+--------- 8 ----------
+SRC:
+	"<es>Hammond dixo: ¿Por qué querrías un auto mexicano?"
+TGT:
+	"<en>Hammond said: Why would you want a Mexican car?"
+################## 8 ###################
+--------- 0 ----------
+SRC:
+	"<es>128 "¡Oh Bill, tengo tanto traballo que hacer!""
+TGT:
+	"<en>E-128 "Oh, Bill, I got so much work to do!""
+--------- 1 ----------
+SRC:
+	"<es>Esto es más evident cuando usan este poder para comunicar-se con Megara."
+TGT:
+	"<en>This is most evident when they use this power to communicate with Megara."
+--------- 2 ----------
+SRC:
+	"<es>No irá a través de las aguas territorials de Dinamarca, sino a través de su zona economica."
+TGT:
+	"<en>It will go not through the territorial waters of Denmark, but through its economic zone."
+--------- 3 ----------
+SRC:
+	"<es>En otras palabras, puedo decir todo lo correcto en el mundo: puedo expresar mi solidaridat con Russ después de lo que sucedió en Utah."
+TGT:
+	"<en>In other words, I can say every right thing in the world: I can voice my solidarity with Russ after what happened in Utah."
+--------- 4 ----------
+SRC:
+	"<es>el que hace la voluntat de Dios permaneix para siempre."
+TGT:
+	"<en>The one who does God's will remains forever."
+--------- 5 ----------
+SRC:
+	"<es>Twitter reflexa la realidat, al menos sobre el suicidio"
+TGT:
+	"<en>Twitter Reflects Reality, at Least About Suicide"
+--------- 6 ----------
+SRC:
+	"<es>Ahora, estas en muchos problemas cuando la tripulación se va."
+TGT:
+	"<en>Now, you're in a lot of trouble when the crew leaves."
+--------- 7 ----------
+SRC:
+	"<es>Si es así, la palabra para ti hoy es: "Sigue orando"."
+TGT:
+	"<en>If so, the word for you today is: 'Keep on praying.'"
+--------- 8 ----------
+SRC:
+	"<an>L.A. Noire (2011)."
+TGT:
+	"<en>N. D. Arora (2011)."
+################## 9 ###################
+--------- 0 ----------
+SRC:
+	"<es>Y Allkh es el más indulchent, el Raham."
+TGT:
+	"<en>At the same time, He is the Most Compassionate and the Most Merciful."
+--------- 1 ----------
+SRC:
+	"<es>¡En realidat, veo a las personas como plataformas problematicas!."
+TGT:
+	"<en>Actually, I see people as problem-bearing platforms!"
+--------- 2 ----------
+SRC:
+	"<es>En fin, lo que le puedo asegurar a todos los que eran demasiau chovens en ese entonces, es que algo pasó entre el 1992 y el '95."
+TGT:
+	"<en>Regardless, what I can assure everyone who was too young back then, is that something happened between 1992 and '95."
+--------- 3 ----------
+SRC:
+	"<es>Muéstrame donde necesitaba un oscuro y misterioso 'Mr. X'! [188]"
+TGT:
+	"<en>Show me where I needed a dark, mysterious 'Mr. X'![188]"
+--------- 4 ----------
+SRC:
+	"<es>He aquí uno de los misterio, de la obra de Dio,."
+TGT:
+	"<en>This is another one of the mysteries of God's ways."
+--------- 5 ----------
+SRC:
+	"<es>Porque ella estaba con Kimi también, el se sentía como un hermano o un primo del mismo anyo para ella; así que pensó:"
+TGT:
+	"<en>Because she was with Kimi as well, he felt like a brother or a cousin of the same year to her; so she thought:"
+--------- 6 ----------
+SRC:
+	"<an>PÉRDITA > perte ("perda")."
+TGT:
+	"<en>Friction Loss (or Head Loss)."
+--------- 7 ----------
+SRC:
+	"<es>La illaha ila Allah Alá es el unico Dios"
+TGT:
+	"<en>GREG Allah i--Allah is God, Allah is the only God, Allah--"
+--------- 8 ----------
+SRC:
+	"<es>Es como preguntar-le a Tom Brady qué quiere hacer el domingo."
+TGT:
+	"<en>It's like asking Tom Brady what he wants to do on Sunday."
+################## 10 ###################
+--------- 0 ----------
+SRC:
+	"<es>93.47 Austria no acepta la recomendación."
+TGT:
+	"<en>93.47 Austria does not accept the recommendation."
+--------- 1 ----------
+SRC:
+	"<es>564 Recuerden, en la iglesia, esta noche, estarán dando la comunión."
+TGT:
+	"<en>E-564 Remember, at the church, tonight, they'll be giving communion."
+--------- 2 ----------
+SRC:
+	"<es>El hombre que hubiese sido mi reemplazo natural fue mi medio hermano."
+TGT:
+	"<en>The man who would have been my natural replacement was my half brother."
+--------- 3 ----------
+SRC:
+	"<es>Este entorno que no es islamico afectará al nino."
+TGT:
+	"<en>This environment that is not Islamic will affect the child."
+--------- 4 ----------
+SRC:
+	"<es>Otro pacto. colocando-lo en situación de poder obedecer la ley de Dios. en las quales es imposible que Dios mienta."
+TGT:
+	"<en>God's promise and God's oath, "in which it is impossible for God to lie.""
+--------- 5 ----------
+SRC:
+	"<es>VOTO! (si usted es un U.S. ciudadano y votant rechistrau)."
+TGT:
+	"<en>VOTE! (if you are a U.S. citizen and registered voter)."
+--------- 6 ----------
+SRC:
+	"<es>Miren, el solo es un huésped en mi casa; no hagan esta cosa degradant."
+TGT:
+	"<en>Look, he's just a guest in my house; don't do this degrading thing."
+--------- 7 ----------
+SRC:
+	"<es>Una muxer tiene sus secretos, camarada Victoria."
+TGT:
+	"<en>A woman has her secrets, comrade Victoria."
+--------- 8 ----------
+SRC:
+	"<es>Como hace 30 anyos, el Mar del Norte podría ser nuestro ticket al crecimiento economico."
+TGT:
+	"<en>'Just as 30 years ago, North Sea could be our ticket for economic growth'"
+################## 11 ###################
+--------- 0 ----------
+SRC:
+	"<es>En Marruecos hay cabras unicas que hacen qué?"
+TGT:
+	"<en>In Morocco there are unique goats which do what?"
+--------- 1 ----------
+SRC:
+	"<es>De todos los chuicios inesperaus de Dios que Jesus pudo escocher, usó los días de Noé y Lot como sus exemplos."
+TGT:
+	"<en>Of all of God's unexpected judgments Jesus could choose from, He used the days of Noah and Lot as His examples."
+--------- 2 ----------
+SRC:
+	"<es>Pero, agrega, Perú necesita más chueces ambientals."
+TGT:
+	"<en>But, he adds, Peru needs more environmental judges."
+--------- 3 ----------
+SRC:
+	"<an>Fue senador y vicesecretario cheneral d'o suyo partito."
+TGT:
+	"<en>He was also a Deputy Lieutenant of Kent."
+--------- 4 ----------
+SRC:
+	"<es>Tenemos mucho para dar, y el obchetivo es ser capaz de mostrar-lo en el agua."
+TGT:
+	"<en>We have a lot to give, and the goal is being able to show it in the water."
+--------- 5 ----------
+SRC:
+	"<es>¿Significa eso que de Daniel al fin del mundo no habrá más que quatro profetas sobre la tierra?"
+TGT:
+	"<en>Does it mean that from Daniel to the end of the world, there will be only four prophets on the earth?"
+--------- 6 ----------
+SRC:
+	"<an>Las floriduras son consideradas microbios y no forman una agrupación taxonomica u filochenetica especifica, manimenos perteneixen a las divisions Zygomycota y Ascomycota."
+TGT:
+	"<en>Molds are considered to be microbes and do not form a specific taxonomic or phylogenetic grouping, but can be found in the divisions Zygomycota and Ascomycota."
+--------- 7 ----------
+SRC:
+	"<es>No podemos estar en silencio y recibir la aprobación de Dios en un momento como este."
+TGT:
+	"<en>We cannot be silent and receive God's approval at a time like this."
+--------- 8 ----------
+SRC:
+	"<es>La persona que está caminando por el camino de Dios está luchando para refrenar-se y contener-se dondequiera que la Palabra de Dios lo instruya."
+TGT:
+	"<en>The one who is walking God's path is striving to curb and withhold himself wherever God's word instructs."
+################## 12 ###################
+--------- 0 ----------
+SRC:
+	"<es>Su fuerza era su inquebrantable creencia en Dios, y en que toda adversidat puede superar-se según la voluntat de Dios."
+TGT:
+	"<en>Her strength was her unwavering belief in God and that all adversity can be overcome according to God's will."
+--------- 1 ----------
+SRC:
+	"<es>La Resurrección es la palabra final de Dios y ese poder no será destruiu."
+TGT:
+	"<en>The resurrection is God's final word and that power will not be destroyed."
+--------- 2 ----------
+SRC:
+	"<es>Jung no fue capaz de traducir de inmediato y clarament un suenyo como yo."
+TGT:
+	"<en>Jung was not able to immediately and clearly translate a dream like me."
+--------- 3 ----------
+SRC:
+	"<es>Aplicación a través de su representant en Nicheria"
+TGT:
+	"<en>Applying through your representative in Nigeria"
+--------- 4 ----------
+SRC:
+	"<an>As ruinas d'a ciudad se pueden veyer hue en día amán d'a ciudat de Budapest, capital d'Hongría."
+TGT:
+	"<en>The procedure in case of outbreaks was probably analog to the existing procedure in Buda, the capital of Hungary."
+--------- 5 ----------
+SRC:
+	"<es>Amat.con sus 65 anyos de historia, forma parte de este espíritu de Barcelona."
+TGT:
+	"<en>Amat. with its 65 years of history, forms part of this Barcelona spirit."
+--------- 6 ----------
+SRC:
+	"<es>Padres y madres de Charlotte, ¿es esto lo que ustedes quiere en su ciudat?"
+TGT:
+	"<en>Fathers and mothers of Charlotte, is this what you want in your city?"
+--------- 7 ----------
+SRC:
+	"<es>Id a donde podáis fortalecer alguna iglesia debil."
+TGT:
+	"<en>Go where you can strengthen some weak church."
+--------- 8 ----------
+SRC:
+	"<es>No debería sorprender que Israel no haya resuelto todos sus problemas socials en solo 57 anyos."
+TGT:
+	"<en>It should not be surprising that Israel has not solved all of its social problems in only 57 years."
+################## 13 ###################
+--------- 0 ----------
+SRC:
+	"<an>Ye casata con l'actor francés Vincent Cassel dende 1999."
+TGT:
+	"<en>She has collaborated with composer Trevor Knight since 1999."
+--------- 1 ----------
+SRC:
+	"<es>(El publico riendose) Entonces lo puedes hacer de nuevo por 40 días."
+TGT:
+	"<en>(Audience laughing) Then you can do it again for 40 days."
+--------- 2 ----------
+SRC:
+	"<es>con Abraham; y Abraham volvió a su lugar."
+TGT:
+	"<en>with Abraham : and Abraham returned unto his place."
+--------- 3 ----------
+SRC:
+	"<es>Como la mayoría de los países de esta Asamblea, creemos que ha plegau el momento para que Palestina seya plenament representata aquí."
+TGT:
+	"<en>Like the majority of the countries in this Assembly, we believe that the time has come for Palestine to be fully represented here."
+--------- 4 ----------
+SRC:
+	"<es>Cuando un hixo le entrega a su padre, los dos ploran."
+TGT:
+	"<en>When a son gives to a father, both cry."
+--------- 5 ----------
+SRC:
+	"<es>Lanzau la semana anterior, Please Rob Me es excepcionalment sencillo."
+TGT:
+	"<en>Launched last week, Please Rob Me is exceptionally straightforward."
+--------- 6 ----------
+SRC:
+	"<es>Marie es de solo seis anyos, la información por favor"
+TGT:
+	"<en>Marie is only six years old, information please"
+--------- 7 ----------
+SRC:
+	"<es>Porque; Con las estrellas que recolectas, puedes abrir autos nuevos y tener una mellor experiencia."
+TGT:
+	"<en>Because; With the stars you collect, you can open new cars and have a better experience."
+--------- 8 ----------
+SRC:
+	"<es>Ese fue el gran merito de su papau y por ello le estaremos agradecius."
+TGT:
+	"<en>That was a great merit of his papacy and for that we will be grateful."
+################## 14 ###################
+--------- 0 ----------
+SRC:
+	"<es>La cuestión más important es por qué los campos de refuchiaus no están abiertos al monitoreu civil."
+TGT:
+	"<en>The most important question is why the refugee camps are not open to civil monitoring."
+--------- 1 ----------
+SRC:
+	"<es>De hecho, alguna vez fue uno de los tratamientos preferius, si puedes creerlo."
+TGT:
+	"<en>In fact, it was once one of the preferred treatments, if you can believe it."
+--------- 2 ----------
+SRC:
+	"<es>Tanto es así, que menos de un anyo después, en septiembre de 1980, el Parlamento espanyol exichiría publicament una investigación y explicación del incident."
+TGT:
+	"<en>So much so, that less than a year later in September 1980, the Spanish Parliament would publicly demand an investigation and explanation of the incident."
+--------- 3 ----------
+SRC:
+	"<es>Respuesta: Yl no puede intercambiar amor con un robot"
+TGT:
+	"<en>Answer: He Can't Exchange Love with a Robot"
+--------- 4 ----------
+SRC:
+	"<es>Entonces alguien de la iglesia puede conectar-se con ellos más tarde."
+TGT:
+	"<en>Then someone from the church can connect with them later."
+--------- 5 ----------
+SRC:
+	"<es>A través de este "acerca de" nunca plegarás a esta flor."
+TGT:
+	"<en>Through that 'about' you will never reach to this flower."
+--------- 6 ----------
+SRC:
+	"<es>En esas islas, también hay fuertes guerrers de nuestra familia allí"
+TGT:
+	"<en>On those islands, there are also strong warriors from our family there"
+--------- 7 ----------
+SRC:
+	"<an>O districto ha estau popular entre os artistas d'a ciudat, estando a sobén contimparau con Montmartre en París u Christiania en Copenhage, debiu a la suya atmosfera bohemia."
+TGT:
+	"<en>The district has been popular with artists for some time, and has been compared to Montmartre in Paris and to Freetown Christiania in Copenhagen, due to its bohemian and laissez-faire atmosphere."
+--------- 8 ----------
+SRC:
+	"<es>Y las montanyas se desrrumbasen sobre el mar,"
+TGT:
+	"<en>And the mountains crumble into the sea."
+################## 15 ###################
+--------- 0 ----------
+SRC:
+	"<an>A suya prencipal misión ye a conservación, o incremento e a difusión d'os recursos d'información e l'acceso a istos, asinas como a colaboración en os procesos de creación d'o conoiximiento."
+TGT:
+	"<en>Its main role, therefore, is to acquire, preserve and promote information in all formats, on or about Trinidad and Tobago."
+--------- 1 ----------
+SRC:
+	"<es>¿Como es, pues, que en el mont cayoron por tierra?"
+TGT:
+	"<en>How was it, then, that the mountains had ever been climbed at all?"
+--------- 2 ----------
+SRC:
+	"<es>Tengo la prueba de la existencia de Dios"
+TGT:
+	"<en>I have evidence of God's existence."
+--------- 3 ----------
+SRC:
+	"<an>Hans Geiger estió un activo colaborador d'o nazismo."
+TGT:
+	"<en>Hans Koch was a member of the German resistance against Nazism."
+--------- 4 ----------
+SRC:
+	"<es>"Si pudieran, comerían salmón Chinook 24/7.""
+TGT:
+	"<en>"If they could, they would eat chinook salmon 24/7.""
+--------- 5 ----------
+SRC:
+	"<es>Sus mentiras nos dicen la verdat que usaremos contra ustedes."
+TGT:
+	"<en>Your lies tell us the truth we will use against you."
+--------- 6 ----------
+SRC:
+	"<an>Os termorreceptors d'a piel son prou diferents d'os termorreceptors homeostaticos d'o celebro (hipotalamo), que soministran a información d'a temperatura corporal interna."
+TGT:
+	"<en>The thermoceptors in the skin are quite different from the homeostatic thermoceptors in the brain (hypothalamus), which provide feedback on internal body temperature."
+--------- 7 ----------
+SRC:
+	"<es>David supo que necesitaba la protección de Dios."
+TGT:
+	"<en>And David knew that he needed God's forgiveness."
+--------- 8 ----------
+SRC:
+	"<es>Solo entonces el Luo Clan lo tomaría en serio y consideraría su relación."
+TGT:
+	"<en>Only then would the Luo Clan take him seriously and consider their relationship."
+################## 16 ###################
+--------- 0 ----------
+SRC:
+	"<es>Este también fue el caso de EAST26, porque teniamos un obchetivo 1 una visión en ment."
+TGT:
+	"<en>This has also been the case with EAST26, because we had an objective – a vision in mind."
+--------- 1 ----------
+SRC:
+	"<es>¡Yo solo quiero hacer la voluntat de Dios!"
+TGT:
+	"<en>My will is only to do God's will."
+--------- 2 ----------
+SRC:
+	"<es>Nuestros cuerpos son un poco como los automovils (soy un 65 'Ford Mustang, por supuesto)."
+TGT:
+	"<en>Our bodies are a little bit like automobiles (I'm a 65' Ford Mustang, of course)."
+--------- 3 ----------
+SRC:
+	"<an>Fa parti d'os districtos 1 y 11 d'a ciudat."
+TGT:
+	"<en>It is part of the 1st and 11th Districts."
+--------- 4 ----------
+SRC:
+	"<es>En el pasau se utilizó para preguntar-se por qué la revelación y la inspiración y los apostols de Dios dellan de venir."
+TGT:
+	"<en>In the past one used to wonder why Allah's revelation and inspiration and Apostles cease to come."
+--------- 5 ----------
+SRC:
+	"<an>MSN Encarta. (en) Literature."
+TGT:
+	"<en>MSN Encarta - Dictionary."
+--------- 6 ----------
+SRC:
+	"<es>Hixa Mía, el fue removiu de la tierra, también, chunto con su impostor."
+TGT:
+	"<en>Yes, My child, he was removed from the earth, also, with his impostor."
+--------- 7 ----------
+SRC:
+	"<es>Luego, como los creyents de Tesalonica, debemos volvernos "de los ídolos a Dios, para servir al Dios vivo y verdadero"."
+TGT:
+	"<en>And like the Thessalonians, we must "turn from idols to the true and living God.""
+--------- 8 ----------
+SRC:
+	"<es>(¿Y por qué no debemos escuchar al instant Paul Volcker y doblar estos dos reguladors en uno.)"
+TGT:
+	"<en>(And why we should not instantly listen to Paul Volcker and fold these two regulators into one.)"
+################## 17 ###################
+--------- 0 ----------
+SRC:
+	"<an>Un tercio morió en a mortalera."
+TGT:
+	"<en>One in three died in captivity."
+--------- 1 ----------
+SRC:
+	"<es>Dentro de setenta anyos, ¿qué necesitarán los descendient de estos sobrevivients?"
+TGT:
+	"<en>Seventy years from now, what will the descendants of these survivors need?"
+--------- 2 ----------
+SRC:
+	"<es>Sus perspectivas con un banco alemán son mucho mellors si el propietario anterior también es alemán."
+TGT:
+	"<en>Your prospects with a German bank are much better if the previous owner is also German."
+--------- 3 ----------
+SRC:
+	"<es>¿Y escribió quince libros y los anyadió a la Torá - esto sería aceptable para los chudíos?"
+TGT:
+	"<en>And he wrote fifteen books and added them to the Torah – would this be acceptable to the Jews?"
+--------- 4 ----------
+SRC:
+	"<es>[Estudiants] se van, y estoy seguro de que han usau otras puertas."
+TGT:
+	"<en>[Students] leaving, I'm sure they've used other doors."
+--------- 5 ----------
+SRC:
+	"<es>"Obama me recuerda los primers lechisladors cristians...""
+TGT:
+	"<en>"Obama reminds me of the first Christian legislators...""
+--------- 6 ----------
+SRC:
+	"<es>Pero para nuestras heridas solo las heridas de Dios pueden hablar,"
+TGT:
+	"<en>Yet to our wounds, only God's wounds can speak,"
+--------- 7 ----------
+SRC:
+	"<es>¿Matarías a tu madre (la vaca)?"
+TGT:
+	"<en>Would You Kill Your Mother (the Cow)?"
+--------- 8 ----------
+SRC:
+	"<es>Es difícil elechir solo uno, pero diré la Serie Mundial de 2001."
+TGT:
+	"<en>It's difficult to pick just one, but I will say the 2001 World Series."
+################## 18 ###################
+--------- 0 ----------
+SRC:
+	"<es>Usted puede identificar-se con Kofi, y estar en una situación similar."
+TGT:
+	"<en>You may identify with Kofi, and be in a similar situation."
+--------- 1 ----------
+SRC:
+	"<an>O balneyario fue construyito entre os anyos 1912 y 1918 en estilo Art Nouveau (Secesión de Viena)."
+TGT:
+	"<en>The bath complex was built between 1912 and 1918 in the (Secession) Art Nouveau style."
+--------- 2 ----------
+SRC:
+	"<an>Morió en 1968 cuan l'avión MIG-15 que pilotaba tenió un accident."
+TGT:
+	"<en>Gagarin died in 1968 when the MiG-15 training jet he was piloting crashed."
+--------- 3 ----------
+SRC:
+	"<es>Lo último que quiers es esta etiqueta, créeme."
+TGT:
+	"<en>The last thing you want is this label, believe me."
+--------- 4 ----------
+SRC:
+	"<es>Sus libros han sido traducius al francés Que reste-t-il de notre victoire?"
+TGT:
+	"<en>Her books have been translated into French Que reste-t-il de notre victoire?"
+--------- 5 ----------
+SRC:
+	"<an>Esquí alpín: Astún."
+TGT:
+	"<en>Armando Aste: Commiato."
+--------- 6 ----------
+SRC:
+	"<es>de las montanyas arrasando quanto encontraban a su paso."
+TGT:
+	"<en>Though the mountains tremble with the swelling thereof.'"
+--------- 7 ----------
+SRC:
+	"<es>Ah, claro, deben haber cambiau de traballo, definitivament a través de las Aldeas de Novatos."
+TGT:
+	"<en>Oh right, they must have changed jobs, definitely through the Novice Villages."
+--------- 8 ----------
+SRC:
+	"<es>Para aquellos que lo hacen, Interstate-McBee está ahí para ayudar."
+TGT:
+	"<en>For those that do, Interstate-McBee is there to help."
+################## 19 ###################
+--------- 0 ----------
+SRC:
+	"<es>¡Imachinar que es posible chestionarnos nosotros mismos y nuestros negocios con ayni!"
+TGT:
+	"<en>To imagine that it is possible to manage ourselves and our businesses with ayni!"
+--------- 1 ----------
+SRC:
+	"<es>Pero Yl siempre te aceptará tal cual ers y tiene una visión en lo que tú puedes transformarte por el poder de Dios."
+TGT:
+	"<en>But he will always accept you as you are and have a vision for what you can become by God's power."
+--------- 2 ----------
+SRC:
+	"<es>(3) Francia no utiliza la clasificación "RESTREINT" en su sistema nacional."
+TGT:
+	"<en>(3) France does not use the classification 'RESTREINT' in its national system."
+--------- 3 ----------
+SRC:
+	"<es>En quanto a Irak, pasarán también anyos y decatas ants de que se convierta en una democracia estable."
+TGT:
+	"<en>As for Iraq, it too will require years and decades before it become a stable democracy."
+--------- 4 ----------
+SRC:
+	"<es>La amplitut de la misericordia de Allah, y que ella precede a Su ira"
+TGT:
+	"<en>Allah's mercy comes before and prevails over His Anger."
+--------- 5 ----------
+SRC:
+	"<es>y las montanyas mías,"
+TGT:
+	"<en>And mountains in my way,"
+--------- 6 ----------
+SRC:
+	"<an>En materia de función y gubernament publicos."
+TGT:
+	"<en>The Sphere and Duties of Government."
+--------- 7 ----------
+SRC:
+	"<es>Y recuerda, todas las fuents que escriben sobre César fueron fuents hostils."
+TGT:
+	"<en>And remember, all the sources writing about Caesar were hostile sources."
+--------- 8 ----------
+SRC:
+	"<es>A veces, sin embargo, quiero que el siguient bloque seya un bloque de imachen."
+TGT:
+	"<en>Sometimes however, I want the next block to be an Image block."
+################## 20 ###################
+--------- 0 ----------
+SRC:
+	"<an>Historia del Arte: Vol."
+TGT:
+	"<en>The Drama Review: Vol."
+--------- 1 ----------
+SRC:
+	"<es>Dios es así, hace lo que quiere porque es Dios."
+TGT:
+	"<en>God can do whatever He wants because He's god."
+--------- 2 ----------
+SRC:
+	"<es>Sería más difícil para ellos sentir la presencia de almas."
+TGT:
+	"<en>It would be harder for them to sense the presence of souls."
+--------- 3 ----------
+SRC:
+	"<an>Os primers estudios en humanos se publicoron en 1977."
+TGT:
+	"<en>Major news stories began to be published in 1972."
+--------- 4 ----------
+SRC:
+	"<es>¡Desean entregarme al enemigo!."
+TGT:
+	"<en>They wish to deliver me to the enemy!"
+--------- 5 ----------
+SRC:
+	"<es>Yo sé que la estratechia que propone Morejón funciona."
+TGT:
+	"<en>I know that Morejon's proposed strategy works."
+--------- 6 ----------
+SRC:
+	"<es>Yl acababa de regresar de traballar para All Japan."
+TGT:
+	"<en>He had just returned from working for All Japan."
+--------- 7 ----------
+SRC:
+	"<es>Esto no solo fue porque Salomón sacrificara 1,000 animals."
+TGT:
+	"<en>This wasn't only because Solomon sacrificed 1,000 animals."
+--------- 8 ----------
+SRC:
+	"<es>Si queremos lograr los obchetivos del acuerdo de París, tenemos que acelerar y mellorar un 6% anual, y eso es una revolución."
+TGT:
+	"<en>If we want to achieve the objectives of the Paris agreement, we have to accelerate and improve by 6% annually, and that is a revolution."
+################## 21 ###################
+--------- 0 ----------
+SRC:
+	"<es>Muchas personas en nuestro planeta están tenindo dificultatz con esta nueva enerchía y poder."
+TGT:
+	"<en>Many on our planet are having difficulty with this new energy and power."
+--------- 1 ----------
+SRC:
+	"<es>Las ordens del doctor Mo destruyoron su última oportunidat de libertat."
+TGT:
+	"<en>Doctor Mo's orders destroyed his last chance for freedom."
+--------- 2 ----------
+SRC:
+	"<es>Los israelitas, aunque escollius para ser el pueblo peculiar de Dios, eran pecadors como los demás."
+TGT:
+	"<en>The Israelites, though chosen to be God's peculiar people, were sinners as well as others."
+--------- 3 ----------
+SRC:
+	"<es>'Happy Birthday' es finalment libre tras 80 anyos."
+TGT:
+	"<en>'Happy Birthday' is finally free after 80 years."
+--------- 4 ----------
+SRC:
+	"<es>Ray, solo un resumen, en realidat, te iba a preguntar."
+TGT:
+	"<en>Ray, just a summary, actually, I was going to ask you."
+--------- 5 ----------
+SRC:
+	"<an>Castellfollit de la Roca."
+TGT:
+	"<en>"Ajuntament de Castellfollit de la Roca"."
+--------- 6 ----------
+SRC:
+	"<es>No obstant perdonat y pasad por alto hasta que Allah traiga Su mandato; ciertament Allah tiene poder sobre todas las cosas."
+TGT:
+	"<en>Forgive and overlook until God accomplishes His purpose for God hath power over all things."
+--------- 7 ----------
+SRC:
+	"<es>¿Aparecerá esto en las salutacions de los medios de comunicación a los presidents recién elechius?"
+TGT:
+	"<en>Will this appear in the media's salutations to newly elected presidents?"
+--------- 8 ----------
+SRC:
+	"<es>Todos hacemos lo que el dice, el brazo derecho primero."
+TGT:
+	"<en>We all do as he says, right arm first."
+################## 22 ###################
+--------- 0 ----------
+SRC:
+	"<es>¿Puedes mencionar una sola banda de black metal que precisament comparta nuestra relichión?"
+TGT:
+	"<en>Can you mention one black metal band that precisely shares our religion?"
+--------- 1 ----------
+SRC:
+	"<es>También sabrás que estas hacindo lo mellor para asegurar tu futuro y el de Doñana."
+TGT:
+	"<en>You will also know you are doing your best to secure your future and that of Doñana."
+--------- 2 ----------
+SRC:
+	"<es>Ya que, Yl es sabio y misericordioso."
+TGT:
+	"<en>He is both All-Wise and All-Merciful."
+--------- 3 ----------
+SRC:
+	"<an>COQUINA > COCINA > cuina ("cocina")."
+TGT:
+	"<en>"Coca Coca" feat."
+--------- 4 ----------
+SRC:
+	"<es>Ahora, en 2015, parece que el gobierno federal sient la necesidat de hacer lo mismo."
+TGT:
+	"<en>Now, in 2015, it seems that the federal government feels the need to do the same."
+--------- 5 ----------
+SRC:
+	"<es>¿Qué fue lo que logro la muerte del Señor en la cruz en termins de plan eterno de Dios?"
+TGT:
+	"<en>What did the Lord's death on the cross accomplish in terms of God's eternal plan?"
+--------- 6 ----------
+SRC:
+	"<an>Antigament se diciba Canales."
+TGT:
+	"<en>These three are called Channels."
+--------- 7 ----------
+SRC:
+	"<es>Pero Moisés no siguió el resto de la instrucción del Señor."
+TGT:
+	"<en>But Moses did not follow the rest of the Lord's instructions."
+--------- 8 ----------
+SRC:
+	"<es>¿O tomoron más tiempo porque eran mellors en la empatía?"
+TGT:
+	"<en>Or did they take more time because they were better at empathy?"
+################## 23 ###################
+--------- 0 ----------
+SRC:
+	"<es>Checos - campeons de la construcción a largo plazo."
+TGT:
+	"<en>Czechs - champions of long-term construction."
+--------- 1 ----------
+SRC:
+	"<es>Las cosas que vemos son una realidat, pero la Palabra de Dios es la Verdat."
+TGT:
+	"<en>Facts may say one thing, but God's Word is the Truth."
+--------- 2 ----------
+SRC:
+	"<es>Sin embargo, nuestra amada Irene siempre nos inspirará."
+TGT:
+	"<en>However, our beloved Irene will always inspire us."
+--------- 3 ----------
+SRC:
+	"<es>Nunca olvidaré ese anyo; "El anyo de Morsi"."
+TGT:
+	"<en>I will never forget that year; "the year of Morsi"."
+--------- 4 ----------
+SRC:
+	"<es>Además, no sabemos por qué exactament el servicio no es popular entre la comunidat comercial."
+TGT:
+	"<en>Also, we do not know why exactly the service is not popular among the trading community."
+--------- 5 ----------
+SRC:
+	"<es>No existe poder excepto el poder de Dios, y Satanás es el enemigo declarau de la humanidat."
+TGT:
+	"<en>There is no power except God's power, and Satan is humankind's avowed enemy."
+--------- 6 ----------
+SRC:
+	"<es>Habían sido infiltraus por los siervos de Satanás que introduchoron herechías destructivas."
+TGT:
+	"<en>They had been infiltrated by Satan's servants who introduce destructive heresies."
+--------- 7 ----------
+SRC:
+	"<es>El disenyo también hizo un plamamiento a mis instintos del medio ambient!"
+TGT:
+	"<en>The design also appealed to my environmental instincts!"
+--------- 8 ----------
+SRC:
+	"<es>Primero, declarar-les la verdat acerca de la gloria y las obras y la salvación de Dios."
+TGT:
+	"<en>First, declare to them the truth about God's glory and works and salvation."
+################## 24 ###################
+--------- 0 ----------
+SRC:
+	"<es>No podemos permitir que lo que le sucede a miles de pacients en Cincinnati le suceda a millons más en todo el país."
+TGT:
+	"<en>We cannot let what's happening to thousands of patients in Cincinnati happen to millions more across the country."
+--------- 1 ----------
+SRC:
+	"<es>Y serán ellos los que decidan si lo comparten y quanto."
+TGT:
+	"<en>And they will be the ones who decide if they share it and how much."
+--------- 2 ----------
+SRC:
+	"<es>Una es una pelicula, I am not alone, sobre la revolución armenia."
+TGT:
+	"<en>One is a film, I Am Not Alone, about the Armenian revolution."
+--------- 3 ----------
+SRC:
+	"<es>Disfrute de la sensación real de un piano en qualquier lugar."
+TGT:
+	"<en>Enjoy the real feel of a piano anywhere."
+--------- 4 ----------
+SRC:
+	"<an>Apres la muerte de Alexandre, regnaron sus criados en todo el mundo."
+TGT:
+	"<en>Following the death of Alexander, his generals vied for control of the kingdom."
+--------- 5 ----------
+SRC:
+	"<es>Este es, creyo, el futuro de qualquier companyía automotriz o companyía de movilidat."
+TGT:
+	"<en>'This is, I think, the future of any automotive company or mobility company."
+--------- 6 ----------
+SRC:
+	"<es>Tal vez pronto un dialogo como este sería escuchau dentro del castillo 1"
+TGT:
+	"<en>Perhaps soon a dialog like this would be heard within the castle –"
+--------- 7 ----------
+SRC:
+	"<es>El deseu de guardar los mandamientos de Dios nos abre la puerta a muchas bendicions prometidas."
+TGT:
+	"<en>The willingness to keep God's commandments opens to us many promised blessings."
+--------- 8 ----------
+SRC:
+	"<an>A caligrafía clasica ye diferent d'a tipografía y d'a escritura manual no clasica, encara que un caligrafo puet estar capaz de fer-ne tamién."
+TGT:
+	"<en>Classical calligraphy differs from typography and non-classical hand-lettering, though a calligrapher may practice both."
+################## 25 ###################
+--------- 0 ----------
+SRC:
+	"<es>Hanson diría que no mientras que tengamos la naturals humana."
+TGT:
+	"<en>Hanson would say not as long as we have human nature."
+--------- 1 ----------
+SRC:
+	"<es>¿Qué oportunidatz tienen en consecuencia 560 mineros y sus familias en una lucha contra Godzilla?"
+TGT:
+	"<en>So what chance do 560 miners and their families have in a fight with Godzilla?"
+--------- 2 ----------
+SRC:
+	"<es>Sin embargo, no te preocups; estos riesgos para la salud afectan solo a una pequenya parte de la población."
+TGT:
+	"<en>However, don't worry; these health risks affect only a small part of the population."
+--------- 3 ----------
+SRC:
+	"<es>"¡La luz volvió a mí otra vez anoche con un mensache!""
+TGT:
+	"<en>"The light came to me again last night with a message!""
+--------- 4 ----------
+SRC:
+	"<an>15 de setiembre - Konrad Adenauer, esleito primer canceller de l'Alemanya Occidental."
+TGT:
+	"<en>September 15: Konrad Adenauer becomes the first Chancellor of the Federal Republic of Germany."
+--------- 5 ----------
+SRC:
+	"<es>El reino de Dios viene en verdat por sí solo, aun sin nuestra oración."
+TGT:
+	"<en>A. Truly God's Kingdom comes by itself, without our prayer."
+--------- 6 ----------
+SRC:
+	"<es>Sin embargo, estos usuarios están equivocaus 1 la nueva politica de Twitter es realment bueno para los activistas."
+TGT:
+	"<en>But these users are misguided — Twitter's new policy is actually good for activists."
+--------- 7 ----------
+SRC:
+	"<es>Y Allah es el Perdonador, el Misericordioso"
+TGT:
+	"<en>Allah is the most Forgiving, and the most Merciful!"
+--------- 8 ----------
+SRC:
+	"<es>allí, adosada, por una parte, a montanyas cortadas a pico, bordeada, por otra,"
+TGT:
+	"<en>He has weighed the mountains in a scale, the hills in a balance."
+################## 26 ###################
+--------- 0 ----------
+SRC:
+	"<an>2009: Astro Boy (voz)."
+TGT:
+	"<en>"Astro Boy (AstroBoy) (2009)"."
+--------- 1 ----------
+SRC:
+	"<es>(4) Estas participación pueden haber sido vendius y compratas de nuevo entre su primera entrada en cartera y hoy."
+TGT:
+	"<en>(4) These holdings may have been sold and bought again between their first entry in portfolio and today."
+--------- 2 ----------
+SRC:
+	"<es>El asesino que está conmigo en la nave."
+TGT:
+	"<en>The murderer who is with me on the ship."
+--------- 3 ----------
+SRC:
+	"<es>Pero si desisten, sepan que Al'lah es, en verdat, el Sumo Indulchent, el Misericordioso."
+TGT:
+	"<en>But, if they desist, know that God is Much Forgiving, Merciful."
+--------- 4 ----------
+SRC:
+	"<es>En Sahalla Yoga obtenemos dinero siempre que queremos."
+TGT:
+	"<en>In Sahaja Yoga we get money whenever we want."
+--------- 5 ----------
+SRC:
+	"<an>La forma d'o femenín plural ye ses."
+TGT:
+	"<en>The feminine plural form is les."
+--------- 6 ----------
+SRC:
+	"<es>A Satanás (el diablo) realment no le gustó este feliz arreglo entre Dios y el hombre."
+TGT:
+	"<en>Satan (the devil) didn't really like this happy arrangement between God and man."
+--------- 7 ----------
+SRC:
+	"<es>Mas otros son hixos de Dios, los que dicen la verdat, porque Dios es la verdat."
+TGT:
+	"<en>It is God's Word hence the truth because God is truth."
+--------- 8 ----------
+SRC:
+	"<es>perdón y en la misericordia."
+TGT:
+	"<en>compassionate and merciful."
+################## 27 ###################
+--------- 0 ----------
+SRC:
+	"<es>Mientras el pueblo estaba esperando la liberación de Dios, su alma estaba perdindo vitalidat."
+TGT:
+	"<en>While the people were waiting for God's deliverance, their soul was losing vitality."
+--------- 1 ----------
+SRC:
+	"<es>Vemos la sabiduría de Dios, Sus maravillas, que Yl es la fuent de vida para todas las cosas."
+TGT:
+	"<en>We see God's wisdom, His wonder, and we see that He is the source of life for all things."
+--------- 2 ----------
+SRC:
+	"<an>Contrastan con atros posibles sistemas simbolicos como os sinyals de trafico, a pintura, os mapas y as matematicas, que no necesariament penden d'un conoiximiento previo d'una luenga parlata ta quitar-ne o significato asociato."
+TGT:
+	"<en>In contrast, symbolic systems, such as information signs, painting, maps, and mathematics, often do not require prior knowledge of a spoken language."
+--------- 3 ----------
+SRC:
+	"<es>que harán desaparecer montanyas, ciudatz,"
+TGT:
+	"<en>The Mountains And Hills Trembled"
+--------- 4 ----------
+SRC:
+	"<an>Fue creyada en 1905 por o Congreso Mundial de Esperanto."
+TGT:
+	"<en>It was founded in 1911, during the Universal Congress of Esperanto in Anvers."
+--------- 5 ----------
+SRC:
+	"<es>Y con todo el asunto de la educación, bueno, necesitan un nuevo impuesto para financiar-la."
+TGT:
+	"<en>And with the whole education question — well, they need a new tax to finance it."
+--------- 6 ----------
+SRC:
+	"<an>Como norma, dende a III Internacional totz os partitos comunistas han d'organizar-se en torno a os principios d'o centralismo democratico."
+TGT:
+	"<en>The Rules stressed that all Party organisations should be based on the principles of democratic centralism."
+--------- 7 ----------
+SRC:
+	"<es>En otras palabras, el lugar que atravesamos ants no era más que una ilusión ''."
+TGT:
+	"<en>In other words, the place we came through before was nothing but an illusion."
+--------- 8 ----------
+SRC:
+	"<es>Desafortunadament, el 09.03 los termins de cooperación con este socio han cambiau."
+TGT:
+	"<en>Unfortunately, on 09.03 the terms of cooperation with this partner have changed."
+################## 28 ###################
+--------- 0 ----------
+SRC:
+	"<es>Sigue tu pasión, sigue a tu corazón y las cosas que necesitas vendrán."
+TGT:
+	"<en>Follow your passion, follow your heart, and the things you need will come."
+--------- 1 ----------
+SRC:
+	"<es>Esa verdat afectará tus accions hoy como madre."
+TGT:
+	"<en>That truth will affect your actions today as a mom."
+--------- 2 ----------
+SRC:
+	"<es>Nuestro espacio sagrau, o lo que hemos creyau, está muy alineato con quiens somos."
+TGT:
+	"<en>Our sacred space, or what we have created, is very much in alignment with who we are."
+--------- 3 ----------
+SRC:
+	"<es>"Los guiaré dandols los medios para que obtengan la soberanía sobre los Árabes y no Árabes.""
+TGT:
+	"<en>"I will guide you to the means by which you will gain sovereignty over both the Arabs and non-Arabs.""
+--------- 4 ----------
+SRC:
+	"<an>A primera exoplaneta estió descubierta en 1992 orbitando o pulsar PSR B1257+12."
+TGT:
+	"<en>The first extrasolar planets were discovered around a pulsar, PSR B1257+12."
+--------- 5 ----------
+SRC:
+	"<es>El ayer me ha hecho y el mañana también me ha hecho: Esto es astrolochía."
+TGT:
+	"<en>Yesterday has made me and tomorrow has also made me: this is astrology."
+--------- 6 ----------
+SRC:
+	"<es>Y el construye para la gloria de Dios, no la suya."
+TGT:
+	"<en>He builds for God's glory, not his own."
+--------- 7 ----------
+SRC:
+	"<es>Entonces, si solo estamos funcionando del 1 al 5 por ciento, ¿como estamos realment vivindo nuestras vidas con un verdadero proposito?"
+TGT:
+	"<en>So if we're only functioning at 1 to 5 percent, how are we really living our lives with true purpose?"
+--------- 8 ----------
+SRC:
+	"<es>Nuestro Señor nos está dicindo: ¿Creeréis en el Evanchelio del agua y el Espíritu o no?"
+TGT:
+	"<en>Our Lord is saying to us, So will you believe in the gospel of the water and the Spirit or not?"
+################## 29 ###################
+--------- 0 ----------
+SRC:
+	"<es>Así que, sí, es acerca de reinventarme, tratando de ser una persona más fuerte."
+TGT:
+	"<en>So, yes, it's about reinventing myself, trying to be a stronger person."
+--------- 1 ----------
+SRC:
+	"<es>Pero si piensas que soy como el Lu Ben a quien pisas, entonces has cometiu un gran error ."
+TGT:
+	"<en>But if you think I am like the Lu Ben whom you are stepping on, then you have made a huge mistake."
+--------- 2 ----------
+SRC:
+	"<es>Corey: (49,48) Por lo tanto, aquí es donde estaban ganando mucha de esta información."
+TGT:
+	"<en>Corey: (49:48) So, this is where they were gaining a lot of this information."
+--------- 3 ----------
+SRC:
+	"<es>Mientras escuchamos la Palabra de Dios ayudans a estar atentos a su mensache."
+TGT:
+	"<en>As we listen to God's Word, help us be attentive to his message."
+--------- 4 ----------
+SRC:
+	"<es>Ciertament la promesa de Dios es verdadera."
+TGT:
+	"<en>Certainly, God's promise is truth."
+--------- 5 ----------
+SRC:
+	"<es>¡Qué abismos entre el y el Serafín!"
+TGT:
+	"<en>What gulfs between him and the seraphim!"
+--------- 6 ----------
+SRC:
+	"<es>Elizabeth Benedict: Haz para mí lo que hiciste con el President."
+TGT:
+	"<en>Elizabeth Benedict: Do for me what you did to the President."
+--------- 7 ----------
+SRC:
+	"<an>Cambocha (1999) Papua y Nueva Guinea como miembro observador."
+TGT:
+	"<en>East Timor and Papua New Guinea are given observer status."
+--------- 8 ----------
+SRC:
+	"<an>O farad se define como a capacitancia d'un dielectrico que produz una diferencia de potencial d'un volt con una carga electrica estatica d'un coulomb."
+TGT:
+	"<en>Equally, one farad can be described as the capacitance which stores a one-coulomb charge across a potential difference of one volt."
+################## 30 ###################
+--------- 0 ----------
+SRC:
+	"<es>No más inmigración de qualquier país islamico es exactament lo que necesitamos."
+TGT:
+	"<en>No more immigration from any Islamic country is exactly what we need."
+--------- 1 ----------
+SRC:
+	"<an>Détruire > destruction ("destrucción")."
+TGT:
+	"<en>"Weapons of Mass 'Destruction'"."
+--------- 2 ----------
+SRC:
+	"<es>No, no hasta que equilibremos nuestro deficit nacional."
+TGT:
+	"<en>No, not until we balance our national deficit"
+--------- 3 ----------
+SRC:
+	"<es>Y ese día te separas de Dios."
+TGT:
+	"<en>That's the day you separate yourself from God."
+--------- 4 ----------
+SRC:
+	"<es>¡Cuantas excusas ella se inventó para el!"
+TGT:
+	"<en>How many excuses she invents for him!"
+--------- 5 ----------
+SRC:
+	"<an>Ta os vehíclos a motor ye ubierto de lunes a viernes de 5:20 a 20:00 y os sabados de 5:20 a 4:00 PM."
+TGT:
+	"<en>For motorized vehicles opening times are currently Monday to Friday from 5.20 AM to 8.00 PM, on Saturdays from 5.20 AM to 4.00 PM."
+--------- 6 ----------
+SRC:
+	"<es>La chent me siguen porque soy real y honesta."
+TGT:
+	"<en>People follow me because I am real and honest."
+--------- 7 ----------
+SRC:
+	"<es>1 Ni por un momento la naturals prevalece fuera de la chusticia."
+TGT:
+	"<en>2 Not for even a moment does nature prevail outside of justice."
+--------- 8 ----------
+SRC:
+	"<es>Pero las vacas también lo serían si les dexaramos."
+TGT:
+	"<en>But cows would be, too, if we let them."
+################## 31 ###################
+--------- 0 ----------
+SRC:
+	"<es>Todo lo que vino ants de Internet Explorer 9 podría no ser totalment compatible con todo el marco."
+TGT:
+	"<en>Anything that came before Internet Explorer 9 might not be fully compatible with the entire framework."
+--------- 1 ----------
+SRC:
+	"<es>Desde ella se observan las montanyas del Alto Luna,"
+TGT:
+	"<en>The mountains have also been observed to rise in the presence of the moon."
+--------- 2 ----------
+SRC:
+	"<es>Palestinas suministraría ayuda positiva y practica a los arabes"
+TGT:
+	"<en>Palestine.Germany would furnish positive and practical aid to the Arabs"
+--------- 3 ----------
+SRC:
+	"<es>Es por eso que tuvimos que hacer algunas tareas ants de Budapest."
+TGT:
+	"<en>That's why we had to do some homework before Budapest."
+--------- 4 ----------
+SRC:
+	"<es>Del yo enclaustrau al nosotros condolient y compasivo."
+TGT:
+	"<en>Include us among them, O The Most Merciful of the merciful."
+--------- 5 ----------
+SRC:
+	"<es>Los miembros del Congreso, sin embargo, parecen recordar solament que el ahorro es bueno."
+TGT:
+	"<en>Members of Congress, however, seem to remember only that saving is good."
+--------- 6 ----------
+SRC:
+	"<es>El es Clement, Misericordioso."
+TGT:
+	"<en>He is Compassionate and Merciful."
+--------- 7 ----------
+SRC:
+	"<es>He exaltau a uno escolliu de entre el pueblo ."
+TGT:
+	"<en>I have exalted one chosen from the people."
+--------- 8 ----------
+SRC:
+	"<es>Creer que el Día del Juicio (Resurrección) es verdadero y va a suceder."
+TGT:
+	"<en>Believe that the Judgment Day (Resurrection Day) is true and will come."
+################## 32 ###################
+--------- 0 ----------
+SRC:
+	"<es>Alá chuzgará entre ellos sobre aquello en lo que tenían diferencias."
+TGT:
+	"<en>Verily Allah will judge between them concerning that which they differ in."
+--------- 1 ----------
+SRC:
+	"<es>Cuando tomo el Libro de la Oración Común y leu "Entonces el sacerdot dirá", lo cierro de nuevo con detestación."
+TGT:
+	"<en>When I take down the Book of Common Prayer and read " Then shall the priest say," I shut it up again with detestation."
+--------- 2 ----------
+SRC:
+	"<es>Así que sí, ¡los puntos están en mi lista de obchetivos esta vez en Rusia!"
+TGT:
+	"<en>So yes, points are on my list of objectives this time in Russia!"
+--------- 3 ----------
+SRC:
+	"<es>Japón no es ni un paraíso, ni el cielo que usted puede disfrutar en un anyo."
+TGT:
+	"<en>Japan is neither a paradise nor a heaven that you can enjoy in a year."
+--------- 4 ----------
+SRC:
+	"<es>Si Yl pudo enviar a una Esther en el momento chusto, ¿Yl no puede hacerlo hoy?"
+TGT:
+	"<en>If He could send an Esther at the right time, can He not do it today?"
+--------- 5 ----------
+SRC:
+	"<es>Es por eso que encontrar nuestro Verdadero Hogar es tan important este anyo."
+TGT:
+	"<en>That's why finding our True Home is so important this year."
+--------- 6 ----------
+SRC:
+	"<es>de la Creación, que he escuchau."
+TGT:
+	"<en>creation to which I have ever listened."
+--------- 7 ----------
+SRC:
+	"<es>la encontré de nuevo en el corazón de un amigo."
+TGT:
+	"<en>I found it again in the heart of a friend."
+--------- 8 ----------
+SRC:
+	"<es>todos lados, para guardar el camino del arbol de la vida."
+TGT:
+	"<en>every way, to keep the way of the tree of life."
+################## 33 ###################
+--------- 0 ----------
+SRC:
+	"<es>Queremos ser moral y tecnicament mellors que Facebook."
+TGT:
+	"<en>We want to be morally and technically better than Facebook."
+--------- 1 ----------
+SRC:
+	"<es>Nos gustaría seguir usando components americans."
+TGT:
+	"<en>We would like to continue using American components."
+--------- 2 ----------
+SRC:
+	"<es>Ya conoces el traballo tan duro y difícil que tienen que hacer los intérpretes."
+TGT:
+	"<en>You already know the hard and difficult work that the interpreters have to do."
+--------- 3 ----------
+SRC:
+	"<es>Yl dice, ciertament, la verdat e indica el camino."
+TGT:
+	"<en>He, verily, speaketh the truth and leadeth the way."
+--------- 4 ----------
+SRC:
+	"<es>Respuesta: ¡El Creyador está por encima de qualquier otra cosa!"
+TGT:
+	"<en>Answer: The Creator is above anything else!"
+--------- 5 ----------
+SRC:
+	"<es>primero de estos es que no hay otro Dios fuera de Alá."
+TGT:
+	"<en>Thus the first commandment is to have no other gods before God."
+--------- 6 ----------
+SRC:
+	"<es>Pero esas redes necesitan tener una mascara para gobernar."
+TGT:
+	"<en>But those networks need to have a mask to govern."
+--------- 7 ----------
+SRC:
+	"<es>Porque el quiere que tengamos nuestros ochos puestos en Yl y que veamos: ¡Esto es glorioso!"
+TGT:
+	"<en>Because he wants us to have our eyes on Him and to see: this is glorious!"
+--------- 8 ----------
+SRC:
+	"<an>Ronald Hutton argumentó en o suyo "Triumph of the Moon" (Triunfo d'a Luna) que a tradición Wicca de Gardner estió mas a inspiración de miembros d'una orden de rosacruz y en especial d'una muller clamata por o nombre machico de "Dafo"."
+TGT:
+	"<en>Scholar Ronald Hutton argues in his Triumph of the Moon that Gardner's tradition was largely the inspiration of members of the Rosicrucian Order Crotona Fellowship and especially that of a woman known by the magical name of "Dafo"."
+################## 34 ###################
+--------- 0 ----------
+SRC:
+	"<an>1996: "Más sobre o condizional aragonés"."
+TGT:
+	"<en>"San Marino: More about Miodio"."
+--------- 1 ----------
+SRC:
+	"<es>El Islam fue creyau para ser el exercito de Dios, el exercito de Alá."
+TGT:
+	"<en>Islam was created by God's army, the army of Allah."
+--------- 2 ----------
+SRC:
+	"<es>¡Puedes ser fuerte, pero eso no te da la razón!."
+TGT:
+	"<en>You may be strong, but that does not make you right."
+--------- 3 ----------
+SRC:
+	"<es>Yl deseaba entrar en el hombre para ser su vida, disfrute y su todo."
+TGT:
+	"<en>He wanted to enter into man to be man's life, enjoyment, and everything."
+--------- 4 ----------
+SRC:
+	"<es>¡También hemos conoixiu a la mayoría de nuestros amigos a través de ella!"
+TGT:
+	"<en>We've also met most of our friends through her!"
+--------- 5 ----------
+SRC:
+	"<es>Por ciertament una senyal publica se ha realizau a través de ellos, ants de que todos los habitants de Jerusalén."
+TGT:
+	"<en>For certainly a public sign has been done through them, before all the inhabitants of Jerusalem."
+--------- 6 ----------
+SRC:
+	"<es>1 "Kvatter" 1 usualment una parella casata."
+TGT:
+	"<en>1 "Kvatter" – usually a married couple."
+--------- 7 ----------
+SRC:
+	"<es>Cuando lees House of X por primera vez, simplement funciona."
+TGT:
+	"<en>When you read House of X for the first time, it just works."
+--------- 8 ----------
+SRC:
+	"<es>(a) los patriarcas deberían dominar nuevament la vida familiar;"
+TGT:
+	"<en>(a) patriarchs should again dominate family life;"
+################## 35 ###################
+--------- 0 ----------
+SRC:
+	"<es>Siempre estamos abiertos a aprender cosas nuevas de otros en relacions flexibles también."
+TGT:
+	"<en>We're always open to learning new things from others in flexible relationships as well."
+--------- 1 ----------
+SRC:
+	"<es>Sí, sí, pero ¿rezas por este hermano, por el otro, por el otro, por el Superior?"
+TGT:
+	"<en>Yes, yes, but do you pray for this brother, for the other, for the other, for the Superior?"
+--------- 2 ----------
+SRC:
+	"<an>Laurel y Hardy."
+TGT:
+	"<en>Laurel and Hardy."
+--------- 3 ----------
+SRC:
+	"<es>Las montanyas inodoras y las otras, las oviparas,"
+TGT:
+	"<en>meets the mountains and the streams run cold,"
+--------- 4 ----------
+SRC:
+	"<an>Pons Prades, Eduardo."
+TGT:
+	"<en>Espinosa Campos, Eduardo."
+--------- 5 ----------
+SRC:
+	"<es>Creemos que puede tener su aplicación principalment en terceros mercaus."
+TGT:
+	"<en>We believe that may have their application mainly in third markets."
+--------- 6 ----------
+SRC:
+	"<es>Segundo, el lobo de sus propias imperfeccions los pondrá a prueba."
+TGT:
+	"<en>Second, the wolf of their own imperfections will test them."
+--------- 7 ----------
+SRC:
+	"<es>Y créanme, su nueva vida será de 10.000 o más veces mellor!"
+TGT:
+	"<en>And believe me, your new life will be 10,000 times or more better!"
+--------- 8 ----------
+SRC:
+	"<an>Se garra en veis m'avisas."
+TGT:
+	"<en>Faces light up when they see me."
+################## 36 ###################
+--------- 0 ----------
+SRC:
+	"<es>El equipo tiene que ser más grande que qualquier miembro en ella, y eso incluye a Paul y a mi."
+TGT:
+	"<en>The team has got to be bigger than any member in it, and that includes Paul and myself."
+--------- 1 ----------
+SRC:
+	"<an>Asinas, por eixemplo, a civilización d'a val de l'Indo, que ye una civilización d'a Edat de Bronze (3300-1300 aC, con un periodo de plenitut en 2600-1900 aC), que se centró principalment en la parte occidental d'o subcontinent indio, considerando-se que a primera forma d'o hinduismo amaneixió mientres ista civilización."
+TGT:
+	"<en>The Indus Valley Civilization (IVC) was a Bronze Age civilization (3300–1300 BCE; mature period 2600–1900 BCE) which was centered mostly in the western part of the Indian Subcontinent; it is considered that an early form of Hinduism was performed during this civilization."
+--------- 2 ----------
+SRC:
+	"<es>Nadie estaba preparau para atender este nivel de impacto en Dominica"
+TGT:
+	"<en>No one was prepared to meet this level of impact in Dominica"
+--------- 3 ----------
+SRC:
+	"<es>Palabra de Dios, y como Dios mismo eterna."
+TGT:
+	"<en>God's Word, like God Himself, is eternal."
+--------- 4 ----------
+SRC:
+	"<es>Hay aproximadament 280 días entre la concepción y el nacimiento y así mismo muchas respuestas a la pregunta."
+TGT:
+	"<en>There are approximately 280 days between conception and birth and just as many answers to the question."
+--------- 5 ----------
+SRC:
+	"<es>Y las montanyas serán empapadas[b] con su sangre."
+TGT:
+	"<en>and the mountains will dissolve with their blood."
+--------- 6 ----------
+SRC:
+	"<es>¿A donde voy? desde su propia profundidat y a su plena comprensión."
+TGT:
+	"<en>Where am I going? from their own depths and to their full understanding."
+--------- 7 ----------
+SRC:
+	"<an>En aragonés recibió o títol de "Libro de los Emperadors"."
+TGT:
+	"<en>As such, he holds the hereditary title of "Prince of Orléans"."
+--------- 8 ----------
+SRC:
+	"<es>Pensé que un servicio de ambulancia de ballo costo sería una buena idea para estas clinicas rurals."
+TGT:
+	"<en>I thought a low-cost ambulance service would be a good idea for these rural clinics."
+################## 37 ###################
+--------- 0 ----------
+SRC:
+	"<an>Se veigan as imáchens de Commons sobre Jane Wyman."
+TGT:
+	"<en>"U.K. honor to Jane Wyman"."
+--------- 1 ----------
+SRC:
+	"<es>Este versiculo enfatiza el hecho que el pecau de un hombre trajo la ira de Dios sobre todos los israelitas."
+TGT:
+	"<en>It spells out that the sin of one of God's people brought God's anger against the whole of Israel."
+--------- 2 ----------
+SRC:
+	"<an>A lo largo d'este tramo existen cinco túnels y 13 viaductos."
+TGT:
+	"<en>It was necessary to build nine tunnels and five viaducts on this section."
+--------- 3 ----------
+SRC:
+	"<es>Encuentre paz - la 46 CRUISER se lo hace fácil."
+TGT:
+	"<en>Find some peace – the CRUISER 46 makes it easy."
+--------- 4 ----------
+SRC:
+	"<es>() Sí, algunas de las bases parecen ser permanents."
+TGT:
+	"<en>() Yes, some of the bases look permanent."
+--------- 5 ----------
+SRC:
+	"<es>Para fines de ese anyo, cada dictadura comunista en Centroamerica había caído."
+TGT:
+	"<en>By the end of that year, every communist dictatorship in Central America had collapsed."
+--------- 6 ----------
+SRC:
+	"<an>O sheriff local y yo somos en una graniza estación de reabasteiximiento."
+TGT:
+	"<en>The local sheriff and I seem to be at a huge refuelling station of some sort."
+--------- 7 ----------
+SRC:
+	"<es>Nicks: Creu que los sentimientos orichinals sí vuelven."
+TGT:
+	"<en>Nicks: I think the original feelings do come back."
+--------- 8 ----------
+SRC:
+	"<es>No importa donde se encuentre en su viache espiritual, All Saints le ofreixe la oportunidat de experimentar la presencia amorosa de Dios."
+TGT:
+	"<en>No matter where you are in your spiritual journey, All Saints offers you the chance to experience God's loving presence."
+################## 38 ###################
+--------- 0 ----------
+SRC:
+	"<es>Sin embargo, parece que el es de orichen extraordinario, porque Lord Sectmaster me dixo una cosa. ''"
+TGT:
+	"<en>However, it appears that he is of extraordinary origin, because Lord Sectmaster told me one thing."
+--------- 1 ----------
+SRC:
+	"<es>Pero dixo: Si hablamos de fuerza, tengo al menos cinco o seis chicas que son más fuertes que ella."
+TGT:
+	"<en>But he said, When we talk about strength, I have at least five or six girls who are stronger than them."
+--------- 2 ----------
+SRC:
+	"<es>Y tenemos otros eventos que estamos hacindo - OK/OK chunior."
+TGT:
+	"<en>And we have other events we are doing - the OK/OK junior."
+--------- 3 ----------
+SRC:
+	"<es>Ni en su casa celebran reunions ilegals..."
+TGT:
+	"<en>nor in his house hold illegal gatherings..."
+--------- 4 ----------
+SRC:
+	"<es>Por exemplo, podrías decir, "She saw Ralph.""
+TGT:
+	"<en>For example, you could say, "She saw Ralph.""
+--------- 5 ----------
+SRC:
+	"<es>De las escrituras podemos decir con seguridat que Dios mismo es la verdat, el camino y la vida."
+TGT:
+	"<en>In God's words, we confirm that God is the truth, the way, and the life."
+--------- 6 ----------
+SRC:
+	"<es>Afortunadament (desde mi perspectiva), el Sr. Harris ha elechiu el camino de la integridat."
+TGT:
+	"<en>Thankfully (from my perspective), Mr. Harris has chosen the path of integrity."
+--------- 7 ----------
+SRC:
+	"<es>Expreso mi reconocimiento por el liderazgo que usted (Moreno) promueve a nivel de su politica nacional e internacional ."
+TGT:
+	"<en>I express my appreciation for the leadership that you (Moreno) promotes at the level of your national and international policy."
+--------- 8 ----------
+SRC:
+	"<es>Nuestro apoyo a Afganistán contina y no ha sido afectau seriament."
+TGT:
+	"<en>Our support to Afghanistan continues and has not been seriously affected."
+################## 39 ###################
+--------- 0 ----------
+SRC:
+	"<es>Mantenga una hora durant el día cuando pueda hacer frent a lo que te molesta."
+TGT:
+	"<en>Keep an hour during the day when you can address what's bothering you."
+--------- 1 ----------
+SRC:
+	"<an>Un d'os primers de tals accidents revelatos per as observacions d'o radar d'a Cassini en 2004, dito Ganesa Macula, s'asemella a os accidents cheograficos clamatos farra trobatos en Venus e inicialment, doncas, se pensó que yera un criovulcán en orichen, dica que Kirk et al. refusón ista hipotesi en a reunión anual d'a Unión Americana de Cheofisica en aviento de 2008."
+TGT:
+	"<en>One of the first of such features revealed by Cassini radar observations in 2004, called Ganesa Macula, resembles the geographic features called "pancake domes" found on Venus, and was thus initially thought to be cryovolcanic in origin, until Kirk et al. refuted this hypothesis at the American Geophysical Union annual meeting in December 2008."
+--------- 2 ----------
+SRC:
+	"<es>Yo lo vi a Satanás rindo con deleite"
+TGT:
+	"<en>I saw Satan laughing with delight,"
+--------- 3 ----------
+SRC:
+	"<es>Usted y todos los miembros del equipo que traballan con usted también tendrá expectativas."
+TGT:
+	"<en>You and any team members working with you will also have expectations."
+--------- 4 ----------
+SRC:
+	"<es>No hay mayor obstaculo hacia Dios que el tiempo."
+TGT:
+	"<en>There is no greater obstacle to God than time."
+--------- 5 ----------
+SRC:
+	"<es>Una segunda o tercera emergencia puede enviar tus finanzas fuera de control"
+TGT:
+	"<en>A Second or Third Emergency May Send Your Finances Out of Control"
+--------- 6 ----------
+SRC:
+	"<es>Anyos a cargo de nuestra web y comunicación."
+TGT:
+	"<en>Years in charge of our web and communication."
+--------- 7 ----------
+SRC:
+	"<es>No son los supervisors y colegas del Sr. Pearl quiens le pagarán $ 17.4 millons."
+TGT:
+	"<en>It's not Mr. Pearl's supervisors and colleagues who will be paying him $17.4 million."
+--------- 8 ----------
+SRC:
+	"<es>34 países de Europa hacen de este Pesadilla una Realidat"
+TGT:
+	"<en>34 Countries in Europe Make This Nightmare a Reality"
+random seed: 525
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev
+VAL $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+################## 0 ###################
+--------- 0 ----------
+SRC:
+	"<an>En epoca hibernal, la causa mas habitual d'accidents son las carreteras, los pavimentos (faceras) y, en particular, los escalerons esvarizosos."
+TGT:
+	"<en>The most common cause for accidents in winter is slippery roads, pavements (sidewalks) and especially steps."
+--------- 1 ----------
+SRC:
+	"<an>Lo Ministro de Salut expresó la suya preocupación per lo buen pasar de qui aprofitan la legalidat temporal d'as substancias en cuestión y per las condenas per drogas que s'han dictau dende la dentrada en vigor d'os cambios, agora inconstitucionals."
+TGT:
+	"<en>The Health Minister expressed concern both for the welfare of individuals taking advantage of the temporary legality of the substances involved, and for drug-related convictions handed down since the now-unconstitutional changes came into effect."
+--------- 2 ----------
+SRC:
+	"<an>La enerchía fosca ye una fuerza difura de l'alcanz d'a vista, que opera de contino sobre l'universo."
+TGT:
+	"<en>Dark energy is a completely invisible force that is constantly acting upon the universe."
+--------- 3 ----------
+SRC:
+	"<an>Unatra aria de contención secundaria que se troba baixo los tanques, con una capacidat de 104.500 barrils, encara no yera plena de tot."
+TGT:
+	"<en>Another secondary containment area below the tanks capable of holding 104,500 barrels was not yet filled to capacity."
+--------- 4 ----------
+SRC:
+	"<an>La semana pasada, Naked News (Noticias espulladas) fació saber publicament que aumentaría considerablement lo suyo compromís con as noticias en idiomas internacionals, con tres nuevos programas."
+TGT:
+	"<en>Last week, Naked News announced that it would dramatically increase its international language mandate to news reporting, with three new broadcasts."
+--------- 5 ----------
+SRC:
+	"<an>Estes puestos web han atraito muita atención, en particular en l'ambito educativo."
+TGT:
+	"<en>These websites have gotten a lot of attention, especially in the education setting."
+--------- 6 ----------
+SRC:
+	"<an>Con o paso d'o tiempo, muitas parolas presas de l'alemán se fusionoron. Esto marcó l'inicio d'a Ilustración."
+TGT:
+	"<en>As time passed, many words that were borrowed from German coalesced. This was the beginning of enlightenment."
+--------- 7 ----------
+SRC:
+	"<an>Esto podría requerir que s'impla un formulario debant d'a policía local u que se presiente en a oficina d'immigración."
+TGT:
+	"<en>This might require filling out a form with the local police or a visit to the immigration offices."
+--------- 8 ----------
+SRC:
+	"<an>En a millor categoría, la competición entre los B&B se da, mas que mas, en dos servicios: la ropa de leito y lo desayuno."
+TGT:
+	"<en>At the top end, B&Bs obviously compete mainly on two main things: bedding and breakfast."
+################## 1 ###################
+--------- 0 ----------
+SRC:
+	"<an>En producir-se menos estaus REM de nueiz, se reduz la frecuencia d'este estau en o cual s'experimenta lo descanso real y lo cuerpo recupera la suya enerchía, tornando-se pro infrecuent como pa convertir-se en un problema."
+TGT:
+	"<en>With fewer REMs per night, this state in which you experience actual sleep and your body recovers becomes infrequent enough to become a problem."
+--------- 1 ----------
+SRC:
+	"<an>Tot y que ye luent d'estar un fenomeno moderno, la mayoría d'as personas lo gosa relacionar con o vandalismo en propiedaz publicas y privadas per parte de chóvens fendo servir pintura en aerosol."
+TGT:
+	"<en>While it's far from a modern phenomenon, most people probably associate it with youth vandalizing public and private property using spray paint."
+--------- 2 ----------
+SRC:
+	"<an>Devantar una carpa en un terreno privau u en un lugar de cualsequier dimension puede fácilment trucar l'atención de manera no deseyada."
+TGT:
+	"<en>Setting up a tent on private property or in a town of any size can easily attract unwanted attention."
+--------- 3 ----------
+SRC:
+	"<an>Esto ye asinas perque la electricidat que corre enta la boquiella an que se fica la part metalica d'a bombilla puede causar una descarga electrica grieu si se toca l'interior d'ixa boquiella u la base de metal d'a bombilla mientres encara ye parcialment en a boquiella."
+TGT:
+	"<en>This is because electricity flowing into the socket where the metallic part of bulb sits can give you a severe electric shock if you touch the inside of the socket or the metal base of the bulb while it is still partly in the socket."
+--------- 4 ----------
+SRC:
+	"<an>Lo tiempo ye tamién lo modo en o cual acomparamos la duración (extensión) d'os eventos."
+TGT:
+	"<en>Time is also how we compare the duration (length) of events."
+--------- 5 ----------
+SRC:
+	"<an>Incluyen restriccions financieras y una prohibición d'a Unión Europea pa exportar petrolio crudo, industria que representa pa la economía iraní lo 80 % d'o suyo ingreso de divisas."
+TGT:
+	"<en>They include financial restrictions and a ban by the European Union on the export of crude oil, from which the Iranian economy receives 80% of its foreign income."
+--------- 6 ----------
+SRC:
+	"<an>Lo programa de PBS tien mas de vinticuatro premios Emmy y la suya durada nomás ye mas breu que la de Barrio Sesamo y lo Vecindario de Sinyor Roger."
+TGT:
+	"<en>The PBS show has more than two-dozen Emmy awards, and its run is shorter only than Sesame Street and Mister Rogers' Neighborhood."
+--------- 7 ----------
+SRC:
+	"<an>Escribió per correu electronico a alumnos d'a universidat d'a zona y recibió un buena cosa d'ofreiximientos d'alochamiento gratuito."
+TGT:
+	"<en>He emailed students at the local university and received an overwhelming number of offers for free accommodation."
+--------- 8 ----------
+SRC:
+	"<an>Anque, per un regular, gosan estar de propiedat privada, en ocasions alochan a chefes d'estau y atros mandatoarios visitants."
+TGT:
+	"<en>While they are usually privately owned, they sometimes accommodate visiting heads of state and other dignitaries."
+################## 2 ###################
+--------- 0 ----------
+SRC:
+	"<an>La luenga sanscrita ye antiga, comparable a lo latín charrau en Europa."
+TGT:
+	"<en>Sanskrit is an ancient language and is comparable to the Latin language spoken in Europe."
+--------- 1 ----------
+SRC:
+	"<an>Si quiere viachar alredol d'o mundo circumscribindo-se a l'hemisferio sud, se reducirán las suyas opcions de vuelos y destins pus escaseyan las rotas transoceanicas."
+TGT:
+	"<en>If you want to fly around the world completely in the Southern Hemisphere, the choice of flights and destinations is limited due to the lack of transoceanic routes."
+--------- 2 ----------
+SRC:
+	"<an>La votación encara ye sucheta a la ratificación en o pleno d'o COI, lo cual se decidirá en a reunión d'octubre, en Copenhague."
+TGT:
+	"<en>The vote must still be ratified by the full IOC at it's October meeting in Copenhagen."
+--------- 3 ----------
+SRC:
+	"<an>Fa part d'a Setena Flota d'o cuerpo d'a Marina d'os Estaus Unius y la suya base ye en Sasebo, Nagasaki, Chapón."
+TGT:
+	"<en>It is assigned to the U.S. Navy’s Seventh Fleet and based in Sasebo, Nagasaki in Japan."
+--------- 4 ----------
+SRC:
+	"<an>Los suyos adeptos se proposan adoptar bellas formas de vida u practicas con l'obchectivo de nutrir ixas experiencias."
+TGT:
+	"<en>Followers pursue certain ways of living, or practices that are intended to nurture those experiences."
+--------- 5 ----------
+SRC:
+	"<an>Las tropas de refuerzo pa las posicions debanteras incluyiban a lo 1er y lo 3er rechimiento de New Hampshire, con 200 soldaus, baixo lo mando d'os coronels John Stark y James Reed, qui dimpués ascendieron a chenerals."
+TGT:
+	"<en>Troops reinforcing the forward positions included the 1st and 3rd New Hampshire regiments of 200 men, under Colonels John Stark and James Reed (both later became generals)."
+--------- 6 ----------
+SRC:
+	"<an>Lo problema ye en que la nieu ye apegallosa, motivo per lo cual requiere bella activación pa cayer, y una mica de nieu que i baix puede servir de desencadenant pa la resta."
+TGT:
+	"<en>The problem is that snow is sticky, so it needs some triggering to come down, and some snow coming down can be the triggering event for the rest."
+--------- 7 ----------
+SRC:
+	"<an>Estianyo, de chunyo a agosto, la ciudat será la primera en o sudeste d'Europa en estar anfitriona d'o CowParade, l'evento artistico gratuito mas gran d'o mundo."
+TGT:
+	"<en>The city will be the first in southeastern Europe to host CowParade, the world's largest public art event, between June and August this year."
+--------- 8 ----------
+SRC:
+	"<an>Se diferencian d'as luengas vehiculars, que son las naturals u organicas que, per bel motivo, se fan dominants como ferramienta de comunicación entre parladors d'atros idiomas."
+TGT:
+	"<en>They are separate from lingua francas, which are natural or organic languages that become dominant for one reason or another as means of communication between speakers of other languages."
+################## 3 ###################
+--------- 0 ----------
+SRC:
+	"<an>Cuan se produció l'avería, lo Luno levaba 120-160 metros cubicos de combustible a bordo y l'airera fuerte y las olas l'arrocegoron cuentra la escollera."
+TGT:
+	"<en>The Luno had 120–160 cubic metres of fuel aboard when it broke down and high winds and waves pushed it into the breakwater."
+--------- 1 ----------
+SRC:
+	"<an>Mientres lo proceso d'analisi d'os exitos y de presa de consciencia d'os fracasos, los individuos y grupos de personas involucraus descubren con mayor fondura las valors, los obchectivos y las fuerzas que impulsan la organización."
+TGT:
+	"<en>While assessing the successes and becoming aware of failures, individuals and the whole of the participating persons discover more deeply the values, mission, and driving forces of the organization."
+--------- 2 ----------
+SRC:
+	"<an>Lo sanscrito ye un idioma complexo y rico que estió la fuent de muitas atras luengas modernas d'a India, asinas como lo latín ye fuent de luengas europeas, como lo francés y lo espanyol."
+TGT:
+	"<en>Sanskrit is a very complex and rich language, which has served to be the source for many modern Indian languages, just like Latin is the source for European languages like French and Spanish."
+--------- 3 ----------
+SRC:
+	"<an>Unatra figura griega de renombre ye Pitagoras, matematico conoixiu mas que mas a causa d'o suyo famoso teorema sobre la relación entre los costaus d'os trianglos rectanglos."
+TGT:
+	"<en>Another famous Greek is a mathematician Pythagoras, mostly known for his famous theorem about relations of the sides of right triangles."
+--------- 4 ----------
+SRC:
+	"<an>Per un regular, ofreixen mayor amplura de banda y millor calidat de servicio. Son encriptaus y, gracias a ixo, ye mas complicau hackear-los."
+TGT:
+	"<en>They normally offer higher bandwidth and better quality of service. They are encrypted and thus harder to spy on."
+--------- 5 ----------
+SRC:
+	"<an>Impla la suya casa con un rico café de maitins y con una mica de camamila relaxant de nueit."
+TGT:
+	"<en>Fill your home with a rich coffee in the morning and some relaxing chamomile tea at night."
+--------- 6 ----------
+SRC:
+	"<an>Los fotons son mesmo mas chicoz que la materia que fa part d'os atomos!"
+TGT:
+	"<en>Photons are even smaller than the stuff that makes up atoms!"
+--------- 7 ----------
+SRC:
+	"<an>Fa unas semanas, dimpués d'a publicación feita per lo periodista Makis Triantafylopoulos en o suyo famoso programa televisivo Zoungla, en Alpha TV, lo congresista y avogau Petros Mantouvalos presentó la suya renuncia, ya que miembros d'a suya oficina estioron implicaus en casos de subornos y corrupción."
+TGT:
+	"<en>A few weeks ago, after the information published by the journalist Makis Triantafylopoulos in his popular Television show "Zoungla" in Alpha TV, the member of Parliament and lawyer, Petros Mantouvalos was abdicated as members of his office had been involved in illegal graft and corruption."
+--------- 8 ----------
+SRC:
+	"<an>Encara que sía legal en a suya rechión, no gosa estar una buena ideya fer volar un dron alredol d'un aeropuerto u per alto d'una multitut."
+TGT:
+	"<en>Flying a drone near an airport or over a crowd is almost always a bad idea, even if it's not illegal in your area."
+################## 4 ###################
+--------- 0 ----------
+SRC:
+	"<an>Estió nombrau Superintendent Nacional de l'Anyo en 2009."
+TGT:
+	"<en>In 2009 she was awarded the title of National Superintendent of the Year."
+--------- 1 ----------
+SRC:
+	"<an>Con tot y con ixo, yeran bien pocas las bases d'os vaixiellos d'a Marina Reyal que s'ubicaban cerca d'as posibles rotas d'invasión, ya que los almirants temeban que l'ataque aerio alemán los fundise."
+TGT:
+	"<en>However, very few Royal Navy ships were based near the likely invasion routes as the admirals were afraid they would be sunk by German air attack."
+--------- 2 ----------
+SRC:
+	"<an>L'albergue alochaba a cuantos pelegrins que heban plegau en a ciudat sagrada en vispras d'a pelegrinación d'o Hajj."
+TGT:
+	"<en>The building housed a number of pilgrims who came to visit the holy city at the eve of hajj pilgrimage."
+--------- 3 ----------
+SRC:
+	"<an>La carretera (u autopista) de McMurdo a lo Polo Sud ye un camín de 1600 km dende la base McMurdo, en o mar de Ross, dica lo Polo."
+TGT:
+	"<en>The South Pole Traverse (or Highway) is a 1600 km trail from McMurdo Station on the Ross Sea to the Pole."
+--------- 4 ----------
+SRC:
+	"<an>Pa rematar, lo grupo de danza turco Anatolia interpretó «Troya»."
+TGT:
+	"<en>To finish, Turkish dance group Fire of Anatolia performed the show "Troy"."
+--------- 5 ----------
+SRC:
+	"<an>Existe la posibilidat de que la eliminación d'a segunda oración, que proposa vetar las unions civils entre individuos d'o mesmo sexo, les ubra lo paso en o futuro."
+TGT:
+	"<en>The failure of the second sentence, which proposes to ban same-sex civil unions, could possibly open the door for civil unions in the future."
+--------- 6 ----------
+SRC:
+	"<an>Podrían enfondar-se los muros y los teitos d'as espelungas de chelo, y zarrar-se las crepas."
+TGT:
+	"<en>The walls and roofs of ice caves can collapse and cracks can get closed."
+--------- 7 ----------
+SRC:
+	"<an>Los animals pueden trobars-se en cualsequier cantonada d'a planeta: cavan en a tierra, nadan en os oceanos y vuelan en o ciel."
+TGT:
+	"<en>Animals are found all over the earth. They dig in the ground, swim in the oceans, and fly in the sky."
+--------- 8 ----------
+SRC:
+	"<an>Si ye lo suyo primer viache ta un país en vías de desenrollo u ta bel puesto ta an que nunca no ha iu, no subestime lo posible impacto cultural."
+TGT:
+	"<en>If traveling in a developing country for the first time – or in a new part of the world – don't underestimate the potential culture shock."
+################## 5 ###################
+--------- 0 ----------
+SRC:
+	"<an>Dimpués se presentó la Orquesta Sinfonica d'o Estau d'Estambul, un grupo de Janissary y Fatih Erkoç y Müslüm Gürses, los dos cantantes."
+TGT:
+	"<en>It was followed by the Istanbul State Symphony Orchestra, a Janissary band, and the singers Fatih Erkoç and Müslüm Gürses."
+--------- 1 ----------
+SRC:
+	"<an>Manimenos, Charles asistió a la universidat en Trinity College, Cambridge. Allí estudió antropolochía y arqueolochía y, tiempo dimpués, historia, recibindo un 2:2 (un títol inferior de segunda clase)."
+TGT:
+	"<en>However, Charles went to university at Trinity College, Cambridge where he studied Anthropology and Archaeology, and later History, earning a 2:2 (a lower second class degree)."
+--------- 2 ----------
+SRC:
+	"<an>Lo suyo nombre ye encara desconoixiu pa las autoridaz, encara que saben que ye miembro d'o grupo etnico uigur."
+TGT:
+	"<en>His name is still unknown to authorities, although they do know he is a member of the Uighur ethnic group."
+--------- 3 ----------
+SRC:
+	"<an>Cuan esto s'haiga establiu, podría rematar la libertat."
+TGT:
+	"<en>With this arrangement in place, this freedom might end."
+--------- 4 ----------
+SRC:
+	"<an>Lo luns, los cientificos d'a facultat de medicina d'a Universidat de Stanford anuncioron l'invento d'una nueva ferramienta de diagnostico que puede catalogar las celulas seguntes lo suyo tipo: un chip chicotet que se puede imprentar y fabricar con impresoras d'inchección d'uso corrient, per un posible coste de, aproximadament, un centimo de dólar cadaún."
+TGT:
+	"<en>On Monday, scientists from the Stanford University School of Medicine announced the invention of a new diagnostic tool that can sort cells by type: a tiny printable chip that can be manufactured using standard inkjet printers for possibly about one U.S. cent each."
+--------- 5 ----------
+SRC:
+	"<an>Tot y que Hruixchov ninvió a la fin tanques con l'obchectivo de restablir l'orden, de vez cedió a cualques d'as exichencias de tipo economico y accedió a nombrar a lo popular Wladyslaw Gomulka como lo nuevo primer ministro."
+TGT:
+	"<en>Although in the end, Krushchev sent in tanks to restore order, he did give way to some economic demands and agreed to appoint the popular Wladyslaw Gomulka as the new prime minister."
+--------- 6 ----------
+SRC:
+	"<an>Lo chuche le manifestó a Blake que yera «practicament inevitable» que lo ninviasen ta la garchola."
+TGT:
+	"<en>The judge told Blake it was "almost inevitable" he was going to be sent to jail."
+--------- 7 ----------
+SRC:
+	"<an>Durant las eleccions, Hsieh insinuó que Ma podría escapar d'o país en tiempos de crisi."
+TGT:
+	"<en>Hsieh implied during the election that Ma might flee the country during a time of crisis."
+--------- 8 ----------
+SRC:
+	"<an>Pero la Marina Reyal encara yera muito mas fuerte que l'alemana (Kriegsmarine) y podría haber destruyiu a cualsequier flota invasora que mirase de dentrar per la Canal d'a Manga."
+TGT:
+	"<en>But the Royal Navy was still much stronger than the German Navy (“Kriegsmarine”) and could have destroyed any invasion fleet sent across the English Channel."
+################## 6 ###################
+--------- 0 ----------
+SRC:
+	"<an>La tensión superficial se produz a causa que las moleculas d'augua en a suya superficie s'atrayen con muita mas intensidat que las moleculas d'aire que son per dencima d'ellas."
+TGT:
+	"<en>Surface tension happens because the water molecules at the surface of the water are strongly attracted to each other more than they are to the air molecules above them."
+--------- 1 ----------
+SRC:
+	"<an>Lo griego Estrabón, erudito en historia, apuntó lo suyo nombre mas enta debant, que ye lo que hue conoixemos. Lo templo s'espaldó la mesma nueit en que naixió Alejandro Magno."
+TGT:
+	"<en>The Greek historian Strabo later noted the name, which is how we know today. The temple was destroyed on the same night that Alexander the Great was born."
+--------- 2 ----------
+SRC:
+	"<an>Una d'as principals aplicacions en esta categoría ye Google Translate, que puede fer la traducción sin connexión si se descargan los datos de l'idioma con que se treballará."
+TGT:
+	"<en>One of the most prominent apps in this category is Google Translate, which allows offline translation after downloading the desired language data."
+--------- 3 ----------
+SRC:
+	"<an>Con oríchens en o Running Tours Barcelona, d'ixa ciudat, y lo Running Copenhagen, d'esta atra, decamín se i unioron lo Running Tours Prague con base en Praga y atros mas."
+TGT:
+	"<en>With roots in Barcelona's Running Tours Barcelona and Copenhagen's Running Copenhagen, it was quickly joined by Running Tours Prague based in Prague and others."
+--------- 4 ----------
+SRC:
+	"<an>Cualsequier interesau en observar los danyos causaus a la momia en os intentos de quitar-la de l'ataúl se decepcionaría, ya que nomás son visibles la cabeza y los huembros."
+TGT:
+	"<en>Anyone interested in seeing evidence of the damage to the mummy done during attempts to remove it from the coffin will be disappointed as only the head and shoulders are visible."
+--------- 5 ----------
+SRC:
+	"<an>Lo clima fredo ye, talment, lo solo verdadero periglo con o cual pueden tener que lidiar qui no s'haigan aprestau."
+TGT:
+	"<en>Cold weather is perhaps the only real danger the unprepared will face."
+--------- 6 ----------
+SRC:
+	"<an>Dimpués d'un vertiu de mils de barrils de petrolio crudo en o sud de Fairbanks, s'han zarrau 800 millas d'o sistema d'oleoductos Trans-Alaska."
+TGT:
+	"<en>800 miles of the Trans-Alaska Pipeline System were closed down following a spill of thousands of barrels of crude oil south of Fairbanks, Alaska."
+--------- 7 ----------
+SRC:
+	"<an>Dimpués que la nación declaró la suya independencia, los expertos d'os Chardins Botanicos de Singapur aduyoron a transformar la isla en una ciudat chardín tropical."
+TGT:
+	"<en>Early in the nation's independence, Singapore Botanic Gardens' expertise helped to transform the island into a tropical Garden City."
+--------- 8 ----------
+SRC:
+	"<an>Cuan planifique lo suyo viache, considere que, tot y que Africa d'o Sud ye estable, no toz los países que la rodeyan en son."
+TGT:
+	"<en>Keep in mind while planning that although Southern Africa is stable not all neighboring countries are."
+################## 7 ###################
+--------- 0 ----------
+SRC:
+	"<an>Vidal, de 28 anyos d'edat y procedent d'o Sevilla, s'unió a lo Barça fa tres temporadas."
+TGT:
+	"<en>28-year-old Vidal had joined Barça three seasons ago, from Sevilla."
+--------- 1 ----------
+SRC:
+	"<an>Ha d'observar-se la posición en a cual se troba la victima mientres se va acercando a él u ella, asinas como cualsequier sinyal d'alerta automatica."
+TGT:
+	"<en>You need to notice the victim's position as you approach him or her and any automatic red flags."
+--------- 2 ----------
+SRC:
+	"<an>Pekín será anfitriona d'as ceremonias d'obridura y clausura y d'os eventos sobre chelo que se realicen baixo teito."
+TGT:
+	"<en>Beijing will host the opening and closing ceremonies and the indoor ice events."
+--------- 3 ----------
+SRC:
+	"<an>Lo suyo exercito y marina yeran mas febles, encara que cuatro barcos nuevos s'acababan de construyir chusto antes de l'inicio d'a guerra."
+TGT:
+	"<en>It had a weaker army and a weaker navy, although they had just built four new ships right before the beginning of the war."
+--------- 4 ----------
+SRC:
+	"<an>Tot y que ye mas chicot, a cualques visitants grans les fa acordanza de Hawaii, antes que no se convertise en un estau y no existisen toz los grans hotels turisticos y atros desenrollos."
+TGT:
+	"<en>Though smaller, it reminds some elderly visitors of Hawaii before statehood without all the large tourist hotels and other development."
+--------- 5 ----------
+SRC:
+	"<an>Modern Education l'acusó de publicar grans anuncios publicitarios en os autobuses sin autorización y de mentir decindo que yera l'instructor principal d'anglés."
+TGT:
+	"<en>Modern Education accused him of printing large advertisements on buses without authorisation and lying by saying that he was the chief English tutor."
+--------- 6 ----------
+SRC:
+	"<an>Una caballería ye una fuerza de combat que luita amontada a caballo. En ixas envueltas, encara no existiban las monturas; la caballería asiria batalló sobre los lomos espullaus d'os equinos."
+TGT:
+	"<en>A cavalry is an army that fights on horseback. The saddle had not yet been invented, so the Assyrian cavalry fought on the bare backs of their horses."
+--------- 7 ----------
+SRC:
+	"<an>Beluns talment no i sían d'acuerdo, pero igual me tiene."
+TGT:
+	"<en>"Some may not agree but I don't care."
+--------- 8 ----------
+SRC:
+	"<an>Asegure-se que la suya man sía tant relaixada como sía posible mientres sigue tocando las notas de forma correcta. Amás, prebe de no fer guaires movimientos raros con os suyos didos."
+TGT:
+	"<en>Make sure your hand is as relaxed as possible while still hitting all the notes correctly - also try not to make much extraneous motion with your fingers."

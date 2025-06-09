@@ -1,0 +1,1 @@
+bash Pipeline/train_tokenizer.sh Pipeline/cfg/tok/bren-dan.en.cfg

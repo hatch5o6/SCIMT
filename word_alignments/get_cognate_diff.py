@@ -25,8 +25,8 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-c1", "--cog1", required=True)
     parser.add_argument("-c2", "--cog2", required=True)
-    parser.add_argument("--out1")
-    parser.add_argument("--out2")
+    parser.add_argument("--out1_insert", required=True, default="diff1")
+    parser.add_argument("--out2_insert", required=True, default="diff2")
     return parser.parse_args()
 
 def insert_ext(fname, new_ext):
@@ -35,9 +35,6 @@ def insert_ext(fname, new_ext):
 
 if __name__ == "__main__":
     args = get_args()
-    out1, out2 = args.out1, args.out2
-    if not out1:
-        out1 = insert_ext(args.cog1, "diff1")
-    if not out2:
-        out2 = insert_ext(args.cog2, "diff2")
+    out1 = insert_ext(args.cog1, args.out1_insert)
+    out2 = insert_ext(args.cog2, args.out2_insert)
     get_diff(args.cog1, args.cog2, out1, out2)
