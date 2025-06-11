@@ -12,5 +12,5 @@
 #SBATCH --output /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/test_slurm_outputs/%j_%x.out
 #SBATCH --job-name=tho-mas.SC_pipeline
 
-bash Pipeline/train_SC.sh Pipeline/cfg/SC/tho-mas.cfg
+bash Pipeline/train_SC.sh Pipeline/cfg/SC-TESTING/tho-mas.cfg
 python Pipeline/clean_slurm_outputs.py

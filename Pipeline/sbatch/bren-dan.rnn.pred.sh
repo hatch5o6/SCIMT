@@ -12,5 +12,5 @@
 #SBATCH --output /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/test_slurm_outputs/%j_%x.out
 #SBATCH --job-name=bren-dan.SC_pipeline.pred
 
-bash Pipeline/train_SC.sh Pipeline/cfg/SC/bren-dan.pred.cfg
+bash Pipeline/pred_SC.sh Pipeline/cfg/SC-TESTING/bren-dan.pred.cfg
 python Pipeline/clean_slurm_outputs.py

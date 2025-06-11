@@ -85,6 +85,27 @@ class MultilingualDataset(Dataset):
             random.shuffle(pairs)
         self.pairs = pairs
     
+    def make_data_by_pairs_unique(data_by_pairs):
+        for lang_pair, data in data_by_pairs.items():
+            print("Making unique:", lang_pair)
+            assert isinstance(data, list)
+            print("\tBefore unique:", len(data))
+            unique_data = []
+            track_unique = set()
+            for item in data:
+                assert isinstance(item, tuple)
+                assert len(item) == 2
+                assert isinstance(item[0], str)
+                assert isinstance(item[1], str)
+
+                if item not in track_unique:
+                    unique_data.append(item)
+                track_unique.add(item)
+            assert sorted(unique_data) == sorted(list(set(data)))
+            print("\tAfter unique:", len(unique_data))
+            data_by_pairs[lang_pair] = unique_data
+        return data_by_pairs
+
     def read_csv(self, f, upsample=False):
         with open(f, newline='') as inf:
             rows = [row for row in csv.reader(inf)]
@@ -119,6 +140,8 @@ class MultilingualDataset(Dataset):
 
             data_by_pairs[pair] += list(zip(lang_src_lines, lang_tgt_lines))
         
+        data_by_pairs = self.make_data_by_pairs_unique(data_by_pairs)
+
         MAX_SIZE = 0
         for pair, pair_data in data_by_pairs.items():
             if len(pair_data) > MAX_SIZE:

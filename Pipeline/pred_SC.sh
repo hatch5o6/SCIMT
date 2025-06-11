@@ -1,12 +1,41 @@
 #!/bin/bash
 
 set -e
-echo "Starting-----------------------"
+echo "Starting pred_SC.sh------------"
 date
 echo "-------------------------------"
 
 #### ARGUMENTS ####
 source $1 # .cfg file from from Pipeline/cfg/SC
+echo "Arguments:-"
+echo "    MODULE_HOME_DIR=$MODULE_HOME_DIR"
+echo ""
+echo "    SRC=$SRC"
+echo "    TGT=$TGT"
+echo "    PARALLEL_TRAIN=$PARALLEL_TRAIN"
+echo "    PARALLEL_VAL=$PARALLEL_VAL"
+echo "    PARALLEL_TEST=$PARALLEL_TEST"
+echo "    COGNATE_TRAIN=$COGNATE_TRAIN"
+echo "    NO_GROUPING=$NO_GROUPING"
+echo "    SC_MODEL_TYPE=$SC_MODEL_TYPE"
+echo "    SEED=$SEED"
+echo "    SC_MODEL_ID=$SC_MODEL_ID"
+echo "    COGNATE_THRESH=$COGNATE_THRESH"
+echo "    COPPERMT_DATA_DIR=$COPPERMT_DATA_DIR"
+echo "    COPPERMT_DIR=$COPPERMT_DIR"
+echo "    PARAMETERS_DIR=$PARAMETERS_DIR"
+echo "    RNN_HYPERPARAMS=$RNN_HYPERPARAMS"
+echo "    BEAM=$BEAM"
+echo "    NBEST=$NBEST"
+echo "    REVERSE_SRC_TGT_COGNATES=$REVERSE_SRC_TGT_COGNATES"
+echo "    VAL_COGNATES_SRC=$VAL_COGNATES_SRC"
+echo "    VAL_COGNATES_TGT=$VAL_COGNATES_TGT"
+echo "    TEST_COGNATES_SRC=$TEST_COGNATES_SRC"
+echo "    TEST_COGNATES_TGT=$TEST_COGNATES_TGT"
+echo "    COGNATE_TRAIN_RATIO=$COGNATE_TRAIN_RATIO"
+echo "    COGNATE_TEST_RATIO=$COGNATE_TEST_RATIO"
+echo "    COGNATE_VAL_RATIO=$COGNATE_VAL_RATIO"
+echo "-------------------------------"
 
 PARAMETERS_F="${PARAMETERS_DIR}/parameters.${SRC}-${TGT}.cfg"
 python Pipeline/write_scripts.py \
@@ -30,15 +59,6 @@ then
     fi
     echo "   python Pipeline/select_checkpoint.py --dir ${WORKSPACE_SEED_DIR}"
     python Pipeline/select_checkpoint.py --dir $WORKSPACE_SEED_DIR
-# elif [ $SC_MODEL_TYPE = "SMT" ]
-# then
-#     # train SMT
-#     cd ${COPPERMT_DIR}/pipeline
-#     echo "    bash ${COPPERMT_DIR}/pipeline/main_smt_full_brendan.sh ${PARAMETERS_F} ${SEED}"
-#     bash "${COPPERMT_DIR}/pipeline/main_smt_full_brendan.sh" "${PARAMETERS_F}" "${SEED}"
-# # else
-# #     echo "    INVALID SC_MODEL_TYPE: '${SC_MODEL_TYPE}'"
-# #     exit
 fi
 
 INFERENCE_DATA_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}/workspace/reference_models/bilingual/data/inference
@@ -84,8 +104,8 @@ for f in ${ALL_CSV_FILES[@]} ; do
         if [ $SC_MODEL_TYPE = "RNN" ]
         then
             source activate copper
-            echo "    main_nmt_bilingual_full_brendan_PREDICT.sh ${PARAMETERS_F} ${SELECTED_RNN_CHECKPOINT} ${SEED}"
-            bash "main_nmt_bilingual_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${SELECTED_RNN_CHECKPOINT}" "${SEED}"
+            echo "    main_nmt_bilingual_full_brendan_PREDICT.sh ${PARAMETERS_F} ${SELECTED_RNN_CHECKPOINT} ${SEED} inference ${NBEST} ${BEAM}"
+            bash "main_nmt_bilingual_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${SELECTED_RNN_CHECKPOINT}" "${SEED}" "inference" "${NBEST}" "${BEAM}"
             COPPERMT_RESULTS=${COPPERMT_DATA_DIR}/${SRC}_${TGT}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
 
             source activate sound
@@ -95,7 +115,8 @@ for f in ${ALL_CSV_FILES[@]} ; do
                 --data $f \
                 --CopperMT_results $COPPERMT_RESULTS \
                 -hr $SRC \
-                -lr $TGT
+                -lr $TGT \
+                --MODEL_ID $SC_MODEL_ID
         elif [ $SC_MODEL_TYPE = "SMT" ]
         then
             source activate copper
@@ -112,7 +133,8 @@ for f in ${ALL_CSV_FILES[@]} ; do
                 --data $f \
                 --CopperMT_SMT_results ${TEXT},${HYP_OUT_F} \
                 -hr $SRC \
-                -lr $TGT
+                -lr $TGT \
+                --MODEL_ID $SC_MODEL_ID
         fi
     fi
 done
