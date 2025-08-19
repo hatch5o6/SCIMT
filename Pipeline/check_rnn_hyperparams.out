@@ -1,0 +1,4420 @@
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/0.rnn.txt
+RNN_ID: 0
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-0_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-0_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/0.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-0_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '0')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025354_hyper_param_search.fr-mfe.0.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/1.rnn.txt
+RNN_ID: 1
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-1_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-1_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/1.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-1_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '1')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025365_hyper_param_search.fr-mfe.1.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/10.rnn.txt
+RNN_ID: 10
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-10_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-10_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/10.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-10_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '10')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025355_hyper_param_search.fr-mfe.10.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/11.rnn.txt
+RNN_ID: 11
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-11_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-11_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/11.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-11_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '11')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025356_hyper_param_search.fr-mfe.11.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/12.rnn.txt
+RNN_ID: 12
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-12_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-12_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/12.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-12_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '12')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025357_hyper_param_search.fr-mfe.12.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/13.rnn.txt
+RNN_ID: 13
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-13_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-13_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/13.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-13_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '13')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025358_hyper_param_search.fr-mfe.13.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/14.rnn.txt
+RNN_ID: 14
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-14_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-14_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/14.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-14_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '14')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025359_hyper_param_search.fr-mfe.14.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/15.rnn.txt
+RNN_ID: 15
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-15_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-15_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/15.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-15_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '15')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025360_hyper_param_search.fr-mfe.15.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/16.rnn.txt
+RNN_ID: 16
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-16_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-16_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/16.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-16_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '16')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025361_hyper_param_search.fr-mfe.16.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/17.rnn.txt
+RNN_ID: 17
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-17_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-17_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/17.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-17_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '17')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025362_hyper_param_search.fr-mfe.17.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/18.rnn.txt
+RNN_ID: 18
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-18_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-18_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/18.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-18_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '18')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025363_hyper_param_search.fr-mfe.18.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/19.rnn.txt
+RNN_ID: 19
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-19_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-19_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/19.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-19_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '19')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025364_hyper_param_search.fr-mfe.19.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/2.rnn.txt
+RNN_ID: 2
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-2_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-2_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/2.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-2_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '2')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025376_hyper_param_search.fr-mfe.2.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/20.rnn.txt
+RNN_ID: 20
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-20_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-20_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/20.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-20_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '20')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025366_hyper_param_search.fr-mfe.20.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/21.rnn.txt
+RNN_ID: 21
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-21_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-21_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/21.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-21_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '21')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025367_hyper_param_search.fr-mfe.21.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/22.rnn.txt
+RNN_ID: 22
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-22_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-22_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/22.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-22_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '22')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025368_hyper_param_search.fr-mfe.22.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/23.rnn.txt
+RNN_ID: 23
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-23_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-23_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/23.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-23_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '23')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025369_hyper_param_search.fr-mfe.23.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/24.rnn.txt
+RNN_ID: 24
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-24_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-24_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/24.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-24_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '24')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025370_hyper_param_search.fr-mfe.24.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/25.rnn.txt
+RNN_ID: 25
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-25_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-25_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/25.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-25_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '25')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025371_hyper_param_search.fr-mfe.25.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/26.rnn.txt
+RNN_ID: 26
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-26_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-26_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/26.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-26_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '26')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025372_hyper_param_search.fr-mfe.26.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/27.rnn.txt
+RNN_ID: 27
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-27_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-27_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/27.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-27_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '27')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025373_hyper_param_search.fr-mfe.27.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/28.rnn.txt
+RNN_ID: 28
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-28_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-28_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/28.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-28_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '28')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025374_hyper_param_search.fr-mfe.28.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/29.rnn.txt
+RNN_ID: 29
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-29_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-29_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/29.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-29_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '29')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025375_hyper_param_search.fr-mfe.29.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/3.rnn.txt
+RNN_ID: 3
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-3_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-3_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/3.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-3_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '3')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025387_hyper_param_search.fr-mfe.3.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/30.rnn.txt
+RNN_ID: 30
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-30_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-30_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/30.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-30_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '30')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025377_hyper_param_search.fr-mfe.30.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/31.rnn.txt
+RNN_ID: 31
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-31_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-31_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/31.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-31_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '31')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025378_hyper_param_search.fr-mfe.31.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=100']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=100']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 100
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 100 -> 100
+	(value) 100 -> 100
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/32.rnn.txt
+RNN_ID: 32
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-32_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-32_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/32.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-32_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '32')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025379_hyper_param_search.fr-mfe.32.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/33.rnn.txt
+RNN_ID: 33
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-33_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-33_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/33.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-33_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '33')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025380_hyper_param_search.fr-mfe.33.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/34.rnn.txt
+RNN_ID: 34
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-34_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-34_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/34.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-34_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '34')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025381_hyper_param_search.fr-mfe.34.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/35.rnn.txt
+RNN_ID: 35
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-35_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-35_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/35.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-35_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '35')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025382_hyper_param_search.fr-mfe.35.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/36.rnn.txt
+RNN_ID: 36
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-36_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-36_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/36.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-36_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '36')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025383_hyper_param_search.fr-mfe.36.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/37.rnn.txt
+RNN_ID: 37
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-37_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-37_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/37.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-37_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '37')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025384_hyper_param_search.fr-mfe.37.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/38.rnn.txt
+RNN_ID: 38
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-38_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-38_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/38.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-38_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '38')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025385_hyper_param_search.fr-mfe.38.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/39.rnn.txt
+RNN_ID: 39
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-39_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-39_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/39.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-39_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '39')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025386_hyper_param_search.fr-mfe.39.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/4.rnn.txt
+RNN_ID: 4
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-4_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-4_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/4.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-4_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '4')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025396_hyper_param_search.fr-mfe.4.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/40.rnn.txt
+RNN_ID: 40
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-40_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-40_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/40.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-40_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '40')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025388_hyper_param_search.fr-mfe.40.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/41.rnn.txt
+RNN_ID: 41
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-41_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-41_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/41.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-41_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '41')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025389_hyper_param_search.fr-mfe.41.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/42.rnn.txt
+RNN_ID: 42
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-42_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-42_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/42.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-42_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '42')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025390_hyper_param_search.fr-mfe.42.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/43.rnn.txt
+RNN_ID: 43
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-43_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-43_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/43.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-43_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '43')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025391_hyper_param_search.fr-mfe.43.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/44.rnn.txt
+RNN_ID: 44
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-44_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-44_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/44.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-44_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '44')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025392_hyper_param_search.fr-mfe.44.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/45.rnn.txt
+RNN_ID: 45
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-45_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-45_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/45.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-45_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '45')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025393_hyper_param_search.fr-mfe.45.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/46.rnn.txt
+RNN_ID: 46
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-46_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-46_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/46.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-46_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '46')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025394_hyper_param_search.fr-mfe.46.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/47.rnn.txt
+RNN_ID: 47
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-47_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-47_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/47.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-47_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '47')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025395_hyper_param_search.fr-mfe.47.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=500']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=500']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 500
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 500 -> 500
+	(value) 500 -> 500
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/5.rnn.txt
+RNN_ID: 5
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-5_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-5_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/5.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-5_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '5')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025397_hyper_param_search.fr-mfe.5.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/6.rnn.txt
+RNN_ID: 6
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-6_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-6_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/6.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-6_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '6')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025398_hyper_param_search.fr-mfe.6.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=4']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=4']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 4
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 4 -> 4
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/7.rnn.txt
+RNN_ID: 7
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-7_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-7_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/7.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-7_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '7')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025399_hyper_param_search.fr-mfe.7.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=6']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=20']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=72']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=6']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=20']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=72']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM enc_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM enc_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM dec_layer = 6
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 6 -> 6
+RNN FILE PARAM dec_emb_dim = 20
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 20 -> 20
+RNN FILE PARAM dec_hid_dim = 72
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 72 -> 72
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/8.rnn.txt
+RNN_ID: 8
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-8_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-8_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/8.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-8_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '8')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025400_hyper_param_search.fr-mfe.8.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=1']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=1']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 1
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 1 -> 1
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+----------------------------------------------------
+RNN HYPS: /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/9.rnn.txt
+RNN_ID: 9
+Examining /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-9_S-0
+COPPERMT RNN HYPS: /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-9_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+asserting rnn hyperparams file matches that in COPPER MT cog lang dir
+	Comparing RNN PARAMS FILES:
+		-/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/9.rnn.txt
+		-/home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-9_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_fr-mfe.txt
+		Match? True
+Getting slurm outputs: ('fr-mfe', '9')
+Getting actual model hyper params from:
+	 /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs/5025401_hyper_param_search.fr-mfe.9.cfg.out
+attention_type
+	q_match: ["attention_type='luong-dot'"]
+	normal_match: []
+encoder_layers
+	q_match: []
+	normal_match: ['encoder_layers=2']
+encoder_embed_dim
+	q_match: []
+	normal_match: ['encoder_embed_dim=24']
+encoder_hidden_size
+	q_match: []
+	normal_match: ['encoder_hidden_size=54']
+decoder_layers
+	q_match: []
+	normal_match: ['decoder_layers=2']
+decoder_embed_dim
+	q_match: []
+	normal_match: ['decoder_embed_dim=24']
+decoder_hidden_size
+	q_match: []
+	normal_match: ['decoder_hidden_size=54']
+batch_size
+	q_match: []
+	normal_match: ['batch_size=10']
+batch_size_valid
+	q_match: []
+	normal_match: ['batch_size_valid=10']
+dropout
+	q_match: []
+	normal_match: ['dropout=0.2']
+lr
+	q_match: []
+	normal_match: ['lr=[0.001]']
+RNN FILE PARAM model_type = bigru
+RNN FILE PARAM attention = luong-dot
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+attention -> ['attention_type']
+	(value) luong-dot -> luong-dot
+RNN FILE PARAM enc_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_layer -> ['encoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM enc_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_emb_dim -> ['encoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM enc_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+enc_hid_dim -> ['encoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM dec_layer = 2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_layer -> ['decoder_layers']
+	(value) 2 -> 2
+RNN FILE PARAM dec_emb_dim = 24
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_emb_dim -> ['decoder_embed_dim']
+	(value) 24 -> 24
+RNN FILE PARAM dec_hid_dim = 54
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dec_hid_dim -> ['decoder_hidden_size']
+	(value) 54 -> 54
+RNN FILE PARAM batch_size = 10
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+batch_size -> ['batch_size', 'batch_size_valid']
+	(value) 10 -> 10
+	(value) 10 -> 10
+RNN FILE PARAM dropout = 0.2
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+dropout -> ['dropout']
+	(value) 0.2 -> 0.2
+RNN FILE PARAM learning_rate = 0.001
+RNN FILE PARAM -> ACTUAL MODEL PARAM
+learning_rate -> ['lr']
+	(value) 0.001 -> 0.001
+RNN FILE PARAM share_encoder = 
+RNN FILE PARAM share_decoder = 
+
+FILE PARAMS MATCH :)
+
+
+MATCHES: 48
+TOTAL: 48

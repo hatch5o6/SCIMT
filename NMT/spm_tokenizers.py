@@ -9,7 +9,8 @@ class SPMTokenizer():
         eos="</s>",
         unk="<unk>",
         pad="<pad>",
-        VERBOSE=False
+        VERBOSE=False,
+        lang_toks=[]
     ):
         self.spm_name = spm_name
         
@@ -17,12 +18,16 @@ class SPMTokenizer():
         self.eos = eos
         self.unk = unk
         self.pad = pad
+        self.lang_toks = []
+        for tok in lang_toks:
+            if tok not in self.lang_toks:
+                self.lang_toks.append(tok)
         self.special_tokens = [
             self.bos,
             self.eos,
             self.unk,
             self.pad
-        ]
+        ] + lang_toks
 
         self.idx2token = {
             i: self.special_tokens[i]
@@ -57,12 +62,14 @@ class SPMTokenizer():
         assert len(self.idx2token) == len(self.token2idx)
         assert set(self.idx2token.keys()) == set(self.token2idx.values())
         assert set(self.idx2token.values()) == set(self.token2idx.keys())
+        assert len(self.idx2token) == len(set(self.idx2token.keys())) == len(set(self.idx2token.values())) == len(set(self.token2idx.keys())) == len(set(self.token2idx.values())) == self.vocab_size
+        
         self.special_tok_ids = set([
             self.token2idx[tok]
             for tok in self.special_tokens
         ])
 
-    def tokenize(self, text, return_tensor=False):
+    def tokenize(self, text, return_tensor=False, add_special=False):
         spm_sequence = self.spm.encode(text.strip(), out_type=str)
         idx_sequence = []
         # TODO Do I need to have it add a bos token?
@@ -70,16 +77,18 @@ class SPMTokenizer():
             if token not in self.token2idx:
                 token = self.unk
             idx_sequence.append(self.token2idx[token])
-        idx_sequence.append(self.token2idx[self.eos]) # add eos token
+        if add_special:
+            spm_sequence.append(self.eos)
+            idx_sequence.append(self.token2idx[self.eos]) # add eos token
         if return_tensor:
             idx_sequence = torch.tensor(idx_sequence)
         return idx_sequence, spm_sequence
 
 
-    def batch_tokenize(self, batch, pad_batch=True, return_tensor=False):
+    def batch_tokenize(self, batch, pad_batch=True, return_tensor=False, add_special=False):
         # tokenize
         batch = [
-            self.tokenize(line)[0]
+            self.tokenize(line, add_special=add_special)[0]
             for line in batch
         ]
         # pad sequences
@@ -107,7 +116,7 @@ class SPMTokenizer():
             if tok_id in self.idx2token:
                 tok = self.idx2token[tok_id]
             else:
-                tok = str(tok_id)
+                tok = self.unk
             decoded_toks.append(tok)
         decoded_line = "".join(decoded_toks).replace("▁", " ")
 
@@ -119,4 +128,5 @@ class SPMTokenizer():
             for seq in batch
         ]
         return batch
+
     

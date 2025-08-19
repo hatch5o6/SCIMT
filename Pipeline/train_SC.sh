@@ -1,32 +1,17 @@
 #!/bin/bash
 
 set -e
+
+__conda_setup="$('/vapps/rhel9/x86_64/miniconda3/latest/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+eval "$__conda_setup"
+unset __conda_setup
+
 echo "Starting train_SC.sh-----------"
 date
 echo "-------------------------------"
 
 #### ARGUMENTS ####
 source $1 # .cfg file from from Pipeline/cfg/SC
-
-# NO_GROUPING=false
-# COGNATE_THRESH=0.5
-# SC_MODEL_TYPE=RNN
-# SEED=0
-# VAL_COGNATES="null"
-# TEST_COGNATES="null"
-# while getopts "s:t:p:gm:z:r:v:h:" opt; do
-#     case ${opt} in 
-#         s)  SRC=$OPTARG;;
-#         t)  TGT=$OPTARG;;
-#         p)  COGNATE_TRAIN=$OPTARG;;
-#         g)  NO_GROUPING=true;;
-#         m)  SC_MODEL_TYPE=$OPTARG;;
-#         z)  SEED=$OPTARG;;
-#         r)  RNN_HYPERPARAMS=$OPTARG;;
-#         v)  VAL_COGNATES;;
-#         h)  TEST_COGNATES;;
-#     esac
-# done
 
 echo "Arguments:-"
 echo "    MODULE_HOME_DIR=$MODULE_HOME_DIR"
@@ -46,6 +31,7 @@ echo "    COPPERMT_DATA_DIR=$COPPERMT_DATA_DIR"
 echo "    COPPERMT_DIR=$COPPERMT_DIR"
 echo "    PARAMETERS_DIR=$PARAMETERS_DIR"
 echo "    RNN_HYPERPARAMS=$RNN_HYPERPARAMS"
+echo "    RNN_HYPERPARAMS_ID=$RNN_HYPERPARAMS_ID"
 echo "    BEAM=$BEAM"
 echo "    NBEST=$NBEST"
 echo "    REVERSE_SRC_TGT_COGNATES=$REVERSE_SRC_TGT_COGNATES"
@@ -59,11 +45,12 @@ echo "    COGNATE_VAL_RATIO=$COGNATE_VAL_RATIO"
 echo "-------------------------------"
 
 cd $MODULE_HOME_DIR
-source activate sound
+conda activate sound
 #### DETECT COGNATES ####
 echo ""
 echo ""
 echo "#### DETECT COGNATES ####"
+COGNATE_TRAIN=${COGNATE_TRAIN}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}
 if [ -d $COGNATE_TRAIN ]
 then
     echo "removing ${COGNATE_TRAIN}"
@@ -230,9 +217,9 @@ else
 fi
 
 echo ""
-if [ $ADDITIONAL_TRAIN_COGNATES_SRC != "null" ]
+if [ "$ADDITIONAL_TRAIN_COGNATES_SRC" != "null" ]
 then
-    if [ $ADDITIONAL_TRAIN_COGNATES_TGT == "null" ]
+    if [ "$ADDITIONAL_TRAIN_COGNATES_TGT" = "null" ]
     then
         echo "If ADDITIONAL_TRAIN_COGNATES_SRC is not 'null', then ADDITIONAL_TRAIN_COGNATES_TGT must also not be null!!!"
         exit
@@ -252,7 +239,8 @@ echo "    TEST_COGNATES_TGT=${TEST_COGNATES_TGT}"
 echo ""
 
 # format for CopperMT
-COPPER_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}
+COPPER_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}
+echo "COPPER_DIR: ${COPPER_DIR}"
 
 echo ""
 if [ -d $COPPER_DIR ]
@@ -266,10 +254,16 @@ mkdir ${COPPER_DIR}/inputs
 mkdir ${COPPER_DIR}/inputs/split_data
 mkdir ${COPPER_DIR}/inputs/parameters
 mkdir ${COPPER_DIR}/inputs/parameters/bilingual_default
-if [ -f $RNN_HYPERPARAMS ]
+
+if [ -d $RNN_HYPERPARAMS ]
 then
-    cp -r $RNN_HYPERPARAMS ${COPPER_DIR}/inputs/parameters/bilingual_default/default_parameters_rnn_${SRC}-${TGT}.txt
+    # cp -r $RNN_HYPERPARAMS ${COPPER_DIR}/inputs/parameters/bilingual_default/default_parameters_rnn_${SRC}-${TGT}.txt
+    python Pipeline/copy_rnn_hyperparams.py \
+        --rnn_hyperparam_id $RNN_HYPERPARAMS_ID \
+        --rnn_hyperparams_dir $RNN_HYPERPARAMS \
+        --copy_to_path ${COPPER_DIR}/inputs/parameters/bilingual_default/default_parameters_rnn_${SRC}-${TGT}.txt
 fi
+
 FORMAT_OUT_DIR=${COPPER_DIR}/inputs/split_data/${SRC}_${TGT}
 
 echo ""
@@ -280,7 +274,9 @@ python CopperMT/format_data.py \
     --tgt $TGT \
     --out_dir $FORMAT_OUT_DIR \
     --prefix train \
-    --seed $SEED
+    --seed $SEED \
+    --EXCLUDE_SRC "$VAL_COGNATES_SRC,$TEST_COGNATES_SRC"\
+    --EXCLUDE_TGT "$VAL_COGNATES_TGT,$TEST_COGNATES_TGT"
 
 echo ""
 python CopperMT/format_data.py \
@@ -290,7 +286,9 @@ python CopperMT/format_data.py \
     --tgt $TGT \
     --out_dir $FORMAT_OUT_DIR \
     --prefix fine_tune \
-    --seed $SEED
+    --seed $SEED \
+    --EXCLUDE_SRC "$TRAIN_COGNATES_SRC,$TEST_COGNATES_SRC"\
+    --EXCLUDE_TGT "$TRAIN_COGNATES_TGT,$TEST_COGNATES_TGT"
 
 echo ""
 python CopperMT/format_data.py \
@@ -300,17 +298,35 @@ python CopperMT/format_data.py \
     --tgt $TGT \
     --out_dir $FORMAT_OUT_DIR \
     --prefix test \
-    --seed $SEED
+    --seed $SEED \
+    --EXCLUDE_SRC "$TRAIN_COGNATES_SRC,$VAL_COGNATES_SRC"\
+    --EXCLUDE_TGT "$TRAIN_COGNATES_TGT,$VAL_COGNATES_TGT"
+
+if [ $NO_GROUPING = true ]
+then
+    LOG_F=cognate_dataset_log_NG=True.json
+else
+    LOG_F=cognate_dataset_log_NG=False.json
+fi
+
+python Pipeline/cognate_dataset_log.py \
+    -f $FORMAT_OUT_DIR/$SEED \
+    -l ${SRC}-${TGT} \
+    --LOG_F $LOG_F
 
 echo ""
-PARAMETERS_F="${PARAMETERS_DIR}/parameters.${SRC}-${TGT}.cfg"
+PARAMETERS_F="${PARAMETERS_DIR}/parameters.${SRC}-${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}.cfg"
 python Pipeline/write_scripts.py \
     --src ${SRC} \
     --tgt ${TGT} \
+    --coppermt_data_dir ${COPPERMT_DATA_DIR} \
+    --sc_model_type ${SC_MODEL_TYPE} \
+    --rnn_hyperparams_id ${RNN_HYPERPARAMS_ID} \
+    --seed ${SEED} \
     --parameters $PARAMETERS_F
 
 # train SC model
-source activate copper
+conda activate copper
 echo "-- Training SC MODEL --"
 echo "    TYPE=$SC_MODEL_TYPE"
 if [ $SC_MODEL_TYPE = "RNN" ]
@@ -320,7 +336,7 @@ then
     bash "${COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan.sh" "${PARAMETERS_F}" "${SEED}"
 
     # select best model
-    WORKSPACE_SEED_DIR=$COPPERMT_DATA_DIR/${SRC}_${TGT}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}
+    WORKSPACE_SEED_DIR=$COPPERMT_DATA_DIR/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}
     SELECTED_RNN_CHECKPOINT=${WORKSPACE_SEED_DIR}/checkpoints/selected.pt
     if [ -f $SELECTED_RNN_CHECKPOINT ]
     then
@@ -329,6 +345,9 @@ then
     fi
     echo "   python Pipeline/select_checkpoint.py --dir ${WORKSPACE_SEED_DIR}"
     python Pipeline/select_checkpoint.py --dir $WORKSPACE_SEED_DIR
+
+    # cleanup other checkpoints
+    rm ${WORKSPACE_SEED_DIR}/checkpoints/checkpoint*
 elif [ $SC_MODEL_TYPE = "SMT" ]
 then
     # train SMT
@@ -340,8 +359,8 @@ then
 #     exit
 fi
 
-INFERENCE_DATA_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}/workspace/reference_models/bilingual/data/inference
-INFERENCE_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${SRC}
+INFERENCE_DATA_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/data/inference
+INFERENCE_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${SRC}
 for directory in $INFERENCE_DATA_DIR $INFERENCE_DIR ; do
     if [ -d $directory ]; then
         echo "    deleting ${directory}"
@@ -349,9 +368,9 @@ for directory in $INFERENCE_DATA_DIR $INFERENCE_DIR ; do
     fi
 done
 
-source activate copper
+conda activate copper
 cd ${COPPERMT_DIR}/pipeline
-SPLIT_DATA=${COPPERMT_DATA_DIR}/${SRC}_${TGT}/inputs/split_data/${SRC}_${TGT}/${SEED}
+SPLIT_DATA=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/inputs/split_data/${SRC}_${TGT}/${SEED}
 #### TEST SC ####
 # run on cognate test data
 SRC_TEXT=${SPLIT_DATA}/test_${SRC}_${TGT}.${SRC}
@@ -361,19 +380,19 @@ if [ $SC_MODEL_TYPE = "RNN" ]
 then
     echo "    main_nmt_bilingual_full_brendan_PREDICT.sh ${PARAMETERS_F} ${SELECTED_RNN_CHECKPOINT} ${SEED} test ${NBEST} ${BEAM}"
     bash "main_nmt_bilingual_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${SELECTED_RNN_CHECKPOINT}" "${SEED}" "test" "${NBEST}" "${BEAM}"
-    HYP_OUT_TXT=${COPPERMT_DATA_DIR}/${SRC}_${TGT}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
-    TEST_OUT_F=${COPPERMT_DATA_DIR}/${SRC}_${TGT}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.hyp.txt
+    HYP_OUT_TXT=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
+    TEST_OUT_F=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.hyp.txt
     
     # Go back to normal directory
     cd $MODULE_HOME_DIR
-    source activate sound
+    conda activate sound
     python NMT/hr_CopperMT.py \
         --function get_test_results \
         --test_src $SRC_TEXT \
         --data $HYP_OUT_TXT \
         --out $TEST_OUT_F
 
-    SCORES_OUT_F=${COPPERMT_DATA_DIR}/${SRC}_${TGT}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.hyp.scores.txt
+    SCORES_OUT_F=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.hyp.scores.txt
 elif [ $SC_MODEL_TYPE = "SMT" ]
 then
     HYP_OUT=${SPLIT_DATA}/test_${SRC}_${TGT}.${TGT}
@@ -384,24 +403,25 @@ then
     
     # Go back to normal directory
     cd $MODULE_HOME_DIR
-    source activate sound
+    conda activate sound
 fi
 
 # get scores
 echo "Calculating Scores"
-echo "    evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_F}"
+echo "    NMT/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_F}"
 python NMT/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_F}
 echo "    scores written to ${SCORES_OUT_F}"
 cat ${SCORES_OUT_F}
 
 # #### APPLY SC ####
-# COPPER_MT_PREP_OUT_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}/inputs/split_data/${SRC}_${TGT}/inference
+# COPPER_MT_PREP_OUT_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/inputs/split_data/${SRC}_${TGT}/inference
 # if [ -d $COPPER_MT_PREP_OUT_DIR ]; then
 #     echo "deleting ${COPPER_MT_PREP_OUT_DIR}"
 #     rm -r $COPPER_MT_PREP_OUT_DIR
 # fi
 # mkdir $COPPER_MT_PREP_OUT_DIR
 
+# COMMENT OUT
 # PARALLEL_FILES=( $PARALLEL_TRAIN $PARALLEL_VAL $PARALLEL_TEST )
 # IFS="," read -r -a APPLY_TO_FILES <<< $APPLY_TO
 # ALL_CSV_FILES=( "${PARALLEL_FILES[@]}" "${APPLY_TO_FILES[@]}" )
@@ -424,12 +444,12 @@ cat ${SCORES_OUT_F}
 #         cd ${COPPERMT_DIR}/pipeline
 #         if [ $SC_MODEL_TYPE = "RNN" ]
 #         then
-#             source activate copper
+#             conda activate copper
 #             echo "    main_nmt_bilingual_full_brendan_PREDICT.sh ${PARAMETERS_F} ${SELECTED_RNN_CHECKPOINT} ${SEED} inference ${NBEST} ${BEAM}"
 #             bash "main_nmt_bilingual_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${SELECTED_RNN_CHECKPOINT}" "${SEED}" "inference" "${NBEST}" "${BEAM}"
-#             COPPERMT_RESULTS=${COPPERMT_DATA_DIR}/${SRC}_${TGT}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
+#             COPPERMT_RESULTS=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
 
-#             source activate sound
+#             conda activate sound
 #             cd $MODULE_HOME_DIR
 #             python NMT/hr_CopperMT.py \
 #                 --function retrieve \
@@ -440,14 +460,14 @@ cat ${SCORES_OUT_F}
 #                 --MODEL_ID $SC_MODEL_ID
 #         elif [ $SC_MODEL_TYPE = "SMT" ]
 #         then
-#             source activate copper
+#             conda activate copper
 #             TEXT=$COPPER_MT_PREP_OUT_DIR/test_${SRC}_${TGT}.${SRC}
 #             HYP_OUT=$COPPER_MT_PREP_OUT_DIR/test_${SRC}_${TGT}.${TGT}
 #             echo "    main_smt_full_brendan_PREDICT.sh ${PARAMETERS_F} ${TEXT} ${HYP_OUT} ${SEED}"
 #             bash "main_smt_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${TEXT}" "${HYP_OUT}" "${SEED}"
             
 #             HYP_OUT_F=$HYP_OUT.hyp.txt
-#             source activate sound
+#             conda activate sound
 #             cd $MODULE_HOME_DIR
 #             python NMT/hr_CopperMT.py \
 #                 --function retrieve \

@@ -1,12 +1,19 @@
 import nltk
 from nltk.tokenize import word_tokenize
+# nltk.download('punkt')
 import spacy
 es_nlp = spacy.load('es_core_news_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
+multi_nlp = spacy.load('xx_sent_ud_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
 nlp = {
     "es": es_nlp,
     "an": es_nlp,
     "oc": es_nlp,
-    "ast": es_nlp
+    "ast": es_nlp,
+
+    "lua": multi_nlp,
+    "bem": multi_nlp,
+    "ewe": multi_nlp,
+    "fon": multi_nlp
 }
 import argparse
 from tqdm import tqdm
@@ -14,10 +21,23 @@ from tqdm import tqdm
 word_tokenize_langs = {
     "de": "german",
     "hsb": "czech",
-    "ce": "czech",
+    "cs": "czech",
     "en": "english",
-    "fra": "french",
+    "djk": "english",
+    "NGfr": "french",
+    "NGmfe": "french",
+    "fr": "french",
+    "mfe": "french",
+    
+    # fake langs for testing:
+    "bren": "french",
+    "dan": "french",
+    "tho": "czech",
+    "mas": "czech"
 }
+
+from indicnlp.tokenize import indic_tokenize 
+indicnlp_langs = {"hi", "as", "bn", "bho"}
 
 def prep(
     src_f,
@@ -34,18 +54,30 @@ def prep(
     formatted_pairs = []
     
     if src_lang in nlp:
+        print("src_tokenize=spacy_tokenize, lang:", src_lang)
         src_tokenize = spacy_tokenize
+    elif src_lang in indicnlp_langs:
+        print("src_tokenize=indic_word_tokenize, lang:", src_lang)
+        src_tokenize = indic_word_tokenize
     elif src_lang in word_tokenize_langs:
+        print("src_tokenize=nltk_tokenize, lang:", src_lang)
         src_tokenize = nltk_tokenize
     else:
-        src_tokenize = nltk_tokenize
+        # src_tokenize = nltk_tokenize
+        assert False
     
     if tgt_lang in nlp:
+        print("tgt_tokenize=spacy_tokenize, lang:", tgt_lang)
         tgt_tokenize = spacy_tokenize
+    elif tgt_lang in indicnlp_langs:
+        print("tgt_tokenize=indic_word_tokenize, lang:", tgt_lang)
+        tgt_tokenize = indic_word_tokenize
     elif tgt_lang in word_tokenize_langs:
+        print("tgt_tokenize=nltk_tokenize, lang:", tgt_lang)
         tgt_tokenize = nltk_tokenize
     else:
-        tgt_tokenize = nltk_tokenize
+        # tgt_tokenize = nltk_tokenize
+        assert False
 
     for src, tgt in tqdm(pairs):
         # print("src")
@@ -60,6 +92,7 @@ def prep(
         outf.write("\n".join(formatted_pairs) + "\n")
 
 def spacy_tokenize(line, lang):
+    global nlp
     # print(f"spacy_tokenize lang={lang}")
     doc = nlp[lang](line)
     tokens = [tok.text for tok in doc]
@@ -67,9 +100,15 @@ def spacy_tokenize(line, lang):
 
 def nltk_tokenize(line, lang):
     global word_tokenize_langs
-    wtlang = word_tokenize_langs.get(lang, "english")
+    wtlang = word_tokenize_langs[lang]
     # print(f"nltk_tokenize lang={wtlang}")
     tokens = word_tokenize(line.strip(), language=wtlang)
+    return " ".join(tokens)
+
+def indic_word_tokenize(line, lang):
+    global indicnlp_langs
+    assert lang in indicnlp_langs
+    tokens = indic_tokenize.trivial_tokenize_indic(line)
     return " ".join(tokens)
 
 def read_file(f):

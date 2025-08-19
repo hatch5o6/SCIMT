@@ -1,0 +1,145 @@
+Starting-----------------------
+Mon Jun 16 03:23:49 PM MDT 2025
+-------------------------------
+Arguments:-
+    SPM_TRAIN_SIZE=50000
+
+    SRC_LANGS=djk
+    SRC_TOK_NAME=en
+    TGT_LANGS=djk
+    TGT_TOK_NAME=en
+
+    TRAIN_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/djk-en/train.csv
+    VAL_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/djk-en_dev_test/val.csv
+    TEST_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/djk-en_dev_test/test.csv
+    TOK_TRAIN_DATA_DIR=/home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en
+
+    SPLIT_ON_WS=true
+    INCLUDE_LANG_TOKS=false
+    INCLUDE_PAD_TOK=true
+    SPECIAL_TOKS=null
+-------------------------------
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en
+############################
+# make_SC_training_data.py #
+############################
+Arguments:-
+	-train_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/djk-en/train.csv
+	-val_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/djk-en_dev_test/val.csv
+	-test_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/djk-en_dev_test/test.csv
+	-out_dir: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en
+------------------------------
+
+### READING ###
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/djk-en/train.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/djk-en_dev_test/val.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/djk-en_dev_test/test.csv
+### WRITING ###
+deleting /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en
+--
+Writing djk:
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/train/cleaned/cleaned/src.txt
+	total lines for djk now 9942
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/val.djk-eng.djk
+	total lines for djk now 10527
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/test.djk-eng.djk
+	total lines for djk now 11707
+TOTAL LINES (BEFORE UNIQUE): 11707
+TOTAL LINES (AFTER UNIQUE): 9488
+Writing djk data (9488 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/djk.txt
+--
+Writing en:
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/train/cleaned/cleaned/tgt.txt
+	total lines for en now 9942
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/val.djk-eng.eng
+	total lines for en now 10527
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/test.djk-eng.eng
+	total lines for en now 11707
+TOTAL LINES (BEFORE UNIQUE): 11707
+TOTAL LINES (AFTER UNIQUE): 11626
+Writing en data (11626 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en.txt
+INCLUDING <pad> TOKEN
+SRC_USER_DEFINED_SYMBOLS_STR: <pad>
+TGT_USER_DEFINED_SYMBOLS_STR: <pad>
+
+Arguments:-
+	--langs = 'djk'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en'
+	--data = 'None'
+	--training_data_size = '50000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en'
+	--spm_model_name = 'en'
+	--spm_vocab_size = '8000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>'
+	--SPLIT_ON_WS = 'true'
+langs ['djk']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/djk.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/djk.txt": 1.0
+}
+
+
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/djk.txt
+ratio: 1.0
+size: 9488
+After upsampling: 50000
+
+
+ALL DATA SIZE: 50000
+Writing 50000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en/en
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 8000
+character_coverage: 1.0
+user_defined_symbols: ['<pad>', '▁']
+Arguments:-
+	--langs = 'djk'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en'
+	--data = 'None'
+	--training_data_size = '50000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en'
+	--spm_model_name = 'en'
+	--spm_vocab_size = '8000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>'
+	--SPLIT_ON_WS = 'true'
+langs ['djk']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/djk.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/djk.txt": 1.0
+}
+
+
+deleting /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/djk.txt
+ratio: 1.0
+size: 9488
+After upsampling: 50000
+
+
+ALL DATA SIZE: 50000
+Writing 50000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en/en
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/djk_en/en/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 8000
+character_coverage: 1.0
+user_defined_symbols: ['<pad>', '▁']
+Finished-----------------------
+Mon Jun 16 03:23:52 PM MDT 2025
+-------------------------------

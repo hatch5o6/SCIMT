@@ -1,0 +1,229 @@
+----------------------
+###### train.py ######
+----------------------
+Arguments:-
+	--config = 'configs/NMT.SC_es2an-an.en.test.yaml'
+	--mode = 'TRAIN'
+train_model
+TRAINING CONFIG:
+	-save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/NMT_TEST_SC_es2an
+	-test_checkpoint: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/NMT.SC_es2an.en_TRIAL_s=1000/checkpoints/epoch=89-step=21150-val_loss=1.9096.ckpt
+	-remove_special_toks: True
+	-verbose: True
+	-train_data: data/NMT.SC_es2an-an.en/train.csv
+	-val_data: data/an-en_dev_test/val.csv
+	-test_data: data/an-en_dev_test/test.csv
+	-append_src_token: False
+	-append_tgt_token: False
+	-upsample: False
+	-src_spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_es2an.an/SC_es2an.an
+	-tgt_spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/en/en
+	-seed: 1000
+	-train_batch_size: 128
+	-val_batch_size: 128
+	-test_batch_size: 128
+	-early_stop: 10
+	-save_top_k: 2
+	-max_epochs: 1000
+	-val_interval: 1.0
+	-learning_rate: 2e-05
+	-device: cuda
+	-encoder_layers: 6
+	-encoder_attention_heads: 8
+	-encoder_ffn_dim: 2048
+	-encoder_layerdrop: 0.0
+	-decoder_layers: 6
+	-decoder_attention_heads: 8
+	-decoder_ffn_dim: 2048
+	-decoder_layerdrop: 0.0
+	-max_position_embeddings: 512
+	-max_length: 512
+	-d_model: 512
+	-dropout: 0.1
+	-activation_function: gelu
+SAVE_DIR /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/NMT_TEST_SC_es2an_TRIAL_s=1000
+Creating /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/NMT_TEST_SC_es2an_TRIAL_s=1000
+Creating /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/NMT_TEST_SC_es2an_TRIAL_s=1000/checkpoints
+Creating /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/NMT_TEST_SC_es2an_TRIAL_s=1000/logs
+random seed: 525
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/tgt.100k.SC_es2an.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/src.100k.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/en-an/Combined/train/train.an
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/en-an/Combined/train/train.en
+DATA MAX_SIZE = 100000
+RAW DATA SIZE: 120089
+UPSAMPLED SIZE: 120089
+train Dataloader, shuffle=True
+random seed: 525
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev
+DATA MAX_SIZE = 997
+RAW DATA SIZE: 997
+UPSAMPLED SIZE: 997
+val Dataloader, shuffle=False
+
+Special Toks
+<s>:0
+0: <s>
+-------------------------
+</s>:1
+1: </s>
+-------------------------
+<unk>:2
+2: <unk>
+-------------------------
+<pad>:3
+3: <pad>
+-------------------------
+<en>:4
+4: <en>
+-------------------------
+<es>:5
+5: <es>
+-------------------------
+EXAMINING TOKENIZERS ON TRAIN DATALOADER
+SRC TOKENIZER: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_es2an.an/SC_es2an.an
+TGT TOKENIZER: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/en/en
+####### BATCH 0 #######
+----- (0) -----
+SRC______: A preposición about acompanya a sobén a substantivos como argument: An argument about politics: "Una discusión sobre politica".
+SRCTOKS__: ['▁A', '▁preposición', '▁abo', 'ut', '▁acompanya', '▁a', '▁sobén', '▁a', '▁subs', 'tan', 'tivos', '▁como', '▁argu', 'ment', ':', '▁An', '▁argu', 'ment', '▁abo', 'ut', '▁poli', 'tic', 's', ':', '▁"', 'U', 'na', '▁discusión', '▁sobre', '▁politica', '".']
+SRCTOKIDS: [53, 7426, 6222, 2467, 5674, 12, 3709, 12, 2772, 125, 787, 126, 5539, 155, 7927, 360, 5539, 155, 6222, 2467, 631, 291, 7880, 7927, 199, 7939, 234, 5052, 287, 1611, 525, 1]
+TGT______: Second, the dissent emphasized the importance of political speech and the need to foster "national debate about a serious issue".
+TGTTOKS__: ['▁Second', ',', '▁the', '▁dis', 's', 'ent', '▁emphas', 'ized', '▁the', '▁importance', '▁of', '▁political', '▁speech', '▁and', '▁the', '▁need', '▁to', '▁f', 'ost', 'er', '▁"', 'n', 'ational', '▁debate', '▁about', '▁a', '▁serious', '▁issue', '".']
+TGTTOKIDS: [2204, 7933, 11, 522, 7918, 73, 7234, 1213, 11, 3829, 34, 1311, 4377, 48, 11, 338, 31, 29, 168, 16, 120, 7917, 701, 4059, 253, 9, 2046, 2606, 1132, 1]
+----- (20) -----
+SRC______: Según el Kremlin, los cinco países han estau traballando en un acuerdo desde 1996.
+SRCTOKS__: ['▁Según', '▁el', '▁K', 're', 'm', 'lin', ',', '▁los', '▁cinco', '▁países', '▁han', '▁estau', '▁trabal', 'lando', '▁en', '▁un', '▁acuerdo', '▁desde', '▁1996.']
+SRCTOKIDS: [2889, 57, 439, 31, 7887, 2212, 7890, 95, 1613, 1458, 841, 975, 2361, 2577, 24, 49, 3679, 705, 7660, 1]
+TGT______: According to the Kremlin, the five countries have been working on an agreement since 1996.
+TGTTOKS__: ['▁According', '▁to', '▁the', '▁K', 'rem', 'lin', ',', '▁the', '▁five', '▁countries', '▁have', '▁been', '▁working', '▁on', '▁an', '▁agreement', '▁since', '▁199', '6.']
+TGTTOKIDS: [2847, 31, 11, 393, 1216, 3253, 7933, 11, 930, 785, 105, 318, 1159, 84, 118, 2339, 861, 1415, 3288, 1]
+----- (40) -----
+SRC______: El viernes pasau [26 de enero] solicité asilo politico en Austria.
+SRCTOKS__: ['▁El', '▁v', 'ier', 'nes', '▁pasau', '▁', '[', '26', '▁de', '▁enero', ']', '▁solici', 't', 'é', '▁as', 'ilo', '▁politico', '▁en', '▁Austria', '.']
+SRCTOKIDS: [188, 74, 375, 2255, 4608, 7874, 2, 7433, 9, 2533, 2, 6966, 7883, 7918, 146, 3441, 1379, 24, 2303, 7891, 1]
+TGT______: Last Friday [January 26], I requested political asylum in Austria.
+TGTTOKS__: ['▁Last', '▁Friday', '▁[', 'J', 'an', 'uary', '▁26', '],', '▁I', '▁requested', '▁political', '▁as', 'yl', 'um', '▁in', '▁Austria', '.']
+TGTTOKIDS: [2743, 6035, 293, 7968, 24, 2895, 2929, 2504, 40, 6095, 1311, 122, 3962, 266, 39, 5167, 7930, 1]
+----- (60) -----
+SRC______: Esto es un dolor, y una lección, que se quedará conmigo .
+SRCTOKS__: ['▁Esto', '▁es', '▁un', '▁dol', 'or', ',', '▁y', '▁una', '▁l', 'ección', ',', '▁que', '▁se', '▁quedar', 'á', '▁con', 'migo', '▁.']
+SRCTOKIDS: [2493, 47, 49, 5612, 19, 7890, 28, 96, 37, 1166, 7890, 54, 63, 7865, 7916, 46, 4365, 1980, 1]
+TGT______: This is a hurt, and lesson, that will stay with me.
+TGTTOKS__: ['▁This', '▁is', '▁a', '▁hurt', ',', '▁and', '▁lesson', ',', '▁that', '▁will', '▁stay', '▁with', '▁me', '.']
+TGTTOKIDS: [268, 41, 9, 6391, 7933, 48, 4632, 7933, 69, 96, 1702, 107, 185, 7930, 1]
+----- (80) -----
+SRC______: Toda persona nacida en 1980, puede reclamar la misma distinción.
+SRCTOKS__: ['▁To', 'da', '▁persona', '▁na', 'ci', 'da', '▁en', '▁198', '0,', '▁puede', '▁re', 'cla', 'mar', '▁la', '▁misma', '▁distin', 'ción', '.']
+SRCTOKIDS: [914, 48, 1481, 268, 21, 48, 24, 527, 948, 595, 72, 779, 865, 34, 2396, 1229, 62, 7891, 1]
+TGT______: Anyone born in 1980 can claim the same distinction.
+TGTTOKS__: ['▁Anyone', '▁born', '▁in', '▁1980', '▁can', '▁claim', '▁the', '▁same', '▁distinction', '.']
+TGTTOKIDS: [5414, 2425, 39, 7764, 131, 2655, 11, 413, 6551, 7930, 1]
+----- (100) -----
+SRC______: Decir que no tiene nada que ver con nuestra cantidat es ridiculo.
+SRCTOKS__: ['▁De', 'ci', 'r', '▁que', '▁no', '▁tiene', '▁nada', '▁que', '▁ver', '▁con', '▁nuestra', '▁cantidat', '▁es', '▁ri', 'dic', 'ulo', '.']
+SRCTOKIDS: [468, 21, 7881, 54, 160, 643, 5625, 54, 550, 46, 6080, 3102, 47, 1157, 1503, 5215, 7891, 1]
+TGT______: To say it has nothing do with our numbers is laughable.
+TGTTOKS__: ['▁To', '▁say', '▁it', '▁has', '▁nothing', '▁do', '▁with', '▁our', '▁numbers', '▁is', '▁laug', 'ha', 'ble', '.']
+TGTTOKIDS: [956, 342, 94, 177, 951, 121, 107, 212, 3950, 41, 5673, 18, 214, 7930, 1]
+----- (120) -----
+SRC______: Normalment, as celulas de CdTe emplegan una estructura nip.
+SRCTOKS__: ['▁Nor', 'malment', ',', '▁as', '▁celulas', '▁de', '▁C', 'd', 'T', 'e', '▁emple', 'gan', '▁una', '▁estructura', '▁ni', 'p', '.']
+SRCTOKIDS: [838, 3402, 7890, 146, 7551, 9, 52, 7884, 7921, 7876, 972, 421, 96, 2267, 1497, 7888, 7891, 1]
+TGT______: Typically, CdTe PV cells use a n-i-p structure.
+TGTTOKS__: ['▁Ty', 'p', 'ically', ',', '▁C', 'd', 'T', 'e', '▁P', 'V', '▁cell', 's', '▁use', '▁a', '▁n', '-', 'i', '-', 'p', '▁structure', '.']
+TGTTOKIDS: [5097, 7929, 1269, 7933, 112, 7922, 7938, 7912, 159, 7984, 5667, 7918, 718, 9, 42, 7955, 7916, 7955, 7929, 4955, 7930, 1]
+####### BATCH 20 #######
+----- (0) -----
+SRC______: Es Yahvé clement y compasivo,
+SRCTOKS__: ['▁Es', '▁Ya', 'h', 'v', 'é', '▁c', 'le', 'ment', '▁y', '▁com', 'pas', 'ivo', ',']
+SRCTOKIDS: [144, 2606, 7894, 7895, 7918, 10, 84, 155, 28, 77, 1065, 2716, 7890, 1]
+TGT______: Yahweh is righteous and merciful,
+TGTTOKS__: ['▁Y', 'ah', 'we', 'h', '▁is', '▁righteous', '▁and', '▁merciful', ',']
+TGTTOKIDS: [164, 205, 498, 7920, 41, 2958, 48, 495, 7933, 1]
+----- (20) -----
+SRC______: Más probablement no es un verdadero plamau de Dios!
+SRCTOKS__: ['▁Más', '▁probablement', '▁no', '▁es', '▁un', '▁verdad', 'ero', '▁plamau', '▁de', '▁Dios', '!']
+SRCTOKIDS: [3576, 4160, 160, 47, 49, 6599, 220, 2693, 9, 3096, 7954, 1]
+TGT______: It most likely is not a true call from God!
+TGTTOKS__: ['▁It', '▁most', '▁likely', '▁is', '▁not', '▁a', '▁true', '▁call', '▁from', '▁God', '!']
+TGTTOKIDS: [233, 462, 2392, 41, 110, 9, 618, 566, 206, 65, 7954, 1]
+----- (40) -----
+SRC______: Dentra igualment en o Cuerpo Superior d'Advogatos d'o Estado.
+SRCTOKS__: ['▁D', 'entra', '▁igu', 'alment', '▁en', '▁o', '▁Cuerpo', '▁Superior', '▁d', "'", 'A', 'd', 'vo', 'ga', 'tos', '▁d', "'", 'o', '▁Esta', 'do', '.']
+SRCTOKIDS: [113, 494, 1774, 307, 24, 44, 7531, 4804, 7, 7898, 7901, 7884, 223, 130, 114, 7, 7898, 7877, 452, 78, 7891, 1]
+TGT______: He also served as a major in the Judge Advocate General's Corps of the US Army Reserve.
+TGTTOKS__: ['▁He', '▁also', '▁served', '▁as', '▁a', '▁major', '▁in', '▁the', '▁Jud', 'ge', '▁Ad', 'v', 'oc', 'ate', '▁General', "'", 's', '▁Cor', 'ps', '▁of', '▁the', '▁US', '▁Army', '▁Res', 'erve', '.']
+TGTTOKIDS: [147, 220, 4635, 122, 9, 3544, 39, 11, 3626, 222, 1586, 7934, 603, 143, 3886, 7937, 7918, 4689, 656, 34, 11, 1674, 4528, 2305, 2490, 7930, 1]
+----- (60) -----
+SRC______: Es una cosa buena, y desde su distancia respetuosa, quiere formar parte de ello.
+SRCTOKS__: ['▁Es', '▁una', '▁cosa', '▁buena', ',', '▁y', '▁desde', '▁su', '▁distancia', '▁res', 'pe', 'tu', 'osa', ',', '▁quiere', '▁formar', '▁parte', '▁de', '▁ello', '.']
+SRCTOKIDS: [144, 96, 3641, 3398, 7890, 28, 705, 76, 3173, 310, 179, 80, 647, 7890, 5577, 3192, 378, 9, 3737, 7891, 1]
+TGT______: It is a good thing, and from their respectful distance they want to be part of it.
+TGTTOKS__: ['▁It', '▁is', '▁a', '▁good', '▁thing', ',', '▁and', '▁from', '▁their', '▁respect', 'ful', '▁distance', '▁they', '▁want', '▁to', '▁be', '▁part', '▁of', '▁it', '.']
+TGTTOKIDS: [233, 41, 9, 463, 732, 7933, 48, 206, 265, 2208, 483, 5582, 144, 260, 31, 47, 360, 34, 94, 7930, 1]
+----- (80) -----
+SRC______: Pero usted puede ver por qué tantas personas cambian instantaneament.
+SRCTOKS__: ['▁Pero', '▁us', 'te', 'd', '▁puede', '▁ver', '▁por', '▁qué', '▁tan', 'tas', '▁personas', '▁cambi', 'an', '▁ins', 'tan', 'tan', 'e', 'ament', '.']
+SRCTOKIDS: [2046, 571, 58, 7884, 595, 550, 81, 2701, 709, 129, 1492, 7830, 23, 658, 125, 125, 7876, 764, 7891, 1]
+TGT______: But you can see why so many people change instantly.
+TGTTOKS__: ['▁But', '▁you', '▁can', '▁see', '▁why', '▁so', '▁many', '▁people', '▁change', '▁inst', 'antly', '.']
+TGTTOKIDS: [227, 59, 131, 300, 425, 231, 392, 237, 883, 790, 6167, 7930, 1]
+----- (100) -----
+SRC______: Vuestros caminos no han sido los caminos de Dios; vuestra voluntat no ha sido la voluntat de Dios.
+SRCTOKS__: ['▁V', 'ues', 'tros', '▁cam', 'inos', '▁no', '▁han', '▁sido', '▁los', '▁cam', 'inos', '▁de', '▁Dios', ';', '▁v', 'uestra', '▁volunta', 't', '▁no', '▁ha', '▁sido', '▁la', '▁volunta', 't', '▁de', '▁Dios', '.']
+SRCTOKIDS: [154, 699, 330, 427, 1476, 160, 841, 1403, 95, 427, 1476, 9, 3096, 7947, 74, 1753, 4568, 7883, 160, 233, 1403, 34, 4568, 7883, 9, 3096, 7891, 1]
+TGT______: Your ways have not been God's ways; your will has not been God's will.
+TGTTOKS__: ['▁Your', '▁ways', '▁have', '▁not', '▁been', '▁God', "'", 's', '▁ways', ';', '▁your', '▁will', '▁has', '▁not', '▁been', '▁God', "'", 's', '▁will', '.']
+TGTTOKIDS: [1026, 1817, 105, 110, 318, 65, 7937, 7918, 1817, 7978, 190, 96, 177, 110, 318, 65, 7937, 7918, 96, 7930, 1]
+----- (120) -----
+SRC______: Istos estaban preguntando por la Palabra de verdat de Dios.
+SRCTOKS__: ['▁Istos', '▁estaban', '▁pregun', 'tando', '▁por', '▁la', '▁Pala', 'bra', '▁de', '▁verdat', '▁de', '▁Dios', '.']
+SRCTOKIDS: [5084, 7557, 6359, 864, 81, 34, 1957, 259, 9, 7870, 9, 3096, 7891, 1]
+TGT______: They question the truth of God's word.
+TGTTOKS__: ['▁They', '▁question', '▁the', '▁truth', '▁of', '▁God', "'", 's', '▁word', '.']
+TGTTOKIDS: [333, 966, 11, 452, 34, 65, 7937, 7918, 409, 7930, 1]
+####### BATCH 40 #######
+----- (0) -----
+SRC______: Traducción de la Biblia había sido durant mucho tiempo un traballo peligroso.
+SRCTOKS__: ['▁Tra', 'ducción', '▁de', '▁la', '▁Bi', 'bl', 'ia', '▁había', '▁sido', '▁durant', '▁mucho', '▁tiempo', '▁un', '▁traballo', '▁pelig', 'ros', 'o', '.']
+SRCTOKIDS: [1383, 1556, 9, 34, 861, 208, 83, 1878, 1403, 1053, 3678, 1013, 49, 3105, 6253, 614, 7877, 7891, 1]
+TGT______: Translating the Bible had long been dangerous work.
+TGTTOKS__: ['▁Trans', 'l', 'ating', '▁the', '▁Bible', '▁had', '▁long', '▁been', '▁dangerous', '▁work', '.']
+TGTTOKIDS: [4200, 7921, 1135, 11, 3270, 279, 682, 318, 3056, 357, 7930, 1]
+----- (20) -----
+SRC______: Este es mi último post como Peter 1.0.
+SRCTOKS__: ['▁Este', '▁es', '▁mi', '▁último', '▁post', '▁como', '▁Peter', '▁1.', '0.']
+SRCTOKIDS: [928, 47, 380, 3168, 7498, 126, 5797, 1655, 748, 1]
+TGT______: THIS IS MY LAST POST as Peter 1.0.
+TGTTOKS__: ['▁TH', 'IS', '▁IS', '▁M', 'Y', '▁L', 'AS', 'T', '▁P', 'OS', 'T', '▁as', '▁Peter', '▁1.', '0.']
+TGTTOKIDS: [2595, 2591, 3094, 85, 7964, 170, 6118, 7938, 159, 4779, 7938, 122, 5020, 2736, 2851, 1]
+----- (40) -----
+SRC______: Pero 1 si la "vida" del equipo es, de hecho, cinco anyos
+SRCTOKS__: ['▁Pero', '▁1', '▁si', '▁la', '▁"', 'vi', 'da', '"', '▁del', '▁equipo', '▁es', ',', '▁de', '▁hecho', ',', '▁cinco', '▁anyos']
+SRCTOKIDS: [2046, 64, 149, 34, 199, 150, 48, 7926, 87, 2612, 47, 7890, 9, 2745, 7890, 1613, 565, 1]
+TGT______: But – if the 'life' of the equipment is, in fact, five years
+TGTTOKS__: ['▁But', '▁–', '▁if', '▁the', "▁'", 'l', 'ife', "'", '▁of', '▁the', '▁equ', 'ip', 'ment', '▁is', ',', '▁in', '▁fact', ',', '▁five', '▁years']
+TGTTOKIDS: [227, 366, 273, 11, 329, 7921, 324, 7937, 34, 11, 1968, 737, 218, 41, 7933, 39, 593, 7933, 930, 358, 1]
+----- (60) -----
+SRC______: El resultau de este exercicio: Probablement tenemos demasiadas ciudatz.
+SRCTOKS__: ['▁El', '▁resultau', '▁de', '▁este', '▁exerci', 'cio', ':', '▁Pro', 'b', 'able', 'ment', '▁tenemos', '▁de', 'mas', 'ia', 'das', '▁ciudatz', '.']
+SRCTOKIDS: [188, 3912, 9, 518, 5432, 480, 7927, 877, 7889, 1523, 155, 7564, 9, 423, 83, 280, 1813, 7891, 1]
+TGT______: The upshot of this exercise: We probably have too many cities.
+TGTTOKS__: ['▁The', '▁up', 'sh', 'ot', '▁of', '▁this', '▁exercise', ':', '▁We', '▁probably', '▁have', '▁too', '▁many', '▁cities', '.']
+TGTTOKIDS: [90, 456, 4244, 68, 34, 103, 5064, 7951, 198, 1342, 105, 500, 392, 2523, 7930, 1]
+----- (80) -----
+SRC______: Es Compasivo, Es Misericordioso
+SRCTOKS__: ['▁Es', '▁Com', 'pas', 'ivo', ',', '▁Es', '▁M', 'is', 'eric', 'or', 'di', 'oso']
+SRCTOKIDS: [144, 351, 1065, 2716, 7890, 144, 70, 42, 2091, 19, 75, 869, 1]
+TGT______: He is Gracious, the Merciful.
+TGTTOKS__: ['▁He', '▁is', '▁Gracious', ',', '▁the', '▁Merciful', '.']
+TGTTOKIDS: [147, 41, 1293, 7933, 11, 262, 7930, 1]
+----- (100) -----
+SRC______: Ella dixo que tenía un dolar Morgan muy valioso.
+SRCTOKS__: ['▁El', 'la', '▁d', 'ixo', '▁que', '▁tenía', '▁un', '▁do', 'lar', '▁Mor', 'gan', '▁muy', '▁val', 'ios', 'o', '.']
+SRCTOKIDS: [188, 13, 7, 621, 54, 3295, 49, 756, 228, 1494, 421, 1193, 617, 334, 7877, 7891, 1]
+TGT______: She said she had a very valuable Morgan dollar.
+TGTTOKS__: ['▁She', '▁said', '▁she', '▁had', '▁a', '▁very', '▁valuable', '▁Morgan', '▁dollar', '.']
+TGTTOKIDS: [886, 323, 536, 279, 9, 428, 7306, 6038, 6958, 7930, 1]

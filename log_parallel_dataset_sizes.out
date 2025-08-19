@@ -1,0 +1,8 @@
+#################################
+# log_parallel_dataset_sizes.py #
+#################################
+Arguments:-
+	-LOG_F: parallel_dataset_log.json
+	-cfgs: /home/hatch5o6/Cognate/code/Pipeline/cfg/SC
+------------------------------
+

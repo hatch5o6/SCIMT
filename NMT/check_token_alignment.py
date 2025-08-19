@@ -5,14 +5,15 @@ from nltk.tokenize import word_tokenize
 from spm_tokenizers import SPMTokenizer
 
 fr_file = "/home/hatch5o6/nobackup/archive/data/CCMatrix_fr_en/fixed/stitched/cleaned/tgt.100k.txt"
-SC_fr2mfe_file = "/home/hatch5o6/nobackup/archive/data/CCMatrix_fr_en/fixed/stitched/cleaned/tgt.100k.SC_NGfr2NGmfe.txt"
+SC_fr2mfe_file = "/home/hatch5o6/nobackup/archive/data/CCMatrix_fr_en/fixed/stitched/cleaned/tgt.100k.SC_FR-MFE-RNN-0_fr2mfe.txt"
+
 TOTAL = 3
 tok_lang = "french"
 
-fr_spm_name = "/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/fr.mfe.WS/fr.mfe.WS"
+fr_spm_name = "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/fr-mfe_en/fr-mfe_en"
 fr_tokenizer = SPMTokenizer(spm_name=fr_spm_name)
 
-sc_spm_name = "/home/hatch5o6/nobackup/archive/CognateMT/spm_models_ws/SC_fr2mfe.mfe.WS/SC_fr2mfe.mfe.WS"
+sc_spm_name = "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_fr2mfe-mfe_en/SC_fr2mfe-mfe_en/SC_fr2mfe-mfe_en"
 sc_tokenizer = SPMTokenizer(spm_name=sc_spm_name)
 
 

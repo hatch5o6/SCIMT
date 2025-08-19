@@ -43,19 +43,19 @@ class ParallelDataset(Dataset):
 
 class MultilingualDataset(Dataset):
     def __init__(
-            self,
-            data_csv=None,
-            append_src_lang_tok=False,
-            append_tgt_lang_tok=True,
-            append_tgt_to_src=False,
-            size=None,
-            seed=525,
-            upsample=False,
-            shuffle=False,
-            limit_src_langs=None,
-            limit_tgt_langs=None,
-            CAN_RETURN_ZERO=False
-        ):
+        self,
+        data_csv=None,
+        append_src_lang_tok=False,
+        append_tgt_lang_tok=True,
+        append_tgt_to_src=False,
+        size=None,
+        seed=525,
+        upsample=False,
+        shuffle=False,
+        limit_src_langs=None,
+        limit_tgt_langs=None,
+        CAN_RETURN_ZERO=False
+    ):
         print("random seed:", seed)
         random.seed(seed)
 
@@ -64,6 +64,8 @@ class MultilingualDataset(Dataset):
         self.append_tgt_lang_tok = append_tgt_lang_tok
         self.shuffle = shuffle
         self.CAN_RETURN_ZERO = CAN_RETURN_ZERO
+        self.lengths = {}
+        self.raw_lengths = {}
 
         self.limit_src_langs = limit_src_langs
         if self.limit_src_langs != None:
@@ -85,7 +87,7 @@ class MultilingualDataset(Dataset):
             random.shuffle(pairs)
         self.pairs = pairs
     
-    def make_data_by_pairs_unique(data_by_pairs):
+    def make_data_by_pairs_unique(self, data_by_pairs):
         for lang_pair, data in data_by_pairs.items():
             print("Making unique:", lang_pair)
             assert isinstance(data, list)
@@ -131,6 +133,7 @@ class MultilingualDataset(Dataset):
 
             lang_src_lines = self.read_file(src_path)
             lang_tgt_lines = self.read_file(tgt_path)
+
             if self.append_src_lang_tok:
                 lang_src_lines = [f"<{src_lang}>" + line for line in lang_src_lines]
             elif self.append_tgt_to_src:
@@ -138,9 +141,18 @@ class MultilingualDataset(Dataset):
             if self.append_tgt_lang_tok:
                 lang_tgt_lines = [f"<{tgt_lang}>" + line for line in lang_tgt_lines]
 
-            data_by_pairs[pair] += list(zip(lang_src_lines, lang_tgt_lines))
+            parallel_data = list(zip(lang_src_lines, lang_tgt_lines))
+            key = f"{src_lang}-{tgt_lang}, `{src_path}`, `{tgt_path}`"
+            assert key not in self.raw_lengths
+            self.raw_lengths[key] = len(parallel_data)
+            data_by_pairs[pair] += parallel_data
         
         data_by_pairs = self.make_data_by_pairs_unique(data_by_pairs)
+        
+        for lang_pair, data in data_by_pairs.items():
+            assert lang_pair not in self.lengths
+            l1, l2 = lang_pair
+            self.lengths[f"{l1}-{l2}"] = len(data)
 
         MAX_SIZE = 0
         for pair, pair_data in data_by_pairs.items():

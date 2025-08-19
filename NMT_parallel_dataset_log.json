@@ -1,0 +1,1860 @@
+{
+  "latest": {
+    "an-en(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 20089,
+          "lengths_by_pair": {
+            "an-en": 20089
+          },
+          "raw_lengths": {
+            "an-en, `/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/OpenSubtitles/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/OpenSubtitles/cleaned/tgt.txt`": 924,
+            "an-en, `/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/WikiMatrix/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/WikiMatrix/cleaned/tgt.txt`": 19165
+          },
+          "total_raw_lengths": 20089
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "an-en": 997
+          },
+          "raw_lengths": {
+            "an-en, `/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "an-en": 1012
+          },
+          "raw_lengths": {
+            "an-en, `/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/devtest/devtest.arg_Latn`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "as-bn(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 1013015,
+          "lengths_by_pair": {
+            "as-bn": 1013015
+          },
+          "raw_lengths": {
+            "as-bn, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/tgt.txt`": 1013015
+          },
+          "total_raw_lengths": 1013015
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "as-bn": 997
+          },
+          "raw_lengths": {
+            "as-bn, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ben_Beng.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "as-bn": 1012
+          },
+          "raw_lengths": {
+            "as-bn, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ben_Beng.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "as-hi(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 478962,
+          "lengths_by_pair": {
+            "as-hi": 478962
+          },
+          "raw_lengths": {
+            "as-hi, `/home/hatch5o6/nobackup/archive/data/NLLB/as_hi/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/as_hi/cleaned/tgt.txt`": 478962
+          },
+          "total_raw_lengths": 478962
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "as-hi": 997
+          },
+          "raw_lengths": {
+            "as-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "as-hi": 1012
+          },
+          "raw_lengths": {
+            "as-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "bem-en(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 462128,
+          "lengths_by_pair": {
+            "bem-en": 462128
+          },
+          "raw_lengths": {
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/NLLB/en_bem/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/en_bem/cleaned/tgt.txt`": 371289,
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/BIG-C/bigc/data/bem/text/cleaned/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/BIG-C/bigc/data/bem/text/cleaned/cleaned/tgt.txt`": 90839
+          },
+          "total_raw_lengths": 462128
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bem-en": 997
+          },
+          "raw_lengths": {
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bem_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bem-en": 1012
+          },
+          "raw_lengths": {
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bem_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "bho-as(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 82100,
+          "lengths_by_pair": {
+            "bho-as": 82100
+          },
+          "raw_lengths": {
+            "bho-as, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_as/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_as/cleaned/src.txt`": 82100
+          },
+          "total_raw_lengths": 82100
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bho-as": 997
+          },
+          "raw_lengths": {
+            "bho-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bho-as": 1012
+          },
+          "raw_lengths": {
+            "bho-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "bho-hi(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 345722,
+          "lengths_by_pair": {
+            "bho-hi": 345722
+          },
+          "raw_lengths": {
+            "bho-hi, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/tgt.txt`": 345722
+          },
+          "total_raw_lengths": 345722
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bho-hi": 997
+          },
+          "raw_lengths": {
+            "bho-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bho-hi": 1012
+          },
+          "raw_lengths": {
+            "bho-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "bn-as(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 1013015,
+          "lengths_by_pair": {
+            "bn-as": 1013015
+          },
+          "raw_lengths": {
+            "bn-as, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/src.txt`": 1013015
+          },
+          "total_raw_lengths": 1013015
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bn-as": 997
+          },
+          "raw_lengths": {
+            "bn-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ben_Beng.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bn-as": 1012
+          },
+          "raw_lengths": {
+            "bn-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ben_Beng.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "bn-hi(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 3481537,
+          "lengths_by_pair": {
+            "bn-hi": 3481537
+          },
+          "raw_lengths": {
+            "bn-hi, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_hi/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_hi/cleaned/tgt.txt`": 3481537
+          },
+          "total_raw_lengths": 3481537
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bn-hi": 997
+          },
+          "raw_lengths": {
+            "bn-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ben_Beng.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bn-hi": 1012
+          },
+          "raw_lengths": {
+            "bn-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ben_Beng.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "cs-de(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 10000000,
+          "lengths_by_pair": {
+            "cs-de": 10000000
+          },
+          "raw_lengths": {
+            "cs-de, `/home/hatch5o6/nobackup/archive/data/CCMatrix_de_cs/cs-de/cleaned/src.10M.txt`, `/home/hatch5o6/nobackup/archive/data/CCMatrix_de_cs/cs-de/cleaned/tgt.10M.txt`": 10000000
+          },
+          "total_raw_lengths": 10000000
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "cs-de": 997
+          },
+          "raw_lengths": {
+            "cs-de, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ces_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/deu_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "cs-de": 1012
+          },
+          "raw_lengths": {
+            "cs-de, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ces_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/deu_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "cs-hsb(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 326,
+          "lengths_by_pair": {
+            "cs-hsb": 326
+          },
+          "raw_lengths": {
+            "cs-hsb, `/home/hatch5o6/nobackup/archive/data/cs-hsb/WMT-CCMatrix-Overlap/train/train.ce`, `/home/hatch5o6/nobackup/archive/data/cs-hsb/WMT-CCMatrix-Overlap/train/train.hsb`": 326
+          },
+          "total_raw_lengths": 326
+        }
+      }
+    },
+    "djk-en(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 9942,
+          "lengths_by_pair": {
+            "djk-en": 9942
+          },
+          "raw_lengths": {
+            "djk-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/train/cleaned/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/train/cleaned/cleaned/tgt.txt`": 9942
+          },
+          "total_raw_lengths": 9942
+        },
+        "val": {
+          "dataset_length": 585,
+          "lengths_by_pair": {
+            "djk-en": 585
+          },
+          "raw_lengths": {
+            "djk-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/val.djk-eng.djk`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/val.djk-eng.eng`": 585
+          },
+          "total_raw_lengths": 585
+        },
+        "test": {
+          "dataset_length": 1180,
+          "lengths_by_pair": {
+            "djk-en": 1180
+          },
+          "raw_lengths": {
+            "djk-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/test.djk-eng.djk`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/test.djk-eng.eng`": 1180
+          },
+          "total_raw_lengths": 1180
+        }
+      }
+    },
+    "en-fon(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {}
+    },
+    "es-an(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 28594,
+          "lengths_by_pair": {
+            "es-an": 28594
+          },
+          "raw_lengths": {
+            "es-an, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/OpenSubtitles/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/OpenSubtitles/cleaned/src.txt`": 885,
+            "es-an, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/WikiMatrix/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/WikiMatrix/cleaned/src.txt`": 27709
+          },
+          "total_raw_lengths": 28594
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "es-an": 997
+          },
+          "raw_lengths": {
+            "es-an, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/spa_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "es-an": 1012
+          },
+          "raw_lengths": {
+            "es-an, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/spa_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/devtest/devtest.arg_Latn`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "es-en(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 10000000,
+          "lengths_by_pair": {
+            "es-en": 10000000
+          },
+          "raw_lengths": {
+            "es-en, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/tgt.10M.txt`, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/src.10M.txt`": 10000000
+          },
+          "total_raw_lengths": 10000000
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "es-en": 997
+          },
+          "raw_lengths": {
+            "es-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/spa_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "es-en": 1012
+          },
+          "raw_lengths": {
+            "es-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/spa_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "ewe-en(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 22196,
+          "lengths_by_pair": {
+            "ewe-en": 22196
+          },
+          "raw_lengths": {
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/bible-uedin/ewe_en/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/bible-uedin/ewe_en/cleaned/tgt.txt`": 15762,
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLDOC/en-ee/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLDOC/en-ee/cleaned/cleaned/src.txt`": 1583,
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLSENT/en-ee/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLSENT/en-ee/cleaned/cleaned/src.txt`": 861,
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/GATITOS/en-ee/ee.txt`, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/GATITOS/en-ee/en.txt`": 3990
+          },
+          "total_raw_lengths": 22196
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ewe-en": 997
+          },
+          "raw_lengths": {
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ewe-en": 1012
+          },
+          "raw_lengths": {
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "ewe-fon(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 72424,
+          "lengths_by_pair": {
+            "ewe-fon": 72424
+          },
+          "raw_lengths": {
+            "ewe-fon, `/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/tgt.txt`": 72424
+          },
+          "total_raw_lengths": 72424
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ewe-fon": 997
+          },
+          "raw_lengths": {
+            "ewe-fon, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ewe-fon": 1012
+          },
+          "raw_lengths": {
+            "ewe-fon, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "ewe-fr(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 924526,
+          "lengths_by_pair": {
+            "ewe-fr": 924526
+          },
+          "raw_lengths": {
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/polynews_parallel/fra_Latn-ewe_Latn/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/polynews_parallel/fra_Latn-ewe_Latn/cleaned/cleaned/src.txt`": 1972,
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/NLLB/fr_ee/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/fr_ee/cleaned/tgt.txt`": 922554
+          },
+          "total_raw_lengths": 924526
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ewe-fr": 997
+          },
+          "raw_lengths": {
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fra_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ewe-fr": 1012
+          },
+          "raw_lengths": {
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fra_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fon-en(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 1788439,
+          "lengths_by_pair": {
+            "fon-en": 1788439
+          },
+          "raw_lengths": {
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/NLLB/en_fon/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/en_fon/cleaned/src.txt`": 1786768,
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLDOC/en-fon/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLDOC/en-fon/cleaned/cleaned/src.txt`": 810,
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLSENT/en-fon/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLSENT/en-fon/cleaned/cleaned/src.txt`": 861
+          },
+          "total_raw_lengths": 1788439
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fon-en": 997
+          },
+          "raw_lengths": {
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fon-en": 1012
+          },
+          "raw_lengths": {
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fon-ewe(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 72424,
+          "lengths_by_pair": {
+            "fon-ewe": 72424
+          },
+          "raw_lengths": {
+            "fon-ewe, `/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/src.txt`": 72424
+          },
+          "total_raw_lengths": 72424
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fon-ewe": 997
+          },
+          "raw_lengths": {
+            "fon-ewe, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fon-ewe": 1012
+          },
+          "raw_lengths": {
+            "fon-ewe, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fon-fr(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 525384,
+          "lengths_by_pair": {
+            "fon-fr": 525384
+          },
+          "raw_lengths": {
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/polynews_parallel/fra_Latn-fon_Latn/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/polynews_parallel/fra_Latn-fon_Latn/cleaned/cleaned/src.txt`": 2568,
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/NLLB/fr_fon/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/fr_fon/cleaned/tgt.txt`": 474540,
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/FFR/fr_fon/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/FFR/fr_fon/cleaned/tgt.txt`": 48234,
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/FonFrenchDailyDialogue/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/FonFrenchDailyDialogue/cleaned/cleaned/src.txt`": 18140
+          },
+          "total_raw_lengths": 543482
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fon-fr": 997
+          },
+          "raw_lengths": {
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fra_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fon-fr": 1012
+          },
+          "raw_lengths": {
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fra_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fr-en(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 10000000,
+          "lengths_by_pair": {
+            "fr-en": 10000000
+          },
+          "raw_lengths": {
+            "fr-en, `/home/hatch5o6/nobackup/archive/data/CCMatrix_fr_en/fixed/stitched/cleaned/tgt.10M.txt`, `/home/hatch5o6/nobackup/archive/data/CCMatrix_fr_en/fixed/stitched/cleaned/src.10M.txt`": 10000000
+          },
+          "total_raw_lengths": 10000000
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fr-en": 997
+          },
+          "raw_lengths": {
+            "fr-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fra_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fr-en": 1012
+          },
+          "raw_lengths": {
+            "fr-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fra_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fr-mfe(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 13327,
+          "lengths_by_pair": {
+            "fr-mfe": 13327
+          },
+          "raw_lengths": {
+            "fr-mfe, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/train.mfe-fra.fra`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/train.mfe-fra.mfe`": 13327
+          },
+          "total_raw_lengths": 13327
+        },
+        "val": {
+          "dataset_length": 148,
+          "lengths_by_pair": {
+            "fr-mfe": 148
+          },
+          "raw_lengths": {
+            "fr-mfe, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/val.mfe-fra.fra`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/val.mfe-fra.mfe`": 148
+          },
+          "total_raw_lengths": 148
+        },
+        "test": {
+          "dataset_length": 312,
+          "lengths_by_pair": {
+            "fr-mfe": 312
+          },
+          "raw_lengths": {
+            "fr-mfe, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/test.mfe-fra.fra`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/test.mfe-fra.mfe`": 312
+          },
+          "total_raw_lengths": 312
+        }
+      }
+    },
+    "hi-as(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 478962,
+          "lengths_by_pair": {
+            "hi-as": 478962
+          },
+          "raw_lengths": {
+            "hi-as, `/home/hatch5o6/nobackup/archive/data/NLLB/as_hi/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/as_hi/cleaned/src.txt`": 478962
+          },
+          "total_raw_lengths": 478962
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "hi-as": 997
+          },
+          "raw_lengths": {
+            "hi-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "hi-as": 1012
+          },
+          "raw_lengths": {
+            "hi-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "hi-bho(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 345722,
+          "lengths_by_pair": {
+            "hi-bho": 345722
+          },
+          "raw_lengths": {
+            "hi-bho, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/src.txt`": 345722
+          },
+          "total_raw_lengths": 345722
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "hi-bho": 997
+          },
+          "raw_lengths": {
+            "hi-bho, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "hi-bho": 1012
+          },
+          "raw_lengths": {
+            "hi-bho, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "hsb-de(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 58472,
+          "lengths_by_pair": {
+            "hsb-de": 58472
+          },
+          "raw_lengths": {
+            "hsb-de, `/home/hatch5o6/nobackup/archive/data/WMT2021/train/cleaned/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/WMT2021/train/cleaned/cleaned/tgt.txt`": 58472
+          },
+          "total_raw_lengths": 58472
+        },
+        "val": {
+          "dataset_length": 2000,
+          "lengths_by_pair": {
+            "hsb-de": 2000
+          },
+          "raw_lengths": {
+            "hsb-de, `/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel.hsb-de.hsb`, `/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel.hsb-de.de`": 2000
+          },
+          "total_raw_lengths": 2000
+        },
+        "test": {
+          "dataset_length": 2000,
+          "lengths_by_pair": {
+            "hsb-de": 2000
+          },
+          "raw_lengths": {
+            "hsb-de, `/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel_test.hsb-de.hsb`, `/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel_test.hsb-de.de`": 2000
+          },
+          "total_raw_lengths": 2000
+        }
+      }
+    },
+    "lua-bem(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 115432,
+          "lengths_by_pair": {
+            "lua-bem": 115432
+          },
+          "raw_lengths": {
+            "lua-bem, `/home/hatch5o6/nobackup/archive/data/NLLB/lua_bem/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/lua_bem/cleaned/src.txt`": 115432
+          },
+          "total_raw_lengths": 115432
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "lua-bem": 997
+          },
+          "raw_lengths": {
+            "lua-bem, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/lua_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bem_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "lua-bem": 1012
+          },
+          "raw_lengths": {
+            "lua-bem, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/lua_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bem_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "lua-en(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 2065546,
+          "lengths_by_pair": {
+            "lua-en": 2065546
+          },
+          "raw_lengths": {
+            "lua-en, `/home/hatch5o6/nobackup/archive/data/NLLB/lua_en/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/lua_en/cleaned/src.txt`": 2065546
+          },
+          "total_raw_lengths": 2065546
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "lua-en": 997
+          },
+          "raw_lengths": {
+            "lua-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/lua_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "lua-en": 1012
+          },
+          "raw_lengths": {
+            "lua-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/lua_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "mfe-en(_dev_test)/(train|val|test).csv": {
+      "date": "06/12/2025 11:40:59",
+      "sizes": {
+        "train": {
+          "dataset_length": 19149,
+          "lengths_by_pair": {
+            "mfe-en": 19149
+          },
+          "raw_lengths": {
+            "mfe-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/train.mfe-eng.mfe`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/train.mfe-eng.eng`": 19149
+          },
+          "total_raw_lengths": 19149
+        },
+        "val": {
+          "dataset_length": 472,
+          "lengths_by_pair": {
+            "mfe-en": 472
+          },
+          "raw_lengths": {
+            "mfe-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/val.mfe-eng.mfe`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/val.mfe-eng.eng`": 472
+          },
+          "total_raw_lengths": 472
+        },
+        "test": {
+          "dataset_length": 811,
+          "lengths_by_pair": {
+            "mfe-en": 811
+          },
+          "raw_lengths": {
+            "mfe-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/test.mfe-eng.mfe`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/test.mfe-eng.eng`": 811
+          },
+          "total_raw_lengths": 811
+        }
+      }
+    }
+  },
+  "history": {
+    "an-en(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 20089,
+          "lengths_by_pair": {
+            "an-en": 20089
+          },
+          "raw_lengths": {
+            "an-en, `/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/OpenSubtitles/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/OpenSubtitles/cleaned/tgt.txt`": 924,
+            "an-en, `/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/WikiMatrix/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/WikiMatrix/cleaned/tgt.txt`": 19165
+          },
+          "total_raw_lengths": 20089
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "an-en": 997
+          },
+          "raw_lengths": {
+            "an-en, `/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "an-en": 1012
+          },
+          "raw_lengths": {
+            "an-en, `/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/devtest/devtest.arg_Latn`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "as-bn(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 1013015,
+          "lengths_by_pair": {
+            "as-bn": 1013015
+          },
+          "raw_lengths": {
+            "as-bn, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/tgt.txt`": 1013015
+          },
+          "total_raw_lengths": 1013015
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "as-bn": 997
+          },
+          "raw_lengths": {
+            "as-bn, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ben_Beng.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "as-bn": 1012
+          },
+          "raw_lengths": {
+            "as-bn, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ben_Beng.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "as-hi(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 478962,
+          "lengths_by_pair": {
+            "as-hi": 478962
+          },
+          "raw_lengths": {
+            "as-hi, `/home/hatch5o6/nobackup/archive/data/NLLB/as_hi/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/as_hi/cleaned/tgt.txt`": 478962
+          },
+          "total_raw_lengths": 478962
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "as-hi": 997
+          },
+          "raw_lengths": {
+            "as-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "as-hi": 1012
+          },
+          "raw_lengths": {
+            "as-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "bem-en(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 462128,
+          "lengths_by_pair": {
+            "bem-en": 462128
+          },
+          "raw_lengths": {
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/NLLB/en_bem/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/en_bem/cleaned/tgt.txt`": 371289,
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/BIG-C/bigc/data/bem/text/cleaned/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/BIG-C/bigc/data/bem/text/cleaned/cleaned/tgt.txt`": 90839
+          },
+          "total_raw_lengths": 462128
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bem-en": 997
+          },
+          "raw_lengths": {
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bem_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bem-en": 1012
+          },
+          "raw_lengths": {
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bem_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "bho-as(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 82100,
+          "lengths_by_pair": {
+            "bho-as": 82100
+          },
+          "raw_lengths": {
+            "bho-as, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_as/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_as/cleaned/src.txt`": 82100
+          },
+          "total_raw_lengths": 82100
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bho-as": 997
+          },
+          "raw_lengths": {
+            "bho-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bho-as": 1012
+          },
+          "raw_lengths": {
+            "bho-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "bho-hi(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 345722,
+          "lengths_by_pair": {
+            "bho-hi": 345722
+          },
+          "raw_lengths": {
+            "bho-hi, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/tgt.txt`": 345722
+          },
+          "total_raw_lengths": 345722
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bho-hi": 997
+          },
+          "raw_lengths": {
+            "bho-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bho-hi": 1012
+          },
+          "raw_lengths": {
+            "bho-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "bn-as(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 1013015,
+          "lengths_by_pair": {
+            "bn-as": 1013015
+          },
+          "raw_lengths": {
+            "bn-as, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/src.txt`": 1013015
+          },
+          "total_raw_lengths": 1013015
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bn-as": 997
+          },
+          "raw_lengths": {
+            "bn-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ben_Beng.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bn-as": 1012
+          },
+          "raw_lengths": {
+            "bn-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ben_Beng.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "bn-hi(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 3481537,
+          "lengths_by_pair": {
+            "bn-hi": 3481537
+          },
+          "raw_lengths": {
+            "bn-hi, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_hi/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bn_hi/cleaned/tgt.txt`": 3481537
+          },
+          "total_raw_lengths": 3481537
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bn-hi": 997
+          },
+          "raw_lengths": {
+            "bn-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ben_Beng.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bn-hi": 1012
+          },
+          "raw_lengths": {
+            "bn-hi, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ben_Beng.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "cs-de(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 10000000,
+          "lengths_by_pair": {
+            "cs-de": 10000000
+          },
+          "raw_lengths": {
+            "cs-de, `/home/hatch5o6/nobackup/archive/data/CCMatrix_de_cs/cs-de/cleaned/src.10M.txt`, `/home/hatch5o6/nobackup/archive/data/CCMatrix_de_cs/cs-de/cleaned/tgt.10M.txt`": 10000000
+          },
+          "total_raw_lengths": 10000000
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "cs-de": 997
+          },
+          "raw_lengths": {
+            "cs-de, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ces_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/deu_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "cs-de": 1012
+          },
+          "raw_lengths": {
+            "cs-de, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ces_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/deu_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "cs-hsb(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 326,
+          "lengths_by_pair": {
+            "cs-hsb": 326
+          },
+          "raw_lengths": {
+            "cs-hsb, `/home/hatch5o6/nobackup/archive/data/cs-hsb/WMT-CCMatrix-Overlap/train/train.ce`, `/home/hatch5o6/nobackup/archive/data/cs-hsb/WMT-CCMatrix-Overlap/train/train.hsb`": 326
+          },
+          "total_raw_lengths": 326
+        }
+      }
+    },
+    "djk-en(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 9942,
+          "lengths_by_pair": {
+            "djk-en": 9942
+          },
+          "raw_lengths": {
+            "djk-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/train/cleaned/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/train/cleaned/cleaned/tgt.txt`": 9942
+          },
+          "total_raw_lengths": 9942
+        },
+        "val": {
+          "dataset_length": 585,
+          "lengths_by_pair": {
+            "djk-en": 585
+          },
+          "raw_lengths": {
+            "djk-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/val.djk-eng.djk`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/val.djk-eng.eng`": 585
+          },
+          "total_raw_lengths": 585
+        },
+        "test": {
+          "dataset_length": 1180,
+          "lengths_by_pair": {
+            "djk-en": 1180
+          },
+          "raw_lengths": {
+            "djk-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/test.djk-eng.djk`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/test.djk-eng.eng`": 1180
+          },
+          "total_raw_lengths": 1180
+        }
+      }
+    },
+    "en-fon(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {}
+    },
+    "es-an(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 28594,
+          "lengths_by_pair": {
+            "es-an": 28594
+          },
+          "raw_lengths": {
+            "es-an, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/OpenSubtitles/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/OpenSubtitles/cleaned/src.txt`": 885,
+            "es-an, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/WikiMatrix/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/WikiMatrix/cleaned/src.txt`": 27709
+          },
+          "total_raw_lengths": 28594
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "es-an": 997
+          },
+          "raw_lengths": {
+            "es-an, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/spa_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "es-an": 1012
+          },
+          "raw_lengths": {
+            "es-an, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/spa_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/devtest/devtest.arg_Latn`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "es-en(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 10000000,
+          "lengths_by_pair": {
+            "es-en": 10000000
+          },
+          "raw_lengths": {
+            "es-en, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/tgt.10M.txt`, `/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/src.10M.txt`": 10000000
+          },
+          "total_raw_lengths": 10000000
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "es-en": 997
+          },
+          "raw_lengths": {
+            "es-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/spa_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "es-en": 1012
+          },
+          "raw_lengths": {
+            "es-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/spa_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "ewe-en(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 22196,
+          "lengths_by_pair": {
+            "ewe-en": 22196
+          },
+          "raw_lengths": {
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/bible-uedin/ewe_en/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/bible-uedin/ewe_en/cleaned/tgt.txt`": 15762,
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLDOC/en-ee/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLDOC/en-ee/cleaned/cleaned/src.txt`": 1583,
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLSENT/en-ee/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLSENT/en-ee/cleaned/cleaned/src.txt`": 861,
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/GATITOS/en-ee/ee.txt`, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/GATITOS/en-ee/en.txt`": 3990
+          },
+          "total_raw_lengths": 22196
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ewe-en": 997
+          },
+          "raw_lengths": {
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ewe-en": 1012
+          },
+          "raw_lengths": {
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "ewe-fon(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 72424,
+          "lengths_by_pair": {
+            "ewe-fon": 72424
+          },
+          "raw_lengths": {
+            "ewe-fon, `/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/tgt.txt`": 72424
+          },
+          "total_raw_lengths": 72424
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ewe-fon": 997
+          },
+          "raw_lengths": {
+            "ewe-fon, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ewe-fon": 1012
+          },
+          "raw_lengths": {
+            "ewe-fon, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "ewe-fr(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 924526,
+          "lengths_by_pair": {
+            "ewe-fr": 924526
+          },
+          "raw_lengths": {
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/polynews_parallel/fra_Latn-ewe_Latn/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/polynews_parallel/fra_Latn-ewe_Latn/cleaned/cleaned/src.txt`": 1972,
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/NLLB/fr_ee/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/fr_ee/cleaned/tgt.txt`": 922554
+          },
+          "total_raw_lengths": 924526
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ewe-fr": 997
+          },
+          "raw_lengths": {
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fra_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ewe-fr": 1012
+          },
+          "raw_lengths": {
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fra_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fon-en(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 1788439,
+          "lengths_by_pair": {
+            "fon-en": 1788439
+          },
+          "raw_lengths": {
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/NLLB/en_fon/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/en_fon/cleaned/src.txt`": 1786768,
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLDOC/en-fon/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLDOC/en-fon/cleaned/cleaned/src.txt`": 810,
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLSENT/en-fon/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/smol_gatitos/SMOLSENT/en-fon/cleaned/cleaned/src.txt`": 861
+          },
+          "total_raw_lengths": 1788439
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fon-en": 997
+          },
+          "raw_lengths": {
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fon-en": 1012
+          },
+          "raw_lengths": {
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fon-ewe(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 72424,
+          "lengths_by_pair": {
+            "fon-ewe": 72424
+          },
+          "raw_lengths": {
+            "fon-ewe, `/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/src.txt`": 72424
+          },
+          "total_raw_lengths": 72424
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fon-ewe": 997
+          },
+          "raw_lengths": {
+            "fon-ewe, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fon-ewe": 1012
+          },
+          "raw_lengths": {
+            "fon-ewe, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fon-fr(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 525384,
+          "lengths_by_pair": {
+            "fon-fr": 525384
+          },
+          "raw_lengths": {
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/polynews_parallel/fra_Latn-fon_Latn/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/polynews_parallel/fra_Latn-fon_Latn/cleaned/cleaned/src.txt`": 2568,
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/NLLB/fr_fon/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/fr_fon/cleaned/tgt.txt`": 474540,
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/FFR/fr_fon/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/FFR/fr_fon/cleaned/tgt.txt`": 48234,
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/FonFrenchDailyDialogue/cleaned/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/FonFrenchDailyDialogue/cleaned/cleaned/src.txt`": 18140
+          },
+          "total_raw_lengths": 543482
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fon-fr": 997
+          },
+          "raw_lengths": {
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fra_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fon-fr": 1012
+          },
+          "raw_lengths": {
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fra_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fr-en(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 10000000,
+          "lengths_by_pair": {
+            "fr-en": 10000000
+          },
+          "raw_lengths": {
+            "fr-en, `/home/hatch5o6/nobackup/archive/data/CCMatrix_fr_en/fixed/stitched/cleaned/tgt.10M.txt`, `/home/hatch5o6/nobackup/archive/data/CCMatrix_fr_en/fixed/stitched/cleaned/src.10M.txt`": 10000000
+          },
+          "total_raw_lengths": 10000000
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fr-en": 997
+          },
+          "raw_lengths": {
+            "fr-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fra_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fr-en": 1012
+          },
+          "raw_lengths": {
+            "fr-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fra_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fr-mfe(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 13327,
+          "lengths_by_pair": {
+            "fr-mfe": 13327
+          },
+          "raw_lengths": {
+            "fr-mfe, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/train.mfe-fra.fra`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/train.mfe-fra.mfe`": 13327
+          },
+          "total_raw_lengths": 13327
+        },
+        "val": {
+          "dataset_length": 148,
+          "lengths_by_pair": {
+            "fr-mfe": 148
+          },
+          "raw_lengths": {
+            "fr-mfe, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/val.mfe-fra.fra`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/val.mfe-fra.mfe`": 148
+          },
+          "total_raw_lengths": 148
+        },
+        "test": {
+          "dataset_length": 312,
+          "lengths_by_pair": {
+            "fr-mfe": 312
+          },
+          "raw_lengths": {
+            "fr-mfe, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/test.mfe-fra.fra`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/test.mfe-fra.mfe`": 312
+          },
+          "total_raw_lengths": 312
+        }
+      }
+    },
+    "hi-as(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 478962,
+          "lengths_by_pair": {
+            "hi-as": 478962
+          },
+          "raw_lengths": {
+            "hi-as, `/home/hatch5o6/nobackup/archive/data/NLLB/as_hi/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/as_hi/cleaned/src.txt`": 478962
+          },
+          "total_raw_lengths": 478962
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "hi-as": 997
+          },
+          "raw_lengths": {
+            "hi-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "hi-as": 1012
+          },
+          "raw_lengths": {
+            "hi-as, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "hi-bho(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 345722,
+          "lengths_by_pair": {
+            "hi-bho": 345722
+          },
+          "raw_lengths": {
+            "hi-bho, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/src.txt`": 345722
+          },
+          "total_raw_lengths": 345722
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "hi-bho": 997
+          },
+          "raw_lengths": {
+            "hi-bho, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "hi-bho": 1012
+          },
+          "raw_lengths": {
+            "hi-bho, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "hsb-de(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 58472,
+          "lengths_by_pair": {
+            "hsb-de": 58472
+          },
+          "raw_lengths": {
+            "hsb-de, `/home/hatch5o6/nobackup/archive/data/WMT2021/train/cleaned/cleaned/src.txt`, `/home/hatch5o6/nobackup/archive/data/WMT2021/train/cleaned/cleaned/tgt.txt`": 58472
+          },
+          "total_raw_lengths": 58472
+        },
+        "val": {
+          "dataset_length": 2000,
+          "lengths_by_pair": {
+            "hsb-de": 2000
+          },
+          "raw_lengths": {
+            "hsb-de, `/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel.hsb-de.hsb`, `/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel.hsb-de.de`": 2000
+          },
+          "total_raw_lengths": 2000
+        },
+        "test": {
+          "dataset_length": 2000,
+          "lengths_by_pair": {
+            "hsb-de": 2000
+          },
+          "raw_lengths": {
+            "hsb-de, `/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel_test.hsb-de.hsb`, `/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel_test.hsb-de.de`": 2000
+          },
+          "total_raw_lengths": 2000
+        }
+      }
+    },
+    "lua-bem(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 115432,
+          "lengths_by_pair": {
+            "lua-bem": 115432
+          },
+          "raw_lengths": {
+            "lua-bem, `/home/hatch5o6/nobackup/archive/data/NLLB/lua_bem/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/lua_bem/cleaned/src.txt`": 115432
+          },
+          "total_raw_lengths": 115432
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "lua-bem": 997
+          },
+          "raw_lengths": {
+            "lua-bem, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/lua_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bem_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "lua-bem": 1012
+          },
+          "raw_lengths": {
+            "lua-bem, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/lua_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bem_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "lua-en(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 2065546,
+          "lengths_by_pair": {
+            "lua-en": 2065546
+          },
+          "raw_lengths": {
+            "lua-en, `/home/hatch5o6/nobackup/archive/data/NLLB/lua_en/cleaned/tgt.txt`, `/home/hatch5o6/nobackup/archive/data/NLLB/lua_en/cleaned/src.txt`": 2065546
+          },
+          "total_raw_lengths": 2065546
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "lua-en": 997
+          },
+          "raw_lengths": {
+            "lua-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/lua_Latn.dev`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "lua-en": 1012
+          },
+          "raw_lengths": {
+            "lua-en, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/lua_Latn.devtest`, `/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "mfe-en(_dev_test)/(train|val|test).csv": {
+      "06/12/2025 11:40:59": {
+        "train": {
+          "dataset_length": 19149,
+          "lengths_by_pair": {
+            "mfe-en": 19149
+          },
+          "raw_lengths": {
+            "mfe-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/train.mfe-eng.mfe`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/train.mfe-eng.eng`": 19149
+          },
+          "total_raw_lengths": 19149
+        },
+        "val": {
+          "dataset_length": 472,
+          "lengths_by_pair": {
+            "mfe-en": 472
+          },
+          "raw_lengths": {
+            "mfe-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/val.mfe-eng.mfe`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/val.mfe-eng.eng`": 472
+          },
+          "total_raw_lengths": 472
+        },
+        "test": {
+          "dataset_length": 811,
+          "lengths_by_pair": {
+            "mfe-en": 811
+          },
+          "raw_lengths": {
+            "mfe-en, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/test.mfe-eng.mfe`, `/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/test.mfe-eng.eng`": 811
+          },
+          "total_raw_lengths": 811
+        }
+      }
+    }
+  }
+}

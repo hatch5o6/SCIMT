@@ -1,0 +1,144 @@
+Starting-----------------------
+Mon Jun 16 03:21:12 PM MDT 2025
+-------------------------------
+Arguments:-
+    SPM_TRAIN_SIZE=50000
+
+    SRC_LANGS=bho
+    SRC_TOK_NAME=bho
+    TGT_LANGS=hi
+    TGT_TOK_NAME=hi
+
+    TRAIN_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-hi/train.csv
+    VAL_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-hi_dev_test/val.csv
+    TEST_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-hi_dev_test/test.csv
+    TOK_TRAIN_DATA_DIR=/home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi
+
+    SPLIT_ON_WS=true
+    INCLUDE_LANG_TOKS=false
+    INCLUDE_PAD_TOK=true
+    SPECIAL_TOKS=null
+-------------------------------
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi
+############################
+# make_SC_training_data.py #
+############################
+Arguments:-
+	-train_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-hi/train.csv
+	-val_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-hi_dev_test/val.csv
+	-test_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-hi_dev_test/test.csv
+	-out_dir: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi
+------------------------------
+
+### READING ###
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-hi/train.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-hi_dev_test/val.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-hi_dev_test/test.csv
+### WRITING ###
+deleting /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi
+--
+Writing bho:
+	-/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/src.txt
+	total lines for bho now 345722
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev
+	total lines for bho now 346719
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest
+	total lines for bho now 347731
+TOTAL LINES (BEFORE UNIQUE): 347731
+TOTAL LINES (AFTER UNIQUE): 63736
+Writing bho data (63736 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/bho.txt
+--
+Writing hi:
+	-/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/tgt.txt
+	total lines for hi now 345722
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev
+	total lines for hi now 346719
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest
+	total lines for hi now 347731
+TOTAL LINES (BEFORE UNIQUE): 347731
+TOTAL LINES (AFTER UNIQUE): 345688
+Writing hi data (345688 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/hi.txt
+INCLUDING <pad> TOKEN
+SRC_USER_DEFINED_SYMBOLS_STR: <pad>
+TGT_USER_DEFINED_SYMBOLS_STR: <pad>
+
+Arguments:-
+	--langs = 'bho'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi'
+	--data = 'None'
+	--training_data_size = '50000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/bho'
+	--spm_model_name = 'bho'
+	--spm_vocab_size = '8000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>'
+	--SPLIT_ON_WS = 'true'
+langs ['bho']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/bho.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/bho.txt": 1.0
+}
+
+
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/bho
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/bho.txt
+ratio: 1.0
+size: 63736
+After upsampling: 50000
+
+
+ALL DATA SIZE: 50000
+Writing 50000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/bho/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/bho/bho
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/bho/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 8000
+character_coverage: 1.0
+user_defined_symbols: ['<pad>', '▁']
+Arguments:-
+	--langs = 'hi'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi'
+	--data = 'None'
+	--training_data_size = '50000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/hi'
+	--spm_model_name = 'hi'
+	--spm_vocab_size = '8000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>'
+	--SPLIT_ON_WS = 'true'
+langs ['hi']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/hi.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/hi.txt": 1.0
+}
+
+
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/hi
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/hi.txt
+ratio: 1.0
+size: 345688
+After upsampling: 50000
+
+
+ALL DATA SIZE: 50000
+Writing 50000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/hi/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/hi/hi
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bho_hi/hi/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 8000
+character_coverage: 1.0
+user_defined_symbols: ['<pad>', '▁']
+Finished-----------------------
+Mon Jun 16 03:21:22 PM MDT 2025
+-------------------------------

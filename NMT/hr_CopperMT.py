@@ -7,15 +7,21 @@ punctuation += "-—¡¿؟؛،٪»«›‹”“〞❮❯❛❟%."
 import re
 import csv
 
+from indicnlp.tokenize import indic_tokenize 
+indicnlp_langs = {"hi", "as", "bn", "bho"}
+
 import nltk
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import word_tokenize as NLTK_word_tokenize
 nltk_tokenize_langs = {
     "de": "german",
     "hsb": "czech",
     "cs": "czech",
     "en": "english",
+    "djk": "english",
     "NGfr": "french",
     "NGmfe": "french",
+    "fr": "french",
+    "mfe": "french",
     
     # fake langs for testing:
     "bren": "french",
@@ -26,11 +32,17 @@ nltk_tokenize_langs = {
 
 import spacy
 es_nlp = spacy.load('es_core_news_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
+multi_nlp = spacy.load('xx_sent_ud_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
 spacy_nlp = {
     "es": es_nlp,
     "an": es_nlp,
     "oc": es_nlp,
-    "ast": es_nlp
+    "ast": es_nlp,
+
+    "lua": multi_nlp,
+    "bem": multi_nlp,
+    "ewe": multi_nlp,
+    "fon": multi_nlp
 }
 
 from parallel_datasets import MultilingualDataset
@@ -132,6 +144,9 @@ def prepare_for_CopperMT(
     if hr_lang in spacy_nlp:
         print(f"Using spacy_tokenize, lang={hr_lang}")
         word_tokenize = spacy_tokenize
+    elif hr_lang in indicnlp_langs:
+        (f"Using indic_word_tokenize, lang={hr_lang}")
+        word_tokenize = indic_word_tokenize
     else:
         assert hr_lang in nltk_tokenize_langs
         print(f"Using nltk_tokenize, lang={hr_lang}")
@@ -247,6 +262,9 @@ def retrieve(
         if hr_lang in spacy_nlp:
             print(f"Using spacy_tokenize, lang={hr_lang}")
             word_tokenize = spacy_tokenize
+        elif hr_lang in indicnlp_langs:
+            (f"Using indic_word_tokenize, lang={hr_lang}")
+            word_tokenize = indic_word_tokenize
         else:
             assert hr_lang in nltk_tokenize_langs
             print(f"Using nltk_tokenize, lang={hr_lang}")
@@ -291,9 +309,9 @@ def retrieve(
 
         print("NOT IN COPPER MT RESULTS", len(NOT_IN_COPPER_MT_RESULTS))
         for item in NOT_IN_COPPER_MT_RESULTS:
-            print(f"\t- '{item}'")
+            print(f"\t- `{item}`")
         
-        print("Writing final_results to", final_results_f)
+        print("Writing final_results to", write_out_f)
         with open(write_out_f, "w") as outf:
             outf.write("\n".join(new_data) + "\n")
 
@@ -305,17 +323,30 @@ def get_test_results(source_f, results_f, out_f):
         source = [line.strip() for line in inf.readlines()]
     results = read_CopperMT_Results(results_f, RETURN_SPACED=True)
     hyps = []
+    NOT_IN_RESULTS = []
     for src_word in source:
         # print("SRC WORD:", src_word)
         # assert src_word in results.keys()
         if src_word not in results.keys():
+            print(f"src_word `{src_word}` not in results. Will try replacing _ with <unk>: ")
             src_word = src_word.replace("_", "<unk>")
-            assert src_word in results.keys()
-        hyp = results[src_word].strip()
+            print(f"\tFixed src_word: `{src_word}`")
+            # assert src_word in results.keys()
+
+        if src_word in results.keys():
+            hyp = results[src_word].strip()
+        else:
+            print(f"\t\tsrc_word `{src_word}` still not in results :(. Will use src_word as hypothesis.")
+            NOT_IN_RESULTS.append(src_word)
+            hyp = src_word.strip()
         assert isinstance(hyp, str)
         hyps.append(hyp)
     with open(out_f, "w") as outf:
         outf.write("\n".join(hyps) + "\n")
+    
+    print("\n\nCOULD NOT FIND HYPOTHESES FOR THESE SRC_WORDS. WE USED THE SRC_WORD AS THE HYPOTHESIS.")
+    for item in NOT_IN_RESULTS:
+        print(f"\t-`{item}`")
 
 def read_smt_result(f):
     with open(f) as inf:
@@ -470,13 +501,25 @@ def nltk_tokenize(line, lang):
     # print(f"nltk_tokenize lang={lang}")
     global nltk_tokenize_langs
     wtlang = nltk_tokenize_langs[lang]
-    tokens = word_tokenize(line.strip(), language=wtlang)
+    tokens = NLTK_word_tokenize(line.strip(), language=wtlang)
     final_tokens = []
     for tok in tokens:
         subtoks = tok.split()
         for subtok in subtoks:
             final_tokens.append(subtok.strip())
     return final_tokens
+
+def indic_word_tokenize(line, lang):
+    global indicnlp_langs
+    assert lang in indicnlp_langs
+    tokens = indic_tokenize.trivial_tokenize_indic(line)
+    final_tokens = []
+    for tok in tokens:
+        subtoks = tok.split()
+        for subtok in subtoks:
+            final_tokens.append(subtok.strip())
+    return final_tokens
+
 
 def get_args():
     parser = argparse.ArgumentParser()

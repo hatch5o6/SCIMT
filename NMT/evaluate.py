@@ -13,8 +13,10 @@ def calc_bleu(
             raise ValueError(error)
 
     if tokenize is not None:
+        # print("TOKENIZING")
         bleu = BLEU(tokenize="char")
     else:
+        # print("NOT TOKENIZING")
         bleu = BLEU()
     score = bleu.corpus_score(hyp, refs)
     return score.score

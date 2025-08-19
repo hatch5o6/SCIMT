@@ -1,0 +1,181 @@
+Starting-----------------------
+Mon Jun 16 03:23:53 PM MDT 2025
+-------------------------------
+Arguments:-
+    SPM_TRAIN_SIZE=50000
+
+    SRC_LANGS=es,an
+    SRC_TOK_NAME=es-an
+    TGT_LANGS=en
+    TGT_TOK_NAME=en
+
+    TRAIN_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-en/train.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en/train.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-an/train.csv
+    VAL_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-en_dev_test/val.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en_dev_test/val.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-an_dev_test/val.csv
+    TEST_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-en_dev_test/test.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en_dev_test/test.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-an_dev_test/test.csv
+    TOK_TRAIN_DATA_DIR=/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en
+
+    SPLIT_ON_WS=true
+    INCLUDE_LANG_TOKS=false
+    INCLUDE_PAD_TOK=true
+    SPECIAL_TOKS=null
+-------------------------------
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en
+############################
+# make_SC_training_data.py #
+############################
+Arguments:-
+	-train_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-en/train.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en/train.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-an/train.csv
+	-val_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-en_dev_test/val.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en_dev_test/val.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-an_dev_test/val.csv
+	-test_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-en_dev_test/test.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en_dev_test/test.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-an_dev_test/test.csv
+	-out_dir: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en
+------------------------------
+
+### READING ###
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-en/train.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en/train.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-an/train.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-en_dev_test/val.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en_dev_test/val.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-an_dev_test/val.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-en_dev_test/test.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en_dev_test/test.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/es-an_dev_test/test.csv
+### WRITING ###
+deleting /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en
+--
+Writing es:
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/tgt.10M.txt
+	total lines for es now 10000000
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/OpenSubtitles/cleaned/tgt.txt
+	total lines for es now 10000885
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/WikiMatrix/cleaned/tgt.txt
+	total lines for es now 10028594
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/spa_Latn.dev
+	total lines for es now 10029591
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/spa_Latn.devtest
+	total lines for es now 10030603
+TOTAL LINES (BEFORE UNIQUE): 10030603
+TOTAL LINES (AFTER UNIQUE): 9555921
+Writing es data (9555921 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/es.txt
+--
+Writing en:
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/src.10M.txt
+	total lines for en now 10000000
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/OpenSubtitles/cleaned/tgt.txt
+	total lines for en now 10000924
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/WikiMatrix/cleaned/tgt.txt
+	total lines for en now 10020089
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev
+	total lines for en now 10021086
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest
+	total lines for en now 10022098
+TOTAL LINES (BEFORE UNIQUE): 10022098
+TOTAL LINES (AFTER UNIQUE): 9516928
+Writing en data (9516928 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/en.txt
+--
+Writing an:
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/OpenSubtitles/cleaned/src.txt
+	total lines for an now 924
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/WikiMatrix/cleaned/src.txt
+	total lines for an now 20089
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/OpenSubtitles/cleaned/src.txt
+	total lines for an now 20974
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/WikiMatrix/cleaned/src.txt
+	total lines for an now 48683
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn
+	total lines for an now 49680
+	-/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/devtest/devtest.arg_Latn
+	total lines for an now 50692
+TOTAL LINES (BEFORE UNIQUE): 50692
+TOTAL LINES (AFTER UNIQUE): 41734
+Writing an data (41734 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/an.txt
+INCLUDING <pad> TOKEN
+SRC_USER_DEFINED_SYMBOLS_STR: <pad>
+TGT_USER_DEFINED_SYMBOLS_STR: <pad>
+
+Arguments:-
+	--langs = 'es,an'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en'
+	--data = 'None'
+	--training_data_size = '50000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/es-an'
+	--spm_model_name = 'es-an'
+	--spm_vocab_size = '8000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>'
+	--SPLIT_ON_WS = 'true'
+langs ['es', 'an']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/es.txt', '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/an.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/es.txt": 0.5,
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/an.txt": 0.5
+}
+
+
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/es-an
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/es.txt
+ratio: 0.5
+size: 9555921
+After upsampling: 25000
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/an.txt
+ratio: 0.5
+size: 41734
+After upsampling: 25000
+
+
+ALL DATA SIZE: 50000
+Writing 50000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/es-an/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/es-an/es-an
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/es-an/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 8000
+character_coverage: 1.0
+user_defined_symbols: ['<pad>', '▁']
+Arguments:-
+	--langs = 'en'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en'
+	--data = 'None'
+	--training_data_size = '50000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/en'
+	--spm_model_name = 'en'
+	--spm_vocab_size = '8000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>'
+	--SPLIT_ON_WS = 'true'
+langs ['en']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/en.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/en.txt": 1.0
+}
+
+
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/en
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/en.txt
+ratio: 1.0
+size: 9516928
+After upsampling: 50000
+
+
+ALL DATA SIZE: 50000
+Writing 50000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/en/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/en/en
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/es-an_en/en/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 8000
+character_coverage: 1.0
+user_defined_symbols: ['<pad>', '▁']
+Finished-----------------------
+Mon Jun 16 03:25:17 PM MDT 2025
+-------------------------------

@@ -1,0 +1,402 @@
+#################################
+# log_parallel_dataset_sizes.py #
+#################################
+Arguments:-
+	-LOG_F: parallel_dataset_log.json
+	-cfgs: /home/hatch5o6/Cognate/code/Pipeline/cfg/SC
+------------------------------
+
+data_csv /home/hatch5o6/Cognate/code/NMT/data/bho-hi/train.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/bho-hi/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/src.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/tgt.txt
+Making unique: ('bho', 'hi')
+	Before unique: 345722
+	After unique: 345722
+DATA MAX_SIZE = 345722
+RAW DATA SIZE: 345722
+UPSAMPLED SIZE: 345722
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/src.txt']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/tgt.txt']
+MultilingualDataset TOTAL PAIRS: 345722
+data_csv /home/hatch5o6/Cognate/code/NMT/data/bho-hi_dev_test/val.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/bho-hi_dev_test/val.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev
+Making unique: ('bho', 'hi')
+	Before unique: 997
+	After unique: 997
+DATA MAX_SIZE = 997
+RAW DATA SIZE: 997
+UPSAMPLED SIZE: 997
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev']
+MultilingualDataset TOTAL PAIRS: 997
+data_csv /home/hatch5o6/Cognate/code/NMT/data/bho-hi_dev_test/test.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/bho-hi_dev_test/test.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest
+Making unique: ('bho', 'hi')
+	Before unique: 1012
+	After unique: 1012
+DATA MAX_SIZE = 1012
+RAW DATA SIZE: 1012
+UPSAMPLED SIZE: 1012
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest']
+MultilingualDataset TOTAL PAIRS: 1012
+data_csv /home/hatch5o6/Cognate/code/NMT/data/bn-as/train.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/bn-as/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/tgt.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/src.txt
+Making unique: ('bn', 'as')
+	Before unique: 1013015
+	After unique: 1013015
+DATA MAX_SIZE = 1013015
+RAW DATA SIZE: 1013015
+UPSAMPLED SIZE: 1013015
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/tgt.txt']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/bn_as/cleaned/src.txt']
+MultilingualDataset TOTAL PAIRS: 1013015
+data_csv /home/hatch5o6/Cognate/code/NMT/data/bn-as_dev_test/val.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/bn-as_dev_test/val.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ben_Beng.dev
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev
+Making unique: ('bn', 'as')
+	Before unique: 997
+	After unique: 997
+DATA MAX_SIZE = 997
+RAW DATA SIZE: 997
+UPSAMPLED SIZE: 997
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ben_Beng.dev']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/asm_Beng.dev']
+MultilingualDataset TOTAL PAIRS: 997
+data_csv /home/hatch5o6/Cognate/code/NMT/data/bn-as_dev_test/test.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/bn-as_dev_test/test.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ben_Beng.devtest
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest
+Making unique: ('bn', 'as')
+	Before unique: 1012
+	After unique: 1012
+DATA MAX_SIZE = 1012
+RAW DATA SIZE: 1012
+UPSAMPLED SIZE: 1012
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ben_Beng.devtest']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/asm_Beng.devtest']
+MultilingualDataset TOTAL PAIRS: 1012
+data_csv /home/hatch5o6/Cognate/code/NMT/data/cs-hsb/train.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/cs-hsb/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/cs-hsb/WMT-CCMatrix-Overlap/train/train.ce
+Reading all lines from /home/hatch5o6/nobackup/archive/data/cs-hsb/WMT-CCMatrix-Overlap/train/train.hsb
+Making unique: ('cs', 'hsb')
+	Before unique: 326
+	After unique: 326
+DATA MAX_SIZE = 326
+RAW DATA SIZE: 326
+UPSAMPLED SIZE: 326
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/cs-hsb/WMT-CCMatrix-Overlap/train/train.ce']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/cs-hsb/WMT-CCMatrix-Overlap/train/train.hsb']
+MultilingualDataset TOTAL PAIRS: 326
+data_csv /home/hatch5o6/Cognate/code/NMT/data/djk-en/train.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/djk-en/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/train/cleaned/cleaned/src.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/train/cleaned/cleaned/tgt.txt
+Making unique: ('djk', 'en')
+	Before unique: 9942
+	After unique: 9942
+DATA MAX_SIZE = 9942
+RAW DATA SIZE: 9942
+UPSAMPLED SIZE: 9942
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/train/cleaned/cleaned/src.txt']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/train/cleaned/cleaned/tgt.txt']
+MultilingualDataset TOTAL PAIRS: 9942
+data_csv /home/hatch5o6/Cognate/code/NMT/data/djk-en_dev_test/val.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/djk-en_dev_test/val.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/val.djk-eng.djk
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/val.djk-eng.eng
+Making unique: ('djk', 'en')
+	Before unique: 585
+	After unique: 585
+DATA MAX_SIZE = 585
+RAW DATA SIZE: 585
+UPSAMPLED SIZE: 585
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/val.djk-eng.djk']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/val.djk-eng.eng']
+MultilingualDataset TOTAL PAIRS: 585
+data_csv /home/hatch5o6/Cognate/code/NMT/data/djk-en_dev_test/test.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/djk-en_dev_test/test.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/test.djk-eng.djk
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/test.djk-eng.eng
+Making unique: ('djk', 'en')
+	Before unique: 1180
+	After unique: 1180
+DATA MAX_SIZE = 1180
+RAW DATA SIZE: 1180
+UPSAMPLED SIZE: 1180
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/test.djk-eng.djk']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/djk-eng/test.djk-eng.eng']
+MultilingualDataset TOTAL PAIRS: 1180
+data_csv /home/hatch5o6/Cognate/code/NMT/data/es-an/train.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/es-an/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/es-an/OpenSubtitles/cleaned/tgt.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/es-an/OpenSubtitles/cleaned/src.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/es-an/WikiMatrix/cleaned/tgt.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/es-an/WikiMatrix/cleaned/src.txt
+Making unique: ('es', 'an')
+	Before unique: 28594
+	After unique: 28594
+DATA MAX_SIZE = 28594
+RAW DATA SIZE: 28594
+UPSAMPLED SIZE: 28594
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/OpenSubtitles/cleaned/tgt.txt', '/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/WikiMatrix/cleaned/tgt.txt']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/OpenSubtitles/cleaned/src.txt', '/home/hatch5o6/nobackup/archive/data/LRRomance/es-an/WikiMatrix/cleaned/src.txt']
+MultilingualDataset TOTAL PAIRS: 28594
+data_csv /home/hatch5o6/Cognate/code/NMT/data/es-an_dev_test/val.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/es-an_dev_test/val.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/spa_Latn.dev
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn
+Making unique: ('es', 'an')
+	Before unique: 997
+	After unique: 997
+DATA MAX_SIZE = 997
+RAW DATA SIZE: 997
+UPSAMPLED SIZE: 997
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/spa_Latn.dev']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn']
+MultilingualDataset TOTAL PAIRS: 997
+data_csv /home/hatch5o6/Cognate/code/NMT/data/es-an_dev_test/test.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/es-an_dev_test/test.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/spa_Latn.devtest
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/devtest/devtest.arg_Latn
+Making unique: ('es', 'an')
+	Before unique: 1012
+	After unique: 1012
+DATA MAX_SIZE = 1012
+RAW DATA SIZE: 1012
+UPSAMPLED SIZE: 1012
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/spa_Latn.devtest']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/devtest/devtest.arg_Latn']
+MultilingualDataset TOTAL PAIRS: 1012
+data_csv /home/hatch5o6/Cognate/code/NMT/data/ewe-fon/train.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/ewe-fon/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/src.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/tgt.txt
+Making unique: ('ewe', 'fon')
+	Before unique: 72424
+	After unique: 72424
+DATA MAX_SIZE = 72424
+RAW DATA SIZE: 72424
+UPSAMPLED SIZE: 72424
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/src.txt']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/tgt.txt']
+MultilingualDataset TOTAL PAIRS: 72424
+data_csv /home/hatch5o6/Cognate/code/NMT/data/ewe-fon_dev_test/val.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/ewe-fon_dev_test/val.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev
+Making unique: ('ewe', 'fon')
+	Before unique: 997
+	After unique: 997
+DATA MAX_SIZE = 997
+RAW DATA SIZE: 997
+UPSAMPLED SIZE: 997
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev']
+MultilingualDataset TOTAL PAIRS: 997
+data_csv /home/hatch5o6/Cognate/code/NMT/data/ewe-fon_dev_test/test.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/ewe-fon_dev_test/test.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest
+Making unique: ('ewe', 'fon')
+	Before unique: 1012
+	After unique: 1012
+DATA MAX_SIZE = 1012
+RAW DATA SIZE: 1012
+UPSAMPLED SIZE: 1012
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest']
+MultilingualDataset TOTAL PAIRS: 1012
+data_csv /home/hatch5o6/Cognate/code/NMT/data/fon-ewe/train.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/fon-ewe/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/tgt.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/src.txt
+Making unique: ('fon', 'ewe')
+	Before unique: 72424
+	After unique: 72424
+DATA MAX_SIZE = 72424
+RAW DATA SIZE: 72424
+UPSAMPLED SIZE: 72424
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/tgt.txt']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/ee_fon/cleaned/src.txt']
+MultilingualDataset TOTAL PAIRS: 72424
+data_csv /home/hatch5o6/Cognate/code/NMT/data/fon-ewe_dev_test/val.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/fon-ewe_dev_test/val.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev
+Making unique: ('fon', 'ewe')
+	Before unique: 997
+	After unique: 997
+DATA MAX_SIZE = 997
+RAW DATA SIZE: 997
+UPSAMPLED SIZE: 997
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/fon_Latn.dev']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ewe_Latn.dev']
+MultilingualDataset TOTAL PAIRS: 997
+data_csv /home/hatch5o6/Cognate/code/NMT/data/fon-ewe_dev_test/test.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/fon-ewe_dev_test/test.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest
+Making unique: ('fon', 'ewe')
+	Before unique: 1012
+	After unique: 1012
+DATA MAX_SIZE = 1012
+RAW DATA SIZE: 1012
+UPSAMPLED SIZE: 1012
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/fon_Latn.devtest']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ewe_Latn.devtest']
+MultilingualDataset TOTAL PAIRS: 1012
+data_csv /home/hatch5o6/Cognate/code/NMT/data/fr-mfe/train.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/fr-mfe/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/train.mfe-fra.fra
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/train.mfe-fra.mfe
+Making unique: ('fr', 'mfe')
+	Before unique: 13327
+	After unique: 13327
+DATA MAX_SIZE = 13327
+RAW DATA SIZE: 13327
+UPSAMPLED SIZE: 13327
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/train.mfe-fra.fra']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/train.mfe-fra.mfe']
+MultilingualDataset TOTAL PAIRS: 13327
+data_csv /home/hatch5o6/Cognate/code/NMT/data/fr-mfe_dev_test/val.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/fr-mfe_dev_test/val.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/val.mfe-fra.fra
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/val.mfe-fra.mfe
+Making unique: ('fr', 'mfe')
+	Before unique: 148
+	After unique: 148
+DATA MAX_SIZE = 148
+RAW DATA SIZE: 148
+UPSAMPLED SIZE: 148
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/val.mfe-fra.fra']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/val.mfe-fra.mfe']
+MultilingualDataset TOTAL PAIRS: 148
+data_csv /home/hatch5o6/Cognate/code/NMT/data/fr-mfe_dev_test/test.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/fr-mfe_dev_test/test.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/test.mfe-fra.fra
+Reading all lines from /home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/test.mfe-fra.mfe
+Making unique: ('fr', 'mfe')
+	Before unique: 312
+	After unique: 312
+DATA MAX_SIZE = 312
+RAW DATA SIZE: 312
+UPSAMPLED SIZE: 312
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/test.mfe-fra.fra']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/test.mfe-fra.mfe']
+MultilingualDataset TOTAL PAIRS: 312
+data_csv /home/hatch5o6/Cognate/code/NMT/data/hi-bho/train.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/hi-bho/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/tgt.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/src.txt
+Making unique: ('hi', 'bho')
+	Before unique: 345722
+	After unique: 345722
+DATA MAX_SIZE = 345722
+RAW DATA SIZE: 345722
+UPSAMPLED SIZE: 345722
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/tgt.txt']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/src.txt']
+MultilingualDataset TOTAL PAIRS: 345722
+data_csv /home/hatch5o6/Cognate/code/NMT/data/hi-bho_dev_test/val.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/hi-bho_dev_test/val.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev
+Making unique: ('hi', 'bho')
+	Before unique: 997
+	After unique: 997
+DATA MAX_SIZE = 997
+RAW DATA SIZE: 997
+UPSAMPLED SIZE: 997
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/hin_Deva.dev']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bho_Deva.dev']
+MultilingualDataset TOTAL PAIRS: 997
+data_csv /home/hatch5o6/Cognate/code/NMT/data/hi-bho_dev_test/test.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/hi-bho_dev_test/test.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest
+Making unique: ('hi', 'bho')
+	Before unique: 1012
+	After unique: 1012
+DATA MAX_SIZE = 1012
+RAW DATA SIZE: 1012
+UPSAMPLED SIZE: 1012
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bho_Deva.devtest']
+MultilingualDataset TOTAL PAIRS: 1012
+data_csv /home/hatch5o6/Cognate/code/NMT/data/lua-bem/train.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/lua-bem/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/lua_bem/cleaned/tgt.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/NLLB/lua_bem/cleaned/src.txt
+Making unique: ('lua', 'bem')
+	Before unique: 115432
+	After unique: 115432
+DATA MAX_SIZE = 115432
+RAW DATA SIZE: 115432
+UPSAMPLED SIZE: 115432
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/lua_bem/cleaned/tgt.txt']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/NLLB/lua_bem/cleaned/src.txt']
+MultilingualDataset TOTAL PAIRS: 115432
+data_csv /home/hatch5o6/Cognate/code/NMT/data/lua-bem_dev_test/val.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/lua-bem_dev_test/val.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/lua_Latn.dev
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bem_Latn.dev
+Making unique: ('lua', 'bem')
+	Before unique: 997
+	After unique: 997
+DATA MAX_SIZE = 997
+RAW DATA SIZE: 997
+UPSAMPLED SIZE: 997
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/lua_Latn.dev']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/bem_Latn.dev']
+MultilingualDataset TOTAL PAIRS: 997
+data_csv /home/hatch5o6/Cognate/code/NMT/data/lua-bem_dev_test/test.csv
+random seed: 525
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/lua-bem_dev_test/test.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/lua_Latn.devtest
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bem_Latn.devtest
+Making unique: ('lua', 'bem')
+	Before unique: 1012
+	After unique: 1012
+DATA MAX_SIZE = 1012
+RAW DATA SIZE: 1012
+UPSAMPLED SIZE: 1012
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/lua_Latn.devtest']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/bem_Latn.devtest']
+MultilingualDataset TOTAL PAIRS: 1012

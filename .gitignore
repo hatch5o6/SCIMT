@@ -1,0 +1,15 @@
+**__pycache__/
+**slurm_outputs/
+**OLD_slurm_outputs/
+CopperMT/CopperMT/
+NMT/flores_token.txt
+NMT/OLD_sbatch
+Pipeline/sbatch/hyper_param_search/
+Pipeline/sbatch/hyper_param_search_NG-False/
+Pipeline/rnn_hyperparams/
+Pipeline/parameters/
+Pipeline/parameters_NG-False/
+Pipeline/hyperparam_search_results/
+Pipeline/hyperparam_search_results_NG-False/
+Pipeline/cfg/SC-HYPERPARAM_SEARCH_NG-False
+Pipeline/cfg/SC-HYPERPARAM_SEARCH

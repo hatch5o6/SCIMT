@@ -1,0 +1,6 @@
+LANG: es-an
+checking that 0.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/0.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/es_an_RNN-0_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_es-an.txt
+asserting rnn_params == results_rnn_params
+	passed :)

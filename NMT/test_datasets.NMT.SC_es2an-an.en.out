@@ -1,0 +1,298 @@
+##############################
+###### test_datasets.py ######
+##############################
+Arguments:-
+	--config = 'configs/an_en/NMT.SC_es2an-an.en.yaml'
+definitive_test()
+GETTING DATALOADERS
+
+
+Getting train and val dataloaders
+
+GETTING DATALOADER FOR SECTION train
+random seed: 525
+MultilingualDataset READING CSV data/NMT.SC_es2an-an.en/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/tgt.100k.SC_es2an.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/src.100k.txt
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/en-an/Combined/train/train.an
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/en-an/Combined/train/train.en
+DATA MAX_SIZE = 100000
+RAW DATA SIZE: 120089
+UPSAMPLED SIZE: 120089
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/tgt.100k.SC_es2an.txt', '/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/Combined/train/train.an']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/src.100k.txt', '/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/Combined/train/train.en']
+MultilingualDataset TOTAL PAIRS: 120089
+train Dataloader, shuffle=True
+
+GETTING DATALOADER FOR SECTION val
+random seed: 525
+MultilingualDataset READING CSV data/an-en_dev_test/val.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev
+DATA MAX_SIZE = 997
+RAW DATA SIZE: 997
+UPSAMPLED SIZE: 997
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev']
+MultilingualDataset TOTAL PAIRS: 997
+val Dataloader, shuffle=False
+
+
+TESTING TRAINING
+SRC paths: ['/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/tgt.100k.SC_es2an.txt', '/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/Combined/train/train.an']
+TGT paths: ['/home/hatch5o6/nobackup/archive/data/LRRomance/es-en/CCMatrix/fixed/cleaned/src.100k.txt', '/home/hatch5o6/nobackup/archive/data/LRRomance/en-an/Combined/train/train.en']
+asserting data from files is not the same as data from dataloaders
+however, asserting that the data from files are the same lengths as data from dataloaders
+---------------- 0 ------------------
+SRC___________: `Tenía un bocadillo en la mano y pensoron que era un arma.`
+TGT___________: `'He had a sandwich in his hand, and they thought it was a gun.`
+DATALOADER SRC: `1 (Los calculos pasaus eran más altos debiu a errors en el diagnostico.)`
+DATALOADER TGT: `1 (Past estimates were higher due to errors in diagnosis.)`
+---------------- 1 ------------------
+SRC___________: `Yo te daré una muerte total, y nunca volverás a nacer.`
+TGT___________: `I will give you a total death, and you will never be born again.`
+DATALOADER SRC: `Así que Dios estaba ballo obligación de visitar-lo.`
+DATALOADER TGT: `So, God's under obligation to visit him.`
+---------------- 2 ------------------
+SRC___________: `Esto significa que solo es observable en el crepusculo, cuando el cielo no es del todo oscuro .`
+TGT___________: `This means that it is only observable in twilight when the sky is not fully dark.`
+DATALOADER SRC: `"Estaremos entre 50 y 60 familias espanyolas en esta situación y eso como minimo".`
+DATALOADER TGT: `"We will be between 50 and 60 Spanish families in this situation and that at least."`
+---------------- 3 ------------------
+SRC___________: `Dicen que tiene un hixo y una esposa, mas Yl les da salud y provisión.`
+TGT___________: `They claim that He has a child and a wife, yet He gives them health and provision.`
+DATALOADER SRC: `El Clement, el Misericordioso,`
+DATALOADER TGT: `The Gracious, the Merciful,`
+---------------- 4 ------------------
+SRC___________: `Yl odia la Palabra santa y sagrada de Dios.`
+TGT___________: `He HATES God's holy, sacred Word.`
+DATALOADER SRC: `No estió manimenos dica 1980, quan o frisón se convirtió en asignatura obligatoria en as escuelas primarias y dica 1993 quan tenió iste mesmo estatus en a educación segundaria.`
+DATALOADER TGT: `It was not until 1980, however, that West Frisian had the status of a required subject in primary schools, and not until 1993 that it was given the same position in secondary education.`
+---------------- 5 ------------------
+SRC___________: `Recen por la conversión de los corazons de todos los liders.`
+TGT___________: `Pray for the conversion of the hearts of all leaders.`
+DATALOADER SRC: `En esta guerra, lo sabemos, los libros son armas.`
+DATALOADER TGT: `In this war, we know, books are weapons.'`
+---------------- 6 ------------------
+SRC___________: `Antes de que su suplica hubiese terminau, la ayuda de Allah ya estaba en camino.`
+TGT___________: `Before his supplication was finished, the help from Allah was on its way.`
+DATALOADER SRC: `Yl o ella debe estar bien informau sobre recetas de bebidas.`
+DATALOADER TGT: `He or she should be knowledgeable on drinks recipes.`
+---------------- 7 ------------------
+SRC___________: `Cuando consideramos el poder de la palabra de Dios, a menudo es útil pensar primero sobre como su palabra tiene poder sobre la creyación.`
+TGT___________: `When we consider the power of God's word, it is often helpful to think first about how his word is powerful over the creation.`
+DATALOADER SRC: `En Alemania, también estaban traballando en estas armas, como, por supuesto, en Rusia.`
+DATALOADER TGT: `In Germany, they were also working on these weapons, as, of course, in Russia.`
+---------------- 8 ------------------
+SRC___________: `Más bien, sus semillas se multiplicoron ballo cada estrella.`
+TGT___________: `Rather, its seeds multiplied under each star.`
+DATALOADER SRC: `El unico deseu de Dios es que el hombre escuche y obedezca`
+DATALOADER TGT: `God's Only Wish Is for Man to Listen and Obey`
+---------------- 9 ------------------
+SRC___________: `Sería una blasfemia creyer que lo que presenciamos es el fin de la creyación de Dios.`
+TGT___________: `It would be blasphemous to believe that what we witness is the end of God's creation.`
+DATALOADER SRC: `No, pero la adoración a Alá y ser de los agradecius.`
+DATALOADER TGT: `Rather, worship God, and be of the appreciative.`
+
+(pairs)
+---------------- 0 ------------------
+PAIR___________: ('Tenía un bocadillo en la mano y pensoron que era un arma.', "'He had a sandwich in his hand, and they thought it was a gun.")
+DATALOADER PAIR: ('1 (Los calculos pasaus eran más altos debiu a errors en el diagnostico.)', '1 (Past estimates were higher due to errors in diagnosis.)')
+---------------- 1 ------------------
+PAIR___________: ('Yo te daré una muerte total, y nunca volverás a nacer.', 'I will give you a total death, and you will never be born again.')
+DATALOADER PAIR: ('Así que Dios estaba ballo obligación de visitar-lo.', "So, God's under obligation to visit him.")
+---------------- 2 ------------------
+PAIR___________: ('Esto significa que solo es observable en el crepusculo, cuando el cielo no es del todo oscuro .', 'This means that it is only observable in twilight when the sky is not fully dark.')
+DATALOADER PAIR: ('"Estaremos entre 50 y 60 familias espanyolas en esta situación y eso como minimo".', '"We will be between 50 and 60 Spanish families in this situation and that at least."')
+---------------- 3 ------------------
+PAIR___________: ('Dicen que tiene un hixo y una esposa, mas Yl les da salud y provisión.', 'They claim that He has a child and a wife, yet He gives them health and provision.')
+DATALOADER PAIR: ('El Clement, el Misericordioso,', 'The Gracious, the Merciful,')
+---------------- 4 ------------------
+PAIR___________: ('Yl odia la Palabra santa y sagrada de Dios.', "He HATES God's holy, sacred Word.")
+DATALOADER PAIR: ('No estió manimenos dica 1980, quan o frisón se convirtió en asignatura obligatoria en as escuelas primarias y dica 1993 quan tenió iste mesmo estatus en a educación segundaria.', 'It was not until 1980, however, that West Frisian had the status of a required subject in primary schools, and not until 1993 that it was given the same position in secondary education.')
+---------------- 5 ------------------
+PAIR___________: ('Recen por la conversión de los corazons de todos los liders.', 'Pray for the conversion of the hearts of all leaders.')
+DATALOADER PAIR: ('En esta guerra, lo sabemos, los libros son armas.', "In this war, we know, books are weapons.'")
+---------------- 6 ------------------
+PAIR___________: ('Antes de que su suplica hubiese terminau, la ayuda de Allah ya estaba en camino.', 'Before his supplication was finished, the help from Allah was on its way.')
+DATALOADER PAIR: ('Yl o ella debe estar bien informau sobre recetas de bebidas.', 'He or she should be knowledgeable on drinks recipes.')
+---------------- 7 ------------------
+PAIR___________: ('Cuando consideramos el poder de la palabra de Dios, a menudo es útil pensar primero sobre como su palabra tiene poder sobre la creyación.', "When we consider the power of God's word, it is often helpful to think first about how his word is powerful over the creation.")
+DATALOADER PAIR: ('En Alemania, también estaban traballando en estas armas, como, por supuesto, en Rusia.', 'In Germany, they were also working on these weapons, as, of course, in Russia.')
+---------------- 8 ------------------
+PAIR___________: ('Más bien, sus semillas se multiplicoron ballo cada estrella.', 'Rather, its seeds multiplied under each star.')
+DATALOADER PAIR: ('El unico deseu de Dios es que el hombre escuche y obedezca', "God's Only Wish Is for Man to Listen and Obey")
+---------------- 9 ------------------
+PAIR___________: ('Sería una blasfemia creyer que lo que presenciamos es el fin de la creyación de Dios.', "It would be blasphemous to believe that what we witness is the end of God's creation.")
+DATALOADER PAIR: ('No, pero la adoración a Alá y ser de los agradecius.', 'Rather, worship God, and be of the appreciative.')
+asserting pairs != dataloader_pairs
+assert len(pairs) == len(dataloader_pairs)
+asserting sorted pairs == sorted dataloader pairs
+
+(sorted pairs)
+---------------- 0 ------------------
+PAIR___________: ('" "Cuento con la orientación de Dios.', "I am waiting for God's guidance.")
+DATALOADER PAIR: ('" "Cuento con la orientación de Dios.', "I am waiting for God's guidance.")
+---------------- 1 ------------------
+PAIR___________: ('" Algunos de los mellors regalos de Dios son las plegarias sin respuesta. "', '"Some of God\'s Greatest Gifts are Unanswered Prayers."')
+DATALOADER PAIR: ('" Algunos de los mellors regalos de Dios son las plegarias sin respuesta. "', '"Some of God\'s Greatest Gifts are Unanswered Prayers."')
+---------------- 2 ------------------
+PAIR___________: ('" Anteriorment, he oído de historias similars en Meratoni pero"', '" Previously, I\'ve heard of similar stories in Meratoni but "')
+DATALOADER PAIR: ('" Anteriorment, he oído de historias similars en Meratoni pero"', '" Previously, I\'ve heard of similar stories in Meratoni but "')
+---------------- 3 ------------------
+PAIR___________: ('" Así como la verdat se produce por la medida, así la medida se produce por la verdat. "', '(But) the truth is the truth, and the truth will come out.')
+DATALOADER PAIR: ('" Así como la verdat se produce por la medida, así la medida se produce por la verdat. "', '(But) the truth is the truth, and the truth will come out.')
+---------------- 4 ------------------
+PAIR___________: ('" Charles Thomas nos hizo ahorrar mucho dinero! "', 'Charles Thomas saved us so much money!')
+DATALOADER PAIR: ('" Charles Thomas nos hizo ahorrar mucho dinero! "', 'Charles Thomas saved us so much money!')
+---------------- 5 ------------------
+PAIR___________: ('" Croacia informará a la Comisión ants del 1 de chulio de 2013 de su autoridat competent.".', "'Croatia shall inform the Commission by 1 July 2013 of its competent authority.'.")
+DATALOADER PAIR: ('" Croacia informará a la Comisión ants del 1 de chulio de 2013 de su autoridat competent.".', "'Croatia shall inform the Commission by 1 July 2013 of its competent authority.'.")
+---------------- 6 ------------------
+PAIR___________: ('" Cuando le preguntoron sobre el nuevo presupuesto del President Carter esta semana, sus respuestas eran vagas y contradictorias ".', "When he was asked about President Carter's new budget this week, his replies were vague and contradictory.")
+DATALOADER PAIR: ('" Cuando le preguntoron sobre el nuevo presupuesto del President Carter esta semana, sus respuestas eran vagas y contradictorias ".', "When he was asked about President Carter's new budget this week, his replies were vague and contradictory.")
+---------------- 7 ------------------
+PAIR___________: ('" Dadle a Dios lo que es de Dios "', '"Give to God what is God\'s."')
+DATALOADER PAIR: ('" Dadle a Dios lo que es de Dios "', '"Give to God what is God\'s."')
+---------------- 8 ------------------
+PAIR___________: ('" Desatando la verdat de Dios un versiculo a la vez" es una marca de Grace to You.', '"Unleashing God\'s Truth, One Verse at a Time" is a registered trademark of Grace to You.')
+DATALOADER PAIR: ('" Desatando la verdat de Dios un versiculo a la vez" es una marca de Grace to You.', '"Unleashing God\'s Truth, One Verse at a Time" is a registered trademark of Grace to You.')
+---------------- 9 ------------------
+PAIR___________: ('" Después de Sudafrica nos dichoron que no podían proveer a dos equipos."', '"After South Africa we were told that it couldn\'t supply two teams."')
+DATALOADER PAIR: ('" Después de Sudafrica nos dichoron que no podían proveer a dos equipos."', '"After South Africa we were told that it couldn\'t supply two teams."')
+PASSED TEST!
+
+
+TESTING VALIDATION
+asserting src_paths[] and tgt_paths[] paths are length 1
+SRC paths: ['/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/dev/dev.arg_Latn']
+TGT paths: ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/eng_Latn.dev']
+asserting data straight from files is the same as data from dataloader
+---------------- 0 ------------------
+SRC___________: `Lo luns, los cientificos d'a facultat de medicina d'a Universidat de Stanford anuncioron l'invento d'una nueva ferramienta de diagnostico que puede catalogar las celulas seguntes lo suyo tipo: un chip chicotet que se puede imprentar y fabricar con impresoras d'inchección d'uso corrient, per un posible coste de, aproximadament, un centimo de dólar cadaún.`
+TGT___________: `On Monday, scientists from the Stanford University School of Medicine announced the invention of a new diagnostic tool that can sort cells by type: a tiny printable chip that can be manufactured using standard inkjet printers for possibly about one U.S. cent each.`
+DATALOADER SRC: `Lo luns, los cientificos d'a facultat de medicina d'a Universidat de Stanford anuncioron l'invento d'una nueva ferramienta de diagnostico que puede catalogar las celulas seguntes lo suyo tipo: un chip chicotet que se puede imprentar y fabricar con impresoras d'inchección d'uso corrient, per un posible coste de, aproximadament, un centimo de dólar cadaún.`
+DATALOADER TGT: `On Monday, scientists from the Stanford University School of Medicine announced the invention of a new diagnostic tool that can sort cells by type: a tiny printable chip that can be manufactured using standard inkjet printers for possibly about one U.S. cent each.`
+---------------- 1 ------------------
+SRC___________: `Los investigadors principals mas destacaus creyen que esto puede permitir la detección precoz d'o cáncer, la tuberculosi, lo VIH y la malaria en pacients de países con baixos recursos, an que la taxa de supervivencia de malotías como lo cáncer de mama puede estar la metat que la d'os países mas abanzaus.`
+TGT___________: `Lead researchers say this may bring early detection of cancer, tuberculosis, HIV and malaria to patients in low-income countries, where the survival rates for illnesses such as breast cancer can be half those of richer countries.`
+DATALOADER SRC: `Los investigadors principals mas destacaus creyen que esto puede permitir la detección precoz d'o cáncer, la tuberculosi, lo VIH y la malaria en pacients de países con baixos recursos, an que la taxa de supervivencia de malotías como lo cáncer de mama puede estar la metat que la d'os países mas abanzaus.`
+DATALOADER TGT: `Lead researchers say this may bring early detection of cancer, tuberculosis, HIV and malaria to patients in low-income countries, where the survival rates for illnesses such as breast cancer can be half those of richer countries.`
+---------------- 2 ------------------
+SRC___________: `Lo JAS 39C Gripen impactó cuentra una pista alredol d'as 9:30 d'o maitín hora local (0230 UTC) y esclató, lo cual fació que se zarrase l'aeropuerto pa vuelos comercials.`
+TGT___________: `The JAS 39C Gripen crashed onto a runway at around 9:30 am local time (0230 UTC) and exploded, closing the airport to commercial flights.`
+DATALOADER SRC: `Lo JAS 39C Gripen impactó cuentra una pista alredol d'as 9:30 d'o maitín hora local (0230 UTC) y esclató, lo cual fació que se zarrase l'aeropuerto pa vuelos comercials.`
+DATALOADER TGT: `The JAS 39C Gripen crashed onto a runway at around 9:30 am local time (0230 UTC) and exploded, closing the airport to commercial flights.`
+---------------- 3 ------------------
+SRC___________: `S'identificó a lo piloto como Dilokrit Pattavee, líder d'escuadrón.`
+TGT___________: `The pilot was identified as Squadron Leader Dilokrit Pattavee.`
+DATALOADER SRC: `S'identificó a lo piloto como Dilokrit Pattavee, líder d'escuadrón.`
+DATALOADER TGT: `The pilot was identified as Squadron Leader Dilokrit Pattavee.`
+---------------- 4 ------------------
+SRC___________: `La prensa local informó que una patrulla de pompers de l'aeropuerto vulcó mientres prestaba servicio.`
+TGT___________: `Local media reports an airport fire vehicle rolled over while responding.`
+DATALOADER SRC: `La prensa local informó que una patrulla de pompers de l'aeropuerto vulcó mientres prestaba servicio.`
+DATALOADER TGT: `Local media reports an airport fire vehicle rolled over while responding.`
+---------------- 5 ------------------
+SRC___________: `Vidal, de 28 anyos d'edat y procedent d'o Sevilla, s'unió a lo Barça fa tres temporadas.`
+TGT___________: `28-year-old Vidal had joined Barça three seasons ago, from Sevilla.`
+DATALOADER SRC: `Vidal, de 28 anyos d'edat y procedent d'o Sevilla, s'unió a lo Barça fa tres temporadas.`
+DATALOADER TGT: `28-year-old Vidal had joined Barça three seasons ago, from Sevilla.`
+---------------- 6 ------------------
+SRC___________: `Dende la suya casamuda ta la capital catalana, Vidal chugó 49 partius pa lo club.`
+TGT___________: `Since moving to the Catalan-capital, Vidal had played 49 games for the club.`
+DATALOADER SRC: `Dende la suya casamuda ta la capital catalana, Vidal chugó 49 partius pa lo club.`
+DATALOADER TGT: `Since moving to the Catalan-capital, Vidal had played 49 games for the club.`
+---------------- 7 ------------------
+SRC___________: `La manifestación encomenzó alredol d'as 11:00 hora local (UTC +1) en Whitehall, enfrent d'a puerta d'acceso a Downing Street, residencia oficial d'o primer ministro, la cual contaba con vichilancia policial.`
+TGT___________: `The protest started around 11:00 local time (UTC+1) on Whitehall opposite the police-guarded entrance to Downing Street, the Prime Minister's official residence.`
+DATALOADER SRC: `La manifestación encomenzó alredol d'as 11:00 hora local (UTC +1) en Whitehall, enfrent d'a puerta d'acceso a Downing Street, residencia oficial d'o primer ministro, la cual contaba con vichilancia policial.`
+DATALOADER TGT: `The protest started around 11:00 local time (UTC+1) on Whitehall opposite the police-guarded entrance to Downing Street, the Prime Minister's official residence.`
+---------------- 8 ------------------
+SRC___________: `Chusto dimpués d'as 11:00 h, los integrants d'a manifestación blocoron la circulación d'o carril de Whitehall que va enta lo norte.`
+TGT___________: `Just after 11:00, protesters blocked traffic on the northbound carriage in Whitehall.`
+DATALOADER SRC: `Chusto dimpués d'as 11:00 h, los integrants d'a manifestación blocoron la circulación d'o carril de Whitehall que va enta lo norte.`
+DATALOADER TGT: `Just after 11:00, protesters blocked traffic on the northbound carriage in Whitehall.`
+---------------- 9 ------------------
+SRC___________: `A las 11:20, la policía solicitó a los manifestants que reculasen ta la facera, indicando que caleba equilibrar lo dreito a manifestar-se con l'acumulación de transito.`
+TGT___________: `At 11:20, the police asked the protesters to move back on to the pavement, stating that they needed to balance the right to protest with the traffic building up.`
+DATALOADER SRC: `A las 11:20, la policía solicitó a los manifestants que reculasen ta la facera, indicando que caleba equilibrar lo dreito a manifestar-se con l'acumulación de transito.`
+DATALOADER TGT: `At 11:20, the police asked the protesters to move back on to the pavement, stating that they needed to balance the right to protest with the traffic building up.`
+PASSED TEST!
+
+
+Getting Test dataloader
+
+GETTING DATALOADER FOR SECTION test
+random seed: 525
+MultilingualDataset READING CSV data/an-en_dev_test/test.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/devtest/devtest.arg_Latn
+Reading all lines from /home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest
+DATA MAX_SIZE = 1012
+RAW DATA SIZE: 1012
+UPSAMPLED SIZE: 1012
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/devtest/devtest.arg_Latn']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest']
+MultilingualDataset TOTAL PAIRS: 1012
+test Dataloader, shuffle=False
+
+
+TESTING TEST
+asserting src_paths[] and tgt_paths[] paths are length 1
+SRC paths: ['/home/hatch5o6/nobackup/archive/data/LRRomance/PILAR/FLORES+/devtest/devtest.arg_Latn']
+TGT paths: ['/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/eng_Latn.devtest']
+asserting data straight from files is the same as data from dataloader
+---------------- 0 ------------------
+SRC___________: `«Agora tenemos ratos de cuatre meses d'edat que gosaban estar diabeticos y que ya no'n son», anyadió.`
+TGT___________: `"We now have 4-month-old mice that are non-diabetic that used to be diabetic," he added.`
+DATALOADER SRC: `«Agora tenemos ratos de cuatre meses d'edat que gosaban estar diabeticos y que ya no'n son», anyadió.`
+DATALOADER TGT: `"We now have 4-month-old mice that are non-diabetic that used to be diabetic," he added.`
+---------------- 1 ------------------
+SRC___________: `La investigación encara se troba en a suya etapa inicial, seguntes ha advertiu lo Dr. Ehud Ur, docent en o grau de medicina d'a Universidat de Dalhousie, en Halifax, Nueva Escocia, y director d'a división clinica y cientifica de l'Asociación Canadiense de Diabetis.`
+TGT___________: `Dr. Ehud Ur, professor of medicine at Dalhousie University in Halifax, Nova Scotia and chair of the clinical and scientific division of the Canadian Diabetes Association cautioned that the research is still in its early days.`
+DATALOADER SRC: `La investigación encara se troba en a suya etapa inicial, seguntes ha advertiu lo Dr. Ehud Ur, docent en o grau de medicina d'a Universidat de Dalhousie, en Halifax, Nueva Escocia, y director d'a división clinica y cientifica de l'Asociación Canadiense de Diabetis.`
+DATALOADER TGT: `Dr. Ehud Ur, professor of medicine at Dalhousie University in Halifax, Nova Scotia and chair of the clinical and scientific division of the Canadian Diabetes Association cautioned that the research is still in its early days.`
+---------------- 2 ------------------
+SRC___________: `Igual como atros especialistas, ye esceptico sobre si la diabetis tiene cura y sinyala que estes descubrimientos no son relevants pa personas que ya tienen diabetis de tipo 1.`
+TGT___________: `Like some other experts, he is skeptical about whether diabetes can be cured, noting that these findings have no relevance to people who already have Type 1 diabetes.`
+DATALOADER SRC: `Igual como atros especialistas, ye esceptico sobre si la diabetis tiene cura y sinyala que estes descubrimientos no son relevants pa personas que ya tienen diabetis de tipo 1.`
+DATALOADER TGT: `Like some other experts, he is skeptical about whether diabetes can be cured, noting that these findings have no relevance to people who already have Type 1 diabetes.`
+---------------- 3 ------------------
+SRC___________: `Lo luns, Sara Danius, secretaria permanent d'o Comité d'o Nobel de Literatura de l'Academia Sueca, anunció publicament en Suecia, en un programa radiofonico de Sveriges Radio, que lo comité, en no poder contactar dreitament con Bob Dylan pa comunicar-le lo premio en Literatura 2016, heba abandonau los suyos esfuerzos per comunicar-se con él.`
+TGT___________: `On Monday, Sara Danius, permanent secretary of the Nobel Committee for Literature at the Swedish Academy, publicly announced during a radio program on Sveriges Radio in Sweden the committee, unable to reach Bob Dylan directly about winning the 2016 Nobel Prize in Literature, had abandoned its efforts to reach him.`
+DATALOADER SRC: `Lo luns, Sara Danius, secretaria permanent d'o Comité d'o Nobel de Literatura de l'Academia Sueca, anunció publicament en Suecia, en un programa radiofonico de Sveriges Radio, que lo comité, en no poder contactar dreitament con Bob Dylan pa comunicar-le lo premio en Literatura 2016, heba abandonau los suyos esfuerzos per comunicar-se con él.`
+DATALOADER TGT: `On Monday, Sara Danius, permanent secretary of the Nobel Committee for Literature at the Swedish Academy, publicly announced during a radio program on Sveriges Radio in Sweden the committee, unable to reach Bob Dylan directly about winning the 2016 Nobel Prize in Literature, had abandoned its efforts to reach him.`
+---------------- 4 ------------------
+SRC___________: `Danius declaró: «Agora mesmo no somos fendo cosa. He gritau y ninviau correus electronicos a lo suyo asistent mas cercano y he recibiu contestacions muito amables. Per agora, ixo ye prou».`
+TGT___________: `Danius said, "Right now we are doing nothing. I have called and sent emails to his closest collaborator and received very friendly replies. For now, that is certainly enough."`
+DATALOADER SRC: `Danius declaró: «Agora mesmo no somos fendo cosa. He gritau y ninviau correus electronicos a lo suyo asistent mas cercano y he recibiu contestacions muito amables. Per agora, ixo ye prou».`
+DATALOADER TGT: `Danius said, "Right now we are doing nothing. I have called and sent emails to his closest collaborator and received very friendly replies. For now, that is certainly enough."`
+---------------- 5 ------------------
+SRC___________: `Antes, lo director executivo de Ring, Jamie Siminoff, heba dito que la empresa s'heba iniciau cuan lo timbre suyo no se sentiba dende la suya botiga ta lo garache.`
+TGT___________: `Previously, Ring's CEO, Jamie Siminoff, remarked the company started when his doorbell wasn't audible from his shop in his garage.`
+DATALOADER SRC: `Antes, lo director executivo de Ring, Jamie Siminoff, heba dito que la empresa s'heba iniciau cuan lo timbre suyo no se sentiba dende la suya botiga ta lo garache.`
+DATALOADER TGT: `Previously, Ring's CEO, Jamie Siminoff, remarked the company started when his doorbell wasn't audible from his shop in his garage.`
+---------------- 6 ------------------
+SRC___________: `Dició que heba construyiu un timbre wifi.`
+TGT___________: `He built a WiFi door bell, he said.`
+DATALOADER SRC: `Dició que heba construyiu un timbre wifi.`
+DATALOADER TGT: `He built a WiFi door bell, he said.`
+---------------- 7 ------------------
+SRC___________: `Siminoff ha dito que las ventas se disparoron dimpués d'a suya aparición en un episodio de Shark Tank en 2013, an que la dirección d'o programa refusó financiar la empresa emerchent.`
+TGT___________: `Siminoff said sales boosted after his 2013 appearance in a Shark Tank episode where the show panel declined funding the startup.`
+DATALOADER SRC: `Siminoff ha dito que las ventas se disparoron dimpués d'a suya aparición en un episodio de Shark Tank en 2013, an que la dirección d'o programa refusó financiar la empresa emerchent.`
+DATALOADER TGT: `Siminoff said sales boosted after his 2013 appearance in a Shark Tank episode where the show panel declined funding the startup.`
+---------------- 8 ------------------
+SRC___________: `Ta zaguers de l'anyo 2017, Siminoff fació una aparición en a canal de televisión de crompas QVC.`
+TGT___________: `In late 2017, Siminoff appeared on shopping television channel QVC.`
+DATALOADER SRC: `Ta zaguers de l'anyo 2017, Siminoff fació una aparición en a canal de televisión de crompas QVC.`
+DATALOADER TGT: `In late 2017, Siminoff appeared on shopping television channel QVC.`
+---------------- 9 ------------------
+SRC___________: `Ring tamién alcanzó un acuerdo chudicial en o pleito con a empresa de seguranza d'a competencia, ADT Corporation.`
+TGT___________: `Ring also settled a lawsuit with competing security company, the ADT Corporation.`
+DATALOADER SRC: `Ring tamién alcanzó un acuerdo chudicial en o pleito con a empresa de seguranza d'a competencia, ADT Corporation.`
+DATALOADER TGT: `Ring also settled a lawsuit with competing security company, the ADT Corporation.`
+PASSED TEST!
+
+
+################## PASSED ALL TESTS ####################

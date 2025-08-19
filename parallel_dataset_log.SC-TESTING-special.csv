@@ -1,0 +1,3 @@
+cfg,lang_pair,train,val,test,date_of_count
+Pipeline/cfg/SC-TESTING/special/tho3-mas3.cfg,tho3-mas3,330,,,06/11/2025 14:19:44
+Pipeline/cfg/SC-TESTING/special/tho3-mas3.cfg,bren-dan,13327,,,06/11/2025 14:19:44

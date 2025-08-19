@@ -240,7 +240,7 @@ def test_model(config):
 
     src_tokenizer, tgt_tokenizer = get_spm_tokenizers(config)
 
-    if config["test_checkpoint"] in [None, "None"]:
+    if config["test_checkpoint"] in [None, "None", "null"]:
         assert os.path.exists(checkpoints_dir)
         print("No checkpoint provided for testing. Will choose.")
         config["test_checkpoint"] = choose_checkpoint(checkpoints_dir)

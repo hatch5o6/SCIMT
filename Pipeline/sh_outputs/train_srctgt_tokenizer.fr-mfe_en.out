@@ -1,0 +1,177 @@
+Starting-----------------------
+Mon Aug 11 12:57:42 PM MDT 2025
+-------------------------------
+Arguments:-
+    SPM_TRAIN_SIZE=500000
+
+    SRC_LANGS=fr,mfe
+    SRC_TOK_NAME=fr-mfe
+    TGT_LANGS=en
+    TGT_TOK_NAME=en
+
+    DIST=fr:25,mfe:25,en:50
+
+    TRAIN_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en/train.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en/train.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe/train.csv
+    VAL_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en_dev_test/val.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en_dev_test/val.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe_dev_test/val.csv
+    TEST_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en_dev_test/test.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en_dev_test/test.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe_dev_test/test.csv
+    TOK_TRAIN_DATA_DIR=/home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en
+    SC_MODEL_ID=null
+    VOCAB_SIZE=32000
+
+    SPLIT_ON_WS=true
+    INCLUDE_LANG_TOKS=true
+    INCLUDE_PAD_TOK=true
+    SPECIAL_TOKS=null
+-------------------------------
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en
+############################
+# make_SC_training_data.py #
+############################
+Arguments:-
+	-train_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en/train.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en/train.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe/train.csv
+	-val_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en_dev_test/val.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en_dev_test/val.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe_dev_test/val.csv
+	-test_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en_dev_test/test.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en_dev_test/test.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe_dev_test/test.csv
+	-out_dir: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en
+	-SC_MODEL_ID: null
+------------------------------
+
+### READING ###
+CSV: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en/train.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en/train.csv
+CSV: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en/train.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en/train.csv
+CSV: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe/train.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe/train.csv
+CSV: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en_dev_test/val.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en_dev_test/val.csv
+CSV: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en_dev_test/val.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en_dev_test/val.csv
+CSV: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe_dev_test/val.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe_dev_test/val.csv
+CSV: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en_dev_test/test.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-en_dev_test/test.csv
+CSV: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en_dev_test/test.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en_dev_test/test.csv
+CSV: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe_dev_test/test.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fr-mfe_dev_test/test.csv
+### WRITING ###
+deleting /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en
+--
+Writing fr:
+	-/home/hatch5o6/nobackup/archive/data/CCMatrix_fr_en/fixed/stitched/cleaned/tgt.10M.txt
+	total lines for fr now 10000000
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/train.mfe-fra.fra
+	total lines for fr now 10013327
+	-/home/hatch5o6/nobackup/archive/data/FLORES+/dev/fra_Latn_stan1290.dev
+	total lines for fr now 10014324
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/val.mfe-fra.fra
+	total lines for fr now 10014472
+	-/home/hatch5o6/nobackup/archive/data/FLORES+/devtest/fra_Latn_stan1290.devtest
+	total lines for fr now 10015484
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/test.mfe-fra.fra
+	total lines for fr now 10015796
+TOTAL LINES (BEFORE UNIQUE): 10015796
+TOTAL LINES (AFTER UNIQUE): 9543288
+Writing fr data (9543288 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/fr.txt
+--
+Writing en:
+	-/home/hatch5o6/nobackup/archive/data/CCMatrix_fr_en/fixed/stitched/cleaned/src.10M.txt
+	total lines for en now 10000000
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/train.mfe-eng.eng
+	total lines for en now 10019149
+	-/home/hatch5o6/nobackup/archive/data/FLORES+/dev/eng_Latn_stan1293.dev
+	total lines for en now 10020146
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/val.mfe-eng.eng
+	total lines for en now 10020618
+	-/home/hatch5o6/nobackup/archive/data/FLORES+/devtest/eng_Latn_stan1293.devtest
+	total lines for en now 10021630
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/test.mfe-eng.eng
+	total lines for en now 10022441
+TOTAL LINES (BEFORE UNIQUE): 10022441
+TOTAL LINES (AFTER UNIQUE): 9556063
+Writing en data (9556063 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/en.txt
+--
+Writing mfe:
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/train.mfe-eng.mfe
+	total lines for mfe now 19149
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/train.mfe-fra.mfe
+	total lines for mfe now 32476
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/val.mfe-eng.mfe
+	total lines for mfe now 32948
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/val.mfe-fra.mfe
+	total lines for mfe now 33096
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-eng/test.mfe-eng.mfe
+	total lines for mfe now 33907
+	-/home/hatch5o6/nobackup/archive/data/Kreyol-MT/mfe-fra/test.mfe-fra.mfe
+	total lines for mfe now 34219
+TOTAL LINES (BEFORE UNIQUE): 34219
+TOTAL LINES (AFTER UNIQUE): 23610
+Writing mfe data (23610 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/mfe.txt
+INCLUDING <pad> TOKEN
+INCLUDING LANG TOKENS
+    <fr>
+    <mfe>
+    <en>
+SRC_USER_DEFINED_SYMBOLS_STR: <pad>,<fr>,<mfe>,<en>
+TGT_USER_DEFINED_SYMBOLS_STR: <pad>,<fr>,<mfe>,<en>
+SRC_USER_DEFINED_SYMBOLS_STR == TGT_USER_DEFINED_SYMBOLS_STR
+as it should :)
+
+##########################
+##     spm_train.py     ##
+##########################
+Arguments:-
+	--langs = 'fr,mfe,en'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en'
+	--dist_str = 'fr:25,mfe:25,en:50'
+	--data = 'None'
+	--training_data_size = '500000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/fr-mfe_en'
+	--spm_model_name = 'fr-mfe_en'
+	--spm_vocab_size = '32000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>,<fr>,<mfe>,<en>'
+	--SPLIT_ON_WS = 'true'
+langs ['fr', 'mfe', 'en']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/fr.txt', '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/mfe.txt', '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/en.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/fr.txt": 0.25,
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/mfe.txt": 0.25,
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/en.txt": 0.5
+}
+
+
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/fr-mfe_en
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/fr.txt
+ratio: 0.25
+size: 9543288
+After upsampling: 125000
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/mfe.txt
+ratio: 0.25
+size: 23610
+After upsampling: 125000
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/en.txt
+ratio: 0.5
+size: 9556063
+After upsampling: 250000
+
+
+ALL DATA SIZE: 500000
+Writing 500000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/fr-mfe_en/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/fr-mfe_en/fr-mfe_en
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/fr-mfe_en/fr-mfe_en/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 32000
+character_coverage: 1.0
+user_defined_symbols: ['<pad>', '<fr>', '<mfe>', '<en>', '▁']
+Finished-----------------------
+Mon Aug 11 01:00:47 PM MDT 2025
+-------------------------------

@@ -43,6 +43,8 @@ def get_dataset(csv_f, limit_src_langs, limit_tgt_langs):
     dataset = None
     if csv_f != "null":
         assert csv_f.endswith(".csv")
+        if not os.path.exists(csv_f):
+            print("DOES NOT EXIST", csv_f)
         assert os.path.exists(csv_f)
 
         dataset = MultilingualDataset(

@@ -1,0 +1,170 @@
+Starting-----------------------
+Mon Jun 16 03:22:01 PM MDT 2025
+-------------------------------
+Arguments:-
+    SPM_TRAIN_SIZE=50000
+
+    SRC_LANGS=cs,hsb
+    SRC_TOK_NAME=cs-hsb
+    TGT_LANGS=de
+    TGT_TOK_NAME=de
+
+    TRAIN_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de/train.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/cs-de/train.csv
+    VAL_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de_dev_test/val.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/cs-de_dev_test/val.csv
+    TEST_PARALLEL=/home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de_dev_test/test.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/cs-de_dev_test/test.csv
+    TOK_TRAIN_DATA_DIR=/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de
+
+    SPLIT_ON_WS=true
+    INCLUDE_LANG_TOKS=false
+    INCLUDE_PAD_TOK=true
+    SPECIAL_TOKS=null
+-------------------------------
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de
+############################
+# make_SC_training_data.py #
+############################
+Arguments:-
+	-train_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de/train.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/cs-de/train.csv
+	-val_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de_dev_test/val.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/cs-de_dev_test/val.csv
+	-test_csvs: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de_dev_test/test.csv,/home/hatch5o6/Cognate/code/NMT/data/PLAIN/cs-de_dev_test/test.csv
+	-out_dir: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de
+------------------------------
+
+### READING ###
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de/train.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/cs-de/train.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de_dev_test/val.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/cs-de_dev_test/val.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de_dev_test/test.csv
+Reading /home/hatch5o6/Cognate/code/NMT/data/PLAIN/cs-de_dev_test/test.csv
+### WRITING ###
+deleting /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de
+--
+Writing hsb:
+	-/home/hatch5o6/nobackup/archive/data/WMT2021/train/cleaned/cleaned/src.txt
+	total lines for hsb now 58472
+	-/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel.hsb-de.hsb
+	total lines for hsb now 60472
+	-/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel_test.hsb-de.hsb
+	total lines for hsb now 62472
+TOTAL LINES (BEFORE UNIQUE): 62472
+TOTAL LINES (AFTER UNIQUE): 62018
+Writing hsb data (62018 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/hsb.txt
+--
+Writing de:
+	-/home/hatch5o6/nobackup/archive/data/WMT2021/train/cleaned/cleaned/tgt.txt
+	total lines for de now 58472
+	-/home/hatch5o6/nobackup/archive/data/CCMatrix_de_cs/cs-de/cleaned/tgt.10M.txt
+	total lines for de now 10058472
+	-/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel.hsb-de.de
+	total lines for de now 10060472
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/deu_Latn.dev
+	total lines for de now 10061469
+	-/home/hatch5o6/nobackup/archive/data/WMT2021/devtest/devel_test.hsb-de.de
+	total lines for de now 10063469
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/deu_Latn.devtest
+	total lines for de now 10064481
+TOTAL LINES (BEFORE UNIQUE): 10064481
+TOTAL LINES (AFTER UNIQUE): 9618711
+Writing de data (9618711 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/de.txt
+--
+Writing cs:
+	-/home/hatch5o6/nobackup/archive/data/CCMatrix_de_cs/cs-de/cleaned/src.10M.txt
+	total lines for cs now 10000000
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/dev/ces_Latn.dev
+	total lines for cs now 10000997
+	-/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ces_Latn.devtest
+	total lines for cs now 10002009
+TOTAL LINES (BEFORE UNIQUE): 10002009
+TOTAL LINES (AFTER UNIQUE): 8765131
+Writing cs data (8765131 lines) to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/cs.txt
+INCLUDING <pad> TOKEN
+SRC_USER_DEFINED_SYMBOLS_STR: <pad>
+TGT_USER_DEFINED_SYMBOLS_STR: <pad>
+
+Arguments:-
+	--langs = 'cs,hsb'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de'
+	--data = 'None'
+	--training_data_size = '50000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/cs-hsb'
+	--spm_model_name = 'cs-hsb'
+	--spm_vocab_size = '8000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>'
+	--SPLIT_ON_WS = 'true'
+langs ['cs', 'hsb']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/cs.txt', '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/hsb.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/cs.txt": 0.5,
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/hsb.txt": 0.5
+}
+
+
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/cs-hsb
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/cs.txt
+ratio: 0.5
+size: 8765131
+After upsampling: 25000
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/hsb.txt
+ratio: 0.5
+size: 62018
+After upsampling: 25000
+
+
+ALL DATA SIZE: 50000
+Writing 50000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/cs-hsb/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/cs-hsb/cs-hsb
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/cs-hsb/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 8000
+character_coverage: 1.0
+user_defined_symbols: ['<pad>', '▁']
+Arguments:-
+	--langs = 'de'
+	--folder = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de'
+	--data = 'None'
+	--training_data_size = '50000'
+	--save_dir = '/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/de'
+	--spm_model_name = 'de'
+	--spm_vocab_size = '8000'
+	--spm_model_type = 'bpe'
+	--character_coverage = '1.0'
+	--seed = '1500'
+	--user_defined_symbols = '<pad>'
+	--SPLIT_ON_WS = 'true'
+langs ['de']
+DATA LIST ['/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/de.txt']
+CREATED DATA_DICT FROM args.langs AND args.folder:
+{
+  "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/de.txt": 1.0
+}
+
+
+creating /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/de
+-----------------------------
+data_f: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/de.txt
+ratio: 1.0
+size: 9618711
+After upsampling: 50000
+
+
+ALL DATA SIZE: 50000
+Writing 50000 lines to /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/de/training_data.s=1500.txt
+Training tokenizer
+model_name: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/de/de
+data_file: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/de/training_data.s=1500.txt
+model_type: bpe
+vocab_size: 8000
+character_coverage: 1.0
+user_defined_symbols: ['<pad>', '▁']
+Finished-----------------------
+Mon Jun 16 03:23:49 PM MDT 2025
+-------------------------------

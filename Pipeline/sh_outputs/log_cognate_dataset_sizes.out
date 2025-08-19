@@ -1,0 +1,37 @@
+Starting log_cognate_dataset_sizes.sh--
+Wed Jun 11 03:10:29 PM MDT 2025
+---------------------------------------
+Pipeline/format_SC.sh /home/hatch5o6/Cognate/code/Pipeline/cfg/SC/bho-hi.cfg
+Starting train_SC.sh-----------
+Wed Jun 11 03:10:29 PM MDT 2025
+-------------------------------
+Arguments:-
+    MODULE_HOME_DIR=/home/hatch5o6/Cognate/code
+
+    SRC=bho
+    TGT=hi
+    PARALLEL_TRAIN=/home/hatch5o6/Cognate/code/NMT/data/bho-hi/train.csv
+    PARALLEL_VAL=/home/hatch5o6/Cognate/code/NMT/data/bho-hi_dev_test/val.csv
+    PARALLEL_TEST=/home/hatch5o6/Cognate/code/NMT/data/bho-hi_dev_test/test.csv
+    COGNATE_TRAIN=/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/bho-hi
+    NO_GROUPING=true
+    SC_MODEL_TYPE=RNN
+    SEED=0
+    SC_MODEL_ID=BHO-HI-0
+    COGNATE_THRESH=0.5
+    COPPERMT_DATA_DIR=/home/hatch5o6/nobackup/archive/CopperMT
+    COPPERMT_DIR=/home/hatch5o6/Cognate/code/CopperMT/CopperMT
+    PARAMETERS_DIR=/home/hatch5o6/Cognate/code/Pipeline/parameters
+    RNN_HYPERPARAMS=/home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams
+    RNN_HYPERPARAMS_ID=0
+    BEAM=5
+    NBEST=1
+    REVERSE_SRC_TGT_COGNATES=false
+    VAL_COGNATES_SRC=null
+    VAL_COGNATES_TGT=null
+    TEST_COGNATES_SRC=null
+    TEST_COGNATES_TGT=null
+    COGNATE_TRAIN_RATIO=0.96
+    COGNATE_TEST_RATIO=0.02
+    COGNATE_VAL_RATIO=0.02
+-------------------------------

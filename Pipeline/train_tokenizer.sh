@@ -9,8 +9,6 @@ config_file=$1
 source $config_file # .cfg file from Pipeline/cfg/tok
 
 echo "Arguments:-"
-echo "    SPM_MODELS_DIR=$SPM_MODELS_DIR"
-echo ""
 echo "    SPM_TRAIN_SIZE=$SPM_TRAIN_SIZE"
 echo ""
 echo "    SRC_LANGS=$SRC_LANGS"
@@ -42,9 +40,9 @@ TGT_TOK_DIR=${TOK_TRAIN_DATA_DIR}/${TGT_TOK_NAME}
 
 #TODO MAYBE INSTEAD PASS IN A LIST OF CSV FILES?
 python Pipeline/make_tok_training_data.py \
-    --train_csv $TRAIN_PARALLEL \
-    --val_csv $VAL_PARALLEL  \
-    --test_csv $TEST_PARALLEL  \
+    --train_csvs $TRAIN_PARALLEL \
+    --val_csvs $VAL_PARALLEL  \
+    --test_csvs $TEST_PARALLEL  \
     --out $TOK_TRAIN_DATA_DIR
 
 # TODO Finish this if needed:
@@ -59,12 +57,12 @@ then
     TGT_USER_DEFINED_SYMBOLS+=('<pad>')
 fi
 
+IFS=',' read -r -a src_langs_array <<< $SRC_LANGS
+IFS=',' read -r -a tgt_langs_array <<< $TGT_LANGS
+langs_array=( "${src_langs_array[@]}" "${tgt_langs_array[@]}" )
 if [ $INCLUDE_LANG_TOKS = true ]
 then
     echo "INCLUDING LANG TOKENS"
-    IFS=',' read -r -a src_langs_array <<< $SRC_LANGS
-    IFS=',' read -r -a tgt_langs_array <<< $TGT_LANGS
-    langs_array=( "${src_langs_array[@]}" "${tgt_langs_array[@]}" )
     for l in ${langs_array[@]} ; do
         l_tok="<${l}>"
         echo "    $l_tok"
@@ -130,6 +128,11 @@ then
         --user_defined_symbols $TGT_USER_DEFINED_SYMBOLS_STR \
         --SPLIT_ON_WS $SPLIT_ON_WS
 fi
+
+# for l in ${langs_array[@]} ; do
+#     echo "removing ${TOK_TRAIN_DATA_DIR}/${l}.txt"
+#     rm ${TOK_TRAIN_DATA_DIR}/${l}.txt
+# done
 
 #Make SPM Training data for SC-applied data (Same process as Cognate Training data, but this time we're applying it to the the SC-processed data)
 

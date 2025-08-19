@@ -1,0 +1,11 @@
+cfg,lang_pair,train,val,test,date_of_count
+/home/hatch5o6/Cognate/code/Pipeline/cfg/SC/bho-hi.cfg,bho-hi,345722,997,1012,06/11/2025 12:34:56
+/home/hatch5o6/Cognate/code/Pipeline/cfg/SC/bn-as.cfg,bn-as,1013015,997,1012,06/11/2025 12:34:56
+/home/hatch5o6/Cognate/code/Pipeline/cfg/SC/cs-hsb.cfg,cs-hsb,326,,,06/11/2025 12:34:56
+/home/hatch5o6/Cognate/code/Pipeline/cfg/SC/djk-en.cfg,djk-en,9942,585,1180,06/11/2025 12:34:56
+/home/hatch5o6/Cognate/code/Pipeline/cfg/SC/es-an.cfg,es-an,28594,997,1012,06/11/2025 12:34:56
+/home/hatch5o6/Cognate/code/Pipeline/cfg/SC/ewe-fon.cfg,ewe-fon,72424,997,1012,06/11/2025 12:34:56
+/home/hatch5o6/Cognate/code/Pipeline/cfg/SC/fon-ewe.cfg,fon-ewe,72424,997,1012,06/11/2025 12:34:56
+/home/hatch5o6/Cognate/code/Pipeline/cfg/SC/fr-mfe.cfg,fr-mfe,13327,148,312,06/11/2025 12:34:56
+/home/hatch5o6/Cognate/code/Pipeline/cfg/SC/hi-bho.cfg,hi-bho,345722,997,1012,06/11/2025 12:34:56
+/home/hatch5o6/Cognate/code/Pipeline/cfg/SC/lua-bem.cfg,lua-bem,115432,997,1012,06/11/2025 12:34:56

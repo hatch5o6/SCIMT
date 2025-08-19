@@ -1,0 +1,58 @@
+# outputs
+src: bem
+tgt: en
+save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/AUGMENT.bem-en
+test_checkpoint: null
+remove_special_toks: True
+verbose: False
+little_verbose: True
+
+# finetune?
+from_pretrained: null
+
+# data
+train_data: /home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN/bem-en/train.csv
+val_data: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bem-en_dev_test/val.csv
+test_data: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bem-en_dev_test/test.csv
+append_src_token: False
+append_tgt_token: False
+upsample: True
+
+# tokenizers
+src_spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/lua.bem/lua.bem
+tgt_spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/en/en
+
+# training
+n_gpus: 4
+seed: 1000
+qos: dw87
+
+train_batch_size: 128
+val_batch_size: 128
+test_batch_size: 128
+
+early_stop: 10
+save_top_k: 2
+max_epochs: 1000
+val_interval: 0.2
+
+learning_rate: 2e-05
+
+device: cuda
+
+# config
+encoder_layers: 6
+encoder_attention_heads: 8
+encoder_ffn_dim: 2048
+encoder_layerdrop: 0.0
+
+decoder_layers: 6
+decoder_attention_heads: 8
+decoder_ffn_dim: 2048
+decoder_layerdrop: 0.0
+
+max_position_embeddings: 512
+max_length: 512
+d_model: 512
+dropout: 0.1
+activation_function: gelu

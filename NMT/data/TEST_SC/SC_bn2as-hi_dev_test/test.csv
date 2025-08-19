@@ -1,0 +1,2 @@
+src_lang,tgt_lang,src_path,tgt_path
+bn,hi,/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/ben_Beng.SC_{SC_MODEL_ID}_bn2as.devtest,/home/hatch5o6/nobackup/archive/data/flores200_dataset/devtest/hin_Deva.devtest

@@ -1,0 +1,200 @@
+Starting log_cognate_dataset_sizes.sh--
+Wed Jun 11 02:13:53 PM MDT 2025
+---------------------------------------
+Pipeline/format_SC.sh /home/hatch5o6/Cognate/code/Pipeline/cfg/SC-TESTING/special/tho3-mas3.cfg
+Starting train_SC.sh-----------
+Wed Jun 11 02:13:53 PM MDT 2025
+-------------------------------
+Arguments:-
+    MODULE_HOME_DIR=/home/hatch5o6/Cognate/code
+
+    SRC=tho3
+    TGT=mas3
+    PARALLEL_TRAIN=/home/hatch5o6/Cognate/code/NMT/data/_pipeline_testing/tho3-mas3/train.csv
+    PARALLEL_VAL=null
+    PARALLEL_TEST=null
+    COGNATE_TRAIN=/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST
+    NO_GROUPING=true
+    SC_MODEL_TYPE=SMT
+    SEED=0
+    SC_MODEL_ID=4
+    COGNATE_THRESH=0.5
+    COPPERMT_DATA_DIR=/home/hatch5o6/nobackup/archive/CopperMT
+    COPPERMT_DIR=/home/hatch5o6/Cognate/code/CopperMT/CopperMT
+    PARAMETERS_DIR=/home/hatch5o6/Cognate/code/Pipeline/parameters
+    RNN_HYPERPARAMS=null
+    BEAM=null
+    NBEST=null
+    REVERSE_SRC_TGT_COGNATES=false
+    VAL_COGNATES_SRC=/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/cs.val-s=1420.txt
+    VAL_COGNATES_TGT=/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/hsb.val-s=1420.txt
+    TEST_COGNATES_SRC=/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/cs.test-s=1420.txt
+    TEST_COGNATES_TGT=/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/hsb.test-s=1420.txt
+    COGNATE_TRAIN_RATIO=null
+    COGNATE_TEST_RATIO=null
+    COGNATE_VAL_RATIO=null
+-------------------------------
+
+
+#### DETECT COGNATES ####
+removing /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST
+creating /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST
+creating /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/cognate
+creating /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign
+
+############################
+# make_SC_training_data.py #
+############################
+Arguments:-
+	-train_csv: /home/hatch5o6/Cognate/code/NMT/data/_pipeline_testing/tho3-mas3/train.csv
+	-val_csv: null
+	-test_csv: null
+	-src_out: /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/cognate/train.tho3
+	-tgt_out: /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/cognate/train.mas3
+	-src: tho3
+	-tgt: mas3
+------------------------------
+
+random seed: None
+MultilingualDataset READING CSV /home/hatch5o6/Cognate/code/NMT/data/_pipeline_testing/tho3-mas3/train.csv
+Reading all lines from /home/hatch5o6/nobackup/archive/data/tho-mas3/WMT-CCMatrix-Overlap/train/train.tho3
+Reading all lines from /home/hatch5o6/nobackup/archive/data/tho-mas3/WMT-CCMatrix-Overlap/train/train.mas3
+Reading all lines from /home/hatch5o6/nobackup/archive/data/tho-mas3/WMT-CCMatrix-Overlap/train/train.tho3_extra
+Reading all lines from /home/hatch5o6/nobackup/archive/data/tho-mas3/WMT-CCMatrix-Overlap/train/train.mas3_extra
+Making unique: ('tho3', 'mas3')
+	Before unique: 339
+	After unique: 330
+DATA MAX_SIZE = 330
+RAW DATA SIZE: 330
+UPSAMPLED SIZE: 330
+RETURNING SRC PATHS ['/home/hatch5o6/nobackup/archive/data/tho-mas3/WMT-CCMatrix-Overlap/train/train.tho3', '/home/hatch5o6/nobackup/archive/data/tho-mas3/WMT-CCMatrix-Overlap/train/train.tho3_extra']
+RETURNING TGT PATHS ['/home/hatch5o6/nobackup/archive/data/tho-mas3/WMT-CCMatrix-Overlap/train/train.mas3', '/home/hatch5o6/nobackup/archive/data/tho-mas3/WMT-CCMatrix-Overlap/train/train.mas3_extra']
+MultilingualDataset TOTAL PAIRS: 330
+NO_GROUPING has been set to true.
+t/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/word_list.tho3-mas3.NG.txt
+prepare_fast_align.py REVERSE=false
+prepare_for_fastlign.py
+arguments
+src: '/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/cognate/train.tho3'
+tgt: '/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/cognate/train.mas3'
+out: '/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/tho3-mas3.txt'
+------------------
+
+
+Writing prepare_for_fastalign.py output to /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/tho3-mas3.txt
+
+
+
+NO_GROUPING=true: running make_word_alignments_no_grouping.py
+make_word_alignments_no_grouping.py
+arguments:
+	alignments: '/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/tho3-mas3.sym.align'
+	sent_pairs: '/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/tho3-mas3.txt'
+	out: '/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/word_list.tho3-mas3.NG.txt'
+	VERBOSE: 'False'
+	STOP: 'None'
+---------------------
+
+
+make_cognate_list.py REVERSE=false
+make_cognate_list.py
+arguments
+	word_list: /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/word_list.tho3-mas3.NG.txt
+	out: None
+	theta: 0.5
+	src: tho3
+	tgt: mas3
+-------------------
+
+
+- FOUND 406 COGNATES -
+nn
+#### TRAIN SC MODEL WITH COPPER MT ####
+Reading train cognate data from /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/word_list.tho3-mas3.NG.cognates.0.5.parallel-tho3.txt, /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/word_list.tho3-mas3.NG.cognates.0.5.parallel-mas3.txt
+Reading val cognate data from /home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/cs.val-s=1420.txt, /home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/hsb.val-s=1420.txt
+Reading test cognate data from /home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/cs.test-s=1420.txt, /home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/hsb.test-s=1420.txt
+
+ADDING ADDITIONAL TRAINING COGNATES
+Cognate training data for format_data.py is as follows:
+    TRAIN_COGNATES_SRC=/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/word_list.tho3-mas3.NG.cognates.0.5.parallel-tho3.txt,/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/cs.train-s=1420.txt
+    TRAIN_COGNATES_TGT=/home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/word_list.tho3-mas3.NG.cognates.0.5.parallel-mas3.txt,/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/hsb.train-s=1420.txt
+    VAL_COGNATES_SRC=/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/cs.val-s=1420.txt
+    VAL_COGNATES_TGT=/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/hsb.val-s=1420.txt
+    TEST_COGNATES_SRC=/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/cs.test-s=1420.txt
+    TEST_COGNATES_TGT=/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/hsb.test-s=1420.txt
+
+
+deleting /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3
+creating /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3
+
+##################
+# format_data.py #
+##################
+Arguments:-
+	-src_data: /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/word_list.tho3-mas3.NG.cognates.0.5.parallel-tho3.txt,/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/cs.train-s=1420.txt
+	-tgt_data: /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/tho3-mas3_TEST/fastalign/word_list.tho3-mas3.NG.cognates.0.5.parallel-mas3.txt,/home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/hsb.train-s=1420.txt
+	-src: tho3
+	-tgt: mas3
+	-out_dir: /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3/inputs/split_data/tho3_mas3
+	-prefix: train
+	-seed: 0
+------------------------------
+
+BEFORE UNIQUE: 922
+AFTER UNIQUE: 916
+writing /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3/inputs/split_data/tho3_mas3/0/train_tho3_mas3.tho3
+writing /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3/inputs/split_data/tho3_mas3/0/train_tho3_mas3.mas3
+
+##################
+# format_data.py #
+##################
+Arguments:-
+	-src_data: /home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/cs.val-s=1420.txt
+	-tgt_data: /home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/hsb.val-s=1420.txt
+	-src: tho3
+	-tgt: mas3
+	-out_dir: /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3/inputs/split_data/tho3_mas3
+	-prefix: fine_tune
+	-seed: 0
+------------------------------
+
+BEFORE UNIQUE: 100
+AFTER UNIQUE: 100
+writing /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3/inputs/split_data/tho3_mas3/0/fine_tune_tho3_mas3.tho3
+writing /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3/inputs/split_data/tho3_mas3/0/fine_tune_tho3_mas3.mas3
+
+##################
+# format_data.py #
+##################
+Arguments:-
+	-src_data: /home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/cs.test-s=1420.txt
+	-tgt_data: /home/hatch5o6/nobackup/archive/data/CogNet/ces-hsb/combined_with_etymdb/split/hsb.test-s=1420.txt
+	-src: tho3
+	-tgt: mas3
+	-out_dir: /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3/inputs/split_data/tho3_mas3
+	-prefix: test
+	-seed: 0
+------------------------------
+
+BEFORE UNIQUE: 101
+AFTER UNIQUE: 101
+writing /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3/inputs/split_data/tho3_mas3/0/test_tho3_mas3.tho3
+writing /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3/inputs/split_data/tho3_mas3/0/test_tho3_mas3.mas3
+##########################
+# cognate_dataset_log.py #
+##########################
+Arguments:-
+	-formatted_data_dir: /home/hatch5o6/nobackup/archive/CopperMT/tho3_mas3/inputs/split_data/tho3_mas3/0
+	-lang_pair: tho3-mas3
+	-LOG_F: cognate_dataset_log.json
+------------------------------
+
+logging lang_pair
+logging lang_pair
+logging lang_pair
+Finished-----------------------
+Wed Jun 11 02:14:13 PM MDT 2025
+-------------------------------
+Ending log_cognate_dataset_sizes.sh----
+Wed Jun 11 02:14:13 PM MDT 2025
+---------------------------------------

@@ -1,0 +1,1 @@
+# Use format_fr_mfe.no_grouping.sh as a stensil

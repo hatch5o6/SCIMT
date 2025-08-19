@@ -1,0 +1,3 @@
+src_lang,tgt_lang,src_path,tgt_path
+bho,as,/home/hatch5o6/nobackup/archive/data/NLLB/bho_as/cleaned/tgt.txt,/home/hatch5o6/nobackup/archive/data/NLLB/bho_as/cleaned/src.txt
+hi,as,/home/hatch5o6/nobackup/archive/data/NLLB/as_hi/cleaned/tgt.SC_{SC_MODEL_ID}_hi2bho.txt,/home/hatch5o6/nobackup/archive/data/NLLB/as_hi/cleaned/src.txt
