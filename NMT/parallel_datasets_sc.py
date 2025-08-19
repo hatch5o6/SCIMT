@@ -73,6 +73,47 @@ class SCAlignedMultilingualDataset(Dataset):
             data_by_pairs[lang_pair] = unique_data
         return data_by_pairs
 
+    def read_data_csv(self, f):
+        with open(f, newline='') as inf:
+            rows = [row for row in csv.reader(inf)]
+        header = rows[0]
+        assert header == ["src_lang", "tgt_lang", "src_path", "tgt_path"]
+
+        data_by_pairs = {}
+        rows = [tuple(row) for row in rows[1:]]
+        SRC_PATHS = []
+        TGT_PATHS = []
+        for src_lang, tgt_lang, src_path, tgt_path in rows:
+            if self.limit_src_langs != None and src_lang not in self.limit_src_langs:
+                continue
+            if self.limit_tgt_langs != None and tgt_lang not in self.limit_tgt_langs:
+                continue
+
+            SRC_PATHS.append(src_path)
+            TGT_PATHS.append(tgt_path)
+
+            pair = (src_lang, tgt_lang)
+            if pair not in data_by_pairs:
+                data_by_pairs[pair] = []
+
+            lang_src_lines = self.read_file(src_path)
+            lang_tgt_lines = self.read_file(tgt_path)
+
+            if self.append_src_lang_tok:
+                lang_src_lines = [f"<{src_lang}>" + line for line in lang_src_lines]
+            elif self.append_tgt_to_src:
+                lang_src_lines = [f"<{tgt_lang}>" + line for line in lang_src_lines]
+            if self.append_tgt_lang_tok:
+                lang_tgt_lines = [f"<{tgt_lang}>" + line for line in lang_tgt_lines]
+
+            parallel_data = list(zip(lang_src_lines, lang_tgt_lines))
+            key = f"{src_lang}-{tgt_lang}, `{src_path}`, `{tgt_path}`"
+            assert key not in self.raw_lengths
+            self.raw_lengths[key] = len(parallel_data)
+            data_by_pairs[pair] += parallel_data
+        return data_by_pairs
+
+
     def read_csvs(self, f, sc_f, upsample=False):
         with open(f, newline='') as inf:
             rows = [row for row in csv.reader(inf)]
