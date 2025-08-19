@@ -17,3 +17,4 @@ Pipeline/slurm_outputs/
 Pipeline/sh_outputs/
 NMT/slurm_outputs/
 NMT/OLD_slurm_outputs/
+*.out
