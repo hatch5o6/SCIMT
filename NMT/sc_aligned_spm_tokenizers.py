@@ -62,13 +62,17 @@ class SCAlignedSPMTokenizer():
 
         print("READING IN ALIGNED VOCAB")
         print("\tVOCAB_SIZE_CAP:", VOCAB_SIZE_CAP)
-        self.read_aligned_vocab(
+        TOKENS_IN_EACH_LANG = self.read_aligned_vocab(
             aligned_vocab=aligned_vocab, 
             VOCAB_SIZE_CAP=VOCAB_SIZE_CAP
         )
         print("VOCAB_SIZE:", len(self.idx2token))
         assert len(self.idx2token) <= VOCAB_SIZE_CAP
         self.vocab_size = len(self.idx2token)
+
+        print("\n\nTOKENS IN EACH LANG:")
+        for lang_label, ct in TOKENS_IN_EACH_LANG.items():
+            print(f"\t{lang_label}: {ct}, {ct / len(self.idx2token)}")
 
         if VERBOSE:
             print(f"ALIGNED VOCABULARY ({self.vocab_size}):")
@@ -124,6 +128,7 @@ class SCAlignedSPMTokenizer():
         idxs.sort(reverse=True)
         accepted_idxs = idxs[:VOCAB_SIZE_CAP]
 
+        TOKENS_IN_EACH_LANG = {}
         for idx, divs in aligned_vocab.items():
             if idx == "<LANGS>": continue
             if idx in accepted_idxs:
@@ -132,13 +137,20 @@ class SCAlignedSPMTokenizer():
                     div_lang = aligned_langs[div]
                     form = div_data["form"]
                     self.add_to_idx2token(idx=idx, lang=div_lang, tok=form)
+
+                    # log number of tokens for each lang
+                    lang_label = f"{div}-{div_lang}"
+                    if lang_label not in TOKENS_IN_EACH_LANG:
+                        TOKENS_IN_EACH_LANG[lang_label] = 0
+                    TOKENS_IN_EACH_LANG[lang_label] += 1
+        return TOKENS_IN_EACH_LANG
                 
     def read_json(f):
         with open(f) as inf:
             data = json.load(inf)
         return data
 
-    def sc_align_tokenize(self, fr_text, sc_text, lang, return_tensor=False, add_special=False):
+    def tokenize(self, fr_text, sc_text, lang, return_tensor=False, add_special=False):
         if sc_text is not None:
             fr_tok_seq, _, _ = fr_tokenize(
                 sc_tokenizer=self.sc_tokenizer,
@@ -146,7 +158,7 @@ class SCAlignedSPMTokenizer():
                 sc_line=sc_text
             )
         else:
-            fr_tok_seq = 
+            fr_tok_seq = self.sc_tokenizer.tokenize(fr_text)
         fr_idx_sequence = []
         for token in fr_tok_seq:
             if token not in self.token2idx:
@@ -159,10 +171,10 @@ class SCAlignedSPMTokenizer():
             fr_idx_sequence = torch.tensor(fr_idx_sequence)
         return fr_idx_sequence, fr_tok_seq
 
-    def sc_align_batch_tokenize(self, batch, pad_batch=True, return_tensor=False, add_special=False):
+    def batch_tokenize(self, batch, pad_batch=True, return_tensor=False, add_special=False):
         # tokenize
         batch = [
-            self.sc_align_tokenize(fr_text=fr_line, sc_text=sc_line, lang=lang, add_special=add_special)[0]
+            self.tokenize(fr_text=fr_line, sc_text=sc_line, lang=lang, add_special=add_special)[0]
             for fr_line, sc_line, lang in batch
         ]
         # pad sequences
@@ -177,7 +189,7 @@ class SCAlignedSPMTokenizer():
             batch = torch.tensor(batch)
         return batch
 
-    def sc_align_detokenize(self, token_ids, lang, remove_special_toks=False):
+    def detokenize(self, token_ids, lang, remove_special_toks=False):
         if remove_special_toks:
             token_ids = [
                 tok_id 
@@ -198,9 +210,9 @@ class SCAlignedSPMTokenizer():
 
         return decoded_line
 
-    def sc_align_batch_detokenize(self, batch, remove_special_toks=False):
+    def batch_detokenize(self, batch, remove_special_toks=False):
         batch = [
-            self.sc_align_detokenize(seq, lang=lang, remove_special_toks=remove_special_toks)
+            self.detokenize(seq, lang=lang, remove_special_toks=remove_special_toks)
             for seq, lang in batch
         ]
         return batch

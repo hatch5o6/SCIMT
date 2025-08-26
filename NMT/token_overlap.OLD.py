@@ -7,115 +7,23 @@ from scipy.spatial.distance import jensenshannon
 from collections import Counter
 JSD = JensenShannonDivergence()
 
-from torch.utils.data import DataLoader
-from parallel_datasets import MultilingualDataset
-from parallel_datasets_sc import SCAlignedMultilingualDataset
 from spm_tokenizers import SPMTokenizer
-from sc_aligned_spm_tokenizers import SCAlignedSPMTokenizer
-
-
-def read_data(f, sc_f=None, sc_modelid=None):
-    if f.endswith(".txt"):
-        assert sc_f is None
-        assert sc_modelid is None
-        with open(f) as inf:
-            data = [line.strip() for line in inf]
-    else:
-        assert f.endswith(".csv")
-        if sc_f is not None:
-            assert sc_f.endswith(".csv")
-            assert sc_modelid is not None
-            
-            # SHOULD ONLY DO THIS ON TRAINING PROBABLY
-            # Upsample=False and shuffle=True used for training data in pretrain -> finetune scenarios.
-            sc_dataset = SCAlignedMultilingualDataset(
-                data_csv=f,
-                sc_data_csv=sc_f,
-                append_src_lang_tok=False,
-                append_tgt_lang_tok=False,
-                append_tgt_to_src=False,
-                upsample=False,
-                shuffle=True
-            )
-            sc_dataloader = DataLoader(
-                sc_dataset,
-                batch_size=100,
-                shuffle=False
-            )
-            
-
-
-
-    return data
 
 def calc_overlap(
     data1_f,
-    data1sc_f,
-    data1sc_modelid,
-
     spm1,
-    spm1_sc,
-    spm1_type,
-
     data2_f,
-    data2sc_f,
-    data2sc_modelid,
-
     spm2,
-    spm2_sc,
-    spm2_type,
-
     is_parallel,
-    VOCAB_SIZE_CAP,
     out_f
 ):
-    ## PRINTING ARGS ##
-    print("--------------CALC OVERLAP--------------")
-    print(f"data1_f: `{data1_f}`")
-    print(f"data1sc_f: `{data1sc_f}`")
-    print(f"data1sc_modelid: `{data1sc_modelid}`")
-
-    print(f"\nspm1: `{spm1}`")
-    print(f"spm1_sc: `{spm1_sc}`")
-    print(f"spm1_type: `{spm1_type}`")
-
-    print(f"\ndata2_f: `{data2_f}`")
-    print(f"data2sc_f: `{data2sc_f}`")
-    print(f"data2sc_modelid: `{data2sc_modelid}`")
-
-    print(f"\nspm2: `{spm2}`")
-    print(f"spm2_sc: `{spm2_sc}`")
-    print(f"spm2_type: `{spm2_type}`")
-
-    print(f"\nis_parallel: `{is_parallel}`")
-    print(f"VOCAB_SIZE_CAP: `{VOCAB_SIZE_CAP}`")
-    print(f"out_f: `{out_f}`")
-    print("----------------------------------------")
-    #####
-
-    assert spm1_type in ["spm", "sc_aligned"]
-    assert spm2_type in ["spm", "sc_aligned"]
-
-    data1 = read_data(data1_f, data1sc_f, data1sc_modelid)
-    data2 = read_data(data2_f, data2sc_f, data2sc_modelid)
+    with open(data1_f) as inf:
+        data1 = [line.strip() for line in inf]
+    with open(data2_f) as inf:
+        data2 = [line.strip() for line in inf]
     
-    if spm1_type == "spm":
-        tokenizer1 = SPMTokenizer(spm_name=spm1)
-    elif spm1_type == "sc_aligned":
-        tokenizer1 = SCAlignedSPMTokenizer(
-            fr_spm_name=spm1, 
-            sc_spm_name=spm1_sc,
-            VOCAB_SIZE_CAP=VOCAB_SIZE_CAP
-        )
-
-    if spm2_type == "spm":
-        tokenizer2 = SPMTokenizer(spm_name=spm2)
-    elif spm2_type == "sc_aligned":
-        tokenizer2 = SCAlignedSPMTokenizer(
-            fr_spm_name=spm2, 
-            sc_spm_name=spm2_sc,
-            VOCAB_SIZE_CAP=VOCAB_SIZE_CAP
-        )
+    tokenizer1 = SPMTokenizer(spm_name=spm1)
+    tokenizer2 = SPMTokenizer(spm_name=spm2)
 
     # print(f"Tokenizing {data1_f}\n\twith {spm1}")
     data1_toks = [
@@ -254,23 +162,10 @@ def get_distribution(sequences):
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--data1")
-    parser.add_argument("--data1sc")
-    parser.add_argument("--data1sc_modelid")
-
     parser.add_argument("--spm1")
-    parser.add_argument("--spm1_sc")
-    parser.add_argument("--spm1_type", choices=["spm", "sc_aligned"])
-
     parser.add_argument("--data2")
-    parser.add_argument("--data2sc")
-    parser.add_argument("--data2sc_modelid")
-
     parser.add_argument("--spm2")
-    parser.add_argument("--spm2_sc")
-    parser.add_argument("--spm2_type", choices=["spm", "sc_aligned"])
-
     parser.add_argument("--is_parallel", action="store_true")
-    parser.add_argument("--VOCAB_SIZE_CAP", type=int, default=32000)
     parser.add_argument("--out", required=True)
     args = parser.parse_args()
     print("Arguments:-")
@@ -280,30 +175,16 @@ def get_args():
 
 if __name__ == "__main__":
     print("------------------------------")
-    print("###### token_overlap.py ######")
+    print("###### token_overlap.OLD.py ######")
     print("------------------------------")
     args = get_args()
     calc_overlap(
         data1_f=args.data1,
-        data1sc_f=args.data1sc,
-        data1sc_modelid=args.data1sc_modelid,
-
         spm1=args.spm1,
-        spm1_sc=args.spm1_sc,
-        spm1_type=args.spm1_type,
-
         data2_f=args.data2,
-        data2sc_f=args.data2sc,
-        data2sc_modelid=args.data2sc_modelid,
-
         spm2=args.spm2,
-        spm2_sc=args.spm2_sc,
-        spm2_type=args.spm2_type,
-
         is_parallel=args.is_parallel,
-        VOCAB_SIZE_CAP=args.VOCAB_SIZE_CAP,
         out_f=args.out
     )
-
 
 

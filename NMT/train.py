@@ -528,7 +528,7 @@ def get_args():
     args = parser.parse_args()
     print("Arguments:-")
     for k, v in vars(args).items():
-        print(f"\t--{k} = '{v}'")
+        print(f"\t--{k} = `{v}`")
     return args
 
 if __name__ == "__main__":

@@ -580,21 +580,24 @@ def main(
     FINAL_COLLECTIVE_VOCAB = add_to_collective_vocab(
         FINAL_COLLECTIVE_VOCAB=FINAL_COLLECTIVE_VOCAB,
         dist=fr_dist,
+        token2idx=fr_final_vocabulary,
         div="FR"
     )
     FINAL_COLLECTIVE_VOCAB = add_to_collective_vocab(
         FINAL_COLLECTIVE_VOCAB=FINAL_COLLECTIVE_VOCAB,
         dist=mfe_dist,
+        token2idx=sc_tokenizer.token2idx,
         div="CH"
     )
     FINAL_COLLECTIVE_VOCAB = add_to_collective_vocab(
         FINAL_COLLECTIVE_VOCAB=FINAL_COLLECTIVE_VOCAB,
         dist=en_dist,
+        token2idx=sc_tokenizer.token2idx,
         div="TG"
     )
     print("FINAL_COLLECTIVE_VOCAB_SIZE:", len(FINAL_COLLECTIVE_VOCAB))
 
-    if os.path.exits(write_collective_vocab):
+    if os.path.exists(write_collective_vocab):
         assert os.path.isdir(write_collective_vocab)
         print("DELETING", write_collective_vocab)
         shutil.rmtree(write_collective_vocab)

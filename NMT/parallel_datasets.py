@@ -150,8 +150,9 @@ class MultilingualDataset(Dataset):
         data_by_pairs = self.make_data_by_pairs_unique(data_by_pairs)
         
         for lang_pair, data in data_by_pairs.items():
-            assert lang_pair not in self.lengths
             l1, l2 = lang_pair
+
+            assert f"{l1}-{l2}" not in self.lengths
             self.lengths[f"{l1}-{l2}"] = len(data)
 
         MAX_SIZE = 0
