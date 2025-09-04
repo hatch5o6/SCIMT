@@ -5,7 +5,15 @@ from tqdm import tqdm
 
 from parallel_datasets_sc import SCAlignedMultilingualDataset
 
+"""
+Hello, Brendan
 
+This is your passed version of you (8/26/2025). I created this for preliminary tests. But if you use 
+SCAlignedMultilingualDataset from parallel_datasets_sc.py in work again, please do a little more robust testing.
+Test ordered and shuffled with upsampling and with the different src / tgt tags, as needed for your work.
+Also make sure that it matches the original MultilingualDataset from parallel_datasets.py.
+Test with augmented/SC and plain/SC versions of the data .csv files. (I only did single augmented/SC files, like /home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN/mfe-en/train.csv and /home/hatch5o6/Cognate/code/NMT/augmented_data/SC/SC_fr2mfe-en/train.csv)
+"""
 
 def main(
     data_csv,
@@ -101,21 +109,21 @@ def test_ordered(
              sc_dataloader_tgt_line) = sc_data[i]
 
             # test tags
-            assert sc_dataloader_src_tag == data_content_item_src_tag == sc_content_item_src_tag # good
-            assert sc_dataloader_tgt_tag == data_content_item_tgt_tag == sc_content_item_tgt_tag # good
-            assert sc_dataloader_src_tag != sc_dataloader_tgt_tag # good
+            assert sc_dataloader_src_tag == data_content_item_src_tag == sc_content_item_src_tag # good bueno
+            assert sc_dataloader_tgt_tag == data_content_item_tgt_tag == sc_content_item_tgt_tag # good bueno
+            assert sc_dataloader_src_tag != sc_dataloader_tgt_tag # good bueno
 
             # test tgt_line
-            assert sc_dataloader_tgt_line == data_content_item_tgt_line == sc_content_item_tgt_line # good
+            assert sc_dataloader_tgt_line == data_content_item_tgt_line == sc_content_item_tgt_line # good bueno
             
 
             # test src_line
             if SC_CONTENT_ITEM_HAS_SC_PATH:
                 # assert data_content_item_src_line != sc_content_item_src_line # can't necessarily assert this because the sc prediction could be the same as the original source segment
                 if not all([
-                    sc_dataloader_src_line == data_content_item_src_line, # good
-                    sc_dataloader_sc_line != "<NONE>", # good 
-                    sc_dataloader_sc_line == sc_content_item_src_line # good
+                    sc_dataloader_src_line == data_content_item_src_line, # good bueno
+                    sc_dataloader_sc_line != "<NONE>", # good bueno
+                    sc_dataloader_sc_line == sc_content_item_src_line # good bueno
                 ]):
                     print("ERROR: SC CSV CONTENT ITEM HAS SC PATH assertions")
                     print(f"---------------- i ({i}), n ({z}-{n}) ----------------")
@@ -133,8 +141,8 @@ def test_ordered(
                 # assert sc_dataloader_src_line != sc_dataloader_sc_line # can't necessarily assert this because the sc prediction could be the same as the original source segment
             else:
                 if not all([
-                    sc_dataloader_sc_line == "<NONE>", # good
-                    sc_dataloader_src_line == data_content_item_src_line == sc_content_item_src_line # good
+                    sc_dataloader_sc_line == "<NONE>", # good bueno
+                    sc_dataloader_src_line == data_content_item_src_line == sc_content_item_src_line # good bueno
                 ]):
                     print("ERROR: SC CSV CONTENT ITEM DOES NOT HAVE SC PATH assertions")
                     print(f"---------------- i ({i}), n ({z}-{n}) ----------------")
@@ -227,20 +235,20 @@ def test_shuffled(
             sc_content_item_tgt_tag = sc_content_item["tgt_lang"]
 
             # test tags
-            assert data_content_item_src_tag == sc_content_item_src_tag # good
-            assert data_content_item_tgt_tag == sc_content_item_tgt_tag # good
-            assert data_content_item_src_tag != data_content_item_tgt_tag # good
+            assert data_content_item_src_tag == sc_content_item_src_tag # good bueno
+            assert data_content_item_tgt_tag == sc_content_item_tgt_tag # good bueno
+            assert data_content_item_src_tag != data_content_item_tgt_tag # good bueno
 
             # test tgt_line
-            assert data_content_item_tgt_line == sc_content_item_tgt_line # good
+            assert data_content_item_tgt_line == sc_content_item_tgt_line # good bueno
 
             # test lines
             if SC_CONTENT_ITEM_HAS_SC_PATH:
-                sc_line = sc_content_item_src_line # good
-                assert sc_line != "<NONE>" # shouldn't actually need this, probably # good
+                sc_line = sc_content_item_src_line # good bueno
+                assert sc_line != "<NONE>" # shouldn't actually need this, probably # good bueno
             else:
-                assert sc_content_item_src_line == data_content_item_src_line # good
-                sc_line = "<NONE>" # good
+                assert sc_content_item_src_line == data_content_item_src_line # good bueno
+                sc_line = "<NONE>" # good bueno
 
             item = (
                 data_content_item_src_tag, # src_tag

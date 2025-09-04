@@ -4,6 +4,13 @@ import csv
 import random
 
 ########### SC_ALIGNED_MULTILINGUAL_DATASET ###############
+"""
+Hello, Brendan
+
+This is your passed version of you (8/26/2025). I created some preliminary tests for this. But if you use 
+this in work again, do more testing, certainly if you're aiming at publishing. See notes at the top of test_parallel_datasets_sc.py.
+"""
+
 
 class SCAlignedMultilingualDataset(Dataset):
     def __init__(

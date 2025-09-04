@@ -274,9 +274,9 @@ python CopperMT/format_data.py \
     --tgt $TGT \
     --out_dir $FORMAT_OUT_DIR \
     --prefix train \
-    --seed $SEED \
-    --EXCLUDE_SRC "$VAL_COGNATES_SRC,$TEST_COGNATES_SRC"\
-    --EXCLUDE_TGT "$VAL_COGNATES_TGT,$TEST_COGNATES_TGT"
+    --seed $SEED
+    # --EXCLUDE_SRC "$VAL_COGNATES_SRC,$TEST_COGNATES_SRC"\
+    # --EXCLUDE_TGT "$VAL_COGNATES_TGT,$TEST_COGNATES_TGT"
 
 echo ""
 python CopperMT/format_data.py \
@@ -286,9 +286,9 @@ python CopperMT/format_data.py \
     --tgt $TGT \
     --out_dir $FORMAT_OUT_DIR \
     --prefix fine_tune \
-    --seed $SEED \
-    --EXCLUDE_SRC "$TRAIN_COGNATES_SRC,$TEST_COGNATES_SRC"\
-    --EXCLUDE_TGT "$TRAIN_COGNATES_TGT,$TEST_COGNATES_TGT"
+    --seed $SEED
+    # --EXCLUDE_SRC "$TRAIN_COGNATES_SRC,$TEST_COGNATES_SRC"\
+    # --EXCLUDE_TGT "$TRAIN_COGNATES_TGT,$TEST_COGNATES_TGT"
 
 echo ""
 python CopperMT/format_data.py \
@@ -298,9 +298,15 @@ python CopperMT/format_data.py \
     --tgt $TGT \
     --out_dir $FORMAT_OUT_DIR \
     --prefix test \
-    --seed $SEED \
-    --EXCLUDE_SRC "$TRAIN_COGNATES_SRC,$VAL_COGNATES_SRC"\
-    --EXCLUDE_TGT "$TRAIN_COGNATES_TGT,$VAL_COGNATES_TGT"
+    --seed $SEED
+    # --EXCLUDE_SRC "$TRAIN_COGNATES_SRC,$VAL_COGNATES_SRC"\
+    # --EXCLUDE_TGT "$TRAIN_COGNATES_TGT,$VAL_COGNATES_TGT"
+
+echo "ASSERTING NO OVERLAP OF SRC OR TGT SEGS BETWEEN TRAIN / DEV / TEST DATA"
+python -m CopperMT.assert_no_overlap_in_formatted_data \
+    --format_out_dir $FORMAT_OUT_DIR \
+    --src $SRC \
+    --tgt $TGT
 
 if [ $NO_GROUPING = true ]
 then

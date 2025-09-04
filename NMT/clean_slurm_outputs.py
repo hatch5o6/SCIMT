@@ -2,7 +2,7 @@ import os
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--top", "-t", type=int, default=3)
+parser.add_argument("--top", "-t", type=int, default=1)
 args = parser.parse_args()
 top = args.top
 

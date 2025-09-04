@@ -22,6 +22,7 @@ class SPMTokenizer():
         for tok in lang_toks:
             if tok not in self.lang_toks:
                 self.lang_toks.append(tok)
+        self.lang_toks_set = set(self.lang_toks)
         self.special_tokens = [
             self.bos,
             self.eos,
@@ -69,8 +70,12 @@ class SPMTokenizer():
             for tok in self.special_tokens
         ])
 
-    def tokenize(self, text, return_tensor=False, add_special=False):
+    def tokenize(self, text, lang=None, add_lang_token=False, return_tensor=False, add_special=False):
+        if lang is not None:
+            assert f"<{lang}>" in self.lang_toks_set
         spm_sequence = self.spm.encode(text.strip(), out_type=str)
+        if lang is not None and add_lang_token == True:
+            spm_sequence = [f"<{lang}>"] + spm_sequence
         idx_sequence = []
         # TODO Do I need to have it add a bos token?
         for token in spm_sequence:
@@ -85,11 +90,11 @@ class SPMTokenizer():
         return idx_sequence, spm_sequence
 
 
-    def batch_tokenize(self, batch, pad_batch=True, return_tensor=False, add_special=False):
+    def batch_tokenize(self, batch, pad_batch=True, return_tensor=False, add_lang_token=True, add_special=False):
         # tokenize
         batch = [
-            self.tokenize(line, add_special=add_special)[0]
-            for line in batch
+            self.tokenize(line, lang=lang, add_lang_token=add_lang_token, add_special=add_special)[0]
+            for line, lang in batch
         ]
         # pad sequences
         if pad_batch:
@@ -101,6 +106,7 @@ class SPMTokenizer():
         # make tensor
         if return_tensor:
             batch = torch.tensor(batch)
+
         return batch
 
     def detokenize(self, token_ids, remove_special_toks=False):
@@ -128,5 +134,3 @@ class SPMTokenizer():
             for seq in batch
         ]
         return batch
-
-    

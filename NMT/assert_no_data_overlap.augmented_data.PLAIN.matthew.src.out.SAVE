@@ -1,0 +1,609 @@
+Arguments:
+--dir=`/home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN`
+--INCLUDES_DEV_TEST=`False`
+--PLAIN_dir=`/home/hatch5o6/Cognate/code/NMT/data/PLAIN`
+--TEST=`False`
+INCLUDES_DEV_TEST = False
+an-en FILES:
+an-en VERBOSE = True
+Asserting no overlap between
+	-train:/home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN/an-en/train.csv
+	-dev:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en_dev_test/val.csv
+	-test:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/an-en_dev_test/test.csv
+
+
+TRAIN PAIR
+	(1) -`('Esto ye un atraco!', 'This... is a stick-up!')`
+	(2) -`('Que dengún no se mueva!', "Don't anybody move!")`
+	(3) -`('A escape, vueda ixa caixa fuerte!', 'Now, empty that safe!')`
+	(4) -`('Diners, diners, diners!', 'Money, money, money!')`
+	(5) -`('Prou, prou, trunfa dolenta!', 'Stop it! Stop it, you mean, old potato!')`
+	(6) -`('Silencio, Bo Peep, u atropellaré a las tuyas uellas!', 'Quiet, Bo Peep, or your sheep get run over!')`
+	(7) -`('No pas as mías uellas!', 'Help us! Oh, no, not my sheep!')`
+	(8) -`('Que belún faiga bella cosa!', 'Somebody do something!')`
+	(9) -`('Debanta as mans! Oh, no!', 'Reach for the sky!')`
+	(10) -`('O sheriff Woody!', 'Oh, no! Sheriff Woody!')`
+	(11) -`('He veniu a detener-te, Bart o Uercho.', "I'm here to stop you, One-Eyed Bart.")`
+	(12) -`('Cómo sabebas que yera yo?', "How'd you know it was me?")`
+	(13) -`("T'entregarás de buen implaz?", 'Are you gonna come quietly?')`
+	(14) -`('No puetz tocar-me, Sheriff!', "You can't touch me, Sheriff!")`
+	(15) -`('He traito o mío can de presa, con campo de fuerza incorporau.', 'I brought my attack dog with the built-in force field.')`
+	(16) -`('Pos yo he traito o mío dinosaurio que mincha cans con campo de fuerza.', 'Well, I brought my dinosaur who eats force-field dogs.')`
+	(17) -`("Te'n vas t'a garchola, Bart!", "Yipe, yipe, yipe, yipe! You're going to jail, Bart!")`
+	(18) -`('Di-le adiós a la muller y a las trunfetas.', 'Say goodbye to the wife and Tater Tots.')`
+	(19) -`('Has tornau a salvar o día, Woody.', 'You saved the day again, Woody.')`
+	(20) -`('Yes o mío aduyant favorito.', "You're my favourite deputy.")`
+	(21) -`('Imos a achuntar o bestiar.', "Come on, let's wrangle up the cattle.")`
+
+DEV PAIR
+	(1) -`("Lo luns, los cientificos d'a facultat de medicina d'a Universidat de Stanford anuncioron l'invento d'una nueva ferramienta de diagnostico que puede catalogar las celulas seguntes lo suyo tipo: un chip chicotet que se puede imprentar y fabricar con impresoras d'inchección d'uso corrient, per un posible coste de, aproximadament, un centimo de dólar cadaún.", 'On Monday, scientists from the Stanford University School of Medicine announced the invention of a new diagnostic tool that can sort cells by type: a tiny printable chip that can be manufactured using standard inkjet printers for possibly about one U.S. cent each.')`
+	(2) -`("Los investigadors principals mas destacaus creyen que esto puede permitir la detección precoz d'o cáncer, la tuberculosi, lo VIH y la malaria en pacients de países con baixos recursos, an que la taxa de supervivencia de malotías como lo cáncer de mama puede estar la metat que la d'os países mas abanzaus.", 'Lead researchers say this may bring early detection of cancer, tuberculosis, HIV and malaria to patients in low-income countries, where the survival rates for illnesses such as breast cancer can be half those of richer countries.')`
+	(3) -`("Lo JAS 39C Gripen impactó cuentra una pista alredol d'as 9:30 d'o maitín hora local (0230 UTC) y esclató, lo cual fació que se zarrase l'aeropuerto pa vuelos comercials.", 'The JAS 39C Gripen crashed onto a runway at around 9:30 am local time (0230 UTC) and exploded, closing the airport to commercial flights.')`
+	(4) -`("S'identificó a lo piloto como Dilokrit Pattavee, líder d'escuadrón.", 'The pilot was identified as Squadron Leader Dilokrit Pattavee.')`
+	(5) -`("La prensa local informó que una patrulla de pompers de l'aeropuerto vulcó mientres prestaba servicio.", 'Local media reports an airport fire vehicle rolled over while responding.')`
+	(6) -`("Vidal, de 28 anyos d'edat y procedent d'o Sevilla, s'unió a lo Barça fa tres temporadas.", '28-year-old Vidal had joined Barça three seasons ago, from Sevilla.')`
+	(7) -`('Dende la suya casamuda ta la capital catalana, Vidal chugó 49 partius pa lo club.', 'Since moving to the Catalan-capital, Vidal had played 49 games for the club.')`
+	(8) -`("La manifestación encomenzó alredol d'as 11:00 hora local (UTC +1) en Whitehall, enfrent d'a puerta d'acceso a Downing Street, residencia oficial d'o primer ministro, la cual contaba con vichilancia policial.", "The protest started around 11:00 local time (UTC+1) on Whitehall opposite the police-guarded entrance to Downing Street, the Prime Minister's official residence.")`
+	(9) -`("Chusto dimpués d'as 11:00 h, los integrants d'a manifestación blocoron la circulación d'o carril de Whitehall que va enta lo norte.", 'Just after 11:00, protesters blocked traffic on the northbound carriage in Whitehall.')`
+	(10) -`("A las 11:20, la policía solicitó a los manifestants que reculasen ta la facera, indicando que caleba equilibrar lo dreito a manifestar-se con l'acumulación de transito.", 'At 11:20, the police asked the protesters to move back on to the pavement, stating that they needed to balance the right to protest with the traffic building up.')`
+	(11) -`("Alredol d'as 11:29, la manifestación s'ubrió paso per Whitehall, siguió per Trafalgar Square, estendendo-se per Strand, pasando per Aldwych y puyó per Kingsway enta Holborn, puesto an que se feba lo Foro de Primavera en l'hotel Grand Connaught Rooms, per parte d'o Partiu Conservador.", 'Around 11:29, the protest moved up Whitehall, past Trafalgar Square, along the Strand, passing by Aldwych and up Kingsway towards Holborn where the Conservative Party were holding their Spring Forum in the Grand Connaught Rooms hotel.')`
+	(12) -`('Lo récord man a man de Nadal cuentra lo canadiense estió de 7-2.', "Nadal's head to head record against the Canadian is 7–2.")`
+	(13) -`('Estió redotau, fa poco, per Raonic en o Brisbane Open.', 'He recently lost against Raonic in the Brisbane Open.')`
+	(14) -`('En o partiu, Nadal acumuló un 88% de puntos netos y ganó 76 en o primer servicio.', 'Nadal bagged 88% net points in the match winning 76 points in the first serve.')`
+	(15) -`("Dimpués d'o partiu, lo Rei d'a Tierra Batida declaró: «Soi emocionau de tornar a estar en as rondas finals d'os torneyos mas importants. He veniu ta aquí pa mirar de ganar».", 'After the match, King of Clay said, "I am just excited about being back in the final rounds of the most important events. I am here to try to win this."')`
+	(16) -`("La expresión chenerica «Papers de Panamá» fa referencia a los cuasi diez millons de documentos d'o bufet d'avogaus panamenyo Mossack Fonseca que se filtroron en os medios en a primavera de 2016.", '"Panama Papers" is an umbrella term for roughly ten million documents from Panamanian law firm Mossack Fonseca, leaked to the press in spring 2016.')`
+	(17) -`("La documentación reveló que catorce entidaz bancarias aduyoron a clients ricos a amagar capitals per mils de millons de dólars estausunidenses con a finalidat d'escusar-se impuestos y atras regulacions.", 'The documents showed fourteen banks helped wealthy clients hide billions of US dollars of wealth to avoid taxes and other regulations.')`
+	(18) -`("Lo periodico britanico The Guardian sinyaló que Deutsche Bank teneba lo control d'alredol d'a tercera parte d'as 1.200 companyías pantasma que s'usoron pa fer esto.", 'British newspaper The Guardian suggested Deutsche Bank controlled roughly a third of the 1200 shell companies used to accomplish this.')`
+	(19) -`("I habió manifestacions a nivel mundial, se facioron numbrosos chudicios criminals, y los chefes d'estau tanto d'Islandia como de Pakistán renuncioron.", 'There were protests worldwide, several criminal prosecutions, and the leaders of the governments of Iceland and Pakistan both resigned.')`
+	(20) -`("Ma, naixiu de Hong Kong, se formó en a Universidat de Nueva York y en a Escuela de Leis d'Harvard y una vegada tenió una «tarcheta verde» de resident permanent en os Estaus Unius.", 'Born in Hong Kong, Ma studied at New York University and Harvard Law School and once held an American permanent resident "green card".')`
+	(21) -`("Durant las eleccions, Hsieh insinuó que Ma podría escapar d'o país en tiempos de crisi.", 'Hsieh implied during the election that Ma might flee the country during a time of crisis.')`
+
+TEST PAIR
+	(1) -`("«Agora tenemos ratos de cuatre meses d'edat que gosaban estar diabeticos y que ya no'n son», anyadió.", '"We now have 4-month-old mice that are non-diabetic that used to be diabetic," he added.')`
+	(2) -`("La investigación encara se troba en a suya etapa inicial, seguntes ha advertiu lo Dr. Ehud Ur, docent en o grau de medicina d'a Universidat de Dalhousie, en Halifax, Nueva Escocia, y director d'a división clinica y cientifica de l'Asociación Canadiense de Diabetis.", 'Dr. Ehud Ur, professor of medicine at Dalhousie University in Halifax, Nova Scotia and chair of the clinical and scientific division of the Canadian Diabetes Association cautioned that the research is still in its early days.')`
+	(3) -`('Igual como atros especialistas, ye esceptico sobre si la diabetis tiene cura y sinyala que estes descubrimientos no son relevants pa personas que ya tienen diabetis de tipo 1.', 'Like some other experts, he is skeptical about whether diabetes can be cured, noting that these findings have no relevance to people who already have Type 1 diabetes.')`
+	(4) -`("Lo luns, Sara Danius, secretaria permanent d'o Comité d'o Nobel de Literatura de l'Academia Sueca, anunció publicament en Suecia, en un programa radiofonico de Sveriges Radio, que lo comité, en no poder contactar dreitament con Bob Dylan pa comunicar-le lo premio en Literatura 2016, heba abandonau los suyos esfuerzos per comunicar-se con él.", 'On Monday, Sara Danius, permanent secretary of the Nobel Committee for Literature at the Swedish Academy, publicly announced during a radio program on Sveriges Radio in Sweden the committee, unable to reach Bob Dylan directly about winning the 2016 Nobel Prize in Literature, had abandoned its efforts to reach him.')`
+	(5) -`('Danius declaró: «Agora mesmo no somos fendo cosa. He gritau y ninviau correus electronicos a lo suyo asistent mas cercano y he recibiu contestacions muito amables. Per agora, ixo ye prou».', 'Danius said, "Right now we are doing nothing. I have called and sent emails to his closest collaborator and received very friendly replies. For now, that is certainly enough."')`
+	(6) -`("Antes, lo director executivo de Ring, Jamie Siminoff, heba dito que la empresa s'heba iniciau cuan lo timbre suyo no se sentiba dende la suya botiga ta lo garache.", "Previously, Ring's CEO, Jamie Siminoff, remarked the company started when his doorbell wasn't audible from his shop in his garage.")`
+	(7) -`('Dició que heba construyiu un timbre wifi.', 'He built a WiFi door bell, he said.')`
+	(8) -`("Siminoff ha dito que las ventas se disparoron dimpués d'a suya aparición en un episodio de Shark Tank en 2013, an que la dirección d'o programa refusó financiar la empresa emerchent.", 'Siminoff said sales boosted after his 2013 appearance in a Shark Tank episode where the show panel declined funding the startup.')`
+	(9) -`("Ta zaguers de l'anyo 2017, Siminoff fació una aparición en a canal de televisión de crompas QVC.", 'In late 2017, Siminoff appeared on shopping television channel QVC.')`
+	(10) -`("Ring tamién alcanzó un acuerdo chudicial en o pleito con a empresa de seguranza d'a competencia, ADT Corporation.", 'Ring also settled a lawsuit with competing security company, the ADT Corporation.')`
+	(11) -`("A día de hue no s'ha contrimostrau a ciencia cierta que i haiga bel farmaco adecuau pa tratar la infección existent causada per ebola, encara que exista una vacuna experimental que pareixe que puet reducir la mortalidat causada per ixa malotía.", 'While one experimental vaccine appears able to reduce Ebola mortality, up until now, no drugs have been clearly demonstrated suitable for treating existing infection.')`
+	(12) -`("En primeras, Zmapp, un cóctel d'anticuerpos, tenió un prometedor resultau de campo, pero los estudios formals contrimostroron que yera menos beneficioso d'o que s'esperaba pa privar la muerte.", 'One antibody cocktail, ZMapp, initially showed promise in the field, but formal studies indicated it had less benefit than sought in preventing death.')`
+	(13) -`("En l'asayo PALM, la función de Zmapp estió de control, ye dicir, que los cientificos l'emplegoron como base y acomparoron con él los atros tres tratamientos.", 'In the PALM trial, ZMapp served as a control, meaning scientists used it as a baseline and compared the three other treatments to it.')`
+	(14) -`("USA Gymnastics refirma la nota d'o Comité Olimpico d'os Estaus Unius y reconoixe que resulta necesario que la familia olimpica fomente un entorno seguro pa toz los nuestros esportistas.", "USA Gymnastics supports the United States Olympic Committee's letter and accepts the absolute need of the Olympic family to promote a safe environment for all of our athletes.")`
+	(15) -`("Coincidimos con a declaración d'a USOC de que los intereses d'os atletas, los clubs y los suyos esportes, pueden atender-se de manera mas apropia si se fan abances significativos en a nuestra organización, en cuentas de retirar las certificacions.", "We agree with the USOC's statement that the interests of our athletes and clubs, and their sport, may be better served by moving forward with meaningful change within our organization, rather than decertification.")`
+	(16) -`("USA Gymnastics empara una investigación independient que pueda aclarir cómo un abuso d'as proporcions que los sobrevivients de Larry Nassa han descrito con tanta valentor, ha puesto haber pasau desapercibiu per tanto tiempo, y acepta los cambios necesarios y adecuaus.", 'USA Gymnastics supports an independent investigation that may shine light on how abuse of the proportion described so courageously by the survivors of Larry Nassar could have gone undetected for so long and embraces any necessary and appropriate changes.')`
+	(17) -`("L'obchectivo d'a USA Gymnastics y la USOC ye lo mesmo: aconseguir que la chimnasia y atros esportes sían tan seguros como sía posible pa que los atletas aconsigan los suyos suenios en un entorno protechiu, positivo y potenciau.", 'USA Gymnastics and the USOC have the same goal — making the sport of gymnastics, and others, as safe as possible for athletes to follow their dreams in a safe, positive and empowered environment.')`
+	(18) -`("En os anyos 60, Brzezinski treballó pa John F. Kennedy en o puesto d'asesor y, posteriorment, pa lo gubierno de Lyndon B. Johnson.", 'Throughout 1960s, Brzezinski worked for John F. Kennedy as his advisor and then the Lyndon B. Johnson administration.')`
+	(19) -`("Asesoró a Carter en materia de politica exterior en as eleccions de 1976. Posteriorment, treballó como asesor de seguranza nacional (ASN) entre 1977 y 1981, dimpués d'Henry Kissinger.", 'During the 1976 selections he advised Carter on foreign policy, then served as National Security Advisor (NSA) from 1977 to 1981, succeeding Henry Kissinger.')`
+	(20) -`("Como consellero de seguranza nacional, aduyó a Carter en o maneyo diplomatico d'afers internacionals, como los Acuerdos de Camp David de 1978, la normalización d'as relacions entre Estaus Unius y China a zaguers d'o decenio de 1970, la Revolución iraní de 1979, que levó ta la crisi d'os hostaches en Irán, y la invasión sovietica en Afganistán, en 1979.", 'As NSA, he assisted Carter in diplomatically handling world affairs, such as the Camp David Accords, 1978; normalizing US–China relations thought the late 1970s; the Iranian Revolution, which led to the Iran hostage crisis, 1979; and the Soviet invasion in Afghanistan, 1979.')`
+	(21) -`('La cinta, protagonizada per Ryan Gosling y Emma Stone, estió nominada en totas las categorías importants.', 'The movie, featuring Ryan Gosling and Emma Stone, received nominations in all major categories.')`
+PAIR intersection
+set()
+PAIR train-dev intersection
+set()
+PAIR train-test intersection
+set()
+PAIR dev-test intersection
+set()
+
+TRAIN SRC
+	(1) -`Esto ye un atraco!`
+	(2) -`Que dengún no se mueva!`
+	(3) -`A escape, vueda ixa caixa fuerte!`
+	(4) -`Diners, diners, diners!`
+	(5) -`Prou, prou, trunfa dolenta!`
+	(6) -`Silencio, Bo Peep, u atropellaré a las tuyas uellas!`
+	(7) -`No pas as mías uellas!`
+	(8) -`Que belún faiga bella cosa!`
+	(9) -`Debanta as mans! Oh, no!`
+	(10) -`O sheriff Woody!`
+	(11) -`He veniu a detener-te, Bart o Uercho.`
+	(12) -`Cómo sabebas que yera yo?`
+	(13) -`T'entregarás de buen implaz?`
+	(14) -`No puetz tocar-me, Sheriff!`
+	(15) -`He traito o mío can de presa, con campo de fuerza incorporau.`
+	(16) -`Pos yo he traito o mío dinosaurio que mincha cans con campo de fuerza.`
+	(17) -`Te'n vas t'a garchola, Bart!`
+	(18) -`Di-le adiós a la muller y a las trunfetas.`
+	(19) -`Has tornau a salvar o día, Woody.`
+	(20) -`Yes o mío aduyant favorito.`
+	(21) -`Imos a achuntar o bestiar.`
+
+DEV SRC
+	(1) -`Lo luns, los cientificos d'a facultat de medicina d'a Universidat de Stanford anuncioron l'invento d'una nueva ferramienta de diagnostico que puede catalogar las celulas seguntes lo suyo tipo: un chip chicotet que se puede imprentar y fabricar con impresoras d'inchección d'uso corrient, per un posible coste de, aproximadament, un centimo de dólar cadaún.`
+	(2) -`Los investigadors principals mas destacaus creyen que esto puede permitir la detección precoz d'o cáncer, la tuberculosi, lo VIH y la malaria en pacients de países con baixos recursos, an que la taxa de supervivencia de malotías como lo cáncer de mama puede estar la metat que la d'os países mas abanzaus.`
+	(3) -`Lo JAS 39C Gripen impactó cuentra una pista alredol d'as 9:30 d'o maitín hora local (0230 UTC) y esclató, lo cual fació que se zarrase l'aeropuerto pa vuelos comercials.`
+	(4) -`S'identificó a lo piloto como Dilokrit Pattavee, líder d'escuadrón.`
+	(5) -`La prensa local informó que una patrulla de pompers de l'aeropuerto vulcó mientres prestaba servicio.`
+	(6) -`Vidal, de 28 anyos d'edat y procedent d'o Sevilla, s'unió a lo Barça fa tres temporadas.`
+	(7) -`Dende la suya casamuda ta la capital catalana, Vidal chugó 49 partius pa lo club.`
+	(8) -`La manifestación encomenzó alredol d'as 11:00 hora local (UTC +1) en Whitehall, enfrent d'a puerta d'acceso a Downing Street, residencia oficial d'o primer ministro, la cual contaba con vichilancia policial.`
+	(9) -`Chusto dimpués d'as 11:00 h, los integrants d'a manifestación blocoron la circulación d'o carril de Whitehall que va enta lo norte.`
+	(10) -`A las 11:20, la policía solicitó a los manifestants que reculasen ta la facera, indicando que caleba equilibrar lo dreito a manifestar-se con l'acumulación de transito.`
+	(11) -`Alredol d'as 11:29, la manifestación s'ubrió paso per Whitehall, siguió per Trafalgar Square, estendendo-se per Strand, pasando per Aldwych y puyó per Kingsway enta Holborn, puesto an que se feba lo Foro de Primavera en l'hotel Grand Connaught Rooms, per parte d'o Partiu Conservador.`
+	(12) -`Lo récord man a man de Nadal cuentra lo canadiense estió de 7-2.`
+	(13) -`Estió redotau, fa poco, per Raonic en o Brisbane Open.`
+	(14) -`En o partiu, Nadal acumuló un 88% de puntos netos y ganó 76 en o primer servicio.`
+	(15) -`Dimpués d'o partiu, lo Rei d'a Tierra Batida declaró: «Soi emocionau de tornar a estar en as rondas finals d'os torneyos mas importants. He veniu ta aquí pa mirar de ganar».`
+	(16) -`La expresión chenerica «Papers de Panamá» fa referencia a los cuasi diez millons de documentos d'o bufet d'avogaus panamenyo Mossack Fonseca que se filtroron en os medios en a primavera de 2016.`
+	(17) -`La documentación reveló que catorce entidaz bancarias aduyoron a clients ricos a amagar capitals per mils de millons de dólars estausunidenses con a finalidat d'escusar-se impuestos y atras regulacions.`
+	(18) -`Lo periodico britanico The Guardian sinyaló que Deutsche Bank teneba lo control d'alredol d'a tercera parte d'as 1.200 companyías pantasma que s'usoron pa fer esto.`
+	(19) -`I habió manifestacions a nivel mundial, se facioron numbrosos chudicios criminals, y los chefes d'estau tanto d'Islandia como de Pakistán renuncioron.`
+	(20) -`Ma, naixiu de Hong Kong, se formó en a Universidat de Nueva York y en a Escuela de Leis d'Harvard y una vegada tenió una «tarcheta verde» de resident permanent en os Estaus Unius.`
+	(21) -`Durant las eleccions, Hsieh insinuó que Ma podría escapar d'o país en tiempos de crisi.`
+
+TEST SRC
+	(1) -`«Agora tenemos ratos de cuatre meses d'edat que gosaban estar diabeticos y que ya no'n son», anyadió.`
+	(2) -`La investigación encara se troba en a suya etapa inicial, seguntes ha advertiu lo Dr. Ehud Ur, docent en o grau de medicina d'a Universidat de Dalhousie, en Halifax, Nueva Escocia, y director d'a división clinica y cientifica de l'Asociación Canadiense de Diabetis.`
+	(3) -`Igual como atros especialistas, ye esceptico sobre si la diabetis tiene cura y sinyala que estes descubrimientos no son relevants pa personas que ya tienen diabetis de tipo 1.`
+	(4) -`Lo luns, Sara Danius, secretaria permanent d'o Comité d'o Nobel de Literatura de l'Academia Sueca, anunció publicament en Suecia, en un programa radiofonico de Sveriges Radio, que lo comité, en no poder contactar dreitament con Bob Dylan pa comunicar-le lo premio en Literatura 2016, heba abandonau los suyos esfuerzos per comunicar-se con él.`
+	(5) -`Danius declaró: «Agora mesmo no somos fendo cosa. He gritau y ninviau correus electronicos a lo suyo asistent mas cercano y he recibiu contestacions muito amables. Per agora, ixo ye prou».`
+	(6) -`Antes, lo director executivo de Ring, Jamie Siminoff, heba dito que la empresa s'heba iniciau cuan lo timbre suyo no se sentiba dende la suya botiga ta lo garache.`
+	(7) -`Dició que heba construyiu un timbre wifi.`
+	(8) -`Siminoff ha dito que las ventas se disparoron dimpués d'a suya aparición en un episodio de Shark Tank en 2013, an que la dirección d'o programa refusó financiar la empresa emerchent.`
+	(9) -`Ta zaguers de l'anyo 2017, Siminoff fació una aparición en a canal de televisión de crompas QVC.`
+	(10) -`Ring tamién alcanzó un acuerdo chudicial en o pleito con a empresa de seguranza d'a competencia, ADT Corporation.`
+	(11) -`A día de hue no s'ha contrimostrau a ciencia cierta que i haiga bel farmaco adecuau pa tratar la infección existent causada per ebola, encara que exista una vacuna experimental que pareixe que puet reducir la mortalidat causada per ixa malotía.`
+	(12) -`En primeras, Zmapp, un cóctel d'anticuerpos, tenió un prometedor resultau de campo, pero los estudios formals contrimostroron que yera menos beneficioso d'o que s'esperaba pa privar la muerte.`
+	(13) -`En l'asayo PALM, la función de Zmapp estió de control, ye dicir, que los cientificos l'emplegoron como base y acomparoron con él los atros tres tratamientos.`
+	(14) -`USA Gymnastics refirma la nota d'o Comité Olimpico d'os Estaus Unius y reconoixe que resulta necesario que la familia olimpica fomente un entorno seguro pa toz los nuestros esportistas.`
+	(15) -`Coincidimos con a declaración d'a USOC de que los intereses d'os atletas, los clubs y los suyos esportes, pueden atender-se de manera mas apropia si se fan abances significativos en a nuestra organización, en cuentas de retirar las certificacions.`
+	(16) -`USA Gymnastics empara una investigación independient que pueda aclarir cómo un abuso d'as proporcions que los sobrevivients de Larry Nassa han descrito con tanta valentor, ha puesto haber pasau desapercibiu per tanto tiempo, y acepta los cambios necesarios y adecuaus.`
+	(17) -`L'obchectivo d'a USA Gymnastics y la USOC ye lo mesmo: aconseguir que la chimnasia y atros esportes sían tan seguros como sía posible pa que los atletas aconsigan los suyos suenios en un entorno protechiu, positivo y potenciau.`
+	(18) -`En os anyos 60, Brzezinski treballó pa John F. Kennedy en o puesto d'asesor y, posteriorment, pa lo gubierno de Lyndon B. Johnson.`
+	(19) -`Asesoró a Carter en materia de politica exterior en as eleccions de 1976. Posteriorment, treballó como asesor de seguranza nacional (ASN) entre 1977 y 1981, dimpués d'Henry Kissinger.`
+	(20) -`Como consellero de seguranza nacional, aduyó a Carter en o maneyo diplomatico d'afers internacionals, como los Acuerdos de Camp David de 1978, la normalización d'as relacions entre Estaus Unius y China a zaguers d'o decenio de 1970, la Revolución iraní de 1979, que levó ta la crisi d'os hostaches en Irán, y la invasión sovietica en Afganistán, en 1979.`
+	(21) -`La cinta, protagonizada per Ryan Gosling y Emma Stone, estió nominada en totas las categorías importants.`
+SRC intersection
+set()
+SRC train-dev intersection
+set()
+SRC train-test intersection
+set()
+SRC dev-test intersection
+set()
+
+TRAIN TGT
+	(1) -`This... is a stick-up!`
+	(2) -`Don't anybody move!`
+	(3) -`Now, empty that safe!`
+	(4) -`Money, money, money!`
+	(5) -`Stop it! Stop it, you mean, old potato!`
+	(6) -`Quiet, Bo Peep, or your sheep get run over!`
+	(7) -`Help us! Oh, no, not my sheep!`
+	(8) -`Somebody do something!`
+	(9) -`Reach for the sky!`
+	(10) -`Oh, no! Sheriff Woody!`
+	(11) -`I'm here to stop you, One-Eyed Bart.`
+	(12) -`How'd you know it was me?`
+	(13) -`Are you gonna come quietly?`
+	(14) -`You can't touch me, Sheriff!`
+	(15) -`I brought my attack dog with the built-in force field.`
+	(16) -`Well, I brought my dinosaur who eats force-field dogs.`
+	(17) -`Yipe, yipe, yipe, yipe! You're going to jail, Bart!`
+	(18) -`Say goodbye to the wife and Tater Tots.`
+	(19) -`You saved the day again, Woody.`
+	(20) -`You're my favourite deputy.`
+	(21) -`Come on, let's wrangle up the cattle.`
+
+DEV TGT
+	(1) -`On Monday, scientists from the Stanford University School of Medicine announced the invention of a new diagnostic tool that can sort cells by type: a tiny printable chip that can be manufactured using standard inkjet printers for possibly about one U.S. cent each.`
+	(2) -`Lead researchers say this may bring early detection of cancer, tuberculosis, HIV and malaria to patients in low-income countries, where the survival rates for illnesses such as breast cancer can be half those of richer countries.`
+	(3) -`The JAS 39C Gripen crashed onto a runway at around 9:30 am local time (0230 UTC) and exploded, closing the airport to commercial flights.`
+	(4) -`The pilot was identified as Squadron Leader Dilokrit Pattavee.`
+	(5) -`Local media reports an airport fire vehicle rolled over while responding.`
+	(6) -`28-year-old Vidal had joined Barça three seasons ago, from Sevilla.`
+	(7) -`Since moving to the Catalan-capital, Vidal had played 49 games for the club.`
+	(8) -`The protest started around 11:00 local time (UTC+1) on Whitehall opposite the police-guarded entrance to Downing Street, the Prime Minister's official residence.`
+	(9) -`Just after 11:00, protesters blocked traffic on the northbound carriage in Whitehall.`
+	(10) -`At 11:20, the police asked the protesters to move back on to the pavement, stating that they needed to balance the right to protest with the traffic building up.`
+	(11) -`Around 11:29, the protest moved up Whitehall, past Trafalgar Square, along the Strand, passing by Aldwych and up Kingsway towards Holborn where the Conservative Party were holding their Spring Forum in the Grand Connaught Rooms hotel.`
+	(12) -`Nadal's head to head record against the Canadian is 7–2.`
+	(13) -`He recently lost against Raonic in the Brisbane Open.`
+	(14) -`Nadal bagged 88% net points in the match winning 76 points in the first serve.`
+	(15) -`After the match, King of Clay said, "I am just excited about being back in the final rounds of the most important events. I am here to try to win this."`
+	(16) -`"Panama Papers" is an umbrella term for roughly ten million documents from Panamanian law firm Mossack Fonseca, leaked to the press in spring 2016.`
+	(17) -`The documents showed fourteen banks helped wealthy clients hide billions of US dollars of wealth to avoid taxes and other regulations.`
+	(18) -`British newspaper The Guardian suggested Deutsche Bank controlled roughly a third of the 1200 shell companies used to accomplish this.`
+	(19) -`There were protests worldwide, several criminal prosecutions, and the leaders of the governments of Iceland and Pakistan both resigned.`
+	(20) -`Born in Hong Kong, Ma studied at New York University and Harvard Law School and once held an American permanent resident "green card".`
+	(21) -`Hsieh implied during the election that Ma might flee the country during a time of crisis.`
+
+TEST TGT
+	(1) -`"We now have 4-month-old mice that are non-diabetic that used to be diabetic," he added.`
+	(2) -`Dr. Ehud Ur, professor of medicine at Dalhousie University in Halifax, Nova Scotia and chair of the clinical and scientific division of the Canadian Diabetes Association cautioned that the research is still in its early days.`
+	(3) -`Like some other experts, he is skeptical about whether diabetes can be cured, noting that these findings have no relevance to people who already have Type 1 diabetes.`
+	(4) -`On Monday, Sara Danius, permanent secretary of the Nobel Committee for Literature at the Swedish Academy, publicly announced during a radio program on Sveriges Radio in Sweden the committee, unable to reach Bob Dylan directly about winning the 2016 Nobel Prize in Literature, had abandoned its efforts to reach him.`
+	(5) -`Danius said, "Right now we are doing nothing. I have called and sent emails to his closest collaborator and received very friendly replies. For now, that is certainly enough."`
+	(6) -`Previously, Ring's CEO, Jamie Siminoff, remarked the company started when his doorbell wasn't audible from his shop in his garage.`
+	(7) -`He built a WiFi door bell, he said.`
+	(8) -`Siminoff said sales boosted after his 2013 appearance in a Shark Tank episode where the show panel declined funding the startup.`
+	(9) -`In late 2017, Siminoff appeared on shopping television channel QVC.`
+	(10) -`Ring also settled a lawsuit with competing security company, the ADT Corporation.`
+	(11) -`While one experimental vaccine appears able to reduce Ebola mortality, up until now, no drugs have been clearly demonstrated suitable for treating existing infection.`
+	(12) -`One antibody cocktail, ZMapp, initially showed promise in the field, but formal studies indicated it had less benefit than sought in preventing death.`
+	(13) -`In the PALM trial, ZMapp served as a control, meaning scientists used it as a baseline and compared the three other treatments to it.`
+	(14) -`USA Gymnastics supports the United States Olympic Committee's letter and accepts the absolute need of the Olympic family to promote a safe environment for all of our athletes.`
+	(15) -`We agree with the USOC's statement that the interests of our athletes and clubs, and their sport, may be better served by moving forward with meaningful change within our organization, rather than decertification.`
+	(16) -`USA Gymnastics supports an independent investigation that may shine light on how abuse of the proportion described so courageously by the survivors of Larry Nassar could have gone undetected for so long and embraces any necessary and appropriate changes.`
+	(17) -`USA Gymnastics and the USOC have the same goal — making the sport of gymnastics, and others, as safe as possible for athletes to follow their dreams in a safe, positive and empowered environment.`
+	(18) -`Throughout 1960s, Brzezinski worked for John F. Kennedy as his advisor and then the Lyndon B. Johnson administration.`
+	(19) -`During the 1976 selections he advised Carter on foreign policy, then served as National Security Advisor (NSA) from 1977 to 1981, succeeding Henry Kissinger.`
+	(20) -`As NSA, he assisted Carter in diplomatically handling world affairs, such as the Camp David Accords, 1978; normalizing US–China relations thought the late 1970s; the Iranian Revolution, which led to the Iran hostage crisis, 1979; and the Soviet invasion in Afghanistan, 1979.`
+	(21) -`The movie, featuring Ryan Gosling and Emma Stone, received nominations in all major categories.`
+TGT intersection
+set()
+TGT train-dev intersection
+{'Although in theory they can take place annually (so long as they are in different countries), in practice they are not.', 'The balance of power was a system in which European nations sought to maintain the national sovereignty of all European states.', 'These requirements may often depend on what countries a traveller has visited or intends to visit.', "If traveling in a developing country for the first time – or in a new part of the world – don't underestimate the potential culture shock."}
+TGT train-test intersection
+{'Yet, Spanish is also widely used in public transport and other facilities.', 'Similarly, by having a Schengen visa, you do not need to apply for visas to each of the Schengen member countries separately, hence saving time, money and paperwork.'}
+TGT dev-test intersection
+set()
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": false,
+  "TGT_train_test_intersect": false,
+  "TGT_dev_test_intersect": true
+}
+failed!
+
+
+as-hi FILES:
+Asserting no overlap between
+	-train:/home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN/as-hi/train.csv
+	-dev:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/as-hi_dev_test/val.csv
+	-test:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/as-hi_dev_test/test.csv
+
+PAIR intersection
+set()
+PAIR train-dev intersection
+set()
+PAIR train-test intersection
+set()
+PAIR dev-test intersection
+set()
+SRC intersection
+set()
+SRC train-dev intersection
+set()
+SRC train-test intersection
+set()
+SRC dev-test intersection
+set()
+TGT intersection
+set()
+TGT train-dev intersection
+set()
+TGT train-test intersection
+set()
+TGT dev-test intersection
+set()
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+passed!
+
+
+bem-en FILES:
+Asserting no overlap between
+	-train:/home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN/bem-en/train.csv
+	-dev:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/bem-en_dev_test/val.csv
+	-test:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/bem-en_dev_test/test.csv
+
+PAIR intersection
+set()
+PAIR train-dev intersection
+set()
+PAIR train-test intersection
+set()
+PAIR dev-test intersection
+set()
+SRC intersection
+set()
+SRC train-dev intersection
+set()
+SRC train-test intersection
+set()
+SRC dev-test intersection
+set()
+TGT intersection
+set()
+TGT train-dev intersection
+set()
+TGT train-test intersection
+set()
+TGT dev-test intersection
+set()
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+passed!
+
+
+bho-as FILES:
+Asserting no overlap between
+	-train:/home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN/bho-as/train.csv
+	-dev:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-as_dev_test/val.csv
+	-test:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/bho-as_dev_test/test.csv
+
+PAIR intersection
+set()
+PAIR train-dev intersection
+set()
+PAIR train-test intersection
+set()
+PAIR dev-test intersection
+set()
+SRC intersection
+set()
+SRC train-dev intersection
+set()
+SRC train-test intersection
+set()
+SRC dev-test intersection
+set()
+TGT intersection
+set()
+TGT train-dev intersection
+set()
+TGT train-test intersection
+set()
+TGT dev-test intersection
+set()
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+passed!
+
+
+ewe-en FILES:
+Asserting no overlap between
+	-train:/home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN/ewe-en/train.csv
+	-dev:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/ewe-en_dev_test/val.csv
+	-test:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/ewe-en_dev_test/test.csv
+
+PAIR intersection
+set()
+PAIR train-dev intersection
+set()
+PAIR train-test intersection
+set()
+PAIR dev-test intersection
+set()
+SRC intersection
+set()
+SRC train-dev intersection
+set()
+SRC train-test intersection
+set()
+SRC dev-test intersection
+set()
+TGT intersection
+set()
+TGT train-dev intersection
+set()
+TGT train-test intersection
+{'With two years of the end of the war, the former allies were now enemies and the Cold War began.'}
+TGT dev-test intersection
+set()
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": false,
+  "TGT_dev_test_intersect": true
+}
+failed!
+
+
+fon-fr FILES:
+Asserting no overlap between
+	-train:/home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN/fon-fr/train.csv
+	-dev:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fon-fr_dev_test/val.csv
+	-test:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/fon-fr_dev_test/test.csv
+
+PAIR intersection
+set()
+PAIR train-dev intersection
+set()
+PAIR train-test intersection
+set()
+PAIR dev-test intersection
+set()
+SRC intersection
+set()
+SRC train-dev intersection
+set()
+SRC train-test intersection
+set()
+SRC dev-test intersection
+set()
+TGT intersection
+set()
+TGT train-dev intersection
+set()
+TGT train-test intersection
+set()
+TGT dev-test intersection
+set()
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+passed!
+
+
+hsb-de FILES:
+Asserting no overlap between
+	-train:/home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN/hsb-de/train.csv
+	-dev:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de_dev_test/val.csv
+	-test:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de_dev_test/test.csv
+
+PAIR intersection
+set()
+PAIR train-dev intersection
+set()
+PAIR train-test intersection
+set()
+PAIR dev-test intersection
+set()
+SRC intersection
+set()
+SRC train-dev intersection
+{'Wosebje wuzběhnyć maja so w tutym zwisku wšitke prócowanja za zachowanje serbskeje rěče a kultury w młodej generacij.', 'Wjelk ma poměrnje dołhu klamu a sylnu šiju.', 'Předewzaće je zwrěšćiło.', 'Tež financowanje cyłodnjowskeje dźěławosće předsydy je zaručene.', 'To su wosebite duchi – třo něhdyši serbscy wjerchojo, kotřiž njeběchu kmani, swój lud nawjedować.', 'Kniha móže k skrućenju kritiskeho sebjewědomja Saksow přinošować, tak dr. Hauke Bartels, direktor Serbskeho instituta.', 'Towarstwo ma swoje wustawki předpołožić.', 'Wupad jedneje tajkeje wosoby woznamjenja hustodosć wupad mjezsobneje wuměny.', 'Mamy so jako Domowina wo dialog postarać a mamy jón spěchować.', 'Wón je tak jědojty, zo móhł čłowjek do womory padnyć, tež hdyž jenož mało kura zadycha.', 'Na to podachmy so do Serbskeho doma, do redakcije Płomjenja.', 'Domowina iniciěruje młodźinske projekty k narodno politiskemu kubłanju.', 'Je w knize něšto kmane?', 'Tu ničo krjepić njetrjebam.', 'Wosebje referent za kulturu a wukraj je so wo to prócował, zo so nětko tež dokumentacija wo tutych nałožkach z pomocu spěchowanja Załožby za serbski lud a na zakładźe filmowych sekwencow Sorabija-film-studija jako dokumentarne žórło nadźěła.', 'To konik njetrjeba.', 'To drje změjemy špatne wjedro.', 'Nadźijomnje moja tobołka nětko cyła njesmjerdźi.', 'Hewak ju ženje wjace njenamakam.', 'Jako stajny partner buchmy z naprašowanjemi najwšelakorišeho razu konfrontowani a wukonjamy přez zamołwiteho referentu za hospodarstwo a infrastrukturelne wuwiće tež nawodniske funkcije w LEADER-regionje.', 'Předleži nowy logo Domowiny, kotryž je so znowa škitał a so w přichodźe jako zakład za jednotny layout wšitkich ćišćanych stronow wužiwa.', 'Nimo toho mějachu so najwšelakoriše techniske prašenja w zwisku z digitalnym wobdźěłanjom rěčneho materiala wujasnić.', 'Z tym stupi narodna rada politisce do pozadka.', 'Zaměr je, so w procesu nadźěłanja strategiskich planow resp. dalepisanja regionalneho plana za Hornju Łužicu/Delnjošlesku ze serbskeho wida do debaty zarjadować a naše wočakowanja sformulować.', 'W tutym sebjezrozumjenju widźimy serbski lud jako runohódny wobstatk zhromadnosće europskich narodow.', 'Što přińdźe po brunicy?', 'Domowina stara so wo rozšěrjenje wědy wo swojej narodnopolitiskej dźěławosći, wosebje w młodźinje.', 'Zdobom je serbski sydlenski teritorij Braniborskeje a Sakskeje za Domowinu jeje jednotny hłowny skutkowanski wobłuk.', 'Předsyda a městopředsydaj wukonjeja swoju funkciju zasadnje čestnohamtsce.', 'Tute wobmjezowanja płaća njewotwisnje wot rozšěrjenskeho puća, potajkim njewotwisnje wot toho, po kotrym puću a w kotrym mnóstwje informaciski spis přijimarjej dóńdźe.', 'Znowa su so tež přez kulturnu wuměnu styki z městom Lüchow nawjazali.', 'Trjebam pak ju sam.', 'Napoj budu wěsće hišće trjebać.', 'Město je za cuzych zawrjene.'}
+SRC train-test intersection
+{'To měło so paralelnje z lěpšim zwiskom do Drježdźan zwoprawdźić.', 'Wjelk je najwjetši zastupjer psyčich družin.', 'Wjelk je přez mjezynarodne prawo, europske prawo kaž tež přez zwjazkowe a krajowe prawo kruće škitana zwěrjeća družina.', 'Tak dožiwichu probu lětušeho lěćneho dźiwadła a wuspytachu so z klankarku sami w dźiwadźelenju.', 'Hačrunjež sej dźěło měšćanskeho zarjada jara wažu: We wobydlerstwje słyšu w tutym nastupanju wo tójšto mjerzanjach.', 'Tohodla budu tež w přichodźe dalši ludźo w Budyšinje wěste a přiměrjene přebywanišća trjebać.', 'Dowolene pak je stronam, tutón zešiwk k rozwučowanju swojich sobustawow wužiwać.', 'Přez intensiwnu hońtwu so wjelk w Němskej wokoło 1750 jako stajna dźiwina wutupi.', 'Přiručka za kubłarki a kubłarjow je w nowym formaće a trochu rozšěrjenym nakładźe wušła.', 'Tež kóčka Mia so přidruži.', 'Njenamakaja so dosć młodostnych w Budyšinje, kotřiž chcedźa w tutym gremiju sobu dźěłać.', 'Zhromadne wuće w chorje sylni socialnu wjazbu wjelčeje swójby a skedźbnja runočasnje cuze wjelki na wobstejacy teritorij.', 'Najlěpje je, zo wołataj cyle wótře za jednym dorosćenym.', 'Wona dyrbi jenož kusk wjetša być hač pohladnica.', 'Na dźěćacy a młodźinski sport chcu wosebje dźiwać.', 'Hakle dźěło mnohich fachowcow zmóžni maćeršćinu z wuwaženym wobsahom k rozdźělnym temam, k gramatice a prawopisej.', 'Dźěćom ze socialnje słabšich swójbow słuša naša wosebita skedźnosć.', 'Domowina pomha nowym kulturnym zarjadnišćam při koncipowanju serbskich wobsahow a při zaručenju serbskorěčneho personala.', 'K škitej klimy słuša za mnje tež zjawny wosobowy bliskowobchad, kotryž wotpowěduje narokam časa.', 'Župy su na region wjazane sobustawske towarstwa Domowiny.', 'Župy a sobustawske towarstwa so do wudźěłanja směrnicow a do přesadźenja nadawkow integruja.', 'Dlěje hač tysac lět staj wobaj narodaj tule zhromadnje žiwaj.', 'Z kulturnymi wuměnami a wuprawami wudźeržuje Domowina kulturne styki do wukraja.', 'Na to Lukaš stany a wotewrě durje do wochěže.', 'Tute su hač k starobje jednoho do dweju lět w staršiskim rewěrje žiwe.', 'Wjelčicy su zwjetša lóše a mjeńše hač muske wjelki.', 'Wona steji woporam tajkich nadpadow pomocliwje poboku.', 'We wochěži je pódla chěžinych duri wulki kašćik z papjerjanymi wotpadkami stał, kotryž bě so zapalił.', 'Štó sedźi na třěše a kuri bjez trubki a tobaka?', 'Přez tutón přirodny wuběr maja wjelki pozitiwny wliw na družiny zwěrjatow, kotrež žeru.', 'Krótko po snědani zaklepa něchtó wo durje skupinskeje stwy.', 'Strowe wjelki čłowjeka poprawom njewohrožuja.', 'We wotměnjawych zwučowanjach so leksika zwučuje a skruća.', 'W tutym zwisku wočakujemy, zo so financne srědki zwjazkoweho knježerstwa w přichodźe jako institucionelne spěchowanje přidźěleja.', 'Na znamješku widźiće wjacore wěcy, kotrež wohnjowa wobora při swojim dźěle trjeba.', 'Zwjazajće wěcy, kotrež móža so zapalić, přez smuhi z wohnjohašakom!', 'Do serbšćiny přełožiła je ju něhdyša wučerka stawiznow na gymnaziju Sonja Krječmarjowa.', 'Abo je w tyzkach snano někajka medicina, kotraž dźiwy čini?', 'Powěsće wo nadpadach wjelkow na čłowjeka ze zašłych lětstotkow stejachu zwjetša w zwisku ze sćekłosću.', 'Tohodla wosebje witam, hdyž předewzaća dobrowólnje wjace činja a na přikład wo zhromadnych zawodnych pěstowarnjach přemysluja.', 'Ja sym z mojim małym bratřikom Lukašom sama w bydlenju, mama je nakupować.', 'Cuzym wjelkam, kiž k stadłu njesłušeja, so tak signalizuje, zo je rewěr wobsadźeny.', 'Wjele wunamakankow ma swój přikład w přirodźe.', 'Z tym nam pomhaš, zo móhli swoje hnězdo dale twarić.', 'Wosebje ma so před wažnymi postajenjemi a wobzamknjenjemi šěroki spektrum měnjenjow stworić.', 'Chcemy so wo to postarać, zo je jim runoprawne wuwiće zaručene.', 'Kónčk wopuše je čorny, nutřkowne wuši a partije na bokomaj klamy su swětłe abo běłe.', 'Na kóncu přeprosy wón wšitkich na wopyt do wohnjoweje straže.', 'Domske łastojčki twarja swoje hnězda nimale přeco při wonkownych sćěnach twarjenjow.', 'Wón wza prěnju tyzku, běžeše z njej do dźěćaceje stwy a suny sej ju pod łožo.', 'Dokelž sej za twarjenje hnězda zwjetša małe wustupki wupytamy, pomhaja nam łaty abo małe desčički při sćěnach.', 'Při tym je wšojedne, hač to w Domowinje je abo zwonka njeje.', 'Wone swoje hnězda hač na wusku dźěrku zamurjuja.', 'Prawy wohnjowy wobornik chcyše k nim do pěstowarnje přińć a wo swojim dźěle powědać!', 'Ručež staršej z picu přilećitaj, rozdajeja wšitke naraz swój pysk.', 'Najlěpje čuju so na kraju we wjeskach z chlěwami, hatami a rěčkami, ze štomami a łukami.', 'Tež dźensa mamy so w Budyšinje hladajo na naše dobre hospodarske połoženje wosebje tež awtochtonosći a krutej zasydlenosći serbskeje ludnosće dźakować.', 'Tohodla njesmědźa so tež stare hnězda w zymje wotstronić.'}
+SRC dev-test intersection
+set()
+TGT intersection
+set()
+TGT train-dev intersection
+{'Du hast schön sauber ausgemalt.', 'Was hast du gestern noch gemacht?', 'Nach einigen Jahren Erfahrung müssen wir aber feststellen, dass das bisherige Modell des Bautzener Jugendbeirates in dieser Form nicht funktioniert.', 'Wir fahren heute einkaufen.', 'Hast du schon deinen Urlaub geplant?', 'Ich wünsche Dir viel Freude mit der Familie.', 'Gott ist mit dir in allem, was du tust.', 'Ich muss noch telefonieren.', 'Was ist passiert?', 'Den will ich nicht begießen!', 'Fahren heute zum Arzt.', 'Eine solche Frechheit lasse ich mir nicht gefallen.', 'Das Team für Schulsozialarbeit begleitet Schülerinnen und Schüler bei ihrer Entwicklung zum erwachsenen Menschen.', 'Das ist die schlechte Seite der nicht gelungenen Strukturänderung.', 'Ich nehme lieber Margarine.', 'Dennoch bleibt es auch eine gute Idee: Mit einem neuen Konzept will ich als Oberbürgermeister erneut versuchen, die Jugend einzubinden.', 'Welche Beschwerden haben Sie?', 'Ich habe mit den Kindern draußen gespielt.', 'Das Kind ist ziemlich wehleidig.', 'Der Schutz dieses ist eine wesentliche Aufgabe beim Wirken der Domowina.', 'Ich verstand deine Frage nicht.', 'Tom war allein.', 'Wir haben Karten fürs Theater.', 'Brauche ich dafür ein Rezept?', 'Die Teilnehmer aus der Ober- und Niederlausitz begaben sich bei einer Führung durch Cottbus auf einige der zahlreichen sorbischen Spuren der Stadt.', 'Und sogleich wurde der Mensch gesund und nahm sein Bett und ging hin.', 'Du hast sie doch gestern geputzt.', 'Ich habe einen Salat zubereitet.', 'Bist du noch müde?', 'Möchten Sie eine Nachricht hinterlassen?', 'Zum Abendbrot trinke ich gern Saft.', 'Ich bin auf Dienstreise.', 'Ich habe Geld verschenkt.', 'Ich gehe jetzt ins Dorf.', 'In der Diskussion wurde deutlich, dass ein gegenseitiger Austausch von Informationen den Interessen der Sorben dient.', 'Geschäftsordnungen von Organen der Domowina sind kein Bestandteil dieser Satzung.', 'Dann fahren wir zum Arzt.', 'Obgleich viele Unternehmen an der Entlohnung ihrer Angestellten noch verbessert werden müssen, kann das Lohnniveau in vielen Branchen in unserer Region mit den Städten Dresden, Berlin oder Stuttgart verglichen werden.', 'Ich muss ins Krankenhaus.', 'Die konkreten Unterbringungslösungen in den Städten und Gemeinden müssen offener und frühzeitig kommuniziert werden; die Ängste und Befürchtungen der Einwohner sind ernst zu nehmen und bei Entscheidungen mit zu berücksichtigen.', 'Ich brauche einen Arzneitee.', 'Vor allem unsere slawischen Brüder und Schwestern sowie die Minderheiten im In- und Ausland sind für uns weiterhin starke Partner.', 'Ich habe mein Kissen gefunden.', 'Hier gefällt es uns.', 'Die Domowina ist im Vereinsregister eingetragen.', 'Wir haben ein Grundstück gekauft.', 'Ich habe mich sehr angestrengt.', 'Bis Ende des Jahres 2019 entsteht eine Online-Datenbasis, die die entsprechende Forschung in der Zukunft erleichtern und befördern wird.', 'Ich habe schon viele Bewerbungen abgeschickt.', 'Ich ziehe das rote Kleid an.', 'Flexible Arbeitszeitmodelle, Gesundheitsmanagement und andere Vorteile sind bei Arbeitnehmern zunehmend Faktoren, welche sie bei der Wahl des Arbeitgebers beeinflussen bzw. die Mitarbeiterbindung maßgeblich mit bestimmen.', 'Darin finden sie Leserzuschriften, neue sorbische Erzählungen, Märchen oder Sagen.', 'Ich habe einem Freund Geld verliehen.'}
+TGT train-test intersection
+{'Viele Abbildungen zu Geräten und Werkzeugen zeigen, wie das Leben einst war.', 'Die Regionalverbände sind regional gebundene Mitgliedsvereine der Domowina.', 'Die Geburtenzahlen steigen in der Stadt stärker als gedacht.', 'Auch ist die Möglichkeit der Erweiterung von Plätzen in Kindertagespflege mit in den Blick zu nehmen.', 'Wichtiger als die Frage, was sie vertritt, ist der Fakt, dass wir unsere Rechte zu vertreten haben.', 'Der Fachbeirat des WITAJ-Sprachzentrums wurde am 21. Januar 2013 neu gegründet.', 'Unser Ziel ist es, ausgehend von diesen guten Voraussetzungen, das Vertrauen in den Standort weiter auszubauen.', 'Die Domowina empfiehlt und organisiert zwei parlamentarische Abende zu sorbischen Angelegenheiten in den Landtagen Brandenburgs und Sachsens.', 'Wenn du fertig bist, wisch dir den Po ab!', 'Auch Kinder aus deutschsprachigen Elternhäusern können die Sprache verstehen und sprechen lernen.', 'Die Jugendsozialarbeit wird auf Grundlage eines Vertrages mit dem Kreis Bautzen durchgeführt.', 'Gleichzeitig wird diese weiterentwickelt und mit Mitteln der modernen Bühnenkunst verknüpft.', 'Kinder und Jugendliche haben hier die Möglichkeit, die Sprache auf höchstem Niveau zu erlernen.', 'Die Kirchen und alle Religionsgemeinschaften sind mir daher ein wichtiger Partner für ein gedeihliches Zusammenleben in der Stadt.', 'Außerdem werden Kompetenzen zur Lösung persönlicher und sozialer Probleme und Herausforderungen gefördert.', 'Erfahren Sie mehr über die Geschichte und Kultur einer außergewöhnlichen Region.', 'In Bautzen werden daher weiter Menschen eine sichere und angemessene Unterbringung benötigen.'}
+TGT dev-test intersection
+set()
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": false,
+  "SRC_train_test_intersect": false,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": false,
+  "TGT_train_test_intersect": false,
+  "TGT_dev_test_intersect": true
+}
+failed!
+
+
+mfe-en FILES:
+Asserting no overlap between
+	-train:/home/hatch5o6/Cognate/code/NMT/augmented_data/PLAIN/mfe-en/train.csv
+	-dev:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en_dev_test/val.csv
+	-test:/home/hatch5o6/Cognate/code/NMT/data/PLAIN/mfe-en_dev_test/test.csv
+
+PAIR intersection
+set()
+PAIR train-dev intersection
+set()
+PAIR train-test intersection
+set()
+PAIR dev-test intersection
+set()
+SRC intersection
+set()
+SRC train-dev intersection
+set()
+SRC train-test intersection
+set()
+SRC dev-test intersection
+set()
+TGT intersection
+set()
+TGT train-dev intersection
+{'Can I help you find something?', 'What do you say?', 'Where are you from?', 'Little John went away.'}
+TGT train-test intersection
+{'We were, even then, proposing a legal framework that would oblige the Sugar Estates to plant their rows of cane in a format that allows inter-line cropping of food crops every year, and not just when there is new cane planted every seven or so years.', 'A tree and its fruit.', "Yes, that's right.", 'The other will be left.', 'What was it that had altered in the faces of the pigs?', 'The king was happy.', 'Anyway, we moved from Stratford to Los Angeles, and I just want to say a word about the transition.'}
+TGT dev-test intersection
+set()
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": false,
+  "TGT_train_test_intersect": false,
+  "TGT_dev_test_intersect": true
+}
+failed!
+
+
+SUMMARY:
+{
+  "an-en": false,
+  "as-hi": true,
+  "bem-en": true,
+  "bho-as": true,
+  "ewe-en": false,
+  "fon-fr": true,
+  "hsb-de": false,
+  "mfe-en": false
+}

@@ -30,12 +30,18 @@ def format(
     og_data = make_unique(og_data)
     print("AFTER UNIQUE:", len(og_data))
 
-    exclude_src_data = read_data(EXCLUDE_SRC)
-    exclude_tgt_data = read_data(EXCLUDE_TGT)
-    assert len(exclude_src_data) == len(exclude_tgt_data)
-    exclude_data = set(list(zip(exclude_src_data, exclude_tgt_data)))
-    og_data = remove_data(og_data)
-    print("AFTER REMOVE EXCLUDE DATA:", len(og_data))
+    assert isinstance(EXCLUDE_SRC, str)
+    assert isinstance(EXCLUDE_TGT, str)
+    if len(EXCLUDE_TGT) > 0:
+        assert len(EXCLUDE_SRC) > 0
+    if len(EXCLUDE_SRC) > 0:
+        assert len(EXCLUDE_TGT) > 0
+        exclude_src_data = read_data(EXCLUDE_SRC)
+        exclude_tgt_data = read_data(EXCLUDE_TGT)
+        assert len(exclude_src_data) == len(exclude_tgt_data)
+        exclude_data = set(list(zip(exclude_src_data, exclude_tgt_data)))
+        og_data = remove_data(og_data, exclude_data)
+        print("AFTER REMOVE EXCLUDE DATA:", len(og_data))
     
     src_data = []
     tgt_data = []
@@ -51,6 +57,8 @@ def format(
     write_file(tgt_data, tgt_out_f)
 
 def remove_data(og_data, exclude_data):
+    #TODO think through this some more maybe
+    # Not sure if the src_word in ex_src_word criteria is a good one
     new_data = []
     for src_word, tgt_word in og_data:
         for ex_src_word, ex_tgt_word in exclude_data:
@@ -58,6 +66,7 @@ def remove_data(og_data, exclude_data):
                 pass
             else:
                 new_data.append((src_word, tgt_word))
+    return new_data
 
 def make_unique(data):
     items = set()

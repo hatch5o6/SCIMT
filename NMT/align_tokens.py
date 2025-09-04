@@ -210,6 +210,8 @@ def get_fr_toks(
             if sc_tok_idx is not None:
                 if fr_tok == "":
                     fr_tok = None
+                assert cur_tok_idx is not None
+                assert sc_tok_seq[cur_tok_idx] is not None
                 fr_toks.append((fr_tok, sc_tok_seq[cur_tok_idx], cur_tok_idx))
             else:
                 fr_toks.append((fr_tok, None, None))
@@ -229,10 +231,15 @@ def get_fr_toks(
     if sc_tok_idx is not None:
         if fr_tok == "":
             fr_tok = None
+        assert sc_tok_seq[cur_tok_idx] is not None
+        assert cur_tok_idx is not None
         fr_toks.append((fr_tok, sc_tok_seq[cur_tok_idx], cur_tok_idx))
     else:
         assert fr_tok != ""
         fr_toks.append((fr_tok, None, None))
+
+    for f, s, i in fr_toks:
+        assert (s == None and i == None) or (s != None and i != None)
 
     return fr_toks
 
@@ -273,7 +280,7 @@ def make_one2many_selections(fr_vocabulary_with_options):
         fr_one2many_selections[fr_tok] = (selected_sc_tok, selected_tok_id, selected_ct)
     return fr_one2many_selections
 
-def make_many2one_selections(fr_one2many_selections, next_vocab_id):
+def make_many2one_selections(fr_one2many_selections, next_vocab_id, sc_tokenizer):
     print("MANY2ONE SELECTIONS")
     final_vocabulary = {}
 
@@ -308,18 +315,23 @@ def make_many2one_selections(fr_one2many_selections, next_vocab_id):
 
         assert STANDARD_tok_id is not None
         assert (selected_fr_tok, selected_ct) != (None, None)
-        final_vocabulary = add_to_final_vocab(final_vocabulary, selected_fr_tok, STANDARD_tok_id)
+        final_vocabulary = add_to_final_vocab(final_vocabulary, selected_fr_tok, STANDARD_tok_id, sc_tokenizer=sc_tokenizer)
         # print("SELECTED FR TOK", selected_fr_tok)
 
         for (fr_tok, tok_id), ct in sc_mappings[sc_tok].items():
             if fr_tok != selected_fr_tok:
                 # print("other FR TOK:", fr_tok)
-                final_vocabulary = add_to_final_vocab(final_vocabulary, fr_tok, next_vocab_id)
+                final_vocabulary = add_to_final_vocab(final_vocabulary, fr_tok, next_vocab_id, sc_tokenizer=sc_tokenizer)
                 next_vocab_id += 1
     return final_vocabulary, next_vocab_id
 
 
-def add_to_final_vocab(vocab, tok, idx):
+def add_to_final_vocab(vocab, tok, idx, sc_tokenizer):
+    if idx in sc_tokenizer.special_tok_ids:
+        assert idx == sc_tokenizer.token2idx[sc_tokenizer.unk]
+        print(f"Trying to add `{tok}` as idx `{idx}`, but this is the unk idx. So it's an out of vocab item and will not be added to final vocab.")
+        return vocab
+
     if tok in vocab.keys():
         print("Trying to add", tok, idx)
         print(f"\tBut {tok} set to {vocab[tok]}")
@@ -351,9 +363,9 @@ def fr_tokenize(
     # fr_toks_tied = "▁Ce▁jour-là,▁sic_la▁bénédiction▁a▁ouvert▁les▁portes▁du▁Ciel▁sur▁Jacob."
     # sc_toks_tied = "▁Se▁zour,▁la▁benediksion▁lrda▁ouver▁les▁por▁di▁Siel▁sir▁Jakob."
 
-    print("\n")
-    print(f"FR_TOKS_TIED: `{fr_toks_tied}`")
-    print(f"SC_TOKS_TIED: `{sc_toks_tied}`")
+    # print("\n")
+    # print(f"FR_TOKS_TIED: `{fr_toks_tied}`")
+    # print(f"SC_TOKS_TIED: `{sc_toks_tied}`")
 
     fr2sc_tied_mappings = get_tied_char_alignments(fr_toks_tied, sc_toks_tied)
 
@@ -363,9 +375,9 @@ def fr_tokenize(
         sc_tok_map=sc_tok_map,
         sc_tok_seq=sc_tok_seq
     )
-    print("FR TOKS - SC TOKS")
-    for fr_tok, sc_tok, sc_tok_idx in fr_toks:
-        print(f"{fr_tok}, {sc_tok}, {sc_tok_idx}")
+    # print("FR TOKS - SC TOKS")
+    # for fr_tok, sc_tok, sc_tok_idx in fr_toks:
+    #     print(f"{fr_tok}, {sc_tok}, {sc_tok_idx}")
 
     fr_tok_seq = [
         fr_tok 
@@ -444,6 +456,9 @@ def main(
     fr_vocab_ids = set()
     next_vocab_id = max(sc_tokenizer.idx2token.keys()) + 1
     assert next_vocab_id == max(sc_tokenizer.token2idx.values()) + 1
+    assert next_vocab_id not in sc_tokenizer.idx2token.keys()
+    assert next_vocab_id not in sc_tokenizer.token2idx.values()
+    print("NEXT VOCAB ID:", next_vocab_id)
 
     n_diff_num_toks = 0
     n_unk = 0
@@ -472,7 +487,7 @@ def main(
         for fr_tok, sc_tok, sc_tok_idx in fr_toks:
             if fr_tok not in fr_aligned_vocabulary:
                 fr_aligned_vocabulary[fr_tok] = Counter()
-            sc_tok_vocab_id = sc_tokenizer.token2idx.get(sc_tok, None)
+            sc_tok_vocab_id = sc_tokenizer.token2idx.get(sc_tok, None) # returns None if sc_tok is None or if sc_tok is an unk token for the tokenizer (out of vocabulary)
             fr_aligned_vocabulary[fr_tok][(sc_tok, sc_tok_vocab_id)] += 1
             fr_vocab_ids.add(sc_tok_vocab_id)
     # For end
@@ -500,6 +515,7 @@ def main(
                     print(f"\t\tFR TOK: `{fr_tok}`, sc_tok:`{sc_tok}`, tok_id: `{tok_id}`")
                     tok_id = sc_tokenizer.token2idx[sc_tokenizer.unk]
                     sc_tok = sc_tokenizer.unk
+                    # fr_tok = sc_tokenizer.unk
                     print("\t\t-Setting to <unk>:", sc_tokenizer.token2idx['<unk>'], tok_id)
                     n_unk += 1
                 else:
@@ -507,10 +523,19 @@ def main(
                     tok_id = next_vocab_id
                     next_vocab_id += 1
                     assert tok_id not in fr_vocab_ids
+                    assert tok_id not in sc_tokenizer.idx2token.keys()
                     n_add_fr += 1
                 fr_vocab_ids.add(tok_id)
             else:
                 assert tok_id in fr_vocab_ids
+            
+            # if fr_tok == sc_tokenizer.unk:
+            #     assert sc_tok == sc_tokenizer.unk
+            # if sc_tok == sc_tokenizer.unk:
+            #     assert fr_tok == sc_tokenizer.unk
+
+            # if fr_tok != sc_tokenizer.unk:
+            #     assert sc_tok != sc_tokenizer.unk
             fr_vocabulary_with_options[fr_tok][(sc_tok, tok_id)] = ct
 
     print("\n\nUNK TOKS:", n_unk)
@@ -527,7 +552,7 @@ def main(
     fr_one2many_selections = make_one2many_selections(fr_vocabulary_with_options)
 
     # SELECT MANY FR to ONE SC. Create new tokens for the remaining FR.
-    fr_final_vocabulary, next_vocab_id = make_many2one_selections(fr_one2many_selections, next_vocab_id)
+    fr_final_vocabulary, next_vocab_id = make_many2one_selections(fr_one2many_selections, next_vocab_id, sc_tokenizer)
     fr_idx2token = {idx: token for token, idx in fr_final_vocabulary.items()}
     assert len(fr_idx2token) == len(fr_final_vocabulary)
 
@@ -612,7 +637,19 @@ def main(
 def add_to_collective_vocab(FINAL_COLLECTIVE_VOCAB, dist, token2idx, div="FR"):
     assert div in ["FR", "CH", "TG"] # FR=parent, CH=child, TG=target
     print(f"ADDING {div} DIST TO FINAL_COLLECTIVE_VOCAB")
+    div_unknown_items = []
     for item, (ct, total_toks) in tqdm(dist.items()):
+        # if item (e.g. the 'ñ' that caused us grief) is not in token2idx, 
+        #   it means it probably wasn't added to the fr_final_vocabulary 
+        #   (or isn't in the sc_tokenizer vocab, but not sure if that 
+        #   will trigger this) and is an unk token. In this case, don't 
+        #   add to FINAL_COLLECTIVE_VOCAB either. The dist is built from mere
+        #   segmentation, hence we need to check if each tok in the segmenation
+        #   is in the vocabulary we decided on earlier.
+        if item not in token2idx.keys(): 
+            div_unknown_items.append(item)
+            continue
+
         idx = token2idx[item]
         if idx not in FINAL_COLLECTIVE_VOCAB:
             FINAL_COLLECTIVE_VOCAB[idx] = {
@@ -630,7 +667,7 @@ def add_to_collective_vocab(FINAL_COLLECTIVE_VOCAB, dist, token2idx, div="FR"):
         FINAL_COLLECTIVE_VOCAB[idx][div]["total_toks"] = total_toks
         FINAL_COLLECTIVE_VOCAB[idx]["TOTAL_CT"] += ct
         FINAL_COLLECTIVE_VOCAB[idx]["TOTAL_TOTAL_TOKS"] += total_toks
-
+    print("\tunknown items:", div_unknown_items)
     return FINAL_COLLECTIVE_VOCAB
 
 def print_list(list):
