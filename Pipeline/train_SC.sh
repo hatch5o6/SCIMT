@@ -143,14 +143,18 @@ else
 fi
 
 # 2.3.3 fast_align
+# 3 Fast Align commands
+# (1) forward alignment
 ./../fast_align/build/fast_align \
     -i ${SRC_TGT_F}.txt \
     -d -o -v > ${SRC_TGT_F}.forward.align
 
+# (2) reverse alignment
 ./../fast_align/build/fast_align \
     -i ${SRC_TGT_F}.txt \
     -d -o -v -r > ${SRC_TGT_F}.reverse.align
 
+# (3) symmetricized alignment
 ./../fast_align/build/atools \
     -i ${SRC_TGT_F}.forward.align \
     -j ${SRC_TGT_F}.reverse.align \

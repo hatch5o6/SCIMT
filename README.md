@@ -55,6 +55,8 @@ See *Pipeline/cfg/SC* for the .cfg files for all 10 scenarios of these experimen
 
 
 ## Pipeline/train_SC.sh
+This documentation is designed to walk you through the *Pipeline/train_SC.sh* script. You should read this documentation and the *train_SC.sh* script together. This documentation will refer to sections of the *train_SC.sh* code with numbers like 2.2 and 2.3.1.
+
 **Pipeline/train_SC.sh** trains the character correspondence (SC) models.
 We call it SC, which stands for "sound correspondence", but more accurately, what we're detecting are character correspondences.
 
@@ -117,14 +119,14 @@ Again, note that *PARALLEL_TRAIN*, *PARALLEL_VAL*, *PARALLEL_TEST* .csv files ar
 
 The *Pipeline/make_SC_training_data.py* script is a bit of a misnomer. It simply reads from the *PARALLEL_TRAIN*, *PARALLEL_VAL*, *PARALLEL_TEST* .csv files and writes the parallel data to *{COGNATE_TRAIN}/cognate/train.{SRC}* and *{COGNATE_TRAIN}/cognate/train.{TGT}*. ONLY parallel data for the provided src-tgt pair through *--src* and *--tgt* commandline arguments is written. Other pairs in the .csvs, if they exist, are ignored.
 
-**Pipeline/make_SC_training_data**
+**Pipeline/make_SC_training_data.py**
 - *--train_csv:* Parallel Data *.csv* file defining the NMT training data.
 - *--val_csv:* Parallel Data *.csv* file defining the NMT validation data.
 - *--test_csv:* Parallel Data *.csv* file defining the NMT test data.
 - *--src:* the source language code
 - *--tgt:* the target language code
 - *--src_out:* the file path of the source sentences of the parallel data from which cognates will be extracted. Should be *{COGNATE_TRAIN}/cognate/train.{SRC}*.
-- **--tgt_out:* the file path of the target sentences of the parallel data from which cognates will be extracted. Should be *{COGNATE_TRAIN}/cognate/train.{TGT}*.
+- *--tgt_out:* the file path of the target sentences of the parallel data from which cognates will be extracted. Should be *{COGNATE_TRAIN}/cognate/train.{TGT}*.
 
 #### 2.3 Run Fast Align
 Now that we have written all of our parallel data to files, we can run it through Fast Align to get word pair alignments.
@@ -141,6 +143,11 @@ This script will write the result to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.txt*
 
 If *REVERSE_SRC_TGT_COGNATES* is set to *false*, then the source and target sentences will be flipped: ```{target sentence} ||| {source sentence}```. This setting, however, should **not** be used. Keep *REVERSE_SRC_TGT_COGNATES* set to *true*.
 
+**word_alignments/prepare_for_fastalign.py**
+* *--src:* The file to the source parallel data from which cognates will be extracted. Should be *{COGNATE_TRAIN}/cognate/train.{SRC}*.
+* *--tgt:* The file to the target parallel data from which cognates will be extracted. Should be *{COGNATE_TRAIN}/cognate/train.{TGT}*.
+* *--out:* The path to the formatted sentence pairs. Should be *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.txt*.
+
 ###### 2.3.3 Fast Align
 Here we run Fast Align on the parallel sentences to get aligned word pairs. We want the symmetricized alignment, so we have to run a forward and reverse alignment first, that is, we run three Fast Align commands: (1) forward alignment, (2) reverse alignment, (3) retrieving a symmetricized alignment from the forward and reverse alignments (using *grow-diag-final-and* algorithm).
 
@@ -151,13 +158,21 @@ Symmetricized alignment is saved to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.sym.a
 ###### 2.3.4 Get word alignments (make_word_alignments(_no_grouping).py)
 We then need to extract the word pairs from the Fast Align results, which is done with either the *word_alignments/make_word_alignments_no_grouping.py* or *word_aligments/make_word_alignments.py* scripts, depending on if *NO_GROUPING* is set to *true* or *false*. It should probably be set to *true*.
 
-In essence, these two scripts read the word-level alignments from the symmetricized Fast Aligns results (*{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.sym.align*) and retrieve the corresponding word pairs.
+In essence, these two scripts read the word-level alignments from the symmetricized Fast Align results (*{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.sym.align*) and retrieve the corresponding word pairs.
 
 The *make_word_alignments_no_grouping.py* version (the one that should probably be used) of the script simply grabs the word pair for each *i-j* pair in the alignment results where *i* is the index of a word in a source line and *j* is the index of a word in the target line.
 
 The *make_word_alignments.py* script adds grouping logic when there are many-to-one, one-to-many, and many-to-many alignments, essentially creating phrase pairs rather than word pairs, where applicable. We should probably not use this script, for simplicity. Evaluating whether it improves performance is more complexity than I want to add right now.
 
 These scripts write a list of source-target word pairs in the format ```{source_word} ||| {target word}```.  to *make_word_alignments_no_grouping.py* writes the results to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}.NG.txt* (note the NG), whereas *make_word_alignments.py* writes to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}.txt* (note absence of NG). These paths are set in the code of section **2.3.1**.
+
+**word_alignments/make_word_alignments(_no_grouping).py**
+* *--alignments (-a):* The path to the Fast Align symmetricized results. Should be *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.sym.align*.
+* *--sent_pairs (-s):* The path to the sentence pairs. Should be the same as the outputs of *word_alignments/prepare_for_fastalign.py* and inputs to Fast Align in **2.3.3**, *i.e.,* should be *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.txt*
+* *--out (-o):* The output path to the aligned word pairs. Should be *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).txt*.
+* *--VERBOSE:* Pass this flag to for verbose print outs (optional).
+* *--START (int, optional):* (make_word_alignments.py ONLY) If passed, this slices the list of sentence pairs from which to retrieve aligned words pairs to those starting with the provided START index (includes the START index). (Start index of sentences).
+* *--STOP (int, optional):* If passed, this slices the list of sentence pairs from which to retrieve aligned word pairs to those up to the provided STOP index (excludes the STOP index). (Stop index of sentences).
 
 ##### 2.3.5 Get cognates from word list (word_alignments/make_cognate_list.py)
 
