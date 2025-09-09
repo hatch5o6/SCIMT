@@ -46,6 +46,9 @@ We call it SC, which stands for "sound correspondence", but more accurately, wha
 ```
 bash Pipeline/train_SC.sh /home/hatch5o6/Cognate/code/Pipeline/cfg/SC/fr-mfe.cfg
 ```
+
+#### Breakdown
+###### 1) ARGUMENTS
 It uses these parameters from the *.cfg* file: 
 - MODULE_HOME_DIR
 - SRC
