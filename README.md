@@ -1,4 +1,11 @@
-# Clone CopperMT and add new/updated scripts
+# CharLOTTE
+This is the code base for **CharLOTTE**, a system that leverages character correspondences between related languages in low-resource NMT. The CharLOTTE system assumes that the phenomenon of systematic sound correspondence in linguistics is reflected in character correspondences in orthography. CharLOTTE detects these character correspondences and trains tokenizers and NMT systems that exploit them so as to increase vocabulary overlap between related high and low-resourced languages. CharLOTTE is language-agnostic, and requires only the NMT parallel training, validation, and testing data, though additional sets of cognates can also be provided.
+
+CharLOTTE stands for **Char**acter-**L**evel **O**rthographic **T**ransfer for **T**oken **E**mbeddings.
+
+
+# Installation
+## Clone CopperMT and add new/updated scripts
 From root directory, run these:
 ```
 cd CopperMT
