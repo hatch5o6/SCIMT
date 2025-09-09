@@ -95,14 +95,18 @@ The *Pipeline/make_SC_training_data.py* script is a bit of a misnomer. It simply
 #### 2.3 Run Fast Align
 Now that we have written all of our parallel data to files, we can run it through Fast Align to get word pair alignments.
 
-**2.3.1** here we create our file paths for our aligned word list files, depending on whether *NO_GROUPING* is True / False. *NO_GROUPING* should probably be True.
+**2.3.1** 
+Here, we create our file paths for our aligned word list files, depending on whether *NO_GROUPING* is True / False. *NO_GROUPING* should probably be True.
 
-**2.3.2 (word_alignments/prepare_for_fastalign.py)** We need to format the inputs for fast_align. This is done by the *word_alignments/prepare_for_fastalign.py* script. 
+**2.3.2 (word_alignments/prepare_for_fastalign.py)** 
+We need to format the inputs for fast_align. This is done by the *word_alignments/prepare_for_fastalign.py* script. 
 
 The input files to this script are the output files from *Pipeline/make_SC_training_data.py*, *i.e.,* *{COGNATE_TRAIN}/cognate/train.{SRC}* and *{COGNATE_TRAIN}/cognate/train.{TGT}*. 
 
 This script will write the result to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.txt*, which writes each sentence pair to a line in the format ```{source sentence} ||| {target sentence}```. 
 
 If *REVERSE_SRC_TGT_COGNATES* is set to *false*, then the source and target sentences will be flipped: ```{target sentence} ||| {source sentence}```. This setting, however, should **not** be used. Keep *REVERSE_SRC_TGT_COGNATES* set to *true*.
+
+
 
 ### 3) TRAIN SC MODEL WITH COPPER MT
