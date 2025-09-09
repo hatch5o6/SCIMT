@@ -158,7 +158,7 @@ fi
 echo ""
 echo ""
 
-# make word alignments
+# 2.3.4 make word alignments
 if [ $NO_GROUPING = true ]
 then
     echo "NO_GROUPING=true: running make_word_alignments_no_grouping.py"
@@ -174,6 +174,7 @@ else
     --out $WORD_LIST_OUT
 fi
 
+# 2.3.5 Get cognates from word list
 if [ $REVERSE_SRC_TGT_COGNATES = true ]
 then
     # get cognates

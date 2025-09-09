@@ -95,10 +95,10 @@ The *Pipeline/make_SC_training_data.py* script is a bit of a misnomer. It simply
 #### 2.3 Run Fast Align
 Now that we have written all of our parallel data to files, we can run it through Fast Align to get word pair alignments.
 
-##### 2.3.1
+###### 2.3.1
 Here, we create our file paths for our aligned word list files, depending on whether *NO_GROUPING* is True / False. *NO_GROUPING* should probably be True.
 
-##### 2.3.2 (word_alignments/prepare_for_fastalign.py) 
+###### 2.3.2 (word_alignments/prepare_for_fastalign.py) 
 We need to format the inputs for fast_align. This is done by the *word_alignments/prepare_for_fastalign.py* script. 
 
 The input files to this script are the output files from *Pipeline/make_SC_training_data.py*, *i.e.,* *{COGNATE_TRAIN}/cognate/train.{SRC}* and *{COGNATE_TRAIN}/cognate/train.{TGT}*. 
@@ -107,10 +107,30 @@ This script will write the result to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.txt*
 
 If *REVERSE_SRC_TGT_COGNATES* is set to *false*, then the source and target sentences will be flipped: ```{target sentence} ||| {source sentence}```. This setting, however, should **not** be used. Keep *REVERSE_SRC_TGT_COGNATES* set to *true*.
 
-##### 2.3.3 Fast Align
-Here we run Fast Align on the parallel sentences to get aligned word pairs. We want the symmetricized alignment, so we have to run a forward and reverse alignment first, that is, we run three Fast Align commands: (1) forward alignment, (2) reverse alignment, (3) retrieving a symmetricized alignment from the forward and reverse alignments.
+###### 2.3.3 Fast Align
+Here we run Fast Align on the parallel sentences to get aligned word pairs. We want the symmetricized alignment, so we have to run a forward and reverse alignment first, that is, we run three Fast Align commands: (1) forward alignment, (2) reverse alignment, (3) retrieving a symmetricized alignment from the forward and reverse alignments (using *grow-diag-final-and* algorithm).
 
-Forward alignment
+Forward alignment is saved to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.forward.align*
+Reverse alignment is saved to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.reverse.align*
+Symmetricized alignment is saved to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.sym.align*
 
+###### 2.3.4 Get word alignments (make_word_alignments(_no_grouping).py)
+We then need to extract the word pairs from the Fast Align results, which is done with either the *word_alignments/make_word_alignments_no_grouping.py* or *word_aligments/make_word_alignments.py* scripts, depending on if *NO_GROUPING* is set to *true* or *false*. It should probably be set to *true*.
+
+In essence, these two scripts read the word-level alignments from the symmetricized Fast Aligns results (*{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.sym.align*) and retrieve the corresponding word pairs.
+
+The *make_word_alignments_no_grouping.py* version (the one that should probably be used) of the script simply grabs the word pair for each *i-j* pair in the alignment results where *i* is the index of a word in a source line and *j* is the index of a word in the target line.
+
+The *make_word_alignments.py* script adds grouping logic when there are many-to-one, one-to-many, and many-to-many alignments, essentially creating phrase pairs rather than word pairs, where applicable. We should probably not use this script, for simplicity. Evaluating whether it improves performance is more complexity than I want to add right now.
+
+These scripts write a list of source-target word pairs in the format ```{source_word} ||| {target word}```.  to *make_word_alignments_no_grouping.py* writes the results to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}.NG.txt* (note the NG), whereas *make_word_alignments.py* writes to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}.txt* (note absence of NG).
+
+##### 2.3.5 Get cognates from word list (word_alignments/make_cognate_list.py)
+
+We now will narrow down the list of aligned word pairs to a list of cognate predictions by filtering the list to those pairs within a normalized edit distance threshold (*COGNATE_THRESH*). 
+
+This is done with *word_alignments/make_cognate_list.py*. This calculates the normalized levenshtein distance of each word pair and for pairs whose distance are less than or equal to the threshold (default = 0.5), the pair of words are considered cognates.
+
+The list of cognate pairs are written in the format ```{word 1} ||| {word 2}``` to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.txt*. Additionally, parallel files of the source and target language words are written to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-{SRC}.txt* and *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-{TGT}.txt*.
 
 ### 3) TRAIN SC MODEL WITH COPPER MT
