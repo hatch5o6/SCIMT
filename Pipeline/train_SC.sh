@@ -10,7 +10,9 @@ echo "Starting train_SC.sh-----------"
 date
 echo "-------------------------------"
 
-#### ARGUMENTS ####
+    ###############################################
+#-- #                 1) ARGUMENTS                # --#
+    ###############################################
 source $1 # .cfg file from from Pipeline/cfg/SC
 
 echo "Arguments:-"
@@ -35,6 +37,8 @@ echo "    RNN_HYPERPARAMS_ID=$RNN_HYPERPARAMS_ID"
 echo "    BEAM=$BEAM"
 echo "    NBEST=$NBEST"
 echo "    REVERSE_SRC_TGT_COGNATES=$REVERSE_SRC_TGT_COGNATES"
+echo "    ADDITIONAL_TRAIN_COGNATES_SRC=$ADDITIONAL_TRAIN_COGNATES_SRC"
+echo "    ADDITIONAL_TRAIN_COGNATES_TGT=$ADDITIONAL_TRAIN_COGNATES_TGT"
 echo "    VAL_COGNATES_SRC=$VAL_COGNATES_SRC"
 echo "    VAL_COGNATES_TGT=$VAL_COGNATES_TGT"
 echo "    TEST_COGNATES_SRC=$TEST_COGNATES_SRC"
@@ -44,9 +48,13 @@ echo "    COGNATE_TEST_RATIO=$COGNATE_TEST_RATIO"
 echo "    COGNATE_VAL_RATIO=$COGNATE_VAL_RATIO"
 echo "-------------------------------"
 
+
+    ###############################################
+#-- #              2) DETECT COGNATES             # --#
+    ###############################################
 cd $MODULE_HOME_DIR
 conda activate sound
-#### DETECT COGNATES ####
+
 echo ""
 echo ""
 echo "#### DETECT COGNATES ####"
