@@ -50,14 +50,16 @@ echo "-------------------------------"
 
 
     ###############################################
-#-- #              2) DETECT COGNATES             # --#
+#-- #     2) GET COGNATES FROM PARALLEL DATA      # --#
     ###############################################
 cd $MODULE_HOME_DIR
 conda activate sound
 
 echo ""
 echo ""
-echo "#### DETECT COGNATES ####"
+echo "#### GET COGNATES FROM PARALLEL DATA ####"
+
+# 2.1 Clear and remake COGNATE_TRAIN dir
 COGNATE_TRAIN=${COGNATE_TRAIN}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}
 if [ -d $COGNATE_TRAIN ]
 then
@@ -89,6 +91,7 @@ mkdir $FASTALIGN_DIR
 SRC_F=${COGNATE_DIR}/train.${SRC}
 TGT_F=${COGNATE_DIR}/train.${TGT}
 
+# 2.2 Gather parallel data from which cognates are extracted
 echo ""
 # --src and --tgt are for filtering on $SRC and $TGT language pairs (the langauges we want cognates for)
 python Pipeline/make_SC_training_data.py \
@@ -99,9 +102,10 @@ python Pipeline/make_SC_training_data.py \
     --tgt_out $TGT_F \
     --src $SRC \
     --tgt $TGT
-# cat ${COGNATE_TRAIN}/test.${SRC} ${COGNATE_TRAIN}/val.${SRC} ${COGNATE_TRAIN}/train.${SRC} > ${SRC_F}
-# cat ${COGNATE_TRAIN}/test.${TGT} ${COGNATE_TRAIN}/val.${TGT} ${COGNATE_TRAIN}/train.${TGT} > ${TGT_F}
 
+# 2.3 Run Fast Align
+
+# 2.3.1 set file path names depending on whether NO_GROUPING is set to true or false.
 SRC_TGT_F=${FASTALIGN_DIR}/${SRC}-${TGT}
 if [ $NO_GROUPING = true ]
 then
@@ -118,6 +122,7 @@ else
     echo \t$WORD_LIST_OUT
 fi
 
+# 2.3.2 preparing for fast align
 if [ $REVERSE_SRC_TGT_COGNATES = true ]
 then
     # prepare
@@ -137,7 +142,7 @@ else
     echo ""
 fi
 
-# fast_align
+# 2.3.3 fast_align
 ./../fast_align/build/fast_align \
     -i ${SRC_TGT_F}.txt \
     -d -o -v > ${SRC_TGT_F}.forward.align
@@ -189,7 +194,9 @@ else
 fi
 
 
-#### TRAIN SC MODEL WITH COPPER MT ####
+    ###############################################
+#-- #      3) TRAIN SC MODEL WITH COPPER MT       # --#
+    ###############################################
 echo \n\n
 echo "#### TRAIN SC MODEL WITH COPPER MT ####"
 
