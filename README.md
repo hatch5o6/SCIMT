@@ -1,14 +1,16 @@
 # CharLOTTE
-This is the code base for **CharLOTTE**, a system that leverages character correspondences between related languages in low-resource NMT. The CharLOTTE system assumes that the phenomenon of systematic sound correspondence in linguistics is reflected in character correspondences in orthography. For example, *j-lh* and *h-f* correspondences between Spanish and Portugues, seen in word pairs: 
-- *ojo, olho*,  
-- *ajo, alho*, 
-- *hierro, ferro*, 
-- *horno, forno*, and 
-- *hijo , filho*.
-
-CharLOTTE detects these character correspondences and trains tokenizers and NMT systems that exploit them so as to increase vocabulary overlap between related high and low-resourced languages. CharLOTTE is language-agnostic, and requires only the NMT parallel training, validation, and testing data, though additional sets of cognates can also be provided.
+This is the code base for **CharLOTTE**, a system that leverages character correspondences between related languages in low-resource NMT. 
 
 **CharLOTTE** stands for **Char**acter-**L**evel **O**rthographic **T**ransfer for **T**oken **E**mbeddings.
+
+The CharLOTTE system assumes that the phenomenon of systematic sound correspondence in linguistics is reflected in character correspondences in orthography. For example, *j-lh* and *h-f* correspondences between Spanish and Portugues, seen in word pairs: 
+- *ojo, olho*
+- *ajo, alho*
+- *hierro, ferro*
+- *horno, forno* 
+- *hijo , filho*
+
+CharLOTTE detects these character correspondences and trains tokenizers and NMT systems that exploit them so as to increase vocabulary overlap between related high and low-resourced languages. CharLOTTE is language-agnostic, and requires only the NMT parallel training, validation, and testing data, though additional sets of cognates can also be provided.
 
 
 # Installation
@@ -61,6 +63,15 @@ We call it SC, which stands for "sound correspondence", but more accurately, wha
 bash Pipeline/train_SC.sh /home/hatch5o6/Cognate/code/Pipeline/cfg/SC/fr-mfe.cfg
 ```
 
+**Parallel Data .csv files** - *.csv* files defining the NMT parallel training, validation, and test data are referenced in the *.csg* config files and this script. These files **MUST** contain the header ```src_lang, tgt_lang, src_path, tgt_path``` where:
+    - **src_lang** is the source language code
+    - **tgt_lang** is the target language code
+    - **src_path** is the path to the source parallel data text file
+    - **tgt_path** is the path to the target parallel data text file
+
+*src_path* and *tgt_path* must be parallel to each other, with *src_path* containing one sentence per line and *tgt_path* containing the corresponding translations on each line.
+
+
 ### 1) ARGUMENTS
 It uses these parameters from the *.cfg* file: 
 - MODULE_HOME_DIR
@@ -106,11 +117,20 @@ Again, note that *PARALLEL_TRAIN*, *PARALLEL_VAL*, *PARALLEL_TEST* .csv files ar
 
 The *Pipeline/make_SC_training_data.py* script is a bit of a misnomer. It simply reads from the *PARALLEL_TRAIN*, *PARALLEL_VAL*, *PARALLEL_TEST* .csv files and writes the parallel data to *{COGNATE_TRAIN}/cognate/train.{SRC}* and *{COGNATE_TRAIN}/cognate/train.{TGT}*. ONLY parallel data for the provided src-tgt pair through *--src* and *--tgt* commandline arguments is written. Other pairs in the .csvs, if they exist, are ignored.
 
+**Pipeline/make_SC_training_data**
+- *--train_csv:* Parallel Data *.csv* file defining the NMT training data.
+- *--val_csv:* Parallel Data *.csv* file defining the NMT validation data.
+- *--test_csv:* Parallel Data *.csv* file defining the NMT test data.
+- *--src:* the source language code
+- *--tgt:* the target language code
+- *--src_out:* the file path of the source sentences of the parallel data from which cognates will be extracted. Should be *{COGNATE_TRAIN}/cognate/train.{SRC}*.
+- **--tgt_out:* the file path of the target sentences of the parallel data from which cognates will be extracted. Should be *{COGNATE_TRAIN}/cognate/train.{TGT}*.
+
 #### 2.3 Run Fast Align
 Now that we have written all of our parallel data to files, we can run it through Fast Align to get word pair alignments.
 
 ###### 2.3.1
-Here, we create our file paths for our aligned word list files, depending on whether *NO_GROUPING* is True / False. *NO_GROUPING* should probably be True.
+Here, we create our file paths for our aligned word list files, depending on whether *NO_GROUPING* is True / False. *NO_GROUPING* should probably be True. These files are discussed in **2.3.4** and **2.3.5**.
 
 ###### 2.3.2 (word_alignments/prepare_for_fastalign.py) 
 We need to format the inputs for fast_align. This is done by the *word_alignments/prepare_for_fastalign.py* script. 
@@ -137,7 +157,7 @@ The *make_word_alignments_no_grouping.py* version (the one that should probably 
 
 The *make_word_alignments.py* script adds grouping logic when there are many-to-one, one-to-many, and many-to-many alignments, essentially creating phrase pairs rather than word pairs, where applicable. We should probably not use this script, for simplicity. Evaluating whether it improves performance is more complexity than I want to add right now.
 
-These scripts write a list of source-target word pairs in the format ```{source_word} ||| {target word}```.  to *make_word_alignments_no_grouping.py* writes the results to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}.NG.txt* (note the NG), whereas *make_word_alignments.py* writes to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}.txt* (note absence of NG).
+These scripts write a list of source-target word pairs in the format ```{source_word} ||| {target word}```.  to *make_word_alignments_no_grouping.py* writes the results to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}.NG.txt* (note the NG), whereas *make_word_alignments.py* writes to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}.txt* (note absence of NG). These paths are set in the code of section **2.3.1**.
 
 ##### 2.3.5 Get cognates from word list (word_alignments/make_cognate_list.py)
 
@@ -145,6 +165,6 @@ We now will narrow down the list of aligned word pairs to a list of cognate pred
 
 This is done with *word_alignments/make_cognate_list.py*. This calculates the normalized levenshtein distance of each word pair and for pairs whose distance are less than or equal to the threshold (default = 0.5), the pair of words are considered cognates.
 
-The list of cognate pairs are written in the format ```{word 1} ||| {word 2}``` to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.txt*. Additionally, parallel files of the source and target language words are written to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-{SRC}.txt* and *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-{TGT}.txt*.
+The list of cognate pairs are written in the format ```{word 1} ||| {word 2}``` to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.txt*. Additionally, parallel files of the source and target language words are written to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-{SRC}.txt* and *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-{TGT}.txt*. These paths are set in the code of section **2.3.1**.
 
 ### 3) TRAIN SC MODEL WITH COPPER MT
