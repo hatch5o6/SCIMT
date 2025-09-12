@@ -339,4 +339,3 @@ Finally, the results are evaluated using *NMT/evaluate.py* which will calculate 
 * *--hyp:* The path to the model hypotheses, saved to *TEST_OUT_F*, set in **4.2**.
 * *--out:* The file path to write the scores to, which is *SCORES_OUT_F*, set in **4.2**.
 
-hello :)
