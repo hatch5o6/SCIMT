@@ -294,12 +294,12 @@ The parameters file required by the CopperMT module needs to be written, which i
 ###### 3.2.7 Train the SC model with CopperMT
 The SC model is now trained. This is done by calling scripts in the CopperMT module.
 
-**Training an RNN model:**
+**Training an RNN model:**  
 If training an RNN model, *{COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan.sh* script is called, passing in the parameters file created in **3.2.6** (should be *{PARAMETERS_DIR}/parameters.{SRC}-{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}.cfg*) and the *SEED*. 
 
 After training, the best RNN checkpoint is selected, using *Pipeline/select_checkpoint.py*. This selects the best performing checkpoint, based on BLEU score calculated by CopperMT, from those in a directory that contains checkpoints and outputs. This directory is set to variable *WORKSPACE_SEED_DIR*, which should be *COPPERMT_DATA_DIR/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}*. *Pipeline/select_checkpoint.py* will save the best checkpoint to *{WORKSPACE_SEED_DIR}/checkpoints/selected.pt*. All other checkpoints will be deleted to conserve storage space.
 
-**Training an SMT model:**
+**Training an SMT model:**  
 If training an SMT model, *{COPPERMT_DIR}/pipeline/main_smt_full_brendan.sh* is run, passing the same parameters file from **3.2.6** and *SEED*.
 
 
@@ -313,7 +313,7 @@ A couple directories, if pre-existing, are deleted.
 #### 4.2 Run inference on the test set
 To calculate scores, inference is first run on the test set.
 
-**Inference with an RNN model**
+**Inference with an RNN model**  
 To run inference with an RNN model, *{COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan_PREDICT.sh* is called, passing the Copper MT parameters file from **3.2.6** (*PARAMETERS_F*), the path to the selected RNN checkpoint from **3.2.7** (*SELECTED_RNN_CHECKPOING*), *SEED*, an indicator "test", *NBEST*, and *BEAM*. This script will save its results to a file whose path is saved to the variable *HYP_OUT_TXT*. This path should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}/results/test_selected_checkpoint_{SRC}_{TGT}.{TGT}/generate-test.txt*.
 
 The model hypotheses need to be extracted from the *HYP_OUT_TXT* file, which is done with the **NMT/hr_CopperMT.py** script. This script has three modes: "prepare", "retrieve", and "get_test_results". Modes "prepare" and "retrieve" will be discussed later in connection to *pred_SC.sh*. To extract the hypotheses from the model test results file, we use mode "get_test_results". Only the parameters relevant to this mode are shown here. This mode will write the hypotheses to a file parallel to the source file, where on each line is simply the cognate hypothesis for each source word.
@@ -326,7 +326,7 @@ The model hypotheses need to be extracted from the *HYP_OUT_TXT* file, which is 
 
 The path to write the scores for an RNN model (set to variable *SCORES_OUT_F*) is then set to *{COPPERMT_DATA_DIR}/{SRC}_${TGT}_${SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}/results/test_selected_checkpoint_{SRC}_{TGT}.{TGT}/generate-test.hyp.scores.txt*. This path will be used in **4.3**.
 
-**Inference with an SMT model**
+**Inference with an SMT model**  
 To run inference with an SMT model, *{COPPERMT_DIR}/pipeline/main_smt_full_brendan_PREDICT.sh* is run, passing in the Copper MT parameters file from **3.2.6** (*PARAMETERS_F*), the file path of the source sentences (*SRC_TEXT*), a template for the outputs (*HYP_OUT*), and *SEED*. The hypotheses will be written to *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}/test_{SRC}_{TGT}.{TGT}.hyp.txt* (saved to variable *TEST_OUT_F*).
 
 The path to write the scores for an SMT model (set to variable *SCORES_OUT_F*) is then set to *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}/test_{SRC}_{TGT}.{TGT}.hyp.scores.txt*. This path will be used in **4.3**.
