@@ -530,10 +530,10 @@ then
     conda activate sound
 fi
 
-# 4.4 Calculate scores
+# 4.3 Calculate scores
 echo ""
 echo ""
-echo "######## 4.4 Calculate scores ########"
+echo "######## 4.3 Calculate scores ########"
 REF_TEXT=${SPLIT_DATA}/test_${SRC}_${TGT}.${TGT}
 echo "Calculating Scores"
 echo "    NMT/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_F}"

@@ -314,10 +314,28 @@ A couple directories, if pre-existing, are deleted.
 To calculate scores, inference is first run on the test set.
 
 **Inference with an RNN model**
-To run inference with an RNN model, *{COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan_PREDICT.sh* is called, passing the Copper MT parameters file from **3.2.6**, the path to the selected RNN checkpoint from **3.2.7**, *SEED*, an indicator "test", *NBEST*, and *BEAM*.
+To run inference with an RNN model, *{COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan_PREDICT.sh* is called, passing the Copper MT parameters file from **3.2.6** (*PARAMETERS_F*), the path to the selected RNN checkpoint from **3.2.7** (*SELECTED_RNN_CHECKPOING*), *SEED*, an indicator "test", *NBEST*, and *BEAM*. This script will save its results to a file whose path is saved to the variable *HYP_OUT_TXT*. This path should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}/results/test_selected_checkpoint_{SRC}_{TGT}.{TGT}/generate-test.txt*.
 
-#TODO Figure out what HYP_OUT_TXT and TEST_OUT_F are exactly and document NMT/hr_CopperMT.py
+The model hypotheses need to be extracted from the *HYP_OUT_TXT* file, which is done with the **NMT/hr_CopperMT.py** script. This script has three modes: "prepare", "retrieve", and "get_test_results". Modes "prepare" and "retrieve" will be discussed later in connection to *pred_SC.sh*. To extract the hypotheses from the model test results file, we use mode "get_test_results". Only the parameters relevant to this mode are shown here. This mode will write the hypotheses to a file parallel to the source file, where on each line is simply the cognate hypothesis for each source word.
+
+**NMT/hr_CopperMT.py (get_test_results)**
+* *--function* The script mode. In this case, it should be "get_test_results".
+* *--test_src:* The test source sentences. Should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}/test_{SRC}_{TGT}.{SRC}* (saved to variable *SRC_TEXT*).
+* *--data:* The model results, written by *main_nmt_bilingual_full_brendan_PREDICT.sh*. The path is saved to *HYP_OUT_TXT*.
+* *--out:* The path to save the hypotheses extracted from the model results file. Should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}/results/test_selected_checkpoint_{SRC}_{TGT}.{TGT}/generate-test.hyp.txt* (saved to *TEST_OUT_F*).
+
+The path to write the scores for an RNN model (set to variable *SCORES_OUT_F*) is then set to *{COPPERMT_DATA_DIR}/{SRC}_${TGT}_${SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}/results/test_selected_checkpoint_{SRC}_{TGT}.{TGT}/generate-test.hyp.scores.txt*. This path will be used in **4.3**.
 
 **Inference with an SMT model**
+To run inference with an SMT model, *{COPPERMT_DIR}/pipeline/main_smt_full_brendan_PREDICT.sh* is run, passing in the Copper MT parameters file from **3.2.6** (*PARAMETERS_F*), the file path of the source sentences (*SRC_TEXT*), a template for the outputs (*HYP_OUT*), and *SEED*. The hypotheses will be written to *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}/test_{SRC}_{TGT}.{TGT}.hyp.txt* (saved to variable *TEST_OUT_F*).
 
-#### 4.4 Calculate scores
+The path to write the scores for an SMT model (set to variable *SCORES_OUT_F*) is then set to *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}/test_{SRC}_{TGT}.{TGT}.hyp.scores.txt*. This path will be used in **4.3**.
+
+#### 4.3 Calculate scores
+Finally, the results are evaluated using *NMT/evaluate.py* which will calculate a character-level BLEU score (actually just regular BLEU, but since characters in the output are separated by spaces, it amounts to character-level BLEU), and chrF.
+
+**NMT/evaluate.py**
+* *--ref:* The path to the reference translations. Should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}/test_{SRC}_{TGT}.{TGT}*
+* *--hyp:* The path to the model hypotheses, saved to *TEST_OUT_F*, set in **4.2**.
+* *--out:* The file path to write the scores to, which is *SCORES_OUT_F*, set in **4.2**.
+
