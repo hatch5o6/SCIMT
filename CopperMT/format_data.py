@@ -30,18 +30,20 @@ def format(
     og_data = make_unique(og_data)
     print("AFTER UNIQUE:", len(og_data))
 
-    assert isinstance(EXCLUDE_SRC, str)
-    assert isinstance(EXCLUDE_TGT, str)
-    if len(EXCLUDE_TGT) > 0:
-        assert len(EXCLUDE_SRC) > 0
-    if len(EXCLUDE_SRC) > 0:
-        assert len(EXCLUDE_TGT) > 0
-        exclude_src_data = read_data(EXCLUDE_SRC)
-        exclude_tgt_data = read_data(EXCLUDE_TGT)
-        assert len(exclude_src_data) == len(exclude_tgt_data)
-        exclude_data = set(list(zip(exclude_src_data, exclude_tgt_data)))
-        og_data = remove_data(og_data, exclude_data)
-        print("AFTER REMOVE EXCLUDE DATA:", len(og_data))
+    assert isinstance(EXCLUDE_SRC, list)
+    assert isinstance(EXCLUDE_TGT, list)
+    assert len(EXCLUDE_SRC) == len(EXCLUDE_TGT) == 0 # while still in dev, keep this line. Can delete after exclude stuff is fixed.
+    if len(EXCLUDE_SRC) > 0 or len (EXCLUDE_TGT) > 0: # this conditional line can be deleted too after exclude feature (see line above ^) is finished.
+        if len(EXCLUDE_TGT) > 0:
+            assert len(EXCLUDE_SRC) > 0
+        if len(EXCLUDE_SRC) > 0:
+            assert len(EXCLUDE_TGT) > 0
+            exclude_src_data = read_data(EXCLUDE_SRC)
+            exclude_tgt_data = read_data(EXCLUDE_TGT)
+            assert len(exclude_src_data) == len(exclude_tgt_data)
+            exclude_data = set(list(zip(exclude_src_data, exclude_tgt_data)))
+            og_data = remove_data(og_data, exclude_data)
+            print("AFTER REMOVE EXCLUDE DATA:", len(og_data))
     
     src_data = []
     tgt_data = []
@@ -78,6 +80,7 @@ def make_unique(data):
     return new_data
 
 def read_data(fs):
+    assert isinstance(fs, list)
     data = []
     for f in fs:
         with open(f) as inf:
@@ -129,6 +132,26 @@ if __name__ == "__main__":
     EXCLUDE_SRC = [e_item.strip() for e_item in args.EXCLUDE_SRC.split(",")]
     EXCLUDE_TGT = [e_item.strip() for e_item in args.EXCLUDE_TGT.split(",")]
     assert len(EXCLUDE_SRC) == len(EXCLUDE_TGT)
+    new_exclude_src = []
+    new_exclude_tgt = []
+    for i in range(len(EXCLUDE_SRC)):
+        ex_src_item = EXCLUDE_SRC[i]
+        ex_tgt_item = EXCLUDE_TGT[i]
+        if ex_src_item.strip() == "":
+            assert ex_tgt_item.strip() == ""
+        if ex_tgt_item.strip() == "":
+            assert ex_src_item.strip() == ""
+        if ex_src_item.strip() == "" or ex_tgt_item.strip() == "":
+            pass
+        else:
+            new_exclude_src.append(ex_src_item)
+            new_exclude_tgt.append(ex_tgt_item)
+    EXCLUDE_SRC = new_exclude_src
+    EXCLUDE_TGT = new_exclude_tgt
+    print("EXCLUDE_SRC:", EXCLUDE_SRC)
+    print("EXCLUDE_TGT:", EXCLUDE_TGT)
+    assert len(EXCLUDE_SRC) == len(EXCLUDE_TGT) # always keep this assert
+    assert len(EXCLUDE_SRC) == len(EXCLUDE_TGT) == 0 # after doing dev on exclude feature, you can remove this assert.
 
     assert len(src_data_fs) == len(tgt_data_fs)
     format(

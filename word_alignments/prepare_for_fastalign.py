@@ -129,6 +129,8 @@ def get_args():
     return args
 
 if __name__ == "__main__":
-    print("prepare_for_fastlign.py")
+    print("###########################")
+    print("# prepare_for_fastlign.py #")
+    print("###########################")
     args = get_args()
     prep(args.src, args.tgt, args.out)

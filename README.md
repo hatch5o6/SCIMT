@@ -10,7 +10,7 @@ The CharLOTTE system assumes that the phenomenon of systematic sound corresponde
 - *horno, forno* 
 - *hijo , filho*
 
-CharLOTTE detects these character correspondences and trains tokenizers and NMT systems that exploit them so as to increase vocabulary overlap between related high and low-resourced languages. CharLOTTE is language-agnostic, and requires only the NMT parallel training, validation, and testing data, though additional sets of cognates can also be provided.
+CharLOTTE detects these character correspondences and trains tokenizers and NMT systems that exploit them so as to increase vocabulary overlap between related high and low-resourced languages. CharLOTTE utilizes a language-agnostic approach, requiring only the NMT parallel training, validation, and testing data; though additional sets of known langauge-specific sets of cognates can also be provided.
 
 
 # Installation
@@ -132,7 +132,7 @@ The *Pipeline/make_SC_training_data.py* script is a bit of a misnomer. It simply
 Now that we have written all of our parallel data to files, we can run it through Fast Align to get word pair alignments.
 
 ###### 2.3.1
-Here, we create our file paths for our aligned word list files, depending on whether *NO_GROUPING* is True / False. *NO_GROUPING* should probably be True. These files are discussed in **2.3.4** and **2.3.5**.
+Here, we create our file paths for our aligned word list files, depending on whether *NO_GROUPING* is True / False. *NO_GROUPING* should probably be True. These files are discussed in **2.4.1** and **2.4.2**.
 
 ###### 2.3.2 (word_alignments/prepare_for_fastalign.py) 
 We need to format the inputs for fast_align. This is done by the *word_alignments/prepare_for_fastalign.py* script. 
@@ -155,7 +155,8 @@ Forward alignment is saved to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.forward.ali
 Reverse alignment is saved to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.reverse.align*
 Symmetricized alignment is saved to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.sym.align*
 
-###### 2.3.4 Get word alignments (make_word_alignments(_no_grouping).py)
+#### 2.4 Get Cognates
+###### 2.4.1 Get word alignments (make_word_alignments(_no_grouping).py)
 We then need to extract the word pairs from the Fast Align results, which is done with either the *word_alignments/make_word_alignments_no_grouping.py* or *word_aligments/make_word_alignments.py* scripts, depending on if *NO_GROUPING* is set to *true* or *false*. It should probably be set to *true*.
 
 In essence, these two scripts read the word-level alignments from the symmetricized Fast Align results (*{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.sym.align*) and retrieve the corresponding word pairs.
@@ -167,14 +168,14 @@ The *make_word_alignments.py* script adds grouping logic when there are many-to-
 These scripts write a list of source-target word pairs in the format ```{source_word} ||| {target word}```.  to *make_word_alignments_no_grouping.py* writes the results to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}.NG.txt* (note the NG), whereas *make_word_alignments.py* writes to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}.txt* (note absence of NG). These paths are set in the code of section **2.3.1**.
 
 **word_alignments/make_word_alignments(_no_grouping).py**
-* *--alignments (-a):* The path to the Fast Align symmetricized results. Should be *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.sym.align*.
-* *--sent_pairs (-s):* The path to the sentence pairs. Should be the same as the outputs of *word_alignments/prepare_for_fastalign.py* and inputs to Fast Align in **2.3.3**, *i.e.,* should be *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.txt*
-* *--out (-o):* The output path to the aligned word pairs. Should be *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).txt*.
-* *--VERBOSE:* Pass this flag to for verbose print outs (optional).
+* *--alignments, -a:* The path to the Fast Align symmetricized results. Should be *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.sym.align*.
+* *--sent_pairs, -s:* The path to the sentence pairs. Should be the same as the outputs of *word_alignments/prepare_for_fastalign.py* and inputs to Fast Align in **2.3.3**, *i.e.,* should be *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.txt*
+* *--out, -o:* The output path to the aligned word pairs. Should be *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).txt*.
+* *--VERBOSE (optional):* Pass this flag to for verbose print outs.
 * *--START (int, optional):* (make_word_alignments.py ONLY) If passed, this slices the list of sentence pairs from which to retrieve aligned words pairs to those starting with the provided START index (includes the START index). (Start index of sentences).
 * *--STOP (int, optional):* If passed, this slices the list of sentence pairs from which to retrieve aligned word pairs to those up to the provided STOP index (excludes the STOP index). (Stop index of sentences).
 
-##### 2.3.5 Get cognates from word list (word_alignments/make_cognate_list.py)
+##### 2.4.2 Get cognates from word list (word_alignments/make_cognate_list.py)
 
 We now will narrow down the list of aligned word pairs to a list of cognate predictions by filtering the list to those pairs within a normalized edit distance threshold (*COGNATE_THRESH*). 
 
@@ -182,4 +183,141 @@ This is done with *word_alignments/make_cognate_list.py*. This calculates the no
 
 The list of cognate pairs are written in the format ```{word 1} ||| {word 2}``` to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.txt*. Additionally, parallel files of the source and target language words are written to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-{SRC}.txt* and *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-{TGT}.txt*. These paths are set in the code of section **2.3.1**.
 
+**word_alignments/make_cognate_list.py**
+* *--word_list, -l:* The list of word pairs. This should be the output of *word_alignments/make_word_alignments(_no_grouping).py*, that is, it should be *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).txt*.
+* *--theta, -t (float):* This is the normalized levenshtein distance threshold. Word pairs with a normalized distance less than or equal to this value will be considered cognates.
+* *--src:* The source language code.
+* *--tgt:* The target language code.
+* *--out, -o (optional):* Path where the final cognate pairs wil be written. If not passed, will be written to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.txt*. Parallel source and target cognate files will be written to files of the same path, except ending in *.parallel-{SRC}.{file extension}* and *.parallel-{TGT}.{file extension}*.
+
+
 ### 3) TRAIN SC MODEL WITH COPPER MT
+
+#### 3.1 Make cognate prediction training, validation, and test sets
+
+###### 3.1.1 If needed, make dataset splits
+If datasets for cognate prediction validation and testing are not provided in the *.cfg* config file with *VAL_COGNATES_SRC*, *VAL_COGNATES_TGT*, *TEST_COGNATES_SRC*, *TEST_COGNATES_TGT*, then the cognate word pairs extracted from the parallel data will be divided into training, validation, and testing sets. The *train_SC.sh* script checks if this needs to be done by checking if *TEST_COGNATES_SRC* equals "null".
+
+If *TEST_COGNATES_SRC* equals "null", then the script *Pipeline/split.py* is run to make the train, validation, and test splits on the detected cognates. This script writes the split data to files in the pattern *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-({SRC}|{TGT}).(train|test|val)-s={SEED}.txt*. In total, there are six files: a source file and a target file for each of the train, validation, and test sets.
+
+
+These six files are saved to the following variables in *train_SC.sh*:
+- TRAIN_COGNATES_SRC
+- TRAIN_COGNATES_TGT
+- VAL_COGNATES_SRC - overwriting the value set in the *.cfg* config file, which should have been "null"
+- VAL_COGNATES_TGT - overwriting the value set in the *.cfg* config file, which should have been "null"
+- TEST_COGNATES_SRC - overwriting the value set in the *.cfg* config file, which should have been "null"
+- TEST_COGNATES_SRC - overwriting the value set in the *.cfg* config file, which should have been "null"
+
+**Pipeline/split.py**
+* *--data1:* Path to the words in the source language. Should be *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-{SRC}.txt*. (WORD_LIST_SRC path set in **2.3.1**)
+* *--data2:* Path to the corresponding cognate words in the target language. Should be *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.parallel-{TGT}.txt*. (WORD_LIST_TGT path set in **2.3.1**)
+* *--train (float):* The ratio of cognate pairs to put in the training data. *--train + --val + --test* must equal 1.
+* *--val (float):* The ratio of cognate pairs to put in the validation data. *--train + --val + --test* must equal 1.
+* *--test (float):* The ratio of congate pairs to put in the test data. *--train + --val + --test* must equal 1.
+* *--seed (int):* The seed for random shuffling.
+* *--out_dir:* Directory where output files are saved. Should be *{COGNATE_TRAIN}/fastalign*. File names of output will be same as --data1 and data2, but in the provided directory, and with an ammended extension *.(train|val|test)-s={SEED}.{original file extension}*.
+* *--UNIQUE_TEST:* If this flag is passed, then will reduce the test set so that a given source word only occurs once.
+
+If dataset splits don't need to be added, meaning *TEST_COGNATES_SRC* is not "null", then all of *VAL_COGNATES_SRC*, *VAL_COGNATES_TGT*, *TEST_COGNATES_SRC*, *TEST_COGNATES_TGT* should be set (**not** "null") in the *.cfg* config file to files containing known cognates, such as from Cognet and/or EtymDB. In this case, these files will be used for validation and testing and *TRAIN_COGNATES_SRC* and *TRAIN_COGNATES_TGT* will be set to files containing all of the cognate pairs detected from the parallel NMT data.
+
+###### 3.1.2 Include ADDITIONAL_TRAIN_COGNATES_SRC and ADDITIONAL_TRAIN_COGNATES_TGT in train set file paths
+
+Files containing known cognate pairs, such as from CogNet and EtymDB, can also be set to *ADDITIONAL_TRAIN_COGNATES_SRC* and *ADDITIONAL_TRAIN_COGNATES_TGT*. If so, these will be appended to *TRAIN_COGNATES_SRC* and *TRAIN_COGNATES_TGT* as a comma-delimited list.
+
+###### 3.1.3 Print out files for train, validation, and test sets
+The comma-delimited lists of files in *TRAIN_COGNATES_SRC*, *TRAIN_COGNATES_TGT*, *VAL_COGNATES_SRC*, *VAL_COGNATES_TGT*, *TEST_COGNATES_SRC*, *TEST_COGNATES_TGT* are printed.
+
+#### 3.2 Train CopperMT cognate prediction model
+
+###### 3.2.1 make directory structure for CopperMT scenario inputs and outputs
+The directory structure for the CopperMT scenario is created. This structure will contain the model, training data, outputs, etc. If the parent directory of this structure already exists, it will be deleted then recreated.
+
+The parent directory should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}*. 
+
+###### 3.2.2 Copy the RNN hyperparams set file, corresponding to RNN_HYPERPARAMS_ID, to its place in the COPPERMT directory structure
+The RNN hyperparameters file corresponding to *RNN_HYPERPARAMS_ID* is copied to its place in the CopperMT scenario directory structure.
+
+**Pipeline/copy_rnn_hyperparams.py**
+* *--rnn_hyperparam_id, -i:* The ID of the desired RNN hyperparam set.
+* *--rnn_hyperparams_dir, -d:* Folder containing the RNN hyperparam set files. Should be *RNN_HYPERPARAMS*.
+* *--copy_to_path, -c:* The path the RNN hyperparams set file will be copied to. Should be copied to the appropriate place inside the CopperMT scenario directory structure: *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/parameters/bilingual_default/default_parameters_rnn_{SRC}-{TGT}.txt*.
+
+###### 3.2.3 Format the cognate train, val, test data for CopperMT
+The cognate pair data needs to be formatted for the CopperMT module. This is done with *CopperMT/format_data.py*, which is run three times: once each for the training, validation, and test data sets. This script takes the parallel cognate files, and writes the cognate pairs in the CopperMT format to files in the CopperMT scenario directory structure. Specifically, they will be written to the folder *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}*. Parallel cognate files for training are called *train_{SRC}_{TGT}.{SRC}* and *train_{SRC}_{TGT}.{TGT}*, for validation, *fine_tune_{SRC}_{TGT}.{SRC}* and *fine_tune_{SRC}_{TGT}.{TGT}*, and for testing, *test_{SRC}_{TGT}.{SRC}* and *test_{SRC}_{TGT}.{TGT}*. (NOTE, the *fine_tune* prefix was established by CopperMT module, but is actually used to refer to validation data). the *CopperMT/format_data.py* script will also shuffle each dataset and make sure it (internally) has only unique source-target cognate pairs.
+
+**CopperMT/format_data.py**
+* *--src_data (str):* comma-delimited list of parallel source cognate files. Should be variabel *TRAIN/VAL/TEST_COGNATES_SRC*.
+* *--tgt_data (str):* comma-delimited list of parallel target cognate files, corresponding to those passed to *--src_data*. Should be variabel *TRAIN/VAL/TEST_COGNATES_TGT*.
+* *--src (str):* Source language code.
+* *--tgt (str):* Target language code.
+* *--out_dir (str):* The directory the formatted output files will be written to. Note that the files will be written to a subdirectory of this directory corresponding to the seed (see *--seed* below). This should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}*, and hence, the files will be written to *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}*.
+* *--prefix (str):* Must be "train", "fine_tune", or "test", depending on if it's the training, validation, or test set (use "fine_tune" for validation set).
+* *--seed (int):* The seed to use for random shuffling of the data. Will also be the name of the subdirectory the output files will be in.
+
+###### 3.2.4 Assert there is no overlap of src and tgt segments (words) between the cognate prediction train / dev / test data
+Here we just make sure there no source or target words overlapping between the cognate prediction train, dev, and test datasets. More than ensure there are no overlapping pairs, this ensures there are no overlapping source words or overlapping target words.
+
+The *CopperMT/assert_no_overlap_in_formatted_data* script is run twice to do this. The first time (without the --TEST_ONLY flag), it will remove any existing overlap between the train, dev, and test sets. It does this by first checking if any source words in the train exist in the source side of either the dev or test, and removes the corresponding pairs. It then does the same for target words, checking if any exist in the target side of the dev or test set, and removing corresponding pairs. This process is repeated for the dev set, though now only checking if the words exist in the test set.
+
+On the second run, it will simply just test, mostly for good measure, that there are no overlapping source or target words accross train, dev, and test sets.
+
+**CopperMT/assert_no_overlap_in_formatted_data**
+* *--format_out_dir:* The directory the formatted data is written to. Should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}*.
+* *--src* Source language code.
+* *--tgt* Target language code.
+* *--TEST_ONLY* If this flag is passed, it will ONLY check that there is no overlap between the train, fine_tune (validation), and test sets. If it is not passed, then the script will remove any existing overlap.
+
+
+###### 3.2.5 Log the cognate predition data
+First, the a log .json file is chosen, depending on if NO_GROUPING is true or false (should be true).
+
+Then the sizes of the train, val, and test (for the corresponding language) sets are logged to the log file. This log file maintains a history. See the "latest" key for the latest logged sizes, and "history" for the history of the size change. A corresponding .csv file (same path as the .json log file, but with a .csv extension) is also written, which just shows the latest sizes.
+
+**Pipeline/cognate_dataset_log.py**
+* *--formatted_data_dir, -f:* The formatted data directory. Should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}*. 
+* *--lang_pair, -l:* The source-target language pair, formatted "{source lang}-{target lang}". Should be *{SRC}-{TGT}*.
+* *--LOG_F, -L:* the path of the .json log to be updated. Will be either *cognate_dataset_log_NG=True.json* or *cognate_dataset_log_NG=False.json*, depending on the value of *NO_GROUPING* (which should be true). A corresponding .csv file will also be written.
+
+###### 3.2.6 Write the CopperMT parameters file
+The parameters file required by the CopperMT module needs to be written, which is performed by *Pipeline/write_scripts.py*.
+
+**Pipeline/write_scripts.py**
+* *--src:* Source language code. 
+* *--tgt:* Target language code
+* *--coppermt_data_dir:* Parent folder containing the training data, models, and outputs of each cognate prediction scenario. Should be *COPPERMT_DATA_DIR*.
+* *--sc_model_type:* The SC model type, either "RNN" or "SMT". Should be *SC_MODEL_TYPE*.
+* *--rnn_hyperparams_id:* The id corresonding to the desired RNN hyperparams set. Should be *RNN_HYPERPARAMS_ID*.
+* *--seed:* Should be *SEED*.
+* *--parameters, -p:* The path the CopperMT parameters file will be written to. Should be *{PARAMETERS_DIR}/parameters.{SRC}-{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}.cfg*
+
+###### 3.2.7 Train the SC model with CopperMT
+The SC model is now trained. This is done by calling scripts in the CopperMT module.
+
+**Training an RNN model:**
+If training an RNN model, *{COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan.sh* script is called, passing in the parameters file created in **3.2.6** (should be *{PARAMETERS_DIR}/parameters.{SRC}-{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}.cfg*) and the *SEED*. 
+
+After training, the best RNN checkpoint is selected, using *Pipeline/select_checkpoint.py*. This selects the best performing checkpoint, based on BLEU score calculated by CopperMT, from those in a directory that contains checkpoints and outputs. This directory is set to variable *WORKSPACE_SEED_DIR*, which should be *COPPERMT_DATA_DIR/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}*. *Pipeline/select_checkpoint.py* will save the best checkpoint to *{WORKSPACE_SEED_DIR}/checkpoints/selected.pt*. All other checkpoints will be deleted to conserve storage space.
+
+**Training an SMT model:**
+If training an SMT model, *{COPPERMT_DIR}/pipeline/main_smt_full_brendan.sh* is run, passing the same parameters file from **3.2.6** and *SEED*.
+
+
+
+### 4) EVALUATE SC MODEL
+
+#### 4.1 Delete inference directories if pre-existing
+A couple directories, if pre-existing, are deleted.
+#TODO describe what they are after you figure this out. (Are they still used or did we change this?? The files aren't called elsewhere in train_SC.sh or pred_SC.sh). Run the script, and see afterwards if they exist.
+
+#### 4.2 Run inference on the test set
+To calculate scores, inference is first run on the test set.
+
+**Inference with an RNN model**
+To run inference with an RNN model, *{COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan_PREDICT.sh* is called, passing the Copper MT parameters file from **3.2.6**, the path to the selected RNN checkpoint from **3.2.7**, *SEED*, an indicator "test", *NBEST*, and *BEAM*.
+
+#TODO Figure out what HYP_OUT_TXT and TEST_OUT_F are exactly and document NMT/hr_CopperMT.py
+
+**Inference with an SMT model**
+
+#### 4.4 Calculate scores
