@@ -57,6 +57,8 @@ rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/fon-*
 rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/hi-*
 rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/lua-*
 
+# echo "ONLY DELETED FILES AND DIRS"
+# exit
 
 python Pipeline/make_hyperparam_search_space.py \
     --cfgs Pipeline/cfg/SC/fr-mfe.cfg,Pipeline/cfg/SC/es-an.cfg,Pipeline/cfg/SC/cs-hsb.cfg,Pipeline/cfg/SC/bn-as.cfg,Pipeline/cfg/SC/bho-hi.cfg,Pipeline/cfg/SC/djk-en.cfg,Pipeline/cfg/SC/ewe-fon.cfg,Pipeline/cfg/SC/fon-ewe.cfg,Pipeline/cfg/SC/hi-bho.cfg,Pipeline/cfg/SC/lua-bem.cfg

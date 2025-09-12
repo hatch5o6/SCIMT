@@ -10,7 +10,7 @@ The CharLOTTE system assumes that the phenomenon of systematic sound corresponde
 - *horno, forno* 
 - *hijo , filho*
 
-CharLOTTE detects these character correspondences and trains tokenizers and NMT systems that exploit them so as to increase vocabulary overlap between related high and low-resourced languages. CharLOTTE utilizes a language-agnostic approach, requiring only the NMT parallel training, validation, and testing data; though additional sets of known langauge-specific sets of cognates can also be provided.
+CharLOTTE learns these character correspondences with we call **SC models** and trains tokenizers and NMT models that exploit them so as to increase vocabulary overlap between related high and low-resourced languages. CharLOTTE utilizes a language-agnostic approach, requiring only the NMT parallel training, validation, and testing data; though additional sets of known langauge-specific sets of cognates can also be provided.
 
 
 # Installation
@@ -24,6 +24,16 @@ python move_files.py
 ```
 
 # Pipeline
+The code for running the main experiments is in the Pipeline directory.
+
+[SC Configs](#sc-configs) are the backbone of the pipeline. These configs are reviewed first, followed by the main Pipeline scripts.
+
+The main Pipeline scripts are in the Pipeline directory. Skip to the document for each as needed:
+- [Pipeline/train_SC.sh](#pipelinetrain_scsh) - For training (and scoring) an SC model.
+- [Pipeline/pred_SC.sh](#pipelinepred_scsh) - For running inference with an SC model.
+- [Pipeline/train_srctgt_tokenizer.sh](#pipelinetrain_srctgt_tokenizersh) - For training an NMT tokenizer.
+
+## SC Configs
 
 See *Pipeline/cfg/SC* for the .cfg files for all 10 scenarios of these experiments. They contain the following parameters. If ever not using one of these parameters, as relvant (most should be used), then set it to null. See Pipeline/cfg/SC for details.
 - **MODULE_HOME_DIR:** the system path to the *code* folder of this module, depending on where you cloned it on your system, e.g. *~/path/to/Cognate/code*
@@ -58,7 +68,7 @@ See *Pipeline/cfg/SC* for the .cfg files for all 10 scenarios of these experimen
 This documentation is designed to walk you through the *Pipeline/train_SC.sh* script. You should read this documentation and the *train_SC.sh* script together. This documentation will refer to sections of the *train_SC.sh* code with numbers like 2.2 and 2.3.1.
 
 **Pipeline/train_SC.sh** trains the character correspondence (SC) models.
-We call it SC, which stands for "sound correspondence", but more accurately, what we're detecting are character correspondences.
+We call it SC, which stands for "sound correspondence", but more accurately, what we're more acurately detecting are actually character correspondences, since we apply this on orthography rather than phones.
 
 **Pipeline/train_SC.sh** is run from /Cognate/code, and takes a single positional argument, one of the *.cfg* config files described above, e.g.:
 ```
@@ -262,7 +272,7 @@ The *CopperMT/assert_no_overlap_in_formatted_data* script is run twice to do thi
 
 On the second run, it will simply just test, mostly for good measure, that there are no overlapping source or target words accross train, dev, and test sets.
 
-**CopperMT/assert_no_overlap_in_formatted_data**
+**CopperMT/assert_no_overlap_in_formatted_data.py**
 * *--format_out_dir:* The directory the formatted data is written to. Should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}*.
 * *--src* Source language code.
 * *--tgt* Target language code.
@@ -339,3 +349,8 @@ Finally, the results are evaluated using *NMT/evaluate.py* which will calculate 
 * *--hyp:* The path to the model hypotheses, saved to *TEST_OUT_F*, set in **4.2**.
 * *--out:* The file path to write the scores to, which is *SCORES_OUT_F*, set in **4.2**.
 
+
+
+## Pipeline/pred_SC.sh
+
+## Pipeline/train_srctgt_tokenizer.sh
