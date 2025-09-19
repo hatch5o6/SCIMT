@@ -19,8 +19,7 @@ append_tgt_token: False
 upsample: False
 
 # tokenizers
-src_spm:
-tgt_spm:
+spm:
 
 # training
 n_gpus: 4

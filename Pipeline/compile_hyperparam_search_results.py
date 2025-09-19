@@ -116,7 +116,11 @@ def compile(
                 scores_f = os.path.join(COPPERMT_results_dir, f"workspace/reference_models/bilingual/rnn_{src_lang}-{tgt_lang}/0/results/test_selected_checkpoint_{src_lang}_{tgt_lang}.{tgt_lang}/generate-test.hyp.scores.txt")
             
             
-            BLEU, chrF = read_scores(scores_f)
+            if os.path.exists(scores_f):
+                BLEU, chrF = read_scores(scores_f)
+            else:
+                BLEU, chrF = -1, -1
+                print("Scores file does not exist:", scores_f)
 
             assert rnn_id not in visited_rnn_ids
             assert int(rnn_id) not in visited_rnn_ids
@@ -168,10 +172,23 @@ def compile(
     best_worksheet.write(0, 1, "CRITERIA", best_header_format)
     for key, idx in header.items():
         best_worksheet.write(0, idx + 2, key, best_header_format)
+    best_worksheet.write(0, len(header) + 2, "TRAIN / VAL / TEST SIZE", best_header_format)
     for lx, (lang, criteria_configs) in enumerate(BEST_LANG_CONFIGS.items()):
+        source_lang, target_lang = tuple(lang.split("-"))
         for cx, (criteria, configs) in enumerate(criteria_configs.items()):
+            if configs["params"]['model_type'] == "bigru":
+                model_id = configs['rnn_id']
+                MODEL_TYPE = "RNN"
+            else:
+                print("NOT RNN:", configs["params"]['model_type'])
+                assert configs["params"]['model_type'] == "SMT"
+                model_id = "null"
+                MODEL_TYPE = "SMT"
+            split_data_dir = os.path.join(COPPERMT, f"{source_lang}_{target_lang}_{MODEL_TYPE}-{model_id}_S-{seed}/inputs/split_data/{source_lang}_{target_lang}/{seed}")
+            train_size, val_size, test_size = get_train_val_test_sizes(split_data_dir, src=source_lang, tgt=target_lang)
             best_worksheet.write((lx * 2) + cx + 1, 0, lang, best_header_format)
             best_worksheet.write((lx * 2) + cx + 1, 1, criteria, best_header_format)
+            best_worksheet.write((lx * 2) + cx + 1, len(header) + 2, f"{train_size:,} / {val_size:,} / {test_size:,}", best_header_format)
             for key, idx in header.items():
                 if key in configs["params"]:
                     best_worksheet.write((lx * 2) + cx + 1, idx + 2, configs["params"][key], best_param_format)
@@ -184,6 +201,20 @@ def compile(
     best_worksheet.autofit()
     best_workbook.close()
     
+def get_train_val_test_sizes(split_data_dir, src, tgt):
+    train_f = os.path.join(split_data_dir, f"train_{src}_{tgt}.{src}")
+    val_f = os.path.join(split_data_dir, f"fine_tune_{src}_{tgt}.{src}")
+    test_f = os.path.join(split_data_dir, f"test_{src}_{tgt}.{src}")
+    train_lines = read_lines(train_f)
+    val_lines = read_lines(val_f)
+    test_lines = read_lines(val_f)
+    return len(train_lines), len(val_lines), len(test_lines)
+
+
+def read_lines(f):
+    with open(f) as inf:
+        lines = [l.strip() for l in inf.readlines()]
+    return lines
 
 def get_smt_id(rnn_hyperparams_dir):
     max_rnn_id = None

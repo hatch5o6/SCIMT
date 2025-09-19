@@ -1,0 +1,1 @@
+python make_nmt_configs.py --NO_V v1 > make_nmt_configs.out

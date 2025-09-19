@@ -28,7 +28,7 @@ The code for running the main experiments is in the Pipeline directory.
 
 [SC Configs](#sc-configs) are the backbone of the pipeline. These configs are reviewed first, followed by the main Pipeline scripts.
 
-The main Pipeline scripts are in the Pipeline directory. Skip to the document for each as needed:
+The main Pipeline scripts are in the Pipeline directory. Skip to the documentation for each as needed:
 - [Pipeline/train_SC.sh](#pipelinetrain_scsh) - For training (and scoring) an SC model.
 - [Pipeline/pred_SC.sh](#pipelinepred_scsh) - For running inference with an SC model.
 - [Pipeline/train_srctgt_tokenizer.sh](#pipelinetrain_srctgt_tokenizersh) - For training an NMT tokenizer.
@@ -44,7 +44,7 @@ See *Pipeline/cfg/SC* for the .cfg files for all 10 scenarios of these experimen
 - **SRC:** the source language of the cognate prediction model. This should be the same as *AUG_SRC*. The goal is to use the resulting cognate prediction model to make *AUG_SRC* look more like *NMT_SRC* based on character correspondences.
 - **TGT:** the target language of the cognate prediction model. This should be the same as *NMT_SRC*. The goal is to use the resulting cognate prediction model to make *AUG_SRC* look more like *NMT_SRC* based on character correspondences.
 - **SEED:** a random seed used in different scripts, such as for randomizing data order
-- **PARALLEL_TRAIN/VAL/TEST** Parallel train / val / test data .csv files. These are the parallel data used to train NMT models, and from which congates will be extracted to train the cognate prediction model.
+- **PARALLEL_(TRAIN|VAL|TEST)** Parallel train / val / test data .csv files. These are the parallel data used to train NMT models, and from which congates will be extracted to train the cognate prediction model.
 - **APPLY_TO** list (comma-delimited, no space) of more data .csv files to apply the cognate prediction model to. Not used by *train_SC.sh* but by *pred_SC.sh*.
 - **NO_GROUPING** Keep this set to True. Not sure I'll actually experiment with this. It's used when extracting the cognate list from the Fast Align results. Basically, if False, then "grouping" is applied. Don't worry about it. Ask Brendan if you really want to know.
 - **SC_MODEL_TYPE** 'RNN' or 'SMT'. Determines what kind of model will be trained to predict cognates.
@@ -59,9 +59,9 @@ See *Pipeline/cfg/SC* for the .cfg files for all 10 scenarios of these experimen
 - **NBEST** The number of hypotheses to generate. This should just be 1 (Not sure why it's even parameterized). (RNNs only).
 - **REVERSE_SRC_TGT_COGNATES** Reverses the *SRC* and *TGT* (cognate pair direction). Should be False. I'm not sure this should ever be True.
 - **SC_MODEL_ID** an ID given to the resulting cognate prediction model. This ID is used in other pipelines. Not used by train_SC.sh, but is used by pred_SC.sh to label the resulting noramlized high-resource (norm HR) file (the file that has replaced all words in the HR file with the respective predicted cognate).
-- **ADDITIONAL_TRAIN_COGNATES_SRC/TGT** Parallel cognate files if wanting to add data from other sources, such as CogNet or EtymDB, to the training data. If not using, set to 'null'
-- **VAL/TEST_COGNATES_SRC/TGT** Set these to the validation/test src/tgt files. If not passed, you should set *COGNATE_TRAIN/VAL/TEST_RATIO* to make train / val / test splits instead. If not using, set to 'null'. Should use either this or *COGNATE_TRAIN/VAL/TEST_RATIO*.
-- **COGNATE_TRAIN/VAL/TEST_RATIO** If not passing *VAL/TEST_COGNATES_SRC/TGT*, then these are the train / val / test ratios for splitting the cognate data. The three should add to 1. If not using, set to 'null'. Should use either this or *VAL/TEST_COGNATES_SRC/TGT*.
+- **ADDITIONAL_TRAIN_COGNATES_(SRC/TGT)** Parallel cognate files if wanting to add data from other sources, such as CogNet or EtymDB, to the training data. If not using, set to 'null'
+- **(VAL|TEST)_COGNATES_(SRC|TGT)** Set these to the validation/test src/tgt files. If not passed, you should set *COGNATE_(TRAIN|VAL|TEST)_RATIO* to make train / val / test splits instead. If not using, set to 'null'. Should use either this or *COGNATE_(TRAIN|VAL|TEST)_RATIO*.
+- **COGNATE_(TRAIN|VAL|TEST)_RATIO** If not passing *(VAL|TEST)_COGNATES_(SRC|TGT)*, then these are the train / val / test ratios for splitting the cognate data. The three should add to 1. If not using, set to 'null'. Should use either this or *(VAL|TEST)_COGNATES_(SRC|TGT)*.
 
 
 ## Pipeline/train_SC.sh
@@ -70,7 +70,7 @@ This documentation is designed to walk you through the *Pipeline/train_SC.sh* sc
 **Pipeline/train_SC.sh** trains the character correspondence (SC) models.
 We call it SC, which stands for "sound correspondence", but more accurately, what we're more acurately detecting are actually character correspondences, since we apply this on orthography rather than phones.
 
-**Pipeline/train_SC.sh** is run from /Cognate/code, and takes a single positional argument, one of the *.cfg* config files described above, e.g.:
+**Pipeline/train_SC.sh** is run from /Cognate/code, and takes a single positional argument, one of the *.cfg* config files described [above](#sc-configs), e.g.:
 ```
 bash Pipeline/train_SC.sh /home/hatch5o6/Cognate/code/Pipeline/cfg/SC/fr-mfe.cfg
 ```
@@ -85,7 +85,7 @@ bash Pipeline/train_SC.sh /home/hatch5o6/Cognate/code/Pipeline/cfg/SC/fr-mfe.cfg
 
 
 ### 1) ARGUMENTS
-It uses these parameters from the *.cfg* file: 
+It uses these parameters from the SC Config file: 
 - MODULE_HOME_DIR
 - SRC
 - TGT
@@ -96,7 +96,6 @@ It uses these parameters from the *.cfg* file:
 - NO_GROUPING
 - SC_MODEL_TYPE
 - SEED
-- SC_MODEL_ID
 - COGNATE_THRESH
 - COPPERMT_DATA_DIR
 - COPPERMT_DIR
@@ -319,6 +318,7 @@ If training an SMT model, *{COPPERMT_DIR}/pipeline/main_smt_full_brendan.sh* is 
 #### 4.1 Delete inference directories if pre-existing
 A couple directories, if pre-existing, are deleted.
 #TODO describe what they are after you figure this out. (Are they still used or did we change this?? The files aren't called elsewhere in train_SC.sh or pred_SC.sh). Run the script, and see afterwards if they exist.
+#UPDATE I don't think these paths are being used for anything anymore.
 
 #### 4.2 Run inference on the test set
 To calculate scores, inference is first run on the test set.
@@ -326,10 +326,10 @@ To calculate scores, inference is first run on the test set.
 **Inference with an RNN model**  
 To run inference with an RNN model, *{COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan_PREDICT.sh* is called, passing the Copper MT parameters file from **3.2.6** (*PARAMETERS_F*), the path to the selected RNN checkpoint from **3.2.7** (*SELECTED_RNN_CHECKPOING*), *SEED*, an indicator "test", *NBEST*, and *BEAM*. This script will save its results to a file whose path is saved to the variable *HYP_OUT_TXT*. This path should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}/results/test_selected_checkpoint_{SRC}_{TGT}.{TGT}/generate-test.txt*.
 
-The model hypotheses need to be extracted from the *HYP_OUT_TXT* file, which is done with the **NMT/hr_CopperMT.py** script. This script has three modes: "prepare", "retrieve", and "get_test_results". Modes "prepare" and "retrieve" will be discussed later in connection to *pred_SC.sh*. To extract the hypotheses from the model test results file, we use mode "get_test_results". Only the parameters relevant to this mode are shown here. This mode will write the hypotheses to a file parallel to the source file, where on each line is simply the cognate hypothesis for each source word.
+The model hypotheses need to be extracted from the *HYP_OUT_TXT* file, which is done with the **NMT/hr_CopperMT.py** script. This script has three modes: "prepare", "retrieve", and "get_test_results". Modes "prepare" and "retrieve" will be discussed later in connection to *pred_SC.sh* [below](#24-apply-sc) To extract the hypotheses from the model test results file, we use mode "get_test_results". Only the parameters relevant to this mode are shown here. This mode will write the hypotheses to a file parallel to the source file, where on each line is simply the cognate hypothesis for each source word.
 
 **NMT/hr_CopperMT.py (get_test_results)**
-* *--function* The script mode. In this case, it should be "get_test_results".
+* *--function, -F:* The script mode. In this case, it should be "get_test_results".
 * *--test_src:* The test source sentences. Should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}/test_{SRC}_{TGT}.{SRC}* (saved to variable *SRC_TEXT*).
 * *--data:* The model results, written by *main_nmt_bilingual_full_brendan_PREDICT.sh*. The path is saved to *HYP_OUT_TXT*.
 * *--out:* The path to save the hypotheses extracted from the model results file. Should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}/results/test_selected_checkpoint_{SRC}_{TGT}.{TGT}/generate-test.hyp.txt* (saved to *TEST_OUT_F*).
@@ -352,5 +352,85 @@ Finally, the results are evaluated using *NMT/evaluate.py* which will calculate 
 
 
 ## Pipeline/pred_SC.sh
+This documentation is designed to walk you through the *Pipeline/pred_SC.sh* script. You should read this documentation and the *pred_SC.sh* script together. This documentation will refer to sections of the *pred_SC.sh* code with numbers like 2.2 and 2.3.
+
+**Pipeline/pred_SC.sh** runs inference of an SC model. It is run from /Cognate/code, and takes a single positional argument, one of the *.cfg* config files described [above](#sc-configs), e.g.:
+```
+bash Pipeline/pred_SC.sh /home/hatch5o6/Cognate/code/Pipeline/cfg/SC/fr-mfe.cfg
+```
+
+For each parallel data .csv file in *PARALLEL_(TRAIN|VAL|TEST)* and *APPLY_TO*, this script looks for any source or target sentence file in the *.csv* for the language *SRC* -- that is, even if there is a target file in the *.csv* for the language *SRC* it will be included -- and applies the SC model to *each* word of *each* sentence and then saves the result to a new file. We then have data in the *SRC* language that is made more similary to the *TGT* language based on learned character correspondences.
+
+### 1) ARGUMENTS
+It uses these parameters from the SC Config file:
+- MODULE_HOME_DIR
+- SRC
+- TGT
+- PARALLEL_TRAIN
+- PARALLEL_VAL
+- PARALLEL_TEST
+- APPLY_TO
+- SC_MODEL_TYPE
+- SEED
+- SC_MODEL_ID
+- COPPERMT_DATA_DIR
+- COPPERMT_DIR
+- PARAMETERS_DIR
+- RNN_HYPERPARAMS_ID
+- BEAM
+- NBEST
+
+### 2) APPLY SC MODEL
+#### 2.1 Write the CopperMT parameters file
+First the CopperMT parameters file is written. This step is just like step **3.2.6** under [Pipeline/train_SC.sh](#pipelinetrain_scsh). 
+
+The parameters file required by the CopperMT module needs to be written, which is performed by *Pipeline/write_scripts.py*.
+
+**Pipeline/write_scripts.py**
+* *--src:* Source language code. 
+* *--tgt:* Target language code
+* *--coppermt_data_dir:* Parent folder containing the training data, models, and outputs of each cognate prediction scenario. Should be *COPPERMT_DATA_DIR*.
+* *--sc_model_type:* The SC model type, either "RNN" or "SMT". Should be *SC_MODEL_TYPE*.
+* *--rnn_hyperparams_id:* The id corresonding to the desired RNN hyperparams set. Should be *RNN_HYPERPARAMS_ID*.
+* *--seed:* Should be *SEED*.
+* *--parameters, -p:* The path the CopperMT parameters file will be written to. Should be *{PARAMETERS_DIR}/parameters.{SRC}-{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}.cfg*
+
+#### 2.2 Get selected SC model
+If running an RNN model, we need to retrieve the path to the best model. This should be *COPPERMT_DATA_DIR/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}/checkpoints/selected.pt*, which is set to the variable *SELECTED_RNN_CHECKPOINT*.
+
+#### 2.3 Delete inference directories if pre-existing
+This is the same as **4.1** under [Pipeline/train_SC.sh](#pipelinetrain_scsh).
+
+A couple directories, if pre-existing, are deleted.
+#TODO describe what they are after you figure this out. (Are they still used or did we change this?? The files aren't called elsewhere in train_SC.sh or pred_SC.sh). Run the script, and see afterwards if they exist.
+#UPDATE I don't think these paths are being used for anything anymore.
+
+#### 2.4 APPLY SC
+The SC model is then applied to text files corresponding to the language *SRC*, making the data look more like language *TGT* based on character correspondences.
+
+To do this, words from the text files need to be prepared for the SC model. This is done with the *NMT/hr_CopperMT.py* script run in the "prepare" mode on each *.csv* file in *PARALLEL_(TRAIN|VAL|TEST)* and in the comma-delimited list *APPLY_TO*. In each *.csv* are the source and target parallel text files. The script grabs all text files corresponding to the language *SRC*, regardless of whether they are set as a source or target file in the *.csv*, and from them compiles a list of unique words. The arguments applicable to the "prepare" mode are described here.
+
+**NMT/hr_CopperMT.py (prepare)**
+* *--function, -F:* To run in "prepare" mode, set this to "prepare". "prepare" is also the default value, so if this parameter is not specified, it will run in "prepare" mode.
+* *--data:* The path to a parallel data *.csv* file.
+* *--out:* The directory in which will be written the list of unique words extracted from the text files listed in the *--data .csv* file.
+* *--hr_lang, -hr:* The high-resource language. Should be *SRC*.
+* *--lr_lang, -lr:* The low-resource language. Should be *TGT*.
+* *--training_data:* The folder where the SC model training data was written. Should be *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S-{SEED}/inputs/split_data/{SRC}_{TGT}/{SEED}*.
+* *--limit_lang:* The language whose text files we want to grab from the *.csv*. Should be *SRC*.
+
+Afterwards, we can run inference.
+
+**Inference with RNN model**
+If infering with an RNN model, we run *{COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan_PREDICT.sh*, passing in the CopperMT parameters file (*PARAMETERS_F*) from **2.1**, the path to the best checkpoint (*SELECTED_RNN_CHECKPOINT*) from **2.2**, *SEED*, the tag "inference", *NBEST*, and *BEAM*.
+
+This will predict the cognates for each of the words in our list created by *hr_CopperMT.py (prepare)*. Then we run NMT/hr_CopperMT.py in "retrieve" mode, which for each word in the high resource text files, it replaces it with its predicted cognate.
+
+TODO document NMT/hr_CopperMT.py in retrieve mode for RNN models.
+
+**Inference with SMT model**
+Should be similar to above (inference with RNN model)
 
 ## Pipeline/train_srctgt_tokenizer.sh
+
+

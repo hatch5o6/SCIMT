@@ -26,11 +26,12 @@ echo "    TGT=$TGT"
 echo "    PARALLEL_TRAIN=$PARALLEL_TRAIN"
 echo "    PARALLEL_VAL=$PARALLEL_VAL"
 echo "    PARALLEL_TEST=$PARALLEL_TEST"
+# echo "    APPLY_TO=$APPLY_TO" # not used
 echo "    COGNATE_TRAIN=$COGNATE_TRAIN"
 echo "    NO_GROUPING=$NO_GROUPING"
 echo "    SC_MODEL_TYPE=$SC_MODEL_TYPE"
 echo "    SEED=$SEED"
-echo "    SC_MODEL_ID=$SC_MODEL_ID"
+# echo "    SC_MODEL_ID=$SC_MODEL_ID" # not used
 echo "    COGNATE_THRESH=$COGNATE_THRESH"
 echo "    COPPERMT_DATA_DIR=$COPPERMT_DATA_DIR"
 echo "    COPPERMT_DIR=$COPPERMT_DIR"
@@ -531,6 +532,7 @@ then
 fi
 
 # 4.3 Calculate scores
+conda activate sound
 echo ""
 echo ""
 echo "######## 4.3 Calculate scores ########"

@@ -8,13 +8,6 @@ LA-IT: 5,109
 LA-ES: 4,217
 ES-IT: 1,804
 """
-# # OG
-# LEARNING_RATES = [0.01, 0.05, 0.001] # I'm wondering if 0.05 is a typo. Maybe they meant 0.005, since that's a winning parameter in the results
-# BATCH_SIZES = [10, 30, 65, 100]
-# EMBED_DIMS = [8, 12, 16, 20, 24]
-# HIDDEN_DIMS = [18, 36, 54, 72]
-# LAYERS = [1, 2, 4]
-# # ATTS = ['luong-dot', 'luong-general', 'bahdanua-dot'] -- None, Bahdanau, Luong (dot, concat, general)
 
 SBATCH_TEMPLATE="""
 #!/bin/bash
@@ -40,15 +33,22 @@ python Pipeline/clean_slurm_outputs.py
 rm /home/hatch5o6/Cognate/code/core*
 """.lstrip()
 
+# # OG
+# LEARNING_RATES = [0.01, 0.05, 0.001] # I'm wondering if 0.05 is a typo. Maybe they meant 0.005, since that's a winning parameter in the results
+# BATCH_SIZES = [10, 30, 65, 100]
+# EMBED_DIMS = [8, 12, 16, 20, 24]
+# HIDDEN_DIMS = [18, 36, 54, 72]
+# LAYERS = [1, 2, 4]
+# # ATTS = ['luong-dot', 'luong-general', 'bahdanua-dot'] -- None, Bahdanau, Luong (dot, concat, general)
 
 # Let's start with this:
 LEARNING_RATES = [0.001]
-BATCH_SIZES = [10, 100, 500]
+BATCH_SIZES = [16, 64, 256, 512]
 
-EMBED_DIMS = [20, 24]
-HIDDEN_DIMS = [54, 72]
+EMBED_DIMS = [16, 32, 64, 128]
+HIDDEN_DIMS = [16, 32, 64, 128, 256, 512]
 
-LAYERS = [1, 2, 4, 6]
+LAYERS = [2, 4, 6]
 ATTS = ["luong-dot"]
 
 def make_stuff(
