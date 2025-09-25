@@ -45,6 +45,7 @@ class MultilingualDataset(Dataset):
     def __init__(
         self,
         data_csv=None,
+        sc_model_id=None,
         append_src_lang_tok=False,
         append_tgt_lang_tok=True,
         append_tgt_to_src=False,
@@ -75,7 +76,7 @@ class MultilingualDataset(Dataset):
             assert isinstance(self.limit_tgt_langs, list)
 
         print("MultilingualDataset READING CSV", data_csv)
-        src_lines, tgt_lines, SRC_PATHS, TGT_PATHS = self.read_csv(data_csv, upsample=upsample)
+        src_lines, tgt_lines, SRC_PATHS, TGT_PATHS = self.read_csv(data_csv, sc_model_id=sc_model_id, upsample=upsample)
 
         self.src_paths = SRC_PATHS
         self.tgt_paths = TGT_PATHS
@@ -108,7 +109,12 @@ class MultilingualDataset(Dataset):
             data_by_pairs[lang_pair] = unique_data
         return data_by_pairs
 
-    def read_csv(self, f, upsample=False):
+    def read_csv(self, f, sc_model_id=None, upsample=False):
+        # if sc_model_id != None: # Not sure why I wrote these lines.
+        #     assert f.endswith("/train.no_overlap_v1.csv") or f.endswith("/val.no_overlap_v1.csv")
+        # else:
+        #     assert f.endswith("/test.csv") or f.endswith("/inference.csv")
+
         with open(f, newline='') as inf:
             rows = [row for row in csv.reader(inf)]
         header = rows[0]
@@ -119,6 +125,14 @@ class MultilingualDataset(Dataset):
         SRC_PATHS = []
         TGT_PATHS = []
         for src_lang, tgt_lang, src_path, tgt_path in rows:
+            assert "SC_{SC_MODEL_ID}" not in tgt_path
+            if sc_model_id == None:
+                assert "SC_{SC_MODEL_ID}" not in src_path
+            
+            if "SC_{SC_MODEL_ID}" in src_path:
+                assert sc_model_id != None
+                src_path = src_path.replace("{SC_MODEL_ID}", sc_model_id)
+
             if self.limit_src_langs != None and src_lang not in self.limit_src_langs:
                 continue
             if self.limit_tgt_langs != None and tgt_lang not in self.limit_tgt_langs:

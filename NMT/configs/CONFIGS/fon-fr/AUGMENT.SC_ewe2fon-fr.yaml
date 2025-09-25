@@ -17,6 +17,7 @@ test_data: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/fon-fr_dev_test/test.csv
 append_src_token: False
 append_tgt_token: False
 upsample: True
+sc_model_id: EWE-FON-RNN-0-RNN-120
 
 # tokenizers
 spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_ewe2fon-fon_fr/SC_ewe2fon-fon_fr/SC_ewe2fon-fon_fr

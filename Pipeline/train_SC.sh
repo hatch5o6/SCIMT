@@ -399,7 +399,6 @@ python -m CopperMT.assert_no_overlap_in_formatted_data \
 
 echo "train_SC.sh: PASSED CopperMT/assert_no_overlap_in_formatted_data"
 
-
 # 3.2.5 Log the cognate predition data
 echo ""
 echo "# 3.2.5 Log the cognate predition data #"

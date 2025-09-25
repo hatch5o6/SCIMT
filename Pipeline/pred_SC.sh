@@ -63,6 +63,15 @@ echo "    ###############################################"
 echo "#-- #              2) APPLY SC MODEL              # --#"
 echo "    ###############################################"
 
+######## 2.0 Alter SC_MODEL_ID ########
+echo ""
+echo ""
+echo "######## 2.0 Alter SC_MODEL_ID ########"
+echo "First, we will alter SC_MODEL_ID to incorporate the MODEL_TYPE and RNN_HYPERPARAMS_ID"
+SC_MODEL_ID="${SC_MODEL_ID}-${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}"
+echo "SC_MODEL_ID is now ${SC_MODEL_ID}"
+
+
 ######## 2.1 Write the CopperMT parameters file ########
 echo ""
 echo ""

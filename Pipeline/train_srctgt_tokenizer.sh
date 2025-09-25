@@ -31,6 +31,7 @@ echo "    INCLUDE_PAD_TOK=$INCLUDE_PAD_TOK"
 echo "    SPECIAL_TOKS=$SPECIAL_TOKS" #TODO
 echo "-------------------------------"
 
+
 if [ -d $TOK_TRAIN_DATA_DIR ]
 then
     echo "removing ${TOK_TRAIN_DATA_DIR}"

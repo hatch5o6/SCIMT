@@ -5,7 +5,10 @@ import yaml
 import copy
 from tqdm import tqdm
 
-TEST_FOLDER = "/home/hatch5o6/Cognate/code/NMT/configs/TEST"
+# TEST_FOLDER = "/home/hatch5o6/Cognate/code/NMT/configs/TEST"
+TEST_FOLDER = "/home/hatch5o6/Cognate/code/NMT/configs/CONFIGS_FINAL_TEST"
+
+#TODO Maybe add support for ATT (en2djk and hi2bho)
 
 def make_configs(
     cfgs,
@@ -30,16 +33,27 @@ def make_configs(
     print("Making configs")
     for cfg in tqdm(os.listdir(cfgs)):
         if TESTING and cfg not in ["bho-hi.cfg", "bn-as.cfg"]: continue
-        if cfg in ["en-djk.ATT.cfg"]: continue
+        if cfg.startswith("en-djk.ATT."): continue
         print("CONFIG:", cfg)
         cfg_path = os.path.join(cfgs, cfg)
-        NMT_SRC, NMT_TGT, AUG_SRC, AUG_TGT, COG_SRC, COG_TGT = read_cfg(cfg_path)
+        (NMT_SRC, 
+            NMT_TGT, 
+            AUG_SRC, 
+            AUG_TGT, 
+            COG_SRC, 
+            COG_TGT, 
+            SC_MODEL_TYPE, 
+            SC_MODEL_ID, 
+            RNN_HYPERPARAMS_ID) = read_cfg(cfg_path)
+        SC_MODEL_ID = f"{SC_MODEL_ID}-{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}"
         print("\tNMT_SRC:", NMT_SRC)
         print("\tNMT_TGT:", NMT_TGT)
         print("\tAUG_SRC:", AUG_SRC)
         print("\tAUG_TGT:", AUG_TGT)
         print("\tCOG_SRC:", COG_SRC)
         print("\tCOG_TGT:", COG_TGT)
+        print("\n\tSC_MODEL_ID:", SC_MODEL_ID)
+        print("\n\n")
         
         lang_pair = f"{NMT_SRC}-{NMT_TGT}"
         lang_out_dir = os.path.join(out_dir, lang_pair)
@@ -62,6 +76,22 @@ def make_configs(
         if NO_V != None:
             no_v_tag = f".no_overlap_{NO_V}"
 
+
+        # plain NTM (always do this)
+        nmt_config = copy.deepcopy(config_template)
+        nmt_config["src"] = NMT_SRC
+        nmt_config["tgt"] = NMT_TGT
+        nmt_config["train_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}", f"train{no_v_tag}.csv")
+        nmt_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", f"val{no_v_tag}.csv")
+        nmt_config["test_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "test.csv")
+        # nmt_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_SRC}/{NMT_SRC}")
+        # nmt_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+        nmt_config["spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_SRC}_{NMT_TGT}/{NMT_SRC}_{NMT_TGT}/{NMT_SRC}_{NMT_TGT}")
+        nmt_config["upsample"] = False
+        nmt_config["sc_model_id"] = None
+        nmt_config["save"] = os.path.join(SAVE_PARENT_DIR, f"NMT.{NMT_SRC}-{NMT_TGT}")
+        PATHS[lang_pair].append(write_yaml(nmt_config, os.path.join(lang_out_dir, f"NMT.{NMT_SRC}-{NMT_TGT}.yaml")))
+
         if SHOULD_AUGMENT:
             assert NMT_SRC == COG_TGT
             # AUGMENTED
@@ -76,6 +106,7 @@ def make_configs(
             # aug_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
             aug_config["spm"] = os.path.join(TOKENIZERS_DIR, f"{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}")
             aug_config["upsample"] = True
+            aug_config["sc_model_id"] = None
             aug_config["save"] = os.path.join(SAVE_PARENT_DIR, f"AUGMENT.{NMT_SRC}-{NMT_TGT}")
             PATHS[lang_pair].append(write_yaml(aug_config, os.path.join(lang_out_dir, f"AUGMENT.{NMT_SRC}-{NMT_TGT}.yaml")))
 
@@ -90,6 +121,7 @@ def make_configs(
             # aug_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
             aug_sc_config["spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}")
             aug_sc_config["upsample"] = True
+            aug_sc_config["sc_model_id"] = SC_MODEL_ID
             aug_sc_config["save"] = os.path.join(SAVE_PARENT_DIR, f"AUGMENT.SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}")
             PATHS[lang_pair].append(write_yaml(aug_sc_config, os.path.join(lang_out_dir, f"AUGMENT.SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}.yaml")))
 
@@ -105,6 +137,7 @@ def make_configs(
             # pretrain_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
             pretrain_config["spm"] = os.path.join(TOKENIZERS_DIR, f"{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}")
             pretrain_config["upsample"] = False
+            pretrain_config["sc_model_id"] = None
             pretrain_config["save"] = os.path.join(SAVE_PARENT_DIR, f"PRETRAIN.{AUG_SRC}-{AUG_TGT}")
             PATHS[lang_pair].append(write_yaml(pretrain_config, os.path.join(lang_out_dir, f"PRETRAIN.{AUG_SRC}-{AUG_TGT}.yaml")))
             
@@ -119,6 +152,7 @@ def make_configs(
             # pretrain_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
             pretrain_sc_config["spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}")
             pretrain_sc_config["upsample"] = False
+            pretrain_sc_config["sc_model_id"] = SC_MODEL_ID
             pretrain_sc_config["save"] = os.path.join(SAVE_PARENT_DIR, f"PRETRAIN.SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}")
             PATHS[lang_pair].append(write_yaml(pretrain_sc_config, os.path.join(lang_out_dir, f"PRETRAIN.SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}.yaml")))
 
@@ -134,6 +168,7 @@ def make_configs(
             # finetune_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
             finetune_config["spm"] = os.path.join(TOKENIZERS_DIR, f"{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}")
             finetune_config["upsample"] = False
+            finetune_config["sc_model_id"] = None
             finetune_config["save"] = os.path.join(SAVE_PARENT_DIR, f"FINETUNE.{AUG_SRC}-{AUG_TGT}>>{NMT_SRC}-{NMT_TGT}")
             finetune_config["from_pretrained"] = pretrain_config["save"] + f"_TRIAL_s={pretrain_config['seed']}" 
             PATHS[lang_pair].append(write_yaml(finetune_config, os.path.join(lang_out_dir, f"FINETUNE.{AUG_SRC}-{AUG_TGT}>>{NMT_SRC}-{NMT_TGT}.yaml")))
@@ -149,6 +184,7 @@ def make_configs(
             # finetune_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
             finetune_sc_config["spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}")
             finetune_sc_config["upsample"] = False
+            finetune_sc_config["sc_model_id"] = SC_MODEL_ID
             finetune_sc_config["save"] = os.path.join(SAVE_PARENT_DIR, f"FINETUNE.SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}>>{NMT_SRC}-{NMT_TGT}")
             finetune_sc_config["from_pretrained"] = pretrain_sc_config["save"] + f"_TRIAL_s={pretrain_sc_config['seed']}" 
             PATHS[lang_pair].append(write_yaml(finetune_sc_config, os.path.join(lang_out_dir, f"FINETUNE.SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}>>{NMT_SRC}-{NMT_TGT}.yaml")))
@@ -156,20 +192,6 @@ def make_configs(
             # Not augmenting
             assert NMT_SRC == AUG_SRC == COG_SRC
             assert NMT_TGT == AUG_TGT == COG_TGT
-
-            # plain
-            nmt_config = copy.deepcopy(config_template)
-            nmt_config["src"] = NMT_SRC
-            nmt_config["tgt"] = NMT_TGT
-            nmt_config["train_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}", f"train{no_v_tag}.csv")
-            nmt_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", f"val{no_v_tag}.csv")
-            nmt_config["test_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "test.csv")
-            # nmt_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_SRC}/{NMT_SRC}")
-            # nmt_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
-            nmt_config["spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_SRC}_{NMT_TGT}/{NMT_SRC}_{NMT_TGT}/{NMT_SRC}_{NMT_TGT}")
-            nmt_config["upsample"] = False
-            nmt_config["save"] = os.path.join(SAVE_PARENT_DIR, f"NMT.{NMT_SRC}-{NMT_TGT}")
-            PATHS[lang_pair].append(write_yaml(nmt_config, os.path.join(lang_out_dir, f"NMT.{NMT_SRC}-{NMT_TGT}.yaml")))
 
             # sc
             nmt_sc_config = copy.deepcopy(config_template)
@@ -182,6 +204,7 @@ def make_configs(
             # nmt_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
             nmt_sc_config["spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}_{NMT_TGT}")
             nmt_sc_config["upsample"] = False
+            nmt_sc_config["sc_model_id"] = SC_MODEL_ID
             nmt_sc_config["save"] = os.path.join(SAVE_PARENT_DIR, f"NMT.SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}")
             PATHS[lang_pair].append(write_yaml(nmt_sc_config, os.path.join(lang_out_dir, f"NMT.SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}.yaml")))
 
@@ -192,8 +215,10 @@ def make_configs(
 def TEST(paths, config_template):
     SKIP_KEYS = ["src", "tgt", "train_data", "val_data", "test_data", 
                 #  "src_spm", "tgt_spm",
-                 "spm",
-                "upsample", "save", "from_pretrained"]
+                "spm",
+                "upsample",
+                "sc_model_id", 
+                "save", "from_pretrained"]
     total = 0
     passed = 0
     for d in os.listdir(TEST_FOLDER):
@@ -234,6 +259,9 @@ def TEST(paths, config_template):
                 # print("gt_yaml", key, type(gt_yaml[key]), gt_yaml[key])
                 # print("test_yaml", key, type(test_yaml[key]), test_yaml[key])
                 if gt_yaml:
+                    if gt_yaml[key] != v:
+                        print("ERROR in", gt_path)
+                        print(f"gt_yaml[{key}] == `{gt_yaml[key]}`; but template[{key}] == `{v}`")
                     assert gt_yaml[key] == v
                 assert test_yaml[key] == v
             if gt_yaml:
@@ -295,7 +323,10 @@ def write_yaml(data, f):
                 v = "null"
             outf.write(f"{key}: {v}\n")
 
-            if key in ["little_verbose", "from_pretrained", "upsample", 
+            if key in ["little_verbose", "from_pretrained", 
+                       "sc_model_id", # if going to include this, comment out "upsample"
+                    #    "upsample", # if going to include 'sc_model_id', comment this out
+
                     #    "tgt_spm", 
                        "spm",
                        "qos", "test_batch_size", "val_interval", "learning_rate", "device", "encoder_layerdrop", "decoder_layerdrop"]:
@@ -313,6 +344,9 @@ def read_cfg(f):
     AUG_TGT=None
     SRC=None
     TGT=None
+    SC_MODEL_ID=None
+    SC_MODEL_TYPE=None
+    RNN_HYPERPARAMS_ID=None
     for line in lines:
         if line.startswith("NMT_SRC="):
             assert NMT_SRC is None
@@ -332,8 +366,28 @@ def read_cfg(f):
         elif line.startswith("TGT="):
             assert TGT is None
             TGT = line.split("TGT=")[-1]
-    assert all([NMT_SRC is not None, NMT_TGT is not None, AUG_SRC is not None, AUG_TGT is not None, SRC is not None, TGT is not None])
-    return NMT_SRC, NMT_TGT, AUG_SRC, AUG_TGT, SRC, TGT
+        elif line.startswith("SC_MODEL_TYPE="):
+            assert SC_MODEL_TYPE == None
+            SC_MODEL_TYPE = line.split("SC_MODEL_TYPE=")[-1]
+        elif line.startswith("SC_MODEL_ID="):
+            assert SC_MODEL_ID == None
+            SC_MODEL_ID = line.split("SC_MODEL_ID=")[-1]
+        elif line.startswith("RNN_HYPERPARAMS_ID="):
+            assert RNN_HYPERPARAMS_ID == None
+            RNN_HYPERPARAMS_ID = line.split("RNN_HYPERPARAMS_ID=")[-1]
+        
+    assert all([
+        NMT_SRC is not None, 
+        NMT_TGT is not None, 
+        AUG_SRC is not None, 
+        AUG_TGT is not None, 
+        SRC is not None, 
+        TGT is not None,
+        SC_MODEL_TYPE is not None,
+        SC_MODEL_ID is not None,
+        RNN_HYPERPARAMS_ID is not None
+    ])
+    return NMT_SRC, NMT_TGT, AUG_SRC, AUG_TGT, SRC, TGT, SC_MODEL_TYPE, SC_MODEL_ID, RNN_HYPERPARAMS_ID
 
 def get_args():
     parser = argparse.ArgumentParser()

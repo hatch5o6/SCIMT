@@ -17,6 +17,7 @@ test_data: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/hsb-de_dev_test/test.csv
 append_src_token: False
 append_tgt_token: False
 upsample: False
+sc_model_id: CS-HSB-SMT-0-SMT-null
 
 # tokenizers
 spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_cs2hsb-hsb_de/SC_cs2hsb-hsb_de/SC_cs2hsb-hsb_de

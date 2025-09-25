@@ -407,6 +407,10 @@ def get_multilingual_dataloaders(config, sections=["train", "val", "test", "infe
     for section in sections:
         if section not in ["train", "val", "test", "inference"]:
             raise ValueError(f"Dataloader sections must be in ['train', 'val', 'test', 'inference']")
+        if section in ["train", "val"]:
+            assert config[f"{section}_data"].endswith(f"/{section}.no_overlap_v1.csv")
+        else:
+            assert config[f"{section}_data"].endswith(f"/{section}.csv")
 
     dataloaders = {}
     datasets = {}
@@ -419,6 +423,7 @@ def get_multilingual_dataloaders(config, sections=["train", "val", "test", "infe
             UPSAMPLE = config["upsample"] # Only upsample for train set (and if it's indicated in the config)
         a_dataset = MultilingualDataset(
             data_csv=config[f"{section}_data"],
+            sc_model_id=config["sc_model_id"],
             append_src_lang_tok=config["append_src_token"],
             append_tgt_lang_tok=config["append_tgt_token"],
             upsample=UPSAMPLE,

@@ -381,6 +381,9 @@ It uses these parameters from the SC Config file:
 - NBEST
 
 ### 2) APPLY SC MODEL
+#### 2.0 Alter SC_MODEL_ID
+We simply append the *SC_MODEL_TYPE* ('SMT' or 'RNN') and the *RNN_HYPERPARAMS_ID* to the end of *SC_MODEL_ID*, just so we can track precisely which version of a model was used to apply character correspondence later on.
+
 #### 2.1 Write the CopperMT parameters file
 First the CopperMT parameters file is written. This step is just like step **3.2.6** under [Pipeline/train_SC.sh](#pipelinetrain_scsh). 
 
