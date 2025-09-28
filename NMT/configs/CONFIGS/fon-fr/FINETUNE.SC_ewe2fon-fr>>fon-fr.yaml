@@ -23,7 +23,7 @@ sc_model_id: EWE-FON-RNN-0-RNN-120
 spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_ewe2fon-fon_fr/SC_ewe2fon-fon_fr/SC_ewe2fon-fon_fr
 
 # training
-n_gpus: 4
+n_gpus: 1
 seed: 1000
 qos: dw87
 

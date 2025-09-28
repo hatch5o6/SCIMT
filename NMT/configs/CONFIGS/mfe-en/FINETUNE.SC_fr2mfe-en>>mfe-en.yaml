@@ -23,13 +23,13 @@ sc_model_id: FR-MFE-RNN-0-RNN-66
 spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_fr2mfe-mfe_en/SC_fr2mfe-mfe_en/SC_fr2mfe-mfe_en
 
 # training
-n_gpus: 4
+n_gpus: 1
 seed: 1000
 qos: dw87
 
-train_batch_size: 128
-val_batch_size: 128
-test_batch_size: 128
+train_batch_size: 32
+val_batch_size: 32
+test_batch_size: 32
 
 early_stop: 10
 save_top_k: 2

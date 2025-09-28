@@ -29,6 +29,7 @@ echo "    SPLIT_ON_WS=$SPLIT_ON_WS"
 echo "    INCLUDE_LANG_TOKS=$INCLUDE_LANG_TOKS" # TODO
 echo "    INCLUDE_PAD_TOK=$INCLUDE_PAD_TOK"
 echo "    SPECIAL_TOKS=$SPECIAL_TOKS" #TODO
+echo "    IS_ATT=$IS_ATT"
 echo "-------------------------------"
 
 
@@ -48,7 +49,8 @@ python Pipeline/make_tok_training_data.py \
     --val_csvs $VAL_PARALLEL  \
     --test_csvs $TEST_PARALLEL  \
     --out $TOK_TRAIN_DATA_DIR \
-    --SC_MODEL_ID $SC_MODEL_ID
+    --SC_MODEL_ID $SC_MODEL_ID \
+    --IS_ATT $IS_ATT
 
 # TODO Finish this if needed:
 # USER_DEFINED_SYMBOLS
@@ -161,9 +163,6 @@ python NMT/spm_train.py \
 # done
 
 #Make SPM Training data for SC-applied data (Same process as Cognate Training data, but this time we're applying it to the the SC-processed data)
-
-
-#### TRAIN NMT MODEL ####
 
 echo "Created by Cognate/code/Pipeline/train_tokenizer.sh ${config_file}" > ${TOK_TRAIN_DATA_DIR}/notes
 date >> ${TOK_TRAIN_DATA_DIR}/notes

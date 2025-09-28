@@ -26,12 +26,12 @@ python move_files.py
 # Pipeline
 The code for running the main experiments is in the Pipeline directory.
 
-[SC Configs](#sc-configs) are the backbone of the pipeline. These configs are reviewed first, followed by the main Pipeline scripts.
-
 The main Pipeline scripts are in the Pipeline directory. Skip to the documentation for each as needed:
 - [Pipeline/train_SC.sh](#pipelinetrain_scsh) - For training (and scoring) an SC model.
 - [Pipeline/pred_SC.sh](#pipelinepred_scsh) - For running inference with an SC model.
 - [Pipeline/train_srctgt_tokenizer.sh](#pipelinetrain_srctgt_tokenizersh) - For training an NMT tokenizer.
+
+[SC Configs](#sc-configs) are the backbone of the pipeline. They are used both by *Pipeline/train_SC.sh* and *Pipeline/pred_SC.sh*. An overview of SC Configs is given first, followed by documentation of the main Pipeline scripts. *Pipeline/train_srctgt_tokenizer.sh* utilizes its own config, which will be described in its own section of this documentation.
 
 ## SC Configs
 
@@ -44,24 +44,24 @@ See *Pipeline/cfg/SC* for the .cfg files for all 10 scenarios of these experimen
 - **SRC:** the source language of the cognate prediction model. This should be the same as *AUG_SRC*. The goal is to use the resulting cognate prediction model to make *AUG_SRC* look more like *NMT_SRC* based on character correspondences.
 - **TGT:** the target language of the cognate prediction model. This should be the same as *NMT_SRC*. The goal is to use the resulting cognate prediction model to make *AUG_SRC* look more like *NMT_SRC* based on character correspondences.
 - **SEED:** a random seed used in different scripts, such as for randomizing data order
-- **PARALLEL_(TRAIN|VAL|TEST)** Parallel train / val / test data .csv files. These are the parallel data used to train NMT models, and from which congates will be extracted to train the cognate prediction model.
-- **APPLY_TO** list (comma-delimited, no space) of more data .csv files to apply the cognate prediction model to. Not used by *train_SC.sh* but by *pred_SC.sh*.
-- **NO_GROUPING** Keep this set to True. Not sure I'll actually experiment with this. It's used when extracting the cognate list from the Fast Align results. Basically, if False, then "grouping" is applied. Don't worry about it. Ask Brendan if you really want to know.
-- **SC_MODEL_TYPE** 'RNN' or 'SMT'. Determines what kind of model will be trained to predict cognates.
-- **COGNATE_TRAIN** Directory where Fast Align results and cognate word lists are written. The final training data, however, will be created in *COPPERMT_DATA_DIR*. Don't ask why. It's inefficient copying of data in multiple places and I don't want to fix it at this point.
-- **COGNATE_THRESH** the normalized edit distance threshold to determine cognates. Parallel translation data is given to FastAlign which creats word pairs. Words pairs where the normalized edit distance is less than or equal to *COGNATE_THRESH* are considered cognates.
-- **COPPERMT_DATA_DIR** Directory where the cognate training data, model checkpoints, and predictions for each scenario will be saved. Each scenario will have its own subdirectory in this directory called *{SRC}_{TGT}_{SMT_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S={SEED}*, *e.g.*, *fr_mfe_RNN-0_S-0*.
-- **COPPERMT_DIR** The directory where the CopperMT repo was cloned, *e.g*, */home/hatch5o6/Cognate/code/CopperMT/CopperMT*.
-- **PARAMETERS_DIR** A folder to save the CopperMT parameters files
-- **RNN_HYPERPARAMS** A folder containing RNN hyperparameter files (each containing a hyperparameter set) and a *manifest.json* file mapping an id to each hyperparameter set (file) (RNNs only).
-- **RNN_HYPERPARAMS_ID** The RNN hyperparameter set (see *RNN_HYPERPARAMS*) to use to train an RNN model (RNNs only).
-- **BEAM** The number of beams used in beam-search decoding (RNNs only).
-- **NBEST** The number of hypotheses to generate. This should just be 1 (Not sure why it's even parameterized). (RNNs only).
-- **REVERSE_SRC_TGT_COGNATES** Reverses the *SRC* and *TGT* (cognate pair direction). Should be False. I'm not sure this should ever be True.
-- **SC_MODEL_ID** an ID given to the resulting cognate prediction model. This ID is used in other pipelines. Not used by train_SC.sh, but is used by pred_SC.sh to label the resulting noramlized high-resource (norm HR) file (the file that has replaced all words in the HR file with the respective predicted cognate).
-- **ADDITIONAL_TRAIN_COGNATES_(SRC/TGT)** Parallel cognate files if wanting to add data from other sources, such as CogNet or EtymDB, to the training data. If not using, set to 'null'
-- **(VAL|TEST)_COGNATES_(SRC|TGT)** Set these to the validation/test src/tgt files. If not passed, you should set *COGNATE_(TRAIN|VAL|TEST)_RATIO* to make train / val / test splits instead. If not using, set to 'null'. Should use either this or *COGNATE_(TRAIN|VAL|TEST)_RATIO*.
-- **COGNATE_(TRAIN|VAL|TEST)_RATIO** If not passing *(VAL|TEST)_COGNATES_(SRC|TGT)*, then these are the train / val / test ratios for splitting the cognate data. The three should add to 1. If not using, set to 'null'. Should use either this or *(VAL|TEST)_COGNATES_(SRC|TGT)*.
+- **PARALLEL_(TRAIN|VAL|TEST):** Parallel train / val / test data .csv files. These are the parallel data used to train NMT models, and from which congates will be extracted to train the cognate prediction model.
+- **APPLY_TO:** list (comma-delimited, no space) of more data .csv files to apply the cognate prediction model to. Not used by *train_SC.sh* but by *pred_SC.sh*.
+- **NO_GROUPING:** Keep this set to True. Not sure I'll actually experiment with this. It's used when extracting the cognate list from the Fast Align results. Basically, if False, then "grouping" is applied. Don't worry about it. Ask Brendan if you really want to know.
+- **SC_MODEL_TYPE:** 'RNN' or 'SMT'. Determines what kind of model will be trained to predict cognates.
+- **COGNATE_TRAIN:** Directory where Fast Align results and cognate word lists are written. The final training data, however, will be created in *COPPERMT_DATA_DIR*. Don't ask why. It's inefficient copying of data in multiple places and I don't want to fix it at this point.
+- **COGNATE_THRESH:** the normalized edit distance threshold to determine cognates. Parallel translation data is given to FastAlign which creats word pairs. Words pairs where the normalized edit distance is less than or equal to *COGNATE_THRESH* are considered cognates.
+- **COPPERMT_DATA_DIR:** Directory where the cognate training data, model checkpoints, and predictions for each scenario will be saved. Each scenario will have its own subdirectory in this directory called *{SRC}_{TGT}_{SMT_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}_S={SEED}*, *e.g.*, *fr_mfe_RNN-0_S-0*.
+- **COPPERMT_DIR:** The directory where the CopperMT repo was cloned, *e.g*, */home/hatch5o6/Cognate/code/CopperMT/CopperMT*.
+- **PARAMETERS_DIR:** A folder to save the CopperMT parameters files
+- **RNN_HYPERPARAMS:** A folder containing RNN hyperparameter files (each containing a hyperparameter set) and a *manifest.json* file mapping an id to each hyperparameter set (file) (RNNs only).
+- **RNN_HYPERPARAMS_ID:** The RNN hyperparameter set (see *RNN_HYPERPARAMS*) to use to train an RNN model (RNNs only).
+- **BEAM:** The number of beams used in beam-search decoding (RNNs only).
+- **NBEST:** The number of hypotheses to generate. This should just be 1 (Not sure why it's even parameterized). (RNNs only).
+- **REVERSE_SRC_TGT_COGNATES:** Will prepare data to be passed into FastAlign in format `{target language sentence} ||| {source language sentence}`, rather than in format `{source language sentence} ||| {target language sentence}`. It will result in slightly different data, but likely will not affect results much.
+- **SC_MODEL_ID:** an ID given to the resulting cognate prediction model. This ID is used in other pipelines. Not used by train_SC.sh, but is used by pred_SC.sh to label the resulting noramlized high-resource (norm HR) file (the file that has replaced all words in the HR file with the respective predicted cognate).
+- **ADDITIONAL_TRAIN_COGNATES_(SRC|TGT):** Parallel cognate files if wanting to add data from other sources, such as CogNet or EtymDB, to the training data. If not using, set to 'null'
+- **(VAL|TEST)_COGNATES_(SRC|TGT):** Set these to the validation/test src/tgt files. If not passed, you should set *COGNATE_(TRAIN|VAL|TEST)_RATIO* to make train / val / test splits instead. If not using, set to 'null'. Should use either this or *COGNATE_(TRAIN|VAL|TEST)_RATIO*.
+- **COGNATE_(TRAIN|VAL|TEST)_RATIO:** If not passing *(VAL|TEST)_COGNATES_(SRC|TGT)*, then these are the train / val / test ratios for splitting the cognate data. The three should add to 1. If not using, set to 'null'. Should use either this or *(VAL|TEST)_COGNATES_(SRC|TGT)*.
 
 
 ## Pipeline/train_SC.sh
@@ -148,9 +148,9 @@ We need to format the inputs for fast_align. This is done by the *word_alignment
 
 The input files to this script are the output files from *Pipeline/make_SC_training_data.py*, *i.e.,* *{COGNATE_TRAIN}/cognate/train.{SRC}* and *{COGNATE_TRAIN}/cognate/train.{TGT}*. 
 
-This script will write the result to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.txt*, which writes each sentence pair to a line in the format ```{source sentence} ||| {target sentence}```. 
+This script will write the result to *{COGNATE_TRAIN}/fastalign/{SRC}-{TGT}.txt*, which writes each sentence pair to a line in the format ```{source language sentence} ||| {target language sentence}```. 
 
-If *REVERSE_SRC_TGT_COGNATES* is set to *false*, then the source and target sentences will be flipped: ```{target sentence} ||| {source sentence}```. This setting, however, should **not** be used. Keep *REVERSE_SRC_TGT_COGNATES* set to *true*.
+If *REVERSE_SRC_TGT_COGNATES* is set to *true*, then the source and target sentences will be flipped: ```{target language sentence} ||| {source language sentence}```. This setting will result in slightly different cognate training data, but should likely not have significant impact on results. Should probably just keep *REVERSE_SRC_TGT_COGNATES* set to *false*.
 
 **word_alignments/prepare_for_fastalign.py**
 * *--src:* The file to the source parallel data from which cognates will be extracted. Should be *{COGNATE_TRAIN}/cognate/train.{SRC}*.
@@ -199,6 +199,7 @@ The list of cognate pairs are written in the format ```{word 1} ||| {word 2}``` 
 * *--tgt:* The target language code.
 * *--out, -o (optional):* Path where the final cognate pairs wil be written. If not passed, will be written to *{COGNATE_TRAIN}/fastalign/word_list.{SRC}-{TGT}(.NG).cognates.{COGNATE_THRESH}.txt*. Parallel source and target cognate files will be written to files of the same path, except ending in *.parallel-{SRC}.{file extension}* and *.parallel-{TGT}.{file extension}*.
 
+If *REVERSE_SRC_TGT_COGNATES* is *true*, then *TGT* will be passed as for *--src* and *SRC* will be passed for --*tgt*, just because we flipped the source and target sentences when running *word_alignments/prepare_for_fastalign.py* in **2.3.2**.
 
 ### 3) TRAIN SC MODEL WITH COPPER MT
 
@@ -427,13 +428,42 @@ Afterwards, we can run inference.
 **Inference with RNN model**
 If infering with an RNN model, we run *{COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan_PREDICT.sh*, passing in the CopperMT parameters file (*PARAMETERS_F*) from **2.1**, the path to the best checkpoint (*SELECTED_RNN_CHECKPOINT*) from **2.2**, *SEED*, the tag "inference", *NBEST*, and *BEAM*.
 
-This will predict the cognates for each of the words in our list created by *hr_CopperMT.py (prepare)*. Then we run NMT/hr_CopperMT.py in "retrieve" mode, which for each word in the high resource text files, it replaces it with its predicted cognate.
+This will predict the cognates for each of the words in our list created by *hr_CopperMT.py (prepare)*. Its output will be saved to the path *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_RNN-{RNN_HYPERPARAMS_ID}_S-{SEED}/workspace/reference_models/bilingual/rnn_{SRC}-{TGT}/{SEED}/results/inference_selected_checkpoint_{SRC}_{TGT}.{TGT}/generate-test.txt*, which is saved to variable *COPPERMT_RESULTS*. Then we run NMT/hr_CopperMT.py in "retrieve" mode, which for each word in the high resource text files, it replaces it with its predicted cognate.
 
-TODO document NMT/hr_CopperMT.py in retrieve mode for RNN models.
+**NMT/hr_CopperMT.py (retreive), for RNN**
+* *--function:* Set to 'retrieve'.
+* *--data:* The path to the parallel data .csv file, listing the text files where we want to replace each word with its predicted cognate. Should be the same file we pass in for *--data* in the 'prepare' model.
+* *--CopperMT_results:* The output from the RNN model. Should be path saved to *COPPERMT_RESULTS* described above.
+* *--hr_lang, -hr:* The high-resource language. Should be *SRC*. For each parallel text file (in the .csv passed as *--data*) corresponding to this language, each word in the file will be replaced with its predicted cognate. Should be *SRC*.
+* *--lr_lang, -lr:* The low-resource language. Should be *TGT*.
+* *--MODEL_ID:* Set this to *SC_MODEL_ID*. A copy of the *SRC* text files will be saved to the original path but with the string "SC_{SC_MODEL_ID}_{SRC}2{TGT}" inserted into the file name just before the file extension, indicating it is the version of the data where words have been replaced with their predicted cognates. For example, if predicting cognates for the text file "source.txt", the results will be saved to "source.SC_{SC_MODEL_ID}_{SRC}2{TGT}.txt". This file is the final result of the cognate prediction where each word has been replaced with a predicted cognate.
+
 
 **Inference with SMT model**
-Should be similar to above (inference with RNN model)
+If inferring with an SMT model, we run *{COPPERMT_DIR}/pipeline/main_smt_full_brendan_PREDICT.sh*, passing in the CopperMT parameters file (*PARAMETERS_F*) from **2.1**, the file path of the source sentences (*TEXT*), a template for the outputs (*HYP_OUT*), and *SEED*. This functions similarily to inference with the RNN model, where it's predicting cognates for each word in the list created by *hr_CopperMT.py (prepare)*. The outputs are written to *{COPPERMT_DATA_DIR}/{SRC}_{TGT}_SMT-null_S-{SEED}/inputs/split_data/{SRC}_{TGT}/inference/test_{SRC}_{TGT}.{TGT}.hyp.txt*, which is saved to variable *HYP_OUT_F*. We then run *NMT/hr_CopperMT.py* in "retrieve" mode, which for each word in the high resource text files, it replaces it with its predicted cognate.
+
+**NMT/hr_CopperMT.py (retrieve), for SMT**
+The parameters passed in "retrieve" mode for SMT model results are exactly the same as those for RNN model results **EXCEPT** instead of **--CopperMT_results**, we use the parameter **--CopperMT_SMT_results**, which will be set to the output of the SMT model, saved to the variable *HYP_OUT_F* described above.
+
+We are then done! Hurray! :D
+
 
 ## Pipeline/train_srctgt_tokenizer.sh
+This is documentation for the *Pipeline/train_srctgt_tokenizer.sh* script, which is used to train an SentencePiece (https://github.com/google/sentencepiece) tokenizer. This scripts requires a Tok Config .cfg file and trains a single tokenizer for all provided source and target languages. The Tok Config file contains the following fields:
 
+- **SPM_TRAIN_SIZE:** This is the total number of lines of data to use to train the tokenizer. Provided data will be down- / upsampled to this number.
+- **SRC_LANGS:** A comma-delimitted list of source language codes (no spaces). *E.g.* 'en', 'en,fr', 'en,fr,it'.
+- **SRC_TOK_NAME:** A source name for the tokenizer. I like to use a hyphen-delimited list of the source langs. *E.g.* 'en-fr'. The tokenizer name will be *{SRC_TOK_NAME}_{TGT_TOK_NAME}*.
+- **TGT_LANGS:** A comma-delimitted list of target language codes (no spaces). *E.g.* 'es', 'es,pt', 'es,pt,en'.
+- **TGT_TOK_NAME:** A target name for the tokenizer. I like to use a hyphen-delimited list of the target langs. The tokenizer name will be *{SRC_TOK_NAME}_{TGT_TOK_NAME}*.
+- **DIST:** A string representing what percentage of the training data is to be assigned to each source/target language. Percentages are assigned in the format "{language code}:{percentage}" in a comma-delimited list (no spaces). For example, given "bn:25,as:25,hi:25", the *bn* language data will be down- / upsampled until it is 25% of the *SPM_TRAIN_SIZE*. The percentages in the string must add up to 100.
+- **(TRAIN|VAL|TEST)_PARALLEL:**
+- **TOK_TRAIN_DATA_DIR:**
+- **SC_MODEL_ID:**
+- **VOCAB_SIZE:**
+- **SPLIT_ON_WS:**
+- **INCLUDE_LANG_TOKS:**
+- **INCLUDE_PAD_TOK:**
+- **SPECIAL_TOKS:**
+- **IS_ATT:**
 

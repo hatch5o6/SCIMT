@@ -23,7 +23,7 @@ sc_model_id: null
 spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/bn-as_hi/bn-as_hi/bn-as_hi
 
 # training
-n_gpus: 4
+n_gpus: 1
 seed: 1000
 qos: dw87
 
