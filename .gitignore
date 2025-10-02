@@ -4,6 +4,7 @@
 CopperMT/CopperMT/
 NMT/flores_token.txt
 NMT/OLD_sbatch/
+NMT/lightning_logs/
 Pipeline/sbatch/hyper_param_search/
 Pipeline/sbatch/hyper_param_search_NG-False/
 Pipeline/rnn_hyperparams/
