@@ -13,10 +13,12 @@
 #SBATCH --job-name=TEST.djk-en.FINETUNE.SC_en2djk-en>>djk-en.ATT
 #SBATCH --qos=dw87
 
+python NMT/clean_slurm_outputs.py
+
 nvidia-smi
-python train.py \
+srun python NMT/train.py \
 	--config /home/hatch5o6/Cognate/code/NMT/configs/CONFIGS/djk-en/FINETUNE.SC_en2djk-en>>djk-en.ATT.yaml \
 	--mode TEST
 
 
-python clean_slurm_outputs.py
+python NMT/clean_slurm_outputs.py

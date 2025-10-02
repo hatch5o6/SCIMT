@@ -13,10 +13,12 @@
 #SBATCH --job-name=TRAIN.hsb-de.PRETRAIN.cs-de
 #SBATCH --qos=dw87
 
+python NMT/clean_slurm_outputs.py
+
 nvidia-smi
-python train.py \
+srun python NMT/train.py \
 	--config /home/hatch5o6/Cognate/code/NMT/configs/CONFIGS/hsb-de/PRETRAIN.cs-de.yaml \
 	--mode TRAIN
 
 
-python clean_slurm_outputs.py
+python NMT/clean_slurm_outputs.py

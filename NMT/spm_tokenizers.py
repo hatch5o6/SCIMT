@@ -1,5 +1,6 @@
 import sentencepiece as spm
 import torch
+from pytorch_lightning.utilities import rank_zero_info
 
 class SPMTokenizer():
     def __init__(
@@ -37,10 +38,10 @@ class SPMTokenizer():
         self.vocab_size = len(self.idx2token)
 
         if VERBOSE:
-            print("SPECIAL TOKS:")
+            rank_zero_info("SPECIAL TOKS:")
             for key, value in self.idx2token.items():
-                print(f"\t- {key}: '{value}'")
-            print("---------------")
+                rank_zero_info(f"\t- {key}: '{value}'")
+            rank_zero_info("---------------")
 
         resume_tok_count = max(list(self.idx2token.keys())) + 1
         self.spm = spm.SentencePieceProcessor(model_file=spm_name + ".model")
@@ -54,10 +55,10 @@ class SPMTokenizer():
         self.vocab_size = len(self.idx2token)
 
         if VERBOSE:
-            print("VOCABULARY:")
+            rank_zero_info("VOCABULARY:")
             for key, value in self.idx2token.items():
-                print(f"\t- {key}: '{value}'")
-            print("--------------------")
+                rank_zero_info(f"\t- {key}: '{value}'")
+            rank_zero_info("--------------------")
 
         self.token2idx = {token:i for i, token in self.idx2token.items()}
         assert len(self.idx2token) == len(self.token2idx)
@@ -70,32 +71,40 @@ class SPMTokenizer():
             for tok in self.special_tokens
         ])
 
-    def tokenize(self, text, lang=None, add_lang_token=False, return_tensor=False, add_special=False):
+    def tokenize(self, text, lang=None, add_lang_token=False, return_tensor=False, add_special=True):
+        if add_lang_token is True:
+            assert lang is not None
         if lang is not None:
             assert f"<{lang}>" in self.lang_toks_set
         spm_sequence = self.spm.encode(text.strip(), out_type=str)
         if lang is not None and add_lang_token == True:
             spm_sequence = [f"<{lang}>"] + spm_sequence
         idx_sequence = []
-        # TODO Do I need to have it add a bos token?
+        # TODO Do I need to have it add a bos token? -- Nope! According to ChatGPT anyway :)
         for token in spm_sequence:
             if token not in self.token2idx:
                 token = self.unk
             idx_sequence.append(self.token2idx[token])
         if add_special:
-            spm_sequence.append(self.eos)
+            spm_sequence.append(self.eos) # add eos token
             idx_sequence.append(self.token2idx[self.eos]) # add eos token
         if return_tensor:
             idx_sequence = torch.tensor(idx_sequence)
         return idx_sequence, spm_sequence
 
 
-    def batch_tokenize(self, batch, pad_batch=True, return_tensor=False, add_lang_token=True, add_special=False):
+    def batch_tokenize(self, batch, pad_batch=True, return_tensor=False, add_lang_token=False, add_special=True, batch_has_langs=False):
         # tokenize
-        batch = [
-            self.tokenize(line, lang=lang, add_lang_token=add_lang_token, add_special=add_special)[0]
-            for line, lang in batch
-        ]
+        if batch_has_langs:
+            batch = [
+                self.tokenize(line, lang=lang, add_lang_token=add_lang_token, add_special=add_special)[0]
+                for line, lang in batch
+            ]
+        else:
+            batch = [
+                self.tokenize(line, lang=None, add_lang_token=add_lang_token, add_special=add_special)[0]
+                for line in batch
+            ]
         # pad sequences
         if pad_batch:
             max_seq = max([len(seq) for seq in batch])

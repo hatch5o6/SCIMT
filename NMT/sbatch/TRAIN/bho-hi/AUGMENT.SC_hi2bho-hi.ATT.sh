@@ -13,10 +13,12 @@
 #SBATCH --job-name=TRAIN.bho-hi.AUGMENT.SC_hi2bho-hi.ATT
 #SBATCH --qos=dw87
 
+python NMT/clean_slurm_outputs.py
+
 nvidia-smi
-python train.py \
+srun python NMT/train.py \
 	--config /home/hatch5o6/Cognate/code/NMT/configs/CONFIGS/bho-hi/AUGMENT.SC_hi2bho-hi.ATT.yaml \
 	--mode TRAIN
 
 
-python clean_slurm_outputs.py
+python NMT/clean_slurm_outputs.py

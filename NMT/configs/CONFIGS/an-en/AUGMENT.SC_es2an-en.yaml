@@ -1,7 +1,7 @@
 # outputs
 src: an
 tgt: en
-save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/AUGMENT.SC_es2an-en
+save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/an-en/AUGMENT.SC_es2an-en
 test_checkpoint: null
 remove_special_toks: True
 verbose: False
@@ -21,22 +21,24 @@ sc_model_id: ES-AN-RNN-0-RNN-285
 
 # tokenizers
 spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_es2an-an_en/SC_es2an-an_en/SC_es2an-an_en
+do_char: False
 
 # training
 n_gpus: 4
 seed: 1000
 qos: dw87
 
+max_steps: 100000
 train_batch_size: 128
 val_batch_size: 128
 test_batch_size: 128
 
 early_stop: 10
-save_top_k: 2
-max_epochs: 1000
-val_interval: 0.2
+save_top_k: 10
+val_interval: 0.25 # fraction of epoch
 
-learning_rate: 2e-05
+learning_rate: 5e-04
+weight_decay: 0.01
 
 device: cuda
 

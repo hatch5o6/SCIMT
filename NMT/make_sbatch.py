@@ -21,10 +21,12 @@ sbatch_template = """
 #SBATCH --job-name={name}
 #SBATCH --qos={qos}
 
-nvidia-smi
-{python_command}
+python NMT/clean_slurm_outputs.py
 
-python clean_slurm_outputs.py
+nvidia-smi
+srun {python_command}
+
+python NMT/clean_slurm_outputs.py
 """.strip()
 
 def main(configs_dir, mode, qos, out_dir):
@@ -36,12 +38,14 @@ def main(configs_dir, mode, qos, out_dir):
     os.mkdir(out_dir)
 
     for d in tqdm(os.listdir(configs_dir)):
+        if d in ["data_log.csv", "data_params_log.csv"]: continue
         # print("D:", d)
         d_config = os.path.join(configs_dir, d)
         d_out = os.path.join(out_dir, d)
         assert not os.path.exists(d_out)
         os.mkdir(d_out)
 
+        sbatch_fs = []
         for f in os.listdir(d_config):
             # print(f"F:", f)
             assert f.endswith(".yaml")
@@ -50,13 +54,19 @@ def main(configs_dir, mode, qos, out_dir):
             f_out = os.path.join(d_out, f)[:-4] + "sh"
             assert not os.path.exists(f_out)
             
-            python_command = f"python train.py \\\n\t--config {f_config} \\\n\t--mode {mode}\n"
+            python_command = f"python NMT/train.py \\\n\t--config {f_config} \\\n\t--mode {mode}\n"
             name=f"{mode}.{d}.{f[:-5]}"
+
+            if mode == "TRAIN":
+                n_gpus = config["n_gpus"]
+            else:
+                n_gpus = 1
+
             sbatch_content = sbatch_template.replace("{name}", name) \
                 .replace("{qos}", qos) \
                 .replace("{python_command}", python_command) \
                 .replace("{LANG_OUT}", d) \
-                .replace("{n_gpus}", str(config["n_gpus"]))
+                .replace("{n_gpus}", str(n_gpus))
             
             lang_out_dir = f"/home/hatch5o6/Cognate/code/NMT/slurm_outputs/{d}"
             if not os.path.exists(lang_out_dir):
@@ -64,6 +74,14 @@ def main(configs_dir, mode, qos, out_dir):
 
             with open(f_out, "w") as outf:
                 outf.write(sbatch_content + "\n")
+            sbatch_fs.append(f_out)
+
+        start_all_f = os.path.join(d_out, "all_except_finetune.sh")
+        with open(start_all_f, "w") as outf:
+            for sf in sbatch_fs:
+                sf_name = sf.split("/")[-1]
+                if not sf_name.startswith("FINETUNE."):
+                    outf.write(f"sbatch {sf}\n")
 
 def read_config(f):
     with open(f) as inf:

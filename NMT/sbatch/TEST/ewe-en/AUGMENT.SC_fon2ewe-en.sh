@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #SBATCH --time=72:00:00   # walltime.  hours:minutes:seconds
-#SBATCH --ntasks-per-node=4
+#SBATCH --ntasks-per-node=1
 #SBATCH --nodes=1
 #SBATCH --mem=1024000M
-#SBATCH --gpus=4
+#SBATCH --gpus=1
 #SBATCH --mail-type=BEGIN
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
@@ -13,10 +13,12 @@
 #SBATCH --job-name=TEST.ewe-en.AUGMENT.SC_fon2ewe-en
 #SBATCH --qos=dw87
 
+python NMT/clean_slurm_outputs.py
+
 nvidia-smi
-python train.py \
+srun python NMT/train.py \
 	--config /home/hatch5o6/Cognate/code/NMT/configs/CONFIGS/ewe-en/AUGMENT.SC_fon2ewe-en.yaml \
 	--mode TEST
 
 
-python clean_slurm_outputs.py
+python NMT/clean_slurm_outputs.py

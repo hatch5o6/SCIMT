@@ -1,7 +1,7 @@
 # outputs
 src: bho # it's actually hi2bho, just don't want to call it a hi -> hi translation direction
 tgt: hi
-save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/PRETRAIN.SC_hi2bho-hi
+save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/bho-hi/PRETRAIN.SC_hi2bho-hi
 test_checkpoint: null
 remove_special_toks: True
 verbose: False
@@ -21,22 +21,25 @@ sc_model_id: HI-BHO-RNN-0-RNN-228
 
 # tokenizers
 spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_hi2bho-bho_hi/SC_hi2bho-bho_hi/SC_hi2bho-bho_hi
+do_char: False
 
 # training
 n_gpus: 4
 seed: 1000
 qos: dw87
 
+
+max_steps: 100000
 train_batch_size: 128
 val_batch_size: 128
 test_batch_size: 128
 
 early_stop: 10
-save_top_k: 2
-max_epochs: 1000
-val_interval: 0.2 # 5 times / epoch
+save_top_k: 10
+val_interval: 0.25 # fraction of epoch
 
-learning_rate: 2e-05
+learning_rate: 5e-04
+weight_decay: 0.01
 
 device: cuda
 

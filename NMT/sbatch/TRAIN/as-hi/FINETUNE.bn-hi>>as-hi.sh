@@ -13,10 +13,12 @@
 #SBATCH --job-name=TRAIN.as-hi.FINETUNE.bn-hi>>as-hi
 #SBATCH --qos=dw87
 
+python NMT/clean_slurm_outputs.py
+
 nvidia-smi
-python train.py \
+srun python NMT/train.py \
 	--config /home/hatch5o6/Cognate/code/NMT/configs/CONFIGS/as-hi/FINETUNE.bn-hi>>as-hi.yaml \
 	--mode TRAIN
 
 
-python clean_slurm_outputs.py
+python NMT/clean_slurm_outputs.py

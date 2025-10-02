@@ -13,10 +13,12 @@
 #SBATCH --job-name=TEST.bho-hi.NMT.SC_bho2hi-hi
 #SBATCH --qos=dw87
 
+python NMT/clean_slurm_outputs.py
+
 nvidia-smi
-python train.py \
+srun python NMT/train.py \
 	--config /home/hatch5o6/Cognate/code/NMT/configs/CONFIGS/bho-hi/NMT.SC_bho2hi-hi.yaml \
 	--mode TEST
 
 
-python clean_slurm_outputs.py
+python NMT/clean_slurm_outputs.py

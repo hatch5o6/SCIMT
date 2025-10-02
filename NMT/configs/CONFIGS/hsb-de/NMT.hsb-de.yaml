@@ -1,7 +1,7 @@
 # outputs
 src: hsb
 tgt: de
-save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/NMT.hsb-de
+save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/hsb-de/NMT.hsb-de
 test_checkpoint: null
 remove_special_toks: True
 verbose: False
@@ -20,23 +20,25 @@ upsample: False
 sc_model_id: null
 
 # tokenizers
-spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/hsb_de/hsb_de/hsb_de
+spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/cs-hsb_de/cs-hsb_de/cs-hsb_de
+do_char: False
 
 # training
 n_gpus: 1
 seed: 1000
 qos: dw87
 
+max_steps: 20000
 train_batch_size: 64
 val_batch_size: 64
 test_batch_size: 64
 
 early_stop: 10
-save_top_k: 2
-max_epochs: 1000
-val_interval: 0.2
+save_top_k: 10
+val_interval: 0.25 # fraction of epoch
 
-learning_rate: 2e-05
+learning_rate: 2e-04
+weight_decay: 0.00
 
 device: cuda
 
