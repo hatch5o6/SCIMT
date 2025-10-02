@@ -18,7 +18,7 @@ from LightningBART import LBART
 from evaluate import calc_bleu, calc_chrF
 
 
-SAVE_DIR_SUBDIRS = ["checkpoints", "logs", "predictions"]
+SAVE_DIR_SUBDIRS = ["checkpoints", "logs", "predictions", "character_vocab"]
 
 def train_model(config):
     world_size = int(os.environ.get("WORLD_SIZE", 1))
@@ -546,7 +546,7 @@ def get_char_tokenizers(config, vocab_path):
             text_files.append(f)
     # make sure we only found 1 file
     assert len(text_files) == 1
-    data_file = text_files[0]
+    data_file = os.path.join(data_dir, text_files[0])
     assert "div=" not in data_file # extra check to make sure we didn't get any of lang-specific files
 
     # src and tgt tokenizers should be the exact same
@@ -619,7 +619,7 @@ def read_config(f):
     with open(f) as inf:
         config = yaml.safe_load(inf)
     config["learning_rate"] = float(config["learning_rate"])
-    config["warmup_steps"] = 0.05 * config["max_steps"]
+    config["warmup_steps"] = round(0.05 * config["max_steps"])
     return config
 
 def get_args():

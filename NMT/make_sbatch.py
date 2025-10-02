@@ -80,7 +80,7 @@ def main(configs_dir, mode, qos, out_dir):
         with open(start_all_f, "w") as outf:
             for sf in sbatch_fs:
                 sf_name = sf.split("/")[-1]
-                if not sf_name.startswith("FINETUNE."):
+                if not (sf_name.startswith("FINETUNE.") or sf_name.startswith("CHAR-FINETUNE.")):
                     outf.write(f"sbatch {sf}\n")
 
 def read_config(f):

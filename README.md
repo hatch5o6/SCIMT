@@ -451,19 +451,30 @@ We are then done! Hurray! :D
 ## Pipeline/train_srctgt_tokenizer.sh
 This is documentation for the *Pipeline/train_srctgt_tokenizer.sh* script, which is used to train an SentencePiece (https://github.com/google/sentencepiece) tokenizer. This scripts requires a Tok Config .cfg file and trains a single tokenizer for all provided source and target languages. The Tok Config file contains the following fields:
 
+See the config files in *Pipeline/cfg/tok_NO* for examples.
+
 - **SPM_TRAIN_SIZE:** This is the total number of lines of data to use to train the tokenizer. Provided data will be down- / upsampled to this number.
 - **SRC_LANGS:** A comma-delimitted list of source language codes (no spaces). *E.g.* 'en', 'en,fr', 'en,fr,it'.
 - **SRC_TOK_NAME:** A source name for the tokenizer. I like to use a hyphen-delimited list of the source langs. *E.g.* 'en-fr'. The tokenizer name will be *{SRC_TOK_NAME}_{TGT_TOK_NAME}*.
 - **TGT_LANGS:** A comma-delimitted list of target language codes (no spaces). *E.g.* 'es', 'es,pt', 'es,pt,en'.
 - **TGT_TOK_NAME:** A target name for the tokenizer. I like to use a hyphen-delimited list of the target langs. The tokenizer name will be *{SRC_TOK_NAME}_{TGT_TOK_NAME}*.
-- **DIST:** A string representing what percentage of the training data is to be assigned to each source/target language. Percentages are assigned in the format "{language code}:{percentage}" in a comma-delimited list (no spaces). For example, given "bn:25,as:25,hi:25", the *bn* language data will be down- / upsampled until it is 25% of the *SPM_TRAIN_SIZE*. The percentages in the string must add up to 100.
-- **(TRAIN|VAL|TEST)_PARALLEL:**
-- **TOK_TRAIN_DATA_DIR:**
-- **SC_MODEL_ID:**
-- **VOCAB_SIZE:**
-- **SPLIT_ON_WS:**
-- **INCLUDE_LANG_TOKS:**
-- **INCLUDE_PAD_TOK:**
-- **SPECIAL_TOKS:**
-- **IS_ATT:**
+- **DIST:** A string representing what percentage of the training data is to be assigned to each source/target language. Percentages are assigned in the format "{language code}:{percentage}" in a comma-delimited list (no spaces). For example, given "bn:25,as:25,hi:50", the *bn* language data will be down- / upsampled until it is 25% of the *SPM_TRAIN_SIZE*, *as* until it is 25%, and *hi* until it is 50%. The percentages in the string must add up to 100.
+- **(TRAIN|VAL|TEST)_PARALLEL:** These are comma-delimited lists pointing to parallel data *.csv* files (the same used for training cognate-prediction models). The parallel data in these files will be used as tokenizer training data in this script. Note that there is no real functional distinction here between *TRAIN_PARALLEL* from *VAL_PARALLEL* and *TEST_PARALLEL*, as all files will be used to gather training data. They are just used for organizational purposes.
+- **TOK_TRAIN_DATA_DIR:** The folder where the tokenizer training data and models will be written to.
+- **SC_MODEL_ID:** If relevant (*e.g.*, if including SC parallel data *.csv* files, such as from *NMT/data/SC*), then this is SC_MODEL_ID of the cognate prediction model that was used to alter the high-resource data. This is used to read the right versions of the parallel text files. If not relevant, set this to "null".
+- **VOCAB_SIZE:** The voacbulary size of the model.
+- **SPLIT_ON_WS:** If "true", then a whitespace token "_" will be added to the sentencepiece module and compell segmentation on whitespace. If "false", then no whitespace token is created.
+- **INCLUDE_LANG_TOKS:** If "true", special language tokens for the provided *SRC_LANGS* and *TGT_LANGS* will be added to the model.
+- **INCLUDE_PAD_TOK:** If "true", will include a padding token ("<pad>") in the tokenizer.
+- **SPECIAL_TOKS:** A comma-delimited list of other special tokens you want to add to the tokenizer (no spaces between elements, *e.g. SPECIAL_TOKS=<these>,<are>,<special>,<tokens>*). Set to "null" to not pass in any additional special tokens.
+- **IS_ATT:** If this the tokenizer will be used in an experiment where sound correspondences are applied to the target language to create parallel pretraining data (such as for the *en2djk-djk_en* or *hi2bho-bho_hi* scenarios), then set to "true". Otherwise, set to "false".
 
+The script will read all the parallel data *.csv* files provided and extract the data corresponding to the provided *SRC_LANGS* and *TGT_LANGS*. The distinction between *TRAIN*, *VAL* and *TEST* parallel data does not matter, except for organizational purposes. All of it will be gathered. The entirety of this data will be written to files corresponding to each language inside of *TOK_TRAIN_DATA_DIR* (*e.g., en.txt, fr.txt, mfe.txt*). These files will be read to create the final collection of tokenizer training data, which will contain *SPM_TRAIN_SIZE* lines.
+
+
+A subfolder called *{SRC_TOK_NAME}_{TGT_TOK_NAME}* will be created inside *TOK_TRAIN_DATA_DIR*. Inside *{SRC_TOK_NAME}_{TGT_TOK_NAME}* will be written the following files:
+    - *data_dict.json:* a dictionary where the keys are the data files used to train the tokenizer. These will point to the same language data files in *TOK_TRAIN_DATA_DIR*. The values are the fraction of the total tokenizer training data (*SPM_TRAIN_SIZE*) that will come from the respective file. The data in each file will be up- or down-sampled to meet this ammount.
+    - *{SRC_TOK_NAME}_{TGT_TOK_NAME}.model:* The spm model
+    - *{SRC_TOK_NAME}_{TGT_TOK_NAME}.vocab:* The spm vocabulary file
+    - *training_data.s=1500.txt:* The final collection of tokenizer training data extracted from the parallel data *.csv* files. This will contain *SPM_TRAIN_SIZE* number of sentences with the per language distribution specified in *DIST*.
+    - *training_data.s=1500div={language code}.txt:* For each language in *SRC_LANGS* and *TGT_LANGS*, a file containing the subset of final tokenizer data in *training_data.s=1500.txt* pertaining to the language. These files are not used for anything except as a way of logging the per-language training data. Only *training_data.s=1500.txt* is read by the SentencePiece trainer.
