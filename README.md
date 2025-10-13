@@ -12,6 +12,51 @@ The CharLOTTE system assumes that the phenomenon of systematic sound corresponde
 
 CharLOTTE learns these character correspondences with we call **SC models** and trains tokenizers and NMT models that exploit them so as to increase vocabulary overlap between related high and low-resourced languages. CharLOTTE utilizes a language-agnostic approach, requiring only the NMT parallel training, validation, and testing data; though additional sets of known langauge-specific sets of cognates can also be provided.
 
+## What are SC Models?
+
+**SC** stands for **Sound Correspondence** (though more accurately, "character correspondence" since the system operates on orthography rather than phonetic transcriptions).
+
+SC models learn systematic character-level mappings between related languages. CharLOTTE uses these models to address a fundamental challenge in low-resource NMT:
+
+**The Challenge**: Training high-quality NMT requires large parallel datasets, but low-resource languages have limited data.
+
+**The SC Solution**:
+1. Identify a high-resource language related to your low-resource target (e.g., Spanish for Aragonese, French for Mauritian Creole)
+2. Train an **SC model** to learn character correspondences between the high-resource and low-resource languages
+3. **Apply the SC model** to transform high-resource parallel data, making it orthographically similar to the low-resource language
+4. Train NMT using both the original low-resource data AND the SC-normalized high-resource data
+
+**Example**: For Aragonese→English NMT with limited Aragonese-English data:
+- Train SC model: Spanish → Aragonese character correspondences
+- Apply to data: Transform Spanish-English corpus to look like Aragonese-English
+- Result: Spanish word *hijo* → Aragonese-like *fillo* (learning correspondences like *j→ll*, *i→i*, *o→o*)
+- Train NMT with augmented data, benefiting from increased vocabulary overlap
+
+**SC Model Types**:
+- **RNN**: Sequence-to-sequence neural model for cognate prediction
+- **SMT**: Statistical machine translation model for cognate prediction
+
+Both are trained using the CopperMT framework and can predict character-level transformations to generate plausible cognates.
+
+# Prerequisites
+
+## Python Environment
+This project requires Python 3.10+ and has two separate dependency sets:
+
+1. **Sound Correspondence (SC) Models**: Install dependencies for training SC models and tokenizers:
+   ```bash
+   pip install -r sound.requirements.txt
+   ```
+   Key dependencies: PyTorch, PyTorch Lightning, transformers, SentencePiece, sacrebleu
+
+2. **CopperMT**: Install dependencies for the CopperMT cognate mining module:
+   ```bash
+   pip install -r copper.requirements.txt
+   ```
+   Key dependencies: fairseq, CopperMT dependencies
+
+## External Tools
+- **FastAlign**: Required for word alignment in cognate detection. Install following instructions at: https://github.com/clab/fast_align
 
 # Installation
 ## Clone CopperMT and add new/updated scripts
@@ -22,6 +67,776 @@ git clone https://github.com/clefourrier/CopperMT.git
 cd ../CopperMTfiles
 python move_files.py
 ```
+
+# Obtaining Training Data
+
+Before running the CharLOTTE pipeline, you need parallel data for both your low-resource and high-resource language pairs.
+
+## Data Requirements
+
+### Minimum Dataset Sizes
+For meaningful experimental results:
+- **Low-resource pair**: 5,000+ sentence pairs minimum (10,000+ recommended)
+- **High-resource pair**: 100,000+ sentence pairs recommended (more is better)
+- **Validation set**: 500-1,000 sentence pairs per language pair
+- **Test set**: 1,000-2,000 sentence pairs per language pair
+
+### Data Sources
+
+**Public Parallel Corpora**:
+- **OPUS** (https://opus.nlpl.eu/): Largest collection of freely available parallel corpora
+  - Includes: OpenSubtitles, Europarl, Wikipedia, Bible translations, etc.
+  - Covers 100+ languages
+  - Download in plain text or TMX format
+- **Tatoeba** (https://tatoeba.org/): Sentence-level translations (good for low-resource languages)
+- **JW300** (Jehovah's Witness translations): Available for many low-resource languages
+- **CCMatrix**: Mined parallel sentences from CommonCrawl
+
+**For Low-Resource Languages**:
+If your target low-resource language isn't available:
+1. Check linguistic resources: Bible translations, religious texts, government documents
+2. Consider creating synthetic data using the SC model in reverse
+3. Use web-scraped bilingual websites (with appropriate permissions)
+
+**Example: Obtaining Aragonese-English Data**:
+```bash
+# Download from OPUS (example)
+wget https://opus.nlpl.eu/download.php?f=Tatoeba/v2023-04-12/tmx/an-en.tmx.gz
+gunzip an-en.tmx.gz
+
+# Convert TMX to plain text (use tmx2txt or similar tool)
+# Results in: an-en.an (source) and an-en.en (target)
+```
+
+## Creating Train/Val/Test Splits
+
+Once you have parallel data, split it into train/validation/test:
+
+```python
+import random
+
+def split_parallel_data(src_file, tgt_file, output_prefix, train_ratio=0.8, val_ratio=0.1):
+    """Split parallel data into train/val/test sets."""
+    # Read data
+    with open(src_file) as f:
+        src_lines = [line.strip() for line in f]
+    with open(tgt_file) as f:
+        tgt_lines = [line.strip() for line in f]
+
+    assert len(src_lines) == len(tgt_lines), "Source and target must have same length"
+
+    # Shuffle together
+    pairs = list(zip(src_lines, tgt_lines))
+    random.seed(42)  # For reproducibility
+    random.shuffle(pairs)
+
+    # Calculate split points
+    n = len(pairs)
+    train_end = int(n * train_ratio)
+    val_end = train_end + int(n * val_ratio)
+
+    # Split data
+    train_pairs = pairs[:train_end]
+    val_pairs = pairs[train_end:val_end]
+    test_pairs = pairs[val_end:]
+
+    # Write splits
+    for split_name, split_pairs in [('train', train_pairs), ('val', val_pairs), ('test', test_pairs)]:
+        src_out = f"{output_prefix}.{split_name}.src"
+        tgt_out = f"{output_prefix}.{split_name}.tgt"
+
+        with open(src_out, 'w') as f:
+            f.write('\n'.join([s for s, t in split_pairs]) + '\n')
+        with open(tgt_out, 'w') as f:
+            f.write('\n'.join([t for s, t in split_pairs]) + '\n')
+
+        print(f"{split_name}: {len(split_pairs)} pairs")
+        print(f"  Written to: {src_out}, {tgt_out}")
+
+# Example usage:
+split_parallel_data('an-en.an', 'an-en.en', 'aragonese-english')
+# Creates: aragonese-english.train.src, aragonese-english.train.tgt, etc.
+```
+
+## Using Your Own Language Pair
+
+To adapt CharLOTTE to your own low-resource scenario:
+
+1. **Identify languages**:
+   - Low-resource target (e.g., Breton)
+   - High-resource related language (e.g., Welsh or French)
+   - Pivot language (usually English)
+
+2. **Gather data**:
+   - Low-resource ↔ pivot: Find or create parallel data
+   - High-resource ↔ pivot: Download from OPUS
+   - Ensure languages are actually related (same family or in contact)
+
+3. **Verify language relationship**:
+   - SC models work best for related languages (cognates exist)
+   - Check: Can you find word pairs with systematic sound patterns?
+   - If languages are unrelated, SC augmentation may not help
+
+# Data Preparation
+
+After obtaining your parallel data, prepare it in the correct format for CharLOTTE.
+
+## Directory Structure
+
+We recommend organizing your project with the following structure:
+
+```
+your-project/
+├── data/
+│   ├── raw/                          # Your raw parallel text files
+│   │   ├── low-resource/
+│   │   │   ├── train.src
+│   │   │   ├── train.tgt
+│   │   │   ├── val.src
+│   │   │   ├── val.tgt
+│   │   │   ├── test.src
+│   │   │   └── test.tgt
+│   │   └── high-resource/
+│   │       ├── train.src
+│   │       ├── train.tgt
+│   │       └── ...
+│   └── csv/                          # CSV metadata files
+│       ├── train.no_overlap_v1.csv
+│       ├── val.no_overlap_v1.csv
+│       └── test.csv
+├── models/
+│   ├── sc_models/                    # SC model outputs
+│   ├── tokenizers/                   # Tokenizer outputs
+│   └── nmt_models/                   # NMT model outputs
+└── configs/
+    ├── sc/                           # SC config files
+    ├── tok/                          # Tokenizer config files
+    └── nmt/                          # NMT config files
+```
+
+## Parallel Data Format
+
+### Raw Text Files
+
+Parallel text files must be sentence-aligned with one sentence per line:
+
+**Example: train.src (Aragonese)**
+```
+Iste ye un exemplo en aragonés.
+O tiempo ye bueno güei.
+```
+
+**Example: train.tgt (English)**
+```
+This is an example in Aragonese.
+The weather is good today.
+```
+
+Each line in the source file must correspond to the translation on the same line number in the target file.
+
+### CSV Metadata Files
+
+The CharLOTTE pipeline uses CSV files to specify parallel data locations. These CSV files have the header:
+
+```
+src_lang,tgt_lang,src_path,tgt_path
+```
+
+**Example: data/csv/train.no_overlap_v1.csv**
+```csv
+src_lang,tgt_lang,src_path,tgt_path
+an,en,/absolute/path/to/data/raw/low-resource/train.src,/absolute/path/to/data/raw/low-resource/train.tgt
+es,en,/absolute/path/to/data/raw/high-resource/train.src,/absolute/path/to/data/raw/high-resource/train.tgt
+```
+
+**Important Notes**:
+- Paths must be **absolute paths**, not relative
+- Training CSV must be named `train.no_overlap_v1.csv`
+- Validation CSV must be named `val.no_overlap_v1.csv`
+- Test CSV must be named `test.csv`
+- You can include multiple language pairs in a single CSV (for multilingual training)
+- The `no_overlap_v1` naming convention indicates train/val splits have no overlapping sentences
+
+### Creating CSV Files
+
+Here's a Python script to generate CSV files from your raw data:
+
+```python
+import csv
+import os
+
+# Configuration
+BASE_DIR = "/absolute/path/to/your-project"
+DATA_DIR = f"{BASE_DIR}/data"
+RAW_DIR = f"{DATA_DIR}/raw"
+CSV_DIR = f"{DATA_DIR}/csv"
+
+# Language pair configuration
+LOW_RESOURCE_SRC = "an"  # Aragonese
+LOW_RESOURCE_TGT = "en"  # English
+HIGH_RESOURCE_SRC = "es"  # Spanish
+HIGH_RESOURCE_TGT = "en"  # English
+
+# Create CSV directory
+os.makedirs(CSV_DIR, exist_ok=True)
+
+# Define splits
+splits = [
+    ("train.no_overlap_v1.csv", "train"),
+    ("val.no_overlap_v1.csv", "val"),
+    ("test.csv", "test")
+]
+
+for csv_filename, split in splits:
+    csv_path = f"{CSV_DIR}/{csv_filename}"
+
+    with open(csv_path, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['src_lang', 'tgt_lang', 'src_path', 'tgt_path'])
+
+        # Low-resource data
+        writer.writerow([
+            LOW_RESOURCE_SRC,
+            LOW_RESOURCE_TGT,
+            f"{RAW_DIR}/low-resource/{split}.src",
+            f"{RAW_DIR}/low-resource/{split}.tgt"
+        ])
+
+        # High-resource data (usually only for train)
+        if split == "train":
+            writer.writerow([
+                HIGH_RESOURCE_SRC,
+                HIGH_RESOURCE_TGT,
+                f"{RAW_DIR}/high-resource/{split}.src",
+                f"{RAW_DIR}/high-resource/{split}.tgt"
+            ])
+
+    print(f"Created: {csv_path}")
+```
+
+Run this script after placing your parallel text files in the `data/raw/` directory structure.
+
+# Quick Start
+
+This quick start demonstrates the complete CharLOTTE pipeline for low-resource NMT with a concrete example.
+
+## Prerequisites
+Ensure you have:
+- Installed all dependencies (see [Prerequisites](#prerequisites))
+- Installed FastAlign and verified it's in your PATH: `which fast_align`
+- Prepared your parallel data (see [Data Preparation](#data-preparation))
+
+## Quick Test: Verifying Your Setup (15 minutes)
+
+Before running the full pipeline, test your setup with a minimal dataset to catch any configuration issues early.
+
+### Create Toy Dataset
+
+```bash
+# Create tiny parallel data (100 sentences each)
+mkdir -p ~/charlotte-test/data/{raw,csv}
+
+# Generate toy Aragonese-English data
+cat > ~/charlotte-test/data/raw/train.an <<EOF
+Iste ye un exemplo.
+O tiempo ye bueno.
+Yo parllo aragonés.
+EOF
+
+cat > ~/charlotte-test/data/raw/train.en <<EOF
+This is an example.
+The weather is good.
+I speak Aragonese.
+EOF
+
+# Create CSV (same file for train/val/test for quick test)
+cat > ~/charlotte-test/data/csv/train.no_overlap_v1.csv <<EOF
+src_lang,tgt_lang,src_path,tgt_path
+an,en,~/charlotte-test/data/raw/train.an,~/charlotte-test/data/raw/train.en
+EOF
+
+cp ~/charlotte-test/data/csv/train.no_overlap_v1.csv ~/charlotte-test/data/csv/val.no_overlap_v1.csv
+cp ~/charlotte-test/data/csv/train.no_overlap_v1.csv ~/charlotte-test/data/csv/test.csv
+```
+
+### Test SC Training
+
+```bash
+# Create minimal SC config
+cat > ~/charlotte-test/test-sc.cfg <<EOF
+MODULE_HOME_DIR=$SCIMT_DIR
+SRC=an
+TGT=an
+SEED=1000
+PARALLEL_TRAIN=~/charlotte-test/data/csv/train.no_overlap_v1.csv
+PARALLEL_VAL=~/charlotte-test/data/csv/val.no_overlap_v1.csv
+PARALLEL_TEST=~/charlotte-test/data/csv/test.csv
+APPLY_TO=~/charlotte-test/data/csv/train.no_overlap_v1.csv
+NO_GROUPING=true
+SC_MODEL_TYPE=SMT
+COGNATE_THRESH=0.5
+COGNATE_TRAIN=~/charlotte-test/cognates
+COPPERMT_DATA_DIR=~/charlotte-test/sc_models
+COPPERMT_DIR=$SCIMT_DIR/CopperMT/CopperMT
+PARAMETERS_DIR=~/charlotte-test/params
+REVERSE_SRC_TGT_COGNATES=false
+SC_MODEL_ID=test
+ADDITIONAL_TRAIN_COGNATES_SRC=null
+ADDITIONAL_TRAIN_COGNATES_TGT=null
+VAL_COGNATES_SRC=null
+VAL_COGNATES_TGT=null
+TEST_COGNATES_SRC=null
+TEST_COGNATES_TGT=null
+COGNATE_TRAIN_RATIO=0.8
+COGNATE_VAL_RATIO=0.1
+COGNATE_TEST_RATIO=0.1
+EOF
+
+# Run SC training (should complete in ~2 minutes with SMT)
+cd $SCIMT_DIR
+bash Pipeline/train_SC.sh ~/charlotte-test/test-sc.cfg
+```
+
+**Success Indicators**:
+- No errors during FastAlign
+- Cognate pairs extracted and saved
+- SMT model trained
+- Character-level BLEU/chrF scores printed
+
+**If this works**, your environment is correctly set up for the full pipeline.
+
+**If this fails**, check:
+- FastAlign is in PATH: `which fast_align`
+- All paths in config are absolute (no `~` in paths, use full `/home/username/...`)
+- Dependencies installed: `pip list | grep -E "(torch|transformers|sacrebleu)"`
+
+## End-to-End Example: Aragonese→English with Spanish Augmentation
+
+This example shows the complete workflow for training an Aragonese→English NMT system augmented with Spanish data.
+
+**Scenario**:
+- Low-resource pair: Aragonese (an) → English (en)
+- High-resource related pair: Spanish (es) → English (en)
+- Goal: Use SC model to transform Spanish→Aragonese, then train NMT with augmented data
+
+### Before Starting: Path Configuration
+
+Throughout this example, you'll need to replace placeholder paths with your actual paths:
+
+**Placeholders to Replace**:
+1. `/path/to/SCIMT` → Your SCIMT clone location
+   - Example: `/home/username/projects/SCIMT` or `/Users/username/git/SCIMT`
+   - Find it: Run `pwd` in your SCIMT directory after cloning
+
+2. `$BASE_DIR` (in shell configs) → Will expand automatically if you set the environment variable
+   - Example: `export BASE_DIR=/home/username/charlotte-project`
+
+3. `$BASE_DIR` (in YAML configs) → MUST be replaced with absolute path
+   - YAML doesn't expand variables
+   - Wrong: `save: $BASE_DIR/models/nmt_models/an-en/PRETRAIN`
+   - Right: `save: /home/username/charlotte-project/models/nmt_models/an-en/PRETRAIN`
+
+**Quick Setup Script**:
+```bash
+# Set these once at the start
+export SCIMT_DIR=/path/to/your/SCIMT/clone  # CHANGE THIS
+export BASE_DIR=~/charlotte-project
+
+echo "SCIMT_DIR=$SCIMT_DIR" >> ~/.bashrc
+echo "BASE_DIR=$BASE_DIR" >> ~/.bashrc
+```
+
+**Verifying Your Setup**:
+```bash
+# Check SCIMT installation
+ls $SCIMT_DIR/Pipeline/train_SC.sh  # Should exist
+ls $SCIMT_DIR/CopperMT/CopperMT     # Should exist after installation
+
+# Check data
+ls $BASE_DIR/data/raw/low-resource/train.src   # Should exist
+ls $BASE_DIR/data/csv/train.no_overlap_v1.csv  # Should exist
+
+# Check FastAlign
+which fast_align  # Should print path to fast_align binary
+```
+
+### Step 0: Setup Directories
+
+```bash
+# Create project structure
+mkdir -p ~/charlotte-project/{data/{raw/{low-resource,high-resource},csv},models/{sc_models,tokenizers,nmt_models},configs/{sc,tok,nmt}}
+
+# Set base directory
+export BASE_DIR=~/charlotte-project
+```
+
+### Step 1: Create SC Config File
+
+Create `$BASE_DIR/configs/sc/es2an.cfg`:
+
+```bash
+# SC Model Configuration for Spanish → Aragonese
+
+# Module paths
+MODULE_HOME_DIR=$SCIMT_DIR  # Or use your absolute path
+
+# NMT language pairs (for reference, not used by train_SC.sh)
+NMT_SRC=an
+NMT_TGT=en
+AUG_SRC=es
+AUG_TGT=en
+
+# SC model language pair
+SRC=es
+TGT=an
+SEED=1000
+
+# Data paths
+PARALLEL_TRAIN=$BASE_DIR/data/csv/train.no_overlap_v1.csv
+PARALLEL_VAL=$BASE_DIR/data/csv/val.no_overlap_v1.csv
+PARALLEL_TEST=$BASE_DIR/data/csv/test.csv
+APPLY_TO=$PARALLEL_TRAIN,$PARALLEL_VAL,$PARALLEL_TEST
+
+# SC model settings
+NO_GROUPING=true
+SC_MODEL_TYPE=RNN
+COGNATE_THRESH=0.5
+
+# Output directories
+COGNATE_TRAIN=$BASE_DIR/models/sc_models/cognates
+COPPERMT_DATA_DIR=$BASE_DIR/models/sc_models
+COPPERMT_DIR=/path/to/SCIMT/CopperMT/CopperMT
+PARAMETERS_DIR=$BASE_DIR/configs/sc/parameters
+
+# RNN hyperparameters (if using RNN)
+RNN_HYPERPARAMS=$MODULE_HOME_DIR/Pipeline/parameters/rnn_hyperparams
+RNN_HYPERPARAMS_ID=0  # Uses default hyperparameters (see note below)
+BEAM=5
+NBEST=1
+
+# Cognate extraction settings
+REVERSE_SRC_TGT_COGNATES=false
+SC_MODEL_ID=es2an-RNN-0
+
+# Additional cognate data (set to null if not using)
+ADDITIONAL_TRAIN_COGNATES_SRC=null
+ADDITIONAL_TRAIN_COGNATES_TGT=null
+VAL_COGNATES_SRC=null
+VAL_COGNATES_TGT=null
+TEST_COGNATES_SRC=null
+TEST_COGNATES_TGT=null
+
+# Cognate split ratios (used if VAL/TEST_COGNATES are null)
+COGNATE_TRAIN_RATIO=0.8
+COGNATE_VAL_RATIO=0.1
+COGNATE_TEST_RATIO=0.1
+```
+
+### Step 2: Train SC Model
+
+**Note on RNN Hyperparameters**: The config above uses `RNN_HYPERPARAMS_ID=0`, which references default hyperparameters stored in `Pipeline/parameters/rnn_hyperparams/`. These files should exist in your SCIMT clone. To verify:
+```bash
+ls $SCIMT_DIR/Pipeline/parameters/rnn_hyperparams/
+# Should show: manifest.json and numbered parameter files (0, 1, 2, etc.)
+```
+
+If this directory doesn't exist, you can use SMT instead by changing `SC_MODEL_TYPE=SMT` in the config (SMT doesn't need hyperparameter files).
+
+**Training the Model**:
+```bash
+cd $SCIMT_DIR
+bash Pipeline/train_SC.sh $BASE_DIR/configs/sc/es2an.cfg
+```
+
+This will:
+- Extract cognates from Spanish-Aragonese parallel data using FastAlign
+- Train an RNN model to predict Aragonese cognates from Spanish words
+- Evaluate the model on character-level BLEU and chrF
+
+**Expected Time**:
+- Cognate extraction: 5-30 minutes (depends on data size)
+- RNN training: 30 minutes - 2 hours (depends on cognate pairs and GPU)
+- SMT training: 5-15 minutes
+
+**Output**: SC model at `$BASE_DIR/models/sc_models/es_an_RNN-0_S-1000/`
+
+### Step 3: Apply SC Model to Spanish Data
+
+```bash
+bash Pipeline/pred_SC.sh $BASE_DIR/configs/sc/es2an.cfg
+```
+
+This creates new data files with SC-normalized Spanish (now looking like Aragonese). Files will have `SC_es2an-RNN-0_es2an` in their filenames.
+
+**Output**: Normalized data files alongside originals in `data/raw/high-resource/`
+
+### Step 4: Create Tokenizer Config
+
+Create `$BASE_DIR/configs/tok/es-an_en.cfg`:
+
+```bash
+# Tokenizer Configuration
+
+# Training size
+SPM_TRAIN_SIZE=1000000
+
+# Languages
+SRC_LANGS=es,an
+SRC_TOK_NAME=es-an
+TGT_LANGS=en
+TGT_TOK_NAME=en
+
+# Data distribution (percentages must sum to 100)
+DIST=es:40,an:10,en:50
+
+# Parallel data CSVs
+TRAIN_PARALLEL=$BASE_DIR/data/csv/train.no_overlap_v1.csv
+VAL_PARALLEL=$BASE_DIR/data/csv/val.no_overlap_v1.csv
+TEST_PARALLEL=$BASE_DIR/data/csv/test.csv
+
+# Output directory
+TOK_TRAIN_DATA_DIR=$BASE_DIR/models/tokenizers
+
+# SC model ID (use if training on SC-normalized data)
+SC_MODEL_ID=es2an-RNN-0-RNN-0
+
+# Tokenizer settings
+VOCAB_SIZE=32000
+SPLIT_ON_WS=false
+INCLUDE_LANG_TOKS=true
+INCLUDE_PAD_TOK=true
+SPECIAL_TOKS=null
+IS_ATT=false
+```
+
+### Step 5: Train Tokenizer
+
+```bash
+bash Pipeline/train_srctgt_tokenizer.sh $BASE_DIR/configs/tok/es-an_en.cfg
+```
+
+**Output**: SentencePiece model at `$BASE_DIR/models/tokenizers/es-an_en/`
+
+### Step 6: Create NMT Config
+
+Create `$BASE_DIR/configs/nmt/an-en.PRETRAIN.yaml`:
+
+```yaml
+# outputs
+src: an
+tgt: en
+save: $BASE_DIR/models/nmt_models/an-en/PRETRAIN
+test_checkpoint: null
+remove_special_toks: true
+verbose: false
+little_verbose: true
+
+# finetune?
+from_pretrained: null
+
+# data
+train_data: $BASE_DIR/data/csv/train.no_overlap_v1.csv
+val_data: $BASE_DIR/data/csv/val.no_overlap_v1.csv
+test_data: $BASE_DIR/data/csv/test.csv
+append_src_token: false
+append_tgt_token: false
+upsample: false
+sc_model_id: es2an-RNN-0-RNN-0
+
+# tokenizers
+spm: $BASE_DIR/models/tokenizers/es-an_en/es-an_en
+do_char: false
+
+# training
+n_gpus: 1
+seed: 1000
+max_steps: 50000
+train_batch_size: 32
+val_batch_size: 32
+test_batch_size: 32
+early_stop: 10
+save_top_k: 5
+val_interval: 0.5
+learning_rate: 2e-04
+weight_decay: 0.01
+device: cuda
+
+# model architecture
+encoder_layers: 6
+encoder_attention_heads: 8
+encoder_ffn_dim: 2048
+encoder_layerdrop: 0.0
+decoder_layers: 6
+decoder_attention_heads: 8
+decoder_ffn_dim: 2048
+decoder_layerdrop: 0.0
+max_position_embeddings: 512
+max_length: 512
+d_model: 512
+dropout: 0.1
+activation_function: gelu
+```
+
+**Note**: Replace `$BASE_DIR` with your actual absolute path in the YAML file.
+
+### Step 7: Train NMT Model
+
+```bash
+cd $SCIMT_DIR/NMT
+python train.py -c $BASE_DIR/configs/nmt/an-en.PRETRAIN.yaml -m TRAIN
+```
+
+Training will:
+- Use both Aragonese-English and SC-normalized Spanish-English data
+- Save checkpoints every validation interval
+- Apply early stopping based on validation loss
+
+**Expected Time & Resources**:
+- Training time: 4-48 hours (depends on data size, GPU, max_steps)
+  - 50k steps with 32 batch size on 1 GPU: ~6-12 hours
+  - 250k steps with 128 batch size on 4 GPUs: ~24-48 hours
+- GPU memory: 8GB+ recommended (reduce batch_size if OOM errors occur)
+- Disk space: 2-5GB per model (checkpoints + logs)
+- CPU cores: 4+ recommended for data loading
+
+**Monitoring Training**:
+```bash
+# Watch training progress in real-time
+tail -f $BASE_DIR/models/nmt_models/an-en/PRETRAIN_TRIAL_s=1000/logs/version_0/metrics.csv
+
+# Or use TensorBoard
+tensorboard --logdir $BASE_DIR/models/nmt_models/an-en/PRETRAIN_TRIAL_s=1000/logs
+```
+
+**Output**: Model checkpoints at `$BASE_DIR/models/nmt_models/an-en/PRETRAIN_TRIAL_s=1000/checkpoints/`
+
+### Step 8: Evaluate NMT Model
+
+```bash
+python train.py -c $BASE_DIR/configs/nmt/an-en.PRETRAIN.yaml -m TEST
+```
+
+**Output**:
+- Test predictions: `$BASE_DIR/models/nmt_models/an-en/PRETRAIN_TRIAL_s=1000/predictions/`
+- BLEU and chrF scores: `metrics.json` in predictions directory
+
+### Step 9: Visualize Results
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load training metrics
+metrics = pd.read_csv(f'{BASE_DIR}/models/nmt_models/an-en/PRETRAIN_TRIAL_s=1000/logs/version_0/metrics.csv')
+
+# Plot loss curves
+plt.figure(figsize=(10, 6))
+plt.plot(metrics['step'], metrics['train_loss_step'], label='Train Loss', alpha=0.6)
+plt.plot(metrics['step'], metrics['val_loss'], label='Val Loss', linewidth=2)
+plt.xlabel('Step')
+plt.ylabel('Loss')
+plt.legend()
+plt.savefig('loss_curves.png')
+plt.show()
+
+# Load test metrics
+import json
+with open(f'{BASE_DIR}/models/nmt_models/an-en/PRETRAIN_TRIAL_s=1000/predictions/all_scores.json') as f:
+    scores = json.load(f)
+    print(f"Best BLEU: {scores['BEST_BLEU_CHECKPOINT']['BLEU']:.2f}")
+    print(f"Best chrF: {scores['BEST_BLEU_CHECKPOINT']['chrF']:.2f}")
+
+# Optional: Compute COMET score (see "Optional: COMET Evaluation" section)
+# Requires installing unbabel-comet and downloading the model
+# from NMT.evaluate import calc_comet22
+# comet_score, _ = calc_comet22(sources, predictions, references)
+# print(f"COMET-22: {comet_score:.4f}")
+```
+
+## Common Issues and Solutions
+
+### FastAlign Not Found
+**Error**: `fast_align: command not found`
+
+**Solution**:
+```bash
+# Verify FastAlign is installed
+which fast_align
+
+# If not found, install and add to PATH
+# Follow: https://github.com/clab/fast_align
+export PATH=/path/to/fast_align/build:$PATH
+```
+
+### Config File Path Issues
+**Error**: Config parameter shows `$BASE_DIR` literally instead of expanding
+
+**Solution**: Shell config files (.cfg) support variable expansion, but YAML files (.yaml) do not. Replace all `$BASE_DIR` with actual absolute paths in YAML configs:
+```yaml
+# Wrong
+save: $BASE_DIR/models/nmt_models/an-en/PRETRAIN
+
+# Correct
+save: /home/username/charlotte-project/models/nmt_models/an-en/PRETRAIN
+```
+
+### SC Model ID Mismatch
+**Error**: NMT training can't find SC-normalized data files
+
+**Solution**: Ensure `sc_model_id` matches across configs:
+- SC config: `SC_MODEL_ID=es2an-RNN-0`
+- After pred_SC.sh, files have: `SC_es2an-RNN-0-RNN-0_es2an` (note the extra `-RNN-0`)
+- Tokenizer config: `SC_MODEL_ID=es2an-RNN-0-RNN-0` (use the full ID from filenames)
+- NMT config: `sc_model_id: es2an-RNN-0-RNN-0` (same as tokenizer)
+
+### CUDA Out of Memory
+**Error**: `RuntimeError: CUDA out of memory`
+
+**Solution**: Reduce batch size in NMT config:
+```yaml
+train_batch_size: 16  # Reduce from 32
+val_batch_size: 16
+test_batch_size: 16
+```
+
+### Empty Cognate List
+**Error**: No cognates found after FastAlign
+
+**Solution**: Adjust cognate threshold in SC config:
+```bash
+COGNATE_THRESH=0.6  # Increase from 0.5 to be more lenient
+```
+
+Or verify your parallel data actually contains related language pairs.
+
+### Module Import Errors
+**Error**: `ModuleNotFoundError: No module named 'transformers'`
+
+**Solution**: Ensure you've installed the correct requirements file:
+```bash
+# For SC and NMT training
+pip install -r sound.requirements.txt
+
+# For CopperMT
+pip install -r copper.requirements.txt
+```
+
+## Typical Experimental Scenarios
+
+**Baseline (No SC)**: Train NMT using only low-resource parallel data
+- Skip Steps 1-3 (no SC training/application)
+- Train tokenizer on low-resource data only (set `SC_MODEL_ID=null` in tokenizer config)
+- Train NMT baseline (set `sc_model_id: null` in NMT config)
+
+**SC Augmentation**: Use SC model to augment training with normalized high-resource data
+- Complete all steps 1-9
+- SC model transforms high-resource language to match low-resource orthography
+- NMT benefits from increased vocabulary overlap
+
+**Pretraining + Fine-tuning**: Pretrain on augmented high-resource data, then fine-tune on low-resource
+- Pretraining: Set `from_pretrained: null` in config, use SC-augmented data
+- Fine-tuning: Create new config with `from_pretrained: /path/to/pretrained/model/directory`
+- Fine-tuning typically uses lower learning rate (1e-05) and fewer steps (10000)
 
 # Pipeline
 The code for running the main experiments is in the Pipeline directory.
@@ -478,3 +1293,284 @@ A subfolder called *{SRC_TOK_NAME}_{TGT_TOK_NAME}* will be created inside *TOK_T
     - *{SRC_TOK_NAME}_{TGT_TOK_NAME}.vocab:* The spm vocabulary file
     - *training_data.s=1500.txt:* The final collection of tokenizer training data extracted from the parallel data *.csv* files. This will contain *SPM_TRAIN_SIZE* number of sentences with the per language distribution specified in *DIST*.
     - *training_data.s=1500div={language code}.txt:* For each language in *SRC_LANGS* and *TGT_LANGS*, a file containing the subset of final tokenizer data in *training_data.s=1500.txt* pertaining to the language. These files are not used for anything except as a way of logging the per-language training data. Only *training_data.s=1500.txt* is read by the SentencePiece trainer.
+
+# NMT Training
+
+The NMT training system is located in the *NMT/* directory and uses PyTorch Lightning with BART (Bidirectional and Auto-Regressive Transformers) models for sequence-to-sequence translation.
+
+## NMT/train.py
+
+The main training script *NMT/train.py* supports three modes:
+
+### Running Modes
+
+**TRAIN Mode**: Train a new model or fine-tune an existing one
+```bash
+python NMT/train.py -c configs/your-config.yaml -m TRAIN
+```
+
+**TEST Mode**: Evaluate a trained model on test data
+```bash
+python NMT/train.py -c configs/your-config.yaml -m TEST
+```
+
+**INFERENCE Mode**: Run predictions on new data
+```bash
+python NMT/train.py -c configs/your-config.yaml -m INFERENCE
+```
+
+## NMT Configuration Files
+
+NMT configs are YAML files located in *NMT/configs/*. See *NMT/configs/CONFIGS/* for examples organized by language pair. Each config file contains the following parameter groups:
+
+### Output Parameters
+- **src**: Source language code
+- **tgt**: Target language code
+- **save**: Directory where model checkpoints, logs, and predictions will be saved. A subdirectory *{save}_TRIAL_s={seed}* will be created.
+- **test_checkpoint**: Path to checkpoint for testing/inference. Set to `null` to auto-select best checkpoint based on validation loss.
+- **remove_special_toks**: (Boolean) Whether to remove special tokens (BOS/EOS/PAD) from generated predictions
+- **verbose**: (Boolean) Print detailed training batch information every 500 batches (for debugging)
+- **little_verbose**: (Boolean) Print training batch information every 10,000 batches
+
+### Fine-tuning Parameters
+- **from_pretrained**: Path to a pretrained model checkpoint to fine-tune from. Set to `null` to train from scratch.
+  - Can be a directory (will auto-select best checkpoint) or a specific `.ckpt` file
+
+### Data Parameters
+- **train_data**: Path to training data CSV file. Must end with `/train.no_overlap_v1.csv`
+- **val_data**: Path to validation data CSV file. Must end with `/val.no_overlap_v1.csv`
+- **test_data**: Path to test data CSV file. Must end with `/test.csv`
+- **append_src_token**: (Boolean) Prepend `<src_lang>` token to source sentences
+- **append_tgt_token**: (Boolean) Prepend `<tgt_lang>` token to target sentences
+- **upsample**: (Boolean) Upsample smaller language pairs to match largest pair (training only)
+- **sc_model_id**: ID of the SC model used to normalize data. Set to `null` if not using SC-normalized data. Used to locate correct data files with SC model applied.
+
+### Tokenizer Parameters
+- **spm**: Path to the SentencePiece model (without extension). Should point to files created by *Pipeline/train_srctgt_tokenizer.sh*
+- **do_char**: (Boolean) Use character-level tokenization instead of SentencePiece. If `true`, vocabulary will be built from training data.
+
+### Training Parameters
+- **n_gpus**: Number of GPUs to use. Uses DDP strategy if ≥ 1
+- **seed**: Random seed for reproducibility
+- **qos**: (Optional) SLURM QOS parameter for cluster scheduling
+- **max_steps**: Maximum training steps
+- **train_batch_size**: Training batch size
+- **val_batch_size**: Validation batch size
+- **test_batch_size**: Test batch size
+- **early_stop**: Early stopping patience (number of validation checks without improvement)
+- **save_top_k**: Number of best checkpoints to keep based on validation loss
+- **val_interval**: Validation frequency as fraction of epoch (e.g., 0.5 = validate twice per epoch)
+- **learning_rate**: Learning rate (e.g., 2e-04, 5e-04)
+- **weight_decay**: Weight decay for AdamW optimizer
+- **device**: Device for training (`cuda` or `cpu`)
+
+### Model Architecture Parameters
+
+**Encoder Configuration:**
+- **encoder_layers**: Number of encoder layers (typically 6)
+- **encoder_attention_heads**: Number of attention heads in encoder (typically 8)
+- **encoder_ffn_dim**: Feed-forward network dimension in encoder (typically 2048)
+- **encoder_layerdrop**: Encoder layer dropout probability (0.0 to disable)
+
+**Decoder Configuration:**
+- **decoder_layers**: Number of decoder layers (typically 6)
+- **decoder_attention_heads**: Number of attention heads in decoder (typically 8)
+- **decoder_ffn_dim**: Feed-forward network dimension in decoder (typically 2048)
+- **decoder_layerdrop**: Decoder layer dropout probability (0.0 to disable)
+
+**General Model Configuration:**
+- **max_position_embeddings**: Maximum sequence length (typically 512)
+- **max_length**: Maximum generation length for predictions (typically 512)
+- **d_model**: Model dimension / hidden size (typically 512)
+- **dropout**: Dropout probability (typically 0.1)
+- **activation_function**: Activation function (typically `gelu`)
+
+## Training Output Structure
+
+When training, the following directory structure is created under *{save}_TRIAL_s={seed}*:
+
+```
+{save}_TRIAL_s={seed}/
+├── checkpoints/              # Model checkpoints
+│   └── epoch=X-step=Y-val_loss=Z.ckpt
+├── logs/                     # Training logs (CSV format)
+│   └── version_0/
+│       └── metrics.csv
+└── predictions/              # Test predictions and metrics
+    └── {checkpoint_name}/
+        ├── predictions.txt
+        └── metrics.json      # BLEU and chrF scores
+```
+
+### Training Metrics and Loss Curves
+
+Training and validation metrics are **automatically logged** during training to `{save}_TRIAL_s={seed}/logs/version_0/metrics.csv`.
+
+The CSV file contains columns including:
+- `train_loss_step`: Training loss per step
+- `train_loss_epoch`: Training loss per epoch (aggregated)
+- `val_loss`: Validation loss
+- `epoch`: Current epoch
+- `step`: Current training step
+- `lr-AdamW`: Learning rate (tracked by LearningRateMonitor)
+
+**Visualizing Loss Curves**:
+
+You can plot training and validation loss curves using Python:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load metrics
+metrics = pd.read_csv('path/to/{save}_TRIAL_s={seed}/logs/version_0/metrics.csv')
+
+# Plot training loss
+plt.figure(figsize=(10, 6))
+plt.plot(metrics['step'], metrics['train_loss_step'], label='Train Loss', alpha=0.6)
+plt.plot(metrics['step'], metrics['val_loss'], label='Val Loss', linewidth=2)
+plt.xlabel('Training Step')
+plt.ylabel('Loss')
+plt.title('Training and Validation Loss')
+plt.legend()
+plt.grid(True)
+plt.savefig('loss_curves.png')
+plt.show()
+```
+
+**Alternative: TensorBoard**
+
+The PyTorch Lightning logger also supports TensorBoard. To view logs with TensorBoard:
+
+```bash
+tensorboard --logdir {save}_TRIAL_s={seed}/logs
+```
+
+Then open your browser to `http://localhost:6006` to view interactive loss curves and other metrics.
+
+## Evaluation Metrics
+
+The testing mode (*TEST*) evaluates models using:
+- **BLEU**: Bilingual Evaluation Understudy score (via sacrebleu)
+- **chrF**: Character n-gram F-score (via sacrebleu)
+
+These metrics are automatically computed during TEST mode and saved to `metrics.json` in each checkpoint's prediction directory.
+
+If multiple checkpoints exist, all will be tested and the best BLEU score will be reported in *predictions/all_scores.json*.
+
+### Optional: COMET Evaluation
+
+**COMET** (Crosslingual Optimized Metric for Evaluation of Translation) is a neural learned metric that correlates better with human judgments than BLEU/chrF. The code includes COMET-22 support in `NMT/evaluate.py`, but it requires additional setup:
+
+**Installing COMET**:
+```bash
+pip install unbabel-comet
+```
+
+**Downloading COMET Model**:
+```bash
+# Download wmt22-comet-da model
+comet-download --model Unbabel/wmt22-comet-da
+
+# Note the download location (typically ~/.cache/comet/)
+```
+
+**Computing COMET Scores Manually**:
+
+The current TEST mode only computes BLEU and chrF automatically. To compute COMET scores on your test results:
+
+```python
+from NMT.evaluate import calc_comet22
+
+# Read your data
+with open('predictions/checkpoint-name/predictions.txt') as f:
+    hypotheses = [line.strip() for line in f]
+with open('data/test.src') as f:
+    sources = [line.strip() for line in f]
+with open('data/test.tgt') as f:
+    references = [line.strip() for line in f]
+
+# Compute COMET (requires GPU)
+system_score, sentence_scores = calc_comet22(sources, hypotheses, references)
+print(f"COMET-22: {system_score:.4f}")
+```
+
+**Important**: The COMET model path in `NMT/evaluate.py:52` is hardcoded:
+```python
+comet22_path = "/home/hatch5o6/nobackup/archive/comet/wmt22-comet-da/checkpoints/model.ckpt"
+```
+
+Before using COMET, you must update this line to point to your downloaded model location. Find the model path with:
+```bash
+python -c "from comet import download_model; print(download_model('Unbabel/wmt22-comet-da'))"
+```
+
+**Why COMET is Optional**:
+- Requires additional model download (~2GB)
+- Requires GPU for reasonable speed
+- Not computed automatically during TEST mode
+- BLEU and chrF are sufficient for most research comparisons
+
+## Example Configurations
+
+**Baseline NMT (no SC augmentation)**:
+```yaml
+# Example: NMT/configs/CONFIGS/an-en/NMT.an-en.yaml
+src: an
+tgt: en
+save: /path/to/output/an-en/NMT.an-en
+from_pretrained: null
+train_data: /path/to/data/PLAIN/an-en/train.no_overlap_v1.csv
+spm: /path/to/spm_models/es-an_en/es-an_en/es-an_en
+sc_model_id: null
+max_steps: 20000
+learning_rate: 2e-04
+```
+
+**SC-Augmented Pretraining**:
+```yaml
+# Example: NMT/configs/CONFIGS/mfe-en/PRETRAIN.SC_fr2mfe-en.yaml
+src: fr
+tgt: en
+save: /path/to/output/mfe-en/PRETRAIN.SC_fr2mfe-en
+from_pretrained: null
+train_data: /path/to/data/SC/SC_fr2mfe-en/train.no_overlap_v1.csv
+spm: /path/to/spm_models/SC_fr2mfe-mfe_en/SC_fr2mfe-mfe_en/SC_fr2mfe-mfe_en
+sc_model_id: FR-MFE-RNN-0-RNN-66
+max_steps: 250000
+learning_rate: 5e-04
+```
+
+**Fine-tuning from Pretrained**:
+```yaml
+# Example: Fine-tune on low-resource data
+src: mfe
+tgt: en
+from_pretrained: /path/to/pretrained/model/directory
+train_data: /path/to/data/PLAIN/mfe-en/train.no_overlap_v1.csv
+max_steps: 20000
+learning_rate: 2e-04
+```
+
+## Data Format
+
+Training data CSV files follow the same format as SC model training (see [Parallel Data CSV Files](#parallel-data-csv-files)), with header:
+```
+src_lang,tgt_lang,src_path,tgt_path
+```
+
+The *MultilingualDataset* class in *NMT/parallel_datasets.py* handles:
+- Loading parallel data from CSV specifications
+- Language token prepending (if configured)
+- Upsampling to balance language pairs (if configured)
+- Filtering by language pair
+
+## Advanced Features
+
+**Multilingual Training**: The system supports training on multiple language pairs simultaneously by including multiple pairs in the CSV files. The *upsample* parameter can balance training across pairs.
+
+**SC Model Integration**: When *sc_model_id* is set, the system looks for data files with the SC model ID in the filename, allowing seamless integration of SC-normalized data.
+
+**Checkpoint Selection**: During testing, if no specific checkpoint is provided, the system evaluates all available checkpoints and selects the best based on BLEU score.
+
+**Learning Rate Scheduling**: The system uses linear warmup (5% of max_steps) followed by linear decay with AdamW optimizer.
