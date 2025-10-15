@@ -107,21 +107,12 @@ These dependencies are included in the updated `requirements-minimal.txt`.
 
 **Problem**: Scripts fail with `FileNotFoundError` even though files exist
 
-**Common causes**:
-1. **Tilde (`~`) not expanded**: Python's `open()` doesn't expand `~` automatically
-   - ❌ Bad: `~/data/train.txt`
-   - ✅ Good: `/absolute/path/to/data/train.txt`
+**Common causes**: Using `~` (tilde) or relative paths instead of absolute paths.
 
-2. **Relative paths in CSV files**: Always use absolute paths in CSV configuration files
-   ```csv
-   # Bad
-   src_lang,tgt_lang,src_path,tgt_path
-   es,an,~/data/train.es,~/data/train.an
-
-   # Good
-   src_lang,tgt_lang,src_path,tgt_path
-   es,an,/Users/username/project/data/train.es,/Users/username/project/data/train.an
-   ```
+**Solution**: See [SETUP.md - Path Configuration Guide](SETUP.md#path-configuration-guide) for complete guidance on:
+- When variables expand (shell commands, .cfg files)
+- When you need absolute paths (YAML files)
+- How to set up environment variables
 
 ### Moses Decoder Not Installed
 
@@ -187,14 +178,7 @@ export PATH=/path/to/fast_align/build:$PATH
 
 **Error**: Config parameter shows `$BASE_DIR` literally instead of expanding
 
-**Solution**: Shell config files (.cfg) support variable expansion, but YAML files (.yaml) do not. Replace all `$BASE_DIR` with actual absolute paths in YAML configs:
-```yaml
-# Wrong
-save: $BASE_DIR/models/nmt_models/an-en/PRETRAIN
-
-# Correct
-save: /home/username/charlotte-project/models/nmt_models/an-en/PRETRAIN
-```
+**Solution**: YAML files don't expand variables! See [SETUP.md - Path Configuration Guide](SETUP.md#path-configuration-guide) for the complete explanation of which file types expand variables and which require absolute paths.
 
 ### SC Model ID Mismatch
 

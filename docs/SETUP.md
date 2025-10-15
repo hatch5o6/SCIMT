@@ -8,18 +8,16 @@
 
 1. [Prerequisites](#prerequisites)
 2. [Installing FastAlign](#installing-fastalign)
-3. [Path Configuration Guide](#path-configuration-guide) ⭐ NEW
+3. [Path Configuration Guide](#path-configuration-guide)
 4. [Installation](#installation)
 5. [Installing CopperMT](#installing-coppermt)
-6. [Pre-Flight Check](#pre-flight-check) ⭐ NEW
+6. [Pre-Flight Check](#pre-flight-check)
 7. [Quick Test](#quick-test)
-8. [Installation Verification](#installation-verification) ⭐ NEW
+8. [Installation Verification](#installation-verification)
 
 ---
 
 ## Path Configuration Guide
-
-⭐ **NEW SECTION** - Understand path requirements before you start
 
 CharLOTTE uses paths in three different contexts. Understanding these differences prevents common configuration errors.
 
@@ -100,34 +98,19 @@ This project requires **Python 3.10 or higher** (Python 3.8 reached end-of-life 
 python3 --version  # Should show 3.10.0 or higher
 ```
 
-### Which Requirements File Should I Use?
+### Which Requirements Files to Use
 
-CharLOTTE has **four requirements files** - here's how to choose:
+CharLOTTE needs **3 virtual environments**, each with its own requirements file:
 
-| Requirements File | When to Use | Environment | Notes |
-|-------------------|-------------|-------------|-------|
-| **requirements-minimal.txt** | ✅ **Recommended for most users** | venv_sound | Clean, minimal dependencies with modern versions. Best for fresh installations. |
-| **sound.requirements.txt** | Conda users only | conda: sound | Full conda environment export. Contains conda-specific packages. Only use if you need exact conda environment replication. |
-| **copper.requirements.txt** | SC model training | venv_copper | Legacy fairseq environment with specific versions (numpy <1.24, torch 2.4.1). Required for all users. |
-| **nmt.requirements.txt** | End-to-end NMT pipeline | venv_nmt | Modern PyTorch + Lightning for NMT training and translation. Required for complete pipeline. |
+| Environment | Requirements File | Install Command |
+|-------------|-------------------|-----------------|
+| **venv_sound** | `requirements-minimal.txt` | `pip install -r requirements-minimal.txt` |
+| **venv_copper** | `copper.requirements.txt` | `pip install -r copper.requirements.txt` |
+| **venv_nmt** | `nmt.requirements.txt` | `pip install -r nmt.requirements.txt` |
 
-**Decision Tree:**
+**For conda users**: Use `sound.requirements.txt` instead of `requirements-minimal.txt` for the first environment.
 
-```
-Are you installing venv_sound (Environment 1)?
-├─ Using venv? → Use requirements-minimal.txt ✅ (recommended)
-└─ Using conda? → Use sound.requirements.txt
-
-Are you installing venv_copper (Environment 2)?
-└─ Everyone uses copper.requirements.txt ✅
-
-Are you installing venv_nmt (Environment 3)?
-└─ Everyone uses nmt.requirements.txt ✅
-```
-
-**Quick Reference:**
-- **venv users**: `requirements-minimal.txt` (sound) + `copper.requirements.txt` (copper) + `nmt.requirements.txt` (nmt)
-- **conda users**: `sound.requirements.txt` (sound) + `copper.requirements.txt` (copper) + `nmt.requirements.txt` (nmt)
+**Why requirements-minimal.txt?** It's a cleaned-up version with modern package versions. The older `sound.requirements.txt` was exported from conda and contains conda-specific packages—only use it if you need exact conda environment replication.
 
 ---
 
@@ -216,9 +199,16 @@ test -f ../fast_align/build/fast_align && echo "✓ FastAlign found" || echo "�
 
 ## Installation
 
-CharLOTTE requires **three separate environments** due to dependency conflicts between fairseq (used by CopperMT) and newer PyTorch versions, and to isolate NMT training dependencies.
+CharLOTTE requires **three separate virtual environments**. Here's why:
 
-You can use either **venv** or **conda** - both work equally well for isolating the conflicting dependencies.
+**Why three environments?**
+- **venv_sound**: Modern PyTorch + NLP tools for data prep, tokenizer training, and SC cognate extraction
+- **venv_copper**: Legacy fairseq (requires PyTorch 2.4.1, numpy <1.24) for SC model training with CopperMT
+- **venv_nmt**: Modern PyTorch Lightning for NMT training and translation
+
+These environments have conflicting dependency versions and cannot coexist in a single environment.
+
+You can use either **venv** or **conda** - both work equally well for managing these separate environments.
 
 ### Environment 1: Sound (for NMT training and SC cognate extraction)
 
@@ -302,12 +292,6 @@ pip install -r nmt.requirements.txt
 - `sacrebleu` - Translation evaluation metrics
 - `torch` - Modern PyTorch (compatible with Lightning)
 
-### Why three environments?
-- `sound` environment: SC cognate extraction, tokenizer training
-- `copper` environment: SC model training with fairseq (requires PyTorch 2.4.1 and numpy <1.24)
-- `nmt` environment: NMT model training and translation (uses modern PyTorch and Lightning)
-- All three are **required** for the complete CharLOTTE pipeline
-- Separate environments prevent version conflicts between fairseq (copper) and modern PyTorch (nmt)
 
 ### Important Notes:
 - Python 3.8 reached end-of-life (EOL) in October 2024 - use Python 3.10+ instead
@@ -381,8 +365,6 @@ This clones the CopperMT repository, installs Moses decoder and mgiza for SMT mo
 
 ### Verify CopperMT Installation
 
-⭐ **NEW SECTION** - Verify before proceeding to Quick Test
-
 Run these commands to ensure CopperMT is correctly installed:
 
 ```bash
@@ -404,8 +386,6 @@ If any checks fail, see [../TROUBLESHOOTING.md](TROUBLESHOOTING.md#moses-decoder
 ---
 
 ## Pre-Flight Check
-
-⭐ **NEW SECTION** - Verify everything before Quick Test
 
 Before running the Quick Test (~5 minutes), verify all prerequisites are met. This saves time by catching issues early.
 
@@ -458,155 +438,83 @@ echo "If any checks failed (✗), fix them before continuing."
 
 ---
 
-## Quick Test
+## Quickstart Test: Full End-to-End Pipeline Validation
 
-### Verifying Your Setup (~5 minutes)
+⚠️ **DON'T SKIP THIS TEST**
 
-Before running the full pipeline, test your setup with a minimal RNN-based SC model using Spanish-Portuguese parallel data. This test verifies all components including fairseq and RNN training.
+After installation, run the **full end-to-end quickstart test** to validate your complete CharLOTTE setup. This automated test runs all 6 phases of the pipeline from SC training through NMT training and translation.
 
-### Prerequisites
+**Time**: ~30-45 minutes (mostly automated)
+**What it validates**:
+- ✅ All 3 virtual environments (venv_sound, venv_copper, venv_nmt)
+- ✅ FastAlign cognate extraction
+- ✅ fairseq SC model training (Python 3.10 patches)
+- ✅ SentencePiece tokenizer training
+- ✅ NMT model training and translation
+- ✅ Complete 6-phase CharLOTTE workflow
 
-Ensure you have:
-- Completed installation steps (both environments)
-- Created separate virtual environments (venv_sound and venv_copper)
-- Installed CopperMT with Moses decoder
-
-### Test RNN-based SC Training
+### Running the Quickstart Test
 
 ```bash
-# Navigate to your test directory
-cd $SCIMT_DIR
-mkdir -p charlotte-test
-cd charlotte-test
-
-# Copy the provided test configuration
-cp $SCIMT_DIR/charlotte-test/test-sc-es-pt.cfg ./test-sc-es-pt.cfg
-
-# Optional: View the configuration
-cat test-sc-es-pt.cfg
-# This config uses:
-# - Spanish (es) → Portuguese (pt) translation
-# - RNN model type (fairseq-based BiGRU with Luong attention)
-# - 1000 cognate pairs for training
-# - 20 epochs (completes in ~4 minutes)
-
-# Run SC training with separate virtual environments
-bash ../Pipeline/train_SC_venv.sh test-sc-es-pt.cfg ../venv_sound ../venv_copper 2>&1 | tee test_run_es_pt.log
+cd $SCIMT_DIR/charlotte-test
+./run_full_quickstart.sh
 ```
 
-**What This Tests**:
-- ✅ FastAlign cognate detection (Phase 1-2)
-- ✅ fairseq RNN model training (Phase 3)
-- ✅ Python 3.10 compatibility patches
-- ✅ Virtual environment isolation
-- ✅ Model checkpoint saving
-- ✅ Training metrics logging
+The script automatically:
+- Downloads FLORES-200 data (800 train, 100 val, 100 test sentences)
+- Runs all 6 phases sequentially (SC → Apply SC → Tokenizer → NMT → Evaluate)
+- Generates actual Portuguese→English translations
+- Reports BLEU scores and saves detailed logs
 
-**Expected Timeline**:
-- Phase 1-2 (Cognate Detection): ~30 seconds
-- Phase 3 (RNN Training): ~4 minutes (20 epochs)
-- Total: ~5 minutes
+**Expected Results**:
+- **SC Model BLEU**: > 60 (Spanish→Portuguese character correspondences)
+- **NMT Translation BLEU**: 20-30 (Portuguese→English on limited data)
+- **Total Time**: 30-45 minutes on GPU, 2-3 hours on CPU
 
-**Success Indicators**:
-```
-✓ Cognate pairs extracted and saved to charlotte-test/cognates_es_pt_RNN-default_S-1000/
-✓ Training progresses through 20 epochs
-✓ Validation loss decreases (e.g., 2.779 → 1.084)
-✓ Checkpoints saved to charlotte-test/sc_models_es_pt/.../checkpoints/
-✓ Best checkpoint identified (typically checkpoint15.pt with lowest validation loss)
-✓ Log shows: "done training in X seconds"
-```
+### What If It Fails?
 
-**Monitoring Progress**:
-```bash
-# In another terminal, watch training progress
-tail -f test_run_es_pt.log | grep -E "epoch|loss|ppl"
-```
+If the quickstart test fails at any phase:
 
-**Expected Training Metrics**:
-| Epoch | Train Loss | Val Loss | Val PPL | Notes |
-|-------|------------|----------|---------|-------|
-| 1     | 4.023      | 2.779    | 6.86    | Initial |
-| 5     | 1.631      | 1.414    | 2.67    | Rapid improvement |
-| 11    | 1.099      | 1.123    | 2.18    | Converging |
-| 15    | 0.963      | 1.084    | 2.12    | Best checkpoint |
-| 20    | 0.869      | 1.123    | 2.17    | Final |
-
-**If This Works**:
-- Your environment is correctly set up for RNN-based SC models
-- You can proceed to full-scale training
-- The trained model is ready for cognate translation (es→pt)
-
-**If This Fails**, check:
-
-1. **Virtual Environment Issues**:
+1. **Check the phase-specific log file**:
    ```bash
-   # Verify venv_sound exists
-   ls $SCIMT_DIR/venv_sound/bin/activate
-
-   # Verify venv_copper exists
-   ls $SCIMT_DIR/venv_copper/bin/activate
-
-   # Check fairseq installation
-   source $SCIMT_DIR/venv_copper/bin/activate
-   pip show fairseq
-   python -c "import fairseq; print(fairseq.__version__)"
+   ls quickstart_phase*.log  # Review the log for the failed phase
    ```
 
-2. **FastAlign Path**:
+2. **Common issues**:
+   - **Phase 1 (SC Training)**: FastAlign not found, fairseq not installed, or Python patches missing
+   - **Phase 3 (Tokenizer)**: venv_sound issues or SentencePiece not installed
+   - **Phase 4 (NMT Training)**: venv_nmt issues, GPU memory errors, or PyTorch Lightning problems
+
+3. **Verify specific components**:
    ```bash
-   # Should be in venv_sound
-   source $SCIMT_DIR/venv_sound/bin/activate
+   # Check all environments exist
+   ls $SCIMT_DIR/venv_{sound,copper,nmt}
+
+   # Verify fairseq in copper environment
+   source $SCIMT_DIR/venv_copper/bin/activate && python -c "import fairseq; print(fairseq.__version__)"
+
+   # Check FastAlign
    which fast_align
    ```
 
-3. **Python 3.10 Compatibility**:
-   - The RNN training requires patches for fairseq 0.10.2
-   - These are automatically applied during setup
-   - Check `venv_copper/lib/python3.10/site-packages/fairseq/dataclass/configs.py`
+4. **See detailed troubleshooting**: [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 
-4. **Dependencies**:
-   ```bash
-   source $SCIMT_DIR/venv_copper/bin/activate
-   pip list | grep -E "(torch|fairseq|sacrebleu)"
-   # Expected versions:
-   # fairseq==0.10.2
-   # sacrebleu==1.5.1
-   # torch>=2.0
-   ```
+### Optional: SC-Only Quick Test (~5 minutes)
 
-5. **Log File Analysis**:
-   ```bash
-   # Check for specific errors
-   grep -i "error\|traceback\|failed" test_run_es_pt.log
+If you only want to test SC model training (Phase 1-2) without running the full pipeline:
 
-   # Verify training started
-   grep "begin training epoch" test_run_es_pt.log
+```bash
+cd $SCIMT_DIR/charlotte-test
+bash ../Pipeline/train_SC_venv.sh test-sc-es-pt.cfg ../venv_sound ../venv_copper
+```
 
-   # Check final status
-   tail -50 test_run_es_pt.log
-   ```
+This tests FastAlign + fairseq SC training in ~5 minutes, but **does NOT validate the complete CharLOTTE methodology**. We strongly recommend running the full quickstart test above instead.
 
-**Common Issues**:
-
-- **`Optional[str]` type error**: fairseq 0.10.2 incompatibility with Python 3.10
-  - Solution: Re-run the setup script which applies necessary patches
-
-- **`cannot import name 'TOKENIZERS'`**: Wrong sacrebleu version
-  - Solution: `pip install 'sacrebleu==1.5.1'` in venv_copper
-
-- **Memory errors**: Insufficient RAM for fairseq
-  - Solution: Reduce batch size in test-sc-es-pt.cfg (currently 10)
-
-**Next Steps After Success**:
-- Review the trained model checkpoints
-- Proceed to full-scale SC training with larger datasets
+**For complete quickstart instructions and troubleshooting**, see [QUICKSTART.md](QUICKSTART.md).
 
 ---
 
 ## Installation Verification
-
-⭐ **NEW SECTION** - Final verification checklist
 
 After completing installation, verify everything works:
 
@@ -632,18 +540,19 @@ Testing core imports...
 
 - [ ] Pre-flight check passes (all ✓)
 - [ ] `python test_imports.py` succeeds
-- [ ] Quick Test completes successfully (~5 min)
-- [ ] Training metrics match expected values
-- [ ] Checkpoints saved to `charlotte-test/sc_models_es_pt/.../checkpoints/`
+- [ ] Quickstart test completes successfully (~30-45 min)
+- [ ] All 6 phases execute without errors
+- [ ] Final BLEU scores reported (SC > 60, NMT 20-30)
+- [ ] Translation outputs generated in `nmt_models/pt-en/translations/`
 
-If all items pass, you're ready for full experiments → [../EXPERIMENTATION.md](EXPERIMENTATION.md)
+If all items pass, you're ready for full experiments → [EXPERIMENTATION.md](EXPERIMENTATION.md)
 
 ---
 
 ## Next Steps
 
-✅ Installation complete!  
-✅ Quick Test passed!
+✅ Installation complete!
+✅ Quickstart test passed!
 
 **What's next?**
 

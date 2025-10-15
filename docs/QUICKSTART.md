@@ -2,6 +2,23 @@
 
 **Purpose:** Run your first end-to-end CharLOTTE experiment - from SC model training through actual Portuguese→English translation.
 
+---
+
+**🎯 Who is this for?**
+- **First-time users** who want to see CharLOTTE work end-to-end in 30-45 minutes
+- Users who prefer **automated scripts** over manual step-by-step configuration
+- Anyone wanting **quick validation** that the system works before diving into experiments
+
+**🎯 What you'll do:**
+- Run ONE command (`run_full_quickstart.sh`) that executes all 6 phases automatically
+- Watch the complete pipeline from SC training → tokenization → NMT → translation
+- Get actual English translations from Portuguese in under an hour
+
+**🎯 What's next:**
+- After success, move to [EXPERIMENTATION.md](EXPERIMENTATION.md) to learn manual control for your own language pairs
+
+---
+
 This guide demonstrates the complete CharLOTTE workflow with a small Spanish→Portuguese→English example, taking you from character correspondence learning all the way to generating and evaluating translations.
 
 **Prerequisites**: Complete [SETUP.md](SETUP.md) installation and verify all components are working (all three virtual environments: venv_sound, venv_copper, venv_nmt).

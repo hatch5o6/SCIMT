@@ -2,9 +2,26 @@
 
 **Purpose:** Complete end-to-end workflow for running CharLOTTE experiments from SC model training to NMT evaluation.
 
-**Prerequisites**: You must have completed [SETUP.md](SETUP.md) and passed the Quick Test before proceeding.
+---
 
-**New to CharLOTTE?** Start with [QUICKSTART.md](QUICKSTART.md) for a 30-minute guided introduction that will get you first results with a working Spanish→Portuguese example.
+**🎯 Who is this for?**
+- Researchers who completed [QUICKSTART.md](QUICKSTART.md) and want **full manual control**
+- Users preparing to run experiments on **their own language pairs**
+- Anyone who needs to **understand and customize** each phase of the pipeline
+
+**🎯 What you'll do:**
+- Manually create configuration files for SC models, tokenizers, and NMT
+- Execute each of the 6 phases step-by-step with full visibility
+- Learn to adjust parameters and troubleshoot issues independently
+
+**🎯 Prerequisites:**
+- ✅ Completed [SETUP.md](SETUP.md) installation
+- ✅ Passed the quickstart test (full 6-phase pipeline)
+- ✅ **Recommended:** Run [QUICKSTART.md](QUICKSTART.md) first to understand the workflow
+
+---
+
+**New to CharLOTTE?** If you haven't run the quickstart yet, start with [QUICKSTART.md](QUICKSTART.md) for a 30-minute guided introduction that will get you first results with a working Spanish→Portuguese example.
 
 ---
 
@@ -147,24 +164,19 @@ This section demonstrates the complete CharLOTTE workflow using a realistic low-
 - Baseline (10k pt-en only): BLEU ~18
 - With SC augmentation: BLEU ~28 (+10 BLEU points)
 
-### Understanding Phases vs. Steps
+### Understanding the Workflow Structure
 
-This guide uses **9 numbered Steps** to walk through the implementation, while other CharLOTTE documentation refers to a **6-phase workflow**. Both describe the same process—here's how they map:
+This guide walks through CharLOTTE's **6-phase pipeline** with detailed implementation tasks. Each phase typically involves two tasks: (1) creating a configuration file, then (2) executing the phase.
 
-| **Phase** | **Steps** | **What You'll Do** |
-|-----------|-----------|-------------------|
-| **Phase 1: Prepare Data** | *(Prerequisites)* | Obtain parallel corpora and create CSV files |
-| **Phase 2: Train SC Model** | Steps 1-2 | Create SC config → Train SC model |
-| **Phase 3: Apply SC Model** | Step 3 | Transform high-resource data with SC model |
-| **Phase 4: Train Tokenizer** | Steps 4-5 | Create tokenizer config → Train tokenizer |
-| **Phase 5: Train NMT Model** | Steps 6-7 | Create NMT config → Train NMT model |
-| **Phase 6: Evaluate** | Steps 8-9 | Evaluate model → Compare with baseline |
+**The 6 phases:**
+1. **Prepare Data** *(prerequisite)* - Obtain corpora and create CSV files
+2. **Train SC Model** - Learn character correspondences between languages
+3. **Apply SC Model** - Transform high-resource data to augment low-resource training
+4. **Train Tokenizer** - Build shared vocabulary across language pairs
+5. **Train NMT Model** - Train translation model with augmented data
+6. **Evaluate** - Measure translation quality and compare with baseline
 
-**Why the difference?**
-- **Phases** represent conceptual stages in the CharLOTTE workflow
-- **Steps** include configuration file creation tasks (odd-numbered steps) plus execution (even-numbered steps)
-
-Both perspectives are valid—use whichever helps you understand the workflow best.
+**Navigation tip**: Each phase section below is self-contained with configuration templates and execution commands. Follow them sequentially for best results.
 
 ---
 
@@ -211,7 +223,7 @@ $BASE_DIR/
     └── nmt/
 ```
 
-### Step 0: Setup Project Directories
+### Phase 1: Prepare Data - Setup Project Directories
 
 ```bash
 # Create directory structure
@@ -221,7 +233,13 @@ mkdir -p $BASE_DIR/{data/{raw/{low-resource,high-resource},csv},models/{sc_model
 ls -la $BASE_DIR
 ```
 
-### Step 1: Create SC Model Configuration
+---
+**Progress**: ✅ Data Ready | 🔄 Train SC Model | ⬜ Apply SC Model | ⬜ Train Tokenizer | ⬜ Train NMT | ⬜ Evaluate
+---
+
+### Phase 2: Train SC Model
+
+#### Task 2.1: Create SC Model Configuration
 
 Create `$BASE_DIR/configs/sc/es2pt.cfg`:
 
@@ -278,9 +296,7 @@ TEST_COGNATES_SRC=null
 TEST_COGNATES_TGT=null
 ```
 
-**For parameter explanations**, see [CONFIGURATION.md - SC Model Configuration](CONFIGURATION.md#sc-model-configuration).
-
-### Step 2: Train SC Model
+#### Task 2.2: Train SC Model
 
 ```bash
 cd $SCIMT_DIR
@@ -324,11 +340,18 @@ Test chrF: 72.1
 - BLEU 40-60: ✅ Good
 - BLEU < 40: ⚠️ Check if languages are related
 
-**Troubleshooting**: See [MONITORING.md - Monitoring SC Model Training](MONITORING.md#monitoring-sc-model-training) and [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
-
 **Output location**: `$BASE_DIR/models/sc_models/es_pt_RNN-0_S-1000/checkpoints/checkpoint_best.pt`
 
-### Step 3: Apply SC Model to Spanish Data
+**For more details**:
+- SC model parameters: [CONFIGURATION.md - SC Model Configuration](CONFIGURATION.md#sc-model-configuration)
+- Monitoring training: [MONITORING.md - Monitoring SC Model Training](MONITORING.md#monitoring-sc-model-training)
+- Troubleshooting: [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+
+---
+**Progress**: ✅ Data Ready | ✅ Train SC Model | 🔄 Apply SC Model | ⬜ Train Tokenizer | ⬜ Train NMT | ⬜ Evaluate
+---
+
+### Phase 3: Apply SC Model to Spanish Data
 
 ```bash
 bash Pipeline/pred_SC.sh $BASE_DIR/configs/sc/es2pt.cfg
@@ -346,22 +369,18 @@ train.SC_es2pt-RNN-0-RNN-0_es2pt.src  # SC-normalized Spanish (looks like Portug
 train.en                               # Original English (unchanged)
 ```
 
-**⚠️ IMPORTANT - SC Model ID Changes**:
+**⚠️ IMPORTANT - SC Model ID May Change**:
 
-Your config specified `SC_MODEL_ID=es2pt-RNN-0`, but the pipeline generates files with an **extended ID**: `es2pt-RNN-0-RNN-0`.
+The pipeline may generate files with an **extended SC model ID** (e.g., `es2pt-RNN-0-RNN-0` instead of your configured `es2pt-RNN-0`).
 
-**Action required**:
-1. Check actual filenames in `$BASE_DIR/data/raw/high-resource/`
-2. Look for pattern: `SC_*_es2pt`
-3. Extract full SC model ID (between `SC_` and `_es2pt`)
-4. Use this **full ID** in tokenizer and NMT configs
-
+**After running `pred_SC.sh`**, check the actual filenames to get the full ID:
 ```bash
-# Verify the full SC model ID
 ls $BASE_DIR/data/raw/high-resource/train.SC_*
 # Example output: train.SC_es2pt-RNN-0-RNN-0_es2pt.src
 # Full SC model ID is: es2pt-RNN-0-RNN-0
 ```
+
+Use this **full ID** in all downstream configs (tokenizer and NMT). See [TROUBLESHOOTING.md - SC Model ID Mismatch](TROUBLESHOOTING.md#sc-model-id-mismatch) for detailed diagnostic procedure if you encounter file not found errors.
 
 ### ✅ Verify Success: SC Application
 
@@ -393,7 +412,13 @@ head -5 $BASE_DIR/data/raw/high-resource/train.SC_*.src
 
 **Troubleshooting**: If files are missing or empty, check `train_SC_venv.sh` logs for errors during SC application.
 
-### Step 4: Create Tokenizer Configuration
+---
+**Progress**: ✅ Data Ready | ✅ Train SC Model | ✅ Apply SC Model | 🔄 Train Tokenizer | ⬜ Train NMT | ⬜ Evaluate
+---
+
+### Phase 4: Train Tokenizer
+
+#### Task 4.1: Create Tokenizer Configuration
 
 Create `$BASE_DIR/configs/tok/es-pt_en.cfg`:
 
@@ -434,9 +459,7 @@ SPECIAL_TOKS=null
 IS_ATT=false
 ```
 
-**For parameter explanations**, see [CONFIGURATION.md - Tokenizer Configuration](CONFIGURATION.md#tokenizer-configuration).
-
-### Step 5: Train Tokenizer
+#### Task 4.2: Train Tokenizer
 
 ```bash
 bash Pipeline/train_srctgt_tokenizer.sh $BASE_DIR/configs/tok/es-pt_en.cfg
@@ -491,7 +514,15 @@ python -c "import sentencepiece as spm; sp = spm.SentencePieceProcessor(); sp.lo
 
 **Troubleshooting**: If files are missing, check tokenizer training logs for sampling or training errors.
 
-### Step 6: Create NMT Configuration
+**For more details**: [CONFIGURATION.md - Tokenizer Configuration](CONFIGURATION.md#tokenizer-configuration)
+
+---
+**Progress**: ✅ Data Ready | ✅ Train SC Model | ✅ Apply SC Model | ✅ Train Tokenizer | 🔄 Train NMT | ⬜ Evaluate
+---
+
+### Phase 5: Train NMT Model
+
+#### Task 5.1: Create NMT Configuration
 
 Create `$BASE_DIR/configs/nmt/pt-en.PRETRAIN.yaml`:
 
@@ -565,9 +596,7 @@ echo "spm: $BASE_DIR/models/tokenizers/es-pt_en/es-pt_en"
 
 Then copy the expanded paths into the YAML file.
 
-**For parameter explanations**, see [CONFIGURATION.md - NMT Configuration](CONFIGURATION.md#nmt-configuration).
-
-### Step 7: Train NMT Model
+#### Task 5.2: Train NMT Model
 
 ```bash
 cd $SCIMT_DIR/NMT
@@ -602,9 +631,11 @@ tensorboard --logdir $BASE_DIR/models/nmt_models/pt-en/PRETRAIN_TRIAL_s=1000/log
 # Open browser to http://localhost:6006/
 ```
 
-**For detailed monitoring guidance**, see [MONITORING.md - Monitoring NMT Training](MONITORING.md#monitoring-nmt-training).
-
 **Output location**: `$BASE_DIR/models/nmt_models/pt-en/PRETRAIN_TRIAL_s=1000/checkpoints/`
+
+**For more details**:
+- NMT parameters: [CONFIGURATION.md - NMT Configuration](CONFIGURATION.md#nmt-configuration)
+- Monitoring training: [MONITORING.md - Monitoring NMT Training](MONITORING.md#monitoring-nmt-training)
 
 ### ✅ Verify Success: NMT Training
 
@@ -644,7 +675,13 @@ grep -i "early\|finish\|complete" $SCIMT_DIR/NMT/*.log
 - **High loss (>5.0 after 10k steps)**: Check tokenizer paths, data loading, or reduce learning rate
 - **See [MONITORING.md](MONITORING.md#monitoring-nmt-training)** for detailed troubleshooting
 
-### Step 8: Evaluate NMT Model
+---
+**Progress**: ✅ Data Ready | ✅ Train SC Model | ✅ Apply SC Model | ✅ Train Tokenizer | ✅ Train NMT | 🔄 Evaluate
+---
+
+### Phase 6: Evaluate
+
+#### Task 6.1: Evaluate NMT Model
 
 ```bash
 python train.py -c $BASE_DIR/configs/nmt/pt-en.PRETRAIN.yaml -m TEST
@@ -673,14 +710,11 @@ test_sources.txt        # Source sentences
 metrics.json            # BLEU, chrF, loss
 ```
 
-**Typical score ranges**:
-- **10k sentences (low-resource only)**: BLEU 10-18, chrF 35-45
-- **10k + 300k augmented (with SC)**: BLEU 18-28, chrF 45-60
-- **50k+ sentences**: BLEU 25-40, chrF 50-70
+**For detailed score ranges by data size**, see [MONITORING.md - Typical Score Ranges](MONITORING.md#typical-score-ranges).
 
 **For detailed evaluation guidance**, see [MONITORING.md - Evaluating NMT Models](MONITORING.md#evaluating-nmt-models).
 
-### Step 9: Compare with Baseline (Optional)
+#### Task 6.2: Compare with Baseline (Optional)
 
 To measure SC augmentation impact, train a baseline model without SC:
 

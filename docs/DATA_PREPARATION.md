@@ -26,14 +26,16 @@ The amount of parallel data directly impacts model quality. Here's what to expec
 
 #### Low-Resource Language Pair
 
-| Size | Training Feasibility | Expected BLEU (without SC) | Expected BLEU (with SC augmentation) | Notes |
-|------|---------------------|----------------------------|-------------------------------------|-------|
-| < 2,000 pairs | ❌ Not recommended | 0-5 | 5-10 | Model barely learns; mostly memorization |
-| 2,000-5,000 pairs | ⚠️ Minimal | 5-10 | 10-18 | Proof-of-concept only; poor quality |
-| 5,000-10,000 pairs | ✅ Viable | 10-18 | 18-28 | Usable for research; SC augmentation helps significantly |
-| 10,000-30,000 pairs | ✅ Good | 15-25 | 25-35 | Practical quality; SC augmentation provides solid boost |
-| 30,000-50,000 pairs | ✅ Strong | 20-30 | 30-40 | Good quality; diminishing returns from SC augmentation |
-| 50,000+ pairs | ✅ Excellent | 25-40 | 32-45 | High quality; SC augmentation still beneficial but smaller gains |
+| Size | Training Feasibility | Notes |
+|------|---------------------|-------|
+| < 2,000 pairs | ❌ Not recommended | Model barely learns; mostly memorization |
+| 2,000-5,000 pairs | ⚠️ Minimal | Proof-of-concept only; poor quality |
+| 5,000-10,000 pairs | ✅ Viable | Usable for research; SC augmentation helps significantly |
+| 10,000-30,000 pairs | ✅ Good | Practical quality; SC augmentation provides solid boost |
+| 30,000-50,000 pairs | ✅ Strong | Good quality; diminishing returns from SC augmentation |
+| 50,000+ pairs | ✅ Excellent | High quality; SC augmentation still beneficial but smaller gains |
+
+**For expected BLEU scores by data size**, see [MONITORING.md - Typical Score Ranges](MONITORING.md#typical-score-ranges).
 
 #### High-Resource Language Pair (for SC augmentation)
 
@@ -339,11 +341,19 @@ es,en,/absolute/path/to/data/raw/high-resource/train.src,/absolute/path/to/data/
 
 ### CSV Naming Convention
 
-The `no_overlap_v1` naming indicates that train/val splits have no overlapping sentences (important for valid evaluation). This is a **recommended naming convention** used in CharLOTTE examples.
+The standard naming is `train.no_overlap_v1.csv` where:
+- **no_overlap**: Train/val/test splits have zero sentence overlap (required for valid evaluation)
+- **v1**: Version 1 of your data splits (increment if you create new splits: v2, v3, etc.)
 
-- ✅ **Recommended**: Use these exact names if following the standard workflow
-- ⚠️ **Custom names**: You can use different names, but must update all config files that reference them
-- **Why it matters**: Using standard names makes it easier to follow examples and reduces configuration errors
+**Can you use different names?** Yes, but:
+- ✅ **Recommended**: Use these standard names for easier documentation following
+- ⚠️ **Custom names**: Requires updating all config file references (SC, tokenizer, NMT)
+  - Example: If you use `train.mydata.csv`, you must update:
+    - `PARALLEL_TRAIN=` in SC config files
+    - `TRAIN_PARALLEL=` in tokenizer config files
+    - `train_data:` in NMT YAML files
+
+**Why it matters**: Standard names make it easier to follow examples and reduce config errors. The CharLOTTE codebase expects these names in many examples.
 
 ### Python Script for Creating CSVs
 

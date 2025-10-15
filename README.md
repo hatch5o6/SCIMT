@@ -46,7 +46,7 @@ Both are trained using the CopperMT framework and can predict character-level tr
 
 ## Quick Start
 
-CharLOTTE provides an end-to-end pipeline for SC-augmented NMT training. Follow the installation steps below, then verify your setup with the Quick Test before running full experiments.
+CharLOTTE provides an end-to-end pipeline for SC-augmented NMT training. Follow the installation steps below, then verify your setup with the full quickstart test before running experiments.
 
 ### The CharLOTTE Pipeline
 
@@ -110,7 +110,7 @@ Here's the complete workflow from data to trained NMT model:
 - **GPU recommended**: Phases 2 and 5 are 8-10x faster with GPU
 - **Checkpoint resume**: All training phases support resuming from interruptions
 
-**Quick Test**: Before running full experiments, use the 5-minute Quick Test to verify your installation with a small Spanish→Portuguese example.
+**Quickstart Test**: After installation, run the automated quickstart test (~30-45 minutes) to validate your complete setup by running all 6 phases from SC training through NMT translation.
 
 ### Installation Checklist
 
@@ -138,13 +138,9 @@ Follow these steps in order:
   - Includes Moses decoder build
   - → [docs/SETUP.md](docs/SETUP.md#installing-coppermt)
 
-- [ ] **6. Run Quick Test** (~5 min)
-  - Verifies SC training with Spanish→Portuguese
-  - → [docs/SETUP.md](docs/SETUP.md#quick-test)
-
-- [ ] **7. Run Full Pipeline Test** (~30-45 min, optional)
-  - Verifies complete end-to-end pipeline (SC→Tokenizer→NMT→Translation)
-  - → [docs/QUICKSTART.md](docs/QUICKSTART.md#full-pipeline-test-end-to-end-translation)
+- [ ] **6. Run Quickstart Test** (~30-45 min)
+  - Validates complete 6-phase pipeline (SC→Tokenizer→NMT→Translation)
+  - → [docs/QUICKSTART.md](docs/QUICKSTART.md) or [docs/SETUP.md](docs/SETUP.md#quickstart-test-full-end-to-end-pipeline-validation)
 
 - [ ] **8. Start Full Experiments**
   - → [docs/EXPERIMENTATION.md](docs/EXPERIMENTATION.md)
@@ -154,8 +150,8 @@ Follow these steps in order:
 ## Documentation
 
 **Getting Started (in order)**:
-1. **[docs/SETUP.md](docs/SETUP.md)** - Installation and Quick Test ← **START HERE**
-2. **[docs/QUICKSTART.md](docs/QUICKSTART.md)** - 30-minute guided introduction with Spanish→Portuguese
+1. **[docs/SETUP.md](docs/SETUP.md)** - Installation and quickstart test ← **START HERE**
+2. **[docs/QUICKSTART.md](docs/QUICKSTART.md)** - Full pipeline test with Spanish→Portuguese→English
 3. **[docs/EXPERIMENTATION.md](docs/EXPERIMENTATION.md)** - Complete Portuguese→English workflow
 
 **Reference Documentation** (as needed):
@@ -174,7 +170,7 @@ Follow these steps in order:
 - **Flexible augmentation**: Use SC models with any NMT architecture
 - **Automatic cognate extraction**: Uses FastAlign to find related words
 - **End-to-end pipeline**: From parallel data to trained NMT models
-- **Validation included**: 5-minute Quick Test verifies installation
+- **Validation included**: Automated quickstart test validates complete pipeline
 
 ## What Makes Languages "Related"?
 
@@ -220,9 +216,9 @@ python3 --version  # Should be 3.10+
 # Check if FastAlign is installed
 which fast_align
 
-# Run Quick Test (after setup)
+# Run Quickstart Test (after setup)
 cd charlotte-test
-bash ../Pipeline/train_SC_venv.sh test-sc-es-pt.cfg ../venv_sound ../venv_copper
+./run_full_quickstart.sh
 
 # Train full SC model
 bash Pipeline/train_SC.sh configs/sc/my-config.cfg
@@ -238,8 +234,8 @@ python train.py -c configs/nmt/my-config.yaml -m TRAIN
 SCIMT/
 ├── README.md                    # This file
 ├── docs/                        # Detailed documentation
-│   ├── SETUP.md                # Installation and Quick Test
-│   ├── QUICKSTART.md           # 30-minute guided introduction
+│   ├── SETUP.md                # Installation and quickstart test
+│   ├── QUICKSTART.md           # Full pipeline test guide
 │   ├── EXPERIMENTATION.md      # Complete workflow guide
 │   ├── DATA_PREPARATION.md     # Data preparation guide
 │   ├── CONFIGURATION.md        # Parameter reference
@@ -248,7 +244,7 @@ SCIMT/
 ├── Pipeline/                    # SC training scripts
 ├── NMT/                         # NMT training code
 ├── CopperMT/                    # SC model framework
-├── charlotte-test/              # Quick Test example
+├── charlotte-test/              # Quickstart test files
 └── requirements-minimal.txt     # Python dependencies
 ```
 

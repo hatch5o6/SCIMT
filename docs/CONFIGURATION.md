@@ -26,7 +26,7 @@ CharLOTTE uses two configuration file formats:
 | **Shell Config (.cfg)** | SC models, tokenizers | ✅ YES | `$VARIABLE` or absolute |
 | **YAML Config (.yaml)** | NMT training | ❌ NO | **Absolute only** |
 
-**Important**: For complete path configuration guidance, see [SETUP.md - Path Configuration Guide](SETUP.md#path-configuration-guide)
+**Important**: See [SETUP.md - Path Configuration Guide](SETUP.md#path-configuration-guide) for detailed explanation of when variables work vs. when you need absolute paths.
 
 ---
 
@@ -206,9 +206,7 @@ SentencePiece tokenizer training configuration.
 |-----------|-------------|---------|
 | `SC_MODEL_ID` | Use SC-normalized data | `es2pt-RNN-0-RNN-0` or `null` |
 
-**Important**: When using SC-normalized data, the `SC_MODEL_ID` must match the **full ID** from the SC-normalized filenames:
-- After `pred_SC.sh`, check filenames: `train.SC_es2pt-RNN-0-RNN-0_es2pt.src`
-- Use full ID: `SC_MODEL_ID=es2pt-RNN-0-RNN-0` (includes suffix)
+**Important**: The `SC_MODEL_ID` must match the **full ID** from SC-normalized filenames. If you encounter file not found errors, see [TROUBLESHOOTING.md - SC Model ID Mismatch](../TROUBLESHOOTING.md#sc-model-id-mismatch) for the diagnostic procedure.
 
 ### Complete Tokenizer Config Example
 
