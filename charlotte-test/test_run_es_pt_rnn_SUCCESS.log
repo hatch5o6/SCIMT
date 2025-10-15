@@ -1,0 +1,1862 @@
+Starting train_SC_venv.sh-----------
+Using venv (not conda)
+  Sound venv:  /Users/ringger/Projects/brendan/SCIMT/venv_sound
+  Copper venv: /Users/ringger/Projects/brendan/SCIMT/venv_copper
+Mon Oct 13 22:43:27 MDT 2025
+-------------------------------
+    ###############################################
+#-- #                 1) ARGUMENTS                # --#
+    ###############################################
+Arguments:-
+    MODULE_HOME_DIR=/Users/ringger/Projects/brendan/SCIMT
+
+    SRC=es
+    TGT=pt
+    PARALLEL_TRAIN=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/train.csv
+    PARALLEL_VAL=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/val.csv
+    PARALLEL_TEST=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/test.csv
+    COGNATE_TRAIN=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt
+    NO_GROUPING=true
+    SC_MODEL_TYPE=RNN
+    SEED=1000
+    COGNATE_THRESH=0.5
+    COPPERMT_DATA_DIR=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt
+    COPPERMT_DIR=/Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT
+    PARAMETERS_DIR=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/params_es_pt
+    RNN_HYPERPARAMS=/Users/ringger/Projects/brendan/SCIMT/Pipeline/rnn_hyperparams
+    RNN_HYPERPARAMS_ID=default
+    BEAM=5
+    NBEST=1
+    REVERSE_SRC_TGT_COGNATES=false
+    ADDITIONAL_TRAIN_COGNATES_SRC=null
+    ADDITIONAL_TRAIN_COGNATES_TGT=null
+    VAL_COGNATES_SRC=null
+    VAL_COGNATES_TGT=null
+    TEST_COGNATES_SRC=null
+    TEST_COGNATES_TGT=null
+    COGNATE_TRAIN_RATIO=0.8
+    COGNATE_TEST_RATIO=0.1
+    COGNATE_VAL_RATIO=0.1
+-------------------------------
+
+
+
+
+    ###############################################
+#-- #     2) GET COGNATES FROM PARALLEL DATA      # --#
+    ###############################################
+
+
+######## 2.1 Clear and remake COGNATE_TRAIN dir ########
+removing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000
+creating /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000
+creating /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/cognate
+creating /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign
+
+
+######## 2.2 Gather parallel data from which cognates are extracted ########
+MultilingualDataset READING CSV /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/train.csv
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.es
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.pt
+Making unique: ('es', 'pt')
+	Before unique: 100
+	After unique: 100
+However, we will not use the unique data by pairs.
+(Will use the 'Before unique' dataset sizes)
+DATA MAX_SIZE = 100
+RAW DATA SIZE: 100
+UPSAMPLED SIZE: 100
+RETURNING SRC PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.es']
+RETURNING TGT PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.pt']
+MultilingualDataset TOTAL PAIRS: 100
+MultilingualDataset READING CSV /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/val.csv
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/val.es
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/val.pt
+Making unique: ('es', 'pt')
+	Before unique: 20
+	After unique: 20
+However, we will not use the unique data by pairs.
+(Will use the 'Before unique' dataset sizes)
+DATA MAX_SIZE = 20
+RAW DATA SIZE: 20
+UPSAMPLED SIZE: 20
+RETURNING SRC PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/val.es']
+RETURNING TGT PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/val.pt']
+MultilingualDataset TOTAL PAIRS: 20
+MultilingualDataset READING CSV /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/test.csv
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/test.es
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/test.pt
+Making unique: ('es', 'pt')
+	Before unique: 892
+	After unique: 892
+However, we will not use the unique data by pairs.
+(Will use the 'Before unique' dataset sizes)
+DATA MAX_SIZE = 892
+RAW DATA SIZE: 892
+UPSAMPLED SIZE: 892
+RETURNING SRC PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/test.es']
+RETURNING TGT PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/test.pt']
+MultilingualDataset TOTAL PAIRS: 892
+############################
+# make_SC_training_data.py #
+############################
+Arguments:-
+	-train_csv: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/train.csv
+	-val_csv: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/val.csv
+	-test_csv: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/test.csv
+	-src_out: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/cognate/train.es
+	-tgt_out: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/cognate/train.pt
+	-src: es
+	-tgt: pt
+------------------------------
+
+
+
+######## 2.3 Run Fast Align ########
+
+# 2.3.1 set file path names depending on whether NO_GROUPING is set to true or false. #
+NO_GROUPING has been set to true.
+t/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.txt
+
+# 2.3.2 preparing for fast align #
+prepare_for_fastalign.py REVERSE=false
+###########################
+# prepare_for_fastlign.py #
+###########################
+arguments
+src: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/cognate/train.es'
+tgt: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/cognate/train.pt'
+out: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/es-pt.txt'
+------------------
+
+
+src_tokenize=spacy_tokenize, lang: es
+tgt_tokenize=spacy_tokenize, lang: pt
+  0%|          | 0/1012 [00:00<?, ?it/s] 43%|████▎     | 432/1012 [00:00<00:00, 4316.98it/s]100%|██████████| 1012/1012 [00:00<00:00, 5222.34it/s]
+Writing prepare_for_fastalign.py output to /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/es-pt.txt
+
+
+# 2.3.3 fast_align #
+ARG=i
+ARG=d
+ARG=o
+ARG=v
+INITIAL PASS 
+.
+expected target length = source length * 0.915668
+ITERATION 1
+.
+  log_e likelihood: -548400
+  log_2 likelihood: -791174
+     cross entropy: 29.8974
+        perplexity: 1e+09
+      posterior p0: 0.08
+ posterior al-feat: -0.165662
+       size counts: 455
+ITERATION 2
+.
+  log_e likelihood: -218675
+  log_2 likelihood: -315482
+     cross entropy: 11.9216
+        perplexity: 3879.39
+      posterior p0: 0.118996
+ posterior al-feat: -0.105194
+       size counts: 455
+  1  model al-feat: -0.190097 (tension=4)
+  2  model al-feat: -0.150415 (tension=5.69805)
+  3  model al-feat: -0.134701 (tension=6.60246)
+  4  model al-feat: -0.125972 (tension=7.19259)
+  5  model al-feat: -0.120431 (tension=7.60814)
+  6  model al-feat: -0.116651 (tension=7.91287)
+  7  model al-feat: -0.113953 (tension=8.142)
+  8  model al-feat: -0.111969 (tension=8.31718)
+     final tension: 8.45268
+ITERATION 3
+.
+  log_e likelihood: -119908
+  log_2 likelihood: -172990
+     cross entropy: 6.53706
+        perplexity: 92.8651
+      posterior p0: 0.0775195
+ posterior al-feat: -0.0750886
+       size counts: 455
+  1  model al-feat: -0.110479 (tension=8.45268)
+  2  model al-feat: -0.103276 (tension=9.16049)
+  3  model al-feat: -0.0981562 (tension=9.72424)
+  4  model al-feat: -0.094319 (tension=10.1856)
+  5  model al-feat: -0.0913365 (tension=10.5702)
+  6  model al-feat: -0.0889563 (tension=10.8952)
+  7  model al-feat: -0.0870186 (tension=11.1725)
+  8  model al-feat: -0.0854166 (tension=11.4111)
+     final tension: 11.6177
+ITERATION 4
+.
+  log_e likelihood: -106580
+  log_2 likelihood: -153762
+     cross entropy: 5.81045
+        perplexity: 56.1204
+      posterior p0: 0.0744698
+ posterior al-feat: -0.0664536
+       size counts: 455
+  1  model al-feat: -0.0840756 (tension=11.6177)
+  2  model al-feat: -0.0818804 (tension=11.9701)
+  3  model al-feat: -0.080049 (tension=12.2786)
+  4  model al-feat: -0.0785004 (tension=12.5506)
+  5  model al-feat: -0.0771766 (tension=12.7915)
+  6  model al-feat: -0.0760346 (tension=13.0059)
+  7  model al-feat: -0.075042 (tension=13.1976)
+  8  model al-feat: -0.0741737 (tension=13.3693)
+     final tension: 13.5237
+ITERATION 5 (FINAL)
+.
+  log_e likelihood: -103380
+  log_2 likelihood: -149146
+     cross entropy: 5.63603
+        perplexity: 49.7293
+      posterior p0: 0
+ posterior al-feat: 0
+       size counts: 455
+ARG=i
+ARG=d
+ARG=o
+ARG=v
+ARG=r
+INITIAL PASS 
+.
+expected target length = source length * 1.11834
+ITERATION 1
+.
+  log_e likelihood: -606383
+  log_2 likelihood: -874826
+     cross entropy: 29.8974
+        perplexity: 1e+09
+      posterior p0: 0.08
+ posterior al-feat: -0.165269
+       size counts: 455
+ITERATION 2
+.
+  log_e likelihood: -228181
+  log_2 likelihood: -329195
+     cross entropy: 11.2503
+        perplexity: 2436.01
+      posterior p0: 0.122469
+ posterior al-feat: -0.101555
+       size counts: 455
+  1  model al-feat: -0.155077 (tension=4)
+  2  model al-feat: -0.133928 (tension=5.07043)
+  3  model al-feat: -0.123269 (tension=5.71788)
+  4  model al-feat: -0.116893 (tension=6.15216)
+  5  model al-feat: -0.112725 (tension=6.45891)
+  6  model al-feat: -0.109851 (tension=6.68231)
+  7  model al-feat: -0.1078 (tension=6.84822)
+  8  model al-feat: -0.1063 (tension=6.97311)
+     final tension: 7.06801
+ITERATION 3
+.
+  log_e likelihood: -127284
+  log_2 likelihood: -183632
+     cross entropy: 6.27566
+        perplexity: 77.4749
+      posterior p0: 0.0815847
+ posterior al-feat: -0.0766811
+       size counts: 455
+  1  model al-feat: -0.105186 (tension=7.06801)
+  2  model al-feat: -0.0989148 (tension=7.63811)
+  3  model al-feat: -0.0944825 (tension=8.08279)
+  4  model al-feat: -0.091192 (tension=8.43881)
+  5  model al-feat: -0.0886646 (tension=8.72903)
+  6  model al-feat: -0.0866749 (tension=8.9687)
+  7  model al-feat: -0.0850791 (tension=9.16858)
+  8  model al-feat: -0.0837806 (tension=9.33654)
+     final tension: 9.47853
+ITERATION 4
+.
+  log_e likelihood: -113694
+  log_2 likelihood: -164025
+     cross entropy: 5.6056
+        perplexity: 48.6915
+      posterior p0: 0.079268
+ posterior al-feat: -0.0669957
+       size counts: 455
+  1  model al-feat: -0.0827119 (tension=9.47853)
+  2  model al-feat: -0.0804361 (tension=9.79286)
+  3  model al-feat: -0.0785827 (tension=10.0617)
+  4  model al-feat: -0.0770494 (tension=10.2934)
+  5  model al-feat: -0.0757647 (tension=10.4945)
+  6  model al-feat: -0.0746774 (tension=10.6699)
+  7  model al-feat: -0.0737493 (tension=10.8235)
+  8  model al-feat: -0.0729515 (tension=10.9586)
+     final tension: 11.0777
+ITERATION 5 (FINAL)
+.
+  log_e likelihood: -110056
+  log_2 likelihood: -158778
+     cross entropy: 5.42625
+        perplexity: 42.9996
+      posterior p0: 0
+ posterior al-feat: 0
+       size counts: 455
+
+
+######## 2.4 Get Cognates ########
+
+# 2.4.1 make word alignments #
+NO_GROUPING=true: running make_word_alignments_no_grouping.py
+make_word_alignments_no_grouping.py
+arguments:
+	alignments: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/es-pt.sym.align'
+	sent_pairs: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/es-pt.txt'
+	out: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.txt'
+	VERBOSE: 'False'
+	STOP: 'None'
+---------------------
+
+
+  0%|          | 0/1012 [00:00<?, ?it/s]100%|██████████| 1012/1012 [00:00<00:00, 81173.35it/s]
+0 sentence pairs have a NBSP
+
+# 2.4.2 Get cognates from word list #
+make_cognate_list.py REVERSE=false
+make_cognate_list.py
+arguments
+	word_list: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.txt
+	out: None
+	theta: 0.5
+	src: es
+	tgt: pt
+-------------------
+
+
+- FOUND 3019 COGNATES -
+
+
+
+
+    ###############################################
+#-- #      3) TRAIN SC MODEL WITH COPPER MT       # --#
+    ###############################################
+
+
+######## 3.1 Make cognate prediction training, validation, and test sets ########
+
+# 3.1 if needed, make dataset splits #
+Splitting cognate data /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.txt, /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.txt
+    (train:val:test) 0.8:0.1:0.1
+############
+# split.py #
+############
+Arguments:
+	- data1: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.txt
+	- data2: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.txt
+	- train: 0.8
+	- val: 0.1
+	- test: 0.1
+	- seed: 1000
+	- out_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign
+	- UNIQUE_TEST: True
+----------------------
+
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.train-s=1000.txt
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.val-s=1000.txt
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.test-s=1000.txt
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.train-s=1000.txt
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.val-s=1000.txt
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.test-s=1000.txt
+asserting split occurred correctly
+	it passed :)
+MAKING TEST SOURCE-SIDE UNIQUE
+
+# 3.1.2 Include ADDITIONAL_TRAIN_COGNATES_SRC and ADDITIONAL_TRAIN_COGNATES_TGT in train set file paths #
+
+# 3.1.3 Print out files for train, validation, and test sets #
+Cognate training data for format_data.py is as follows:
+    TRAIN_COGNATES_SRC=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.train-s=1000.txt
+    TRAIN_COGNATES_TGT=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.train-s=1000.txt
+    VAL_COGNATES_SRC=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.val-s=1000.txt
+    VAL_COGNATES_TGT=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.val-s=1000.txt
+    TEST_COGNATES_SRC=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.test-s=1000.txt
+    TEST_COGNATES_TGT=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.test-s=1000.txt
+
+
+
+######## 3.2 Train CopperMT cognate prediction model ########
+
+# 3.2.1 make directory structure for CopperMT inputs and outputs #
+COPPER_DIR: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000
+
+creating /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000
+
+# 3.2.2 Copy the RNN hyperparams set file, corresponding to RNN_HYPERPARAMS_ID, to its place in the COPPERMT inputs/outputs folder #
+###########################
+# copy_rnn_hyperparams.py #
+###########################
+Arguments:-
+	-rnn_hyperparam_id: default
+	-rnn_hyperparams_dir: /Users/ringger/Projects/brendan/SCIMT/Pipeline/rnn_hyperparams
+	-copy_to_path: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/parameters/bilingual_default/default_parameters_rnn_es-pt.txt
+------------------------------
+
+Copying /Users/ringger/Projects/brendan/SCIMT/Pipeline/rnn_hyperparams/default.txt to /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/parameters/bilingual_default/default_parameters_rnn_es-pt.txt
+
+# 3.2.3 Format the cognate train, val, test data for CopperMT #
+
+##################
+# format_data.py #
+##################
+Arguments:-
+	-src_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.train-s=1000.txt
+	-tgt_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.train-s=1000.txt
+	-src: es
+	-tgt: pt
+	-out_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt
+	-prefix: train
+	-seed: 1000
+	-EXCLUDE_SRC: 
+	-EXCLUDE_TGT: 
+------------------------------
+
+EXCLUDE_SRC: []
+EXCLUDE_TGT: []
+BEFORE UNIQUE: 2415
+AFTER UNIQUE: 2415
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.es
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.pt
+
+##################
+# format_data.py #
+##################
+Arguments:-
+	-src_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.val-s=1000.txt
+	-tgt_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.val-s=1000.txt
+	-src: es
+	-tgt: pt
+	-out_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt
+	-prefix: fine_tune
+	-seed: 1000
+	-EXCLUDE_SRC: 
+	-EXCLUDE_TGT: 
+------------------------------
+
+EXCLUDE_SRC: []
+EXCLUDE_TGT: []
+BEFORE UNIQUE: 302
+AFTER UNIQUE: 302
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.es
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.pt
+
+##################
+# format_data.py #
+##################
+Arguments:-
+	-src_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.test-s=1000.txt
+	-tgt_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.test-s=1000.txt
+	-src: es
+	-tgt: pt
+	-out_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt
+	-prefix: test
+	-seed: 1000
+	-EXCLUDE_SRC: 
+	-EXCLUDE_TGT: 
+------------------------------
+
+EXCLUDE_SRC: []
+EXCLUDE_TGT: []
+BEFORE UNIQUE: 297
+AFTER UNIQUE: 297
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt.es
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt.pt
+
+# 3.2.4 Assert there is no overlap of src and tgt segments (words) between the cognate prediction train / dev / test data #
+--First, will remove any existing overlap (and test)--
+########################
+# assert_no_overlap.py #
+########################
+Arguments:--------
+--format_out_dir=`/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000`
+--src=`es`
+--tgt=`pt`
+--TEST_ONLY=`False`
+
+------------------
+
+
+FORMATTED DATA: Will remove overlap and then test.
+First removing the overlap between train / fine_tune / test
+REDUCTIONS:
+	-      TEST: 2415 > 2296
+	- FINE_TUNE: 302 > 291
+	-      TEST: 297 = 297
+Now testing that there is no overlap
+
+TRAIN PAIR
+	(1) -`('3 6', '3 6')`
+	(2) -`('u r g e n t e s', 'u r g e n t e')`
+	(3) -`('t a b l a', 't á b u a')`
+	(4) -`('p e r m i t í a n', 'p e r m i t i a')`
+	(5) -`('o s o s', 'u r s o s')`
+	(6) -`('a c t i v a s', 'a t i v a s')`
+	(7) -`('J e s u c r i s t o', 'J e s u s')`
+	(8) -`('s i m p l e s', 's i m p l e s')`
+	(9) -`('J a m e s', 'J a m e s')`
+	(10) -`('c o n s u l t a r', 'c o n s u l t e')`
+	(11) -`('O r i e n t e', 'O r i e n t e')`
+	(12) -`('s e x o', 's e x o')`
+	(13) -`('j u s t i c i a', 'j u s t i ç a')`
+	(14) -`('d i s c u r s o', 'D i s c u r s o')`
+	(15) -`('E s t a d o s', 'E s t a d o s')`
+	(16) -`('a n t í l o p e s', 'a n t í l o p e s')`
+	(17) -`('c o m p u t a d o r a s', 'c o m p u t a d o r e s')`
+	(18) -`('e s t a c i ó n', 'e s t a ç ã o')`
+	(19) -`('e x t r e m a d a m e n t e', 'e x t r e m a m e n t e')`
+	(20) -`('s u p e r f i c i a l e s', 's u p e r f i c i a i s')`
+	(21) -`('s a b e n', 's a b e m')`
+
+DEV PAIR
+	(1) -`('t r i d i m e n s i o n a l', 't r i d i m e n s i o n a l')`
+	(2) -`('s a b á t i c o', 's a b á t i c o')`
+	(3) -`('a r r a s t r a d o', 'a r r a s t a d o')`
+	(4) -`('m e n o r', 'm e n o r')`
+	(5) -`('o f i c i a l e s', 'o f i c i a i s')`
+	(6) -`('e n t r e n a m i e n t o', 't r e i n a m e n t o')`
+	(7) -`('M e t r o', 'm e t r ô')`
+	(8) -`('p e q u e ñ o s', 'p e q u e n o s')`
+	(9) -`('N o o r', 'N o o r')`
+	(10) -`('g u e p a r d o s', 'g u e p a r d o s')`
+	(11) -`('e x p u l s e n', 'e x p u l s o')`
+	(12) -`('c o m p a r t e', 'c o m p a r t i l h a m')`
+	(13) -`('m a d e r a', 'm a d e i r a')`
+	(14) -`('M u c h o s', 'M u i t a s')`
+	(15) -`('c o n v e n c i ó n', 'c o n v e n ç ã o')`
+	(16) -`('s u b c u l t u r a s', 's u b c u l t u r a s')`
+	(17) -`('f i l t r o s', 'f i l t r o s')`
+	(18) -`('h o s t i l i d a d e s', 'h o s t i l i d a d e s')`
+	(19) -`('r e p r e s e n t a c i ó n', 'r e p r e s e n t a d o s')`
+	(20) -`('e s q u i a d o r', 'e s q u i a d o r')`
+	(21) -`('b i n a r i o', 'b i n á r i o s')`
+
+TEST PAIR
+	(1) -`('t e c n o l o g í a s', 't e c n o l o g i a s')`
+	(2) -`('e s q u í', 'e s q u i a r')`
+	(3) -`('3 , 5', '3 , 5 0')`
+	(4) -`('a t ú n', 'a t u m')`
+	(5) -`('a y u d ó', 'a j u d o u')`
+	(6) -`('R u s i a', 'R ú s s i a')`
+	(7) -`('b e b i d a', 'c o m i d a')`
+	(8) -`('g', 'g')`
+	(9) -`('i n t e n t a r', 't e n t a r')`
+	(10) -`('p a s a d o', 'p a s s a d o')`
+	(11) -`('v a r i a c i ó n', 'v a r i a ç ã o')`
+	(12) -`('O t t a w a', 'O t t a w a')`
+	(13) -`('m u s e o s', 'm u s e u s')`
+	(14) -`('s u b t r ó p i c o s', 's u b t r o p i c a l')`
+	(15) -`('p á j a r o s', 'p á s s a r o s')`
+	(16) -`('1 8 9 5', '1 8 9 5')`
+	(17) -`('r e c u p e r a r', 'r e c u p e r o u')`
+	(18) -`('m u n d a n a', 'm u n d a n a')`
+	(19) -`('e s t e', 'd e s s e')`
+	(20) -`('a s o c i a d o s', 'r e l a c i o n a d o s')`
+	(21) -`('s o l e m n i d a d', 's o l e n i d a d e')`
+PAIR intersection
+	len: 0 []
+PAIR train-dev intersection
+	len: 0 []
+PAIR train-test intersection
+	len: 0 []
+PAIR dev-test intersection
+	len: 0 []
+
+TRAIN SRC
+	(1) -`3 6`
+	(2) -`u r g e n t e s`
+	(3) -`t a b l a`
+	(4) -`p e r m i t í a n`
+	(5) -`o s o s`
+	(6) -`a c t i v a s`
+	(7) -`J e s u c r i s t o`
+	(8) -`s i m p l e s`
+	(9) -`J a m e s`
+	(10) -`c o n s u l t a r`
+	(11) -`O r i e n t e`
+	(12) -`s e x o`
+	(13) -`j u s t i c i a`
+	(14) -`d i s c u r s o`
+	(15) -`E s t a d o s`
+	(16) -`a n t í l o p e s`
+	(17) -`c o m p u t a d o r a s`
+	(18) -`e s t a c i ó n`
+	(19) -`e x t r e m a d a m e n t e`
+	(20) -`s u p e r f i c i a l e s`
+	(21) -`s a b e n`
+
+DEV SRC
+	(1) -`t r i d i m e n s i o n a l`
+	(2) -`s a b á t i c o`
+	(3) -`a r r a s t r a d o`
+	(4) -`m e n o r`
+	(5) -`o f i c i a l e s`
+	(6) -`e n t r e n a m i e n t o`
+	(7) -`M e t r o`
+	(8) -`p e q u e ñ o s`
+	(9) -`N o o r`
+	(10) -`g u e p a r d o s`
+	(11) -`e x p u l s e n`
+	(12) -`c o m p a r t e`
+	(13) -`m a d e r a`
+	(14) -`M u c h o s`
+	(15) -`c o n v e n c i ó n`
+	(16) -`s u b c u l t u r a s`
+	(17) -`f i l t r o s`
+	(18) -`h o s t i l i d a d e s`
+	(19) -`r e p r e s e n t a c i ó n`
+	(20) -`e s q u i a d o r`
+	(21) -`b i n a r i o`
+
+TEST SRC
+	(1) -`t e c n o l o g í a s`
+	(2) -`e s q u í`
+	(3) -`3 , 5`
+	(4) -`a t ú n`
+	(5) -`a y u d ó`
+	(6) -`R u s i a`
+	(7) -`b e b i d a`
+	(8) -`g`
+	(9) -`i n t e n t a r`
+	(10) -`p a s a d o`
+	(11) -`v a r i a c i ó n`
+	(12) -`O t t a w a`
+	(13) -`m u s e o s`
+	(14) -`s u b t r ó p i c o s`
+	(15) -`p á j a r o s`
+	(16) -`1 8 9 5`
+	(17) -`r e c u p e r a r`
+	(18) -`m u n d a n a`
+	(19) -`e s t e`
+	(20) -`a s o c i a d o s`
+	(21) -`s o l e m n i d a d`
+SRC intersection
+	len: 0 []
+SRC train-dev intersection
+	len: 0 []
+SRC train-test intersection
+	len: 0 []
+SRC dev-test intersection
+	len: 0 []
+
+TRAIN TGT
+	(1) -`3 6`
+	(2) -`u r g e n t e`
+	(3) -`t á b u a`
+	(4) -`p e r m i t i a`
+	(5) -`u r s o s`
+	(6) -`a t i v a s`
+	(7) -`J e s u s`
+	(8) -`s i m p l e s`
+	(9) -`J a m e s`
+	(10) -`c o n s u l t e`
+	(11) -`O r i e n t e`
+	(12) -`s e x o`
+	(13) -`j u s t i ç a`
+	(14) -`D i s c u r s o`
+	(15) -`E s t a d o s`
+	(16) -`a n t í l o p e s`
+	(17) -`c o m p u t a d o r e s`
+	(18) -`e s t a ç ã o`
+	(19) -`e x t r e m a m e n t e`
+	(20) -`s u p e r f i c i a i s`
+	(21) -`s a b e m`
+
+DEV TGT
+	(1) -`t r i d i m e n s i o n a l`
+	(2) -`s a b á t i c o`
+	(3) -`a r r a s t a d o`
+	(4) -`m e n o r`
+	(5) -`o f i c i a i s`
+	(6) -`t r e i n a m e n t o`
+	(7) -`m e t r ô`
+	(8) -`p e q u e n o s`
+	(9) -`N o o r`
+	(10) -`g u e p a r d o s`
+	(11) -`e x p u l s o`
+	(12) -`c o m p a r t i l h a m`
+	(13) -`m a d e i r a`
+	(14) -`M u i t a s`
+	(15) -`c o n v e n ç ã o`
+	(16) -`s u b c u l t u r a s`
+	(17) -`f i l t r o s`
+	(18) -`h o s t i l i d a d e s`
+	(19) -`r e p r e s e n t a d o s`
+	(20) -`e s q u i a d o r`
+	(21) -`b i n á r i o s`
+
+TEST TGT
+	(1) -`t e c n o l o g i a s`
+	(2) -`e s q u i a r`
+	(3) -`3 , 5 0`
+	(4) -`a t u m`
+	(5) -`a j u d o u`
+	(6) -`R ú s s i a`
+	(7) -`c o m i d a`
+	(8) -`g`
+	(9) -`t e n t a r`
+	(10) -`p a s s a d o`
+	(11) -`v a r i a ç ã o`
+	(12) -`O t t a w a`
+	(13) -`m u s e u s`
+	(14) -`s u b t r o p i c a l`
+	(15) -`p á s s a r o s`
+	(16) -`1 8 9 5`
+	(17) -`r e c u p e r o u`
+	(18) -`m u n d a n a`
+	(19) -`d e s s e`
+	(20) -`r e l a c i o n a d o s`
+	(21) -`s o l e n i d a d e`
+TGT intersection
+	len: 0 []
+TGT train-dev intersection
+	len: 0 []
+TGT train-test intersection
+	len: 0 []
+TGT dev-test intersection
+	len: 0 []
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+passed!
+
+
+OVERLAP IN FORMATTED COGNATE DATA:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+	Test passed :)
+Now we have proven there is no overlap, writing the new train and fine_tune_files
+Overwriting /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.es with overlap removed
+Overwriting /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.pt with overlap removed
+Overwriting /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.es with overlap removed
+Overwriting /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.pt with overlap removed
+--Now, will simply test for good measure--
+########################
+# assert_no_overlap.py #
+########################
+Arguments:--------
+--format_out_dir=`/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000`
+--src=`es`
+--tgt=`pt`
+--TEST_ONLY=`True`
+
+------------------
+
+
+FORMATTED DATA: testing no overlap ONLY:
+
+TRAIN PAIR
+	(1) -`('3 6', '3 6')`
+	(2) -`('u r g e n t e s', 'u r g e n t e')`
+	(3) -`('t a b l a', 't á b u a')`
+	(4) -`('p e r m i t í a n', 'p e r m i t i a')`
+	(5) -`('o s o s', 'u r s o s')`
+	(6) -`('a c t i v a s', 'a t i v a s')`
+	(7) -`('J e s u c r i s t o', 'J e s u s')`
+	(8) -`('s i m p l e s', 's i m p l e s')`
+	(9) -`('J a m e s', 'J a m e s')`
+	(10) -`('c o n s u l t a r', 'c o n s u l t e')`
+	(11) -`('O r i e n t e', 'O r i e n t e')`
+	(12) -`('s e x o', 's e x o')`
+	(13) -`('j u s t i c i a', 'j u s t i ç a')`
+	(14) -`('d i s c u r s o', 'D i s c u r s o')`
+	(15) -`('E s t a d o s', 'E s t a d o s')`
+	(16) -`('a n t í l o p e s', 'a n t í l o p e s')`
+	(17) -`('c o m p u t a d o r a s', 'c o m p u t a d o r e s')`
+	(18) -`('e s t a c i ó n', 'e s t a ç ã o')`
+	(19) -`('e x t r e m a d a m e n t e', 'e x t r e m a m e n t e')`
+	(20) -`('s u p e r f i c i a l e s', 's u p e r f i c i a i s')`
+	(21) -`('s a b e n', 's a b e m')`
+
+DEV PAIR
+	(1) -`('t r i d i m e n s i o n a l', 't r i d i m e n s i o n a l')`
+	(2) -`('s a b á t i c o', 's a b á t i c o')`
+	(3) -`('a r r a s t r a d o', 'a r r a s t a d o')`
+	(4) -`('m e n o r', 'm e n o r')`
+	(5) -`('o f i c i a l e s', 'o f i c i a i s')`
+	(6) -`('e n t r e n a m i e n t o', 't r e i n a m e n t o')`
+	(7) -`('M e t r o', 'm e t r ô')`
+	(8) -`('p e q u e ñ o s', 'p e q u e n o s')`
+	(9) -`('N o o r', 'N o o r')`
+	(10) -`('g u e p a r d o s', 'g u e p a r d o s')`
+	(11) -`('e x p u l s e n', 'e x p u l s o')`
+	(12) -`('c o m p a r t e', 'c o m p a r t i l h a m')`
+	(13) -`('m a d e r a', 'm a d e i r a')`
+	(14) -`('M u c h o s', 'M u i t a s')`
+	(15) -`('c o n v e n c i ó n', 'c o n v e n ç ã o')`
+	(16) -`('s u b c u l t u r a s', 's u b c u l t u r a s')`
+	(17) -`('f i l t r o s', 'f i l t r o s')`
+	(18) -`('h o s t i l i d a d e s', 'h o s t i l i d a d e s')`
+	(19) -`('r e p r e s e n t a c i ó n', 'r e p r e s e n t a d o s')`
+	(20) -`('e s q u i a d o r', 'e s q u i a d o r')`
+	(21) -`('b i n a r i o', 'b i n á r i o s')`
+
+TEST PAIR
+	(1) -`('t e c n o l o g í a s', 't e c n o l o g i a s')`
+	(2) -`('e s q u í', 'e s q u i a r')`
+	(3) -`('3 , 5', '3 , 5 0')`
+	(4) -`('a t ú n', 'a t u m')`
+	(5) -`('a y u d ó', 'a j u d o u')`
+	(6) -`('R u s i a', 'R ú s s i a')`
+	(7) -`('b e b i d a', 'c o m i d a')`
+	(8) -`('g', 'g')`
+	(9) -`('i n t e n t a r', 't e n t a r')`
+	(10) -`('p a s a d o', 'p a s s a d o')`
+	(11) -`('v a r i a c i ó n', 'v a r i a ç ã o')`
+	(12) -`('O t t a w a', 'O t t a w a')`
+	(13) -`('m u s e o s', 'm u s e u s')`
+	(14) -`('s u b t r ó p i c o s', 's u b t r o p i c a l')`
+	(15) -`('p á j a r o s', 'p á s s a r o s')`
+	(16) -`('1 8 9 5', '1 8 9 5')`
+	(17) -`('r e c u p e r a r', 'r e c u p e r o u')`
+	(18) -`('m u n d a n a', 'm u n d a n a')`
+	(19) -`('e s t e', 'd e s s e')`
+	(20) -`('a s o c i a d o s', 'r e l a c i o n a d o s')`
+	(21) -`('s o l e m n i d a d', 's o l e n i d a d e')`
+PAIR intersection
+	len: 0 []
+PAIR train-dev intersection
+	len: 0 []
+PAIR train-test intersection
+	len: 0 []
+PAIR dev-test intersection
+	len: 0 []
+
+TRAIN SRC
+	(1) -`3 6`
+	(2) -`u r g e n t e s`
+	(3) -`t a b l a`
+	(4) -`p e r m i t í a n`
+	(5) -`o s o s`
+	(6) -`a c t i v a s`
+	(7) -`J e s u c r i s t o`
+	(8) -`s i m p l e s`
+	(9) -`J a m e s`
+	(10) -`c o n s u l t a r`
+	(11) -`O r i e n t e`
+	(12) -`s e x o`
+	(13) -`j u s t i c i a`
+	(14) -`d i s c u r s o`
+	(15) -`E s t a d o s`
+	(16) -`a n t í l o p e s`
+	(17) -`c o m p u t a d o r a s`
+	(18) -`e s t a c i ó n`
+	(19) -`e x t r e m a d a m e n t e`
+	(20) -`s u p e r f i c i a l e s`
+	(21) -`s a b e n`
+
+DEV SRC
+	(1) -`t r i d i m e n s i o n a l`
+	(2) -`s a b á t i c o`
+	(3) -`a r r a s t r a d o`
+	(4) -`m e n o r`
+	(5) -`o f i c i a l e s`
+	(6) -`e n t r e n a m i e n t o`
+	(7) -`M e t r o`
+	(8) -`p e q u e ñ o s`
+	(9) -`N o o r`
+	(10) -`g u e p a r d o s`
+	(11) -`e x p u l s e n`
+	(12) -`c o m p a r t e`
+	(13) -`m a d e r a`
+	(14) -`M u c h o s`
+	(15) -`c o n v e n c i ó n`
+	(16) -`s u b c u l t u r a s`
+	(17) -`f i l t r o s`
+	(18) -`h o s t i l i d a d e s`
+	(19) -`r e p r e s e n t a c i ó n`
+	(20) -`e s q u i a d o r`
+	(21) -`b i n a r i o`
+
+TEST SRC
+	(1) -`t e c n o l o g í a s`
+	(2) -`e s q u í`
+	(3) -`3 , 5`
+	(4) -`a t ú n`
+	(5) -`a y u d ó`
+	(6) -`R u s i a`
+	(7) -`b e b i d a`
+	(8) -`g`
+	(9) -`i n t e n t a r`
+	(10) -`p a s a d o`
+	(11) -`v a r i a c i ó n`
+	(12) -`O t t a w a`
+	(13) -`m u s e o s`
+	(14) -`s u b t r ó p i c o s`
+	(15) -`p á j a r o s`
+	(16) -`1 8 9 5`
+	(17) -`r e c u p e r a r`
+	(18) -`m u n d a n a`
+	(19) -`e s t e`
+	(20) -`a s o c i a d o s`
+	(21) -`s o l e m n i d a d`
+SRC intersection
+	len: 0 []
+SRC train-dev intersection
+	len: 0 []
+SRC train-test intersection
+	len: 0 []
+SRC dev-test intersection
+	len: 0 []
+
+TRAIN TGT
+	(1) -`3 6`
+	(2) -`u r g e n t e`
+	(3) -`t á b u a`
+	(4) -`p e r m i t i a`
+	(5) -`u r s o s`
+	(6) -`a t i v a s`
+	(7) -`J e s u s`
+	(8) -`s i m p l e s`
+	(9) -`J a m e s`
+	(10) -`c o n s u l t e`
+	(11) -`O r i e n t e`
+	(12) -`s e x o`
+	(13) -`j u s t i ç a`
+	(14) -`D i s c u r s o`
+	(15) -`E s t a d o s`
+	(16) -`a n t í l o p e s`
+	(17) -`c o m p u t a d o r e s`
+	(18) -`e s t a ç ã o`
+	(19) -`e x t r e m a m e n t e`
+	(20) -`s u p e r f i c i a i s`
+	(21) -`s a b e m`
+
+DEV TGT
+	(1) -`t r i d i m e n s i o n a l`
+	(2) -`s a b á t i c o`
+	(3) -`a r r a s t a d o`
+	(4) -`m e n o r`
+	(5) -`o f i c i a i s`
+	(6) -`t r e i n a m e n t o`
+	(7) -`m e t r ô`
+	(8) -`p e q u e n o s`
+	(9) -`N o o r`
+	(10) -`g u e p a r d o s`
+	(11) -`e x p u l s o`
+	(12) -`c o m p a r t i l h a m`
+	(13) -`m a d e i r a`
+	(14) -`M u i t a s`
+	(15) -`c o n v e n ç ã o`
+	(16) -`s u b c u l t u r a s`
+	(17) -`f i l t r o s`
+	(18) -`h o s t i l i d a d e s`
+	(19) -`r e p r e s e n t a d o s`
+	(20) -`e s q u i a d o r`
+	(21) -`b i n á r i o s`
+
+TEST TGT
+	(1) -`t e c n o l o g i a s`
+	(2) -`e s q u i a r`
+	(3) -`3 , 5 0`
+	(4) -`a t u m`
+	(5) -`a j u d o u`
+	(6) -`R ú s s i a`
+	(7) -`c o m i d a`
+	(8) -`g`
+	(9) -`t e n t a r`
+	(10) -`p a s s a d o`
+	(11) -`v a r i a ç ã o`
+	(12) -`O t t a w a`
+	(13) -`m u s e u s`
+	(14) -`s u b t r o p i c a l`
+	(15) -`p á s s a r o s`
+	(16) -`1 8 9 5`
+	(17) -`r e c u p e r o u`
+	(18) -`m u n d a n a`
+	(19) -`d e s s e`
+	(20) -`r e l a c i o n a d o s`
+	(21) -`s o l e n i d a d e`
+TGT intersection
+	len: 0 []
+TGT train-dev intersection
+	len: 0 []
+TGT train-test intersection
+	len: 0 []
+TGT dev-test intersection
+	len: 0 []
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+passed!
+
+
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+PASSED :) -- there is no overlap in the formatted data
+train_SC.sh: PASSED CopperMT/assert_no_overlap_in_formatted_data
+
+# 3.2.5 Log the cognate predition data #
+##########################
+# cognate_dataset_log.py #
+##########################
+Arguments:-
+	-formatted_data_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000
+	-lang_pair: es-pt
+	-LOG_F: cognate_dataset_log_NG=True.json
+------------------------------
+
+logging lang_pair
+logging lang_pair
+logging lang_pair
+
+# 3.2.6 Write the CopperMT parameters file #
+####################
+# write_scripts.py #
+####################
+Arguments:-
+	-src: es
+	-tgt: pt
+	-coppermt_data_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt
+	-coppermt_dir: /Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT
+	-sc_model_type: RNN
+	-rnn_hyperparams_id: default
+	-seed: 1000
+	-parameters: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/params_es_pt/parameters.es-pt_RNN-default_S-1000.cfg
+------------------------------
+
+
+# 3.2.7 Train the SC model with CopperMT #
+-- Training SC MODEL --
+    TYPE=RNN
+    bash /Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/main_nmt_bilingual_full_brendan.sh /Users/ringger/Projects/brendan/SCIMT/charlotte-test/params_es_pt/parameters.es-pt_RNN-default_S-1000.cfg 1000
+########## main_nmt_bilingual_full_brendan.sh ##########
+WK_DIR /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace
+INPUTS_DIR /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs
+DATA_NAME es_pt
+lang es-pt
+seed 1000
+--------------------------------------------------------
+/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/parameters/bilingual_default /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | Namespace(no_progress_bar=False, log_interval=100, log_format=None, tensorboard_logdir=None, seed=1, cpu=False, tpu=False, bf16=False, memory_efficient_bf16=False, fp16=False, memory_efficient_fp16=False, fp16_no_flatten_grads=False, fp16_init_scale=128, fp16_scale_window=None, fp16_scale_tolerance=0.0, min_loss_scale=0.0001, threshold_loss_scale=None, user_dir=None, empty_cache_freq=0, all_gather_list_size=16384, model_parallel_size=1, checkpoint_suffix='', checkpoint_shard_count=1, quantization_config_path=None, profile=False, criterion='cross_entropy', tokenizer=None, bpe=None, optimizer=None, lr_scheduler='fixed', scoring='bleu', task='multilingual_translation', source_lang='es', target_lang='pt', trainpref='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt', validpref='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt', testpref='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt', align_suffix=None, destdir='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin', thresholdtgt=0, thresholdsrc=0, tgtdict=None, srcdict=None, nwordstgt=-1, nwordssrc=-1, alignfile=None, dataset_impl='mmap', joined_dictionary=False, only_source=False, padding_factor=8, workers=1)
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [es] Dictionary: 80 types
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [es] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.es: 2296 sents, 19206 tokens, 0.0% replaced by <unk>
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [es] Dictionary: 80 types
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [es] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.es: 291 sents, 2409 tokens, 0.083% replaced by <unk>
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [es] Dictionary: 80 types
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [es] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt.es: 297 sents, 2406 tokens, 0.0416% replaced by <unk>
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [pt] Dictionary: 88 types
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [pt] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.pt: 2296 sents, 18988 tokens, 0.0% replaced by <unk>
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [pt] Dictionary: 88 types
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [pt] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.pt: 291 sents, 2389 tokens, 0.0% replaced by <unk>
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [pt] Dictionary: 88 types
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | [pt] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt.pt: 297 sents, 2401 tokens, 0.0416% replaced by <unk>
+2025-10-13 22:43:32 | INFO | fairseq_cli.preprocess | Wrote preprocessed data to /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin
+--lr 0.001 --batch-size 10 --dropout 0.2 --max-epoch 20   --save-dir /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/ --optimizer adam --scoring sacrebleu   --user-dir /Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/neural_translation/multilingual_rnns --arch multilingual_bigru   --task multilingual_translation --lang-pairs es-pt   --encoder-layers 2 --encoder-embed-dim 24 --encoder-hidden-size 72   --decoder-layers 2 --decoder-embed-dim 24 --decoder-hidden-size 72   --attention-type luong-general --share-encoders  --share-decoders 
+2025-10-13 22:43:32 | INFO | fairseq_cli.train | Namespace(no_progress_bar=False, log_interval=100, log_format=None, tensorboard_logdir=None, seed=1, cpu=False, tpu=False, bf16=False, memory_efficient_bf16=False, fp16=False, memory_efficient_fp16=False, fp16_no_flatten_grads=False, fp16_init_scale=128, fp16_scale_window=None, fp16_scale_tolerance=0.0, min_loss_scale=0.0001, threshold_loss_scale=None, user_dir='/Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/neural_translation/multilingual_rnns', empty_cache_freq=0, all_gather_list_size=16384, model_parallel_size=1, checkpoint_suffix='', checkpoint_shard_count=1, quantization_config_path=None, profile=False, criterion='cross_entropy', tokenizer=None, bpe=None, optimizer='adam', lr_scheduler='fixed', scoring='sacrebleu', task='multilingual_translation', num_workers=1, skip_invalid_size_inputs_valid_test=False, max_tokens=None, batch_size=10, required_batch_size_multiple=8, required_seq_len_multiple=1, dataset_impl=None, data_buffer_size=10, train_subset='train', valid_subset='valid', validate_interval=1, validate_interval_updates=0, validate_after_updates=0, fixed_validation_seed=None, disable_validation=False, max_tokens_valid=None, batch_size_valid=10, curriculum=0, gen_subset='test', num_shards=1, shard_id=0, distributed_world_size=1, distributed_rank=0, distributed_backend='nccl', distributed_init_method=None, distributed_port=-1, device_id=0, distributed_no_spawn=False, ddp_backend='c10d', bucket_cap_mb=25, fix_batches_to_gpus=False, find_unused_parameters=False, fast_stat_sync=False, broadcast_buffers=False, distributed_wrapper='DDP', slowmo_momentum=None, slowmo_algorithm='LocalSGD', localsgd_frequency=3, nprocs_per_node=1, pipeline_model_parallel=False, pipeline_balance=None, pipeline_devices=None, pipeline_chunks=0, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_checkpoint='never', zero_sharding='none', arch='multilingual_bigru', max_epoch=20, max_update=0, stop_time_hours=0, clip_norm=0.0, sentence_avg=False, update_freq=[1], lr=[0.001], min_lr=-1.0, use_bmuf=False, save_dir='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/', restore_file='checkpoint_last.pt', finetune_from_model=None, reset_dataloader=False, reset_lr_scheduler=False, reset_meters=False, reset_optimizer=False, optimizer_overrides='{}', save_interval=1, save_interval_updates=0, keep_interval_updates=-1, keep_last_epochs=-1, keep_best_checkpoints=-1, no_save=False, no_epoch_checkpoints=False, no_last_checkpoints=False, no_save_optimizer_state=False, best_checkpoint_metric='loss', maximize_best_checkpoint_metric=False, patience=-1, rnn_type='gru', attention_type='luong-general', encoder_embed_dim=24, encoder_embed_path=None, encoder_freeze_embed=False, encoder_hidden_size=72, encoder_layers=2, encoder_bidirectional=True, decoder_embed_dim=24, decoder_embed_path=None, decoder_freeze_embed=False, decoder_hidden_size=72, decoder_layers=2, decoder_out_embed_dim=512, adaptive_softmax_cutoff='10000,50000,200000', share_decoder_input_output_embed=False, share_all_embeddings=False, dropout=0.2, encoder_dropout_in=-1, encoder_dropout_out=-1, decoder_dropout_in=-1, decoder_dropout_out=-1, share_encoder_embeddings=False, share_decoder_embeddings=False, share_encoders=False, share_decoders=False, adam_betas='(0.9, 0.999)', adam_eps=1e-08, weight_decay=0.0, use_old_adam=False, force_anneal=None, lr_shrink=0.1, warmup_updates=0, sacrebleu_tokenizer='13a', sacrebleu_lowercase=False, sacrebleu_char_level=False, data='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/', lang_pairs='es-pt', source_lang=None, target_lang=None, left_pad_source='True', left_pad_target='False', max_source_positions=1024, max_target_positions=1024, upsample_primary=1, encoder_langtok=None, decoder_langtok=False, no_seed_provided=False, distributed_num_procs=0)
+2025-10-13 22:43:32 | INFO | fairseq.tasks.multilingual_translation | [es] dictionary: 80 types
+2025-10-13 22:43:32 | INFO | fairseq.tasks.multilingual_translation | [pt] dictionary: 88 types
+2025-10-13 22:43:32 | INFO | fairseq.data.data_utils | loaded 291 examples from: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/valid.es-pt.es
+2025-10-13 22:43:32 | INFO | fairseq.data.data_utils | loaded 291 examples from: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/valid.es-pt.pt
+2025-10-13 22:43:32 | INFO | fairseq.tasks.translation | /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/ valid es-pt 291 examples
+FROM CONFIG luong-general
+2025-10-13 22:43:32 | INFO | fairseq_cli.train | MultilingualRNNModel(
+  (models): ModuleDict(
+    (es-pt): FairseqEncoderDecoderModel(
+      (encoder): RNNEncoder(
+        (dropout_in_module): FairseqDropout()
+        (dropout_out_module): FairseqDropout()
+        (embed_tokens): Embedding(80, 24, padding_idx=1)
+        (hidden): GRU(24, 72, num_layers=2, dropout=0.2, bidirectional=True)
+        (bidir_dense): Linear(in_features=2, out_features=1, bias=True)
+      )
+      (decoder): RNNDecoder(
+        (dropout_in_module): FairseqDropout()
+        (dropout_out_module): FairseqDropout()
+        (embed_tokens): Embedding(88, 24, padding_idx=1)
+        (layers): GRU(96, 72, num_layers=2)
+        (attention): Attention(
+          (Wa): Linear(in_features=72, out_features=72, bias=False)
+          (Wc): Linear(in_features=144, out_features=72, bias=True)
+        )
+        (additional_fc): Linear(in_features=72, out_features=512, bias=True)
+        (fc_out): Linear(in_features=512, out_features=88, bias=True)
+      )
+    )
+  )
+)
+2025-10-13 22:43:32 | INFO | fairseq_cli.train | task: multilingual_translation (MultilingualTranslationTask)
+2025-10-13 22:43:32 | INFO | fairseq_cli.train | model: multilingual_bigru (MultilingualRNNModel)
+2025-10-13 22:43:32 | INFO | fairseq_cli.train | criterion: cross_entropy (CrossEntropyCriterion)
+2025-10-13 22:43:32 | INFO | fairseq_cli.train | num. model params: 306947 (num. trained: 306947)
+2025-10-13 22:43:32 | INFO | fairseq_cli.train | training on 1 devices (GPUs/TPUs)
+2025-10-13 22:43:32 | INFO | fairseq_cli.train | max tokens per GPU = None and max sentences per GPU = 10
+2025-10-13 22:43:32 | INFO | fairseq.trainer | no existing checkpoint found /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint_last.pt
+2025-10-13 22:43:32 | INFO | fairseq.trainer | loading train data for epoch 1
+2025-10-13 22:43:32 | INFO | fairseq.data.data_utils | loaded 2296 examples from: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/train.es-pt.es
+2025-10-13 22:43:32 | INFO | fairseq.data.data_utils | loaded 2296 examples from: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/train.es-pt.pt
+2025-10-13 22:43:32 | INFO | fairseq.tasks.translation | /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/ train es-pt 2296 examples
+2025-10-13 22:43:33 | INFO | fairseq.trainer | begin training epoch 1
+2025-10-13 22:43:35 | INFO | train_inner | epoch 001:    100 / 287 loss=4.666, sample_size=64.57, nsentences=8, ntokens=64.57, ppl=25.38, wps=6896.5, ups=106.27, wpb=64.6, bsz=8, num_updates=100, lr=0.001, gnorm=1.48, train_wall=1, wall=3
+2025-10-13 22:43:36 | INFO | train_inner | epoch 001:    200 / 287 loss=3.992, sample_size=69.01, nsentences=8, ntokens=69.01, ppl=15.91, wps=5667.9, ups=82.13, wpb=69, bsz=8, num_updates=200, lr=0.001, gnorm=1.538, train_wall=1, wall=4
+2025-10-13 22:43:37 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:43:43 | INFO | valid | epoch 001 | valid on 'valid' subset | loss 2.779 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 6.86 | wps 467.7 | wpb 64.6 | bsz 7.9 | num_updates 287
+2025-10-13 22:43:43 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:43:43 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint1.pt (epoch 1 @ 287 updates, score 2.779) (writing took 0.009993124986067414 seconds)
+2025-10-13 22:43:43 | INFO | fairseq_cli.train | end of epoch 1 (average epoch stats below)
+2025-10-13 22:43:43 | INFO | train | epoch 001 | loss 4.023 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 16.26 | wps 2032.5 | ups 30.67 | wpb 66.2 | bsz 8 | num_updates 287 | lr 0.001 | gnorm 1.677 | train_wall 3 | wall 11
+2025-10-13 22:43:43 | INFO | fairseq.trainer | begin training epoch 2
+2025-10-13 22:43:45 | INFO | train_inner | epoch 002:     13 / 287 loss=3.277, sample_size=64.22, nsentences=8, ntokens=64.22, ppl=9.69, wps=769.3, ups=11.98, wpb=64.2, bsz=8, num_updates=300, lr=0.001, gnorm=2.056, train_wall=1, wall=12
+2025-10-13 22:43:46 | INFO | train_inner | epoch 002:    113 / 287 loss=2.753, sample_size=65.71, nsentences=8, ntokens=65.71, ppl=6.74, wps=5812, ups=88.45, wpb=65.7, bsz=8, num_updates=400, lr=0.001, gnorm=2.5, train_wall=1, wall=13
+2025-10-13 22:43:47 | INFO | train_inner | epoch 002:    213 / 287 loss=2.422, sample_size=66.28, nsentences=8, ntokens=66.28, ppl=5.36, wps=4347.6, ups=65.59, wpb=66.3, bsz=8, num_updates=500, lr=0.001, gnorm=2.517, train_wall=1, wall=15
+2025-10-13 22:43:48 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:43:54 | INFO | valid | epoch 002 | valid on 'valid' subset | loss 1.683 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 3.21 | wps 461.4 | wpb 64.6 | bsz 7.9 | num_updates 574 | best_loss 1.683
+2025-10-13 22:43:54 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:43:54 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint2.pt (epoch 2 @ 574 updates, score 1.683) (writing took 0.009882584010483697 seconds)
+2025-10-13 22:43:54 | INFO | fairseq_cli.train | end of epoch 2 (average epoch stats below)
+2025-10-13 22:43:54 | INFO | train | epoch 002 | loss 2.522 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 5.74 | wps 1781.8 | ups 26.93 | wpb 66.2 | bsz 8 | num_updates 574 | lr 0.001 | gnorm 2.533 | train_wall 3 | wall 22
+2025-10-13 22:43:54 | INFO | fairseq.trainer | begin training epoch 3
+2025-10-13 22:43:56 | INFO | train_inner | epoch 003:     26 / 287 loss=2.223, sample_size=65.04, nsentences=8, ntokens=65.04, ppl=4.67, wps=786, ups=12.09, wpb=65, bsz=8, num_updates=600, lr=0.001, gnorm=2.685, train_wall=1, wall=23
+2025-10-13 22:43:57 | INFO | train_inner | epoch 003:    126 / 287 loss=1.981, sample_size=68.65, nsentences=8, ntokens=68.65, ppl=3.95, wps=4377.2, ups=63.76, wpb=68.7, bsz=8, num_updates=700, lr=0.001, gnorm=2.637, train_wall=2, wall=25
+2025-10-13 22:43:58 | INFO | train_inner | epoch 003:    226 / 287 loss=1.907, sample_size=64.58, nsentences=8, ntokens=64.58, ppl=3.75, wps=7275.2, ups=112.65, wpb=64.6, bsz=8, num_updates=800, lr=0.001, gnorm=2.611, train_wall=1, wall=26
+2025-10-13 22:43:59 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:44:05 | INFO | valid | epoch 003 | valid on 'valid' subset | loss 1.448 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.73 | wps 467.9 | wpb 64.6 | bsz 7.9 | num_updates 861 | best_loss 1.448
+2025-10-13 22:44:05 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:44:05 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint3.pt (epoch 3 @ 861 updates, score 1.448) (writing took 0.009464541013585404 seconds)
+2025-10-13 22:44:05 | INFO | fairseq_cli.train | end of epoch 3 (average epoch stats below)
+2025-10-13 22:44:05 | INFO | train | epoch 003 | loss 1.912 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 3.76 | wps 1752.1 | ups 26.48 | wpb 66.2 | bsz 8 | num_updates 861 | lr 0.001 | gnorm 2.6 | train_wall 4 | wall 32
+2025-10-13 22:44:05 | INFO | fairseq.trainer | begin training epoch 4
+2025-10-13 22:44:06 | INFO | train_inner | epoch 004:     39 / 287 loss=1.658, sample_size=68.4, nsentences=8, ntokens=68.4, ppl=3.16, wps=833.7, ups=12.19, wpb=68.4, bsz=8, num_updates=900, lr=0.001, gnorm=2.449, train_wall=1, wall=34
+2025-10-13 22:44:08 | INFO | train_inner | epoch 004:    139 / 287 loss=1.717, sample_size=67.37, nsentences=8, ntokens=67.37, ppl=3.29, wps=4293.4, ups=63.73, wpb=67.4, bsz=8, num_updates=1000, lr=0.001, gnorm=2.481, train_wall=2, wall=35
+2025-10-13 22:44:09 | INFO | train_inner | epoch 004:    239 / 287 loss=1.609, sample_size=65.31, nsentences=8, ntokens=65.31, ppl=3.05, wps=7179.7, ups=109.93, wpb=65.3, bsz=8, num_updates=1100, lr=0.001, gnorm=2.477, train_wall=1, wall=36
+2025-10-13 22:44:10 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:44:16 | INFO | valid | epoch 004 | valid on 'valid' subset | loss 1.414 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.67 | wps 463 | wpb 64.6 | bsz 7.9 | num_updates 1148 | best_loss 1.414
+2025-10-13 22:44:16 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:44:16 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint4.pt (epoch 4 @ 1148 updates, score 1.414) (writing took 0.008717999997315928 seconds)
+2025-10-13 22:44:16 | INFO | fairseq_cli.train | end of epoch 4 (average epoch stats below)
+2025-10-13 22:44:16 | INFO | train | epoch 004 | loss 1.631 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 3.1 | wps 1765.1 | ups 26.68 | wpb 66.2 | bsz 8 | num_updates 1148 | lr 0.001 | gnorm 2.481 | train_wall 4 | wall 43
+2025-10-13 22:44:16 | INFO | fairseq.trainer | begin training epoch 5
+2025-10-13 22:44:17 | INFO | train_inner | epoch 005:     52 / 287 loss=1.49, sample_size=64.22, nsentences=8, ntokens=64.22, ppl=2.81, wps=760.9, ups=11.85, wpb=64.2, bsz=8, num_updates=1200, lr=0.001, gnorm=2.538, train_wall=1, wall=45
+2025-10-13 22:44:19 | INFO | train_inner | epoch 005:    152 / 287 loss=1.469, sample_size=66.31, nsentences=8, ntokens=66.31, ppl=2.77, wps=3850.2, ups=58.06, wpb=66.3, bsz=8, num_updates=1300, lr=0.001, gnorm=2.48, train_wall=2, wall=46
+2025-10-13 22:44:20 | INFO | train_inner | epoch 005:    252 / 287 loss=1.521, sample_size=67.27, nsentences=8, ntokens=67.27, ppl=2.87, wps=5028.5, ups=74.75, wpb=67.3, bsz=8, num_updates=1400, lr=0.001, gnorm=2.392, train_wall=1, wall=48
+2025-10-13 22:44:20 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:44:26 | INFO | valid | epoch 005 | valid on 'valid' subset | loss 1.321 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.5 | wps 467.4 | wpb 64.6 | bsz 7.9 | num_updates 1435 | best_loss 1.321
+2025-10-13 22:44:26 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:44:27 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint5.pt (epoch 5 @ 1435 updates, score 1.321) (writing took 0.009229916002368554 seconds)
+2025-10-13 22:44:27 | INFO | fairseq_cli.train | end of epoch 5 (average epoch stats below)
+2025-10-13 22:44:27 | INFO | train | epoch 005 | loss 1.478 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 2.79 | wps 1752.9 | ups 26.49 | wpb 66.2 | bsz 8 | num_updates 1435 | lr 0.001 | gnorm 2.465 | train_wall 4 | wall 54
+2025-10-13 22:44:27 | INFO | fairseq.trainer | begin training epoch 6
+2025-10-13 22:44:28 | INFO | train_inner | epoch 006:     65 / 287 loss=1.373, sample_size=66.77, nsentences=8, ntokens=66.77, ppl=2.59, wps=801.6, ups=12, wpb=66.8, bsz=8, num_updates=1500, lr=0.001, gnorm=2.355, train_wall=1, wall=56
+2025-10-13 22:44:30 | INFO | train_inner | epoch 006:    165 / 287 loss=1.37, sample_size=64.92, nsentences=8, ntokens=64.92, ppl=2.58, wps=5459.7, ups=84.1, wpb=64.9, bsz=8, num_updates=1600, lr=0.001, gnorm=2.351, train_wall=1, wall=57
+2025-10-13 22:44:31 | INFO | train_inner | epoch 006:    265 / 287 loss=1.339, sample_size=67.73, nsentences=8, ntokens=67.73, ppl=2.53, wps=6155.4, ups=90.88, wpb=67.7, bsz=8, num_updates=1700, lr=0.001, gnorm=2.385, train_wall=1, wall=58
+2025-10-13 22:44:31 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:44:37 | INFO | valid | epoch 006 | valid on 'valid' subset | loss 1.232 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.35 | wps 467.7 | wpb 64.6 | bsz 7.9 | num_updates 1722 | best_loss 1.232
+2025-10-13 22:44:37 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:44:37 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint6.pt (epoch 6 @ 1722 updates, score 1.232) (writing took 0.009613041009288281 seconds)
+2025-10-13 22:44:37 | INFO | fairseq_cli.train | end of epoch 6 (average epoch stats below)
+2025-10-13 22:44:37 | INFO | train | epoch 006 | loss 1.357 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 2.56 | wps 1794.7 | ups 27.13 | wpb 66.2 | bsz 8 | num_updates 1722 | lr 0.001 | gnorm 2.358 | train_wall 3 | wall 65
+2025-10-13 22:44:37 | INFO | fairseq.trainer | begin training epoch 7
+2025-10-13 22:44:39 | INFO | train_inner | epoch 007:     78 / 287 loss=1.351, sample_size=66.56, nsentences=8, ntokens=66.56, ppl=2.55, wps=798.7, ups=12, wpb=66.6, bsz=8, num_updates=1800, lr=0.001, gnorm=2.306, train_wall=1, wall=67
+2025-10-13 22:44:40 | INFO | train_inner | epoch 007:    178 / 287 loss=1.252, sample_size=65.68, nsentences=8, ntokens=65.68, ppl=2.38, wps=5064.2, ups=77.1, wpb=65.7, bsz=8, num_updates=1900, lr=0.001, gnorm=2.283, train_wall=1, wall=68
+2025-10-13 22:44:42 | INFO | train_inner | epoch 007:    278 / 287 loss=1.306, sample_size=64.7, nsentences=8, ntokens=64.7, ppl=2.47, wps=4735.3, ups=73.19, wpb=64.7, bsz=8, num_updates=2000, lr=0.001, gnorm=2.366, train_wall=1, wall=69
+2025-10-13 22:44:42 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:44:48 | INFO | valid | epoch 007 | valid on 'valid' subset | loss 1.203 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.3 | wps 467.7 | wpb 64.6 | bsz 7.9 | num_updates 2009 | best_loss 1.203
+2025-10-13 22:44:48 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:44:48 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint7.pt (epoch 7 @ 2009 updates, score 1.203) (writing took 0.009245541994459927 seconds)
+2025-10-13 22:44:48 | INFO | fairseq_cli.train | end of epoch 7 (average epoch stats below)
+2025-10-13 22:44:48 | INFO | train | epoch 007 | loss 1.282 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 2.43 | wps 1730.7 | ups 26.16 | wpb 66.2 | bsz 8 | num_updates 2009 | lr 0.001 | gnorm 2.289 | train_wall 4 | wall 76
+2025-10-13 22:44:48 | INFO | fairseq.trainer | begin training epoch 8
+2025-10-13 22:44:50 | INFO | train_inner | epoch 008:     91 / 287 loss=1.18, sample_size=65.78, nsentences=8, ntokens=65.78, ppl=2.27, wps=785.7, ups=11.94, wpb=65.8, bsz=8, num_updates=2100, lr=0.001, gnorm=2.31, train_wall=1, wall=78
+2025-10-13 22:44:51 | INFO | train_inner | epoch 008:    191 / 287 loss=1.283, sample_size=65.17, nsentences=8, ntokens=65.17, ppl=2.43, wps=5281.3, ups=81.04, wpb=65.2, bsz=8, num_updates=2200, lr=0.001, gnorm=2.437, train_wall=1, wall=79
+2025-10-13 22:44:53 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:44:59 | INFO | valid | epoch 008 | valid on 'valid' subset | loss 1.176 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.26 | wps 467.7 | wpb 64.6 | bsz 7.9 | num_updates 2296 | best_loss 1.176
+2025-10-13 22:44:59 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:44:59 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint8.pt (epoch 8 @ 2296 updates, score 1.176) (writing took 0.009029292006744072 seconds)
+2025-10-13 22:44:59 | INFO | fairseq_cli.train | end of epoch 8 (average epoch stats below)
+2025-10-13 22:44:59 | INFO | train | epoch 008 | loss 1.232 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 2.35 | wps 1764.2 | ups 26.67 | wpb 66.2 | bsz 8 | num_updates 2296 | lr 0.001 | gnorm 2.348 | train_wall 4 | wall 86
+2025-10-13 22:44:59 | INFO | fairseq.trainer | begin training epoch 9
+2025-10-13 22:45:00 | INFO | train_inner | epoch 009:      4 / 287 loss=1.238, sample_size=67.64, nsentences=8, ntokens=67.64, ppl=2.36, wps=795.7, ups=11.76, wpb=67.6, bsz=8, num_updates=2300, lr=0.001, gnorm=2.261, train_wall=1, wall=87
+2025-10-13 22:45:01 | INFO | train_inner | epoch 009:    104 / 287 loss=1.108, sample_size=65.97, nsentences=8, ntokens=65.97, ppl=2.16, wps=5767.8, ups=87.43, wpb=66, bsz=8, num_updates=2400, lr=0.001, gnorm=2.224, train_wall=1, wall=89
+2025-10-13 22:45:02 | INFO | train_inner | epoch 009:    204 / 287 loss=1.23, sample_size=65.7, nsentences=8, ntokens=65.7, ppl=2.35, wps=5340.2, ups=81.28, wpb=65.7, bsz=8, num_updates=2500, lr=0.001, gnorm=2.389, train_wall=1, wall=90
+2025-10-13 22:45:03 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:45:09 | INFO | valid | epoch 009 | valid on 'valid' subset | loss 1.146 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.21 | wps 461.4 | wpb 64.6 | bsz 7.9 | num_updates 2583 | best_loss 1.146
+2025-10-13 22:45:09 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:45:09 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint9.pt (epoch 9 @ 2583 updates, score 1.146) (writing took 0.006298958003753796 seconds)
+2025-10-13 22:45:09 | INFO | fairseq_cli.train | end of epoch 9 (average epoch stats below)
+2025-10-13 22:45:09 | INFO | train | epoch 009 | loss 1.178 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 2.26 | wps 1789.2 | ups 27.04 | wpb 66.2 | bsz 8 | num_updates 2583 | lr 0.001 | gnorm 2.278 | train_wall 3 | wall 97
+2025-10-13 22:45:09 | INFO | fairseq.trainer | begin training epoch 10
+2025-10-13 22:45:11 | INFO | train_inner | epoch 010:     17 / 287 loss=1.18, sample_size=66.81, nsentences=8, ntokens=66.81, ppl=2.27, wps=795.6, ups=11.91, wpb=66.8, bsz=8, num_updates=2600, lr=0.001, gnorm=2.208, train_wall=1, wall=98
+2025-10-13 22:45:12 | INFO | train_inner | epoch 010:    117 / 287 loss=1.007, sample_size=63.07, nsentences=8, ntokens=63.07, ppl=2.01, wps=5914.8, ups=93.78, wpb=63.1, bsz=8, num_updates=2700, lr=0.001, gnorm=2.058, train_wall=1, wall=99
+2025-10-13 22:45:13 | INFO | train_inner | epoch 010:    217 / 287 loss=1.208, sample_size=68.57, nsentences=8, ntokens=68.57, ppl=2.31, wps=4379.1, ups=63.86, wpb=68.6, bsz=8, num_updates=2800, lr=0.001, gnorm=2.365, train_wall=2, wall=101
+2025-10-13 22:45:14 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:45:20 | INFO | valid | epoch 010 | valid on 'valid' subset | loss 1.158 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.23 | wps 467.5 | wpb 64.6 | bsz 7.9 | num_updates 2870 | best_loss 1.146
+2025-10-13 22:45:20 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:45:20 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint10.pt (epoch 10 @ 2870 updates, score 1.158) (writing took 0.00796037502004765 seconds)
+2025-10-13 22:45:20 | INFO | fairseq_cli.train | end of epoch 10 (average epoch stats below)
+2025-10-13 22:45:20 | INFO | train | epoch 010 | loss 1.133 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 2.19 | wps 1795.7 | ups 27.14 | wpb 66.2 | bsz 8 | num_updates 2870 | lr 0.001 | gnorm 2.248 | train_wall 3 | wall 108
+2025-10-13 22:45:20 | INFO | fairseq.trainer | begin training epoch 11
+2025-10-13 22:45:21 | INFO | train_inner | epoch 011:     30 / 287 loss=1.113, sample_size=65.97, nsentences=8, ntokens=65.97, ppl=2.16, wps=826.7, ups=12.53, wpb=66, bsz=8, num_updates=2900, lr=0.001, gnorm=2.243, train_wall=1, wall=109
+2025-10-13 22:45:23 | INFO | train_inner | epoch 011:    130 / 287 loss=1.022, sample_size=65.42, nsentences=8, ntokens=65.42, ppl=2.03, wps=5217.8, ups=79.76, wpb=65.4, bsz=8, num_updates=3000, lr=0.001, gnorm=2.362, train_wall=1, wall=110
+2025-10-13 22:45:24 | INFO | train_inner | epoch 011:    230 / 287 loss=1.175, sample_size=66.52, nsentences=8, ntokens=66.52, ppl=2.26, wps=4542.5, ups=68.29, wpb=66.5, bsz=8, num_updates=3100, lr=0.001, gnorm=2.369, train_wall=1, wall=112
+2025-10-13 22:45:25 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:45:31 | INFO | valid | epoch 011 | valid on 'valid' subset | loss 1.123 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.18 | wps 467.5 | wpb 64.6 | bsz 7.9 | num_updates 3157 | best_loss 1.123
+2025-10-13 22:45:31 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:45:31 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint11.pt (epoch 11 @ 3157 updates, score 1.123) (writing took 0.009062750003067777 seconds)
+2025-10-13 22:45:31 | INFO | fairseq_cli.train | end of epoch 11 (average epoch stats below)
+2025-10-13 22:45:31 | INFO | train | epoch 011 | loss 1.099 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 2.14 | wps 1760.7 | ups 26.61 | wpb 66.2 | bsz 8 | num_updates 3157 | lr 0.001 | gnorm 2.287 | train_wall 4 | wall 118
+2025-10-13 22:45:31 | INFO | fairseq.trainer | begin training epoch 12
+2025-10-13 22:45:32 | INFO | train_inner | epoch 012:     43 / 287 loss=1.091, sample_size=65.87, nsentences=8, ntokens=65.87, ppl=2.13, wps=808.4, ups=12.27, wpb=65.9, bsz=8, num_updates=3200, lr=0.001, gnorm=2.14, train_wall=1, wall=120
+2025-10-13 22:45:33 | INFO | train_inner | epoch 012:    143 / 287 loss=1.042, sample_size=69.55, nsentences=8, ntokens=69.55, ppl=2.06, wps=5970.9, ups=85.85, wpb=69.5, bsz=8, num_updates=3300, lr=0.001, gnorm=2.121, train_wall=1, wall=121
+2025-10-13 22:45:34 | INFO | train_inner | epoch 012:    243 / 287 loss=1.035, sample_size=61.67, nsentences=8, ntokens=61.67, ppl=2.05, wps=5213.4, ups=84.54, wpb=61.7, bsz=8, num_updates=3400, lr=0.001, gnorm=2.286, train_wall=1, wall=122
+2025-10-13 22:45:35 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:45:41 | INFO | valid | epoch 012 | valid on 'valid' subset | loss 1.151 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.22 | wps 466.6 | wpb 64.6 | bsz 7.9 | num_updates 3444 | best_loss 1.123
+2025-10-13 22:45:41 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:45:41 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint12.pt (epoch 12 @ 3444 updates, score 1.151) (writing took 0.00754912500269711 seconds)
+2025-10-13 22:45:41 | INFO | fairseq_cli.train | end of epoch 12 (average epoch stats below)
+2025-10-13 22:45:41 | INFO | train | epoch 012 | loss 1.055 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 2.08 | wps 1854.4 | ups 28.03 | wpb 66.2 | bsz 8 | num_updates 3444 | lr 0.001 | gnorm 2.221 | train_wall 3 | wall 129
+2025-10-13 22:45:41 | INFO | fairseq.trainer | begin training epoch 13
+2025-10-13 22:45:43 | INFO | train_inner | epoch 013:     56 / 287 loss=1.05, sample_size=67.91, nsentences=8, ntokens=67.91, ppl=2.07, wps=844.7, ups=12.44, wpb=67.9, bsz=8, num_updates=3500, lr=0.001, gnorm=2.31, train_wall=1, wall=130
+2025-10-13 22:45:44 | INFO | train_inner | epoch 013:    156 / 287 loss=1.077, sample_size=66.93, nsentences=8, ntokens=66.93, ppl=2.11, wps=4287.6, ups=64.06, wpb=66.9, bsz=8, num_updates=3600, lr=0.001, gnorm=2.178, train_wall=2, wall=132
+2025-10-13 22:45:45 | INFO | train_inner | epoch 013:    256 / 287 loss=1.015, sample_size=65.76, nsentences=8, ntokens=65.76, ppl=2.02, wps=6594, ups=100.27, wpb=65.8, bsz=8, num_updates=3700, lr=0.001, gnorm=2.145, train_wall=1, wall=133
+2025-10-13 22:45:46 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:45:52 | INFO | valid | epoch 013 | valid on 'valid' subset | loss 1.133 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.19 | wps 467.4 | wpb 64.6 | bsz 7.9 | num_updates 3731 | best_loss 1.123
+2025-10-13 22:45:52 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:45:52 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint13.pt (epoch 13 @ 3731 updates, score 1.133) (writing took 0.009027166990563273 seconds)
+2025-10-13 22:45:52 | INFO | fairseq_cli.train | end of epoch 13 (average epoch stats below)
+2025-10-13 22:45:52 | INFO | train | epoch 013 | loss 1.021 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 2.03 | wps 1774.8 | ups 26.83 | wpb 66.2 | bsz 8 | num_updates 3731 | lr 0.001 | gnorm 2.173 | train_wall 4 | wall 139
+2025-10-13 22:45:52 | INFO | fairseq.trainer | begin training epoch 14
+2025-10-13 22:45:53 | INFO | train_inner | epoch 014:     69 / 287 loss=0.988, sample_size=68.27, nsentences=8, ntokens=68.27, ppl=1.98, wps=823.7, ups=12.07, wpb=68.3, bsz=8, num_updates=3800, lr=0.001, gnorm=2.127, train_wall=1, wall=141
+2025-10-13 22:45:55 | INFO | train_inner | epoch 014:    169 / 287 loss=1.017, sample_size=66.83, nsentences=8, ntokens=66.83, ppl=2.02, wps=4207.7, ups=62.96, wpb=66.8, bsz=8, num_updates=3900, lr=0.001, gnorm=2.043, train_wall=2, wall=143
+2025-10-13 22:45:56 | INFO | train_inner | epoch 014:    269 / 287 loss=0.954, sample_size=63.78, nsentences=8, ntokens=63.78, ppl=1.94, wps=5220.9, ups=81.86, wpb=63.8, bsz=8, num_updates=4000, lr=0.001, gnorm=2.049, train_wall=1, wall=144
+2025-10-13 22:45:56 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:46:02 | INFO | valid | epoch 014 | valid on 'valid' subset | loss 1.129 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.19 | wps 467.5 | wpb 64.6 | bsz 7.9 | num_updates 4018 | best_loss 1.123
+2025-10-13 22:46:02 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:46:02 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint14.pt (epoch 14 @ 4018 updates, score 1.129) (writing took 0.008638416999019682 seconds)
+2025-10-13 22:46:02 | INFO | fairseq_cli.train | end of epoch 14 (average epoch stats below)
+2025-10-13 22:46:02 | INFO | train | epoch 014 | loss 0.976 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 1.97 | wps 1775.8 | ups 26.84 | wpb 66.2 | bsz 8 | num_updates 4018 | lr 0.001 | gnorm 2.062 | train_wall 3 | wall 150
+2025-10-13 22:46:02 | INFO | fairseq.trainer | begin training epoch 15
+2025-10-13 22:46:04 | INFO | train_inner | epoch 015:     82 / 287 loss=0.926, sample_size=65.31, nsentences=8, ntokens=65.31, ppl=1.9, wps=800.7, ups=12.26, wpb=65.3, bsz=8, num_updates=4100, lr=0.001, gnorm=2.099, train_wall=1, wall=152
+2025-10-13 22:46:06 | INFO | train_inner | epoch 015:    182 / 287 loss=0.889, sample_size=67.9, nsentences=8, ntokens=67.9, ppl=1.85, wps=4898.8, ups=72.15, wpb=67.9, bsz=8, num_updates=4200, lr=0.001, gnorm=2.108, train_wall=1, wall=153
+2025-10-13 22:46:07 | INFO | train_inner | epoch 015:    282 / 287 loss=1.088, sample_size=65.14, nsentences=8, ntokens=65.14, ppl=2.13, wps=5132.4, ups=78.79, wpb=65.1, bsz=8, num_updates=4300, lr=0.001, gnorm=2.251, train_wall=1, wall=155
+2025-10-13 22:46:07 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:46:13 | INFO | valid | epoch 015 | valid on 'valid' subset | loss 1.084 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.12 | wps 467.6 | wpb 64.6 | bsz 7.9 | num_updates 4305 | best_loss 1.084
+2025-10-13 22:46:13 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:46:13 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint15.pt (epoch 15 @ 4305 updates, score 1.084) (writing took 0.009082125005079433 seconds)
+2025-10-13 22:46:13 | INFO | fairseq_cli.train | end of epoch 15 (average epoch stats below)
+2025-10-13 22:46:13 | INFO | train | epoch 015 | loss 0.963 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 1.95 | wps 1770.1 | ups 26.75 | wpb 66.2 | bsz 8 | num_updates 4305 | lr 0.001 | gnorm 2.154 | train_wall 4 | wall 161
+2025-10-13 22:46:13 | INFO | fairseq.trainer | begin training epoch 16
+2025-10-13 22:46:15 | INFO | train_inner | epoch 016:     95 / 287 loss=0.888, sample_size=67.87, nsentences=8, ntokens=67.87, ppl=1.85, wps=846.7, ups=12.48, wpb=67.9, bsz=8, num_updates=4400, lr=0.001, gnorm=2.05, train_wall=1, wall=163
+2025-10-13 22:46:17 | INFO | train_inner | epoch 016:    195 / 287 loss=0.94, sample_size=67.28, nsentences=8, ntokens=67.28, ppl=1.92, wps=4455.1, ups=66.22, wpb=67.3, bsz=8, num_updates=4500, lr=0.001, gnorm=2.187, train_wall=1, wall=164
+2025-10-13 22:46:17 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:46:23 | INFO | valid | epoch 016 | valid on 'valid' subset | loss 1.18 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.27 | wps 462.9 | wpb 64.6 | bsz 7.9 | num_updates 4592 | best_loss 1.084
+2025-10-13 22:46:23 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:46:23 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint16.pt (epoch 16 @ 4592 updates, score 1.18) (writing took 0.007153916987590492 seconds)
+2025-10-13 22:46:23 | INFO | fairseq_cli.train | end of epoch 16 (average epoch stats below)
+2025-10-13 22:46:23 | INFO | train | epoch 016 | loss 0.923 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 1.9 | wps 1849.4 | ups 27.95 | wpb 66.2 | bsz 8 | num_updates 4592 | lr 0.001 | gnorm 2.145 | train_wall 3 | wall 171
+2025-10-13 22:46:23 | INFO | fairseq.trainer | begin training epoch 17
+2025-10-13 22:46:24 | INFO | train_inner | epoch 017:      8 / 287 loss=0.933, sample_size=62.82, nsentences=8, ntokens=62.82, ppl=1.91, wps=795.4, ups=12.66, wpb=62.8, bsz=8, num_updates=4600, lr=0.001, gnorm=2.238, train_wall=1, wall=172
+2025-10-13 22:46:26 | INFO | train_inner | epoch 017:    108 / 287 loss=0.853, sample_size=66.03, nsentences=8, ntokens=66.03, ppl=1.81, wps=4305.3, ups=65.2, wpb=66, bsz=8, num_updates=4700, lr=0.001, gnorm=1.993, train_wall=1, wall=174
+2025-10-13 22:46:27 | INFO | train_inner | epoch 017:    208 / 287 loss=0.902, sample_size=68.44, nsentences=8, ntokens=68.44, ppl=1.87, wps=5537.1, ups=80.9, wpb=68.4, bsz=8, num_updates=4800, lr=0.001, gnorm=2.11, train_wall=1, wall=175
+2025-10-13 22:46:28 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:46:34 | INFO | valid | epoch 017 | valid on 'valid' subset | loss 1.105 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.15 | wps 467.8 | wpb 64.6 | bsz 7.9 | num_updates 4879 | best_loss 1.084
+2025-10-13 22:46:34 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:46:34 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint17.pt (epoch 17 @ 4879 updates, score 1.105) (writing took 0.008216041984269395 seconds)
+2025-10-13 22:46:34 | INFO | fairseq_cli.train | end of epoch 17 (average epoch stats below)
+2025-10-13 22:46:34 | INFO | train | epoch 017 | loss 0.885 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 1.85 | wps 1805.1 | ups 27.28 | wpb 66.2 | bsz 8 | num_updates 4879 | lr 0.001 | gnorm 2.11 | train_wall 3 | wall 181
+2025-10-13 22:46:34 | INFO | fairseq.trainer | begin training epoch 18
+2025-10-13 22:46:35 | INFO | train_inner | epoch 018:     21 / 287 loss=0.851, sample_size=64.01, nsentences=8, ntokens=64.01, ppl=1.8, wps=810, ups=12.65, wpb=64, bsz=8, num_updates=4900, lr=0.001, gnorm=2.115, train_wall=1, wall=183
+2025-10-13 22:46:36 | INFO | train_inner | epoch 018:    121 / 287 loss=0.882, sample_size=63.73, nsentences=8, ntokens=63.73, ppl=1.84, wps=6898, ups=108.24, wpb=63.7, bsz=8, num_updates=5000, lr=0.001, gnorm=2.22, train_wall=1, wall=184
+2025-10-13 22:46:37 | INFO | train_inner | epoch 018:    221 / 287 loss=0.895, sample_size=67.29, nsentences=8, ntokens=67.29, ppl=1.86, wps=6462.6, ups=96.04, wpb=67.3, bsz=8, num_updates=5100, lr=0.001, gnorm=2.355, train_wall=1, wall=185
+2025-10-13 22:46:38 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:46:44 | INFO | valid | epoch 018 | valid on 'valid' subset | loss 1.121 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.17 | wps 461.7 | wpb 64.6 | bsz 7.9 | num_updates 5166 | best_loss 1.084
+2025-10-13 22:46:44 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:46:44 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint18.pt (epoch 18 @ 5166 updates, score 1.121) (writing took 0.006083332991693169 seconds)
+2025-10-13 22:46:44 | INFO | fairseq_cli.train | end of epoch 18 (average epoch stats below)
+2025-10-13 22:46:44 | INFO | train | epoch 018 | loss 0.88 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 1.84 | wps 1867.2 | ups 28.22 | wpb 66.2 | bsz 8 | num_updates 5166 | lr 0.001 | gnorm 2.229 | train_wall 3 | wall 192
+2025-10-13 22:46:44 | INFO | fairseq.trainer | begin training epoch 19
+2025-10-13 22:46:45 | INFO | train_inner | epoch 019:     34 / 287 loss=0.951, sample_size=68.56, nsentences=8, ntokens=68.56, ppl=1.93, wps=822.5, ups=12, wpb=68.6, bsz=8, num_updates=5200, lr=0.001, gnorm=2.17, train_wall=1, wall=193
+2025-10-13 22:46:47 | INFO | train_inner | epoch 019:    134 / 287 loss=0.876, sample_size=66.44, nsentences=8, ntokens=66.44, ppl=1.84, wps=4942, ups=74.38, wpb=66.4, bsz=8, num_updates=5300, lr=0.001, gnorm=2.279, train_wall=1, wall=194
+2025-10-13 22:46:48 | INFO | train_inner | epoch 019:    234 / 287 loss=0.793, sample_size=63.5, nsentences=8, ntokens=63.5, ppl=1.73, wps=5816, ups=91.59, wpb=63.5, bsz=8, num_updates=5400, lr=0.001, gnorm=2.092, train_wall=1, wall=195
+2025-10-13 22:46:49 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:46:55 | INFO | valid | epoch 019 | valid on 'valid' subset | loss 1.147 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.21 | wps 467.6 | wpb 64.6 | bsz 7.9 | num_updates 5453 | best_loss 1.084
+2025-10-13 22:46:55 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:46:55 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint19.pt (epoch 19 @ 5453 updates, score 1.147) (writing took 0.008925832982640713 seconds)
+2025-10-13 22:46:55 | INFO | fairseq_cli.train | end of epoch 19 (average epoch stats below)
+2025-10-13 22:46:55 | INFO | train | epoch 019 | loss 0.869 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 1.83 | wps 1771.9 | ups 26.78 | wpb 66.2 | bsz 8 | num_updates 5453 | lr 0.001 | gnorm 2.171 | train_wall 3 | wall 202
+2025-10-13 22:46:55 | INFO | fairseq.trainer | begin training epoch 20
+2025-10-13 22:46:56 | INFO | train_inner | epoch 020:     47 / 287 loss=0.89, sample_size=67.11, nsentences=8, ntokens=67.11, ppl=1.85, wps=803.4, ups=11.97, wpb=67.1, bsz=8, num_updates=5500, lr=0.001, gnorm=2.049, train_wall=1, wall=204
+2025-10-13 22:46:57 | INFO | train_inner | epoch 020:    147 / 287 loss=0.83, sample_size=65.78, nsentences=8, ntokens=65.78, ppl=1.78, wps=7046.5, ups=107.12, wpb=65.8, bsz=8, num_updates=5600, lr=0.001, gnorm=2.115, train_wall=1, wall=205
+2025-10-13 22:46:58 | INFO | train_inner | epoch 020:    247 / 287 loss=0.819, sample_size=63.84, nsentences=8, ntokens=63.84, ppl=1.76, wps=4777.2, ups=74.83, wpb=63.8, bsz=8, num_updates=5700, lr=0.001, gnorm=2.209, train_wall=1, wall=206
+2025-10-13 22:46:59 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2025-10-13 22:47:05 | INFO | valid | epoch 020 | valid on 'valid' subset | loss 1.127 | sample_size 64.5676 | nsentences 7.86486 | ntokens 64.5676 | ppl 2.18 | wps 462.4 | wpb 64.6 | bsz 7.9 | num_updates 5740 | best_loss 1.084
+2025-10-13 22:47:05 | INFO | fairseq_cli.train | begin save checkpoint
+2025-10-13 22:47:05 | INFO | fairseq.checkpoint_utils | saved checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/checkpoint20.pt (epoch 20 @ 5740 updates, score 1.127) (writing took 0.004345791996456683 seconds)
+2025-10-13 22:47:05 | INFO | fairseq_cli.train | end of epoch 20 (average epoch stats below)
+2025-10-13 22:47:05 | INFO | train | epoch 020 | loss 0.838 | sample_size 66.1603 | nsentences 8 | ntokens 66.1603 | ppl 1.79 | wps 1821.7 | ups 27.54 | wpb 66.2 | bsz 8 | num_updates 5740 | lr 0.001 | gnorm 2.105 | train_wall 3 | wall 213
+2025-10-13 22:47:05 | INFO | fairseq_cli.train | done training in 212.3 seconds
+--------- SELECTING BEST CHECKPOINT
+checkpoint_best.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint_last.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint1.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint10.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint11.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint12.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint13.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint14.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint15.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint16.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint17.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint18.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint19.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint2.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint20.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint3.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint4.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint5.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint6.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint7.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint8.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+checkpoint9.pt, es-pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+Best by mean: checkpoint1.pt
+Best by min: checkpoint1.pt
+Best by all: checkpoint9.pt
+Best by es_pt: checkpoint1.pt
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 41, in main
+    return _main(args, sys.stdout)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+es pt DONE
+NOW EVALUATING --beam 5 --nbest 1
+/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/checkpoint_utils.py:224: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(
+FROM CONFIG luong-general
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/bin/fairseq-generate", line 7, in <module>
+    sys.exit(cli_main())
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 379, in cli_main
+    main(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 39, in main
+    return _main(args, h)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq_cli/generate.py", line 172, in _main
+    scorer = scoring.build_scorer(args, tgt_dict)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/__init__.py", line 54, in build_scorer
+    return _build_scorer(args)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/registry.py", line 54, in build_x
+    return builder(args, *extra_args, **extra_kwargs)
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/bleu.py", line 37, in __init__
+    self.tokenizer = EvaluationTokenizer(
+  File "/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/fairseq/scoring/tokenizer.py", line 34, in __init__
+    from sacrebleu.tokenizers import TOKENIZERS
+ImportError: cannot import name 'TOKENIZERS' from 'sacrebleu.tokenizers' (/Users/ringger/Projects/brendan/SCIMT/venv_copper/lib/python3.10/site-packages/sacrebleu/tokenizers/__init__.py)
+DONE
+   python Pipeline/select_checkpoint.py --dir /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000
+##########################
+# select_checkpoint.py #
+##########################
+Arguments:-
+	-dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000
+------------------------------
+
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/Pipeline/select_checkpoint.py", line 59, in <module>
+    get_checkpoint(args.dir)
+  File "/Users/ringger/Projects/brendan/SCIMT/Pipeline/select_checkpoint.py", line 17, in get_checkpoint
+    for i, (chkpt, src_lang, tgt_lang, score) in enumerate(lines):
+ValueError: not enough values to unpack (expected 4, got 3)

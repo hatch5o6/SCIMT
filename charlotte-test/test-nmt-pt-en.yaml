@@ -1,0 +1,64 @@
+# QuickStart NMT Configuration for pt->en translation with SC augmentation
+# Portuguese to English translation using CharLOTTE methodology
+
+# Outputs
+src: pt
+tgt: en
+save: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/nmt_models/pt-en
+test_checkpoint: best
+remove_special_toks: True
+verbose: False
+little_verbose: True
+
+# Fine-tuning from pretrained (not used for quickstart)
+from_pretrained: null
+
+# Data paths (absolute paths required)
+train_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/nmt_train.csv
+val_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/nmt_val.csv
+test_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/nmt_test.csv
+
+# Data processing
+append_src_token: False
+append_tgt_token: False
+upsample: False
+sc_model_id: es_pt_RNN-default_S-1000
+
+# Tokenizer path (without .model extension)
+spm: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/spm_models/SC_es2pt-pt_en/SC_es2pt-pt_en
+
+# Training configuration (reduced for quick test)
+n_gpus: 1
+seed: 1000
+qos: null
+
+train_batch_size: 16
+val_batch_size: 16
+test_batch_size: 16
+
+early_stop: 5
+save_top_k: 2
+max_epochs: 100
+max_steps: 500
+val_interval: 0.5
+
+learning_rate: 2e-04
+
+device: cuda
+
+# Model architecture (smaller for quick training)
+encoder_layers: 4
+encoder_attention_heads: 4
+encoder_ffn_dim: 1024
+encoder_layerdrop: 0.0
+
+decoder_layers: 4
+decoder_attention_heads: 4
+decoder_ffn_dim: 1024
+decoder_layerdrop: 0.0
+
+max_position_embeddings: 256
+max_length: 256
+d_model: 256
+dropout: 0.1
+activation_function: gelu

@@ -1,0 +1,1395 @@
+Starting train_SC_venv.sh-----------
+Using venv (not conda)
+  Sound venv:  /Users/ringger/Projects/brendan/SCIMT/venv_sound
+  Copper venv: /Users/ringger/Projects/brendan/SCIMT/venv_copper
+Mon Oct 13 22:34:19 MDT 2025
+-------------------------------
+    ###############################################
+#-- #                 1) ARGUMENTS                # --#
+    ###############################################
+Arguments:-
+    MODULE_HOME_DIR=/Users/ringger/Projects/brendan/SCIMT
+
+    SRC=es
+    TGT=pt
+    PARALLEL_TRAIN=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/train.csv
+    PARALLEL_VAL=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/val.csv
+    PARALLEL_TEST=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/test.csv
+    COGNATE_TRAIN=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt
+    NO_GROUPING=true
+    SC_MODEL_TYPE=RNN
+    SEED=1000
+    COGNATE_THRESH=0.5
+    COPPERMT_DATA_DIR=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt
+    COPPERMT_DIR=/Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT
+    PARAMETERS_DIR=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/params_es_pt
+    RNN_HYPERPARAMS=/Users/ringger/Projects/brendan/SCIMT/Pipeline/rnn_hyperparams
+    RNN_HYPERPARAMS_ID=default
+    BEAM=5
+    NBEST=1
+    REVERSE_SRC_TGT_COGNATES=false
+    ADDITIONAL_TRAIN_COGNATES_SRC=null
+    ADDITIONAL_TRAIN_COGNATES_TGT=null
+    VAL_COGNATES_SRC=null
+    VAL_COGNATES_TGT=null
+    TEST_COGNATES_SRC=null
+    TEST_COGNATES_TGT=null
+    COGNATE_TRAIN_RATIO=0.8
+    COGNATE_TEST_RATIO=0.1
+    COGNATE_VAL_RATIO=0.1
+-------------------------------
+
+
+
+
+    ###############################################
+#-- #     2) GET COGNATES FROM PARALLEL DATA      # --#
+    ###############################################
+
+
+######## 2.1 Clear and remake COGNATE_TRAIN dir ########
+removing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000
+creating /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000
+creating /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/cognate
+creating /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign
+
+
+######## 2.2 Gather parallel data from which cognates are extracted ########
+MultilingualDataset READING CSV /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/train.csv
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.es
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.pt
+Making unique: ('es', 'pt')
+	Before unique: 100
+	After unique: 100
+However, we will not use the unique data by pairs.
+(Will use the 'Before unique' dataset sizes)
+DATA MAX_SIZE = 100
+RAW DATA SIZE: 100
+UPSAMPLED SIZE: 100
+RETURNING SRC PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.es']
+RETURNING TGT PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.pt']
+MultilingualDataset TOTAL PAIRS: 100
+MultilingualDataset READING CSV /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/val.csv
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/val.es
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/val.pt
+Making unique: ('es', 'pt')
+	Before unique: 20
+	After unique: 20
+However, we will not use the unique data by pairs.
+(Will use the 'Before unique' dataset sizes)
+DATA MAX_SIZE = 20
+RAW DATA SIZE: 20
+UPSAMPLED SIZE: 20
+RETURNING SRC PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/val.es']
+RETURNING TGT PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/val.pt']
+MultilingualDataset TOTAL PAIRS: 20
+MultilingualDataset READING CSV /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/test.csv
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/test.es
+Reading all lines from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/test.pt
+Making unique: ('es', 'pt')
+	Before unique: 892
+	After unique: 892
+However, we will not use the unique data by pairs.
+(Will use the 'Before unique' dataset sizes)
+DATA MAX_SIZE = 892
+RAW DATA SIZE: 892
+UPSAMPLED SIZE: 892
+RETURNING SRC PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/test.es']
+RETURNING TGT PATHS: ['/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/test.pt']
+MultilingualDataset TOTAL PAIRS: 892
+############################
+# make_SC_training_data.py #
+############################
+Arguments:-
+	-train_csv: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/train.csv
+	-val_csv: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/val.csv
+	-test_csv: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/test.csv
+	-src_out: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/cognate/train.es
+	-tgt_out: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/cognate/train.pt
+	-src: es
+	-tgt: pt
+------------------------------
+
+
+
+######## 2.3 Run Fast Align ########
+
+# 2.3.1 set file path names depending on whether NO_GROUPING is set to true or false. #
+NO_GROUPING has been set to true.
+t/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.txt
+
+# 2.3.2 preparing for fast align #
+prepare_for_fastalign.py REVERSE=false
+###########################
+# prepare_for_fastlign.py #
+###########################
+arguments
+src: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/cognate/train.es'
+tgt: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/cognate/train.pt'
+out: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/es-pt.txt'
+------------------
+
+
+src_tokenize=spacy_tokenize, lang: es
+tgt_tokenize=spacy_tokenize, lang: pt
+  0%|          | 0/1012 [00:00<?, ?it/s] 42%|████▏     | 428/1012 [00:00<00:00, 4271.46it/s]100%|██████████| 1012/1012 [00:00<00:00, 5203.01it/s]
+Writing prepare_for_fastalign.py output to /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/es-pt.txt
+
+
+# 2.3.3 fast_align #
+ARG=i
+ARG=d
+ARG=o
+ARG=v
+INITIAL PASS 
+.
+expected target length = source length * 0.915668
+ITERATION 1
+.
+  log_e likelihood: -548400
+  log_2 likelihood: -791174
+     cross entropy: 29.8974
+        perplexity: 1e+09
+      posterior p0: 0.08
+ posterior al-feat: -0.165662
+       size counts: 455
+ITERATION 2
+.
+  log_e likelihood: -218675
+  log_2 likelihood: -315482
+     cross entropy: 11.9216
+        perplexity: 3879.39
+      posterior p0: 0.118996
+ posterior al-feat: -0.105194
+       size counts: 455
+  1  model al-feat: -0.190097 (tension=4)
+  2  model al-feat: -0.150415 (tension=5.69805)
+  3  model al-feat: -0.134701 (tension=6.60246)
+  4  model al-feat: -0.125972 (tension=7.19259)
+  5  model al-feat: -0.120431 (tension=7.60814)
+  6  model al-feat: -0.116651 (tension=7.91287)
+  7  model al-feat: -0.113953 (tension=8.142)
+  8  model al-feat: -0.111969 (tension=8.31718)
+     final tension: 8.45268
+ITERATION 3
+.
+  log_e likelihood: -119908
+  log_2 likelihood: -172990
+     cross entropy: 6.53706
+        perplexity: 92.8651
+      posterior p0: 0.0775195
+ posterior al-feat: -0.0750886
+       size counts: 455
+  1  model al-feat: -0.110479 (tension=8.45268)
+  2  model al-feat: -0.103276 (tension=9.16049)
+  3  model al-feat: -0.0981562 (tension=9.72424)
+  4  model al-feat: -0.094319 (tension=10.1856)
+  5  model al-feat: -0.0913365 (tension=10.5702)
+  6  model al-feat: -0.0889563 (tension=10.8952)
+  7  model al-feat: -0.0870186 (tension=11.1725)
+  8  model al-feat: -0.0854166 (tension=11.4111)
+     final tension: 11.6177
+ITERATION 4
+.
+  log_e likelihood: -106580
+  log_2 likelihood: -153762
+     cross entropy: 5.81045
+        perplexity: 56.1204
+      posterior p0: 0.0744698
+ posterior al-feat: -0.0664536
+       size counts: 455
+  1  model al-feat: -0.0840756 (tension=11.6177)
+  2  model al-feat: -0.0818804 (tension=11.9701)
+  3  model al-feat: -0.080049 (tension=12.2786)
+  4  model al-feat: -0.0785004 (tension=12.5506)
+  5  model al-feat: -0.0771766 (tension=12.7915)
+  6  model al-feat: -0.0760346 (tension=13.0059)
+  7  model al-feat: -0.075042 (tension=13.1976)
+  8  model al-feat: -0.0741737 (tension=13.3693)
+     final tension: 13.5237
+ITERATION 5 (FINAL)
+.
+  log_e likelihood: -103380
+  log_2 likelihood: -149146
+     cross entropy: 5.63603
+        perplexity: 49.7293
+      posterior p0: 0
+ posterior al-feat: 0
+       size counts: 455
+ARG=i
+ARG=d
+ARG=o
+ARG=v
+ARG=r
+INITIAL PASS 
+.
+expected target length = source length * 1.11834
+ITERATION 1
+.
+  log_e likelihood: -606383
+  log_2 likelihood: -874826
+     cross entropy: 29.8974
+        perplexity: 1e+09
+      posterior p0: 0.08
+ posterior al-feat: -0.165269
+       size counts: 455
+ITERATION 2
+.
+  log_e likelihood: -228181
+  log_2 likelihood: -329195
+     cross entropy: 11.2503
+        perplexity: 2436.01
+      posterior p0: 0.122469
+ posterior al-feat: -0.101555
+       size counts: 455
+  1  model al-feat: -0.155077 (tension=4)
+  2  model al-feat: -0.133928 (tension=5.07043)
+  3  model al-feat: -0.123269 (tension=5.71788)
+  4  model al-feat: -0.116893 (tension=6.15216)
+  5  model al-feat: -0.112725 (tension=6.45891)
+  6  model al-feat: -0.109851 (tension=6.68231)
+  7  model al-feat: -0.1078 (tension=6.84822)
+  8  model al-feat: -0.1063 (tension=6.97311)
+     final tension: 7.06801
+ITERATION 3
+.
+  log_e likelihood: -127284
+  log_2 likelihood: -183632
+     cross entropy: 6.27566
+        perplexity: 77.4749
+      posterior p0: 0.0815847
+ posterior al-feat: -0.0766811
+       size counts: 455
+  1  model al-feat: -0.105186 (tension=7.06801)
+  2  model al-feat: -0.0989148 (tension=7.63811)
+  3  model al-feat: -0.0944825 (tension=8.08279)
+  4  model al-feat: -0.091192 (tension=8.43881)
+  5  model al-feat: -0.0886646 (tension=8.72903)
+  6  model al-feat: -0.0866749 (tension=8.9687)
+  7  model al-feat: -0.0850791 (tension=9.16858)
+  8  model al-feat: -0.0837806 (tension=9.33654)
+     final tension: 9.47853
+ITERATION 4
+.
+  log_e likelihood: -113694
+  log_2 likelihood: -164025
+     cross entropy: 5.6056
+        perplexity: 48.6915
+      posterior p0: 0.079268
+ posterior al-feat: -0.0669957
+       size counts: 455
+  1  model al-feat: -0.0827119 (tension=9.47853)
+  2  model al-feat: -0.0804361 (tension=9.79286)
+  3  model al-feat: -0.0785827 (tension=10.0617)
+  4  model al-feat: -0.0770494 (tension=10.2934)
+  5  model al-feat: -0.0757647 (tension=10.4945)
+  6  model al-feat: -0.0746774 (tension=10.6699)
+  7  model al-feat: -0.0737493 (tension=10.8235)
+  8  model al-feat: -0.0729515 (tension=10.9586)
+     final tension: 11.0777
+ITERATION 5 (FINAL)
+.
+  log_e likelihood: -110056
+  log_2 likelihood: -158778
+     cross entropy: 5.42625
+        perplexity: 42.9996
+      posterior p0: 0
+ posterior al-feat: 0
+       size counts: 455
+
+
+######## 2.4 Get Cognates ########
+
+# 2.4.1 make word alignments #
+NO_GROUPING=true: running make_word_alignments_no_grouping.py
+make_word_alignments_no_grouping.py
+arguments:
+	alignments: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/es-pt.sym.align'
+	sent_pairs: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/es-pt.txt'
+	out: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.txt'
+	VERBOSE: 'False'
+	STOP: 'None'
+---------------------
+
+
+  0%|          | 0/1012 [00:00<?, ?it/s]100%|██████████| 1012/1012 [00:00<00:00, 81718.76it/s]
+0 sentence pairs have a NBSP
+
+# 2.4.2 Get cognates from word list #
+make_cognate_list.py REVERSE=false
+make_cognate_list.py
+arguments
+	word_list: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.txt
+	out: None
+	theta: 0.5
+	src: es
+	tgt: pt
+-------------------
+
+
+- FOUND 3019 COGNATES -
+
+
+
+
+    ###############################################
+#-- #      3) TRAIN SC MODEL WITH COPPER MT       # --#
+    ###############################################
+
+
+######## 3.1 Make cognate prediction training, validation, and test sets ########
+
+# 3.1 if needed, make dataset splits #
+Splitting cognate data /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.txt, /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.txt
+    (train:val:test) 0.8:0.1:0.1
+############
+# split.py #
+############
+Arguments:
+	- data1: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.txt
+	- data2: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.txt
+	- train: 0.8
+	- val: 0.1
+	- test: 0.1
+	- seed: 1000
+	- out_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign
+	- UNIQUE_TEST: True
+----------------------
+
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.train-s=1000.txt
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.val-s=1000.txt
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.test-s=1000.txt
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.train-s=1000.txt
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.val-s=1000.txt
+Creating file /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.test-s=1000.txt
+asserting split occurred correctly
+	it passed :)
+MAKING TEST SOURCE-SIDE UNIQUE
+
+# 3.1.2 Include ADDITIONAL_TRAIN_COGNATES_SRC and ADDITIONAL_TRAIN_COGNATES_TGT in train set file paths #
+
+# 3.1.3 Print out files for train, validation, and test sets #
+Cognate training data for format_data.py is as follows:
+    TRAIN_COGNATES_SRC=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.train-s=1000.txt
+    TRAIN_COGNATES_TGT=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.train-s=1000.txt
+    VAL_COGNATES_SRC=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.val-s=1000.txt
+    VAL_COGNATES_TGT=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.val-s=1000.txt
+    TEST_COGNATES_SRC=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.test-s=1000.txt
+    TEST_COGNATES_TGT=/Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.test-s=1000.txt
+
+
+
+######## 3.2 Train CopperMT cognate prediction model ########
+
+# 3.2.1 make directory structure for CopperMT inputs and outputs #
+COPPER_DIR: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000
+
+creating /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000
+
+# 3.2.2 Copy the RNN hyperparams set file, corresponding to RNN_HYPERPARAMS_ID, to its place in the COPPERMT inputs/outputs folder #
+###########################
+# copy_rnn_hyperparams.py #
+###########################
+Arguments:-
+	-rnn_hyperparam_id: default
+	-rnn_hyperparams_dir: /Users/ringger/Projects/brendan/SCIMT/Pipeline/rnn_hyperparams
+	-copy_to_path: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/parameters/bilingual_default/default_parameters_rnn_es-pt.txt
+------------------------------
+
+Copying /Users/ringger/Projects/brendan/SCIMT/Pipeline/rnn_hyperparams/default.txt to /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/parameters/bilingual_default/default_parameters_rnn_es-pt.txt
+
+# 3.2.3 Format the cognate train, val, test data for CopperMT #
+
+##################
+# format_data.py #
+##################
+Arguments:-
+	-src_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.train-s=1000.txt
+	-tgt_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.train-s=1000.txt
+	-src: es
+	-tgt: pt
+	-out_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt
+	-prefix: train
+	-seed: 1000
+	-EXCLUDE_SRC: 
+	-EXCLUDE_TGT: 
+------------------------------
+
+EXCLUDE_SRC: []
+EXCLUDE_TGT: []
+BEFORE UNIQUE: 2415
+AFTER UNIQUE: 2415
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.es
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.pt
+
+##################
+# format_data.py #
+##################
+Arguments:-
+	-src_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.val-s=1000.txt
+	-tgt_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.val-s=1000.txt
+	-src: es
+	-tgt: pt
+	-out_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt
+	-prefix: fine_tune
+	-seed: 1000
+	-EXCLUDE_SRC: 
+	-EXCLUDE_TGT: 
+------------------------------
+
+EXCLUDE_SRC: []
+EXCLUDE_TGT: []
+BEFORE UNIQUE: 302
+AFTER UNIQUE: 302
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.es
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.pt
+
+##################
+# format_data.py #
+##################
+Arguments:-
+	-src_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-es.test-s=1000.txt
+	-tgt_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/cognates_es_pt_RNN-default_S-1000/fastalign/word_list.es-pt.NG.cognates.0.5.parallel-pt.test-s=1000.txt
+	-src: es
+	-tgt: pt
+	-out_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt
+	-prefix: test
+	-seed: 1000
+	-EXCLUDE_SRC: 
+	-EXCLUDE_TGT: 
+------------------------------
+
+EXCLUDE_SRC: []
+EXCLUDE_TGT: []
+BEFORE UNIQUE: 297
+AFTER UNIQUE: 297
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt.es
+writing /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt.pt
+
+# 3.2.4 Assert there is no overlap of src and tgt segments (words) between the cognate prediction train / dev / test data #
+--First, will remove any existing overlap (and test)--
+########################
+# assert_no_overlap.py #
+########################
+Arguments:--------
+--format_out_dir=`/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000`
+--src=`es`
+--tgt=`pt`
+--TEST_ONLY=`False`
+
+------------------
+
+
+FORMATTED DATA: Will remove overlap and then test.
+First removing the overlap between train / fine_tune / test
+REDUCTIONS:
+	-      TEST: 2415 > 2296
+	- FINE_TUNE: 302 > 291
+	-      TEST: 297 = 297
+Now testing that there is no overlap
+
+TRAIN PAIR
+	(1) -`('3 6', '3 6')`
+	(2) -`('u r g e n t e s', 'u r g e n t e')`
+	(3) -`('t a b l a', 't á b u a')`
+	(4) -`('p e r m i t í a n', 'p e r m i t i a')`
+	(5) -`('o s o s', 'u r s o s')`
+	(6) -`('a c t i v a s', 'a t i v a s')`
+	(7) -`('J e s u c r i s t o', 'J e s u s')`
+	(8) -`('s i m p l e s', 's i m p l e s')`
+	(9) -`('J a m e s', 'J a m e s')`
+	(10) -`('c o n s u l t a r', 'c o n s u l t e')`
+	(11) -`('O r i e n t e', 'O r i e n t e')`
+	(12) -`('s e x o', 's e x o')`
+	(13) -`('j u s t i c i a', 'j u s t i ç a')`
+	(14) -`('d i s c u r s o', 'D i s c u r s o')`
+	(15) -`('E s t a d o s', 'E s t a d o s')`
+	(16) -`('a n t í l o p e s', 'a n t í l o p e s')`
+	(17) -`('c o m p u t a d o r a s', 'c o m p u t a d o r e s')`
+	(18) -`('e s t a c i ó n', 'e s t a ç ã o')`
+	(19) -`('e x t r e m a d a m e n t e', 'e x t r e m a m e n t e')`
+	(20) -`('s u p e r f i c i a l e s', 's u p e r f i c i a i s')`
+	(21) -`('s a b e n', 's a b e m')`
+
+DEV PAIR
+	(1) -`('t r i d i m e n s i o n a l', 't r i d i m e n s i o n a l')`
+	(2) -`('s a b á t i c o', 's a b á t i c o')`
+	(3) -`('a r r a s t r a d o', 'a r r a s t a d o')`
+	(4) -`('m e n o r', 'm e n o r')`
+	(5) -`('o f i c i a l e s', 'o f i c i a i s')`
+	(6) -`('e n t r e n a m i e n t o', 't r e i n a m e n t o')`
+	(7) -`('M e t r o', 'm e t r ô')`
+	(8) -`('p e q u e ñ o s', 'p e q u e n o s')`
+	(9) -`('N o o r', 'N o o r')`
+	(10) -`('g u e p a r d o s', 'g u e p a r d o s')`
+	(11) -`('e x p u l s e n', 'e x p u l s o')`
+	(12) -`('c o m p a r t e', 'c o m p a r t i l h a m')`
+	(13) -`('m a d e r a', 'm a d e i r a')`
+	(14) -`('M u c h o s', 'M u i t a s')`
+	(15) -`('c o n v e n c i ó n', 'c o n v e n ç ã o')`
+	(16) -`('s u b c u l t u r a s', 's u b c u l t u r a s')`
+	(17) -`('f i l t r o s', 'f i l t r o s')`
+	(18) -`('h o s t i l i d a d e s', 'h o s t i l i d a d e s')`
+	(19) -`('r e p r e s e n t a c i ó n', 'r e p r e s e n t a d o s')`
+	(20) -`('e s q u i a d o r', 'e s q u i a d o r')`
+	(21) -`('b i n a r i o', 'b i n á r i o s')`
+
+TEST PAIR
+	(1) -`('t e c n o l o g í a s', 't e c n o l o g i a s')`
+	(2) -`('e s q u í', 'e s q u i a r')`
+	(3) -`('3 , 5', '3 , 5 0')`
+	(4) -`('a t ú n', 'a t u m')`
+	(5) -`('a y u d ó', 'a j u d o u')`
+	(6) -`('R u s i a', 'R ú s s i a')`
+	(7) -`('b e b i d a', 'c o m i d a')`
+	(8) -`('g', 'g')`
+	(9) -`('i n t e n t a r', 't e n t a r')`
+	(10) -`('p a s a d o', 'p a s s a d o')`
+	(11) -`('v a r i a c i ó n', 'v a r i a ç ã o')`
+	(12) -`('O t t a w a', 'O t t a w a')`
+	(13) -`('m u s e o s', 'm u s e u s')`
+	(14) -`('s u b t r ó p i c o s', 's u b t r o p i c a l')`
+	(15) -`('p á j a r o s', 'p á s s a r o s')`
+	(16) -`('1 8 9 5', '1 8 9 5')`
+	(17) -`('r e c u p e r a r', 'r e c u p e r o u')`
+	(18) -`('m u n d a n a', 'm u n d a n a')`
+	(19) -`('e s t e', 'd e s s e')`
+	(20) -`('a s o c i a d o s', 'r e l a c i o n a d o s')`
+	(21) -`('s o l e m n i d a d', 's o l e n i d a d e')`
+PAIR intersection
+	len: 0 []
+PAIR train-dev intersection
+	len: 0 []
+PAIR train-test intersection
+	len: 0 []
+PAIR dev-test intersection
+	len: 0 []
+
+TRAIN SRC
+	(1) -`3 6`
+	(2) -`u r g e n t e s`
+	(3) -`t a b l a`
+	(4) -`p e r m i t í a n`
+	(5) -`o s o s`
+	(6) -`a c t i v a s`
+	(7) -`J e s u c r i s t o`
+	(8) -`s i m p l e s`
+	(9) -`J a m e s`
+	(10) -`c o n s u l t a r`
+	(11) -`O r i e n t e`
+	(12) -`s e x o`
+	(13) -`j u s t i c i a`
+	(14) -`d i s c u r s o`
+	(15) -`E s t a d o s`
+	(16) -`a n t í l o p e s`
+	(17) -`c o m p u t a d o r a s`
+	(18) -`e s t a c i ó n`
+	(19) -`e x t r e m a d a m e n t e`
+	(20) -`s u p e r f i c i a l e s`
+	(21) -`s a b e n`
+
+DEV SRC
+	(1) -`t r i d i m e n s i o n a l`
+	(2) -`s a b á t i c o`
+	(3) -`a r r a s t r a d o`
+	(4) -`m e n o r`
+	(5) -`o f i c i a l e s`
+	(6) -`e n t r e n a m i e n t o`
+	(7) -`M e t r o`
+	(8) -`p e q u e ñ o s`
+	(9) -`N o o r`
+	(10) -`g u e p a r d o s`
+	(11) -`e x p u l s e n`
+	(12) -`c o m p a r t e`
+	(13) -`m a d e r a`
+	(14) -`M u c h o s`
+	(15) -`c o n v e n c i ó n`
+	(16) -`s u b c u l t u r a s`
+	(17) -`f i l t r o s`
+	(18) -`h o s t i l i d a d e s`
+	(19) -`r e p r e s e n t a c i ó n`
+	(20) -`e s q u i a d o r`
+	(21) -`b i n a r i o`
+
+TEST SRC
+	(1) -`t e c n o l o g í a s`
+	(2) -`e s q u í`
+	(3) -`3 , 5`
+	(4) -`a t ú n`
+	(5) -`a y u d ó`
+	(6) -`R u s i a`
+	(7) -`b e b i d a`
+	(8) -`g`
+	(9) -`i n t e n t a r`
+	(10) -`p a s a d o`
+	(11) -`v a r i a c i ó n`
+	(12) -`O t t a w a`
+	(13) -`m u s e o s`
+	(14) -`s u b t r ó p i c o s`
+	(15) -`p á j a r o s`
+	(16) -`1 8 9 5`
+	(17) -`r e c u p e r a r`
+	(18) -`m u n d a n a`
+	(19) -`e s t e`
+	(20) -`a s o c i a d o s`
+	(21) -`s o l e m n i d a d`
+SRC intersection
+	len: 0 []
+SRC train-dev intersection
+	len: 0 []
+SRC train-test intersection
+	len: 0 []
+SRC dev-test intersection
+	len: 0 []
+
+TRAIN TGT
+	(1) -`3 6`
+	(2) -`u r g e n t e`
+	(3) -`t á b u a`
+	(4) -`p e r m i t i a`
+	(5) -`u r s o s`
+	(6) -`a t i v a s`
+	(7) -`J e s u s`
+	(8) -`s i m p l e s`
+	(9) -`J a m e s`
+	(10) -`c o n s u l t e`
+	(11) -`O r i e n t e`
+	(12) -`s e x o`
+	(13) -`j u s t i ç a`
+	(14) -`D i s c u r s o`
+	(15) -`E s t a d o s`
+	(16) -`a n t í l o p e s`
+	(17) -`c o m p u t a d o r e s`
+	(18) -`e s t a ç ã o`
+	(19) -`e x t r e m a m e n t e`
+	(20) -`s u p e r f i c i a i s`
+	(21) -`s a b e m`
+
+DEV TGT
+	(1) -`t r i d i m e n s i o n a l`
+	(2) -`s a b á t i c o`
+	(3) -`a r r a s t a d o`
+	(4) -`m e n o r`
+	(5) -`o f i c i a i s`
+	(6) -`t r e i n a m e n t o`
+	(7) -`m e t r ô`
+	(8) -`p e q u e n o s`
+	(9) -`N o o r`
+	(10) -`g u e p a r d o s`
+	(11) -`e x p u l s o`
+	(12) -`c o m p a r t i l h a m`
+	(13) -`m a d e i r a`
+	(14) -`M u i t a s`
+	(15) -`c o n v e n ç ã o`
+	(16) -`s u b c u l t u r a s`
+	(17) -`f i l t r o s`
+	(18) -`h o s t i l i d a d e s`
+	(19) -`r e p r e s e n t a d o s`
+	(20) -`e s q u i a d o r`
+	(21) -`b i n á r i o s`
+
+TEST TGT
+	(1) -`t e c n o l o g i a s`
+	(2) -`e s q u i a r`
+	(3) -`3 , 5 0`
+	(4) -`a t u m`
+	(5) -`a j u d o u`
+	(6) -`R ú s s i a`
+	(7) -`c o m i d a`
+	(8) -`g`
+	(9) -`t e n t a r`
+	(10) -`p a s s a d o`
+	(11) -`v a r i a ç ã o`
+	(12) -`O t t a w a`
+	(13) -`m u s e u s`
+	(14) -`s u b t r o p i c a l`
+	(15) -`p á s s a r o s`
+	(16) -`1 8 9 5`
+	(17) -`r e c u p e r o u`
+	(18) -`m u n d a n a`
+	(19) -`d e s s e`
+	(20) -`r e l a c i o n a d o s`
+	(21) -`s o l e n i d a d e`
+TGT intersection
+	len: 0 []
+TGT train-dev intersection
+	len: 0 []
+TGT train-test intersection
+	len: 0 []
+TGT dev-test intersection
+	len: 0 []
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+passed!
+
+
+OVERLAP IN FORMATTED COGNATE DATA:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+	Test passed :)
+Now we have proven there is no overlap, writing the new train and fine_tune_files
+Overwriting /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.es with overlap removed
+Overwriting /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.pt with overlap removed
+Overwriting /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.es with overlap removed
+Overwriting /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.pt with overlap removed
+--Now, will simply test for good measure--
+########################
+# assert_no_overlap.py #
+########################
+Arguments:--------
+--format_out_dir=`/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000`
+--src=`es`
+--tgt=`pt`
+--TEST_ONLY=`True`
+
+------------------
+
+
+FORMATTED DATA: testing no overlap ONLY:
+
+TRAIN PAIR
+	(1) -`('3 6', '3 6')`
+	(2) -`('u r g e n t e s', 'u r g e n t e')`
+	(3) -`('t a b l a', 't á b u a')`
+	(4) -`('p e r m i t í a n', 'p e r m i t i a')`
+	(5) -`('o s o s', 'u r s o s')`
+	(6) -`('a c t i v a s', 'a t i v a s')`
+	(7) -`('J e s u c r i s t o', 'J e s u s')`
+	(8) -`('s i m p l e s', 's i m p l e s')`
+	(9) -`('J a m e s', 'J a m e s')`
+	(10) -`('c o n s u l t a r', 'c o n s u l t e')`
+	(11) -`('O r i e n t e', 'O r i e n t e')`
+	(12) -`('s e x o', 's e x o')`
+	(13) -`('j u s t i c i a', 'j u s t i ç a')`
+	(14) -`('d i s c u r s o', 'D i s c u r s o')`
+	(15) -`('E s t a d o s', 'E s t a d o s')`
+	(16) -`('a n t í l o p e s', 'a n t í l o p e s')`
+	(17) -`('c o m p u t a d o r a s', 'c o m p u t a d o r e s')`
+	(18) -`('e s t a c i ó n', 'e s t a ç ã o')`
+	(19) -`('e x t r e m a d a m e n t e', 'e x t r e m a m e n t e')`
+	(20) -`('s u p e r f i c i a l e s', 's u p e r f i c i a i s')`
+	(21) -`('s a b e n', 's a b e m')`
+
+DEV PAIR
+	(1) -`('t r i d i m e n s i o n a l', 't r i d i m e n s i o n a l')`
+	(2) -`('s a b á t i c o', 's a b á t i c o')`
+	(3) -`('a r r a s t r a d o', 'a r r a s t a d o')`
+	(4) -`('m e n o r', 'm e n o r')`
+	(5) -`('o f i c i a l e s', 'o f i c i a i s')`
+	(6) -`('e n t r e n a m i e n t o', 't r e i n a m e n t o')`
+	(7) -`('M e t r o', 'm e t r ô')`
+	(8) -`('p e q u e ñ o s', 'p e q u e n o s')`
+	(9) -`('N o o r', 'N o o r')`
+	(10) -`('g u e p a r d o s', 'g u e p a r d o s')`
+	(11) -`('e x p u l s e n', 'e x p u l s o')`
+	(12) -`('c o m p a r t e', 'c o m p a r t i l h a m')`
+	(13) -`('m a d e r a', 'm a d e i r a')`
+	(14) -`('M u c h o s', 'M u i t a s')`
+	(15) -`('c o n v e n c i ó n', 'c o n v e n ç ã o')`
+	(16) -`('s u b c u l t u r a s', 's u b c u l t u r a s')`
+	(17) -`('f i l t r o s', 'f i l t r o s')`
+	(18) -`('h o s t i l i d a d e s', 'h o s t i l i d a d e s')`
+	(19) -`('r e p r e s e n t a c i ó n', 'r e p r e s e n t a d o s')`
+	(20) -`('e s q u i a d o r', 'e s q u i a d o r')`
+	(21) -`('b i n a r i o', 'b i n á r i o s')`
+
+TEST PAIR
+	(1) -`('t e c n o l o g í a s', 't e c n o l o g i a s')`
+	(2) -`('e s q u í', 'e s q u i a r')`
+	(3) -`('3 , 5', '3 , 5 0')`
+	(4) -`('a t ú n', 'a t u m')`
+	(5) -`('a y u d ó', 'a j u d o u')`
+	(6) -`('R u s i a', 'R ú s s i a')`
+	(7) -`('b e b i d a', 'c o m i d a')`
+	(8) -`('g', 'g')`
+	(9) -`('i n t e n t a r', 't e n t a r')`
+	(10) -`('p a s a d o', 'p a s s a d o')`
+	(11) -`('v a r i a c i ó n', 'v a r i a ç ã o')`
+	(12) -`('O t t a w a', 'O t t a w a')`
+	(13) -`('m u s e o s', 'm u s e u s')`
+	(14) -`('s u b t r ó p i c o s', 's u b t r o p i c a l')`
+	(15) -`('p á j a r o s', 'p á s s a r o s')`
+	(16) -`('1 8 9 5', '1 8 9 5')`
+	(17) -`('r e c u p e r a r', 'r e c u p e r o u')`
+	(18) -`('m u n d a n a', 'm u n d a n a')`
+	(19) -`('e s t e', 'd e s s e')`
+	(20) -`('a s o c i a d o s', 'r e l a c i o n a d o s')`
+	(21) -`('s o l e m n i d a d', 's o l e n i d a d e')`
+PAIR intersection
+	len: 0 []
+PAIR train-dev intersection
+	len: 0 []
+PAIR train-test intersection
+	len: 0 []
+PAIR dev-test intersection
+	len: 0 []
+
+TRAIN SRC
+	(1) -`3 6`
+	(2) -`u r g e n t e s`
+	(3) -`t a b l a`
+	(4) -`p e r m i t í a n`
+	(5) -`o s o s`
+	(6) -`a c t i v a s`
+	(7) -`J e s u c r i s t o`
+	(8) -`s i m p l e s`
+	(9) -`J a m e s`
+	(10) -`c o n s u l t a r`
+	(11) -`O r i e n t e`
+	(12) -`s e x o`
+	(13) -`j u s t i c i a`
+	(14) -`d i s c u r s o`
+	(15) -`E s t a d o s`
+	(16) -`a n t í l o p e s`
+	(17) -`c o m p u t a d o r a s`
+	(18) -`e s t a c i ó n`
+	(19) -`e x t r e m a d a m e n t e`
+	(20) -`s u p e r f i c i a l e s`
+	(21) -`s a b e n`
+
+DEV SRC
+	(1) -`t r i d i m e n s i o n a l`
+	(2) -`s a b á t i c o`
+	(3) -`a r r a s t r a d o`
+	(4) -`m e n o r`
+	(5) -`o f i c i a l e s`
+	(6) -`e n t r e n a m i e n t o`
+	(7) -`M e t r o`
+	(8) -`p e q u e ñ o s`
+	(9) -`N o o r`
+	(10) -`g u e p a r d o s`
+	(11) -`e x p u l s e n`
+	(12) -`c o m p a r t e`
+	(13) -`m a d e r a`
+	(14) -`M u c h o s`
+	(15) -`c o n v e n c i ó n`
+	(16) -`s u b c u l t u r a s`
+	(17) -`f i l t r o s`
+	(18) -`h o s t i l i d a d e s`
+	(19) -`r e p r e s e n t a c i ó n`
+	(20) -`e s q u i a d o r`
+	(21) -`b i n a r i o`
+
+TEST SRC
+	(1) -`t e c n o l o g í a s`
+	(2) -`e s q u í`
+	(3) -`3 , 5`
+	(4) -`a t ú n`
+	(5) -`a y u d ó`
+	(6) -`R u s i a`
+	(7) -`b e b i d a`
+	(8) -`g`
+	(9) -`i n t e n t a r`
+	(10) -`p a s a d o`
+	(11) -`v a r i a c i ó n`
+	(12) -`O t t a w a`
+	(13) -`m u s e o s`
+	(14) -`s u b t r ó p i c o s`
+	(15) -`p á j a r o s`
+	(16) -`1 8 9 5`
+	(17) -`r e c u p e r a r`
+	(18) -`m u n d a n a`
+	(19) -`e s t e`
+	(20) -`a s o c i a d o s`
+	(21) -`s o l e m n i d a d`
+SRC intersection
+	len: 0 []
+SRC train-dev intersection
+	len: 0 []
+SRC train-test intersection
+	len: 0 []
+SRC dev-test intersection
+	len: 0 []
+
+TRAIN TGT
+	(1) -`3 6`
+	(2) -`u r g e n t e`
+	(3) -`t á b u a`
+	(4) -`p e r m i t i a`
+	(5) -`u r s o s`
+	(6) -`a t i v a s`
+	(7) -`J e s u s`
+	(8) -`s i m p l e s`
+	(9) -`J a m e s`
+	(10) -`c o n s u l t e`
+	(11) -`O r i e n t e`
+	(12) -`s e x o`
+	(13) -`j u s t i ç a`
+	(14) -`D i s c u r s o`
+	(15) -`E s t a d o s`
+	(16) -`a n t í l o p e s`
+	(17) -`c o m p u t a d o r e s`
+	(18) -`e s t a ç ã o`
+	(19) -`e x t r e m a m e n t e`
+	(20) -`s u p e r f i c i a i s`
+	(21) -`s a b e m`
+
+DEV TGT
+	(1) -`t r i d i m e n s i o n a l`
+	(2) -`s a b á t i c o`
+	(3) -`a r r a s t a d o`
+	(4) -`m e n o r`
+	(5) -`o f i c i a i s`
+	(6) -`t r e i n a m e n t o`
+	(7) -`m e t r ô`
+	(8) -`p e q u e n o s`
+	(9) -`N o o r`
+	(10) -`g u e p a r d o s`
+	(11) -`e x p u l s o`
+	(12) -`c o m p a r t i l h a m`
+	(13) -`m a d e i r a`
+	(14) -`M u i t a s`
+	(15) -`c o n v e n ç ã o`
+	(16) -`s u b c u l t u r a s`
+	(17) -`f i l t r o s`
+	(18) -`h o s t i l i d a d e s`
+	(19) -`r e p r e s e n t a d o s`
+	(20) -`e s q u i a d o r`
+	(21) -`b i n á r i o s`
+
+TEST TGT
+	(1) -`t e c n o l o g i a s`
+	(2) -`e s q u i a r`
+	(3) -`3 , 5 0`
+	(4) -`a t u m`
+	(5) -`a j u d o u`
+	(6) -`R ú s s i a`
+	(7) -`c o m i d a`
+	(8) -`g`
+	(9) -`t e n t a r`
+	(10) -`p a s s a d o`
+	(11) -`v a r i a ç ã o`
+	(12) -`O t t a w a`
+	(13) -`m u s e u s`
+	(14) -`s u b t r o p i c a l`
+	(15) -`p á s s a r o s`
+	(16) -`1 8 9 5`
+	(17) -`r e c u p e r o u`
+	(18) -`m u n d a n a`
+	(19) -`d e s s e`
+	(20) -`r e l a c i o n a d o s`
+	(21) -`s o l e n i d a d e`
+TGT intersection
+	len: 0 []
+TGT train-dev intersection
+	len: 0 []
+TGT train-test intersection
+	len: 0 []
+TGT dev-test intersection
+	len: 0 []
+TEST RESULTS:
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+passed!
+
+
+{
+  "PAIR_intersection": true,
+  "PAIR_train_dev_intersect": true,
+  "PAIR_train_test_intersect": true,
+  "PAIR_dev_test_intersect": true,
+  "SRC_intersection": true,
+  "SRC_train_dev_intersect": true,
+  "SRC_train_test_intersect": true,
+  "SRC_dev_test_intersect": true,
+  "TGT_intersection": true,
+  "TGT_train_dev_intersect": true,
+  "TGT_train_test_intersect": true,
+  "TGT_dev_test_intersect": true
+}
+PASSED :) -- there is no overlap in the formatted data
+train_SC.sh: PASSED CopperMT/assert_no_overlap_in_formatted_data
+
+# 3.2.5 Log the cognate predition data #
+##########################
+# cognate_dataset_log.py #
+##########################
+Arguments:-
+	-formatted_data_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000
+	-lang_pair: es-pt
+	-LOG_F: cognate_dataset_log_NG=True.json
+------------------------------
+
+logging lang_pair
+logging lang_pair
+logging lang_pair
+
+# 3.2.6 Write the CopperMT parameters file #
+####################
+# write_scripts.py #
+####################
+Arguments:-
+	-src: es
+	-tgt: pt
+	-coppermt_data_dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt
+	-coppermt_dir: /Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT
+	-sc_model_type: RNN
+	-rnn_hyperparams_id: default
+	-seed: 1000
+	-parameters: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/params_es_pt/parameters.es-pt_RNN-default_S-1000.cfg
+------------------------------
+
+
+# 3.2.7 Train the SC model with CopperMT #
+-- Training SC MODEL --
+    TYPE=RNN
+    bash /Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/main_nmt_bilingual_full_brendan.sh /Users/ringger/Projects/brendan/SCIMT/charlotte-test/params_es_pt/parameters.es-pt_RNN-default_S-1000.cfg 1000
+########## main_nmt_bilingual_full_brendan.sh ##########
+WK_DIR /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace
+INPUTS_DIR /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs
+DATA_NAME es_pt
+lang es-pt
+seed 1000
+--------------------------------------------------------
+/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/parameters/bilingual_default /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | Namespace(no_progress_bar=False, log_interval=100, log_format=None, tensorboard_logdir=None, seed=1, cpu=False, tpu=False, bf16=False, memory_efficient_bf16=False, fp16=False, memory_efficient_fp16=False, fp16_no_flatten_grads=False, fp16_init_scale=128, fp16_scale_window=None, fp16_scale_tolerance=0.0, min_loss_scale=0.0001, threshold_loss_scale=None, user_dir=None, empty_cache_freq=0, all_gather_list_size=16384, model_parallel_size=1, checkpoint_suffix='', checkpoint_shard_count=1, quantization_config_path=None, profile=False, criterion='cross_entropy', tokenizer=None, bpe=None, optimizer=None, lr_scheduler='fixed', scoring='bleu', task='multilingual_translation', source_lang='es', target_lang='pt', trainpref='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt', validpref='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt', testpref='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt', align_suffix=None, destdir='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin', thresholdtgt=0, thresholdsrc=0, tgtdict=None, srcdict=None, nwordstgt=-1, nwordssrc=-1, alignfile=None, dataset_impl='mmap', joined_dictionary=False, only_source=False, padding_factor=8, workers=1)
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [es] Dictionary: 80 types
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [es] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.es: 2296 sents, 19206 tokens, 0.0% replaced by <unk>
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [es] Dictionary: 80 types
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [es] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.es: 291 sents, 2409 tokens, 0.083% replaced by <unk>
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [es] Dictionary: 80 types
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [es] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt.es: 297 sents, 2406 tokens, 0.0416% replaced by <unk>
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [pt] Dictionary: 88 types
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [pt] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/train_es_pt.pt: 2296 sents, 18988 tokens, 0.0% replaced by <unk>
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [pt] Dictionary: 88 types
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [pt] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/fine_tune_es_pt.pt: 291 sents, 2389 tokens, 0.0% replaced by <unk>
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [pt] Dictionary: 88 types
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | [pt] /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt.pt: 297 sents, 2401 tokens, 0.0416% replaced by <unk>
+2025-10-13 22:34:24 | INFO | fairseq_cli.preprocess | Wrote preprocessed data to /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin
+--lr 0.001 --batch-size 10 --dropout 0.2 --max-epoch 20   --save-dir /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/ --optimizer adam --scoring sacrebleu   --user-dir /Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/neural_translation/multilingual_rnns --arch multilingual_bigru   --task multilingual_translation --lang-pairs es-pt   --encoder-layers 2 --encoder-embed-dim 24 --encoder-hidden-size 72   --decoder-layers 2 --decoder-embed-dim 24 --decoder-hidden-size 72   --attention-type luong-general --share-encoders  --share-decoders 
+usage: fairseq-train [-h] [--no-progress-bar] [--log-interval LOG_INTERVAL]
+                     [--log-format LOG_FORMAT]
+                     [--tensorboard-logdir TENSORBOARD_LOGDIR] [--seed SEED]
+                     [--cpu] [--tpu] [--bf16] [--memory-efficient-bf16]
+                     [--fp16] [--memory-efficient-fp16]
+                     [--fp16-no-flatten-grads]
+                     [--fp16-init-scale FP16_INIT_SCALE]
+                     [--fp16-scale-window FP16_SCALE_WINDOW]
+                     [--fp16-scale-tolerance FP16_SCALE_TOLERANCE]
+                     [--min-loss-scale MIN_LOSS_SCALE]
+                     [--threshold-loss-scale THRESHOLD_LOSS_SCALE]
+                     [--user-dir USER_DIR]
+                     [--empty-cache-freq EMPTY_CACHE_FREQ]
+                     [--all-gather-list-size ALL_GATHER_LIST_SIZE]
+                     [--model-parallel-size MODEL_PARALLEL_SIZE]
+                     [--checkpoint-suffix CHECKPOINT_SUFFIX]
+                     [--checkpoint-shard-count CHECKPOINT_SHARD_COUNT]
+                     [--quantization-config-path QUANTIZATION_CONFIG_PATH]
+                     [--profile]
+                     [--criterion {cross_entropy,ctc,adaptive_loss,wav2vec,legacy_masked_lm_loss,nat_loss,label_smoothed_cross_entropy,composite_loss,sentence_prediction,label_smoothed_cross_entropy_with_alignment,masked_lm,sentence_ranking,vocab_parallel_cross_entropy}]
+                     [--tokenizer {nltk,space,moses}]
+                     [--bpe {sentencepiece,fastbpe,gpt2,subword_nmt,hf_byte_bpe,bert,byte_bpe,characters,bytes}]
+                     [--optimizer {nag,adafactor,sgd,adamax,adagrad,adam,lamb,adadelta}]
+                     [--lr-scheduler {fixed,reduce_lr_on_plateau,polynomial_decay,inverse_sqrt,tri_stage,cosine,triangular}]
+                     [--scoring {sacrebleu,bleu,wer,chrf}] [--task TASK]
+                     [--num-workers NUM_WORKERS]
+                     [--skip-invalid-size-inputs-valid-test]
+                     [--max-tokens MAX_TOKENS] [--batch-size BATCH_SIZE]
+                     [--required-batch-size-multiple REQUIRED_BATCH_SIZE_MULTIPLE]
+                     [--required-seq-len-multiple REQUIRED_SEQ_LEN_MULTIPLE]
+                     [--dataset-impl DATASET_IMPL]
+                     [--data-buffer-size DATA_BUFFER_SIZE]
+                     [--train-subset TRAIN_SUBSET]
+                     [--valid-subset VALID_SUBSET]
+                     [--validate-interval VALIDATE_INTERVAL]
+                     [--validate-interval-updates VALIDATE_INTERVAL_UPDATES]
+                     [--validate-after-updates VALIDATE_AFTER_UPDATES]
+                     [--fixed-validation-seed FIXED_VALIDATION_SEED]
+                     [--disable-validation]
+                     [--max-tokens-valid MAX_TOKENS_VALID]
+                     [--batch-size-valid BATCH_SIZE_VALID]
+                     [--curriculum CURRICULUM] [--gen-subset GEN_SUBSET]
+                     [--num-shards NUM_SHARDS] [--shard-id SHARD_ID]
+                     [--distributed-world-size DISTRIBUTED_WORLD_SIZE]
+                     [--distributed-rank DISTRIBUTED_RANK]
+                     [--distributed-backend DISTRIBUTED_BACKEND]
+                     [--distributed-init-method DISTRIBUTED_INIT_METHOD]
+                     [--distributed-port DISTRIBUTED_PORT]
+                     [--device-id DEVICE_ID] [--distributed-no-spawn]
+                     [--ddp-backend {c10d,no_c10d}]
+                     [--bucket-cap-mb BUCKET_CAP_MB] [--fix-batches-to-gpus]
+                     [--find-unused-parameters] [--fast-stat-sync]
+                     [--broadcast-buffers]
+                     [--distributed-wrapper {DDP,SlowMo}]
+                     [--slowmo-momentum SLOWMO_MOMENTUM]
+                     [--slowmo-algorithm SLOWMO_ALGORITHM]
+                     [--localsgd-frequency LOCALSGD_FREQUENCY]
+                     [--nprocs-per-node NPROCS_PER_NODE]
+                     [--pipeline-model-parallel]
+                     [--pipeline-balance PIPELINE_BALANCE]
+                     [--pipeline-devices PIPELINE_DEVICES]
+                     [--pipeline-chunks PIPELINE_CHUNKS]
+                     [--pipeline-encoder-balance PIPELINE_ENCODER_BALANCE]
+                     [--pipeline-encoder-devices PIPELINE_ENCODER_DEVICES]
+                     [--pipeline-decoder-balance PIPELINE_DECODER_BALANCE]
+                     [--pipeline-decoder-devices PIPELINE_DECODER_DEVICES]
+                     [--pipeline-checkpoint {always,never,except_last}]
+                     [--zero-sharding {none,os}] [--arch ARCH]
+                     [--max-epoch MAX_EPOCH] [--max-update MAX_UPDATE]
+                     [--stop-time-hours STOP_TIME_HOURS]
+                     [--clip-norm CLIP_NORM] [--sentence-avg]
+                     [--update-freq UPDATE_FREQ] [--lr LR] [--min-lr MIN_LR]
+                     [--use-bmuf] [--save-dir SAVE_DIR]
+                     [--restore-file RESTORE_FILE]
+                     [--finetune-from-model FINETUNE_FROM_MODEL]
+                     [--reset-dataloader] [--reset-lr-scheduler]
+                     [--reset-meters] [--reset-optimizer]
+                     [--optimizer-overrides OPTIMIZER_OVERRIDES]
+                     [--save-interval SAVE_INTERVAL]
+                     [--save-interval-updates SAVE_INTERVAL_UPDATES]
+                     [--keep-interval-updates KEEP_INTERVAL_UPDATES]
+                     [--keep-last-epochs KEEP_LAST_EPOCHS]
+                     [--keep-best-checkpoints KEEP_BEST_CHECKPOINTS]
+                     [--no-save] [--no-epoch-checkpoints]
+                     [--no-last-checkpoints] [--no-save-optimizer-state]
+                     [--best-checkpoint-metric BEST_CHECKPOINT_METRIC]
+                     [--maximize-best-checkpoint-metric] [--patience PATIENCE]
+fairseq-train: error: argument --user-dir: invalid Optional value: '/Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/neural_translation/multilingual_rnns'
+--------- SELECTING BEST CHECKPOINT
+ls: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/: No such file or directory
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/neural_translation/checkpoint_select_best_from_file.py", line 62, in <module>
+    print("Best by mean:", best_by_mean(scores))
+  File "/Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/neural_translation/checkpoint_select_best_from_file.py", line 19, in best_by_mean
+    return max(name_to_scores, key=lambda key: name_to_scores[key])
+ValueError: max() arg is an empty sequence
+usage: fairseq-generate [-h] [--no-progress-bar] [--log-interval LOG_INTERVAL]
+                        [--log-format LOG_FORMAT]
+                        [--tensorboard-logdir TENSORBOARD_LOGDIR]
+                        [--seed SEED] [--cpu] [--tpu] [--bf16]
+                        [--memory-efficient-bf16] [--fp16]
+                        [--memory-efficient-fp16] [--fp16-no-flatten-grads]
+                        [--fp16-init-scale FP16_INIT_SCALE]
+                        [--fp16-scale-window FP16_SCALE_WINDOW]
+                        [--fp16-scale-tolerance FP16_SCALE_TOLERANCE]
+                        [--min-loss-scale MIN_LOSS_SCALE]
+                        [--threshold-loss-scale THRESHOLD_LOSS_SCALE]
+                        [--user-dir USER_DIR]
+                        [--empty-cache-freq EMPTY_CACHE_FREQ]
+                        [--all-gather-list-size ALL_GATHER_LIST_SIZE]
+                        [--model-parallel-size MODEL_PARALLEL_SIZE]
+                        [--checkpoint-suffix CHECKPOINT_SUFFIX]
+                        [--checkpoint-shard-count CHECKPOINT_SHARD_COUNT]
+                        [--quantization-config-path QUANTIZATION_CONFIG_PATH]
+                        [--profile]
+                        [--criterion {cross_entropy,ctc,adaptive_loss,wav2vec,legacy_masked_lm_loss,nat_loss,label_smoothed_cross_entropy,composite_loss,sentence_prediction,label_smoothed_cross_entropy_with_alignment,masked_lm,sentence_ranking,vocab_parallel_cross_entropy}]
+                        [--tokenizer {nltk,space,moses}]
+                        [--bpe {sentencepiece,fastbpe,gpt2,subword_nmt,hf_byte_bpe,bert,byte_bpe,characters,bytes}]
+                        [--optimizer {nag,adafactor,sgd,adamax,adagrad,adam,lamb,adadelta}]
+                        [--lr-scheduler {fixed,reduce_lr_on_plateau,polynomial_decay,inverse_sqrt,tri_stage,cosine,triangular}]
+                        [--scoring {sacrebleu,bleu,wer,chrf}] [--task TASK]
+                        [--num-workers NUM_WORKERS]
+                        [--skip-invalid-size-inputs-valid-test]
+                        [--max-tokens MAX_TOKENS] [--batch-size BATCH_SIZE]
+                        [--required-batch-size-multiple REQUIRED_BATCH_SIZE_MULTIPLE]
+                        [--required-seq-len-multiple REQUIRED_SEQ_LEN_MULTIPLE]
+                        [--dataset-impl DATASET_IMPL]
+                        [--data-buffer-size DATA_BUFFER_SIZE]
+                        [--train-subset TRAIN_SUBSET]
+                        [--valid-subset VALID_SUBSET]
+                        [--validate-interval VALIDATE_INTERVAL]
+                        [--validate-interval-updates VALIDATE_INTERVAL_UPDATES]
+                        [--validate-after-updates VALIDATE_AFTER_UPDATES]
+                        [--fixed-validation-seed FIXED_VALIDATION_SEED]
+                        [--disable-validation]
+                        [--max-tokens-valid MAX_TOKENS_VALID]
+                        [--batch-size-valid BATCH_SIZE_VALID]
+                        [--curriculum CURRICULUM] [--gen-subset GEN_SUBSET]
+                        [--num-shards NUM_SHARDS] [--shard-id SHARD_ID]
+                        [--distributed-world-size DISTRIBUTED_WORLD_SIZE]
+                        [--distributed-rank DISTRIBUTED_RANK]
+                        [--distributed-backend DISTRIBUTED_BACKEND]
+                        [--distributed-init-method DISTRIBUTED_INIT_METHOD]
+                        [--distributed-port DISTRIBUTED_PORT]
+                        [--device-id DEVICE_ID] [--distributed-no-spawn]
+                        [--ddp-backend {c10d,no_c10d}]
+                        [--bucket-cap-mb BUCKET_CAP_MB]
+                        [--fix-batches-to-gpus] [--find-unused-parameters]
+                        [--fast-stat-sync] [--broadcast-buffers]
+                        [--distributed-wrapper {DDP,SlowMo}]
+                        [--slowmo-momentum SLOWMO_MOMENTUM]
+                        [--slowmo-algorithm SLOWMO_ALGORITHM]
+                        [--localsgd-frequency LOCALSGD_FREQUENCY]
+                        [--nprocs-per-node NPROCS_PER_NODE]
+                        [--pipeline-model-parallel]
+                        [--pipeline-balance PIPELINE_BALANCE]
+                        [--pipeline-devices PIPELINE_DEVICES]
+                        [--pipeline-chunks PIPELINE_CHUNKS]
+                        [--pipeline-encoder-balance PIPELINE_ENCODER_BALANCE]
+                        [--pipeline-encoder-devices PIPELINE_ENCODER_DEVICES]
+                        [--pipeline-decoder-balance PIPELINE_DECODER_BALANCE]
+                        [--pipeline-decoder-devices PIPELINE_DECODER_DEVICES]
+                        [--pipeline-checkpoint {always,never,except_last}]
+                        [--zero-sharding {none,os}] [--path PATH]
+                        [--remove-bpe [REMOVE_BPE]] [--quiet]
+                        [--model-overrides MODEL_OVERRIDES]
+                        [--results-path RESULTS_PATH] [--beam N] [--nbest N]
+                        [--max-len-a N] [--max-len-b N] [--min-len N]
+                        [--match-source-len] [--no-early-stop]
+                        [--unnormalized] [--no-beamable-mm] [--lenpen LENPEN]
+                        [--unkpen UNKPEN] [--replace-unk [REPLACE_UNK]]
+                        [--sacrebleu] [--score-reference] [--prefix-size PS]
+                        [--no-repeat-ngram-size N] [--sampling]
+                        [--sampling-topk PS] [--sampling-topp PS]
+                        [--constraints [{ordered,unordered}]]
+                        [--temperature N] [--diverse-beam-groups N]
+                        [--diverse-beam-strength N] [--diversity-rate N]
+                        [--print-alignment] [--print-step] [--lm-path PATH]
+                        [--lm-weight N] [--iter-decode-eos-penalty N]
+                        [--iter-decode-max-iter N]
+                        [--iter-decode-force-max-iter]
+                        [--iter-decode-with-beam N]
+                        [--iter-decode-with-external-reranker]
+                        [--retain-iter-history] [--retain-dropout]
+                        [--retain-dropout-modules RETAIN_DROPOUT_MODULES [RETAIN_DROPOUT_MODULES ...]]
+                        [--decoding-format {unigram,ensemble,vote,dp,bs}]
+fairseq-generate: error: argument --user-dir: invalid Optional value: '/Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/neural_translation/multilingual_rnns'
+es pt DONE
+NOW EVALUATING --beam 5 --nbest 1
+usage: fairseq-generate [-h] [--no-progress-bar] [--log-interval LOG_INTERVAL]
+                        [--log-format LOG_FORMAT]
+                        [--tensorboard-logdir TENSORBOARD_LOGDIR]
+                        [--seed SEED] [--cpu] [--tpu] [--bf16]
+                        [--memory-efficient-bf16] [--fp16]
+                        [--memory-efficient-fp16] [--fp16-no-flatten-grads]
+                        [--fp16-init-scale FP16_INIT_SCALE]
+                        [--fp16-scale-window FP16_SCALE_WINDOW]
+                        [--fp16-scale-tolerance FP16_SCALE_TOLERANCE]
+                        [--min-loss-scale MIN_LOSS_SCALE]
+                        [--threshold-loss-scale THRESHOLD_LOSS_SCALE]
+                        [--user-dir USER_DIR]
+                        [--empty-cache-freq EMPTY_CACHE_FREQ]
+                        [--all-gather-list-size ALL_GATHER_LIST_SIZE]
+                        [--model-parallel-size MODEL_PARALLEL_SIZE]
+                        [--checkpoint-suffix CHECKPOINT_SUFFIX]
+                        [--checkpoint-shard-count CHECKPOINT_SHARD_COUNT]
+                        [--quantization-config-path QUANTIZATION_CONFIG_PATH]
+                        [--profile]
+                        [--criterion {cross_entropy,ctc,adaptive_loss,wav2vec,legacy_masked_lm_loss,nat_loss,label_smoothed_cross_entropy,composite_loss,sentence_prediction,label_smoothed_cross_entropy_with_alignment,masked_lm,sentence_ranking,vocab_parallel_cross_entropy}]
+                        [--tokenizer {nltk,space,moses}]
+                        [--bpe {sentencepiece,fastbpe,gpt2,subword_nmt,hf_byte_bpe,bert,byte_bpe,characters,bytes}]
+                        [--optimizer {nag,adafactor,sgd,adamax,adagrad,adam,lamb,adadelta}]
+                        [--lr-scheduler {fixed,reduce_lr_on_plateau,polynomial_decay,inverse_sqrt,tri_stage,cosine,triangular}]
+                        [--scoring {sacrebleu,bleu,wer,chrf}] [--task TASK]
+                        [--num-workers NUM_WORKERS]
+                        [--skip-invalid-size-inputs-valid-test]
+                        [--max-tokens MAX_TOKENS] [--batch-size BATCH_SIZE]
+                        [--required-batch-size-multiple REQUIRED_BATCH_SIZE_MULTIPLE]
+                        [--required-seq-len-multiple REQUIRED_SEQ_LEN_MULTIPLE]
+                        [--dataset-impl DATASET_IMPL]
+                        [--data-buffer-size DATA_BUFFER_SIZE]
+                        [--train-subset TRAIN_SUBSET]
+                        [--valid-subset VALID_SUBSET]
+                        [--validate-interval VALIDATE_INTERVAL]
+                        [--validate-interval-updates VALIDATE_INTERVAL_UPDATES]
+                        [--validate-after-updates VALIDATE_AFTER_UPDATES]
+                        [--fixed-validation-seed FIXED_VALIDATION_SEED]
+                        [--disable-validation]
+                        [--max-tokens-valid MAX_TOKENS_VALID]
+                        [--batch-size-valid BATCH_SIZE_VALID]
+                        [--curriculum CURRICULUM] [--gen-subset GEN_SUBSET]
+                        [--num-shards NUM_SHARDS] [--shard-id SHARD_ID]
+                        [--distributed-world-size DISTRIBUTED_WORLD_SIZE]
+                        [--distributed-rank DISTRIBUTED_RANK]
+                        [--distributed-backend DISTRIBUTED_BACKEND]
+                        [--distributed-init-method DISTRIBUTED_INIT_METHOD]
+                        [--distributed-port DISTRIBUTED_PORT]
+                        [--device-id DEVICE_ID] [--distributed-no-spawn]
+                        [--ddp-backend {c10d,no_c10d}]
+                        [--bucket-cap-mb BUCKET_CAP_MB]
+                        [--fix-batches-to-gpus] [--find-unused-parameters]
+                        [--fast-stat-sync] [--broadcast-buffers]
+                        [--distributed-wrapper {DDP,SlowMo}]
+                        [--slowmo-momentum SLOWMO_MOMENTUM]
+                        [--slowmo-algorithm SLOWMO_ALGORITHM]
+                        [--localsgd-frequency LOCALSGD_FREQUENCY]
+                        [--nprocs-per-node NPROCS_PER_NODE]
+                        [--pipeline-model-parallel]
+                        [--pipeline-balance PIPELINE_BALANCE]
+                        [--pipeline-devices PIPELINE_DEVICES]
+                        [--pipeline-chunks PIPELINE_CHUNKS]
+                        [--pipeline-encoder-balance PIPELINE_ENCODER_BALANCE]
+                        [--pipeline-encoder-devices PIPELINE_ENCODER_DEVICES]
+                        [--pipeline-decoder-balance PIPELINE_DECODER_BALANCE]
+                        [--pipeline-decoder-devices PIPELINE_DECODER_DEVICES]
+                        [--pipeline-checkpoint {always,never,except_last}]
+                        [--zero-sharding {none,os}] [--path PATH]
+                        [--remove-bpe [REMOVE_BPE]] [--quiet]
+                        [--model-overrides MODEL_OVERRIDES]
+                        [--results-path RESULTS_PATH] [--beam N] [--nbest N]
+                        [--max-len-a N] [--max-len-b N] [--min-len N]
+                        [--match-source-len] [--no-early-stop]
+                        [--unnormalized] [--no-beamable-mm] [--lenpen LENPEN]
+                        [--unkpen UNKPEN] [--replace-unk [REPLACE_UNK]]
+                        [--sacrebleu] [--score-reference] [--prefix-size PS]
+                        [--no-repeat-ngram-size N] [--sampling]
+                        [--sampling-topk PS] [--sampling-topp PS]
+                        [--constraints [{ordered,unordered}]]
+                        [--temperature N] [--diverse-beam-groups N]
+                        [--diverse-beam-strength N] [--diversity-rate N]
+                        [--print-alignment] [--print-step] [--lm-path PATH]
+                        [--lm-weight N] [--iter-decode-eos-penalty N]
+                        [--iter-decode-max-iter N]
+                        [--iter-decode-force-max-iter]
+                        [--iter-decode-with-beam N]
+                        [--iter-decode-with-external-reranker]
+                        [--retain-iter-history] [--retain-dropout]
+                        [--retain-dropout-modules RETAIN_DROPOUT_MODULES [RETAIN_DROPOUT_MODULES ...]]
+                        [--decoding-format {unigram,ensemble,vote,dp,bs}]
+fairseq-generate: error: argument --user-dir: invalid Optional value: '/Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/neural_translation/multilingual_rnns'
+DONE
+   python Pipeline/select_checkpoint.py --dir /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000
+##########################
+# select_checkpoint.py #
+##########################
+Arguments:-
+	-dir: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000
+------------------------------
+
+Copying Selected Checkpoint /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/None
+	to /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/selected.pt
+Traceback (most recent call last):
+  File "/Users/ringger/Projects/brendan/SCIMT/Pipeline/select_checkpoint.py", line 59, in <module>
+    get_checkpoint(args.dir)
+  File "/Users/ringger/Projects/brendan/SCIMT/Pipeline/select_checkpoint.py", line 41, in get_checkpoint
+    shutil.copyfile(selected_checkpoint_f, copy_to_f)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.19/Frameworks/Python.framework/Versions/3.10/lib/python3.10/shutil.py", line 254, in copyfile
+    with open(src, 'rb') as fsrc:
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/None'

@@ -1,0 +1,36 @@
+# Minimal requirements for CharLOTTE/SCIMT NMT training
+# Python 3.10 or higher required
+
+# Core ML frameworks
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+pytorch-lightning>=2.0.0
+lightning>=2.0.0
+
+# Transformers and tokenization
+transformers>=4.0.0
+accelerate>=0.20.0
+sentencepiece>=0.1.99
+
+# Evaluation metrics
+sacrebleu>=2.0.0
+
+# Utilities
+pandas>=1.0.0
+pyyaml>=5.0
+tqdm>=4.0
+numpy>=1.20.0
+
+# NLP tools (required for SC training cognate extraction)
+nltk>=3.8
+spacy>=3.8.0
+indic-nlp-library>=0.9
+python-Levenshtein>=0.20.0
+
+# Note: Additional dependencies may be required for:
+# - SC model training (see copper.requirements.txt)
+# - spaCy language models (install after pip install):
+#   python -m spacy download es_core_news_sm
+#   python -m spacy download xx_sent_ud_sm
+# - COMET evaluation: pip install unbabel-comet

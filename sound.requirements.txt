@@ -47,12 +47,12 @@ decorator==5.2.1
 dill==0.3.8
 distro==1.9.0
 entrypoints==0.4
-es-core-news-sm==3.8.0
+# es-core-news-sm==3.8.0  # spaCy model - install separately: python -m spacy download es_core_news_sm
 exceptiongroup==1.2.2
 executing==2.2.0
 # expat==2.7.1
 filelock==3.18.0
-fmt==9.1.0
+# fmt==9.1.0  # Version 9.1.0 not available on PyPI (available: 0.1.0-0.3.1) - may be conda-specific
 font-ttf-dejavu-sans-mono==2.37
 font-ttf-inconsolata==3.000
 font-ttf-source-code-pro==2.038

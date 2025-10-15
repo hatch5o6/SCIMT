@@ -250,16 +250,16 @@ echo ""
 echo "# 3.1 if needed, make dataset splits #"
 if [ $TEST_COGNATES_SRC = "null" ]
 then
-    echo "Splitting cognate data ${WORD_LIST_SRC}, ${WORD_LIST_TGT}" 
+    echo "Splitting cognate data ${WORD_LIST_SRC}, ${WORD_LIST_TGT}"
     echo "    (train:val:test) ${COGNATE_TRAIN_RATIO}:${COGNATE_VAL_RATIO}:${COGNATE_TEST_RATIO}"
-    TRAIN_COGNATES_SRC=${WORD_LIST_SRC:0:-3}train-s=${SEED}.txt
-    TRAIN_COGNATES_TGT=${WORD_LIST_TGT:0:-3}train-s=${SEED}.txt
+    TRAIN_COGNATES_SRC=${WORD_LIST_SRC%.txt}.train-s=${SEED}.txt
+    TRAIN_COGNATES_TGT=${WORD_LIST_TGT%.txt}.train-s=${SEED}.txt
 
-    TEST_COGNATES_SRC=${WORD_LIST_SRC:0:-3}test-s=${SEED}.txt
-    TEST_COGNATES_TGT=${WORD_LIST_TGT:0:-3}test-s=${SEED}.txt
+    TEST_COGNATES_SRC=${WORD_LIST_SRC%.txt}.test-s=${SEED}.txt
+    TEST_COGNATES_TGT=${WORD_LIST_TGT%.txt}.test-s=${SEED}.txt
 
-    VAL_COGNATES_SRC=${WORD_LIST_SRC:0:-3}val-s=${SEED}.txt
-    VAL_COGNATES_TGT=${WORD_LIST_TGT:0:-3}val-s=${SEED}.txt
+    VAL_COGNATES_SRC=${WORD_LIST_SRC%.txt}.val-s=${SEED}.txt
+    VAL_COGNATES_TGT=${WORD_LIST_TGT%.txt}.val-s=${SEED}.txt
 
     python Pipeline/split.py \
         --data1 $WORD_LIST_SRC \
@@ -323,11 +323,11 @@ then
     rm -r $COPPER_DIR
 fi
 echo "creating ${COPPER_DIR}"
-mkdir $COPPER_DIR
-mkdir ${COPPER_DIR}/inputs
-mkdir ${COPPER_DIR}/inputs/split_data
-mkdir ${COPPER_DIR}/inputs/parameters
-mkdir ${COPPER_DIR}/inputs/parameters/bilingual_default
+mkdir -p $COPPER_DIR
+mkdir -p ${COPPER_DIR}/inputs
+mkdir -p ${COPPER_DIR}/inputs/split_data
+mkdir -p ${COPPER_DIR}/inputs/parameters
+mkdir -p ${COPPER_DIR}/inputs/parameters/bilingual_default
 
 # 3.2.2 Copy the RNN hyperparams set file, corresponding to RNN_HYPERPARAMS_ID, to its place in the COPPERMT inputs/outputs folder
 echo ""
@@ -421,6 +421,7 @@ python Pipeline/write_scripts.py \
     --src ${SRC} \
     --tgt ${TGT} \
     --coppermt_data_dir ${COPPERMT_DATA_DIR} \
+    --coppermt_dir ${COPPERMT_DIR} \
     --sc_model_type ${SC_MODEL_TYPE} \
     --rnn_hyperparams_id ${RNN_HYPERPARAMS_ID} \
     --seed ${SEED} \
@@ -456,8 +457,8 @@ elif [ $SC_MODEL_TYPE = "SMT" ]
 then
     # train SMT
     cd ${COPPERMT_DIR}/pipeline
-    echo "    bash ${COPPERMT_DIR}/pipeline/main_smt_full_brendan.sh ${PARAMETERS_F} ${SEED}"
-    bash "${COPPERMT_DIR}/pipeline/main_smt_full_brendan.sh" "${PARAMETERS_F}" "${SEED}"
+    echo "    bash ${COPPERMT_DIR}/pipeline/main_smt_full.sh ${PARAMETERS_F} ${SEED}"
+    bash "${COPPERMT_DIR}/pipeline/main_smt_full.sh" "${PARAMETERS_F}" "${SEED}"
 # else
 #     echo "    INVALID SC_MODEL_TYPE: '${SC_MODEL_TYPE}'"
 #     exit

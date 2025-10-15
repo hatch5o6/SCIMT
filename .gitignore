@@ -21,3 +21,10 @@ NMT/OLD_slurm_outputs/
 *.out
 NMT/align_tokens.NWS.all.out
 NMT/align_tokens.all.out
+
+# Virtual environments
+venv/
+venv_*/
+
+# Development artifacts
+archive/

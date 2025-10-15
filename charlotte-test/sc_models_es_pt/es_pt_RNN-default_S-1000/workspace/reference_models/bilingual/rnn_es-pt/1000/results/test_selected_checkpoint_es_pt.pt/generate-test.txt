@@ -1,0 +1,1485 @@
+2025-10-14 15:53:12 | INFO | fairseq_cli.generate | Namespace(no_progress_bar=False, log_interval=100, log_format=None, tensorboard_logdir=None, seed=1, cpu=False, tpu=False, bf16=False, memory_efficient_bf16=False, fp16=False, memory_efficient_fp16=False, fp16_no_flatten_grads=False, fp16_init_scale=128, fp16_scale_window=None, fp16_scale_tolerance=0.0, min_loss_scale=0.0001, threshold_loss_scale=None, user_dir='/Users/ringger/Projects/brendan/SCIMT/CopperMT/CopperMT/pipeline/neural_translation/multilingual_rnns', empty_cache_freq=0, all_gather_list_size=16384, model_parallel_size=1, checkpoint_suffix='', checkpoint_shard_count=1, quantization_config_path=None, profile=False, criterion='cross_entropy', tokenizer=None, bpe=None, optimizer=None, lr_scheduler='fixed', scoring='bleu', task='multilingual_translation', num_workers=1, skip_invalid_size_inputs_valid_test=False, max_tokens=None, batch_size=1000, required_batch_size_multiple=8, required_seq_len_multiple=1, dataset_impl=None, data_buffer_size=10, train_subset='train', valid_subset='valid', validate_interval=1, validate_interval_updates=0, validate_after_updates=0, fixed_validation_seed=None, disable_validation=False, max_tokens_valid=None, batch_size_valid=1000, curriculum=0, gen_subset='test', num_shards=1, shard_id=0, distributed_world_size=1, distributed_rank=0, distributed_backend='nccl', distributed_init_method=None, distributed_port=-1, device_id=0, distributed_no_spawn=False, ddp_backend='c10d', bucket_cap_mb=25, fix_batches_to_gpus=False, find_unused_parameters=False, fast_stat_sync=False, broadcast_buffers=False, distributed_wrapper='DDP', slowmo_momentum=None, slowmo_algorithm='LocalSGD', localsgd_frequency=3, nprocs_per_node=1, pipeline_model_parallel=False, pipeline_balance=None, pipeline_devices=None, pipeline_chunks=0, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_checkpoint='never', zero_sharding='none', path='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/selected.pt', remove_bpe=None, quiet=False, model_overrides='{}', results_path='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/results/test_selected_checkpoint_es_pt.pt', beam=5, nbest=1, max_len_a=0, max_len_b=200, min_len=1, match_source_len=False, no_early_stop=False, unnormalized=False, no_beamable_mm=False, lenpen=1, unkpen=0, replace_unk=None, sacrebleu=False, score_reference=False, prefix_size=0, no_repeat_ngram_size=0, sampling=False, sampling_topk=-1, sampling_topp=-1.0, constraints=None, temperature=1.0, diverse_beam_groups=-1, diverse_beam_strength=0.5, diversity_rate=-1.0, print_alignment=False, print_step=False, lm_path=None, lm_weight=0.0, iter_decode_eos_penalty=0.0, iter_decode_max_iter=10, iter_decode_force_max_iter=False, iter_decode_with_beam=1, iter_decode_with_external_reranker=False, retain_iter_history=False, retain_dropout=False, retain_dropout_modules=None, decoding_format=None, force_anneal=None, lr_shrink=0.1, warmup_updates=0, data='/Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/', lang_pairs='es-pt', source_lang='es', target_lang='pt', left_pad_source='True', left_pad_target='False', max_source_positions=1024, max_target_positions=1024, upsample_primary=1, encoder_langtok=None, decoder_langtok=False, no_seed_provided=False)
+2025-10-14 15:53:12 | INFO | fairseq.tasks.multilingual_translation | [es] dictionary: 88 types
+2025-10-14 15:53:12 | INFO | fairseq.tasks.multilingual_translation | [pt] dictionary: 88 types
+2025-10-14 15:53:12 | INFO | fairseq.data.data_utils | loaded 295 examples from: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/test.es-pt.es
+2025-10-14 15:53:12 | INFO | fairseq.data.data_utils | loaded 295 examples from: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/test.es-pt.pt
+2025-10-14 15:53:12 | INFO | fairseq.tasks.translation | /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/data/1000/data-bin/ test es-pt 295 examples
+2025-10-14 15:53:12 | INFO | fairseq_cli.generate | loading model(s) from /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/checkpoints/selected.pt
+S-14	i n t e r p r e t a c i o n e s
+T-14	i n t e r p r e t a ç õ e s
+H-14	-0.04373709484934807	i n t e r p r e t a ç õ e s
+D-14	-0.04373709484934807	i n t e r p r e t a ç õ e s
+P-14	-0.0104 -0.0041 -0.0037 -0.0073 -0.0012 -0.1191 -0.0597 -0.0553 -0.2059 -0.1301 -0.0413 -0.0029 -0.0035 -0.0011 -0.0105
+S-216	e s t a c i o n a m i e n t o
+T-216	e s t a c i o n a m e n t o s
+H-216	-0.42844054102897644	e s t a ç o
+D-216	-0.42844054102897644	e s t a ç o
+P-216	-0.0368 -0.0007 -0.0293 -0.0238 -1.0908 -0.7435 -1.0741
+S-199	n e u r o b i o l ó g i c o s
+T-199	n e u r o b i o l ó g i c o s
+H-199	-0.14039786159992218	n e u r o b i o l ó g i c o s
+D-199	-0.14039786159992218	n e u r o b i o l ó g i c o s
+P-199	-0.1394 -0.2137 -0.0043 -0.0104 -0.1113 -0.3690 -0.0493 -0.0533 -0.2326 -0.5652 -0.2033 -0.0189 -0.1572 -0.0938 -0.0045 -0.0202
+S-163	v i s u a l i z a c i o n e s
+T-163	v i s u a l i z a ç õ e s
+H-163	-0.03500967100262642	v i s u a l i z a ç õ e s
+D-163	-0.03500967100262642	v i s u a l i z a ç õ e s
+P-163	-0.0016 -0.0546 -0.0047 -0.0052 -0.0812 -0.0097 -0.1734 -0.0482 -0.0435 -0.0491 -0.0032 -0.0021 -0.0008 -0.0127
+S-36	g e o g r á f i c a m e n t e
+T-36	g e o g r á f i c a s
+H-36	-0.11811111867427826	g e o g r â f i c a m e n t e
+D-36	-0.11811111867427826	g e o g r â f i c a m e n t e
+P-36	-0.0309 -0.2308 -0.0739 -0.0028 -0.0019 -1.1471 -0.0020 -0.0100 -0.0090 -0.0241 -0.0166 -0.0094 -0.0226 -0.0009 -0.0404 -0.2675
+S-155	d e f i n i t i v a m e n t e
+T-155	c e r t a m e n t e
+H-155	-0.07976729422807693	d e f i n i t i v a m e n t e
+D-155	-0.07976729422807693	d e f i n i t i v a m e n t e
+P-155	-0.1449 -0.4176 -0.0207 -0.0473 -0.0022 -0.1218 -0.0063 -0.0981 -0.0003 -0.0376 -0.0260 -0.0085 -0.0184 -0.0010 -0.0888 -0.2369
+S-237	s u p e r p o b l a c i ó n
+T-237	s u p e r p o p u l a ç ã o
+H-237	-0.07803253829479218	s u p e r p o b l a ç ã o
+D-237	-0.07803253829479218	s u p e r p o b l a ç ã o
+P-237	-0.0029 -0.0164 -0.0041 -0.0202 -0.0006 -0.0466 -0.1076 -0.2987 -0.2613 -0.2127 -0.0832 -0.0169 -0.0033 -0.0179
+S-33	c o n q u i s t a d o r e s
+T-33	c o l o n i z a d o r e s
+H-33	-0.021138448268175125	c o n q u i s t a d o r e s
+D-33	-0.021138448268175125	c o n q u i s t a d o r e s
+P-33	-0.0347 -0.0166 -0.0109 -0.0245 -0.0001 -0.0106 -0.0021 -0.0004 -0.1139 -0.0082 -0.0377 -0.0044 -0.0044 -0.0009 -0.0477
+S-117	p r e s i d e n c i a l e s
+T-117	p r e s i d ê n c i a
+H-117	-0.1744229644536972	p r e s i d e n c i a i s
+D-117	-0.1744229644536972	p r e s i d e n c i a i s
+P-117	-0.0709 -0.0183 -0.0562 -0.0003 -0.2879 -0.0119 -0.8399 -0.0039 -0.1525 -0.0323 -0.0556 -0.8707 -0.0010 -0.0404
+S-68	e s p e c i a l i s t a s
+T-68	e s p e c i a l i s t a s
+H-68	-0.032477349042892456	e s p e c i a l i s t a s
+D-68	-0.032477349042892456	e s p e c i a l i s t a s
+P-68	-0.0780 -0.0002 -0.0013 -0.0125 -0.0094 -0.0201 -0.0094 -0.0866 -0.0568 -0.0174 -0.0143 -0.1179 -0.0070 -0.0238
+S-71	D e p a r t a m e n t o
+T-71	D e p a r t a m e n t o
+H-71	-0.05174201354384422	D e p a r t a m e n t o
+D-71	-0.05174201354384422	D e p a r t a m e n t o
+P-71	-0.0782 -0.0465 -0.0071 -0.0165 -0.0006 -0.0039 -0.1032 -0.0198 -0.0313 -0.0224 -0.0020 -0.0654 -0.2756
+S-32	a r i s t o c r a c i a
+T-32	a r i s t o c r a c i a
+H-32	-0.13729357719421387	a r i s t o c r a c i a
+D-32	-0.13729357719421387	a r i s t o c r a c i a
+P-32	-0.0591 -0.0013 -0.0206 -0.0016 -0.0041 -0.0523 -0.1015 -0.0054 -0.2089 -0.6864 -0.0718 -0.0521 -0.5196
+S-267	d i r e c t a m e n t e
+T-267	d i r e t a m e n t e
+H-267	-0.15967999398708344	d i r e t a m e n t e
+D-267	-0.15967999398708344	d i r e t a m e n t e
+P-267	-0.0277 -0.0359 -0.0093 -0.0423 -1.2911 -0.1053 -0.0086 -0.0247 -0.0249 -0.0009 -0.0902 -0.2552
+S-188	c o n s t r u c c i ó n
+T-188	c o n s t r u ç ã o
+H-188	-0.017350219190120697	c o n s t r u ç ã o
+D-188	-0.017350219190120697	c o n s t r u ç ã o
+P-188	-0.0264 -0.0103 -0.0045 -0.0001 -0.0056 -0.0182 -0.0022 -0.0585 -0.0088 -0.0073 -0.0488
+S-256	c o n g l o m e r a d o
+T-256	a g l o m e r a d o
+H-256	-0.1803460419178009	c o n g l o m e r a d o
+D-256	-0.1803460419178009	c o n g l o m e r a d o
+P-256	-0.0975 -0.0155 -0.0165 -0.0146 -0.1341 -0.0696 -0.0367 -0.2621 -0.1610 -0.8440 -0.0425 -0.1045 -0.5457
+S-60	i n t e r p r e t a r
+T-60	i n t e r p r e t a ç ã o
+H-60	-0.08926020562648773	i n t e r p r e t a r
+D-60	-0.08926020562648773	i n t e r p r e t a r
+P-60	-0.0385 -0.0130 -0.0129 -0.0182 -0.0050 -0.3147 -0.1521 -0.0592 -0.1399 -0.1329 -0.1368 -0.0478
+S-31	a n t e p a s a d o s
+T-31	a n t e c e s s o r e s
+H-31	-0.10651396960020065	a n t e p a d o s
+D-31	-0.10651396960020065	a n t e p a d o s
+P-31	-0.0534 -0.0488 -0.0115 -0.0965 -0.0306 -0.1484 -0.2058 -0.4448 -0.0030 -0.0223
+S-209	i m p a c t a n t e s
+T-209	e m p o l g a n t e s
+H-209	-0.25630611181259155	i m p a t a n t e s
+D-209	-0.25630611181259155	i m p a t a n t e s
+P-209	-0.0157 -0.0072 -0.0005 -0.0079 -1.1906 -0.6333 -0.0284 -0.0127 -0.8952 -0.0069 -0.0208
+S-196	c o r o n a v i r u s
+T-196	c o r o n a v í r u s
+H-196	-0.10125518590211868	c o r o n a v i r u s
+D-196	-0.10125518590211868	c o r o n a v i r u s
+P-196	-0.0956 -0.0247 -0.0083 -0.0678 -0.0078 -0.2415 -0.0022 -0.0475 -0.0392 -0.6459 -0.0186 -0.0162
+S-10	h a b i l i d a d e s
+T-10	h a b i l i d a d e s
+H-10	-0.10967586189508438	h a b i l i d a d e s
+D-10	-0.10967586189508438	h a b i l i d a d e s
+P-10	-0.9541 -0.0252 -0.1268 -0.0154 -0.0010 -0.1176 -0.0031 -0.0394 -0.0032 -0.0094 -0.0026 -0.0182
+S-92	a m i n o á c i d o s
+T-92	a m i n o á c i d o s
+H-92	-0.21024180948734283	a m i n o c i d o s
+D-92	-0.21024180948734283	a m i n o c i d o s
+P-92	-0.1551 -0.0030 -0.0321 -0.0136 -0.2587 -1.3571 -0.0866 -0.0724 -0.3146 -0.0007 -0.0188
+S-46	v o l u n t a r i o s
+T-46	v o l u n t á r i o s
+H-46	-0.11133824288845062	v o l u n t a r i o s
+D-46	-0.11133824288845062	v o l u n t a r i o s
+P-46	-0.0016 -0.1783 -0.1385 -0.0324 -0.0011 -0.0030 -0.6945 -0.0071 -0.2139 -0.0492 -0.0023 -0.0140
+S-238	a u t o r i z a d o s
+T-238	a u t o r i z a d o s
+H-238	-0.04876875877380371	a u t o r i z a d o s
+D-238	-0.04876875877380371	a u t o r i z a d o s
+P-238	-0.0282 -0.0046 -0.0061 -0.0601 -0.0003 -0.0653 -0.1811 -0.1437 -0.0324 -0.0542 -0.0009 -0.0083
+S-239	r e s i s t e n t e s
+T-239	r e s i s t e n t e s
+H-239	-0.09610580652952194	r e s i s t e n t e s
+D-239	-0.09610580652952194	r e s i s t e n t e s
+P-239	-0.0579 -0.0226 -0.0021 -0.1788 -0.0081 -0.0014 -0.6320 -0.0227 -0.0028 -0.1335 -0.0740 -0.0173
+S-217	i m p o r t a n t e s
+T-217	i m p o r t a n t e s
+H-217	-0.03685229271650314	i m p o r t a n t e s
+D-217	-0.03685229271650314	i m p o r t a n t e s
+P-217	-0.0337 -0.0096 -0.0004 -0.0085 -0.0001 -0.0051 -0.1680 -0.0895 -0.0133 -0.0850 -0.0069 -0.0221
+S-63	s i g n i f i c a d o
+T-63	s i g n i f i c a d o
+H-63	-0.10827117413282394	s i g n i f i c a d o
+D-63	-0.10827117413282394	s i g n i f i c a d o
+P-63	-0.0019 -0.2037 -0.0041 -0.0866 -0.0543 -0.0016 -0.0310 -0.0060 -0.2365 -0.0550 -0.0442 -0.5743
+S-28	i n f o r m a c i ó n
+T-28	i n f o r m a ç õ e s
+H-28	-0.02675299532711506	i n f o r m a ç ã o
+D-28	-0.02675299532711506	i n f o r m a ç ã o
+P-28	-0.0496 -0.0300 -0.0156 -0.0760 -0.0003 -0.0233 -0.0343 -0.0150 -0.0075 -0.0056 -0.0371
+S-169	p u b l i c a c i ó n
+T-169	p u b l i c a ç ã o
+H-169	-0.030599357560276985	p u b l i c a ç ã o
+D-169	-0.030599357560276985	p u b l i c a ç ã o
+P-169	-0.0593 -0.0196 -0.0827 -0.0178 -0.0373 -0.0183 -0.0178 -0.0381 -0.0059 -0.0037 -0.0360
+S-203	m o n a s t e r i o s
+T-203	m o s t e i r o s
+H-203	-0.14881660044193268	m o n a s t ê r i o s
+D-203	-0.14881660044193268	m o n a s t ê r i o s
+P-203	-0.0251 -0.0390 -0.0466 -0.1213 -0.0004 -0.0068 -1.3249 -0.0117 -0.1442 -0.0535 -0.0017 -0.0107
+S-86	i n h a b i t a d a s
+T-86	i n a b i t a d a
+H-86	-0.14821600914001465	i n h a b i t a d a s
+D-86	-0.14821600914001465	i n h a b i t a d a s
+P-86	-0.0480 -0.0114 -1.2028 -0.0523 -0.1351 -0.0183 -0.0059 -0.0963 -0.0156 -0.1774 -0.0053 -0.0101
+S-170	p r o f u n d i d a d
+T-170	p r o f u n d a s
+H-170	-0.030363427475094795	p r o f u n d i d a d e
+D-170	-0.030363427475094795	p r o f u n d i d a d e
+P-170	-0.1004 -0.0184 -0.0352 -0.0072 -0.0059 -0.0035 -0.0007 -0.0411 -0.0261 -0.0208 -0.0015 -0.0201 -0.1137
+S-77	t o t a l m e n t e
+T-77	c o m p l e t a m e n t e
+H-77	-0.045343972742557526	t o t a l m e n t e
+D-77	-0.045343972742557526	t o t a l m e n t e
+P-77	-0.0314 -0.0310 -0.0277 -0.0159 -0.0048 -0.0387 -0.0540 -0.0116 -0.0010 -0.0360 -0.2468
+S-174	i n f l u e n c i a
+T-174	i n f l u e n c i a d a s
+H-174	-0.13257336616516113	i n f l ê n c i a
+D-174	-0.13257336616516113	i n f l ê n c i a
+P-174	-0.0268 -0.0059 -0.0178 -0.0346 -0.6700 -0.0020 -0.0624 -0.0311 -0.0812 -0.3938
+S-1	i n v a l u a b l e
+T-1	i n c a l c u l á v e l
+H-1	-0.34554606676101685	i n v a l u a v e l
+D-1	-0.34554606676101685	i n v a l u a v e l
+P-1	-0.0302 -0.0111 -0.0083 -0.1088 -0.0038 -0.0529 -1.3339 -1.1103 -0.0368 -0.2935 -0.8113
+S-136	c a n t i d a d e s
+T-136	q u a n t i d a d e s
+H-136	-0.029392214491963387	c a n t i d a d e s
+D-136	-0.029392214491963387	c a n t i d a d e s
+P-136	-0.0954 -0.0816 -0.0068 -0.0068 -0.0057 -0.0185 -0.0605 -0.0038 -0.0227 -0.0061 -0.0155
+S-53	t e s t i m o n i o
+T-53	t e s t e m u n h o u
+H-53	-0.134433776140213	t e s t i m o n i o
+D-53	-0.134433776140213	t e s t i m o n i o
+P-53	-0.0059 -0.0234 -0.0025 -0.0153 -0.0270 -0.0125 -0.8120 -0.0039 -0.1897 -0.0398 -0.3468
+S-211	e c o s i s t e m a
+T-211	e c o s s i s t e m a
+H-211	-0.269288033246994	e c o s s i s t e m a
+D-211	-0.269288033246994	e c o s s i s t e m a
+P-211	-0.1069 -0.1602 -0.0273 -0.0002 -0.3805 -0.0305 -0.0047 -0.0008 -0.5340 -0.5514 -1.2566 -0.1784
+S-129	t e c n o l o g í a
+T-129	t e c n o l o g i a
+H-129	-0.06937993317842484	t e c n o l o g i a
+D-129	-0.06937993317842484	t e c n o l o g i a
+P-129	-0.0209 -0.0427 -0.0575 -0.1292 -0.0444 -0.0153 -0.1569 -0.0034 -0.1030 -0.0376 -0.1522
+S-252	h a b i t a n t e s
+T-252	r e s i d e n t e s
+H-252	-0.12306728959083557	h a b i t a n t e s
+D-252	-0.12306728959083557	h a b i t a n t e s
+P-252	-0.8938 -0.0171 -0.1575 -0.0214 -0.0022 -0.0993 -0.0532 -0.0080 -0.0776 -0.0068 -0.0169
+S-272	s o c i e d a d e s
+T-272	s o c i e d a d e s
+H-272	-0.03350368142127991	s o c i e d a d e s
+D-272	-0.03350368142127991	s o c i e d a d e s
+P-272	-0.0176 -0.0526 -0.0457 -0.1603 -0.0101 -0.0076 -0.0269 -0.0055 -0.0189 -0.0071 -0.0163
+S-103	c o m e n t a r i o
+T-103	c o m e n t á r i o
+H-103	-0.236668661236763	c o m e n t á r i o
+D-103	-0.236668661236763	c o m e n t á r i o
+P-103	-0.0664 -0.0282 -0.0051 -0.0752 -0.1244 -0.0014 -1.4435 -0.0066 -0.1112 -0.0562 -0.6852
+S-214	d i a b é t i c o s
+T-214	d i a b é t i c o s
+H-214	-0.07987865060567856	d i a b é t i c o s
+D-214	-0.07987865060567856	d i a b é t i c o s
+P-214	-0.0100 -0.0135 -0.0218 -0.1648 -0.4660 -0.0026 -0.0205 -0.0091 -0.1527 -0.0050 -0.0126
+S-69	t e r r i t o r i o
+T-69	t e r r i t ó r i o
+H-69	-0.1118374615907669	t e r r i t o r i o
+D-69	-0.1118374615907669	t e r r i t o r i o
+P-69	-0.0062 -0.0848 -0.0013 -0.0185 -0.0437 -0.0063 -0.1512 -0.0991 -0.2412 -0.0649 -0.5130
+S-66	F i s i c h e l l a
+T-66	F i s i c h e l l a
+H-66	-0.1949605643749237	F i s i c h e l a
+D-66	-0.1949605643749237	F i s i c h e l a
+P-66	-0.0604 -0.0617 -0.0006 -0.2031 -0.0206 -0.1230 -0.1622 -0.0469 -0.8702 -0.4008
+S-290	p a r t í c u l a s
+T-290	p a r t í c u l a s
+H-290	-0.15707917511463165	p a r t i c u l a s
+D-290	-0.15707917511463165	p a r t i c u l a s
+P-290	-0.0444 -0.0601 -0.0111 -0.0084 -0.8974 -0.1229 -0.0654 -0.2144 -0.2545 -0.0135 -0.0356
+S-55	b a b i l o n i o s
+T-55	b a b i l ô n i o s
+H-55	-0.1380801796913147	b a b i l o n i o s
+D-55	-0.1380801796913147	b a b i l o n i o s
+P-55	-0.1450 -0.0583 -0.1743 -0.0111 -0.0020 -0.9338 -0.0020 -0.1156 -0.0578 -0.0009 -0.0183
+S-191	H o l o c a u s t o
+T-191	H o l o c a u s t o
+H-191	-0.0846506878733635	H o l o c a u s t o
+D-191	-0.0846506878733635	H o l o c a u s t o
+P-191	-0.0139 -0.0457 -0.0472 -0.0760 -0.0538 -0.0646 -0.0253 -0.0091 -0.0344 -0.0441 -0.5170
+S-138	f o t ó g r a f o s
+T-138	f o t ó g r a f o s
+H-138	-0.0955466628074646	f o t ó g r a f o s
+D-138	-0.0955466628074646	f o t ó g r a f o s
+P-138	-0.0208 -0.0608 -0.0203 -0.5601 -0.0018 -0.0144 -0.0424 -0.1350 -0.1434 -0.0058 -0.0463
+S-59	i m p o r t a n t e
+T-59	i m p o r t a n t e
+H-59	-0.070011667907238	i m p o r t a n t e
+D-59	-0.070011667907238	i m p o r t a n t e
+P-59	-0.0310 -0.0190 -0.0004 -0.0099 -0.0001 -0.0053 -0.1665 -0.0896 -0.0078 -0.0673 -0.3733
+S-9	p e n i n s u l a r
+T-9	p e n í n s u l a
+H-9	-0.10531158000230789	p e n i n s u l a r
+D-9	-0.10531158000230789	p e n i n s u l a r
+P-9	-0.2270 -0.2799 -0.0245 -0.1597 -0.0195 -0.0020 -0.0062 -0.0120 -0.2324 -0.0887 -0.1066
+S-236	c o r r i e n t e s
+T-236	C o r r e n t e s
+H-236	-0.10252708941698074	c o r r e n t e s
+D-236	-0.10252708941698074	c o r r e n t e s
+P-236	-0.0313 -0.0209 -0.0023 -0.0086 -0.6680 -0.0170 -0.0083 -0.0519 -0.1941 -0.0230
+S-74	r e g i o n a l e s
+T-74	r e g i o n a i s
+H-74	-0.14600761234760284	r e g i o n a i s
+D-74	-0.14600761234760284	r e g i o n a i s
+P-74	-0.0529 -0.0728 -0.0033 -0.0163 -0.2547 -0.0074 -0.0920 -0.8737 -0.0010 -0.0859
+S-149	i n h e r e n t e s
+T-149	i n e r e n t e s
+H-149	-0.07562429457902908	i n h e r e n t e s
+D-149	-0.07562429457902908	i n h e r e n t e s
+P-149	-0.0252 -0.0056 -0.5887 -0.0064 -0.0033 -0.0552 -0.0240 -0.0113 -0.0576 -0.0345 -0.0201
+S-148	d e f i n i c i ó n
+T-148	d e f i n i ç ã o
+H-148	-0.0799536481499672	d e f i n i ç ã o
+D-148	-0.0799536481499672	d e f i n i ç ã o
+P-148	-0.0376 -0.1821 -0.0092 -0.0210 -0.0025 -0.2032 -0.2685 -0.0072 -0.0092 -0.0591
+S-99	a t i r a n t a d a
+T-99	a t r a v e s s a
+H-99	-0.2131430059671402	a t i r a n t a d a
+D-99	-0.2131430059671402	a t i r a n t a d a
+P-99	-0.0078 -0.0363 -0.0314 -0.0088 -0.0927 -0.0766 -0.0279 -0.6159 -0.0281 -0.7525 -0.6666
+S-213	s i m u l a c i ó n
+T-213	s i m u l a ç ã o
+H-213	-0.03804550692439079	s i m u l a ç ã o
+D-213	-0.03804550692439079	s i m u l a ç ã o
+P-213	-0.0019 -0.2007 -0.0080 -0.0029 -0.0068 -0.0508 -0.0665 -0.0055 -0.0045 -0.0328
+S-161	p a r e n t a l e s
+T-161	p a r e n t a i s
+H-161	-0.10034704208374023	p a r e n t a i s
+D-161	-0.10034704208374023	p a r e n t a i s
+P-161	-0.0507 -0.0606 -0.0198 -0.0522 -0.0574 -0.0060 -0.1396 -0.5529 -0.0021 -0.0623
+S-85	a r r a s t r a d o
+T-85	a r r a s t a d o
+H-85	-0.10608157515525818	a r r a s t r a d o
+D-85	-0.10608157515525818	a r r a s t r a d o
+P-85	-0.0465 -0.0331 -0.1270 -0.0121 -0.0022 -0.0374 -0.0375 -0.1617 -0.0347 -0.0697 -0.6050
+S-271	e s q u i m a l e s
+T-271	e s q u i m ó s
+H-271	-0.12896399199962616	e s q u i m a i s
+D-271	-0.12896399199962616	e s q u i m a i s
+P-271	-0.1993 -0.0002 -0.0457 -0.0002 -0.0136 -0.0188 -0.0634 -0.9156 -0.0025 -0.0303
+S-140	e l e c c i o n e s
+T-140	e l e i ç õ e s
+H-140	-0.1641550064086914	e l e ç õ e s
+D-140	-0.1641550064086914	e l e ç õ e s
+P-140	-0.1037 -0.0082 -0.3737 -0.7669 -0.0355 -0.0087 -0.0040 -0.0125
+S-221	c o s t u m b r e s
+T-221	c o s t u m e s
+H-221	-0.04321228712797165	c o s t u m b r e s
+D-221	-0.04321228712797165	c o s t u m b r e s
+P-221	-0.0343 -0.0250 -0.0007 -0.0458 -0.0073 -0.0005 -0.1946 -0.0148 -0.1030 -0.0175 -0.0317
+S-12	n a t u r a l e z a
+T-12	n a t u r e z a
+H-12	-0.15450860559940338	n a t u r a l
+D-12	-0.15450860559940338	n a t u r a l
+P-12	-0.0698 -0.0330 -0.0304 -0.0015 -0.0006 -0.0225 -0.0154 -1.0629
+S-181	c o m e n z a r o n
+T-181	c o m e ç o u
+H-181	-0.3525063693523407	c o m e n ç a r o m
+D-181	-0.3525063693523407	c o m e n ç a r o m
+P-181	-0.1214 -0.0269 -0.0026 -0.1339 -0.1142 -0.5520 -0.1720 -0.0870 -0.9001 -1.4612 -0.3064
+S-87	m a n t e n e r s e
+T-87	m a n t e r
+H-87	-0.5220178365707397	m a n t e r
+D-87	-0.5220178365707397	m a n t e r
+P-87	-0.0146 -0.0621 -0.0198 -0.0064 -0.0354 -0.6824 -2.8334
+S-122	c o m p a r t i r
+T-122	c o m p a r t i l h a d a s
+H-122	-0.11268579214811325	c o m p a r t i r
+D-122	-0.11268579214811325	c o m p a r t i r
+P-122	-0.0945 -0.0301 -0.0061 -0.0013 -0.0519 -0.0013 -0.0049 -0.1371 -0.4942 -0.3055
+S-185	C o m p a r t i r
+T-185	C o m p a r t i l h a r
+H-185	-0.08954364061355591	C o m p a r t i r
+D-185	-0.08954364061355591	C o m p a r t i r
+P-185	-0.0437 -0.0438 -0.0062 -0.0010 -0.0359 -0.0004 -0.0044 -0.1355 -0.3612 -0.2633
+S-67	f i n a l i c e n
+T-67	f i n a l i z a ç ã o
+H-67	-0.23720404505729675	f i n a l i c e m
+D-67	-0.23720404505729675	f i n a l i c e m
+P-67	-0.0066 -0.0164 -0.0044 -0.0615 -0.0008 -0.3446 -0.4381 -0.4188 -0.8766 -0.2042
+S-202	m a n g l a r e s
+T-202	m a n g u e z a i s
+H-202	-0.06434644013643265	m a n g l a r e s
+D-202	-0.06434644013643265	m a n g l a r e s
+P-202	-0.0205 -0.0564 -0.0149 -0.0046 -0.3073 -0.0972 -0.0303 -0.0778 -0.0046 -0.0298
+S-8	i n v a s i v a s
+T-8	i n t r u s i v a s
+H-8	-0.1316584348678589	i n v a s i v a s
+D-8	-0.1316584348678589	i n v a s i v a s
+P-8	-0.0605 -0.0196 -0.0042 -0.0907 -0.0011 -0.7682 -0.0072 -0.2667 -0.0780 -0.0204
+S-282	K i s s i n g e r
+T-282	K i s s i n g e r
+H-282	-0.10643265396356583	K i s s i n g e r
+D-282	-0.10643265396356583	K i s s i n g e r
+P-282	-0.1457 -0.0166 -0.0068 -0.0026 -0.0689 -0.0300 -0.0109 -0.3753 -0.0325 -0.3749
+S-124	a u t o n o m í a
+T-124	a u t o n o m i a
+H-124	-0.09612653404474258	a u t o n o m i a
+D-124	-0.09612653404474258	a u t o n o m i a
+P-124	-0.0198 -0.0019 -0.0076 -0.0356 -0.0093 -0.4092 -0.0012 -0.1244 -0.0598 -0.2925
+S-280	R e p ú b l i c a
+T-280	R e p ú b l i c a
+H-280	-0.13718800246715546	R e p ú b l i c a
+D-280	-0.13718800246715546	R e p ú b l i c a
+P-280	-0.0871 -0.1663 -0.0034 -0.6473 -0.1039 -0.0534 -0.0616 -0.0021 -0.0515 -0.1954
+S-171	n a r r a d o r a
+T-171	n a r r a d o r a
+H-171	-0.13516388833522797	n a r r a d o r a
+D-171	-0.13516388833522797	n a r r a d o r a
+P-171	-0.2154 -0.1040 -0.1682 -0.2915 -0.0766 -0.0063 -0.0450 -0.0085 -0.0643 -0.3718
+S-134	p a c i f i s m o
+T-134	p a c i f i s m o
+H-134	-0.09620481729507446	p a c i f i s m o
+D-134	-0.09620481729507446	p a c i f i s m o
+P-134	-0.1040 -0.0332 -0.2666 -0.0314 -0.0110 -0.0439 -0.0450 -0.0036 -0.1563 -0.2670
+S-29	s a t é l i t e s
+T-29	s a t é l i t e s
+H-29	-0.0833364725112915	s a t é l i t e s
+D-29	-0.0833364725112915	s a t é l i t e s
+P-29	-0.0076 -0.0219 -0.0093 -0.5406 -0.0014 -0.1133 -0.0027 -0.0588 -0.0402 -0.0376
+S-287	a c t i v i d a d
+T-287	a t i v i d a d e
+H-287	-0.12163149565458298	a t i v i d a d e
+D-287	-0.12163149565458298	a t i v i d a d e
+P-287	-0.0375 -0.8142 -0.0191 -0.0004 -0.0423 -0.0060 -0.0536 -0.0018 -0.0464 -0.1950
+S-158	s u b m a r i n a
+T-158	s u b m a r i n a
+H-158	-0.09928546845912933	s u b m a r i n a
+D-158	-0.09928546845912933	s u b m a r i n a
+P-158	-0.0027 -0.0083 -0.0417 -0.1496 -0.1521 -0.0033 -0.0464 -0.1664 -0.1188 -0.3035
+S-73	n e g a t i v o s
+T-73	n e g a t i v o s
+H-73	-0.07492262125015259	n e g a t i v o s
+D-73	-0.07492262125015259	n e g a t i v o s
+P-73	-0.1434 -0.3697 -0.0051 -0.0359 -0.0375 -0.0338 -0.0017 -0.0940 -0.0198 -0.0083
+S-62	a g n ó s t i c o
+T-62	a g n ó s t i c o
+H-62	-0.06756779551506042	a g n ó s t i c o
+D-62	-0.06756779551506042	a g n ó s t i c o
+P-62	-0.0435 -0.0007 -0.0359 -0.2312 -0.0002 -0.0032 -0.0103 -0.0089 -0.1208 -0.2209
+S-273	c o n s u l t a r
+T-273	c o n s u l t e
+H-273	-0.0434955470263958	c o n s u l t a r
+D-273	-0.0434955470263958	c o n s u l t a r
+P-273	-0.0760 -0.0139 -0.0067 -0.0002 -0.0008 -0.0011 -0.0139 -0.1718 -0.0094 -0.1411
+S-56	a t r a c c i ó n
+T-56	a t r a t i v o
+H-56	-0.015844443812966347	a t r a ç ã o
+D-56	-0.015844443812966347	a t r a ç ã o
+P-56	-0.0083 -0.0061 -0.0012 -0.0202 -0.0234 -0.0154 -0.0028 -0.0492
+S-139	p e r m i t í a n
+T-139	p e r m i t i a
+H-139	-0.38211241364479065	p e r m i t i a n
+D-139	-0.38211241364479065	p e r m i t i a n
+P-139	-0.0917 -0.0867 -0.0192 -0.0201 -0.1536 -0.0064 -0.6345 -0.2752 -0.6021 -1.9316
+S-218	e n c u e n t r o
+T-218	e n c o n t r o
+H-218	-0.16231131553649902	e n c u e n t r o
+D-218	-0.16231131553649902	e n c u e n t r o
+P-218	-0.2095 -0.0044 -0.1258 -0.4921 -0.1463 -0.0181 -0.0010 -0.1315 -0.0274 -0.4671
+S-283	t e n t a c i ó n
+T-283	t e n t a ç ã o
+H-283	-0.0292480681091547	t e n t a ç ã o
+D-283	-0.0292480681091547	t e n t a ç ã o
+P-283	-0.0076 -0.0538 -0.0099 -0.0049 -0.1218 -0.0168 -0.0036 -0.0036 -0.0412
+S-147	c r i s t a l e s
+T-147	c r i s t a i s
+H-147	-0.16472893953323364	c r i s t a i s
+D-147	-0.16472893953323364	c r i s t a i s
+P-147	-0.0214 -0.0082 -0.0085 -0.0008 -0.0031 -0.1424 -1.2344 -0.0017 -0.0619
+S-184	c o n f i r m a r
+T-184	c o n f i r m a
+H-184	-0.055655837059020996	c o n f i r m a r
+D-184	-0.055655837059020996	c o n f i r m a r
+P-184	-0.0797 -0.0124 -0.0164 -0.0061 -0.0309 -0.0205 -0.0184 -0.0715 -0.1709 -0.1299
+S-107	F i l i p i n a s
+T-107	f i l i p i n a
+H-107	-0.08091975748538971	F i l i p i n a s
+D-107	-0.08091975748538971	F i l i p i n a s
+P-107	-0.0829 -0.1844 -0.0023 -0.2163 -0.0119 -0.0594 -0.0067 -0.1208 -0.0360 -0.0884
+S-162	a n d a m i a j e
+T-162	a n d a i m e
+H-162	-0.16142958402633667	a n d a m i a g e m
+D-162	-0.16142958402633667	a n d a m i a g e m
+P-162	-0.1015 -0.0430 -0.0076 -0.0723 -0.0490 -0.0890 -0.1787 -0.1183 -0.0374 -1.0222 -0.0567
+S-26	e s p e c i a s
+T-26	e s p e c i a r i a s
+H-26	-0.04561711475253105	e s p e c i a s
+D-26	-0.04561711475253105	e s p e c i a s
+P-26	-0.1083 -0.0002 -0.0019 -0.1316 -0.0294 -0.0353 -0.0253 -0.0389 -0.0396
+S-224	d e m o s t r ó
+T-224	d e m o n s t r o u
+H-224	-0.24017968773841858	d e m o s t r o
+D-224	-0.24017968773841858	d e m o s t r o
+P-224	-0.1903 -0.2040 -0.0528 -0.0358 -0.0009 -0.0028 -0.0130 -0.1417 -1.5204
+S-100	d e s t r u y ó
+T-100	d e s t r u í d a
+H-100	-0.4289223551750183	d e s t r u i u
+D-100	-0.4289223551750183	d e s t r u i u
+P-100	-0.1795 -0.1069 -0.0165 -0.0071 -0.0094 -0.0902 -1.5890 -1.1124 -0.7493
+S-111	c o n t a c t o
+T-111	c o n t a t o s
+H-111	-0.28590628504753113	c o n t a ç ã o
+D-111	-0.28590628504753113	c o n t a ç ã o
+P-111	-0.0464 -0.0087 -0.0079 -0.0021 -0.1736 -1.1973 -1.0532 -0.0069 -0.0770
+S-143	U n i v e r s o
+T-143	U n i v e r s o
+H-143	-0.1722661703824997	U n i v e r s o
+D-143	-0.1722661703824997	U n i v e r s o
+P-143	-0.8743 -0.0360 -0.0424 -0.0017 -0.1090 -0.0856 -0.0333 -0.1245 -0.2435
+S-190	f a m i l i a r
+T-190	f a m í l i a s
+H-190	-0.057986728847026825	f a m i l i a r
+D-190	-0.057986728847026825	f a m i l i a r
+P-190	-0.0389 -0.0367 -0.0157 -0.0261 -0.0221 -0.0996 -0.0801 -0.0212 -0.1815
+S-151	a n a r q u í a
+T-151	a n a r q u i a
+H-151	-0.09216557443141937	a n a r q u i a
+D-151	-0.09216557443141937	a n a r q u i a
+P-151	-0.0611 -0.0234 -0.3332 -0.0058 -0.0482 -0.0007 -0.2532 -0.0132 -0.0906
+S-205	e x p l i c a r
+T-205	e x p l i c a r
+H-205	-0.0414363257586956	e x p l i c a r
+D-205	-0.0414363257586956	e x p l i c a r
+P-205	-0.0474 -0.0015 -0.0026 -0.0057 -0.0438 -0.0075 -0.0607 -0.0927 -0.1111
+S-225	p r e c i s a n
+T-225	p r e c i s a m
+H-225	-0.3060638904571533	p r e c i s a m
+D-225	-0.3060638904571533	p r e c i s a m
+P-225	-0.0655 -0.0080 -0.2209 -0.6443 -0.1191 -0.0172 -0.4684 -1.1465 -0.0648
+S-291	f e s t i v a l
+T-291	f e s t i v a l
+H-291	-0.02638429030776024	f e s t i v a l
+D-291	-0.02638429030776024	f e s t i v a l
+P-291	-0.0142 -0.0777 -0.0084 -0.0059 -0.0300 -0.0014 -0.0218 -0.0189 -0.0591
+S-54	d i s c u r s o
+T-54	D i s c u r s o
+H-54	-0.0695759728550911	d i s c u r s o
+D-54	-0.0695759728550911	d i s c u r s o
+P-54	-0.0097 -0.0096 -0.0037 -0.0377 -0.0133 -0.0031 -0.0535 -0.0614 -0.4342
+S-118	r e c u r s o s
+T-118	r e c u r s o s
+H-118	-0.04291056841611862	r e c u r s o s
+D-118	-0.04291056841611862	r e c u r s o s
+P-118	-0.0199 -0.0463 -0.1610 -0.0068 -0.0372 -0.0334 -0.0632 -0.0075 -0.0110
+S-275	E c o n o m í a
+T-275	E c o n o m i a
+H-275	-0.08610537648200989	E c o n o m i a
+D-275	-0.08610537648200989	E c o n o m i a
+P-275	-0.0231 -0.0252 -0.0324 -0.0024 -0.2095 -0.0017 -0.2119 -0.0435 -0.2253
+S-266	q u í m i c o s
+T-266	q u í m i c o s
+H-266	-0.06364931911230087	q u í m i c o s
+D-266	-0.06364931911230087	q u í m i c o s
+P-266	-0.0167 -0.0002 -0.0992 -0.0031 -0.0266 -0.2570 -0.1243 -0.0178 -0.0279
+S-167	S A N P a r k s
+T-167	S A N P a r k s
+H-167	-0.3041699230670929	S A N P a r k s
+D-167	-0.3041699230670929	S A N P a r k s
+P-167	-0.0122 -1.5220 -0.8414 -0.0154 -0.2621 -0.0001 -0.0318 -0.0391 -0.0135
+S-24	e s p a r c i r
+T-24	e s p a l h a r
+H-24	-0.46545061469078064	e s p a r c i a
+D-24	-0.46545061469078064	e s p a r c i a
+P-24	-0.0929 -0.0002 -0.0014 -0.0221 -0.0002 -2.0080 -0.1231 -1.3606 -0.5806
+S-44	s i l e n c i o
+T-44	s i l ê n c i o
+H-44	-0.3514416515827179	s i l ê n c i o
+D-44	-0.3514416515827179	s i l ê n c i o
+P-44	-0.0006 -0.2134 -0.0102 -1.4347 -0.0059 -0.6919 -0.0649 -0.1739 -0.5676
+S-247	e j e m p l o s
+T-247	E x e m p l o s
+H-247	-0.18162614107131958	e x e m p l o s
+D-247	-0.18162614107131958	e x e m p l o s
+P-247	-0.4690 -0.5394 -0.1786 -0.0201 -0.0074 -0.0996 -0.2625 -0.0291 -0.0289
+S-194	a n a l i z a n
+T-194	a n a l i s a m
+H-194	-0.21638788282871246	a n a l i z a m
+D-194	-0.21638788282871246	a n a l i z a m
+P-194	-0.0362 -0.0282 -0.0479 -0.0043 -0.0677 -0.2126 -0.2547 -1.2474 -0.0486
+S-108	h i s t o r i a
+T-108	h i s t ó r i a
+H-108	-0.17726349830627441	h i s t o r i a
+D-108	-0.17726349830627441	h i s t o r i a
+P-108	-1.2080 -0.0172 -0.0018 -0.0012 -0.1298 -0.0002 -0.0388 -0.0146 -0.1839
+S-120	o r i g i n a l
+T-120	O r i g i n a l
+H-120	-0.08916888386011124	o r i g i n a l
+D-120	-0.08916888386011124	o r i g i n a l
+P-120	-0.2694 -0.0850 -0.0180 -0.0058 -0.0129 -0.0287 -0.1007 -0.0267 -0.2554
+S-206	c u a r e n t a
+T-206	q u a r e n t a
+H-206	-0.13390608131885529	c u a r e n t a
+D-206	-0.13390608131885529	c u a r e n t a
+P-206	-0.3220 -0.0040 -0.0576 -0.0192 -0.0388 -0.0430 -0.0082 -0.1871 -0.5252
+S-285	V e g u i l l a
+T-285	V e g u i l l a
+H-285	-0.17744754254817963	V e g u i l a
+D-285	-0.17744754254817963	V e g u i l a
+P-285	-0.1003 -0.2982 -0.0033 -0.0038 -0.0392 -0.0057 -0.6917 -0.2773
+S-27	m i n i s t r o
+T-27	M i n i s t r o
+H-27	-0.09242650866508484	m i n i s t r o
+D-27	-0.09242650866508484	m i n i s t r o
+P-27	-0.0071 -0.1609 -0.0079 -0.0531 -0.0024 -0.0020 -0.0083 -0.0501 -0.5400
+S-270	B a c h m a n n
+T-270	B a c h m a n n
+H-270	-0.5410923361778259	B a c u m a n n
+D-270	-0.5410923361778259	B a c u m a n n
+P-270	-0.0145 -0.0092 -0.1946 -1.1972 -0.0463 -0.3678 -0.3265 -1.7180 -0.9956
+S-142	a t e n c i ó n
+T-142	a t e n ç ã o
+H-142	-0.10954146832227707	a t e n ç ã o
+D-142	-0.10954146832227707	a t e n ç ã o
+P-142	-0.0061 -0.0058 -0.6530 -0.0222 -0.0607 -0.0617 -0.0087 -0.0581
+S-116	i n v i e r n o
+T-116	i n v e r n o
+H-116	-0.12191210687160492	i n v e r n o
+D-116	-0.12191210687160492	i n v e r n o
+P-116	-0.0374 -0.0134 -0.0037 -0.4260 -0.0083 -0.0758 -0.0603 -0.3503
+S-157	d e s i e r t o
+T-157	d e s e r t o
+H-157	-0.15085667371749878	d e s e r t o
+D-157	-0.15085667371749878	d e s e r t o
+P-157	-0.2407 -0.0611 -0.0040 -0.5220 -0.0356 -0.0221 -0.0307 -0.2905
+S-104	t é r m i n o s
+T-104	t e r m o s
+H-104	-0.2523094713687897	t e r m i n o s
+D-104	-0.2523094713687897	t e r m i n o s
+P-104	-0.0033 -1.4797 -0.0011 -0.0077 -0.5589 -0.0268 -0.1623 -0.0029 -0.0282
+S-127	m a n t e n e r
+T-127	m a n t e r
+H-127	-0.27064788341522217	m a n t e r
+D-127	-0.27064788341522217	m a n t e r
+P-127	-0.0207 -0.0823 -0.0447 -0.0165 -0.0244 -0.4027 -1.3033
+S-145	e c o z o n a s
+T-145	z o n a s
+H-145	-0.17445993423461914	e c o z o n a s
+D-145	-0.17445993423461914	e c o z o n a s
+P-145	-0.3721 -0.2957 -0.0471 -0.5918 -0.1117 -0.0056 -0.1166 -0.0098 -0.0196
+S-93	p r o f u n d o
+T-93	f u n d o
+H-93	-0.06994689255952835	p r o f u n d o
+D-93	-0.06994689255952835	p r o f u n d o
+P-93	-0.0722 -0.0154 -0.0607 -0.0093 -0.0155 -0.0084 -0.0031 -0.0448 -0.4001
+S-61	o f i c i a l
+T-61	o f i c i a l
+H-61	-0.10652656853199005	o f i c i a l
+D-61	-0.10652656853199005	o f i c i a l
+P-61	-0.2448 -0.0347 -0.0324 -0.0020 -0.0390 -0.0168 -0.1623 -0.3202
+S-248	o s c i l a n
+T-248	o s c i l a d o r e s
+H-248	-0.2676916718482971	o s c i l a m
+D-248	-0.2676916718482971	o s c i l a m
+P-248	-0.2406 -0.0012 -0.0439 -0.0111 -0.0912 -0.1272 -1.5505 -0.0759
+S-186	r a s t r e o
+T-186	r a s t r e a n d o
+H-186	-0.18565131723880768	r a s t r e o
+D-186	-0.18565131723880768	r a s t r e o
+P-186	-0.0231 -0.0857 -0.0069 -0.0257 -0.0146 -0.4241 -0.4642 -0.4410
+S-131	l e g a l e s
+T-131	l e g a l
+H-131	-0.1722809374332428	l e g a i s
+D-131	-0.1722809374332428	l e g a i s
+P-131	-0.0499 -0.1612 -0.0081 -0.0519 -0.8800 -0.0006 -0.0544
+S-70	T a m b i é n
+T-70	T a m b é m
+H-70	-0.4460148215293884	T a m b i ê n
+D-70	-0.4460148215293884	T a m b i ê n
+P-70	-0.0031 -0.0346 -0.0024 -0.0245 -0.0706 -2.3044 -0.4881 -0.6405
+S-90	s a l i d a s
+T-90	s a í d a s
+H-90	-0.07678698003292084	s a l i d a s
+D-90	-0.07678698003292084	s a l i d a s
+P-90	-0.0051 -0.0459 -0.4474 -0.0348 -0.0304 -0.0396 -0.0072 -0.0040
+S-168	F r a n c i a
+T-168	F r a n ç a
+H-168	-0.14377523958683014	F r a n c i a
+D-168	-0.14377523958683014	F r a n c i a
+P-168	-0.0082 -0.0003 -0.4717 -0.0074 -0.1720 -0.0235 -0.0871 -0.3800
+S-19	r e m u e v e
+T-19	r e m o v e
+H-19	-0.16353075206279755	r e m u e v e
+D-19	-0.16353075206279755	r e m u e v e
+P-19	-0.0222 -0.0448 -0.0235 -0.6851 -0.0397 -0.0065 -0.0208 -0.4656
+S-13	t a m b i é n
+T-13	t a m b é m
+H-13	-0.49024415016174316	t a m b i k n
+D-13	-0.49024415016174316	t a m b i k n
+P-13	-0.0051 -0.0529 -0.0017 -0.0435 -0.0931 -2.0846 -1.2055 -0.4356
+S-76	e q u i p o s
+T-76	e q u i p e
+H-76	-0.11938823014497757	e q u i p o s
+D-76	-0.11938823014497757	e q u i p o s
+P-76	-0.7512 -0.0264 -0.0001 -0.0281 -0.0054 -0.1275 -0.0033 -0.0131
+S-144	b o t o n e s
+T-144	b o t õ e s
+H-144	-0.09856928884983063	b o t o n s
+D-144	-0.09856928884983063	b o t o n s
+P-144	-0.1422 -0.0278 -0.0322 -0.0779 -0.0366 -0.3296 -0.0437
+S-154	c a t a l á n
+T-154	c a t a l ã o
+H-154	-0.3644525110721588	c a t a l ã o
+D-154	-0.3644525110721588	c a t a l ã o
+P-154	-0.1321 -0.0246 -0.0680 -0.0200 -0.0128 -2.4455 -0.0650 -0.1477
+S-150	g i g a n t e
+T-150	G i g a n t e
+H-150	-0.1171899363398552	g i g a n t e
+D-150	-0.1171899363398552	g i g a n t e
+P-150	-0.0525 -0.0726 -0.0032 -0.1676 -0.0115 -0.0061 -0.0400 -0.5839
+S-80	a c e p t e n
+T-80	a c e i t o s
+H-80	-0.21574322879314423	a c e p t e m
+D-80	-0.21574322879314423	a c e p t e m
+P-80	-0.0130 -0.0663 -0.0124 -0.3686 -0.0042 -0.1132 -1.1047 -0.0435
+S-292	l l a m a d a
+T-292	c h a m a d a
+H-292	-0.2577340304851532	l a m a d a
+D-292	-0.2577340304851532	l a m a d a
+P-292	-0.0727 -0.5245 -0.0689 -0.2532 -0.0117 -0.6497 -0.2234
+S-18	S i s t e m a
+T-18	S i s t e m a
+H-18	-0.08284462988376617	S i s t e m a
+D-18	-0.08284462988376617	S i s t e m a
+P-18	-0.1550 -0.0360 -0.0015 -0.0021 -0.1000 -0.0035 -0.2379 -0.1268
+S-207	c a p i t a l
+T-207	c a p i t a l
+H-207	-0.043680090457201004	c a p i t a l
+D-207	-0.043680090457201004	c a p i t a l
+P-207	-0.1172 -0.0439 -0.0044 -0.0280 -0.0008 -0.0301 -0.0113 -0.1138
+S-197	R o l a n d o
+T-197	R o l a n d o
+H-197	-0.13479843735694885	R o l a n d o
+D-197	-0.13479843735694885	R o l a n d o
+P-197	-0.1328 -0.0517 -0.1123 -0.3703 -0.0374 -0.0170 -0.0423 -0.3147
+S-269	b á s i c o s
+T-269	b á s i c o s
+H-269	-0.2738029360771179	b á s i c o s
+D-269	-0.2738029360771179	b á s i c o s
+P-269	-0.2078 -1.2249 -0.0021 -0.5491 -0.0348 -0.1276 -0.0061 -0.0381
+S-240	s e n t i d o
+T-240	s e n s a t o
+H-240	-0.0870877280831337	s e n t i d o
+D-240	-0.0870877280831337	s e n t i d o
+P-240	-0.0038 -0.0680 -0.0264 -0.0027 -0.0204 -0.0427 -0.2458 -0.2868
+S-58	b e b i d a s
+T-58	b e b i d a s
+H-58	-0.14197367429733276	b e b i d a s
+D-58	-0.14197367429733276	b e b i d a s
+P-58	-0.1901 -0.1236 -0.7446 -0.0318 -0.0066 -0.0252 -0.0083 -0.0056
+S-39	d e j a n d o
+T-39	m a t a n d o
+H-39	-0.46006837487220764	d e j a n d o
+D-39	-0.46006837487220764	d e j a n d o
+P-39	-0.0562 -1.0800 -1.4124 -0.6745 -0.0435 -0.0288 -0.0443 -0.3408
+S-17	n a t i v o s
+T-17	n a t i v o s
+H-17	-0.03236905857920647	n a t i v o s
+D-17	-0.03236905857920647	n a t i v o s
+P-17	-0.0699 -0.0367 -0.0563 -0.0241 -0.0009 -0.0563 -0.0072 -0.0075
+S-132	c o m e n z ó
+T-132	c o m e ç o u
+H-132	-0.22728396952152252	c o m e n ç o
+D-132	-0.22728396952152252	c o m e n ç o
+P-132	-0.0877 -0.0330 -0.0028 -0.0980 -0.1601 -0.5898 -0.5195 -0.3274
+S-159	f r a n c o s
+T-159	f r a n c o s
+H-159	-0.048854928463697433	f r a n c o s
+D-159	-0.048854928463697433	f r a n c o s
+P-159	-0.0087 -0.0029 -0.0421 -0.0176 -0.1610 -0.1003 -0.0161 -0.0422
+S-110	p a r e c i ó
+T-110	p a r e c e u
+H-110	-0.3773249089717865	p a r e ç o
+D-110	-0.3773249089717865	p a r e ç o
+P-110	-0.0689 -0.0954 -0.0063 -0.1642 -1.2666 -0.7421 -0.2978
+S-21	m á q u i n a
+T-21	m á q u i n a
+H-21	-0.16554294526576996	m â q u i n a
+D-21	-0.16554294526576996	m â q u i n a
+P-21	-0.0049 -0.9827 -0.0184 -0.0005 -0.0090 -0.0073 -0.1237 -0.1778
+S-105	b a r r i o s
+T-105	s u b ú r b i o s
+H-105	-0.13387809693813324	b a r r i o s
+D-105	-0.13387809693813324	b a r r i o s
+P-105	-0.1433 -0.1681 -0.0013 -0.0439 -0.0590 -0.6415 -0.0039 -0.0100
+S-84	L e a l o f i
+T-84	L e a l o f i
+H-84	-0.24428755044937134	L e a l o f i
+D-84	-0.24428755044937134	L e a l o f i
+P-84	-0.1235 -0.1285 -0.1030 -0.0180 -0.0878 -0.0041 -0.0250 -1.4644
+S-262	c o m p r a r
+T-262	c o m p r a r
+H-262	-0.11431928724050522	c o m p r a r
+D-262	-0.11431928724050522	c o m p r a r
+P-262	-0.1212 -0.0336 -0.0019 -0.0473 -0.0210 -0.1519 -0.0694 -0.4682
+S-98	E s t a d o s
+T-98	E s t a d o s
+H-98	-0.04164830595254898	E s t a d o s
+D-98	-0.04164830595254898	E s t a d o s
+P-98	-0.0423 -0.0004 -0.1185 -0.0868 -0.0142 -0.0604 -0.0011 -0.0094
+S-192	r e s i s t a
+T-192	r e s i s t a
+H-192	-0.10236828774213791	r e s i s t a
+D-192	-0.10236828774213791	r e s i s t a
+P-192	-0.0415 -0.0594 -0.0020 -0.1779 -0.0146 -0.0028 -0.3229 -0.1979
+S-94	a l g u n a s
+T-94	a l g u m a s
+H-94	-0.05173118785023689	a l g u n a s
+D-94	-0.05173118785023689	a l g u n a s
+P-94	-0.0357 -0.0255 -0.0146 -0.0179 -0.1160 -0.1781 -0.0060 -0.0201
+S-45	t r á f i c o
+T-45	T r á f e g o
+H-45	-0.18212644755840302	t r â f i c o
+D-45	-0.18212644755840302	t r â f i c o
+P-45	-0.0013 -0.0002 -0.9870 -0.0018 -0.0208 -0.0049 -0.0905 -0.3506
+S-263	l í q u i d o
+T-263	l í q u i d o
+H-263	-0.09299708902835846	l í q u i d o
+D-263	-0.09299708902835846	l í q u i d o
+P-263	-0.0421 -0.2452 -0.0098 -0.0004 -0.0288 -0.0163 -0.2261 -0.1753
+S-20	e s p e c i e
+T-20	e s p é c i e
+H-20	-0.18508481979370117	e s p e c i e
+D-20	-0.18508481979370117	e s p e c i e
+P-20	-0.0473 -0.0001 -0.0022 -0.0449 -0.0814 -0.0649 -0.0489 -1.1910
+S-253	r e s c a t e
+T-253	r e s g a t e
+H-253	-0.1409587264060974	r e s c a t e
+D-253	-0.1409587264060974	r e s c a t e
+P-253	-0.0517 -0.0545 -0.0586 -0.3641 -0.0684 -0.0916 -0.0354 -0.4033
+S-6	o c t u b r e
+T-6	o u t u b r o
+H-6	-0.3780805468559265	o i t u b r e
+D-6	-0.3780805468559265	o i t u b r e
+P-6	-0.0853 -1.7862 -0.0045 -0.0175 -0.1089 -0.0139 -0.0412 -0.9669
+S-260	m a y o r í a
+T-260	m a i o r i a
+H-260	-0.16745445132255554	m a j o r i a
+D-260	-0.16745445132255554	m a j o r i a
+P-260	-0.0338 -0.1208 -0.7096 -0.0360 -0.0002 -0.3416 -0.0126 -0.0850
+S-249	K e n n e d y
+T-249	K e n n e d y
+H-249	-0.06504832953214645	K e n n e d y
+D-249	-0.06504832953214645	K e n n e d y
+P-249	-0.0476 -0.0891 -0.0178 -0.0488 -0.1791 -0.0114 -0.0739 -0.0527
+S-57	a l g u n o s
+T-57	a l g u m a s
+H-57	-0.05634988844394684	a l g u n o s
+D-57	-0.05634988844394684	a l g u n o s
+P-57	-0.0326 -0.0247 -0.0185 -0.0271 -0.0396 -0.2889 -0.0003 -0.0191
+S-25	8 0 2 . 1 1 a
+T-25	8 0 2 . 1 1 a
+H-25	-0.13632598519325256	8 0 2 . 1 1
+D-25	-0.13632598519325256	8 0 2 . 1 1
+P-25	-0.1419 -0.0388 -0.0115 -0.2393 -0.0016 -0.0046 -0.5165
+S-210	c i e n c i a
+T-210	c i ê n c i a
+H-210	-0.143189936876297	c i e n c i a
+D-210	-0.143189936876297	c i e n c i a
+P-210	-0.0145 -0.1627 -0.3220 -0.0470 -0.0453 -0.0612 -0.0673 -0.4256
+S-121	l í d e r e s
+T-121	l í d e r e s
+H-121	-0.08466733247041702	l í d e r e s
+D-121	-0.08466733247041702	l í d e r e s
+P-121	-0.0091 -0.5566 -0.0066 -0.0067 -0.0312 -0.0427 -0.0111 -0.0132
+S-241	f í s i c a s
+T-241	f í s i c o s
+H-241	-0.27805274724960327	f í s i c a s
+D-241	-0.27805274724960327	f í s i c a s
+P-241	-0.0154 -0.5505 -0.0003 -0.4918 -0.0462 -1.0760 -0.0149 -0.0293
+S-215	d u r a n t e
+T-215	d u r a n t e
+H-215	-0.06469214707612991	d u r a n t e
+D-215	-0.06469214707612991	d u r a n t e
+P-215	-0.0198 -0.0029 -0.0047 -0.0755 -0.0176 -0.0072 -0.0390 -0.3508
+S-133	e s t u d i o
+T-133	e s t u d a r
+H-133	-0.11048200726509094	e s t u d o
+D-133	-0.11048200726509094	e s t u d o
+P-133	-0.0641 -0.0001 -0.0370 -0.0069 -0.0222 -0.4394 -0.2036
+S-72	e v e n t o s
+T-72	e v e n t o s
+H-72	-0.04271857813000679	e v e n t o s
+D-72	-0.04271857813000679	e v e n t o s
+P-72	-0.1654 -0.0040 -0.0891 -0.0172 -0.0062 -0.0432 -0.0106 -0.0061
+S-235	U t h a p p a
+T-235	U t h a p p a
+H-235	-0.13759532570838928	U t h a p p a
+D-235	-0.13759532570838928	U t h a p p a
+P-235	-0.1003 -0.0574 -0.4427 -0.0708 -0.0278 -0.0206 -0.0880 -0.2931
+S-212	c e s a r o n
+T-212	c e s s a r a m
+H-212	-0.23162159323692322	c e s a r o n
+D-212	-0.23162159323692322	c e s a r o n
+P-212	-0.0962 -0.0739 -0.0268 -0.4287 -0.1016 -0.1091 -0.5259 -0.4907
+S-40	Z e l a n d a
+T-40	Z e l â n d i a
+H-40	-0.5265230536460876	f e l a n d a
+D-40	-0.5265230536460876	f e l a n d a
+P-40	-2.5868 -0.2305 -0.1679 -0.4742 -0.0580 -0.0105 -0.4136 -0.2706
+S-166	r o b a d o s
+T-166	r o u b a d o s
+H-166	-0.17054933309555054	r o b a d o s
+D-166	-0.17054933309555054	r o b a d o s
+P-166	-0.1559 -0.1669 -0.3494 -0.5658 -0.0437 -0.0727 -0.0014 -0.0086
+S-208	c u e v a s
+T-208	c a v e r n a s
+H-208	-0.08598040044307709	c o v a s
+D-208	-0.08598040044307709	c o v a s
+P-208	-0.1614 -0.2231 -0.0182 -0.0915 -0.0027 -0.0191
+S-3	a v a n z a
+T-3	a v a n ç a r m o s
+H-3	-0.09581352025270462	a v a n ç a
+D-3	-0.09581352025270462	a v a n ç a
+P-3	-0.0369 -0.0034 -0.1713 -0.0058 -0.2666 -0.0979 -0.0888
+S-5	c a m i ó n
+T-5	c a m i n h ã o
+H-5	-0.4211146831512451	c a m i o n
+D-5	-0.4211146831512451	c a m i o n
+P-5	-0.0446 -0.0422 -0.0083 -0.2237 -1.1156 -0.1524 -1.3609
+S-75	m a d e r a
+T-75	m a d e i r a
+H-75	-0.06156187877058983	m a d e r a
+D-75	-0.06156187877058983	m a d e r a
+P-75	-0.0219 -0.0897 -0.0257 -0.0459 -0.0125 -0.1272 -0.1082
+S-281	I s r a e l
+T-281	I s r a e l
+H-281	-0.13555635511875153	I s r a e l
+D-281	-0.13555635511875153	I s r a e l
+P-281	-0.2397 -0.0107 -0.0253 -0.0408 -0.2883 -0.0114 -0.3327
+S-254	S l a l o m
+T-254	S l a l o m
+H-254	-0.047387272119522095	S l a l o m
+D-254	-0.047387272119522095	S l a l o m
+P-254	-0.0870 -0.0162 -0.0058 -0.0172 -0.1731 -0.0020 -0.0303
+S-7	t r a t a n
+T-7	t r a t a m
+H-7	-0.11829881370067596	t r a t a m
+D-7	-0.11829881370067596	t r a t a m
+P-7	-0.0108 -0.0012 -0.0174 -0.0294 -0.1373 -0.6204 -0.0116
+S-64	l i b r o s
+T-64	l i v r o s
+H-64	-0.18935978412628174	l i v r o s
+D-64	-0.18935978412628174	l i v r o s
+P-64	-0.0085 -0.1861 -0.8564 -0.1956 -0.0511 -0.0061 -0.0217
+S-165	l l e g a n
+T-165	c h e g a m
+H-165	-0.29851511120796204	l e g a m
+D-165	-0.29851511120796204	l e g a m
+P-165	-0.0241 -0.7156 -0.0064 -0.1226 -0.8897 -0.0326
+S-198	n ú m e r o
+T-198	n ú m e r o
+H-198	-0.22542105615139008	n u m e r o
+D-198	-0.22542105615139008	n u m e r o
+P-198	-0.0201 -0.7614 -0.0120 -0.1333 -0.3075 -0.1232 -0.2205
+S-2	c i u d a d
+T-2	c i d a d e
+H-2	-0.0780191645026207	c i d a d e
+D-2	-0.0780191645026207	c i d a d e
+P-2	-0.1715 -0.0183 -0.0049 -0.0596 -0.0011 -0.0791 -0.2117
+S-258	m e t r o s
+T-258	m e t r o s
+H-258	-0.023134009912610054	m e t r o s
+D-258	-0.023134009912610054	m e t r o s
+P-258	-0.0033 -0.0088 -0.0843 -0.0098 -0.0277 -0.0061 -0.0220
+S-200	s e n a d o
+T-200	s e n a d o
+H-200	-0.2661029100418091	s e n a d o
+D-200	-0.2661029100418091	s e n a d o
+P-200	-0.0114 -0.0860 -0.2665 -0.8760 -0.0119 -0.0527 -0.5582
+S-96	v e n t a s
+T-96	v e n d a s
+H-96	-0.11864858120679855	v e n t a s
+D-96	-0.11864858120679855	v e n t a s
+P-96	-0.0034 -0.3279 -0.0713 -0.0232 -0.3854 -0.0067 -0.0126
+S-245	r u m a n o
+T-245	r o m e n o
+H-245	-0.20286348462104797	r u m a n o
+D-245	-0.20286348462104797	r u m a n o
+P-245	-0.0046 -0.0829 -0.0245 -0.4448 -0.0635 -0.2966 -0.5031
+S-268	D u v a l l
+T-268	D u v a l l
+H-268	-0.1865469515323639	D u v a l l
+D-268	-0.1865469515323639	D u v a l l
+P-268	-0.0413 -0.0064 -0.0049 -0.0108 -0.0010 -1.1572 -0.0843
+S-173	M a d h y a
+T-173	M a d h y a
+H-173	-0.10773768275976181	M a d h y a
+D-173	-0.10773768275976181	M a d h y a
+P-173	-0.0156 -0.0738 -0.0037 -0.4172 -0.0008 -0.1419 -0.1011
+S-229	a t a q u e
+T-229	a t a q u e
+H-229	-0.10448560118675232	a t a q u e
+D-229	-0.10448560118675232	a t a q u e
+P-229	-0.0377 -0.0072 -0.0945 -0.0793 -0.0589 -0.0218 -0.4321
+S-250	h u m a n a
+T-250	h u m a n o
+H-250	-0.19591033458709717	h u m a n a
+D-250	-0.19591033458709717	h u m a n a
+P-250	-0.2741 -0.0089 -0.0110 -0.0924 -0.2608 -0.5879 -0.1363
+S-78	v i s i t a
+T-78	v i s i t a
+H-78	-0.09411304444074631	v i s i t a
+D-78	-0.09411304444074631	v i s i t a
+P-78	-0.0028 -0.0416 -0.0058 -0.2243 -0.0031 -0.2237 -0.1574
+S-0	t a r i f a
+T-0	t a r i f a
+H-0	-0.10487433522939682	t a r i f a
+D-0	-0.10487433522939682	t a r i f a
+P-0	-0.0038 -0.2883 -0.0011 -0.0168 -0.0860 -0.0763 -0.2618
+S-243	c r i a d o
+T-243	c r i a d a
+H-243	-0.10742722451686859	c r i a d o
+D-243	-0.10742722451686859	c r i a d o
+P-243	-0.0512 -0.0542 -0.0218 -0.1507 -0.0088 -0.0492 -0.4161
+S-48	a n u l a r
+T-48	a c a b a r
+H-48	-0.08423521369695663	a n u l a r
+D-48	-0.08423521369695663	a n u l a r
+P-48	-0.0752 -0.0499 -0.0083 -0.0111 -0.1759 -0.2251 -0.0440
+S-227	P a r q u e
+T-227	p a r q u e
+H-227	-0.06567662954330444	P a r q u e
+D-227	-0.06567662954330444	P a r q u e
+P-227	-0.0017 -0.2203 -0.0004 -0.0102 -0.0076 -0.0119 -0.2075
+S-244	D u n l a p
+T-244	D u n l a p
+H-244	-0.1193421259522438	D u n l a p
+D-244	-0.1193421259522438	D u n l a p
+P-244	-0.0224 -0.0036 -0.0324 -0.0737 -0.0347 -0.2168 -0.4518
+S-175	C e n t r o
+T-175	C e n t r o
+H-175	-0.11107055842876434	C e n t r o
+D-175	-0.11107055842876434	C e n t r o
+P-175	-0.0728 -0.0469 -0.0041 -0.0008 -0.0068 -0.0219 -0.6243
+S-177	R o s s b y
+T-177	R o s s b y
+H-177	-0.05094599723815918	R o s s b y
+D-177	-0.05094599723815918	R o s s b y
+P-177	-0.0700 -0.0956 -0.0052 -0.0058 -0.1280 -0.0167 -0.0353
+S-106	f r a s e s
+T-106	f r a s e s
+H-106	-0.08033180981874466	f r a s s e s
+D-106	-0.08033180981874466	f r a s s e s
+P-106	-0.0193 -0.0047 -0.0234 -0.0053 -0.4587 -0.0237 -0.0663 -0.0413
+S-95	O f f i c e
+T-95	O f f i c e
+H-95	-0.055721383541822433	O f f i c e
+D-95	-0.055721383541822433	O f f i c e
+P-95	-0.0040 -0.0291 -0.0100 -0.0195 -0.0038 -0.0631 -0.2606
+S-187	B l a c k s
+T-187	B l a c k s
+H-187	-0.1188742071390152	B l a c k s
+D-187	-0.1188742071390152	B l a c k s
+P-187	-0.0039 -0.0734 -0.0126 -0.6125 -0.0822 -0.0101 -0.0374
+S-51	c a l c i o
+T-51	c á l c i o
+H-51	-0.3573050796985626	c a l ç o
+D-51	-0.3573050796985626	c a l ç o
+P-51	-0.0515 -0.0801 -0.0380 -1.7584 -0.0568 -0.1591
+S-4	d o r m i r
+T-4	d o r m i r
+H-4	-0.27676549553871155	d o r m i r
+D-4	-0.27676549553871155	d o r m i r
+P-4	-0.1016 -0.1329 -0.0084 -0.0031 -0.4668 -0.2877 -0.9368
+S-294	R u a n d a
+T-294	R u a n d a
+H-294	-0.1161070242524147	R u a n d a
+D-294	-0.1161070242524147	R u a n d a
+P-294	-0.2478 -0.0261 -0.2579 -0.0203 -0.0021 -0.1535 -0.1051
+S-242	d i o s e s
+T-242	d e u s e s
+H-242	-0.3573952317237854	d i o s s e
+D-242	-0.3573952317237854	d i o s s e
+P-242	-0.0072 -0.0391 -0.0828 -0.0006 -0.3089 -0.9887 -1.0744
+S-193	s a n g r e
+T-193	s a n g u e
+H-193	-0.09612852334976196	s a n g r e
+D-193	-0.09612852334976196	s a n g r e
+P-193	-0.0183 -0.1551 -0.0871 -0.0046 -0.0070 -0.0422 -0.3586
+S-223	T e m p l o
+T-223	T e m p l o
+H-223	-0.08120481669902802	T e m p l o
+D-223	-0.08120481669902802	T e m p l o
+P-223	-0.0044 -0.0905 -0.0051 -0.0029 -0.0613 -0.0358 -0.3684
+S-234	c o l i n a
+T-234	c o l i n a
+H-234	-0.13645920157432556	c o l i n a
+D-234	-0.13645920157432556	c o l i n a
+P-234	-0.0261 -0.0120 -0.0085 -0.1274 -0.0204 -0.4534 -0.3074
+S-52	n u e v o s
+T-52	n o v a s
+H-52	-0.09891714155673981	n o v o s
+D-52	-0.09891714155673981	n o v o s
+P-52	-0.0246 -0.5012 -0.0053 -0.0480 -0.0012 -0.0133
+S-152	t i e n e n
+T-152	t i n h a
+H-152	-0.5800055265426636	t e n e m
+D-152	-0.5800055265426636	t e n e m
+P-152	-0.0023 -0.5767 -0.4754 -2.0371 -0.3765 -0.0120
+S-289	c o s t e s
+T-289	c u s t o
+H-289	-0.04134811833500862	c o s t e s
+D-289	-0.04134811833500862	c o s t e s
+P-289	-0.0483 -0.0249 -0.0034 -0.1323 -0.0414 -0.0142 -0.0249
+S-79	f u e r z a
+T-79	f o r ç a
+H-79	-0.199243426322937	f u e r ç a
+D-79	-0.199243426322937	f u e r ç a
+P-79	-0.0074 -0.3238 -0.3898 -0.0075 -0.5102 -0.0381 -0.1179
+S-201	c u e n t a
+T-201	c o n t a
+H-201	-0.22294177114963531	c o n t a
+D-201	-0.22294177114963531	c o n t a
+P-201	-0.0882 -0.4872 -0.1844 -0.0058 -0.2922 -0.2799
+S-128	b i e n e s
+T-128	b e n s
+H-128	-0.36917728185653687	b i e n s
+D-128	-0.36917728185653687	b i e n s
+P-128	-0.1227 -1.4288 -0.0355 -0.0408 -0.5548 -0.0325
+S-182	p a d r e s
+T-182	p a i s
+H-182	-0.04422512277960777	p a d r e s
+D-182	-0.04422512277960777	p a d r e s
+P-182	-0.0417 -0.0518 -0.0084 -0.1287 -0.0034 -0.0027 -0.0729
+S-179	b a s a n
+T-179	b a s e a v a m
+H-179	-0.1854497343301773	b a s a m
+D-179	-0.1854497343301773	b a s a m
+P-179	-0.2830 -0.0479 -0.0095 -0.0825 -0.6751 -0.0148
+S-88	v o t o s
+T-88	c o n t a d o s
+H-88	-0.12455835193395615	v o t o s
+D-88	-0.12455835193395615	v o t o s
+P-88	-0.0025 -0.1766 -0.5084 -0.0485 -0.0007 -0.0107
+S-123	b l o g s
+T-123	b l o g u e s
+H-123	-0.0936114490032196	b l o g s
+D-123	-0.0936114490032196	b l o g s
+P-123	-0.1650 -0.2532 -0.0458 -0.0241 -0.0426 -0.0309
+S-156	v i n o s
+T-156	v i n h o s
+H-156	-0.06307794898748398	v i n o s
+D-156	-0.06307794898748398	v i n o s
+P-156	-0.0016 -0.1208 -0.0487 -0.1797 -0.0019 -0.0257
+S-30	O t r o s
+T-30	O u t r o s
+H-30	-0.09377448260784149	O t r o s
+D-30	-0.09377448260784149	O t r o s
+P-30	-0.0014 -0.4885 -0.0027 -0.0297 -0.0012 -0.0392
+S-231	c a p a z
+T-231	c a u s a r
+H-231	-0.25823283195495605	c a p a z
+D-231	-0.25823283195495605	c a p a z
+P-231	-0.1776 -0.0305 -0.0085 -0.0571 -1.2257 -0.0500
+S-284	c o s a s
+T-284	c o i s a s
+H-284	-0.0761529952287674	c o s a s
+D-284	-0.0761529952287674	c o s a s
+P-284	-0.1446 -0.0302 -0.0253 -0.2343 -0.0019 -0.0207
+S-276	h a b í a
+T-276	h a v i a
+H-276	-0.27639368176460266	h a b i a
+D-276	-0.27639368176460266	h a b i a
+P-276	-0.5003 -0.1730 -0.1512 -0.6902 -0.0127 -0.1311
+S-115	S t o n e
+T-115	S t o n e
+H-115	-0.1346280574798584	S t o n e
+D-115	-0.1346280574798584	S t o n e
+P-115	-0.0024 -0.0030 -0.0200 -0.0271 -0.4979 -0.2574
+S-109	m e s e s
+T-109	m e s e s
+H-109	-0.25945916771888733	m e s s e s
+D-109	-0.25945916771888733	m e s s e s
+P-109	-0.0138 -0.0357 -0.0898 -0.4380 -0.3102 -0.8913 -0.0375
+S-257	n a d a r
+T-257	n a d a r
+H-257	-0.08314935863018036	n a d a r
+D-257	-0.08314935863018036	n a d a r
+P-257	-0.1446 -0.1026 -0.0204 -0.0611 -0.1519 -0.0183
+S-125	S a m o a
+T-125	S a m o a
+H-125	-0.06374367326498032	S a m o a
+D-125	-0.06374367326498032	S a m o a
+P-125	-0.0400 -0.0718 -0.0106 -0.0556 -0.1008 -0.1037
+S-65	N o r t e
+T-65	N o r t e
+H-65	-0.03397282958030701	N o r t e
+D-65	-0.03397282958030701	N o r t e
+P-65	-0.0024 -0.0733 -0.0014 -0.0041 -0.0090 -0.1135
+S-180	C o r t e
+T-180	C o r t e
+H-180	-0.03384324908256531	C o r t e
+D-180	-0.03384324908256531	C o r t e
+P-180	-0.0447 -0.0392 -0.0003 -0.0059 -0.0072 -0.1058
+S-279	á r e a s
+T-279	á r e a s
+H-279	-0.33729201555252075	á r e a s
+D-279	-0.33729201555252075	á r e a s
+P-279	-1.4285 -0.0055 -0.3562 -0.2193 -0.0014 -0.0128
+S-220	m e n o r
+T-220	m e n o r
+H-220	-0.13577982783317566	m e n o r
+D-220	-0.13577982783317566	m e n o r
+P-220	-0.0093 -0.1381 -0.2138 -0.2237 -0.0288 -0.2009
+S-47	M a l a r
+T-47	M a l a r
+H-47	-0.04868822917342186	M a l a r
+D-47	-0.04868822917342186	M a l a r
+P-47	-0.0275 -0.0402 -0.0867 -0.1126 -0.0072 -0.0179
+S-288	f o n d o
+T-288	f u n d o
+H-288	-0.08031781762838364	f o n d o
+D-288	-0.08031781762838364	f o n d o
+P-288	-0.0263 -0.0633 -0.0879 -0.0041 -0.0418 -0.2584
+S-219	e s t o s
+T-219	e s s e s
+H-219	-0.11762506514787674	e s t o s
+D-219	-0.11762506514787674	e s t o s
+P-219	-0.2410 -0.0013 -0.3671 -0.0499 -0.0018 -0.0446
+S-16	r e n o s
+T-16	r e n a s
+H-16	-0.14711476862430573	r e n o s
+D-16	-0.14711476862430573	r e n o s
+P-16	-0.0254 -0.2380 -0.2704 -0.3328 -0.0016 -0.0145
+S-277	b o m b a
+T-277	b o m b a
+H-277	-0.07071888446807861	b o m b a
+D-277	-0.07071888446807861	b o m b a
+P-277	-0.0779 -0.0357 -0.0011 -0.0637 -0.1440 -0.1019
+S-11	a é r e o
+T-11	a é r e o
+H-11	-0.6646459102630615	a n r e o
+D-11	-0.6646459102630615	a n r e o
+P-11	-0.0237 -1.6641 -1.2310 -0.2640 -0.4982 -0.3068
+S-112	L o o n g
+T-112	L o o n g
+H-112	-0.06565514951944351	L o o n g
+D-112	-0.06565514951944351	L o o n g
+P-112	-0.0960 -0.0582 -0.1368 -0.0280 -0.0099 -0.0650
+S-41	l i s t a
+T-41	l i s a
+H-41	-0.06642325222492218	l i s t a
+D-41	-0.06642325222492218	l i s t a
+P-41	-0.0334 -0.0524 -0.0166 -0.0023 -0.1998 -0.0940
+S-195	b a h í a
+T-195	b a í a
+H-195	-0.3404075801372528	b a g i a
+D-195	-0.3404075801372528	b a g i a
+P-195	-0.2248 -0.0538 -1.2891 -0.3968 -0.0271 -0.0509
+S-146	v a l l e
+T-146	V a l e
+H-146	-0.4908117949962616	v a l l e
+D-146	-0.4908117949962616	v a l l e
+P-146	-0.0040 -0.0759 -0.2223 -2.0247 -0.0538 -0.5643
+S-228	g u í a n
+T-228	g u i a
+H-228	-0.22934986650943756	g u i a n
+D-228	-0.22934986650943756	g u i a n
+P-228	-0.0398 -0.0013 -0.4194 -0.0189 -0.3629 -0.5338
+S-261	N u e v a
+T-261	N o v a
+H-261	-0.10485834628343582	N o v a
+D-261	-0.10485834628343582	N o v a
+P-261	-0.0032 -0.3395 -0.0080 -0.1136 -0.0601
+S-172	d o l o r
+T-172	d o r
+H-172	-0.15200015902519226	d o l o r
+D-172	-0.15200015902519226	d o l o r
+P-172	-0.1092 -0.1336 -0.2468 -0.0782 -0.0074 -0.3368
+S-35	I r a k
+T-35	I r a q u e
+H-35	-0.05210215598344803	I r a k
+D-35	-0.05210215598344803	I r a k
+P-35	-0.1558 -0.0006 -0.0451 -0.0320 -0.0270
+S-293	o s o s
+T-293	o d o r e s
+H-293	-0.26784607768058777	o s o s
+D-293	-0.26784607768058777	o s o s
+P-293	-0.6282 -0.0168 -0.6571 -0.0022 -0.0350
+S-135	v i s a
+T-135	v i s t o
+H-135	-0.12657159566879272	v i s a
+D-135	-0.12657159566879272	v i s a
+P-135	-0.0013 -0.1440 -0.1321 -0.1757 -0.1798
+S-23	t e m e
+T-23	t e n d e
+H-23	-0.062210068106651306	t e m e
+D-23	-0.062210068106651306	t e m e
+P-23	-0.0114 -0.0085 -0.0016 -0.0367 -0.2530
+S-137	e s t e
+T-137	d e s s e
+H-137	-0.04675527289509773	e s t e
+D-137	-0.04675527289509773	e s t e
+P-137	-0.0788 -0.0014 -0.0281 -0.0149 -0.1105
+S-255	F r í a
+T-255	F r i a
+H-255	-0.10662449151277542	F r i a
+D-255	-0.10662449151277542	F r i a
+P-255	-0.0105 -0.0005 -0.4388 -0.0102 -0.0731
+S-178	A n f a
+T-178	A n f a
+H-178	-0.045248888432979584	A n f a
+D-178	-0.045248888432979584	A n f a
+P-178	-0.0230 -0.0484 -0.0291 -0.0767 -0.0490
+S-22	r u t a
+T-22	R o t a
+H-22	-0.210862934589386	r u t a
+D-22	-0.210862934589386	r u t a
+P-22	-0.0016 -0.0257 -0.0260 -0.7584 -0.2427
+S-49	1 9 9 5
+T-49	1 9 9 5
+H-49	-0.03583638742566109	1 9 9 5
+D-49	-0.03583638742566109	1 9 9 5
+P-49	-0.0011 -0.0056 -0.0157 -0.0489 -0.1078
+S-43	b i e n
+T-43	b i e n
+H-43	-0.457163006067276	b e m
+D-43	-0.457163006067276	b e m
+P-43	-0.1034 -0.9172 -0.7985 -0.0096
+S-15	1 9 2 0
+T-15	1 9 2 0
+H-15	-0.02768106944859028	1 9 2 0
+D-15	-0.02768106944859028	1 9 2 0
+P-15	-0.0014 -0.0154 -0.0340 -0.0008 -0.0868
+S-153	r e a l
+T-153	r e a l
+H-153	-0.1056121364235878	r e a l
+D-153	-0.1056121364235878	r e a l
+P-153	-0.0265 -0.1096 -0.1625 -0.0398 -0.1896
+S-183	i o d o
+T-183	i o d o
+H-183	-0.27440667152404785	i o d o
+D-183	-0.27440667152404785	i o d o
+P-183	-0.2038 -0.9260 -0.0588 -0.0361 -0.1473
+S-113	K o n g
+T-113	K o n g
+H-113	-0.11710129678249359	K o n g
+D-113	-0.11710129678249359	K o n g
+P-113	-0.4472 -0.0344 -0.0483 -0.0065 -0.0491
+S-82	c o c o
+T-82	c o c o
+H-82	-0.41765066981315613	c o c o
+D-82	-0.41765066981315613	c o c o
+P-82	-0.0177 -0.0098 -0.6496 -0.0221 -1.3890
+S-97	a l l á
+T-97	a l é m
+H-97	-0.46740099787712097	a l h á
+D-97	-0.46740099787712097	a l h á
+P-97	-0.0228 -0.0025 -1.8506 -0.3791 -0.0820
+S-130	A p i a
+T-130	A p i a
+H-130	-0.05528361722826958	A p i a
+D-130	-0.05528361722826958	A p i a
+P-130	-0.0795 -0.0149 -0.0663 -0.0141 -0.1017
+S-101	R i n g
+T-101	R i n g
+H-101	-0.06656793504953384	R i n g
+D-101	-0.06656793504953384	R i n g
+P-101	-0.1364 -0.0799 -0.0082 -0.0067 -0.1016
+S-222	P o l l
+T-222	P o l l
+H-222	-0.04836619272828102	P o l l
+D-222	-0.04836619272828102	P o l l
+P-222	-0.0056 -0.0626 -0.0023 -0.1408 -0.0306
+S-232	U S O C
+T-232	U S O C
+H-232	-0.05430860444903374	U S O C
+D-232	-0.05430860444903374	U S O C
+P-232	-0.0079 -0.0188 -0.2098 -0.0338 -0.0012
+S-176	2 0 0 5
+T-176	2 0 0 5
+H-176	-0.13640981912612915	2 0 0 5
+D-176	-0.13640981912612915	2 0 0 5
+P-176	-0.0012 -0.0026 -0.0368 -0.5770 -0.0644
+S-233	l u j o
+T-233	l u x o
+H-233	-0.30130645632743835	l u j o
+D-233	-0.30130645632743835	l u j o
+P-233	-0.2035 -0.0135 -1.0735 -0.0342 -0.1818
+S-119	r o c k
+T-119	r o c k
+H-119	-0.1414729803800583	r o c k
+D-119	-0.1414729803800583	r o c k
+P-119	-0.0068 -0.0469 -0.5265 -0.0441 -0.0831
+S-34	v i n o
+T-34	v e i o
+H-34	-0.08229737728834152	v i n o
+D-34	-0.08229737728834152	v i n o
+P-34	-0.0015 -0.1115 -0.0308 -0.1047 -0.1629
+S-189	G a m e
+T-189	G a m e
+H-189	-0.0800325870513916	G a m e
+D-189	-0.0800325870513916	G a m e
+P-189	-0.0479 -0.1139 -0.0113 -0.0204 -0.2066
+S-91	1 9 8 8
+T-91	1 9 8 8
+H-91	-0.17735019326210022	1 9 8 8
+D-91	-0.17735019326210022	1 9 8 8
+P-91	-0.0007 -0.0031 -0.0296 -0.8184 -0.0349
+S-259	L a s
+T-259	E l a s
+H-259	-0.34003907442092896	L a s
+D-259	-0.34003907442092896	L a s
+P-259	-1.1121 -0.1640 -0.0589 -0.0252
+S-81	A n a
+T-81	A n n e
+H-81	-0.08656936138868332	A n a
+D-81	-0.08656936138868332	A n a
+P-81	-0.0368 -0.1721 -0.0928 -0.0446
+S-38	3 <unk> 5
+T-38	3 <<unk>> 5 0
+H-38	-0.18593165278434753	3 1 5
+D-38	-0.18593165278434753	3 1 5
+P-38	-0.0067 -0.4356 -0.2603 -0.0411
+S-89	M á s
+T-89	M a i s
+H-89	-0.7295668125152588	M a s
+D-89	-0.7295668125152588	M a s
+P-89	-0.0174 -1.2256 -1.6202 -0.0551
+S-141	3 . 7
+T-141	3 <<unk>> 7
+H-141	-0.7172912359237671	3 1 7
+D-141	-0.7172912359237671	3 1 7
+P-141	-0.0045 -1.9253 -0.8622 -0.0772
+S-264	1 5 0
+T-264	1 5 0
+H-264	-0.08500957489013672	1 5 0
+D-264	-0.08500957489013672	1 5 0
+P-264	-0.0055 -0.2437 -0.0155 -0.0753
+S-160	N H K
+T-160	N H K
+H-160	-0.38248932361602783	N H E
+D-160	-0.38248932361602783	N H E
+P-160	-0.0309 -0.0563 -1.4090 -0.0337
+S-246	q u é
+T-246	q u e
+H-246	-0.1795031577348709	q u é
+D-246	-0.1795031577348709	q u é
+P-246	-0.0352 -0.0028 -0.6618 -0.0182
+S-230	A l l
+T-230	A l l
+H-230	-0.17663516104221344	A l l
+D-230	-0.17663516104221344	A l l
+P-230	-0.0102 -0.0910 -0.4741 -0.1313
+S-251	s e t
+T-251	s e t
+H-251	-0.04170110076665878	s e t
+D-251	-0.04170110076665878	s e t
+P-251	-0.0597 -0.0050 -0.0357 -0.0664
+S-274	1 0 0
+T-274	1 0 0
+H-274	-0.15138259530067444	1 0 0
+D-274	-0.15138259530067444	1 0 0
+P-274	-0.0254 -0.0704 -0.0815 -0.4282
+S-286	l a s
+T-286	a s
+H-286	-0.8941816687583923	l a s
+D-286	-0.8941816687583923	l a s
+P-286	-2.0950 -1.3491 -0.0745 -0.0582
+S-37	S i
+T-37	S e
+H-37	-0.3033919036388397	S i
+D-37	-0.3033919036388397	S i
+P-37	-0.0046 -0.7056 -0.2000
+S-50	P C
+T-50	P C
+H-50	-0.1460385024547577	P C
+D-50	-0.1460385024547577	P C
+P-50	-0.0012 -0.4097 -0.0272
+S-226	l a
+T-226	d a
+H-226	-1.496731162071228	a
+D-226	-1.496731162071228	a
+P-226	-2.6052 -0.3882
+S-83	I I
+T-83	I I
+H-83	-0.03360076993703842	I I
+D-83	-0.03360076993703842	I I
+P-83	-0.0355 -0.0245 -0.0408
+S-114	1 5
+T-114	1 5
+H-114	-0.1217203214764595	1 5
+D-114	-0.1217203214764595	1 5
+P-114	-0.0023 -0.3470 -0.0159
+S-278	7 8
+T-278	7 8
+H-278	-0.8564923405647278	7 8
+D-278	-0.8564923405647278	7 8
+P-278	-1.5774 -0.8822 -0.1098
+S-164	4 5
+T-164	4 5
+H-164	-0.0394105426967144	4 5
+D-164	-0.0394105426967144	4 5
+P-164	-0.0074 -0.0700 -0.0408
+S-265	X
+T-265	X
+H-265	-0.35897186398506165	X
+D-265	-0.35897186398506165	X
+P-265	-0.4920 -0.2259
+S-126	m
+T-126	m
+H-126	-0.2334754765033722	m
+D-126	-0.2334754765033722	m
+P-126	-0.0125 -0.4544
+S-204	C
+T-204	C
+H-204	-0.062295157462358475	C
+D-204	-0.062295157462358475	C
+P-204	-0.0556 -0.0690
+S-42	8
+T-42	8
+H-42	-0.6024366617202759	8
+D-42	-0.6024366617202759	8
+P-42	-1.0044 -0.2005
+S-102	7
+T-102	7
+H-102	-1.4827542304992676	7
+D-102	-1.4827542304992676	7
+P-102	-2.4571 -0.5084
+2025-10-14 15:53:18 | INFO | fairseq_cli.generate | NOTE: hypothesis and token scores are output in base 2
+2025-10-14 15:53:18 | INFO | fairseq_cli.generate | Translated 295 sentences (2348 tokens) in 0.2s (1250.04 sentences/s, 9949.44 tokens/s)
+Generate test with beam=5: BLEU4 = 73.53, 88.0/78.3/70.7/64.6 (BP=0.982, ratio=0.982, syslen=2053, reflen=2090)

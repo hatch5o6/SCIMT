@@ -1,0 +1,6 @@
+Scores:
+	REF: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/inputs/split_data/es_pt/1000/test_es_pt.pt
+	HYP: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/sc_models_es_pt/es_pt_RNN-default_S-1000/workspace/reference_models/bilingual/rnn_es-pt/1000/results/test_selected_checkpoint_es_pt.pt/generate-test.hyp.txt
+
+BLEU: 73.58805326244618
+chrF: 67.77244436191226

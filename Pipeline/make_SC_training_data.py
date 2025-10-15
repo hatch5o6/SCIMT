@@ -3,8 +3,10 @@ import os
 
 from torch.utils.data import DataLoader
 import sys
-# TODO Fix this
-sys.path.append("/home/hatch5o6/Cognate/code/NMT")
+# Add NMT directory to path to import parallel_datasets
+script_dir = os.path.dirname(os.path.abspath(__file__))
+nmt_dir = os.path.join(os.path.dirname(script_dir), "NMT")
+sys.path.append(nmt_dir)
 from parallel_datasets import MultilingualDataset
 
 
