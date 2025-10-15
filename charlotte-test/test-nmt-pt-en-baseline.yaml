@@ -1,10 +1,11 @@
-# QuickStart NMT Configuration for pt->en translation with SC augmentation
-# Portuguese to English translation using CharLOTTE methodology
+# Baseline NMT Configuration for pt->en translation WITHOUT SC augmentation
+# Portuguese to English translation using ONLY Portuguese-English parallel data
+# This serves as a baseline to measure the impact of CharLOTTE's SC augmentation
 
 # Outputs
 src: pt
 tgt: en
-save: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/nmt_models/pt-en
+save: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/nmt_models/pt-en_BASELINE_s=1000
 test_checkpoint: null
 remove_special_toks: True
 verbose: False
@@ -13,26 +14,24 @@ little_verbose: True
 # Fine-tuning from pretrained (not used for quickstart)
 from_pretrained: null
 
-# Data paths (absolute paths required)
-train_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/nmt_train.csv
-val_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/nmt_val.csv
+# Data paths (absolute paths required) - ONLY Portuguese-English data
+train_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/nmt_train_baseline.csv
+val_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/nmt_val_baseline.csv
 test_data: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/csv/nmt_test.csv
 
-# Data processing
+# Data processing - NO SC augmentation
 append_src_token: False
 append_tgt_token: False
 upsample: False
-sc_model_id: es_pt_RNN-default_S-1000
+sc_model_id: null
 
-# Tokenizer path (without .model extension)
-spm: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/spm_models/SC_es2pt-pt_en/SC_es2pt-pt_en
+# Tokenizer path (without .model extension) - baseline tokenizer without SC data
+spm: /Users/ringger/Projects/brendan/SCIMT/charlotte-test/spm_models/pt_en/pt_en
 
 # Tokenizer type (false for SentencePiece, true for character-level)
 do_char: false
 
-# Training configuration (longer training for better results)
-# Note: For MPS (Apple Silicon), use n_gpus: 0 with device: mps
-# PyTorch Lightning will auto-detect MPS from the device setting
+# Training configuration (identical to SC-augmented model for fair comparison)
 n_gpus: 0
 seed: 1000
 qos: null
@@ -53,7 +52,7 @@ weight_decay: 0.01
 # Device: cuda (for NVIDIA GPUs), mps (for Apple Silicon), or cpu
 device: mps
 
-# Model architecture (smaller for quick training)
+# Model architecture (identical to SC-augmented model)
 encoder_layers: 4
 encoder_attention_heads: 4
 encoder_ffn_dim: 1024

@@ -11,11 +11,16 @@ import os
 os.makedirs("data/raw", exist_ok=True)
 os.makedirs("data/csv", exist_ok=True)
 
-# Load FLORES+ devtest (has ~1000 sentences per language)
-print("Loading FLORES+ dataset...")
-dataset = load_dataset("openlanguagedata/flores_plus", split='devtest')
+# Load FLORES+ devtest and dev splits to get ~2000 sentences per language
+print("Loading FLORES+ dataset (devtest + dev splits)...")
+devtest = load_dataset("openlanguagedata/flores_plus", split='devtest')
+dev = load_dataset("openlanguagedata/flores_plus", split='dev')
 
-print(f"Total dataset size: {len(dataset)} rows")
+# Combine both splits
+from itertools import chain
+dataset = list(chain(devtest, dev))
+
+print(f"Total dataset size: {len(dataset)} rows (devtest: {len(devtest)}, dev: {len(dev)})")
 
 # Filter for Spanish (spa), Portuguese (por), and English (eng)
 # ISO 639-3 codes: spa = Spanish, por = Portuguese, eng = English
@@ -33,10 +38,11 @@ es_sentences = [item['text'] for item in flores_es]
 pt_sentences = [item['text'] for item in flores_pt]
 en_sentences = [item['text'] for item in flores_en]
 
-# Create splits (800 train, 100 val, 100 test for larger dataset)
-train_size = 800
-val_size = 100
-test_size = 100
+# Create splits (1600 train, 200 val, 200 test - doubled from original)
+# Note: FLORES+ devtest has ~1000 sentences, so we'll use max available
+train_size = 1600
+val_size = 200
+test_size = 200
 
 print(f"\nCreating splits: {train_size} train, {val_size} val, {test_size} test")
 

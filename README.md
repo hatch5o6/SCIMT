@@ -44,6 +44,54 @@ Both are trained using the CopperMT framework and can predict character-level tr
 - **Cognate**: Words in different languages derived from the same origin (e.g., Spanish *noche* / Portuguese *noite*)
 - **Data Augmentation**: Transforming high-resource data to augment low-resource training sets
 
+## The Three Models in CharLOTTE
+
+CharLOTTE trains **three complementary models** that work together to enable low-resource NMT:
+
+### 1. SC Model (Sound Correspondence Model)
+**Type**: Character-level sequence-to-sequence model (RNN or SMT)
+**Purpose**: Learns phonetic/orthographic transformations between related languages
+**Training data**: Cognate pairs extracted from parallel corpora (e.g., Spanish-Portuguese word pairs)
+**What it learns**: Character-level mappings like *j→lh*, *ción→ção*, *h→f*
+**Example**: Transforms Spanish *hijo* → Portuguese-like *filho*
+**Output**: Model that can transform high-resource text to look like low-resource language
+
+### 2. Tokenizer (SentencePiece)
+**Type**: Statistical subword segmentation model (not neural)
+**Purpose**: Creates a shared vocabulary that works across multiple languages
+**Training data**: Combined text from SC-transformed high-resource + native low-resource + target language
+**What it learns**: How to segment text into subword units (tokens) optimally across all languages
+**Example**: Learns that *-tion* (English), *-ção* (Portuguese), and SC-transformed *-ción→ção* share subword patterns
+**Output**: Unified tokenizer that maximizes vocabulary overlap between related languages
+
+### 3. NMT Model (Neural Machine Translation)
+**Type**: Transformer encoder-decoder (BART-based)
+**Purpose**: Performs the actual translation from low-resource to target language
+**Training data**: Original low-resource parallel data + SC-augmented high-resource data
+**What it learns**: Semantic mappings for translation, benefiting from increased training data and vocabulary overlap
+**Example**: Translates Portuguese → English using both native Portuguese-English pairs and SC-transformed Spanish-English pairs
+**Output**: Production translation model with improved quality due to data augmentation
+
+### How They Work Together
+
+```
+Spanish text ("hijo habla español")
+        ↓
+   [SC Model] ← learns j→lh, h→f character rules
+        ↓
+Synthetic Portuguese-like text ("filho fala español")
+        ↓
+   [Tokenizer] ← learns shared subwords across es/pt/en
+        ↓
+Subword tokens (['▁fil', 'ho', '▁fal', 'a', ...])
+        ↓
+   [NMT Model] ← translates using augmented training data
+        ↓
+English translation ("son speaks Spanish")
+```
+
+**Key Insight**: The SC model creates synthetic training data that looks like the low-resource language, enabling the NMT model to learn from related high-resource data. The shared tokenizer ensures maximum vocabulary overlap across all languages.
+
 ## Quick Start
 
 CharLOTTE provides an end-to-end pipeline for SC-augmented NMT training. Follow the installation steps below, then verify your setup with the full quickstart test before running experiments.

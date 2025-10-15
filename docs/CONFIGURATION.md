@@ -286,7 +286,7 @@ Neural Machine Translation training configuration.
 
 | Parameter | Description | Typical Range |
 |-----------|-------------|---------------|
-| `n_gpus` | Number of GPUs | `1` (single), `2-8` (multi-GPU) |
+| `n_gpus` | Number of GPUs (use `0` for MPS/single device) | `0` (MPS/single), `1+` (CUDA multi-GPU) |
 | `seed` | Random seed | `1000`, `42`, `123` |
 | `max_steps` | Maximum training steps | `50000` (quick), `250000` (full) |
 | `train_batch_size` | Training batch size | `16-128` (GPU memory dependent) |
@@ -297,7 +297,7 @@ Neural Machine Translation training configuration.
 | `val_interval` | Validation frequency (fraction of epoch) | `0.5` (twice), `1.0` (once) |
 | `learning_rate` | Learning rate | `2e-04` (typical), `1e-04` to `5e-04` |
 | `weight_decay` | L2 regularization | `0.01` |
-| `device` | Device type | `cuda` or `cpu` |
+| `device` | Device type | `cuda` (NVIDIA GPU), `mps` (Apple Silicon), or `cpu` |
 
 ### Model Architecture Parameters
 

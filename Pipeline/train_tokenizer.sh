@@ -4,6 +4,9 @@ echo "Starting-----------------------"
 date
 echo "-------------------------------"
 
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # ARGUMENTS
 config_file=$1
 source $config_file # .cfg file from Pipeline/cfg/tok
@@ -39,11 +42,17 @@ SRC_TOK_DIR=${TOK_TRAIN_DATA_DIR}/${SRC_TOK_NAME}
 TGT_TOK_DIR=${TOK_TRAIN_DATA_DIR}/${TGT_TOK_NAME}
 
 #TODO MAYBE INSTEAD PASS IN A LIST OF CSV FILES?
-python Pipeline/make_tok_training_data.py \
+# Set default values for SC_MODEL_ID and IS_ATT if not provided in config
+: ${SC_MODEL_ID:=null}
+: ${IS_ATT:=false}
+
+python "${SCRIPT_DIR}/make_tok_training_data.py" \
     --train_csvs $TRAIN_PARALLEL \
     --val_csvs $VAL_PARALLEL  \
     --test_csvs $TEST_PARALLEL  \
-    --out $TOK_TRAIN_DATA_DIR
+    --out_dir $TOK_TRAIN_DATA_DIR \
+    --SC_MODEL_ID $SC_MODEL_ID \
+    --IS_ATT $IS_ATT
 
 # TODO Finish this if needed:
 # USER_DEFINED_SYMBOLS
@@ -83,9 +92,10 @@ SRC_USER_DEFINED_SYMBOLS_STR=""
 for s in ${SRC_USER_DEFINED_SYMBOLS[@]} ; do
     SRC_USER_DEFINED_SYMBOLS_STR+="${s},"
 done
-if [[ $SRC_USER_DEFINED_SYMBOLS_STR ]];
+# Remove trailing comma if string is not empty
+if [[ -n "$SRC_USER_DEFINED_SYMBOLS_STR" ]];
 then
-    SRC_USER_DEFINED_SYMBOLS_STR=${SRC_USER_DEFINED_SYMBOLS_STR:0:-1}
+    SRC_USER_DEFINED_SYMBOLS_STR="${SRC_USER_DEFINED_SYMBOLS_STR%,}"
 else
     echo "no src user defined symbols"
 fi
@@ -95,9 +105,10 @@ TGT_USER_DEFINED_SYMBOLS_STR=""
 for s in ${TGT_USER_DEFINED_SYMBOLS[@]} ; do
     TGT_USER_DEFINED_SYMBOLS_STR+="${s},"
 done
-if [[ $TGT_USER_DEFINED_SYMBOLS_STR ]];
+# Remove trailing comma if string is not empty
+if [[ -n "$TGT_USER_DEFINED_SYMBOLS_STR" ]];
 then
-    TGT_USER_DEFINED_SYMBOLS_STR=${TGT_USER_DEFINED_SYMBOLS_STR:0:-1}
+    TGT_USER_DEFINED_SYMBOLS_STR="${TGT_USER_DEFINED_SYMBOLS_STR%,}"
 else
     echo "no tgt user defined symbols"
 fi
@@ -106,28 +117,57 @@ echo "TGT_USER_DEFINED_SYMBOLS_STR: ${TGT_USER_DEFINED_SYMBOLS_STR}"
 echo ""
 #### TRAIN TOKENIZERS ####
 
-if [ $SPLIT_ON_WS = true ]
-then
-    # SRC TOKENIZER
-    python NMT/spm_train.py \
-        --langs $SRC_LANGS \
-        --folder $TOK_TRAIN_DATA_DIR \
-        --training_data_size $SPM_TRAIN_SIZE \
-        --save_dir $SRC_TOK_DIR \
-        --spm_model_name $SRC_TOK_NAME \
-        --user_defined_symbols $SRC_USER_DEFINED_SYMBOLS_STR \
-        --SPLIT_ON_WS $SPLIT_ON_WS
+# Train a combined tokenizer for both source and target languages
+# The CharLOTTE methodology uses a single shared tokenizer
+COMBINED_TOK_NAME="${SRC_TOK_NAME}_${TGT_TOK_NAME}"
+COMBINED_LANGS="${SRC_LANGS},${TGT_LANGS}"
 
-    # TGT TOKENIZER
-    python NMT/spm_train.py \
-        --langs $TGT_LANGS \
-        --folder $TOK_TRAIN_DATA_DIR \
-        --training_data_size $SPM_TRAIN_SIZE \
-        --save_dir $TGT_TOK_DIR \
-        --spm_model_name $TGT_TOK_NAME \
-        --user_defined_symbols $TGT_USER_DEFINED_SYMBOLS_STR \
-        --SPLIT_ON_WS $SPLIT_ON_WS
+# Determine output directory - check if VOCAB_SIZE is set (for spm_models location)
+if [[ -n "${VOCAB_SIZE}" ]]; then
+    # Save to spm_models directory (standard location for NMT)
+    SPM_MODELS_DIR="$(dirname "${TOK_TRAIN_DATA_DIR}")/spm_models"
+    COMBINED_TOK_DIR="${SPM_MODELS_DIR}/${COMBINED_TOK_NAME}"
+else
+    # Fallback to tokenizer_data subdirectory
+    COMBINED_TOK_DIR="${TOK_TRAIN_DATA_DIR}/${COMBINED_TOK_NAME}"
 fi
+
+echo "Training combined tokenizer for: ${COMBINED_LANGS}"
+echo "Tokenizer will be saved to: ${COMBINED_TOK_DIR}/${COMBINED_TOK_NAME}.model"
+
+# Automatically detect which language files were created
+# make_tok_training_data.py creates files based on actual language codes (e.g., es.txt, pt.txt, en.txt)
+# not on logical names (e.g., es2pt.txt)
+ACTUAL_LANGS=""
+for txt_file in "${TOK_TRAIN_DATA_DIR}"/*.txt; do
+    if [ -f "$txt_file" ]; then
+        lang=$(basename "$txt_file" .txt)
+        if [ -z "$ACTUAL_LANGS" ]; then
+            ACTUAL_LANGS="$lang"
+        else
+            ACTUAL_LANGS="$ACTUAL_LANGS,$lang"
+        fi
+    fi
+done
+
+echo "Detected language files: ${ACTUAL_LANGS}"
+
+# Create output directory
+mkdir -p "${COMBINED_TOK_DIR}"
+
+python "${SCRIPT_DIR}/../NMT/spm_train.py" \
+    --langs "$ACTUAL_LANGS" \
+    --folder "$TOK_TRAIN_DATA_DIR" \
+    --dist_str "${DIST:-$COMBINED_LANGS}" \
+    --training_data_size $SPM_TRAIN_SIZE \
+    --save_dir "$COMBINED_TOK_DIR" \
+    --spm_model_name "$COMBINED_TOK_NAME" \
+    --spm_vocab_size "${VOCAB_SIZE:-8000}" \
+    --user_defined_symbols "$SRC_USER_DEFINED_SYMBOLS_STR" \
+    --SPLIT_ON_WS $SPLIT_ON_WS
+
+echo "Tokenizer training complete!"
+echo "Model files created in: ${COMBINED_TOK_DIR}"
 
 # for l in ${langs_array[@]} ; do
 #     echo "removing ${TOK_TRAIN_DATA_DIR}/${l}.txt"

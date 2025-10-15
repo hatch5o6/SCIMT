@@ -28,3 +28,24 @@ venv_*/
 
 # Development artifacts
 archive/
+
+# CharLOTTE test generated outputs
+charlotte-test/nmt_models/
+charlotte-test/spm_models/
+charlotte-test/sc_models_*/
+charlotte-test/cognates_*/
+charlotte-test/tokenizer_data/
+charlotte-test/tokenizer_data_baseline/
+charlotte-test/lightning_logs/
+charlotte-test/logs/
+charlotte-test/data/raw/*.txt
+charlotte-test/data/raw/*.es
+charlotte-test/data/raw/*.pt
+charlotte-test/data/raw/*.en
+charlotte-test/data/raw/*.an
+charlotte-test/*.log
+charlotte-test/.DS_Store
+
+# Cognate dataset logs (generated)
+cognate_dataset_log_*.csv
+cognate_dataset_log_*.json
