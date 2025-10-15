@@ -1,7 +1,0 @@
-Este ||| Iste ||| 0.25
-Yo ||| Yo ||| 0.0
-bueno ||| bueno ||| 0.0
-ejemplo ||| exemplo ||| 0.14285714285714285
-hablo ||| parllo ||| 0.5
-tiempo ||| tiempo ||| 0.0
-un ||| un ||| 0.0
