@@ -3,12 +3,15 @@ from nltk.tokenize import word_tokenize
 # nltk.download('punkt')
 import spacy
 es_nlp = spacy.load('es_core_news_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
+pt_nlp = spacy.load('pt_core_news_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
 multi_nlp = spacy.load('xx_sent_ud_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
 nlp = {
     "es": es_nlp,
     "an": es_nlp,
     "oc": es_nlp,
     "ast": es_nlp,
+
+    "pt": pt_nlp,
 
     "lua": multi_nlp,
     "bem": multi_nlp,
@@ -129,6 +132,8 @@ def get_args():
     return args
 
 if __name__ == "__main__":
-    print("prepare_for_fastlign.py")
+    print("###########################")
+    print("# prepare_for_fastlign.py #")
+    print("###########################")
     args = get_args()
     prep(args.src, args.tgt, args.out)

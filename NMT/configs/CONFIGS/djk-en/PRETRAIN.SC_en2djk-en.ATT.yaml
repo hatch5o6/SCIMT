@@ -1,0 +1,60 @@
+# outputs
+src: djk # it's actually en2djk. I just don't want to do en -> en direction
+tgt: en
+save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/djk-en/PRETRAIN.SC_en2djk-en
+test_checkpoint: null
+remove_special_toks: True
+verbose: False
+little_verbose: True
+
+# finetune?
+from_pretrained: null
+
+# data
+train_data: /home/hatch5o6/Cognate/code/NMT/data/SC/SC_en2djk-en/train.no_overlap_v1.csv
+val_data: /home/hatch5o6/Cognate/code/NMT/data/SC/SC_en2djk-en_dev_test/val.no_overlap_v1.csv
+test_data: /home/hatch5o6/Cognate/code/NMT/data/SC/SC_en2djk-en_dev_test/test.csv
+append_src_token: False
+append_tgt_token: False
+upsample: False
+sc_model_id: EN-DJK.ATT-RNN-0-RNN-121
+
+# tokenizers
+spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_en2djk-djk_en/SC_en2djk-djk_en/SC_en2djk-djk_en
+do_char: False
+
+# training
+n_gpus: 4
+seed: 1000
+qos: dw87
+
+max_steps: 100000
+train_batch_size: 128
+val_batch_size: 128
+test_batch_size: 128
+
+early_stop: 10
+save_top_k: 10
+val_interval: 0.25 # fraction of epoch
+
+learning_rate: 5e-04
+weight_decay: 0.01
+
+device: cuda
+
+# config
+encoder_layers: 6
+encoder_attention_heads: 8
+encoder_ffn_dim: 2048
+encoder_layerdrop: 0.0
+
+decoder_layers: 6
+decoder_attention_heads: 8
+decoder_ffn_dim: 2048
+decoder_layerdrop: 0.0
+
+max_position_embeddings: 512
+max_length: 512
+d_model: 512
+dropout: 0.1
+activation_function: gelu

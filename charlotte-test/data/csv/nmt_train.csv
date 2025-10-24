@@ -1,0 +1,3 @@
+src_lang,tgt_lang,src_path,tgt_path
+pt,en,/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.pt-en.pt,/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.pt-en.en
+es,en,/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.es-en.es,/Users/ringger/Projects/brendan/SCIMT/charlotte-test/data/raw/train.es-en.en

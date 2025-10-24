@@ -17,10 +17,10 @@ test_data:
 append_src_token: False
 append_tgt_token: False
 upsample: False
+sc_model_id: null
 
 # tokenizers
-src_spm:
-tgt_spm:
+spm:
 
 # training
 n_gpus: 4

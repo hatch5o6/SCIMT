@@ -1,0 +1,24 @@
+# NMT Requirements (venv_nmt)
+# For end-to-end NMT model training and translation
+
+# PyTorch ecosystem
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Transformers and model architecture
+transformers>=4.30.0
+
+# Tokenization
+sentencepiece>=0.1.99
+
+# Training framework
+lightning>=2.0.0
+
+# Evaluation metrics
+sacrebleu>=2.0.0
+
+# Utilities
+pyyaml>=6.0
+pandas>=1.5.0
+tqdm>=4.65.0

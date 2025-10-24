@@ -19,6 +19,8 @@ def calc_bleu(
         # print("NOT TOKENIZING")
         bleu = BLEU()
     score = bleu.corpus_score(hyp, refs)
+    print("BLEU STUFF")
+    print(score)
     return score.score
 
 def calc_chrF(

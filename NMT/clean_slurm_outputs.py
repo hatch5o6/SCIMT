@@ -8,7 +8,17 @@ top = args.top
 
 
 dirs = [
-    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs"
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs",
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs/an-en",
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs/as-hi",
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs/bem-en",
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs/bho-as",
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs/bho-hi",
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs/djk-en",
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs/ewe-en",
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs/fon-fr",
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs/hsb-de",
+    "/home/hatch5o6/Cognate/code/NMT/slurm_outputs/mfe-en"
 ]
 for dir in dirs:
     fs = os.listdir(dir)
@@ -16,6 +26,7 @@ for dir in dirs:
     for f in fs:
         if f.endswith(".py"): continue
         if f.startswith("SAVE_"): continue
+        if os.path.isdir(os.path.join(dir, f)): continue
         number = f.split("_")[0]
         number = int(number)
         name = "_".join(f.split("_")[1:])

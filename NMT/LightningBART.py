@@ -1,5 +1,7 @@
 from torch import optim
 import lightning as L
+from torch.optim.lr_scheduler import LambdaLR
+from pytorch_lightning.utilities import rank_zero_info
 
 class LBART(L.LightningModule):
     def __init__(
@@ -19,6 +21,8 @@ class LBART(L.LightningModule):
         print("DEVICE:", device)
         self.model = self.model.to(device)
 
+        self.save_hyperparameters(config)
+
     def training_step(self, batch, batch_idx):
         src_segments, tgt_segments = batch
         VERBOSE = False
@@ -33,19 +37,19 @@ class LBART(L.LightningModule):
 
         if VERBOSE:
             if batch_idx % freq == 0:
-                print(f"\n########## train batch {batch_idx} ##########")
+                rank_zero_info(f"\n########## train batch {batch_idx} ##########")
                 for s, srcseg in enumerate(src_segments):
                     tgtseg = tgt_segments[s]
 
-                    srctoks = self.src_tokenizer.tokenize(srcseg)
-                    tgttoks = self.tgt_tokenizer.tokenize(tgtseg)
+                    srctok_ids, srctoks = self.src_tokenizer.tokenize(srcseg)
+                    tgttok_ids, tgttoks = self.tgt_tokenizer.tokenize(tgtseg)
                     # src_toks = self.src_tokenizer.encode(srcseg).tokens
 
-                    print("----------------")
-                    print(f"{s} - SRC) '{srcseg}'")
-                    print(f"{s} - SRC TOKS)", srctoks)
-                    print(f"{s} - TGT) '{tgtseg}'")
-                    print(f"{s} - TGT TOKS)", tgttoks)
+                    rank_zero_info("----------------")
+                    rank_zero_info(f"{s} - SRC) '{srcseg}'")
+                    rank_zero_info(f"{s} - SRC TOKS) {srctoks}")
+                    rank_zero_info(f"{s} - TGT) '{tgtseg}'")
+                    rank_zero_info(f"{s} - TGT TOKS) {tgttoks}")
                     if s == break_after:
                         break
         
@@ -92,18 +96,18 @@ class LBART(L.LightningModule):
 
         if VERBOSE:
             if batch_idx % freq == 0:
-                print(f"\n########## val batch {batch_idx} ##########")
+                rank_zero_info(f"\n########## val batch {batch_idx} ##########")
                 for s, srcseg in enumerate(src_segments):
                     tgtseg = tgt_segments[s]
 
-                    srctoks = self.src_tokenizer.tokenize(srcseg)
-                    tgttoks = self.tgt_tokenizer.tokenize(tgtseg)
+                    srctok_ids, srctoks = self.src_tokenizer.tokenize(srcseg)
+                    tgttok_ids, tgttoks = self.tgt_tokenizer.tokenize(tgtseg)
 
-                    print("----------------")
-                    print(f"{s} - SRC) '{srcseg}'")
-                    print(f"{s} - SRC TOKS)", srctoks)
-                    print(f"{s} - TGT) '{tgtseg}'")
-                    print(f"{s} - TGT TOKS)", tgttoks)
+                    rank_zero_info("----------------")
+                    rank_zero_info(f"{s} - SRC) '{srcseg}'")
+                    rank_zero_info(f"{s} - SRC TOKS) {srctoks}")
+                    rank_zero_info(f"{s} - TGT) '{tgtseg}'")
+                    rank_zero_info(f"{s} - TGT TOKS) {tgttoks}")
                     if s == break_after:
                         break
         
@@ -156,9 +160,43 @@ class LBART(L.LightningModule):
         results = list(zip(generated_ids, src_segments_text, prediction, tgt_segments_text))
         return results
     
+    # Basic optimizer
+    # def configure_optimizers(self):
+    #     optimizer = optim.Adam(
+    #         self.parameters(), 
+    #         lr=float(self.config["learning_rate"])
+    #     )
+    #     return optimizer
+
+    # With scheduler
     def configure_optimizers(self):
-        optimizer = optim.Adam(
+        optimizer = optim.AdamW(
             self.parameters(), 
-            lr=self.config["learning_rate"]
+            lr=float(self.config["learning_rate"]),
+            weight_decay=self.config["weight_decay"]
         )
-        return optimizer
+
+        lr_lambda = get_linear_schedule_with_warmup(
+            num_warmup_steps=self.config["warmup_steps"],
+            num_training_steps=self.config["max_steps"]
+        )
+        scheduler = LambdaLR(optimizer, lr_lambda)
+
+        return {
+            "optimizer": optimizer,
+            "lr_scheduler": {
+                "scheduler": scheduler,
+                "interval": "step",
+                "frequency": 1
+            }
+        }
+
+def get_linear_schedule_with_warmup(num_warmup_steps, num_training_steps):
+    def lr_lambda(current_step):
+        if current_step < num_warmup_steps:
+            return float(current_step) / float(max(1, num_warmup_steps))
+        return max(
+            0.0,
+            float(num_training_steps - current_step) / float(max(1, num_training_steps - num_warmup_steps)),
+        )
+    return lr_lambda

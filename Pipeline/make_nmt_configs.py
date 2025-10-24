@@ -5,7 +5,10 @@ import yaml
 import copy
 from tqdm import tqdm
 
-TEST_FOLDER = "/home/hatch5o6/Cognate/code/NMT/configs/TEST"
+# TEST_FOLDER = "/home/hatch5o6/Cognate/code/NMT/configs/TEST"
+TEST_FOLDER = "/home/hatch5o6/Cognate/code/NMT/configs/CONFIGS_FINAL_TEST"
+
+#TODO Maybe add support for ATT (en2djk and hi2bho)
 
 def make_configs(
     cfgs,
@@ -15,10 +18,14 @@ def make_configs(
     nmt_aug_data,
     SAVE_PARENT_DIR,
     TOKENIZERS_DIR,
-    TESTING=False
+    TESTING=False,
+    NO_V=None
 ):
-    if not os.path.exists(out_dir):
-        os.mkdir(out_dir)
+    if os.path.exists(out_dir):
+        print("DELETING", out_dir)
+        shutil.rmtree(out_dir)
+    print("CREATING", out_dir)
+    os.mkdir(out_dir)
 
     config_template = read_yaml(template_f)
     PATHS = {}
@@ -26,15 +33,27 @@ def make_configs(
     print("Making configs")
     for cfg in tqdm(os.listdir(cfgs)):
         if TESTING and cfg not in ["bho-hi.cfg", "bn-as.cfg"]: continue
+        if cfg.startswith("en-djk.ATT."): continue
         print("CONFIG:", cfg)
         cfg_path = os.path.join(cfgs, cfg)
-        NMT_SRC, NMT_TGT, AUG_SRC, AUG_TGT, COG_SRC, COG_TGT = read_cfg(cfg_path)
+        (NMT_SRC, 
+            NMT_TGT, 
+            AUG_SRC, 
+            AUG_TGT, 
+            COG_SRC, 
+            COG_TGT, 
+            SC_MODEL_TYPE, 
+            SC_MODEL_ID, 
+            RNN_HYPERPARAMS_ID) = read_cfg(cfg_path)
+        SC_MODEL_ID = f"{SC_MODEL_ID}-{SC_MODEL_TYPE}-{RNN_HYPERPARAMS_ID}"
         print("\tNMT_SRC:", NMT_SRC)
         print("\tNMT_TGT:", NMT_TGT)
         print("\tAUG_SRC:", AUG_SRC)
         print("\tAUG_TGT:", AUG_TGT)
         print("\tCOG_SRC:", COG_SRC)
         print("\tCOG_TGT:", COG_TGT)
+        print("\n\tSC_MODEL_ID:", SC_MODEL_ID)
+        print("\n\n")
         
         lang_pair = f"{NMT_SRC}-{NMT_TGT}"
         lang_out_dir = os.path.join(out_dir, lang_pair)
@@ -53,6 +72,26 @@ def make_configs(
         if lang_pair not in PATHS:
             PATHS[lang_pair] = []
 
+        no_v_tag = ""
+        if NO_V != None:
+            no_v_tag = f".no_overlap_{NO_V}"
+
+
+        # plain NTM (always do this)
+        nmt_config = copy.deepcopy(config_template)
+        nmt_config["src"] = NMT_SRC
+        nmt_config["tgt"] = NMT_TGT
+        nmt_config["train_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}", f"train{no_v_tag}.csv")
+        nmt_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", f"val{no_v_tag}.csv")
+        nmt_config["test_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "test.csv")
+        # nmt_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_SRC}/{NMT_SRC}")
+        # nmt_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+        nmt_config["spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_SRC}_{NMT_TGT}/{NMT_SRC}_{NMT_TGT}/{NMT_SRC}_{NMT_TGT}")
+        nmt_config["upsample"] = False
+        nmt_config["sc_model_id"] = None
+        nmt_config["save"] = os.path.join(SAVE_PARENT_DIR, f"NMT.{NMT_SRC}-{NMT_TGT}")
+        PATHS[lang_pair].append(write_yaml(nmt_config, os.path.join(lang_out_dir, f"NMT.{NMT_SRC}-{NMT_TGT}.yaml")))
+
         if SHOULD_AUGMENT:
             assert NMT_SRC == COG_TGT
             # AUGMENTED
@@ -60,12 +99,14 @@ def make_configs(
             aug_config = copy.deepcopy(config_template)
             aug_config["src"] = NMT_SRC
             aug_config["tgt"] = NMT_TGT
-            aug_config["train_data"] = os.path.join(nmt_aug_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}", "train.csv")
-            aug_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "val.csv")
+            aug_config["train_data"] = os.path.join(nmt_aug_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}", f"train{no_v_tag}.csv")
+            aug_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", f"val{no_v_tag}.csv")
             aug_config["test_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "test.csv")
-            aug_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"{AUG_SRC}.{NMT_SRC}/{AUG_SRC}.{NMT_SRC}")
-            aug_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            # aug_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"{AUG_SRC}.{NMT_SRC}/{AUG_SRC}.{NMT_SRC}")
+            # aug_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            aug_config["spm"] = os.path.join(TOKENIZERS_DIR, f"{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}")
             aug_config["upsample"] = True
+            aug_config["sc_model_id"] = None
             aug_config["save"] = os.path.join(SAVE_PARENT_DIR, f"AUGMENT.{NMT_SRC}-{NMT_TGT}")
             PATHS[lang_pair].append(write_yaml(aug_config, os.path.join(lang_out_dir, f"AUGMENT.{NMT_SRC}-{NMT_TGT}.yaml")))
 
@@ -73,12 +114,14 @@ def make_configs(
             aug_sc_config = copy.deepcopy(config_template)
             aug_sc_config["src"] = NMT_SRC
             aug_sc_config["tgt"] = NMT_TGT                             # COG_TGT should match NMT_SRC, if we're making this
-            aug_sc_config["train_data"] = os.path.join(nmt_aug_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}", "train.csv")
-            aug_sc_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "val.csv")
+            aug_sc_config["train_data"] = os.path.join(nmt_aug_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}", f"train{no_v_tag}.csv")
+            aug_sc_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", f"val{no_v_tag}.csv")
             aug_sc_config["test_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "test.csv")
-            aug_sc_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}/SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}")
-            aug_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            # aug_sc_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}/SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}")
+            # aug_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            aug_sc_config["spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}")
             aug_sc_config["upsample"] = True
+            aug_sc_config["sc_model_id"] = SC_MODEL_ID
             aug_sc_config["save"] = os.path.join(SAVE_PARENT_DIR, f"AUGMENT.SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}")
             PATHS[lang_pair].append(write_yaml(aug_sc_config, os.path.join(lang_out_dir, f"AUGMENT.SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}.yaml")))
 
@@ -87,12 +130,14 @@ def make_configs(
             pretrain_config = copy.deepcopy(config_template)
             pretrain_config["src"] = AUG_SRC
             pretrain_config["tgt"] = AUG_TGT
-            pretrain_config["train_data"] = os.path.join(nmt_data, "PLAIN", f"{AUG_SRC}-{AUG_TGT}", "train.csv")
-            pretrain_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{AUG_SRC}-{AUG_TGT}_dev_test", "val.csv")
+            pretrain_config["train_data"] = os.path.join(nmt_data, "PLAIN", f"{AUG_SRC}-{AUG_TGT}", f"train{no_v_tag}.csv")
+            pretrain_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{AUG_SRC}-{AUG_TGT}_dev_test", f"val{no_v_tag}.csv")
             pretrain_config["test_data"] = os.path.join(nmt_data, "PLAIN", f"{AUG_SRC}-{AUG_TGT}_dev_test", "test.csv")
-            pretrain_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"{AUG_SRC}.{NMT_SRC}/{AUG_SRC}.{NMT_SRC}")
-            pretrain_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            # pretrain_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"{AUG_SRC}.{NMT_SRC}/{AUG_SRC}.{NMT_SRC}")
+            # pretrain_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            pretrain_config["spm"] = os.path.join(TOKENIZERS_DIR, f"{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}")
             pretrain_config["upsample"] = False
+            pretrain_config["sc_model_id"] = None
             pretrain_config["save"] = os.path.join(SAVE_PARENT_DIR, f"PRETRAIN.{AUG_SRC}-{AUG_TGT}")
             PATHS[lang_pair].append(write_yaml(pretrain_config, os.path.join(lang_out_dir, f"PRETRAIN.{AUG_SRC}-{AUG_TGT}.yaml")))
             
@@ -100,12 +145,14 @@ def make_configs(
             pretrain_sc_config = copy.deepcopy(config_template)
             pretrain_sc_config["src"] = AUG_SRC
             pretrain_sc_config["tgt"] = AUG_TGT                                    #COG_SRC==AUG_SRC
-            pretrain_sc_config["train_data"] = os.path.join(nmt_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}", "train.csv")
-            pretrain_sc_config["val_data"] = os.path.join(nmt_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}_dev_test", "val.csv")
+            pretrain_sc_config["train_data"] = os.path.join(nmt_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}", f"train{no_v_tag}.csv")
+            pretrain_sc_config["val_data"] = os.path.join(nmt_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}_dev_test", f"val{no_v_tag}.csv")
             pretrain_sc_config["test_data"] = os.path.join(nmt_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}_dev_test", "test.csv")
-            pretrain_sc_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}/SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}")
-            pretrain_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            # pretrain_sc_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}/SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}")
+            # pretrain_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            pretrain_sc_config["spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}")
             pretrain_sc_config["upsample"] = False
+            pretrain_sc_config["sc_model_id"] = SC_MODEL_ID
             pretrain_sc_config["save"] = os.path.join(SAVE_PARENT_DIR, f"PRETRAIN.SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}")
             PATHS[lang_pair].append(write_yaml(pretrain_sc_config, os.path.join(lang_out_dir, f"PRETRAIN.SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}.yaml")))
 
@@ -114,12 +161,14 @@ def make_configs(
             finetune_config = copy.deepcopy(config_template)
             finetune_config["src"] = NMT_SRC
             finetune_config["tgt"] = NMT_TGT
-            finetune_config["train_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}", "train.csv")
-            finetune_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "val.csv")
+            finetune_config["train_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}", f"train{no_v_tag}.csv")
+            finetune_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", f"val{no_v_tag}.csv")
             finetune_config["test_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "test.csv")
-            finetune_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"{AUG_SRC}.{NMT_SRC}/{AUG_SRC}.{NMT_SRC}")
-            finetune_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            # finetune_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"{AUG_SRC}.{NMT_SRC}/{AUG_SRC}.{NMT_SRC}")
+            # finetune_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            finetune_config["spm"] = os.path.join(TOKENIZERS_DIR, f"{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}/{COG_SRC}-{COG_TGT}_{NMT_TGT}")
             finetune_config["upsample"] = False
+            finetune_config["sc_model_id"] = None
             finetune_config["save"] = os.path.join(SAVE_PARENT_DIR, f"FINETUNE.{AUG_SRC}-{AUG_TGT}>>{NMT_SRC}-{NMT_TGT}")
             finetune_config["from_pretrained"] = pretrain_config["save"] + f"_TRIAL_s={pretrain_config['seed']}" 
             PATHS[lang_pair].append(write_yaml(finetune_config, os.path.join(lang_out_dir, f"FINETUNE.{AUG_SRC}-{AUG_TGT}>>{NMT_SRC}-{NMT_TGT}.yaml")))
@@ -128,12 +177,14 @@ def make_configs(
             finetune_sc_config = copy.deepcopy(config_template)
             finetune_sc_config["src"] = NMT_SRC
             finetune_sc_config["tgt"] = NMT_TGT
-            finetune_sc_config["train_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}", "train.csv")
-            finetune_sc_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "val.csv")
+            finetune_sc_config["train_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}", f"train{no_v_tag}.csv")
+            finetune_sc_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", f"val{no_v_tag}.csv")
             finetune_sc_config["test_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "test.csv")
-            finetune_sc_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}/SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}")
-            finetune_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            # finetune_sc_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}/SC_{COG_SRC}2{COG_TGT}.{NMT_SRC}")
+            # finetune_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            finetune_sc_config["spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_{NMT_TGT}")
             finetune_sc_config["upsample"] = False
+            finetune_sc_config["sc_model_id"] = SC_MODEL_ID
             finetune_sc_config["save"] = os.path.join(SAVE_PARENT_DIR, f"FINETUNE.SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}>>{NMT_SRC}-{NMT_TGT}")
             finetune_sc_config["from_pretrained"] = pretrain_sc_config["save"] + f"_TRIAL_s={pretrain_sc_config['seed']}" 
             PATHS[lang_pair].append(write_yaml(finetune_sc_config, os.path.join(lang_out_dir, f"FINETUNE.SC_{COG_SRC}2{COG_TGT}-{AUG_TGT}>>{NMT_SRC}-{NMT_TGT}.yaml")))
@@ -142,29 +193,18 @@ def make_configs(
             assert NMT_SRC == AUG_SRC == COG_SRC
             assert NMT_TGT == AUG_TGT == COG_TGT
 
-            # plain
-            nmt_config = copy.deepcopy(config_template)
-            nmt_config["src"] = NMT_SRC
-            nmt_config["tgt"] = NMT_TGT
-            nmt_config["train_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}", "train.csv")
-            nmt_config["val_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "val.csv")
-            nmt_config["test_data"] = os.path.join(nmt_data, "PLAIN", f"{NMT_SRC}-{NMT_TGT}_dev_test", "test.csv")
-            nmt_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_SRC}/{NMT_SRC}")
-            nmt_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
-            nmt_config["upsample"] = False
-            nmt_config["save"] = os.path.join(SAVE_PARENT_DIR, f"NMT.{NMT_SRC}-{NMT_TGT}")
-            PATHS[lang_pair].append(write_yaml(nmt_config, os.path.join(lang_out_dir, f"NMT.{NMT_SRC}-{NMT_TGT}.yaml")))
-
             # sc
             nmt_sc_config = copy.deepcopy(config_template)
             nmt_sc_config["src"] = NMT_SRC
             nmt_sc_config["tgt"] = NMT_TGT
-            nmt_sc_config["train_data"] = os.path.join(nmt_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}", "train.csv")
-            nmt_sc_config["val_data"] = os.path.join(nmt_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}_dev_test", "val.csv")
+            nmt_sc_config["train_data"] = os.path.join(nmt_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}", f"train{no_v_tag}.csv")
+            nmt_sc_config["val_data"] = os.path.join(nmt_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}_dev_test", f"val{no_v_tag}.csv")
             nmt_sc_config["test_data"] = os.path.join(nmt_data, "SC", f"SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}_dev_test", "test.csv")
-            nmt_sc_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}/SC_{COG_SRC}2{COG_TGT}")
-            nmt_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            # nmt_sc_config["src_spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}/SC_{COG_SRC}2{COG_TGT}")
+            # nmt_sc_config["tgt_spm"] = os.path.join(TOKENIZERS_DIR, f"{NMT_TGT}/{NMT_TGT}")
+            nmt_sc_config["spm"] = os.path.join(TOKENIZERS_DIR, f"SC_{COG_SRC}2{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}_{NMT_TGT}/SC_{COG_SRC}2{COG_TGT}_{NMT_TGT}")
             nmt_sc_config["upsample"] = False
+            nmt_sc_config["sc_model_id"] = SC_MODEL_ID
             nmt_sc_config["save"] = os.path.join(SAVE_PARENT_DIR, f"NMT.SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}")
             PATHS[lang_pair].append(write_yaml(nmt_sc_config, os.path.join(lang_out_dir, f"NMT.SC_{COG_SRC}2{COG_TGT}-{NMT_TGT}.yaml")))
 
@@ -173,7 +213,12 @@ def make_configs(
     TEST(PATHS, config_template)
 
 def TEST(paths, config_template):
-    SKIP_KEYS = ["src", "tgt", "train_data", "val_data", "test_data", "src_spm", "tgt_spm", "upsample", "save", "from_pretrained"]
+    SKIP_KEYS = ["src", "tgt", "train_data", "val_data", "test_data", 
+                #  "src_spm", "tgt_spm",
+                "spm",
+                "upsample",
+                "sc_model_id", 
+                "save", "from_pretrained"]
     total = 0
     passed = 0
     for d in os.listdir(TEST_FOLDER):
@@ -182,7 +227,7 @@ def TEST(paths, config_template):
         for test_f in test_paths:
             test_f_name = test_f.split("/")[-1]
             gt_path = os.path.join(d_path, test_f_name)
-
+            
             if os.path.exists(gt_path):
                 total += 1
                 print("------------------------------------")
@@ -214,6 +259,9 @@ def TEST(paths, config_template):
                 # print("gt_yaml", key, type(gt_yaml[key]), gt_yaml[key])
                 # print("test_yaml", key, type(test_yaml[key]), test_yaml[key])
                 if gt_yaml:
+                    if gt_yaml[key] != v:
+                        print("ERROR in", gt_path)
+                        print(f"gt_yaml[{key}] == `{gt_yaml[key]}`; but template[{key}] == `{v}`")
                     assert gt_yaml[key] == v
                 assert test_yaml[key] == v
             if gt_yaml:
@@ -263,7 +311,8 @@ def write_yaml(data, f):
                 outf.write("# finetune?\n")
             elif key == "train_data":
                 outf.write("# data\n")
-            elif key == "src_spm":
+            # elif key == "src_spm":
+            elif key == "spm":
                 outf.write("# tokenizers\n")
             elif key == "n_gpus":
                 outf.write("# training\n")
@@ -274,7 +323,13 @@ def write_yaml(data, f):
                 v = "null"
             outf.write(f"{key}: {v}\n")
 
-            if key in ["little_verbose", "from_pretrained", "upsample", "tgt_spm", "qos", "test_batch_size", "val_interval", "learning_rate", "device", "encoder_layerdrop", "decoder_layerdrop"]:
+            if key in ["little_verbose", "from_pretrained", 
+                       "sc_model_id", # if going to include this, comment out "upsample"
+                    #    "upsample", # if going to include 'sc_model_id', comment this out
+
+                    #    "tgt_spm", 
+                       "spm",
+                       "qos", "test_batch_size", "val_interval", "learning_rate", "device", "encoder_layerdrop", "decoder_layerdrop"]:
                 outf.write("\n")
             
         # yaml.dump(data, outf, sort_keys=False)
@@ -289,6 +344,9 @@ def read_cfg(f):
     AUG_TGT=None
     SRC=None
     TGT=None
+    SC_MODEL_ID=None
+    SC_MODEL_TYPE=None
+    RNN_HYPERPARAMS_ID=None
     for line in lines:
         if line.startswith("NMT_SRC="):
             assert NMT_SRC is None
@@ -308,19 +366,40 @@ def read_cfg(f):
         elif line.startswith("TGT="):
             assert TGT is None
             TGT = line.split("TGT=")[-1]
-    assert all([NMT_SRC is not None, NMT_TGT is not None, AUG_SRC is not None, AUG_TGT is not None, SRC is not None, TGT is not None])
-    return NMT_SRC, NMT_TGT, AUG_SRC, AUG_TGT, SRC, TGT
+        elif line.startswith("SC_MODEL_TYPE="):
+            assert SC_MODEL_TYPE == None
+            SC_MODEL_TYPE = line.split("SC_MODEL_TYPE=")[-1]
+        elif line.startswith("SC_MODEL_ID="):
+            assert SC_MODEL_ID == None
+            SC_MODEL_ID = line.split("SC_MODEL_ID=")[-1]
+        elif line.startswith("RNN_HYPERPARAMS_ID="):
+            assert RNN_HYPERPARAMS_ID == None
+            RNN_HYPERPARAMS_ID = line.split("RNN_HYPERPARAMS_ID=")[-1]
+        
+    assert all([
+        NMT_SRC is not None, 
+        NMT_TGT is not None, 
+        AUG_SRC is not None, 
+        AUG_TGT is not None, 
+        SRC is not None, 
+        TGT is not None,
+        SC_MODEL_TYPE is not None,
+        SC_MODEL_ID is not None,
+        RNN_HYPERPARAMS_ID is not None
+    ])
+    return NMT_SRC, NMT_TGT, AUG_SRC, AUG_TGT, SRC, TGT, SC_MODEL_TYPE, SC_MODEL_ID, RNN_HYPERPARAMS_ID
 
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--cfgs", default="/home/hatch5o6/Cognate/code/Pipeline/cfg/SC")
-    parser.add_argument("--out_dir", default="/home/hatch5o6/Cognate/code/NMT/configs")
+    parser.add_argument("--out_dir", default="/home/hatch5o6/Cognate/code/NMT/configs/CONFIGS")
     parser.add_argument("--template", default="/home/hatch5o6/Cognate/code/NMT/configs/template.yaml")
     parser.add_argument("--nmt_data", default="/home/hatch5o6/Cognate/code/NMT/data")
     parser.add_argument("--nmt_augmented_data", default="/home/hatch5o6/Cognate/code/NMT/augmented_data")
     parser.add_argument("--SAVE_PARENT_DIR", default="/home/hatch5o6/nobackup/archive/CognateMT/PredictCognates")
     parser.add_argument("--TOKENIZERS_DIR", default="/home/hatch5o6/nobackup/archive/CognateMT/spm_models")
     parser.add_argument("--TESTING", action="store_true", help="if passed, will only create bho-hi and bn-as files")
+    parser.add_argument("--NO_V", help="no overlap version, e.g. v1 will add file tag '.no_overlap_v1.csv' on train and val .csvs", default=None)
     return parser.parse_args()
 
 if __name__ == "__main__":
@@ -333,5 +412,6 @@ if __name__ == "__main__":
         nmt_aug_data=args.nmt_augmented_data,
         SAVE_PARENT_DIR=args.SAVE_PARENT_DIR,
         TOKENIZERS_DIR=args.TOKENIZERS_DIR,
-        TESTING=args.TESTING
+        TESTING=args.TESTING,
+        NO_V=args.NO_V
     )

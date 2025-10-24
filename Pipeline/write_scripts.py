@@ -11,7 +11,7 @@ lang="{SRC}-{TGT}"
 
 DATA_NAME="{SRC}_{TGT}"
 
-MOSES_DIR="/home/hatch5o6/Cognate/code/CopperMT/CopperMT/submodules"
+MOSES_DIR="{COPPERMT_DIR}/submodules"
 """.strip()
 
 sbatch_preamble = """
@@ -37,21 +37,28 @@ def write(
     src,
     tgt,
     coppermt_data_dir,
+    coppermt_dir,
     sc_model_type,
     rnn_hyperparams_id,
     seed,
     parameters_f
 ):
-    write_parameters(coppermt_data_dir, parameters_f, src, tgt, sc_model_type, rnn_hyperparams_id, seed)
+    write_parameters(coppermt_data_dir, coppermt_dir, parameters_f, src, tgt, sc_model_type, rnn_hyperparams_id, seed)
 
-def write_parameters(coppermt_data_dir, f, src, tgt, sc_model_type, rnn_hyperparams_id, seed):
+def write_parameters(coppermt_data_dir, coppermt_dir, f, src, tgt, sc_model_type, rnn_hyperparams_id, seed):
     assert f.endswith(".cfg")
     # ending = f"{src}-{tgt}.cfg"
     # if not f.endswith(ending):
     #     f = f[:-3] + f"{src}-{tgt}.cfg"
 
+    # Ensure parent directory exists
+    parent_dir = os.path.dirname(f)
+    if parent_dir and not os.path.exists(parent_dir):
+        os.makedirs(parent_dir, exist_ok=True)
+
     content = parameters_stensil
     content = content.replace("{COPPERMT_DATA_DIR}", coppermt_data_dir)
+    content = content.replace("{COPPERMT_DIR}", coppermt_dir)
     content = content.replace("{SRC}", src)
     content = content.replace("{TGT}", tgt)
     content = content.replace("{SC_MODEL_TYPE}", sc_model_type)
@@ -65,6 +72,7 @@ def get_args():
     parser.add_argument("--src", required=True)
     parser.add_argument("--tgt", required=True)
     parser.add_argument("--coppermt_data_dir", required=True)
+    parser.add_argument("--coppermt_dir", required=True)
     parser.add_argument("--sc_model_type", required=True)
     parser.add_argument("--rnn_hyperparams_id", required=True)
     parser.add_argument("--seed", required=True)
@@ -86,6 +94,7 @@ if __name__ == "__main__":
         src=args.src,
         tgt=args.tgt,
         coppermt_data_dir=args.coppermt_data_dir,
+        coppermt_dir=args.coppermt_dir,
         sc_model_type=args.sc_model_type,
         rnn_hyperparams_id=args.rnn_hyperparams_id,
         seed=args.seed,

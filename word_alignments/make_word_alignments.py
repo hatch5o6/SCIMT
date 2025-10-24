@@ -18,6 +18,7 @@ def make_word_list(sent_pairs, alignments, VERBOSE=False, START=None, STOP=None)
             print(tgt_sent)
             print(word_alignments)
         # should already be tokenized and joined on whitespace, so no need for word_tokenize function
+        #TODO if ever use this again, may need to account for non-breaking spaces. see make_word_alignments_no_grouping
         src_words = src_sent.split()
         tgt_words = tgt_sent.split()
         max_len = max(len(src_words), len(tgt_words))
