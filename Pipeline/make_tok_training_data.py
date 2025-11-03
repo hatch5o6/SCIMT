@@ -5,15 +5,16 @@ import shutil
 
 def get_data(
     train_csvs,
-    val_csvs,
-    test_csvs,
+    # val_csvs,
+    # test_csvs,
     out_dir,
     SC_MODEL_ID,
     IS_ATT
 ):
     print("### READING ###")
     data = read_csvs(
-        fs=train_csvs + val_csvs + test_csvs,
+        # fs=train_csvs + val_csvs + test_csvs,
+        fs=train_csvs,
         SC_MODEL_ID=SC_MODEL_ID,
         IS_ATT=IS_ATT
     )
@@ -122,8 +123,8 @@ def get_lang_paths(rows, SC_MODEL_ID, IS_ATT):
             print("SC_MODEL_ID:", SC_MODEL_ID)
             print("src_f:", src_f)
             assert src_f.split(".")[-2] == f"SC_{{SC_MODEL_ID}}_{model_id_src}2{model_id_tgt}"
-            assert src_lang == model_id_tgt
-            assert tgt_lang == model_id_src
+            assert src_lang == model_id_tgt, f"src_lang: {src_lang}, model_id_tgt: {model_id_tgt}, ({src_lang, tgt_lang, src_f, tgt_f})"
+            assert tgt_lang == model_id_src, f"tgt_lang: {tgt_lang}, model_id_src: {model_id_src}, ({src_lang, tgt_lang, src_f, tgt_f})"
             assert src_f.split(".")[-2].split("_")[-1] == f"{model_id_src}2{model_id_tgt}"
             src_lang = f"{model_id_src}2{model_id_tgt}"
 
@@ -141,8 +142,8 @@ def get_lang_paths(rows, SC_MODEL_ID, IS_ATT):
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--train_csvs")
-    parser.add_argument("--val_csvs")
-    parser.add_argument("--test_csvs")
+    # parser.add_argument("--val_csvs")
+    # parser.add_argument("--test_csvs")
     parser.add_argument("--out_dir")
     parser.add_argument("--SC_MODEL_ID")
     parser.add_argument("--IS_ATT", choices=["true", "false"])
@@ -166,13 +167,13 @@ if __name__ == "__main__":
     print("-----------------------------")
 
     train_csvs = [c.strip() for c in args.train_csvs.split(",")]
-    val_csvs = [c.strip() for c in args.val_csvs.split(",")]
-    test_csvs = [c.strip() for c in args.test_csvs.split(",")]
+    # val_csvs = [c.strip() for c in args.val_csvs.split(",")]
+    # test_csvs = [c.strip() for c in args.test_csvs.split(",")]
 
     get_data(
         train_csvs=train_csvs,
-        val_csvs=val_csvs,
-        test_csvs=test_csvs,
+        # val_csvs=val_csvs,
+        # test_csvs=test_csvs,
         out_dir=args.out_dir,
         SC_MODEL_ID=args.SC_MODEL_ID,
         IS_ATT=IS_ATT

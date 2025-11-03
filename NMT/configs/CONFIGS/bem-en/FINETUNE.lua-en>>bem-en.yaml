@@ -8,12 +8,12 @@ verbose: False
 little_verbose: True
 
 # finetune?
-from_pretrained: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/PRETRAIN.lua-en_TRIAL_s=1000
+from_pretrained: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/bem-en/PRETRAIN.lua-en_TRIAL_s=1000
 
 # data
-train_data: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bem-en/train.no_overlap_v1.csv
-val_data: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bem-en_dev_test/val.no_overlap_v1.csv
-test_data: /home/hatch5o6/Cognate/code/NMT/data/PLAIN/bem-en_dev_test/test.csv
+train_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/PLAIN/bem-en/train.csv
+val_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/PLAIN/bem-en/val.csv
+test_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/PLAIN/bem-en/test.csv
 append_src_token: False
 append_tgt_token: False
 upsample: False
@@ -28,7 +28,7 @@ n_gpus: 1
 seed: 1000
 qos: dw87
 
-max_steps: 20000
+max_steps: 60000
 train_batch_size: 128
 val_batch_size: 128
 test_batch_size: 128
@@ -37,8 +37,9 @@ early_stop: 10
 save_top_k: 10
 val_interval: 0.25 # fraction of epoch
 
-learning_rate: 2e-04
+learning_rate: 5e-05
 weight_decay: 0.00
+gradient_clip_val: 1.0 # set to null to turn gradient clipping off. Set to 1.0 to turn on.
 
 device: cuda
 

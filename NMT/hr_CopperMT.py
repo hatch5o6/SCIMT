@@ -10,6 +10,9 @@ import csv
 from indicnlp.tokenize import indic_tokenize 
 indicnlp_langs = {"hi", "as", "bn", "bho"}
 
+from camel_tools.tokenizers.word import simple_word_tokenize as camel_simple_word_tokenize
+arabic_langs = {"ar", "aeb", "apc"}
+
 import nltk
 from nltk.tokenize import word_tokenize as NLTK_word_tokenize
 nltk_tokenize_langs = {
@@ -145,8 +148,11 @@ def prepare_for_CopperMT(
         print(f"Using spacy_tokenize, lang={hr_lang}")
         word_tokenize = spacy_tokenize
     elif hr_lang in indicnlp_langs:
-        (f"Using indic_word_tokenize, lang={hr_lang}")
+        print(f"Using indic_word_tokenize, lang={hr_lang}")
         word_tokenize = indic_word_tokenize
+    elif hr_lang in arabic_langs:
+        print(f"Using camel_tokenize, lang={hr_lang}")
+        word_tokenize = camel_tokenize
     else:
         assert hr_lang in nltk_tokenize_langs
         print(f"Using nltk_tokenize, lang={hr_lang}")
@@ -263,8 +269,11 @@ def retrieve(
             print(f"Using spacy_tokenize, lang={hr_lang}")
             word_tokenize = spacy_tokenize
         elif hr_lang in indicnlp_langs:
-            (f"Using indic_word_tokenize, lang={hr_lang}")
+            print(f"Using indic_word_tokenize, lang={hr_lang}")
             word_tokenize = indic_word_tokenize
+        elif hr_lang in arabic_langs:
+            print(f"Using camel_tokenize, lang={hr_lang}")
+            word_tokenize = camel_tokenize
         else:
             assert hr_lang in nltk_tokenize_langs
             print(f"Using nltk_tokenize, lang={hr_lang}")
@@ -519,6 +528,18 @@ def indic_word_tokenize(line, lang):
         for subtok in subtoks:
             final_tokens.append(subtok.strip())
     return final_tokens
+
+def camel_tokenize(line, lang):
+    global arabic_langs
+    assert lang in arabic_langs
+    tokens = camel_simple_word_tokenize(line, split_digits=True)
+    final_tokens = []
+    for tok in tokens:
+        subtoks = tok.split()
+        for subtok in subtoks:
+            final_tokens.append(subtok.strip())
+    return final_tokens
+
 
 
 def get_args():

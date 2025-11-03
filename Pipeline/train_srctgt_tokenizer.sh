@@ -19,8 +19,8 @@ echo ""
 echo "    DIST=$DIST"
 echo ""
 echo "    TRAIN_PARALLEL=$TRAIN_PARALLEL"
-echo "    VAL_PARALLEL=$VAL_PARALLEL"
-echo "    TEST_PARALLEL=$TEST_PARALLEL"
+# echo "    VAL_PARALLEL=$VAL_PARALLEL"
+# echo "    TEST_PARALLEL=$TEST_PARALLEL"
 echo "    TOK_TRAIN_DATA_DIR=$TOK_TRAIN_DATA_DIR"
 echo "    SC_MODEL_ID=$SC_MODEL_ID"
 echo "    VOCAB_SIZE=32000"
@@ -46,8 +46,6 @@ SRCTGT_TOK_DIR=${TOK_TRAIN_DATA_DIR}/${SRC_TOK_NAME}_${TGT_TOK_NAME}
 #TODO MAYBE INSTEAD PASS IN A LIST OF CSV FILES?
 python Pipeline/make_tok_training_data.py \
     --train_csvs $TRAIN_PARALLEL \
-    --val_csvs $VAL_PARALLEL  \
-    --test_csvs $TEST_PARALLEL  \
     --out $TOK_TRAIN_DATA_DIR \
     --SC_MODEL_ID $SC_MODEL_ID \
     --IS_ATT $IS_ATT

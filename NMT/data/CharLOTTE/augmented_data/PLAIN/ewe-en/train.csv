@@ -1,0 +1,3 @@
+src_lang,tgt_lang,src_path,tgt_path
+ewe,en,/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-en/train.ewe.txt,/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-en/train.en.txt
+fon,en,/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-en/train.fon.txt,/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-en/train.en.txt

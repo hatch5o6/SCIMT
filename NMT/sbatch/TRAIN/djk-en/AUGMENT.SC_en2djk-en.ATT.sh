@@ -1,23 +1,27 @@
 #!/bin/bash
 
-#SBATCH --time=72:00:00   # walltime.  hours:minutes:seconds
+#SBATCH --time=24:00:00   # walltime.  hours:minutes:seconds
 #SBATCH --ntasks-per-node=4
 #SBATCH --nodes=1
 #SBATCH --mem=1024000M
-#SBATCH --gpus=4
+#SBATCH --gpus=a100:4
 #SBATCH --mail-type=BEGIN
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user thebrendanhatch@gmail.com
-#SBATCH --output /home/hatch5o6/Cognate/code/NMT/slurm_outputs/djk-en/%j_%x.out
+#SBATCH --output /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/djk-en/%j_%x.out
 #SBATCH --job-name=TRAIN.djk-en.AUGMENT.SC_en2djk-en.ATT
-#SBATCH --qos=dw87
+#SBATCH --qos=cs
+#SBATCH --partition=cs
+
 
 python NMT/clean_slurm_outputs.py
 
 nvidia-smi
+
+# tensorboard --logdir "{tb_dir}" --port 6006 --host 0.0.0.0 &
 srun python NMT/train.py \
-	--config /home/hatch5o6/Cognate/code/NMT/configs/CONFIGS/djk-en/AUGMENT.SC_en2djk-en.ATT.yaml \
+	--config "/home/hatch5o6/Cognate/code/NMT/configs/CONFIGS/djk-en/AUGMENT.SC_en2djk-en.ATT.yaml" \
 	--mode TRAIN
 
 

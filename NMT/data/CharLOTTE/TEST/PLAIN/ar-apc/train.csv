@@ -1,0 +1,2 @@
+src_lang,tgt_lang,src_path,tgt_path
+ar,apc,/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-apc/train.ar.txt,/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-apc/train.apc.txt

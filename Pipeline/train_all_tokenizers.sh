@@ -18,7 +18,7 @@ rm /home/hatch5o6/nobackup/archive/CognateMT/spm_models/notes
 
 set -e
 
-for FILE in Pipeline/cfg/tok_NO/*; do
+for FILE in Pipeline/cfg/tok/*; do
     echo "##################################################################################################################################"
     echo "    train_srctgt_tokenizer.sh ${FILE}"
     bash Pipeline/train_srctgt_tokenizer.sh $FILE

@@ -1,3 +1,2885 @@
+LANG: ar-aeb
+checking that 0.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/0.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-0_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 1.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/1.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-1_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 10.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/10.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-10_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 100.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/100.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-100_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 101.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/101.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-101_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 102.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/102.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-102_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 103.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/103.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-103_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 104.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/104.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-104_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 105.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/105.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-105_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 106.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/106.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-106_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 107.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/107.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-107_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 108.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/108.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-108_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 109.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/109.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-109_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 11.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/11.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-11_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 110.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/110.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-110_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 111.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/111.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-111_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 112.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/112.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-112_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 113.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/113.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-113_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 114.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/114.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-114_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 115.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/115.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-115_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 116.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/116.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-116_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 117.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/117.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-117_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 118.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/118.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-118_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 119.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/119.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-119_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 12.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/12.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-12_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 120.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/120.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-120_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 121.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/121.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-121_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 122.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/122.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-122_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 123.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/123.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-123_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 124.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/124.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-124_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 125.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/125.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-125_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 126.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/126.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-126_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 127.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/127.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-127_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 128.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/128.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-128_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 129.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/129.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-129_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 13.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/13.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-13_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 130.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/130.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-130_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 131.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/131.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-131_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 132.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/132.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-132_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 133.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/133.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-133_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 134.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/134.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-134_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 135.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/135.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-135_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 136.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/136.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-136_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 137.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/137.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-137_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 138.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/138.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-138_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 139.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/139.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-139_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 14.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/14.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-14_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 140.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/140.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-140_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 141.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/141.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-141_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 142.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/142.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-142_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 143.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/143.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-143_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 144.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/144.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-144_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 145.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/145.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-145_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 146.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/146.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-146_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 147.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/147.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-147_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 148.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/148.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-148_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 149.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/149.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-149_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 15.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/15.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-15_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 150.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/150.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-150_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 151.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/151.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-151_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 152.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/152.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-152_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 153.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/153.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-153_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 154.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/154.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-154_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 155.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/155.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-155_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 156.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/156.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-156_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 157.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/157.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-157_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 158.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/158.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-158_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 159.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/159.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-159_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 16.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/16.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-16_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 160.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/160.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-160_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 161.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/161.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-161_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 162.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/162.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-162_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 163.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/163.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-163_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 164.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/164.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-164_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 165.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/165.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-165_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 166.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/166.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-166_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 167.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/167.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-167_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 168.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/168.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-168_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 169.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/169.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-169_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 17.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/17.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-17_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 170.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/170.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-170_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 171.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/171.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-171_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 172.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/172.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-172_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 173.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/173.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-173_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 174.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/174.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-174_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 175.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/175.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-175_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 176.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/176.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-176_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 177.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/177.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-177_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 178.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/178.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-178_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 179.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/179.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-179_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 18.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/18.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-18_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 180.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/180.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-180_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 181.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/181.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-181_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 182.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/182.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-182_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 183.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/183.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-183_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 184.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/184.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-184_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 185.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/185.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-185_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 186.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/186.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-186_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 187.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/187.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-187_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 188.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/188.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-188_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 189.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/189.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-189_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 19.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/19.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-19_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 190.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/190.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-190_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 191.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/191.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-191_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 192.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/192.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-192_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 193.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/193.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-193_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 194.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/194.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-194_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 195.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/195.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-195_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 196.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/196.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-196_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 197.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/197.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-197_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 198.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/198.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-198_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 199.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/199.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-199_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 2.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/2.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-2_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 20.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/20.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-20_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 200.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/200.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-200_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 201.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/201.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-201_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 202.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/202.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-202_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 203.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/203.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-203_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 204.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/204.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-204_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 205.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/205.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-205_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 206.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/206.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-206_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 207.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/207.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-207_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 208.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/208.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-208_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 209.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/209.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-209_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 21.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/21.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-21_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 210.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/210.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-210_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 211.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/211.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-211_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 212.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/212.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-212_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 213.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/213.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-213_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 214.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/214.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-214_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 215.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/215.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-215_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 216.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/216.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-216_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 217.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/217.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-217_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 218.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/218.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-218_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 219.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/219.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-219_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 22.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/22.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-22_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 220.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/220.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-220_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 221.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/221.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-221_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 222.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/222.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-222_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 223.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/223.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-223_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 224.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/224.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-224_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 225.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/225.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-225_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 226.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/226.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-226_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 227.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/227.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-227_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 228.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/228.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-228_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 229.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/229.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-229_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 23.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/23.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-23_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 230.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/230.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-230_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 231.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/231.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-231_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 232.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/232.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-232_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 233.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/233.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-233_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 234.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/234.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-234_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 235.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/235.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-235_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 236.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/236.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-236_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 237.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/237.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-237_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 238.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/238.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-238_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 239.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/239.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-239_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 24.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/24.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-24_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 240.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/240.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-240_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 241.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/241.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-241_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 242.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/242.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-242_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 243.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/243.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-243_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 244.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/244.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-244_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 245.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/245.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-245_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 246.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/246.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-246_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 247.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/247.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-247_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 248.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/248.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-248_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 249.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/249.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-249_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 25.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/25.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-25_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 250.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/250.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-250_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 251.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/251.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-251_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 252.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/252.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-252_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 253.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/253.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-253_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 254.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/254.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-254_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 255.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/255.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-255_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 256.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/256.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-256_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 257.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/257.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-257_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 258.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/258.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-258_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 259.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/259.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-259_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 26.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/26.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-26_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 260.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/260.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-260_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 261.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/261.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-261_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 262.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/262.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-262_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 263.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/263.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-263_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 264.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/264.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-264_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 265.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/265.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-265_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 266.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/266.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-266_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 267.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/267.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-267_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 268.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/268.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-268_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 269.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/269.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-269_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 27.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/27.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-27_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 270.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/270.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-270_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 271.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/271.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-271_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 272.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/272.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-272_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 273.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/273.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-273_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 274.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/274.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-274_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 275.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/275.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-275_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 276.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/276.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-276_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 277.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/277.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-277_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 278.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/278.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-278_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 279.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/279.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-279_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 28.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/28.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-28_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 280.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/280.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-280_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 281.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/281.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-281_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 282.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/282.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-282_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 283.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/283.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-283_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 284.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/284.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-284_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 285.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/285.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-285_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 286.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/286.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-286_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 287.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/287.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-287_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 29.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/29.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-29_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 3.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/3.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-3_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 30.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/30.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-30_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 31.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/31.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-31_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 32.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/32.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-32_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 33.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/33.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-33_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 34.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/34.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-34_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 35.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/35.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-35_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 36.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/36.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-36_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 37.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/37.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-37_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 38.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/38.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-38_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 39.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/39.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-39_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 4.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/4.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-4_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 40.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/40.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-40_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 41.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/41.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-41_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 42.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/42.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-42_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 43.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/43.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-43_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 44.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/44.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-44_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 45.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/45.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-45_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 46.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/46.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-46_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 47.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/47.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-47_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 48.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/48.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-48_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 49.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/49.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-49_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 5.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/5.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-5_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 50.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/50.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-50_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 51.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/51.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-51_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 52.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/52.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-52_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 53.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/53.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-53_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 54.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/54.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-54_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 55.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/55.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-55_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 56.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/56.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-56_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 57.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/57.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-57_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 58.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/58.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-58_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 59.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/59.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-59_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 6.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/6.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-6_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 60.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/60.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-60_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 61.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/61.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-61_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 62.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/62.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-62_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 63.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/63.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-63_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 64.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/64.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-64_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 65.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/65.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-65_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 66.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/66.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-66_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 67.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/67.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-67_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 68.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/68.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-68_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 69.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/69.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-69_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 7.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/7.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-7_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 70.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/70.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-70_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 71.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/71.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-71_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 72.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/72.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-72_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 73.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/73.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-73_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 74.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/74.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-74_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 75.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/75.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-75_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 76.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/76.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-76_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 77.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/77.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-77_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 78.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/78.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-78_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 79.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/79.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-79_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 8.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/8.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-8_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 80.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/80.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-80_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 81.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/81.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-81_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 82.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/82.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-82_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 83.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/83.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-83_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 84.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/84.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-84_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 85.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/85.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-85_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 86.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/86.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-86_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 87.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/87.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-87_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 88.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/88.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-88_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 89.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/89.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-89_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 9.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/9.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-9_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 90.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/90.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-90_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 91.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/91.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-91_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 92.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/92.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-92_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 93.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/93.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-93_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 94.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/94.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-94_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 95.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/95.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-95_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 96.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/96.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-96_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 97.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/97.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-97_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 98.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/98.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-98_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 99.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/99.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_aeb_RNN-99_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-aeb.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+LANG: ar-apc
+checking that 0.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/0.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-0_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 1.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/1.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-1_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 10.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/10.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-10_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 100.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/100.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-100_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 101.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/101.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-101_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 102.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/102.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-102_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 103.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/103.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-103_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 104.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/104.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-104_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 105.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/105.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-105_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 106.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/106.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-106_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 107.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/107.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-107_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 108.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/108.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-108_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 109.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/109.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-109_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 11.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/11.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-11_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 110.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/110.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-110_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 111.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/111.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-111_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 112.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/112.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-112_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 113.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/113.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-113_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 114.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/114.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-114_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 115.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/115.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-115_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 116.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/116.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-116_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 117.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/117.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-117_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 118.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/118.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-118_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 119.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/119.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-119_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 12.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/12.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-12_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 120.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/120.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-120_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 121.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/121.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-121_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 122.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/122.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-122_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 123.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/123.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-123_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 124.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/124.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-124_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 125.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/125.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-125_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 126.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/126.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-126_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 127.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/127.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-127_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 128.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/128.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-128_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 129.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/129.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-129_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 13.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/13.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-13_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 130.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/130.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-130_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 131.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/131.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-131_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 132.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/132.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-132_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 133.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/133.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-133_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 134.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/134.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-134_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 135.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/135.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-135_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 136.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/136.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-136_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 137.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/137.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-137_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 138.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/138.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-138_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 139.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/139.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-139_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 14.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/14.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-14_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 140.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/140.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-140_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 141.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/141.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-141_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 142.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/142.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-142_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 143.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/143.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-143_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 144.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/144.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-144_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 145.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/145.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-145_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 146.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/146.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-146_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 147.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/147.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-147_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 148.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/148.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-148_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 149.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/149.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-149_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 15.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/15.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-15_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 150.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/150.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-150_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 151.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/151.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-151_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 152.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/152.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-152_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 153.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/153.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-153_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 154.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/154.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-154_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 155.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/155.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-155_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 156.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/156.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-156_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 157.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/157.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-157_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 158.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/158.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-158_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 159.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/159.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-159_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 16.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/16.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-16_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 160.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/160.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-160_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 161.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/161.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-161_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 162.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/162.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-162_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 163.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/163.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-163_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 164.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/164.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-164_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 165.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/165.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-165_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 166.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/166.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-166_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 167.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/167.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-167_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 168.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/168.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-168_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 169.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/169.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-169_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 17.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/17.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-17_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 170.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/170.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-170_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 171.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/171.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-171_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 172.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/172.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-172_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 173.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/173.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-173_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 174.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/174.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-174_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 175.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/175.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-175_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 176.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/176.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-176_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 177.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/177.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-177_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 178.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/178.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-178_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 179.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/179.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-179_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 18.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/18.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-18_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 180.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/180.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-180_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 181.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/181.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-181_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 182.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/182.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-182_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 183.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/183.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-183_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 184.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/184.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-184_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 185.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/185.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-185_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 186.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/186.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-186_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 187.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/187.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-187_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 188.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/188.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-188_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 189.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/189.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-189_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 19.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/19.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-19_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 190.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/190.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-190_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 191.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/191.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-191_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 192.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/192.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-192_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 193.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/193.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-193_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 194.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/194.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-194_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 195.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/195.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-195_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 196.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/196.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-196_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 197.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/197.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-197_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 198.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/198.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-198_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 199.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/199.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-199_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 2.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/2.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-2_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 20.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/20.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-20_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 200.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/200.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-200_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 201.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/201.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-201_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 202.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/202.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-202_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 203.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/203.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-203_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 204.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/204.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-204_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 205.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/205.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-205_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 206.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/206.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-206_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 207.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/207.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-207_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 208.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/208.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-208_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 209.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/209.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-209_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 21.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/21.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-21_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 210.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/210.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-210_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 211.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/211.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-211_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 212.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/212.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-212_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 213.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/213.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-213_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 214.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/214.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-214_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 215.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/215.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-215_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 216.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/216.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-216_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 217.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/217.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-217_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 218.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/218.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-218_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 219.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/219.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-219_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 22.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/22.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-22_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 220.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/220.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-220_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 221.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/221.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-221_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 222.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/222.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-222_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 223.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/223.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-223_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 224.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/224.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-224_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 225.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/225.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-225_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 226.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/226.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-226_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 227.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/227.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-227_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 228.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/228.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-228_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 229.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/229.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-229_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 23.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/23.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-23_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 230.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/230.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-230_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 231.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/231.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-231_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 232.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/232.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-232_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 233.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/233.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-233_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 234.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/234.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-234_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 235.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/235.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-235_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 236.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/236.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-236_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 237.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/237.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-237_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 238.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/238.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-238_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 239.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/239.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-239_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 24.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/24.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-24_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 240.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/240.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-240_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 241.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/241.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-241_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 242.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/242.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-242_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 243.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/243.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-243_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 244.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/244.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-244_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 245.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/245.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-245_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 246.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/246.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-246_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 247.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/247.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-247_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 248.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/248.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-248_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 249.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/249.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-249_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 25.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/25.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-25_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 250.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/250.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-250_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 251.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/251.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-251_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 252.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/252.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-252_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 253.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/253.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-253_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 254.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/254.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-254_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 255.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/255.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-255_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 256.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/256.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-256_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 257.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/257.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-257_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 258.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/258.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-258_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 259.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/259.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-259_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 26.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/26.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-26_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 260.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/260.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-260_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 261.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/261.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-261_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 262.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/262.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-262_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 263.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/263.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-263_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 264.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/264.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-264_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 265.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/265.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-265_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 266.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/266.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-266_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 267.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/267.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-267_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 268.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/268.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-268_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 269.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/269.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-269_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 27.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/27.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-27_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 270.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/270.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-270_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 271.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/271.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-271_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 272.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/272.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-272_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 273.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/273.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-273_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 274.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/274.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-274_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 275.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/275.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-275_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 276.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/276.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-276_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 277.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/277.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-277_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 278.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/278.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-278_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 279.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/279.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-279_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 28.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/28.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-28_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 280.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/280.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-280_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 281.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/281.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-281_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 282.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/282.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-282_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 283.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/283.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-283_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 284.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/284.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-284_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 285.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/285.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-285_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 286.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/286.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-286_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 287.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/287.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-287_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 29.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/29.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-29_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 3.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/3.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-3_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 30.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/30.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-30_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 31.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/31.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-31_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 32.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/32.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-32_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 33.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/33.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-33_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 34.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/34.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-34_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 35.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/35.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-35_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 36.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/36.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-36_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 37.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/37.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-37_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 38.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/38.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-38_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 39.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/39.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-39_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 4.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/4.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-4_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 40.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/40.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-40_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 41.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/41.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-41_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 42.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/42.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-42_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 43.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/43.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-43_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 44.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/44.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-44_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 45.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/45.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-45_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 46.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/46.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-46_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 47.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/47.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-47_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 48.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/48.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-48_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 49.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/49.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-49_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 5.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/5.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-5_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 50.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/50.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-50_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 51.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/51.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-51_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 52.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/52.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-52_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 53.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/53.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-53_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 54.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/54.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-54_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 55.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/55.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-55_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 56.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/56.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-56_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 57.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/57.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-57_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 58.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/58.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-58_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 59.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/59.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-59_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 6.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/6.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-6_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 60.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/60.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-60_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 61.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/61.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-61_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 62.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/62.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-62_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 63.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/63.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-63_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 64.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/64.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-64_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 65.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/65.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-65_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 66.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/66.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-66_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 67.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/67.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-67_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 68.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/68.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-68_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 69.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/69.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-69_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 7.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/7.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-7_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 70.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/70.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-70_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 71.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/71.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-71_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 72.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/72.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-72_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 73.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/73.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-73_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 74.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/74.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-74_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 75.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/75.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-75_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 76.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/76.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-76_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 77.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/77.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-77_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 78.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/78.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-78_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 79.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/79.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-79_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 8.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/8.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-8_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 80.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/80.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-80_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 81.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/81.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-81_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 82.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/82.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-82_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 83.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/83.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-83_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 84.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/84.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-84_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 85.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/85.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-85_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 86.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/86.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-86_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 87.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/87.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-87_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 88.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/88.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-88_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 89.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/89.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-89_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 9.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/9.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-9_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 90.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/90.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-90_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 91.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/91.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-91_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 92.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/92.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-92_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 93.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/93.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-93_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 94.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/94.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-94_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 95.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/95.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-95_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 96.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/96.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-96_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 97.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/97.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-97_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 98.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/98.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-98_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
+checking that 99.rnn.txt ends with .rnn.txt
+READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/99.rnn.txt
+READING PARAMS f /home/hatch5o6/nobackup/archive/CopperMT/ar_apc_RNN-99_S-0/inputs/parameters/bilingual_default/default_parameters_rnn_ar-apc.txt
+asserting rnn_params == results_rnn_params
+	passed :)
 LANG: bho-hi
 checking that 0.rnn.txt ends with .rnn.txt
 READING PARAMS f /home/hatch5o6/Cognate/code/Pipeline/rnn_hyperparams/0.rnn.txt

@@ -6,7 +6,7 @@ from transformers import BartForConditionalGeneration, BartConfig
 from torch.utils.data import DataLoader
 import lightning as L
 from lightning.pytorch.callbacks import EarlyStopping, ModelCheckpoint, LearningRateMonitor, Callback
-from lightning.pytorch.loggers import CSVLogger
+from lightning.pytorch.loggers import CSVLogger, TensorBoardLogger
 from pytorch_lightning.utilities import rank_zero_info
 import json
 import re
@@ -16,13 +16,23 @@ from spm_tokenizers import SPMTokenizer
 from char_tokenizers import CharacterTokenizer
 from LightningBART import LBART
 from evaluate import calc_bleu, calc_chrF
+from build_loss_graph import write_loss_graph
 
 
-SAVE_DIR_SUBDIRS = ["checkpoints", "logs", "predictions", "character_vocab"]
+SAVE_DIR_SUBDIRS = ["checkpoints", "logs", "tb", "predictions", "character_vocab"]
 
-def train_model(config):
+def train_model(config, REVERSE_SRC_TGT=False):
     world_size = int(os.environ.get("WORLD_SIZE", 1))
     print("WORLD_SIZE:", world_size)
+
+    rank_zero_info(f"REVERSE_SRC_TGT: {REVERSE_SRC_TGT}")
+
+    if REVERSE_SRC_TGT:
+        src_lang = config["src"]
+        tgt_lang = config["tgt"]
+        config["src"] = tgt_lang
+        config["tgt"] = src_lang
+        rank_zero_info("Reversed source lang '{src_lang}' and target lang '{tgt_lang}'.\n")
 
     rank_zero_info("train_model")
     rank_zero_info("TRAINING CONFIG:")
@@ -40,6 +50,7 @@ def train_model(config):
     save_dir = os.path.join(config["save"] + f"_TRIAL_s={config['seed']}")
     checkpoints_dir = os.path.join(save_dir, "checkpoints")
     logs_dir = os.path.join(save_dir, "logs")
+    tb_dir = os.path.join(save_dir, "tb")
     rank_zero_info(f"SAVE_DIR {save_dir}")
     if os.path.exists(save_dir):
         for item in os.listdir(save_dir):
@@ -56,8 +67,10 @@ def train_model(config):
         os.makedirs(checkpoints_dir, exist_ok=True)
         rank_zero_info(f"Creating {logs_dir}")
         os.makedirs(logs_dir, exist_ok=True)
+        rank_zero_info(f"Creating {tb_dir}")
+        os.makedirs(tb_dir, exist_ok=True)
 
-    dataloaders = get_multilingual_dataloaders(config, sections=["train", "val"])
+    dataloaders = get_multilingual_dataloaders(config, REVERSE_SRC_TGT=REVERSE_SRC_TGT, sections=["train", "val"])
     train_dataloader = dataloaders["train"]
     val_dataloader = dataloaders["val"]
 
@@ -86,6 +99,7 @@ def train_model(config):
 
         if not config["from_pretrained"].endswith(".ckpt"):
             pretrain_predictions_dir = os.path.join(config["from_pretrained"], "predictions")
+            print("FROM PRETRAINED PREDICTIONS:", pretrain_predictions_dir)
             assert os.path.exists(pretrain_predictions_dir)
             assert os.path.isdir(pretrain_predictions_dir)
             print("Choosing pretrained model to fine-tune.")
@@ -131,6 +145,7 @@ def train_model(config):
         print_callback
     ]
     logger = CSVLogger(save_dir=logs_dir)
+    tb_logger = TensorBoardLogger(save_dir=tb_dir)
 
     if config["n_gpus"] >= 1:
         strategy = "ddp"
@@ -143,9 +158,11 @@ def train_model(config):
         accelerator=config["device"],
         default_root_dir=save_dir,
         callbacks=train_callbacks,
-        logger=logger,
+        logger=[logger, tb_logger],
         deterministic=True,
-        strategy=strategy
+        strategy=strategy,
+        # log_every_n_steps=1,
+        gradient_clip_val=config["gradient_clip_val"]
     )
 
     # if config["from_pretrained"] is not None:
@@ -236,12 +253,21 @@ def get_predictions(dataloader, src_tokenizer, tgt_tokenizer, config):
     return predictions
 
 
-def test_model(config):
+def test_model(config, REVERSE_SRC_TGT=False):
     world_size = int(os.environ.get("WORLD_SIZE", 1))
     print("WORLD_SIZE:", world_size)
     assert world_size == 1, f"Expected 1 rank, but got {world_size}"
     rank = int(os.environ.get("RANK", 0))
     assert rank == 0
+
+    rank_zero_info(f"REVERSE_SRC_TGT: {REVERSE_SRC_TGT}")
+
+    if REVERSE_SRC_TGT:
+        src_lang = config["src"]
+        tgt_lang = config["tgt"]
+        config["src"] = tgt_lang
+        config["tgt"] = src_lang
+        rank_zero_info("Reversed source lang '{src_lang}' and target lang '{tgt_lang}'.\n")
 
     print("test_model")
     print("config:")
@@ -251,9 +277,15 @@ def test_model(config):
     L.seed_everything(config["seed"], workers=True)
 
     save_dir = os.path.join(config["save"] + f"_TRIAL_s={config['seed']}")
+    # Create loss graphs
+    write_loss_graph(save_dir)
+
     checkpoints_dir = os.path.join(save_dir, "checkpoints")
     logs_dir = os.path.join(save_dir, "logs")
-    predictions_dir = os.path.join(save_dir, "predictions")
+    if "predictions_dir" in config:
+        predictions_dir = os.path.join(save_dir, config["predictions_dir"])
+    else:
+        predictions_dir = os.path.join(save_dir, "predictions")
     # if not os.path.exists(predictions_dir):
     if int(os.environ.get("RANK", 0)) == 0:
         os.makedirs(predictions_dir, exist_ok=True)
@@ -262,7 +294,8 @@ def test_model(config):
         if not os.path.exists(d):
             raise ValueError(f"Expected to find directory {d}!")
     
-    dataloaders = get_multilingual_dataloaders(config, sections=["test"])
+    dataloaders = get_multilingual_dataloaders(config, REVERSE_SRC_TGT=REVERSE_SRC_TGT, sections=["val", "test"])
+    val_dataloader = dataloaders["val"]
     test_dataloader = dataloaders["test"]
 
     # print("TESTING TEST DATALOADER")
@@ -286,44 +319,27 @@ def test_model(config):
     for proposed_ckpt_file in checkpoints_to_test:
         config["test_checkpoint"] = proposed_ckpt_file
         print("## Evaluating", config["test_checkpoint"])
-        results = get_predictions(
+
+        val_results = get_predictions(
+            dataloader=val_dataloader,
+            src_tokenizer=src_tokenizer,
+            tgt_tokenizer=tgt_tokenizer,
+            config=config
+        )
+        test_results = get_predictions(
             dataloader=test_dataloader,
             src_tokenizer=src_tokenizer,
             tgt_tokenizer=tgt_tokenizer,
             config=config
         )
 
-        src_data = []
-        ref_data = []
-        preds = []
-        for generated_ids, src_segments_text, prediction, tgt_segments_text in results:
-            src_data.append(src_segments_text)
-            ref_data.append(tgt_segments_text)
-            preds.append(prediction)    
+        val_metrics, val_chkpt_predictions_dir = get_metrics(results=val_results, predictions_dir=predictions_dir, config=config, metrics_set="val")
+        test_metrics, test_chkpt_predictions_dir = get_metrics(results=test_results, predictions_dir=predictions_dir, config=config, metrics_set="test")
+        assert val_chkpt_predictions_dir == test_chkpt_predictions_dir
+        chkpt_predictions_dir = test_chkpt_predictions_dir
         
-        assert len(src_data) == len(ref_data) == len(preds)
-        
-        chkpt_name = config["test_checkpoint"].split("/")[-1]
-        chkpt_predictions_dir = os.path.join(predictions_dir, chkpt_name)
-        if os.path.exists(chkpt_predictions_dir):
-            shutil.rmtree(chkpt_predictions_dir)
-        if int(os.environ.get("RANK", 0)) == 0:
-            os.makedirs(chkpt_predictions_dir, exist_ok=True)
+        metrics = {"val": val_metrics, "test": test_metrics}
 
-        # Predictions
-        save_preds = os.path.join(chkpt_predictions_dir, "predictions.txt")
-        with open(save_preds, "w") as outf:
-            outf.write("\n".join(preds) + "\n")
-        
-        # Metrics
-        bleu_score = calc_bleu(preds, [ref_data])
-        chrf_score, chrf_sents = calc_chrF(preds, [ref_data])
-
-        metrics = {
-            "BLEU": bleu_score,
-            "chrF": chrf_score,
-            # "chrF_sents": chrf_sents
-        }
         print("METRICS")
         print(metrics)
         save_metrics = os.path.join(chkpt_predictions_dir, "metrics.json")
@@ -339,22 +355,26 @@ def test_model(config):
         if best_bleu_ckpt is None:
             assert best_bleu_score is None
             best_bleu_ckpt = ckpt_path
-            best_bleu_score = ckpt_metrics["BLEU"]
+            best_bleu_score = ckpt_metrics["val"]["BLEU"]
         else:
-            if ckpt_metrics["BLEU"] > best_bleu_score:
-                best_bleu_score = ckpt_metrics["BLEU"]
+            if ckpt_metrics["val"]["BLEU"] > best_bleu_score:
+                best_bleu_score = ckpt_metrics["val"]["BLEU"]
                 best_bleu_ckpt = ckpt_path
-    assert "BEST_BLEU_CHECKPOINT" not in all_ckpt_scores
-    all_ckpt_scores["BEST_BLEU_CHECKPOINT"] = {
+    assert "BEST_VAL_BLEU_CHECKPOINT" not in all_ckpt_scores
+    assert all_ckpt_scores[best_bleu_ckpt]["val"]["BLEU"] == best_bleu_score
+    all_ckpt_scores["BEST_VAL_BLEU_CHECKPOINT"] = {
         "checkpoint": best_bleu_ckpt,
-        "BLEU": best_bleu_score,
-        "chrF": all_ckpt_scores[best_bleu_ckpt]["chrF"]
+        "val_BLEU": best_bleu_score,
+        "val_chrF": all_ckpt_scores[best_bleu_ckpt]["val"]["chrF"],
+        "test_BLEU": all_ckpt_scores[best_bleu_ckpt]["test"]["BLEU"],
+        "test_chrF": all_ckpt_scores[best_bleu_ckpt]["test"]["chrF"]
     }
+    all_ckpt_scores["TEST_DATA"] = config["test_data"]
+    all_ckpt_scores["VAL_DATA"] = config["val_data"]
 
     save_all_metrics = os.path.join(predictions_dir, "all_scores.json")
     with open(save_all_metrics, "w") as outf:
         outf.write(json.dumps(all_ckpt_scores, ensure_ascii=False, indent=2))
-
 
 # def choose_checkpoint(checkpoints_dir):
 #     print("Choosing checkpoint with lowest validation loss")
@@ -377,18 +397,56 @@ def test_model(config):
 #     print("CHOSE CHECKPOINT", chosen_f_path)
 #     return chosen_f_path
 
+def get_metrics(results, predictions_dir, config, metrics_set="test"):
+    assert metrics_set in ["test", "val"]
+    src_data = []
+    ref_data = []
+    preds = []
+    for generated_ids, src_segments_text, prediction, tgt_segments_text in results:
+        src_data.append(src_segments_text)
+        ref_data.append(tgt_segments_text)
+        preds.append(prediction)    
+    
+    assert len(src_data) == len(ref_data) == len(preds)
+    
+    chkpt_name = config["test_checkpoint"].split("/")[-1]
+    chkpt_predictions_dir = os.path.join(predictions_dir, chkpt_name)
+    if os.path.exists(chkpt_predictions_dir):
+        shutil.rmtree(chkpt_predictions_dir)
+    if int(os.environ.get("RANK", 0)) == 0:
+        os.makedirs(chkpt_predictions_dir, exist_ok=True)
+
+    # Predictions
+    save_preds = os.path.join(chkpt_predictions_dir, f"{metrics_set}_predictions.txt")
+    with open(save_preds, "w") as outf:
+        outf.write("\n".join(preds) + "\n")
+    
+    # Metrics
+    bleu_score = calc_bleu(preds, [ref_data])
+    chrf_score, chrf_sents = calc_chrF(preds, [ref_data])
+
+    metrics = {
+        "BLEU": bleu_score,
+        "chrF": chrf_score,
+        # "chrF_sents": chrf_sents
+        # "test_data": config["test_data"]
+    }
+    return metrics, chkpt_predictions_dir
+
 def choose_checkpoint(predictions_dir):
     all_metrics_f = os.path.join(predictions_dir, "all_scores.json")
-    with open(all_metrics_f, "w") as inf:
+    print(f"all_metrics_f: {all_metrics_f}")
+    with open(all_metrics_f) as inf:
         all_metrics = json.load(inf)
-    return all_metrics["BEST_BLEU_CHECKPOINT"]["checkpoint"]
+    return all_metrics["BEST_VAL_BLEU_CHECKPOINT"]["checkpoint"]
 
 def inference(
     predict_config,
     checkpoint_path,
     name,
     VERBOSE=True,
-    div="test"
+    div="test",
+    REVERSE_SRC_TGT=False
 ):
     pass
     # TODO Write this function
@@ -472,15 +530,16 @@ def inference(
     # return hyp_sents, correct, total, accuracy
 
 
-def get_multilingual_dataloaders(config, sections=["train", "val", "test", "inference"], RETURN_DATASETS=False):
+def get_multilingual_dataloaders(config, REVERSE_SRC_TGT=False, sections=["train", "val", "test", "inference"], RETURN_DATASETS=False):
     sections = sorted(list(set(sections)))
     for section in sections:
         if section not in ["train", "val", "test", "inference"]:
             raise ValueError(f"Dataloader sections must be in ['train', 'val', 'test', 'inference']")
-        if section in ["train", "val"]:
-            assert config[f"{section}_data"].endswith(f"/{section}.no_overlap_v1.csv")
-        else:
-            assert config[f"{section}_data"].endswith(f"/{section}.csv")
+        # if section in ["train", "val"]:
+        #     assert config[f"{section}_data"].endswith(f"/{section}.no_overlap_v1.csv")
+        # else:
+        #     assert config[f"{section}_data"].endswith(f"/{section}.csv")
+        assert config[f"{section}_data"].endswith(f"/{section}.csv")
 
     dataloaders = {}
     datasets = {}
@@ -497,7 +556,8 @@ def get_multilingual_dataloaders(config, sections=["train", "val", "test", "infe
             append_src_lang_tok=config["append_src_token"],
             append_tgt_lang_tok=config["append_tgt_token"],
             upsample=UPSAMPLE,
-            shuffle=SHUFFLE
+            shuffle=SHUFFLE,
+            REVERSE_SRC_TGT=REVERSE_SRC_TGT
         )
         datasets[section] = a_dataset
         print(f"{section} Dataloader, shuffle={SHUFFLE}")
@@ -620,12 +680,78 @@ def read_config(f):
         config = yaml.safe_load(inf)
     config["learning_rate"] = float(config["learning_rate"])
     config["warmup_steps"] = round(0.05 * config["max_steps"])
+
+    # asserts
+    assert config["val_interval"] in [0.25, 0.5]
+    assert config["early_stop"] in [5, 10]
+    if config["val_interval"] == 0.25:
+        assert config["early_stop"] == 10
+    if config["val_interval"] == 0.5:
+        assert config["early_stop"] == 5
+
+
     return config
+
+
+def test_dataloaders(config, REVERSE_SRC_TGT=False):
+    world_size = int(os.environ.get("WORLD_SIZE", 1))
+    print("WORLD_SIZE:", world_size)
+
+    rank_zero_info(f"REVERSE_SRC_TGT: {REVERSE_SRC_TGT}")
+
+    if REVERSE_SRC_TGT:
+        src_lang = config["src"]
+        tgt_lang = config["tgt"]
+        config["src"] = tgt_lang
+        config["tgt"] = src_lang
+        rank_zero_info("Reversed source lang '{src_lang}' and target lang '{tgt_lang}'.\n")
+
+    rank_zero_info("train_model")
+    rank_zero_info("TRAINING CONFIG:")
+    for k, v in config.items():
+        rank_zero_info(f"\t-{k}: {v}, {type(v)}")
+
+    L.seed_everything(config["seed"], workers=True)
+
+    # parent_dir = "/".join(config["save"].split("/")[:-1])
+    # if not os.path.exists(parent_dir):
+    # if int(os.environ.get("RANK", 0)) == 0:
+    #     rank_zero_info(f"Creating parent dir: {parent_dir}")
+    #     os.makedirs(parent_dir, exist_ok=True)
+
+    # save_dir = os.path.join(config["save"] + f"_TRIAL_s={config['seed']}")
+    # checkpoints_dir = os.path.join(save_dir, "checkpoints")
+    # logs_dir = os.path.join(save_dir, "logs")
+    # tb_dir = os.path.join(save_dir, "tb")
+    # rank_zero_info(f"SAVE_DIR {save_dir}")
+    # if os.path.exists(save_dir):
+    #     for item in os.listdir(save_dir):
+    #         if item not in SAVE_DIR_SUBDIRS:
+    #             raise ValueError(f"Invalid subdir/file '{item}' in {save_dir}!")
+    #         item_dir = os.path.join(save_dir, item)
+    #         if not os.path.isdir(item_dir) or list(os.listdir(item_dir)) != []:
+    #             raise ValueError(f"Subdir/file '{item}' must be an empty directory in order to begin training this model!")
+    
+    # if int(os.environ.get("RANK", 0)) == 0:
+    #     rank_zero_info(f"Creating {save_dir}")
+    #     os.makedirs(save_dir, exist_ok=True)
+    #     rank_zero_info(f"Creating {checkpoints_dir}")
+    #     os.makedirs(checkpoints_dir, exist_ok=True)
+    #     rank_zero_info(f"Creating {logs_dir}")
+    #     os.makedirs(logs_dir, exist_ok=True)
+    #     rank_zero_info(f"Creating {tb_dir}")
+    #     os.makedirs(tb_dir, exist_ok=True)
+
+    dataloaders = get_multilingual_dataloaders(config, REVERSE_SRC_TGT=REVERSE_SRC_TGT, sections=["train", "val"])
+    train_dataloader = dataloaders["train"]
+    val_dataloader = dataloaders["val"]
+
 
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--config")
     parser.add_argument("-m", "--mode", choices=["TRAIN", "TEST", "INFERENCE"], default="TRAIN")
+    parser.add_argument("-R", "--REVERSE_SRC_TGT", action="store_true", default=False, help="If passed, will create a translation model for tgt->src instead of src->tgt")
     args = parser.parse_args()
     print("Arguments:-")
     for k, v in vars(args).items():
@@ -639,8 +765,8 @@ if __name__ == "__main__":
     args = get_args()
     config = read_config(args.config)
     if args.mode == "TRAIN":
-        train_model(config=config)
+        train_model(config=config, REVERSE_SRC_TGT=args.REVERSE_SRC_TGT)
     elif args.mode == "TEST":
-        test_model(config=config)
+        test_model(config=config, REVERSE_SRC_TGT=args.REVERSE_SRC_TGT)
     elif args.mode == "INFERENCE":
-        inference(config=config)
+        inference(config=config, REVERSE_SRC_TGT=args.REVERSE_SRC_TGT)

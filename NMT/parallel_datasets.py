@@ -58,7 +58,8 @@ class MultilingualDataset(Dataset):
         limit_src_langs=None,
         limit_tgt_langs=None,
         make_unique=False,
-        CAN_RETURN_ZERO=False
+        CAN_RETURN_ZERO=False,
+        REVERSE_SRC_TGT=False
     ):
         # print("MULTILINGUAL DATASET: random seed:", seed)
         # random.seed(seed)
@@ -79,7 +80,7 @@ class MultilingualDataset(Dataset):
             assert isinstance(self.limit_tgt_langs, list)
 
         rank_zero_info(f"MultilingualDataset READING CSV {data_csv}")
-        src_lines, tgt_lines, SRC_PATHS, TGT_PATHS = self.read_csv(data_csv, sc_model_id=sc_model_id, upsample=upsample, make_unique=make_unique)
+        src_lines, tgt_lines, SRC_PATHS, TGT_PATHS = self.read_csv(data_csv, REVERSE_SRC_TGT=REVERSE_SRC_TGT, sc_model_id=sc_model_id, upsample=upsample, make_unique=make_unique)
 
         self.src_paths = SRC_PATHS
         self.tgt_paths = TGT_PATHS
@@ -113,7 +114,7 @@ class MultilingualDataset(Dataset):
             data_by_pairs[lang_pair] = unique_data
         return data_by_pairs
 
-    def read_csv(self, f, sc_model_id=None, upsample=False, make_unique=False):
+    def read_csv(self, f, REVERSE_SRC_TGT=False, sc_model_id=None, upsample=False, make_unique=False):
         # if sc_model_id != None: # Not sure why I wrote these lines.
         #     assert f.endswith("/train.no_overlap_v1.csv") or f.endswith("/val.no_overlap_v1.csv")
         # else:
@@ -141,6 +142,11 @@ class MultilingualDataset(Dataset):
                 continue
             if self.limit_tgt_langs != None and tgt_lang not in self.limit_tgt_langs:
                 continue
+
+            if REVERSE_SRC_TGT:
+                src_lang, tgt_lang = tgt_lang, src_lang
+                src_path, tgt_path = tgt_path, src_path
+
 
             SRC_PATHS.append(src_path)
             TGT_PATHS.append(tgt_path)

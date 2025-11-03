@@ -203,9 +203,9 @@ def get_args():
     return args
 
 if __name__ == "__main__":
-    print("########################")
-    print("# assert_no_overlap.py #")
-    print("########################")
+    print("##########################################")
+    print("# assert_no_overlap_in_formatted_data.py #")
+    print("##########################################")
     args = get_args()
     if args.TEST_ONLY == True:
         test_only(

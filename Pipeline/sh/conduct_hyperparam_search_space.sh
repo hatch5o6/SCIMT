@@ -33,6 +33,8 @@ rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*ewe-fon*
 rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*fon-ewe*
 rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*hi-bho*
 rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*lua-bem*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*ar-aeb*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*ar-apc*
 
 echo "Removing CoppertMT lang subdirs"
 rm -r /home/hatch5o6/nobackup/archive/CopperMT/bn_*
@@ -46,6 +48,7 @@ rm -r /home/hatch5o6/nobackup/archive/CopperMT/ewe_*
 rm -r /home/hatch5o6/nobackup/archive/CopperMT/fon_*
 rm -r /home/hatch5o6/nobackup/archive/CopperMT/hi_*
 rm -r /home/hatch5o6/nobackup/archive/CopperMT/lua_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/ar_*
 
 echo "Removing COGNATE_TRAIN lang subdirs"
 rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/bn-*
@@ -59,12 +62,13 @@ rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/ewe-*
 rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/fon-*
 rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/hi-*
 rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/lua-*
+rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/ar-*
 
 # echo "ONLY DELETED FILES AND DIRS"
 # exit
 
 python Pipeline/make_hyperparam_search_space.py \
-    --cfgs Pipeline/cfg/SC/fr-mfe.cfg,Pipeline/cfg/SC/es-an.cfg,Pipeline/cfg/SC/cs-hsb.cfg,Pipeline/cfg/SC/bn-as.cfg,Pipeline/cfg/SC/bho-hi.cfg,Pipeline/cfg/SC/djk-en.cfg,Pipeline/cfg/SC/ewe-fon.cfg,Pipeline/cfg/SC/fon-ewe.cfg,Pipeline/cfg/SC/hi-bho.cfg,Pipeline/cfg/SC/lua-bem.cfg,Pipeline/cfg/SC/en-djk.ATT.cfg
+    --cfgs Pipeline/cfg/SC/fr-mfe.cfg,Pipeline/cfg/SC/es-an.cfg,Pipeline/cfg/SC/cs-hsb.cfg,Pipeline/cfg/SC/bn-as.cfg,Pipeline/cfg/SC/bho-hi.cfg,Pipeline/cfg/SC/djk-en.cfg,Pipeline/cfg/SC/ewe-fon.cfg,Pipeline/cfg/SC/fon-ewe.cfg,Pipeline/cfg/SC/hi-bho.cfg,Pipeline/cfg/SC/lua-bem.cfg,Pipeline/cfg/SC/en-djk.ATT.cfg,Pipeline/cfg/SC/ar-aeb.cfg,Pipeline/cfg/SC/ar-apc.cfg
 
 # echo "CREATED SEARCH SPACE BUT DID NOT RUN"
 # exit

@@ -9,13 +9,9 @@ from datetime import datetime
 Provided the .cfgs in /home/hatch5o6/Cognate/code/Pipeline/cfg/SC, makes .csv files for parallel augmented and SC data.
 """
 
-GT_SC =        "/home/hatch5o6/Cognate/code/NMT/data/TEST_SC"
-GT_AUG_SC =    "/home/hatch5o6/Cognate/code/NMT/TEST_augmented_data/SC"
-GT_AUG_PLAIN = "/home/hatch5o6/Cognate/code/NMT/TEST_augmented_data/PLAIN"
-
-# GT_SC =        "/home/hatch5o6/Cognate/code/NMT/data/SC_jul14"
-# GT_AUG_SC =    "/home/hatch5o6/Cognate/code/NMT/augmented_data_jul14/SC"
-# GT_AUG_PLAIN = "/home/hatch5o6/Cognate/code/NMT/augmented_data_jul14/PLAIN"
+GT_SC =        "/home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/TEST"
+GT_AUG_SC =    "/home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/TEST/augmented_data/SC"
+GT_AUG_PLAIN = "/home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/TEST/augmented_data/PLAIN"
 
 def test_aug():
     pass
@@ -112,9 +108,11 @@ def make_SC(csv_file, NMT_SRC, AUG_SRC, TGT, COG_SRC, COG_TGT, sc_out_dir, IS_CO
     csvfname_wext = csv_file.split("/")[-1]
     if DEV_TEST:
         if IS_COG == False:
-            sc_csv_dir = f"SC_{COG_SRC}2{COG_TGT}-{TGT}_dev_test"
+            # sc_csv_dir = f"SC_{COG_SRC}2{COG_TGT}-{TGT}_dev_test"
+            sc_csv_dir = f"SC_{COG_SRC}2{COG_TGT}-{TGT}"
         else:
-            sc_csv_dir = f"SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_dev_test"
+            # sc_csv_dir = f"SC_{COG_SRC}2{COG_TGT}-{COG_TGT}_dev_test"
+            sc_csv_dir = f"SC_{COG_SRC}2{COG_TGT}-{COG_TGT}"
         sc_csv_dir_path = os.path.join(sc_out_dir, sc_csv_dir)
         if not os.path.exists(sc_csv_dir_path):
             print("creating", sc_csv_dir_path)
@@ -186,8 +184,10 @@ def make_augmented_dir(cfg_file, nmt_data_dir, aug_out_dir, INSERT_NO_OVERLAP):
         tag = ""
 
     NMT_f = os.path.join(nmt_plain_dir, f"{NMT_SRC}-{NMT_TGT}", f"train{tag}.csv")
-    NMT_val_f = os.path.join(nmt_plain_dir, f"{NMT_SRC}-{NMT_TGT}_dev_test", f"val{tag}.csv")
-    NMT_test_f = os.path.join(nmt_plain_dir, f"{NMT_SRC}-{NMT_TGT}_dev_test", "test.csv")
+    # NMT_val_f = os.path.join(nmt_plain_dir, f"{NMT_SRC}-{NMT_TGT}_dev_test", f"val{tag}.csv")
+    # NMT_test_f = os.path.join(nmt_plain_dir, f"{NMT_SRC}-{NMT_TGT}_dev_test", "test.csv")
+    NMT_val_f = os.path.join(nmt_plain_dir, f"{NMT_SRC}-{NMT_TGT}", f"val{tag}.csv")
+    NMT_test_f = os.path.join(nmt_plain_dir, f"{NMT_SRC}-{NMT_TGT}", "test.csv")
     assert os.path.exists(NMT_f)
     assert os.path.exists(NMT_val_f)
     assert os.path.exists(NMT_test_f)
@@ -199,8 +199,10 @@ def make_augmented_dir(cfg_file, nmt_data_dir, aug_out_dir, INSERT_NO_OVERLAP):
     else:
         # -TEST THIS- #
         COG_f = os.path.join(nmt_plain_dir, f"{COG_SRC}-{COG_TGT}", f"train{tag}.csv")
-        COG_val_f = os.path.join(nmt_plain_dir, f"{COG_SRC}-{COG_TGT}_dev_test", f"val{tag}.csv")
-        COG_test_f = os.path.join(nmt_plain_dir, f"{COG_SRC}-{COG_TGT}_dev_test", "test.csv")
+        # COG_val_f = os.path.join(nmt_plain_dir, f"{COG_SRC}-{COG_TGT}_dev_test", f"val{tag}.csv")
+        # COG_test_f = os.path.join(nmt_plain_dir, f"{COG_SRC}-{COG_TGT}_dev_test", "test.csv")
+        COG_val_f = os.path.join(nmt_plain_dir, f"{COG_SRC}-{COG_TGT}", f"val{tag}.csv")
+        COG_test_f = os.path.join(nmt_plain_dir, f"{COG_SRC}-{COG_TGT}", "test.csv")
         print("COG_f:", COG_f)
         assert os.path.exists(COG_f)
         assert os.path.exists(COG_val_f)
@@ -214,8 +216,10 @@ def make_augmented_dir(cfg_file, nmt_data_dir, aug_out_dir, INSERT_NO_OVERLAP):
 
 
         AUG_f = os.path.join(nmt_plain_dir, f"{AUG_SRC}-{AUG_TGT}", f"train{tag}.csv")
-        AUG_val_f = os.path.join(nmt_plain_dir, f"{AUG_SRC}-{AUG_TGT}_dev_test", f"val{tag}.csv")
-        AUG_test_f = os.path.join(nmt_plain_dir, f"{AUG_SRC}-{AUG_TGT}_dev_test", "test.csv")
+        # AUG_val_f = os.path.join(nmt_plain_dir, f"{AUG_SRC}-{AUG_TGT}_dev_test", f"val{tag}.csv")
+        # AUG_test_f = os.path.join(nmt_plain_dir, f"{AUG_SRC}-{AUG_TGT}_dev_test", "test.csv")
+        AUG_val_f = os.path.join(nmt_plain_dir, f"{AUG_SRC}-{AUG_TGT}", f"val{tag}.csv")
+        AUG_test_f = os.path.join(nmt_plain_dir, f"{AUG_SRC}-{AUG_TGT}", "test.csv")
         assert os.path.exists(AUG_f)
         assert os.path.exists(AUG_val_f)
         assert os.path.exists(AUG_test_f)
@@ -285,9 +289,16 @@ def get_args():
     parser.add_argument("--NMT_DATA_DIR", "-d", default="/home/hatch5o6/Cognate/code/NMT/data")
     parser.add_argument("--aug_out", "-a", default="/home/hatch5o6/Cognate/code/NMT/augmented_data")
     parser.add_argument("--INSERT_NO_OVERLAP", default=None)
-    return parser.parse_args()
+    args = parser.parse_args()
+    print("Arguments:-")
+    for k, v in vars(args).items():
+        print(f"\t{k}: `{v}`")
+    return args
 
 if __name__ == "__main__":
+    print("########################################")
+    print("## make_augmented_parallel_data.py :) ##")
+    print("########################################")
     args = get_args()
     make_data(
         cfgs=args.SC_cfgs,

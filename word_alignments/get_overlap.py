@@ -23,6 +23,7 @@ def main(
 
     new_parallel_data = []
     n_times_more_than_one_pair = 0
+    n_times_duplicate_overlap_pair = 0
     print("finding overlap")
     for tgt, srcs1 in tqdm(pairs1_dict.items(), total=len(pairs1_dict)):
         srcs2 = pairs2_dict.get(tgt)
@@ -35,7 +36,10 @@ def main(
             #     for item2 in srcs2:
             #         new_parallel_data.append((item1, item2))
             
-            new_parallel_data.append((srcs1[0], srcs2[0]))
+            if (srcs1[0], srcs2[0]) not in new_parallel_data:
+                new_parallel_data.append((srcs1[0], srcs2[0]))
+            else:
+                n_times_duplicate_overlap_pair += 1
             
     
     with open(src1_out, "w") as f1, open(src2_out, "w") as f2:
@@ -44,7 +48,8 @@ def main(
             f2.write(item2.strip() + "\n")
 
     print(f"WROTE {len(new_parallel_data)} LINES OF NEW PARALLEL DATA")
-    print(f"{n_times_more_than_one_pair} TIMES MORE THAN ONE PAIR FOR THE SAME SENTENCE")
+    print(f"{n_times_more_than_one_pair} TIMES MORE THAN ONE PAIR FOR THE SAME COM SENTENCE")
+    print(f"{n_times_duplicate_overlap_pair} DUPLICATE PAIRS IN THE FINAL DATASET THAT WERE CLEANED OUT")
 
 def make_pairs_dict(pairs):
     print("making pairs dict")

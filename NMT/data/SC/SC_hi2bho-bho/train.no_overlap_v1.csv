@@ -1,2 +1,0 @@
-src_lang,tgt_lang,src_path,tgt_path
-hi,bho,/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/tgt.no_overlap_v1.SC_{SC_MODEL_ID}_hi2bho.txt,/home/hatch5o6/nobackup/archive/data/NLLB/bho_hi/cleaned/src.no_overlap_v1.txt

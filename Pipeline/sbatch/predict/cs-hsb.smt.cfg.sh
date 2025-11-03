@@ -1,10 +1,9 @@
 #!/bin/bash
 
 #SBATCH --time=72:00:00   # walltime.  hours:minutes:seconds
-#SBATCH --ntasks-per-node=1
 #SBATCH --nodes=1
 #SBATCH --mem=64000M
-#SBATCH --gpus=1
+#SBATCH --gpus=0
 #SBATCH --mail-type=BEGIN
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL

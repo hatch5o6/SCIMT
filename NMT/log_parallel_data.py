@@ -41,29 +41,86 @@ def log_data_and_training_params(
         writer = csv.writer(outf)
         header = [
             "config",
+            "src",
+            "tgt",
+            "<GAP>",
+
             "sc_model_id",
-            "upsample",
             "device", 
-            "n_gpus", 
-            "seed", 
-            "qos", 
             "early_stop",
             "save_top_k", 
             "max_steps", 
             "warmup_steps",
             "batch_size (train/val/test)",
+            "effective_batch",
             "val_interval", 
             "learning_rate", 
             "weight_decay",
+            "gradient_clip_val",
             "train", 
             "val", 
             "test",
+            "<GAP>",
+
+            "n_gpus", 
+            "seed", 
+            "qos", 
+            "<GAP>",
+
+            "append_src_token",
+            "append_tgt_token",
+            "upsample",
+            "<GAP>",
+
+            "train_data",
+            "val_data",
+            "test_data",
+            "<GAP>",
+
+            "spm",
+            "do_char",
+            "<GAP>",
+
+            "save",
+            "test_checkpoint",
+            "remove_special_toks",
+            "verbose",
+            "little_verbose",
+            "from_pretrained",
+            "<GAP>",
+
+            "encoder_layers",
+            "encoder_attention_heads",
+            "encoder_ffn_dim",
+            "encoder_layerdrop",
+            "<GAP>",
+
+            "decoder_layers",
+            "decoder_attention_heads",
+            "decoder_ffn_dim",
+            "decoder_layerdrop",
+            "<GAP>",
+
+            "max_position_embeddings",
+            "max_length",
+            "d_model",
+            "dropout",
+            "activation_function",
+            "<GAP>",
+            
             "date"
         ]
-        writer.writerow(header)
+        header_for_writing = []
+        for h in header:
+            if h == "<GAP>":
+                header_for_writing.append("")
+            else:
+                header_for_writing.append(h)
+        writer.writerow(header_for_writing)
         date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         for lang_d in os.listdir(configs_dir):
             if lang_d.endswith(".csv"): continue
+            if lang_d == "_archive": continue
             lang_d_path = os.path.join(configs_dir, lang_d)
             print("LANG D PATH:", lang_d_path)
             for f in os.listdir(lang_d_path):
@@ -80,16 +137,39 @@ def log_data_and_training_params(
 
                 row = []
                 for key in header:
-                    if key == "config":
+                    if key == "<GAP>":
+                        row.append("")
+                    elif key == "config":
                         row.append(config_name)
                     elif key == "batch_size (train/val/test)":
                         row.append(f"{config['train_batch_size']}/{config['val_batch_size']}/{config['test_batch_size']}")
+                    elif key == "effective_batch":
+                        row.append(f"{config['train_batch_size'] * config['n_gpus']}/{config['val_batch_size'] * config['n_gpus']}/{config['test_batch_size'] * config['n_gpus']}")
                     elif key == "train":
                         row.append(f"{n_train:,}")
                     elif key == "val":
                         row.append(f"{n_val:,}")
                     elif key == "test":
                         row.append(f"{n_test:,}")
+                    elif key == "save":
+                        save_pref = "/home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/"
+                        assert config[key].startswith(save_pref)
+                        row.append(config[key][len(save_pref):])
+                    elif key == "from_pretrained":
+                        save_pref = "/home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/"
+                        if config[key] != None:
+                            assert config[key].startswith(save_pref)
+                            row.append(config[key][len(save_pref):])
+                        else:
+                            row.append(config[key])
+                    elif key in ["train_data", "val_data", "test_data"]:
+                        data_pref = "/home/hatch5o6/Cognate/code/NMT/"
+                        assert config[key].startswith(data_pref)
+                        row.append(config[key][len(data_pref):])
+                    elif key == "spm":
+                        spm_pref = "/home/hatch5o6/nobackup/archive/CognateMT/spm_models/"
+                        assert config[key].startswith(spm_pref)
+                        row.append(config[key][len(spm_pref):])
                     elif key == "date":
                         row.append(date)
                     else:

@@ -1,4 +1,4 @@
-from NMT.char_tokenize import CharacterTokenizer
+from char_tokenizers import CharacterTokenizer
 
 tokenizer = CharacterTokenizer(
     vocab_path="NMT/char_vocab.csv", 
