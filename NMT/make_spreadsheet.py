@@ -64,8 +64,8 @@ if __name__ == "__main__":
         assert m in ["NMT", "FINETUNE", "PRETRAIN", "AUGMENT"], f"`{m}` is not a valid model type!"
 
     include_lang_pairs = [l.strip() for l in args.include_lang_pairs.split(",")]
-    for l in include_lang_pairs:
-        assert l in ["an-en", "as-hi", "bem-en", "bho-as", "bho-hi", "djk-en", "ewe-en", "fon-fr", "hsb-de", "mfe-en", "aeb-en", "apc-en"], f"`{l}` is not a valid lang pair!"
+    # for l in include_lang_pairs:
+    #     assert l in ["an-en", "as-hi", "bem-en", "bho-as", "bho-hi", "djk-en", "ewe-en", "fon-fr", "hsb-de", "mfe-en", "aeb-en", "apc-en"], f"`{l}` is not a valid lang pair!"
     
     main(
         results_dir=args.NMT_results_dir,

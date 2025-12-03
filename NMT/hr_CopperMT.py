@@ -218,12 +218,13 @@ def retrieve(
     final_results_f,
     hr_lang,
     lr_lang,
-    MODEL_ID=""
+    MODEL_ID="",
+    log_p_thresh=None
 ):
     NOT_IN_COPPER_MT_RESULTS = set()
 
     if CopperMT_results_f is not None:
-        CopperMT_results = read_CopperMT_Results(CopperMT_results_f)
+        CopperMT_results = read_CopperMT_Results(CopperMT_results_f, log_p_thresh=log_p_thresh)
         import json
         f = "/home/hatch5o6/Cognate/code/NMT/CopperMT_RNN_RESULTS.json"
         print("Writing to", f)
@@ -234,7 +235,8 @@ def retrieve(
         assert CopperMT_SMT_results_tgt_f is not None
         CopperMT_results = read_CopperMT_SMT_RESULTS(
             results_src=CopperMT_SMT_results_src_f,
-            results_hyp=CopperMT_SMT_results_tgt_f
+            results_hyp=CopperMT_SMT_results_tgt_f,
+            log_p_thresh=log_p_thresh
         )
         import json
         f = "/home/hatch5o6/Cognate/code/NMT/CopperMT_SMT_RESULTS.json"
@@ -365,21 +367,53 @@ def read_smt_result(f):
         ]
     return data
 
-def read_CopperMT_SMT_RESULTS(results_src, results_hyp):
+def read_smt_result_scores(f):
+    pred_scores = {}
+    with open(f) as inf:
+        for line in inf.readlines():
+            idx, pred, notes, score = tuple([item.strip() for item in line.strip().split("|||")])
+            idx = int(idx)
+            pred = re.sub(r'\s+', '', pred)
+            score = float(score)
+            if idx not in pred_scores:
+                pred_scores[idx] = {}
+            assert pred not in pred_scores[idx]
+            pred_scores[idx][pred] = score
+    return pred_scores
+
+def get_hyp_scores_f(f):
+    EXT = f.split(".")[-1]
+    TAG = f.split(".")[-2]
+    assert TAG == "hyp"
+    scores_f = ".".join(f.split(".")[:-2]) + ".10_best." + EXT
+    return scores_f
+
+def read_CopperMT_SMT_RESULTS(results_src, results_hyp, log_p_thresh=None):
+    results_hyp_scores = get_hyp_scores_f(results_hyp)
+
     results_src = read_smt_result(results_src)
     results_hyp = read_smt_result(results_hyp)
+    results_hyp_scores = read_smt_result_scores(results_hyp_scores)
     assert len(results_src) == len(results_hyp)
     results_list = list(zip(results_src, results_hyp))
 
     results = {}
-    for src_seg, tgt_seg in results_list:
+    ct_low_conf = 0
+    for i, (src_seg, tgt_seg) in enumerate(results_list):
+        score = results_hyp_scores[i][tgt_seg]
+        if log_p_thresh and score <= log_p_thresh:
+            print("SMT confidence is <= threshold, setting tgt_seg=src_seg")
+            tgt_seg = src_seg
+            ct_low_conf += 1
+
         if src_seg not in results:
             results[src_seg] = tgt_seg
         else:
             assert results[src_seg] == tgt_seg
+    print(f"SMT: NUMBER OF LOW CONFIDENCE (< {log_p_thresh}) PREDICTIONS: {ct_low_conf} / {len(results_list)} unique words predicted, {round((ct_low_conf / len(results_list)) * 100, 2)}%")
     return results
 
-def read_CopperMT_Results(results_f, RETURN_SPACED=False):
+def read_CopperMT_Results(results_f, RETURN_SPACED=False, log_p_thresh=None):
     with open(results_f) as inf:
         lines = [line.strip() for line in inf.readlines()]
     
@@ -437,6 +471,8 @@ def read_CopperMT_Results(results_f, RETURN_SPACED=False):
     # results = {'<unk>': []}
     results = {}
     # results_list = []
+    visited_ids = set()
+    ct_low_conf = 0
     for S, T, H, D, P in tqdm(data):
         assert S.startswith("S-")
         assert T.startswith("T-")
@@ -444,10 +480,20 @@ def read_CopperMT_Results(results_f, RETURN_SPACED=False):
         assert D.startswith("D-")
         assert P.startswith("P-")
 
+        s_id = int(S.split()[0].strip().split("-")[1])
         S = S.split("\t")[-1].strip()
+        t_id = int(T.split()[0].strip().split("-")[1])
         T = T.split("\t")[-1].strip()
+        h_conf = float(H.split("\t")[-2].strip())
+        h_id = int(H.split()[0].strip().split("-")[1])
         H = H.split("\t")[-1].strip()
+        d_id = int(D.split()[0].strip().split("-")[1])
         D = D.split("\t")[-1].strip()
+
+        assert s_id == t_id == h_id == d_id
+        assert h_id not in visited_ids
+        visited_ids.add(h_id)
+
         assert H == D
 
         if RETURN_SPACED:
@@ -456,6 +502,10 @@ def read_CopperMT_Results(results_f, RETURN_SPACED=False):
         else:
             source = "".join(S.split())
             hyp = "".join(H.split())
+        if log_p_thresh and h_conf <= log_p_thresh:
+            print("RNN confidence <= threshold, setting hyp=source")
+            hyp = source
+            ct_low_conf += 1
         # results_list.append((source, hyp))
         if source in results:
             print("SOURCE IN RESULTS")
@@ -480,6 +530,7 @@ def read_CopperMT_Results(results_f, RETURN_SPACED=False):
     # if RETURN_LIST:
     #     return results_list
     # else:
+    print(f"RNN: NUMBER OF LOW CONFIDENCE (< {log_p_thresh}) PREDICTIONS: {ct_low_conf} / {len(data)} unique words predicted, {round((ct_low_conf / len(data)) * 100, 2)}%")
     return results
 
 def clean_word(word):
@@ -557,6 +608,8 @@ def get_args():
     parser.add_argument("-S", "--CopperMT_SMT_results", help="comma-delimited list, must be len 2, src file first, hyp file second (e.g. src_file.txt,hyp_file.txt")
     parser.add_argument("-F", "--function", choices=["prepare", "retrieve", "get_test_results"], default="prepare")
     parser.add_argument("-M", "--MODEL_ID", default="")
+    parser.add_argument("-lt", "--log_p_thresh", default='null', type=str, help="Log probability threshold for RNN model inference")
+    # parser.add_argument("-st", "--smt_thresh", default=None, type=float, help="SMT score threshold for SMT inference")
     args = parser.parse_args()
     print("Arguments:-")
     for k, v in vars(args).items():
@@ -569,6 +622,13 @@ if __name__ == "__main__":
     print("###### hr_CopperMT.py ######")
     print("############################")
     args = get_args()
+    LOG_P_THRESH = args.log_p_thresh
+    
+    if LOG_P_THRESH == "null":
+        LOG_P_THRESH = None
+    else:
+        LOG_P_THRESH = float(LOG_P_THRESH)
+
     # prepare for CopperMT
     if args.function == "prepare":
         print("RUNNING 'prepare'")
@@ -582,7 +642,7 @@ if __name__ == "__main__":
         )
     # retrieve CopperMT results and postprocess
     elif args.function == "retrieve":
-        print("RUNNING 'retrieve'")
+        print(f"RUNNING 'retrieve', LOG_P_THRESH={LOG_P_THRESH}")
         CopperMT_SMT_results_fs = None
         CopperMT_SMT_results_src_f, CopperMT_SMT_results_tgt_f = None, None
         if args.CopperMT_SMT_results:
@@ -597,7 +657,9 @@ if __name__ == "__main__":
             final_results_f=args.out,
             hr_lang=args.hr_lang,
             lr_lang=args.lr_lang,
-            MODEL_ID=args.MODEL_ID
+            MODEL_ID=args.MODEL_ID,
+            log_p_thresh=LOG_P_THRESH
+            # smt_thresh=args.smt_thresh
         )
     elif args.function == "get_test_results":
         print("RUNNING 'get_test_results'")

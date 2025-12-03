@@ -1,0 +1,61 @@
+# outputs
+src: fr
+tgt: en
+save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/mfe-en_chosen_0/PRETRAIN.SC_fr2mfe-en.no_grad_clip
+test_checkpoint: null
+remove_special_toks: True
+verbose: False
+little_verbose: True
+
+# finetune?
+from_pretrained: null
+
+# data
+train_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/SC/SC_fr2mfe-en/train.csv
+val_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/SC/SC_fr2mfe-en/val.csv
+test_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/SC/SC_fr2mfe-en/test.csv
+append_src_token: False
+append_tgt_token: False
+upsample: False
+sc_model_id: FR-MFE-RNN-0-RNN-66
+
+# tokenizers
+spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_fr2mfe-mfe_en_0/SC_fr2mfe-mfe_en/SC_fr2mfe-mfe_en
+do_char: False
+
+# training
+n_gpus: 4
+seed: 1000
+qos: dw87
+
+max_steps: 350000
+train_batch_size: 128
+val_batch_size: 128
+test_batch_size: 128
+
+early_stop: 10
+save_top_k: 10
+val_interval: 0.25 # fraction of epoch
+
+learning_rate: 5e-04
+weight_decay: 0.01
+gradient_clip_val: null # set to null to turn gradient clipping off. Set to 1.0 to turn on.
+
+device: cuda
+
+# config
+encoder_layers: 6
+encoder_attention_heads: 8
+encoder_ffn_dim: 2048
+encoder_layerdrop: 0.0
+
+decoder_layers: 6
+decoder_attention_heads: 8
+decoder_ffn_dim: 2048
+decoder_layerdrop: 0.0
+
+max_position_embeddings: 512
+max_length: 512
+d_model: 512
+dropout: 0.1
+activation_function: gelu

@@ -50,6 +50,7 @@ echo "    NBEST=$NBEST"
 # echo "    COGNATE_TRAIN_RATIO=$COGNATE_TRAIN_RATIO" # not used
 # echo "    COGNATE_TEST_RATIO=$COGNATE_TEST_RATIO" # not used
 # echo "    COGNATE_VAL_RATIO=$COGNATE_VAL_RATIO" # not used
+echo "    LOG_P_THRESH=$LOG_P_THRESH"
 echo "-------------------------------"
 
     ###############################################
@@ -64,19 +65,19 @@ echo "#-- #              2) APPLY SC MODEL              # --#"
 echo "    ###############################################"
 
 ######## 2.0 Alter SC_MODEL_ID ########
-echo ""
-echo ""
-echo "######## 2.0 Alter SC_MODEL_ID ########"
-echo "First, we will alter SC_MODEL_ID to incorporate the MODEL_TYPE and RNN_HYPERPARAMS_ID"
-SC_MODEL_ID="${SC_MODEL_ID}-${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}"
-echo "SC_MODEL_ID is now ${SC_MODEL_ID}"
+# echo ""
+# echo ""
+# echo "######## 2.0 Alter SC_MODEL_ID ########"
+# echo "First, we will alter SC_MODEL_ID to incorporate the MODEL_TYPE and RNN_HYPERPARAMS_ID"
+# SC_MODEL_ID="${SC_MODEL_ID}-${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}"
+# echo "SC_MODEL_ID is now ${SC_MODEL_ID}"
 
 
 ######## 2.1 Write the CopperMT parameters file ########
 echo ""
 echo ""
 echo "######## 2.1 Write the CopperMT parameters file ########"
-PARAMETERS_F="${PARAMETERS_DIR}/parameters.${SRC}-${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}.cfg"
+PARAMETERS_F="${PARAMETERS_DIR}/parameters.${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}.cfg"
 python Pipeline/write_scripts.py \
     --src ${SRC} \
     --tgt ${TGT} \
@@ -84,7 +85,8 @@ python Pipeline/write_scripts.py \
     --sc_model_type ${SC_MODEL_TYPE} \
     --rnn_hyperparams_id ${RNN_HYPERPARAMS_ID} \
     --seed ${SEED} \
-    --parameters $PARAMETERS_F
+    --parameters $PARAMETERS_F \
+    --sc_model_id $SC_MODEL_ID
 
 ######## 2.2 Get selected SC model ########
 echo ""
@@ -106,7 +108,7 @@ then
     # python Pipeline/select_checkpoint.py --dir $WORKSPACE_SEED_DIR
 
     # Get selected model
-    WORKSPACE_SEED_DIR=$COPPERMT_DATA_DIR/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}
+    WORKSPACE_SEED_DIR=$COPPERMT_DATA_DIR/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}
     SELECTED_RNN_CHECKPOINT=${WORKSPACE_SEED_DIR}/checkpoints/selected.pt
 
     echo "SELECTED_RNN_CHECKPOINT: `${SELECTED_RNN_CHECKPOINT}`"
@@ -118,8 +120,8 @@ fi
 echo ""
 echo ""
 echo "######## 2.3 Delete inference directories if pre-existing ########"
-INFERENCE_DATA_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/data/inference
-INFERENCE_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${SRC}
+INFERENCE_DATA_DIR=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/data/inference
+INFERENCE_DIR=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${SRC}
 for directory in $INFERENCE_DATA_DIR $INFERENCE_DIR ; do
     if [ -d $directory ]; then
         echo "    deleting ${directory}"
@@ -133,8 +135,8 @@ echo ""
 echo "######## 2.4 APPLY SC ########"
 cd $MODULE_HOME_DIR
 conda activate sound
-SPLIT_DATA=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/inputs/split_data/${SRC}_${TGT}/${SEED}
-COPPER_MT_PREP_OUT_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/inputs/split_data/${SRC}_${TGT}/inference
+SPLIT_DATA=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/inputs/split_data/${SRC}_${TGT}/${SEED}
+COPPER_MT_PREP_OUT_DIR=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/inputs/split_data/${SRC}_${TGT}/inference
 
 if [ -d $COPPER_MT_PREP_OUT_DIR ]; then
     echo "deleting ${COPPER_MT_PREP_OUT_DIR}"
@@ -146,6 +148,8 @@ PARALLEL_FILES=( $PARALLEL_TRAIN $PARALLEL_VAL $PARALLEL_TEST )
 IFS="," read -r -a APPLY_TO_FILES <<< $APPLY_TO
 ALL_CSV_FILES=( "${PARALLEL_FILES[@]}" "${APPLY_TO_FILES[@]}" )
 echo "-- APPLYING SC MODEL TO FILES --"
+# echo "First, we will alter SC_MODEL_ID to incorporate the MODEL_TYPE and RNN_HYPERPARAMS_ID"
+# SC_MODEL_ID="${SC_MODEL_ID}-${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}"
 for f in ${ALL_CSV_FILES[@]} ; do
     if [ $f = "null" ]
     then
@@ -168,7 +172,7 @@ for f in ${ALL_CSV_FILES[@]} ; do
             conda activate copper
             echo "    main_nmt_bilingual_full_brendan_PREDICT.sh ${PARAMETERS_F} ${SELECTED_RNN_CHECKPOINT} ${SEED} inference ${NBEST} ${BEAM}"
             bash "main_nmt_bilingual_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${SELECTED_RNN_CHECKPOINT}" "${SEED}" "inference" "${NBEST}" "${BEAM}"
-            COPPERMT_RESULTS=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
+            COPPERMT_RESULTS=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
 
             conda activate sound
             cd $MODULE_HOME_DIR
@@ -178,7 +182,8 @@ for f in ${ALL_CSV_FILES[@]} ; do
                 --CopperMT_results $COPPERMT_RESULTS \
                 -hr $SRC \
                 -lr $TGT \
-                --MODEL_ID $SC_MODEL_ID
+                --MODEL_ID "${SC_MODEL_ID}-${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}" \
+                --log_p_thresh $LOG_P_THRESH
         elif [ $SC_MODEL_TYPE = "SMT" ]
         then
             conda activate copper
@@ -196,7 +201,8 @@ for f in ${ALL_CSV_FILES[@]} ; do
                 --CopperMT_SMT_results ${TEXT},${HYP_OUT_F} \
                 -hr $SRC \
                 -lr $TGT \
-                --MODEL_ID $SC_MODEL_ID
+                --MODEL_ID "${SC_MODEL_ID}-${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}" \
+                --log_p_thresh $LOG_P_THRESH
         fi
     fi
 done

@@ -1,3 +1,5 @@
+set -e
+
 python Pipeline/sc_inference_confidence_dist.py \
     -i /home/hatch5o6/nobackup/archive/CopperMT/en_djk_RNN-121_S-0/workspace/reference_models/bilingual/rnn_en-djk/0/results/inference_selected_checkpoint_en_djk.djk/generate-test.txt \
     -o /home/hatch5o6/Cognate/code/Pipeline/en-djk_hyps
@@ -9,3 +11,9 @@ python Pipeline/sc_inference_confidence_dist.py \
 python Pipeline/sc_inference_confidence_dist.py \
     -i /home/hatch5o6/nobackup/archive/CopperMT/fr_mfe_RNN-66_S-0/workspace/reference_models/bilingual/rnn_fr-mfe/0/results/inference_selected_checkpoint_fr_mfe.mfe/generate-test.txt \
     -o /home/hatch5o6/Cognate/code/Pipeline/fr-mfe_hyp
+
+# SMT Results
+python Pipeline/sc_inference_confidence_dist.py \
+    -s /home/hatch5o6/nobackup/archive/CopperMT/cs_hsb_SMT-null_S-0/inputs/split_data/cs_hsb/inference/test_cs_hsb.cs \
+    -H /home/hatch5o6/nobackup/archive/CopperMT/cs_hsb_SMT-null_S-0/inputs/split_data/cs_hsb/inference/test_cs_hsb.hsb.hyp.txt \
+    -o /home/hatch5o6/Cognate/code/Pipeline/cs-hsb_hyp

@@ -1,0 +1,5 @@
+source,hyp,id,score
+Edinburghským,Edźinburgiskim,449,-15.593
+Ludvík-Karel,Ludwěk-Karel,824,-15.4288
+nejspolečenštější,njespolečenšćejši,4120,-15.1214
+nejúspěšnějším,nejuspěšněšim,4133,-15.4142

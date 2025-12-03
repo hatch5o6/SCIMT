@@ -53,11 +53,8 @@ def split_data(
     assert train + val + test == data
     print("\tit passed :)")
 
-    write_split(train, train1_out_f, train2_out_f)
-    write_split(val, val1_out_f, val2_out_f)
-
     if UNIQUE_TEST:
-        print("MAKING TEST SOURCE-SIDE UNIQUE")
+        print("MAKING TEST AND VAL SOURCE-SIDE UNIQUE")
         unique_test = {}
         for src, tgt in test:
             if src in unique_test:
@@ -65,9 +62,19 @@ def split_data(
             else:
                 unique_test[src] = tgt
         test = [(src, tgt) for src, tgt in unique_test.items()]
+
+        unique_val = {}
+        for src, tgt in val:
+            if src in unique_val:
+                continue
+            else:
+                unique_val[src] = tgt
+        val = [(src, tgt) for src, tgt in unique_val.items()]
     else:
-        print("NORMAL TEST")
+        print("NORMAL TEST AND VAL")
     
+    write_split(train, train1_out_f, train2_out_f)
+    write_split(val, val1_out_f, val2_out_f)
     write_split(test, test1_out_f, test2_out_f)
 
 def write_split(data, f1, f2):

@@ -1,0 +1,7 @@
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/hsb-de_chosen_0/AUGMENT.SC_cs2hsb-de.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/hsb-de_chosen_0/AUGMENT.hsb-de.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/hsb-de_chosen_0/NMT.hsb-de.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/hsb-de_chosen_0/PRETRAIN.SC_cs2hsb-de.TEST-hsb-de.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/hsb-de_chosen_0/PRETRAIN.SC_cs2hsb-de.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/hsb-de_chosen_0/PRETRAIN.cs-de.TEST-hsb-de.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/hsb-de_chosen_0/PRETRAIN.cs-de.sh

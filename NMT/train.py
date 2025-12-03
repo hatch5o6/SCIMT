@@ -156,6 +156,7 @@ def train_model(config, REVERSE_SRC_TGT=False):
         max_steps=config["max_steps"],
         val_check_interval=config["val_interval"],
         accelerator=config["device"],
+        # devices="auto", # I have been running without this line, and I think parallelization still works, but make sure it has been :)
         default_root_dir=save_dir,
         callbacks=train_callbacks,
         logger=[logger, tb_logger],

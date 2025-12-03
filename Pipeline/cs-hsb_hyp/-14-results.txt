@@ -1,0 +1,5 @@
+source,hyp,id,score
+Bellingshausenovým,Belingshausynowym,279,-14.2699
+Egypťané,Egypćanje,454,-14.9845
+Johannesburgu,Johannjesburgu,697,-14.3389
+Pittsburghu,Pittosburghu,1135,-14.479

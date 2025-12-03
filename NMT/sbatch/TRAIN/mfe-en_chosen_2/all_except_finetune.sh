@@ -1,0 +1,10 @@
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/mfe-en_chosen_2/AUGMENT.SC_fr2mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/mfe-en_chosen_2/AUGMENT.mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/mfe-en_chosen_2/CHAR-PRETRAIN.SC_fr2mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/mfe-en_chosen_2/CHAR-PRETRAIN.fr-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/mfe-en_chosen_2/NMT.mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/mfe-en_chosen_2/PRETRAIN.SC_fr2mfe-en.TEST-mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/mfe-en_chosen_2/PRETRAIN.SC_fr2mfe-en.no_grad_clip.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/mfe-en_chosen_2/PRETRAIN.SC_fr2mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/mfe-en_chosen_2/PRETRAIN.fr-en.TEST-mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN/mfe-en_chosen_2/PRETRAIN.fr-en.sh

@@ -1,0 +1,9 @@
+source,hyp,id,score
+Dalhousieově,Dalhusieowje,383,-12.1015
+Eighmeym,Eigmjeym,457,-12.4297
+Hifikepunye,Hifikepunje,590,-12.952
+Obzvlášť,Obzwlašć,1055,-12.2607
+důležitější,dołožitěši,2524,-12.8629
+nejkritičtější,nejkritišćěši,4103,-12.4762
+odjíždějí,wodźjiždźěja,4592,-12.2162
+čtyřměsíční,čtyrměsučni,8618,-12.8567

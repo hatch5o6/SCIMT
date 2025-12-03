@@ -1,0 +1,10 @@
+source,hyp,id,score
+Afroameričanů,Aframjeričano,190,-13.4183
+Australopitéků,Austrałopićeko,251,-13.4721
+SANParks,SANParks,1289,-13.8311
+Saint-Saens,Sakint-Sajens,1300,-13.8997
+Schwarzenegger,Schwarzenegger,1325,-13.9985
+experimentální,jexperimjentalnje,2603,-13.1886
+nejambicióznějším,nejamjebiciozněšim,4090,-13.6121
+nejbezpečnější,nejbjezpječněši,4091,-13.2814
+park-and-ride,park-and-ridźe,4874,-13.0029

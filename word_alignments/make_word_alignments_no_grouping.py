@@ -84,7 +84,9 @@ def get_args():
     return args
 
 if __name__ == "__main__":
-    print("make_word_alignments_no_grouping.py")
+    print("#######################################")
+    print("# make_word_alignments_no_grouping.py #")
+    print("#######################################")
     args = get_args()
     with open(args.alignments) as inf:
         alignments = [line.strip() for line in inf]
@@ -102,6 +104,18 @@ if __name__ == "__main__":
         STOP=args.STOP
     )
 
-    with open(args.out, "w") as outf:
-        for word_a, word_b in word_list.keys():
-            outf.write(f"{word_a.strip()} ||| {word_b.strip()}\n")
+    word_list_ordered = []
+    for word_pair, ct in word_list.items():
+        assert isinstance(word_pair, tuple)
+        assert len(word_pair) == 2
+        word_list_ordered.append((ct, word_pair))
+    word_list_ordered.sort(reverse=True)
+
+    ordered_out = args.out # + ".ordered.txt"
+    with open(ordered_out, "w") as outf:
+        for ct, (word_a, word_b) in word_list_ordered:
+            outf.write(f"{ct} ||| {word_a.strip()} ||| {word_b.strip()}\n")
+
+    # with open(args.out, "w") as outf:
+    #     for word_a, word_b in word_list.keys():
+    #         outf.write(f"{word_a.strip()} ||| {word_b.strip()}\n")
