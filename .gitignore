@@ -1,9 +1,11 @@
 **__pycache__/
 **slurm_outputs/
 **OLD_slurm_outputs/
+**archive/
 CopperMT/CopperMT/
 NMT/flores_token.txt
 NMT/OLD_sbatch/
+NMT/lightning_logs/
 Pipeline/sbatch/hyper_param_search/
 Pipeline/sbatch/hyper_param_search_NG-False/
 Pipeline/rnn_hyperparams/
@@ -20,3 +22,4 @@ NMT/OLD_slurm_outputs/
 *.out
 NMT/align_tokens.NWS.all.out
 NMT/align_tokens.all.out
+**lightning_logs/

@@ -1,0 +1,61 @@
+# outputs
+src: bho
+tgt: as
+save: /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/bho-as/NMT.bho-as
+test_checkpoint: null
+remove_special_toks: True
+verbose: False
+little_verbose: True
+
+# finetune?
+from_pretrained: null
+
+# data
+train_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/PLAIN/bho-as/train.csv
+val_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/PLAIN/bho-as/val.csv
+test_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/PLAIN/bho-as/test.csv
+append_src_token: False
+append_tgt_token: False
+upsample: False
+sc_model_id: null
+
+# tokenizers
+spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/hi-bho_as/hi-bho_as/hi-bho_as
+do_char: False
+
+# training
+n_gpus: 1
+seed: 1000
+qos: dw87
+
+max_steps: 40000
+train_batch_size: 64
+val_batch_size: 64
+test_batch_size: 64
+
+early_stop: 10
+save_top_k: 10
+val_interval: 0.25 # fraction of epoch
+
+learning_rate: 5e-05
+weight_decay: 0.00
+gradient_clip_val: 1.0 # set to null to turn gradient clipping off. Set to 1.0 to turn on.
+
+device: cuda
+
+# config
+encoder_layers: 6
+encoder_attention_heads: 8
+encoder_ffn_dim: 2048
+encoder_layerdrop: 0.0
+
+decoder_layers: 6
+decoder_attention_heads: 8
+decoder_ffn_dim: 2048
+decoder_layerdrop: 0.0
+
+max_position_embeddings: 512
+max_length: 512
+d_model: 512
+dropout: 0.1
+activation_function: gelu

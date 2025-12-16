@@ -5,14 +5,18 @@ import shutil
 
 def get_data(
     train_csvs,
-    val_csvs,
-    test_csvs,
+    # val_csvs,
+    # test_csvs,
     out_dir,
-    SC_MODEL_ID
+    SC_MODEL_ID,
+    IS_ATT
 ):
     print("### READING ###")
     data = read_csvs(
-        fs=train_csvs + val_csvs + test_csvs
+        # fs=train_csvs + val_csvs + test_csvs,
+        fs=train_csvs,
+        SC_MODEL_ID=SC_MODEL_ID,
+        IS_ATT=IS_ATT
     )
     print("### WRITING ###")
     write_data(data, out_dir, SC_MODEL_ID=SC_MODEL_ID)
@@ -64,7 +68,7 @@ def write_data(data, out_dir, SC_MODEL_ID):
         with open(out_f, "w") as outf:
             outf.write("\n".join(lines) + "\n")
 
-def read_csvs(fs):
+def read_csvs(fs, SC_MODEL_ID, IS_ATT):
     all_rows = []
     for csv_f in fs:
         if not os.path.exists(csv_f):
@@ -78,12 +82,52 @@ def read_csvs(fs):
         rows = [tuple(row) for row in rows[1:]]
         all_rows += rows
     
-    data = get_lang_paths(all_rows)
+    data = get_lang_paths(all_rows, SC_MODEL_ID=SC_MODEL_ID, IS_ATT=IS_ATT)
     return data
 
-def get_lang_paths(rows):
+def get_lang_paths(rows, SC_MODEL_ID, IS_ATT):
+    # model_id_pair = SC_MODEL_ID.split(".")[0]
+    # model_id_src, model_id_tgt = tuple([l.lower() for l in model_id_pair.split("-")])
+
+    assert isinstance(SC_MODEL_ID, str)
+
+    if SC_MODEL_ID == "null":
+        assert IS_ATT == False
+        model_id_src = None
+        model_id_tgt = None
+        model_id_pair = None
+    else:
+        model_id_src = SC_MODEL_ID.split("-")[0]
+        model_id_tgt = ""
+        for c, char in enumerate(SC_MODEL_ID[len(model_id_src):]):
+            if c == 0:
+                assert char == "-"
+                continue
+            else:
+                if char in ["-", "."]:
+                    break
+            model_id_tgt += char
+        model_id_pair = f"{model_id_src}-{model_id_tgt}"
+        print("model_id_pair:", model_id_pair)
+        print("SC_MODEL_ID:", SC_MODEL_ID)
+        assert SC_MODEL_ID.startswith(model_id_pair)
+        model_id_src = model_id_src.lower()
+        model_id_tgt = model_id_tgt.lower()
+
+        # IS_ATT = SC_MODEL_ID[len(model_id_pair):].startswith(".ATT-")
+
     data = {}
     for src_lang, tgt_lang, src_f, tgt_f in rows:
+        assert "{SC_MODEL_ID}" not in tgt_f
+        if "{SC_MODEL_ID}" in src_f and IS_ATT:
+            print("SC_MODEL_ID:", SC_MODEL_ID)
+            print("src_f:", src_f)
+            assert src_f.split(".")[-2] == f"SC_{{SC_MODEL_ID}}_{model_id_src}2{model_id_tgt}"
+            assert src_lang == model_id_tgt, f"src_lang: {src_lang}, model_id_tgt: {model_id_tgt}, ({src_lang, tgt_lang, src_f, tgt_f})"
+            assert tgt_lang == model_id_src, f"tgt_lang: {tgt_lang}, model_id_src: {model_id_src}, ({src_lang, tgt_lang, src_f, tgt_f})"
+            assert src_f.split(".")[-2].split("_")[-1] == f"{model_id_src}2{model_id_tgt}"
+            src_lang = f"{model_id_src}2{model_id_tgt}"
+
         if src_lang not in data:
             data[src_lang] = []
         if tgt_lang not in data:
@@ -98,10 +142,11 @@ def get_lang_paths(rows):
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--train_csvs")
-    parser.add_argument("--val_csvs")
-    parser.add_argument("--test_csvs")
+    # parser.add_argument("--val_csvs")
+    # parser.add_argument("--test_csvs")
     parser.add_argument("--out_dir")
     parser.add_argument("--SC_MODEL_ID")
+    parser.add_argument("--IS_ATT", choices=["true", "false"])
     args = parser.parse_args()
     print("Arguments:-")
     for k, v in vars(args).items():
@@ -110,17 +155,26 @@ def get_args():
     return args
 
 if __name__ == "__main__":
-    print("############################")
-    print("# make_SC_training_data.py #")
-    print("############################")
+    print("#############################")
+    print("# make_tok_training_data.py #")
+    print("#############################")
     args = get_args()
+
+    assert args.IS_ATT in ["true", "false"]
+    IS_ATT = args.IS_ATT == "true"
+    print("-----------------------------")
+    print("IS_ATT:", IS_ATT, type(IS_ATT))
+    print("-----------------------------")
+
     train_csvs = [c.strip() for c in args.train_csvs.split(",")]
-    val_csvs = [c.strip() for c in args.val_csvs.split(",")]
-    test_csvs = [c.strip() for c in args.test_csvs.split(",")]
+    # val_csvs = [c.strip() for c in args.val_csvs.split(",")]
+    # test_csvs = [c.strip() for c in args.test_csvs.split(",")]
+
     get_data(
         train_csvs=train_csvs,
-        val_csvs=val_csvs,
-        test_csvs=test_csvs,
+        # val_csvs=val_csvs,
+        # test_csvs=test_csvs,
         out_dir=args.out_dir,
-        SC_MODEL_ID=args.SC_MODEL_ID
+        SC_MODEL_ID=args.SC_MODEL_ID,
+        IS_ATT=IS_ATT
     )

@@ -1,0 +1,44 @@
+1. Start TensorBoard on the remote machine
+
+On the supercomputer (after training, or while training), run:
+
+tensorboard --logdir logs/tb --port 6006 --host 0.0.0.0
+
+
+--logdir logs/tb → path where your TensorBoardLogger wrote logs.
+
+--port 6006 → TensorBoard’s default port.
+
+--host 0.0.0.0 → makes TensorBoard listen on all interfaces (needed for tunneling).
+
+Keep this running.
+
+
+
+
+2. On your local machine, open an SSH tunnel
+
+In another terminal on your laptop/desktop, run:
+
+ssh -L 6006:localhost:6006 your_username@remote.address
+
+ssh -L 6006:localhost:6006 hatch5o6@rhel9ssh.rc.byu.edu
+
+
+Explanation:
+
+-L 6006:localhost:6006 → forward local port 6006 to the remote machine’s port 6006.
+
+Replace your_username@remote.address with your HPC login (could be something like bhatch@supercomputer.university.edu).
+
+
+
+
+3. Open TensorBoard in your local browser
+
+Now open:
+
+http://localhost:6006
+
+
+in your browser on your laptop, and you should see TensorBoard as if it were running locally.

@@ -10,7 +10,12 @@ echo "Starting train_SC.sh-----------"
 date
 echo "-------------------------------"
 
-#### ARGUMENTS ####
+    ###############################################
+#-- #                 1) ARGUMENTS                # --#
+    ###############################################
+echo "    ###############################################"
+echo "#-- #                 1) ARGUMENTS                # --#"
+echo "    ###############################################"
 source $1 # .cfg file from from Pipeline/cfg/SC
 
 echo "Arguments:-"
@@ -21,6 +26,7 @@ echo "    TGT=$TGT"
 echo "    PARALLEL_TRAIN=$PARALLEL_TRAIN"
 echo "    PARALLEL_VAL=$PARALLEL_VAL"
 echo "    PARALLEL_TEST=$PARALLEL_TEST"
+# echo "    APPLY_TO=$APPLY_TO" # not used
 echo "    COGNATE_TRAIN=$COGNATE_TRAIN"
 echo "    NO_GROUPING=$NO_GROUPING"
 echo "    SC_MODEL_TYPE=$SC_MODEL_TYPE"
@@ -35,6 +41,8 @@ echo "    RNN_HYPERPARAMS_ID=$RNN_HYPERPARAMS_ID"
 echo "    BEAM=$BEAM"
 echo "    NBEST=$NBEST"
 echo "    REVERSE_SRC_TGT_COGNATES=$REVERSE_SRC_TGT_COGNATES"
+echo "    ADDITIONAL_TRAIN_COGNATES_SRC=$ADDITIONAL_TRAIN_COGNATES_SRC"
+echo "    ADDITIONAL_TRAIN_COGNATES_TGT=$ADDITIONAL_TRAIN_COGNATES_TGT"
 echo "    VAL_COGNATES_SRC=$VAL_COGNATES_SRC"
 echo "    VAL_COGNATES_TGT=$VAL_COGNATES_TGT"
 echo "    TEST_COGNATES_SRC=$TEST_COGNATES_SRC"
@@ -42,15 +50,30 @@ echo "    TEST_COGNATES_TGT=$TEST_COGNATES_TGT"
 echo "    COGNATE_TRAIN_RATIO=$COGNATE_TRAIN_RATIO"
 echo "    COGNATE_TEST_RATIO=$COGNATE_TEST_RATIO"
 echo "    COGNATE_VAL_RATIO=$COGNATE_VAL_RATIO"
+# echo "    LOG_P_THRESH=$LOG_P_THRESH"
+echo "    EDIT_DIST_TYPE=$EDIT_DIST_TYPE"
 echo "-------------------------------"
+
+
+    ###############################################
+#-- #     2) GET COGNATES FROM PARALLEL DATA      # --#
+    ###############################################
+echo ""
+echo ""
+echo ""
+echo ""
+echo "    ###############################################"
+echo "#-- #     2) GET COGNATES FROM PARALLEL DATA      # --#"
+echo "    ###############################################"
 
 cd $MODULE_HOME_DIR
 conda activate sound
-#### DETECT COGNATES ####
+
+# 2.1 Clear and remake COGNATE_TRAIN dir
 echo ""
 echo ""
-echo "#### DETECT COGNATES ####"
-COGNATE_TRAIN=${COGNATE_TRAIN}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}
+echo "######## 2.1 Clear and remake COGNATE_TRAIN dir ########"
+COGNATE_TRAIN=${COGNATE_TRAIN}_${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}
 if [ -d $COGNATE_TRAIN ]
 then
     echo "removing ${COGNATE_TRAIN}"
@@ -81,7 +104,10 @@ mkdir $FASTALIGN_DIR
 SRC_F=${COGNATE_DIR}/train.${SRC}
 TGT_F=${COGNATE_DIR}/train.${TGT}
 
+# 2.2 Gather parallel data from which cognates are extracted
 echo ""
+echo ""
+echo "######## 2.2 Gather parallel data from which cognates are extracted ########"
 # --src and --tgt are for filtering on $SRC and $TGT language pairs (the langauges we want cognates for)
 python Pipeline/make_SC_training_data.py \
     --train_csv $PARALLEL_TRAIN \
@@ -91,9 +117,15 @@ python Pipeline/make_SC_training_data.py \
     --tgt_out $TGT_F \
     --src $SRC \
     --tgt $TGT
-# cat ${COGNATE_TRAIN}/test.${SRC} ${COGNATE_TRAIN}/val.${SRC} ${COGNATE_TRAIN}/train.${SRC} > ${SRC_F}
-# cat ${COGNATE_TRAIN}/test.${TGT} ${COGNATE_TRAIN}/val.${TGT} ${COGNATE_TRAIN}/train.${TGT} > ${TGT_F}
 
+# 2.3 Run Fast Align
+echo ""
+echo ""
+echo "######## 2.3 Run Fast Align ########"
+
+# 2.3.1 set file path names depending on whether NO_GROUPING is set to true or false.
+echo ""
+echo "# 2.3.1 set file path names depending on whether NO_GROUPING is set to true or false. #"
 SRC_TGT_F=${FASTALIGN_DIR}/${SRC}-${TGT}
 if [ $NO_GROUPING = true ]
 then
@@ -110,10 +142,13 @@ else
     echo \t$WORD_LIST_OUT
 fi
 
+# 2.3.2 preparing for fast align
+echo ""
+echo "# 2.3.2 preparing for fast align #"
 if [ $REVERSE_SRC_TGT_COGNATES = true ]
 then
     # prepare
-    echo "prepare_fast_align.py REVERSE=true"
+    echo "prepare_for_fastalign.py REVERSE=true"
     python word_alignments/prepare_for_fastalign.py \
         --src $TGT_F \
         --tgt $SRC_F \
@@ -121,7 +156,7 @@ then
     echo ""
 else
     # prepare
-    echo "prepare_fast_align.py REVERSE=false"
+    echo "prepare_for_fastalign.py REVERSE=false"
     python word_alignments/prepare_for_fastalign.py \
         --src $SRC_F \
         --tgt $TGT_F \
@@ -129,23 +164,35 @@ else
     echo ""
 fi
 
-# fast_align
+# 2.3.3 fast_align
+echo ""
+echo "# 2.3.3 fast_align #"
+# 3 Fast Align commands
+# (1) forward alignment
 ./../fast_align/build/fast_align \
     -i ${SRC_TGT_F}.txt \
     -d -o -v > ${SRC_TGT_F}.forward.align
 
+# (2) reverse alignment
 ./../fast_align/build/fast_align \
     -i ${SRC_TGT_F}.txt \
     -d -o -v -r > ${SRC_TGT_F}.reverse.align
 
+# (3) symmetricized alignment
 ./../fast_align/build/atools \
     -i ${SRC_TGT_F}.forward.align \
     -j ${SRC_TGT_F}.reverse.align \
     -c grow-diag-final-and > ${SRC_TGT_F}.sym.align
-echo ""
-echo ""
 
-# make word alignments
+
+# 2.4 Get Cognates
+echo ""
+echo ""
+echo "######## 2.4 Get Cognates ########"
+
+# 2.4.1 make word alignments
+echo ""
+echo "# 2.4.1 make word alignments #"
 if [ $NO_GROUPING = true ]
 then
     echo "NO_GROUPING=true: running make_word_alignments_no_grouping.py"
@@ -161,6 +208,9 @@ else
     --out $WORD_LIST_OUT
 fi
 
+# 2.4.2 Get cognates from word list
+echo ""
+echo "# 2.4.2 Get cognates from word list #"
 if [ $REVERSE_SRC_TGT_COGNATES = true ]
 then
     # get cognates
@@ -169,7 +219,8 @@ then
         --word_list $WORD_LIST_OUT \
         --theta $COGNATE_THRESH \
         --src ${TGT} \
-        --tgt ${SRC}
+        --tgt ${SRC} \
+        --edit_dist_type $EDIT_DIST_TYPE
 else
     # get cognates
     echo "make_cognate_list.py REVERSE=false"
@@ -177,15 +228,29 @@ else
         --word_list $WORD_LIST_OUT \
         --theta $COGNATE_THRESH \
         --src ${SRC} \
-        --tgt ${TGT}
+        --tgt ${TGT} \
+        --edit_dist_type $EDIT_DIST_TYPE
 fi
 
+    ###############################################
+#-- #      3) TRAIN SC MODEL WITH COPPER MT       # --#
+    ###############################################
+echo ""
+echo ""
+echo ""
+echo ""
+echo "    ###############################################"
+echo "#-- #      3) TRAIN SC MODEL WITH COPPER MT       # --#"
+echo "    ###############################################"
 
-#### TRAIN SC MODEL WITH COPPER MT ####
-echo \n\n
-echo "#### TRAIN SC MODEL WITH COPPER MT ####"
+# 3.1 Make cognate prediction training, validation, and test sets
+echo ""
+echo ""
+echo "######## 3.1 Make cognate prediction training, validation, and test sets ########"
 
-# if needed, make datasets splits
+# 3.1.1 if needed, make dataset splits
+echo ""
+echo "# 3.1 if needed, make dataset splits #"
 if [ $TEST_COGNATES_SRC = "null" ]
 then
     echo "Splitting cognate data ${WORD_LIST_SRC}, ${WORD_LIST_TGT}" 
@@ -216,7 +281,9 @@ else
     echo "Reading test cognate data from $TEST_COGNATES_SRC, $TEST_COGNATES_TGT"
 fi
 
+# 3.1.2 Include ADDITIONAL_TRAIN_COGNATES_SRC and ADDITIONAL_TRAIN_COGNATES_TGT in train set file paths
 echo ""
+echo "# 3.1.2 Include ADDITIONAL_TRAIN_COGNATES_SRC and ADDITIONAL_TRAIN_COGNATES_TGT in train set file paths #"
 if [ "$ADDITIONAL_TRAIN_COGNATES_SRC" != "null" ]
 then
     if [ "$ADDITIONAL_TRAIN_COGNATES_TGT" = "null" ]
@@ -229,6 +296,9 @@ then
     TRAIN_COGNATES_TGT+=",${ADDITIONAL_TRAIN_COGNATES_TGT}"
 fi
 
+# 3.1.3 Print out files for train, validation, and test sets
+echo ""
+echo "# 3.1.3 Print out files for train, validation, and test sets #"
 echo "Cognate training data for format_data.py is as follows:"
 echo "    TRAIN_COGNATES_SRC=${TRAIN_COGNATES_SRC}"
 echo "    TRAIN_COGNATES_TGT=${TRAIN_COGNATES_TGT}"
@@ -238,8 +308,15 @@ echo "    TEST_COGNATES_SRC=${TEST_COGNATES_SRC}"
 echo "    TEST_COGNATES_TGT=${TEST_COGNATES_TGT}"
 echo ""
 
-# format for CopperMT
-COPPER_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}
+# 3.2 Train CopperMT cognate prediction model
+echo ""
+echo ""
+echo "######## 3.2 Train CopperMT cognate prediction model ########"
+
+# 3.2.1 make directory structure for CopperMT inputs and outputs
+echo ""
+echo "# 3.2.1 make directory structure for CopperMT inputs and outputs #"
+COPPER_DIR=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}
 echo "COPPER_DIR: ${COPPER_DIR}"
 
 echo ""
@@ -255,6 +332,9 @@ mkdir ${COPPER_DIR}/inputs/split_data
 mkdir ${COPPER_DIR}/inputs/parameters
 mkdir ${COPPER_DIR}/inputs/parameters/bilingual_default
 
+# 3.2.2 Copy the RNN hyperparams set file, corresponding to RNN_HYPERPARAMS_ID, to its place in the COPPERMT inputs/outputs folder
+echo ""
+echo "# 3.2.2 Copy the RNN hyperparams set file, corresponding to RNN_HYPERPARAMS_ID, to its place in the COPPERMT inputs/outputs folder #"
 if [ -d $RNN_HYPERPARAMS ]
 then
     # cp -r $RNN_HYPERPARAMS ${COPPER_DIR}/inputs/parameters/bilingual_default/default_parameters_rnn_${SRC}-${TGT}.txt
@@ -264,8 +344,10 @@ then
         --copy_to_path ${COPPER_DIR}/inputs/parameters/bilingual_default/default_parameters_rnn_${SRC}-${TGT}.txt
 fi
 
+# 3.2.3 Format the cognate train, val, test data for CopperMT
+echo ""
+echo "# 3.2.3 Format the cognate train, val, test data for CopperMT #"
 FORMAT_OUT_DIR=${COPPER_DIR}/inputs/split_data/${SRC}_${TGT}
-
 echo ""
 python CopperMT/format_data.py \
     --src_data $TRAIN_COGNATES_SRC \
@@ -302,26 +384,42 @@ python CopperMT/format_data.py \
     # --EXCLUDE_SRC "$TRAIN_COGNATES_SRC,$VAL_COGNATES_SRC"\
     # --EXCLUDE_TGT "$TRAIN_COGNATES_TGT,$VAL_COGNATES_TGT"
 
-echo "ASSERTING NO OVERLAP OF SRC OR TGT SEGS BETWEEN TRAIN / DEV / TEST DATA"
+# 3.2.4 Assert there is no overlap of src and tgt segments (words) in the cognate prediction train / dev / test data
+echo ""
+echo "# 3.2.4 Assert there is no overlap of src and tgt segments (words) between the cognate prediction train / dev / test data #"
+echo "--First, will remove any existing overlap (and test)--"
 python -m CopperMT.assert_no_overlap_in_formatted_data \
-    --format_out_dir $FORMAT_OUT_DIR \
+    --format_out_dir "${FORMAT_OUT_DIR}/${SEED}" \
     --src $SRC \
     --tgt $TGT
 
+echo "--Now, will simply test for good measure--"
+python -m CopperMT.assert_no_overlap_in_formatted_data \
+    --format_out_dir "${FORMAT_OUT_DIR}/${SEED}" \
+    --src $SRC \
+    --tgt $TGT \
+    --TEST_ONLY
+
+echo "train_SC.sh: PASSED CopperMT/assert_no_overlap_in_formatted_data"
+
+# 3.2.5 Log the cognate predition data
+echo ""
+echo "# 3.2.5 Log the cognate predition data #"
 if [ $NO_GROUPING = true ]
 then
     LOG_F=cognate_dataset_log_NG=True.json
 else
     LOG_F=cognate_dataset_log_NG=False.json
 fi
-
 python Pipeline/cognate_dataset_log.py \
     -f $FORMAT_OUT_DIR/$SEED \
     -l ${SRC}-${TGT} \
     --LOG_F $LOG_F
 
+# 3.2.6 Write the CopperMT parameters file
 echo ""
-PARAMETERS_F="${PARAMETERS_DIR}/parameters.${SRC}-${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}.cfg"
+echo "# 3.2.6 Write the CopperMT parameters file #"
+PARAMETERS_F="${PARAMETERS_DIR}/parameters.${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}.cfg"
 python Pipeline/write_scripts.py \
     --src ${SRC} \
     --tgt ${TGT} \
@@ -329,8 +427,12 @@ python Pipeline/write_scripts.py \
     --sc_model_type ${SC_MODEL_TYPE} \
     --rnn_hyperparams_id ${RNN_HYPERPARAMS_ID} \
     --seed ${SEED} \
-    --parameters $PARAMETERS_F
+    --parameters $PARAMETERS_F \
+    --sc_model_id $SC_MODEL_ID
 
+# 3.2.7 Train the SC model with CopperMT
+echo ""
+echo "# 3.2.7 Train the SC model with CopperMT #"
 # train SC model
 conda activate copper
 echo "-- Training SC MODEL --"
@@ -338,22 +440,24 @@ echo "    TYPE=$SC_MODEL_TYPE"
 if [ $SC_MODEL_TYPE = "RNN" ]
 then
     # train RNN
-    echo "    bash ${COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan.sh ${PARAMETERS_F} ${SEED}"
-    bash "${COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan.sh" "${PARAMETERS_F}" "${SEED}"
+    echo "    bash ${COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan.sh ${PARAMETERS_F} ${SEED} ${NBEST} ${BEAM}"
+    bash "${COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan.sh" "${PARAMETERS_F}" "${SEED} ${NBEST} ${BEAM}"
 
     # select best model
-    WORKSPACE_SEED_DIR=$COPPERMT_DATA_DIR/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}
-    SELECTED_RNN_CHECKPOINT=${WORKSPACE_SEED_DIR}/checkpoints/selected.pt
-    if [ -f $SELECTED_RNN_CHECKPOINT ]
-    then
-        echo "    deleting $SELECTED_RNN_CHECKPOINT}"
-        rm $SELECTED_RNN_CHECKPOINT
-    fi
-    echo "   python Pipeline/select_checkpoint.py --dir ${WORKSPACE_SEED_DIR}"
-    python Pipeline/select_checkpoint.py --dir $WORKSPACE_SEED_DIR
-
+    WORKSPACE_SEED_DIR=$COPPERMT_DATA_DIR/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}
+    # SELECTED_RNN_CHECKPOINT=${WORKSPACE_SEED_DIR}/checkpoints/selected.pt
+    # if [ -f $SELECTED_RNN_CHECKPOINT ]
+    # then
+    #     echo "    deleting $SELECTED_RNN_CHECKPOINT}"
+    #     rm $SELECTED_RNN_CHECKPOINT
+    # fi
+    # echo "   python Pipeline/select_checkpoint.py --dir ${WORKSPACE_SEED_DIR}"
+    # python Pipeline/select_checkpoint.py --dir $WORKSPACE_SEED_DIR
     # cleanup other checkpoints
-    rm ${WORKSPACE_SEED_DIR}/checkpoints/checkpoint*
+    # rm ${WORKSPACE_SEED_DIR}/checkpoints/checkpoint*
+
+    SELECTED_RNN_CHECKPOINT=${WORKSPACE_SEED_DIR}/checkpoints/checkpoint_best.pt
+
 elif [ $SC_MODEL_TYPE = "SMT" ]
 then
     # train SMT
@@ -365,8 +469,24 @@ then
 #     exit
 fi
 
-INFERENCE_DATA_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/data/inference
-INFERENCE_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${SRC}
+
+    ###############################################
+#-- #            4) EVALUATE SC MODEL             # --#
+    ###############################################
+echo ""
+echo ""
+echo ""
+echo ""
+echo "    ###############################################"
+echo "#-- #            4) EVALUATE SC MODEL             # --#"
+echo "    ###############################################"
+
+# 4.1 Delete inference directories if pre-existing
+echo ""
+echo ""
+echo "######## 4.1 Delete inference directories if pre-existing ########"
+INFERENCE_DATA_DIR=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/data/inference
+INFERENCE_DIR=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${SRC}
 for directory in $INFERENCE_DATA_DIR $INFERENCE_DIR ; do
     if [ -d $directory ]; then
         echo "    deleting ${directory}"
@@ -374,20 +494,24 @@ for directory in $INFERENCE_DATA_DIR $INFERENCE_DIR ; do
     fi
 done
 
+# 4.2 Run inference on the val set
+echo ""
+echo ""
+echo "######## 4.2 Run inference on the val set ########"
 conda activate copper
 cd ${COPPERMT_DIR}/pipeline
-SPLIT_DATA=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/inputs/split_data/${SRC}_${TGT}/${SEED}
+SPLIT_DATA=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/inputs/split_data/${SRC}_${TGT}/${SEED}
 #### TEST SC ####
 # run on cognate test data
-SRC_TEXT=${SPLIT_DATA}/test_${SRC}_${TGT}.${SRC}
-REF_TEXT=${SPLIT_DATA}/test_${SRC}_${TGT}.${TGT}
+SRC_TEXT=${SPLIT_DATA}/fine_tune_${SRC}_${TGT}.${SRC}
+
 echo "Testing model"
 if [ $SC_MODEL_TYPE = "RNN" ]
 then
     echo "    main_nmt_bilingual_full_brendan_PREDICT.sh ${PARAMETERS_F} ${SELECTED_RNN_CHECKPOINT} ${SEED} test ${NBEST} ${BEAM}"
     bash "main_nmt_bilingual_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${SELECTED_RNN_CHECKPOINT}" "${SEED}" "test" "${NBEST}" "${BEAM}"
-    HYP_OUT_TXT=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
-    TEST_OUT_F=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.hyp.txt
+    HYP_OUT_TXT=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
+    TEST_OUT_F=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.hyp.txt
     
     # Go back to normal directory
     cd $MODULE_HOME_DIR
@@ -398,7 +522,7 @@ then
         --data $HYP_OUT_TXT \
         --out $TEST_OUT_F
 
-    SCORES_OUT_F=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.hyp.scores.txt
+    SCORES_OUT_F=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.hyp.scores.txt
 elif [ $SC_MODEL_TYPE = "SMT" ]
 then
     HYP_OUT=${SPLIT_DATA}/test_${SRC}_${TGT}.${TGT}
@@ -412,79 +536,18 @@ then
     conda activate sound
 fi
 
-# get scores
+# 4.3 Calculate scores
+conda activate sound
+echo ""
+echo ""
+echo "######## 4.3 Calculate scores ########"
+# REF_TEXT=${SPLIT_DATA}/test_${SRC}_${TGT}.${TGT}
+REF_TEXT=${SPLIT_DATA}/fine_tune_${SRC}_${TGT}.${TGT}
 echo "Calculating Scores"
 echo "    NMT/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_F}"
 python NMT/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_F}
 echo "    scores written to ${SCORES_OUT_F}"
 cat ${SCORES_OUT_F}
-
-# #### APPLY SC ####
-# COPPER_MT_PREP_OUT_DIR=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/inputs/split_data/${SRC}_${TGT}/inference
-# if [ -d $COPPER_MT_PREP_OUT_DIR ]; then
-#     echo "deleting ${COPPER_MT_PREP_OUT_DIR}"
-#     rm -r $COPPER_MT_PREP_OUT_DIR
-# fi
-# mkdir $COPPER_MT_PREP_OUT_DIR
-
-# COMMENT OUT
-# PARALLEL_FILES=( $PARALLEL_TRAIN $PARALLEL_VAL $PARALLEL_TEST )
-# IFS="," read -r -a APPLY_TO_FILES <<< $APPLY_TO
-# ALL_CSV_FILES=( "${PARALLEL_FILES[@]}" "${APPLY_TO_FILES[@]}" )
-# echo "-- APPLYING SC MODEL TO FILES --"
-# for f in ${ALL_CSV_FILES[@]} ; do
-#     if [ $f = "null" ]
-#     then
-#         echo "    DATA CSV F is null"
-#     else
-#         echo "    DATA CSV F: ${f}"
-#         echo ""
-#         python NMT/hr_CopperMT.py \
-#             --data $f \
-#             --out $COPPER_MT_PREP_OUT_DIR \
-#             -hr $SRC \
-#             -lr $TGT \
-#             --training_data $SPLIT_DATA \
-#             --limit_lang $SRC
-
-#         cd ${COPPERMT_DIR}/pipeline
-#         if [ $SC_MODEL_TYPE = "RNN" ]
-#         then
-#             conda activate copper
-#             echo "    main_nmt_bilingual_full_brendan_PREDICT.sh ${PARAMETERS_F} ${SELECTED_RNN_CHECKPOINT} ${SEED} inference ${NBEST} ${BEAM}"
-#             bash "main_nmt_bilingual_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${SELECTED_RNN_CHECKPOINT}" "${SEED}" "inference" "${NBEST}" "${BEAM}"
-#             COPPERMT_RESULTS=${COPPERMT_DATA_DIR}/${SRC}_${TGT}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/inference_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
-
-#             conda activate sound
-#             cd $MODULE_HOME_DIR
-#             python NMT/hr_CopperMT.py \
-#                 --function retrieve \
-#                 --data $f \
-#                 --CopperMT_results $COPPERMT_RESULTS \
-#                 -hr $SRC \
-#                 -lr $TGT \
-#                 --MODEL_ID $SC_MODEL_ID
-#         elif [ $SC_MODEL_TYPE = "SMT" ]
-#         then
-#             conda activate copper
-#             TEXT=$COPPER_MT_PREP_OUT_DIR/test_${SRC}_${TGT}.${SRC}
-#             HYP_OUT=$COPPER_MT_PREP_OUT_DIR/test_${SRC}_${TGT}.${TGT}
-#             echo "    main_smt_full_brendan_PREDICT.sh ${PARAMETERS_F} ${TEXT} ${HYP_OUT} ${SEED}"
-#             bash "main_smt_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${TEXT}" "${HYP_OUT}" "${SEED}"
-            
-#             HYP_OUT_F=$HYP_OUT.hyp.txt
-#             conda activate sound
-#             cd $MODULE_HOME_DIR
-#             python NMT/hr_CopperMT.py \
-#                 --function retrieve \
-#                 --data $f \
-#                 --CopperMT_SMT_results ${TEXT},${HYP_OUT_F} \
-#                 -hr $SRC \
-#                 -lr $TGT \
-#                 --MODEL_ID $SC_MODEL_ID
-#         fi
-#     fi
-# done
 
 
 echo "Finished-----------------------"

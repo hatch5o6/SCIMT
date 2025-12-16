@@ -1,0 +1,10 @@
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en_chosen_0.REVERSE_SRC_TGT/AUGMENT.SC_fr2mfe-en.REVERSE_SRC_TGT.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en_chosen_0.REVERSE_SRC_TGT/AUGMENT.mfe-en.REVERSE_SRC_TGT.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en_chosen_0.REVERSE_SRC_TGT/CHAR-PRETRAIN.SC_fr2mfe-en.REVERSE_SRC_TGT.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en_chosen_0.REVERSE_SRC_TGT/CHAR-PRETRAIN.fr-en.REVERSE_SRC_TGT.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en_chosen_0.REVERSE_SRC_TGT/NMT.mfe-en.REVERSE_SRC_TGT.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en_chosen_0.REVERSE_SRC_TGT/PRETRAIN.SC_fr2mfe-en.TEST-mfe-en.REVERSE_SRC_TGT.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en_chosen_0.REVERSE_SRC_TGT/PRETRAIN.SC_fr2mfe-en.no_grad_clip.REVERSE_SRC_TGT.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en_chosen_0.REVERSE_SRC_TGT/PRETRAIN.SC_fr2mfe-en.REVERSE_SRC_TGT.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en_chosen_0.REVERSE_SRC_TGT/PRETRAIN.fr-en.TEST-mfe-en.REVERSE_SRC_TGT.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en_chosen_0.REVERSE_SRC_TGT/PRETRAIN.fr-en.REVERSE_SRC_TGT.sh

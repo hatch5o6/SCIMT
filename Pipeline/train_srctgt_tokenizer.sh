@@ -19,8 +19,8 @@ echo ""
 echo "    DIST=$DIST"
 echo ""
 echo "    TRAIN_PARALLEL=$TRAIN_PARALLEL"
-echo "    VAL_PARALLEL=$VAL_PARALLEL"
-echo "    TEST_PARALLEL=$TEST_PARALLEL"
+# echo "    VAL_PARALLEL=$VAL_PARALLEL"
+# echo "    TEST_PARALLEL=$TEST_PARALLEL"
 echo "    TOK_TRAIN_DATA_DIR=$TOK_TRAIN_DATA_DIR"
 echo "    SC_MODEL_ID=$SC_MODEL_ID"
 echo "    VOCAB_SIZE=32000"
@@ -29,7 +29,9 @@ echo "    SPLIT_ON_WS=$SPLIT_ON_WS"
 echo "    INCLUDE_LANG_TOKS=$INCLUDE_LANG_TOKS" # TODO
 echo "    INCLUDE_PAD_TOK=$INCLUDE_PAD_TOK"
 echo "    SPECIAL_TOKS=$SPECIAL_TOKS" #TODO
+echo "    IS_ATT=$IS_ATT"
 echo "-------------------------------"
+
 
 if [ -d $TOK_TRAIN_DATA_DIR ]
 then
@@ -44,10 +46,9 @@ SRCTGT_TOK_DIR=${TOK_TRAIN_DATA_DIR}/${SRC_TOK_NAME}_${TGT_TOK_NAME}
 #TODO MAYBE INSTEAD PASS IN A LIST OF CSV FILES?
 python Pipeline/make_tok_training_data.py \
     --train_csvs $TRAIN_PARALLEL \
-    --val_csvs $VAL_PARALLEL  \
-    --test_csvs $TEST_PARALLEL  \
     --out $TOK_TRAIN_DATA_DIR \
-    --SC_MODEL_ID $SC_MODEL_ID
+    --SC_MODEL_ID $SC_MODEL_ID \
+    --IS_ATT $IS_ATT
 
 # TODO Finish this if needed:
 # USER_DEFINED_SYMBOLS
@@ -160,9 +161,6 @@ python NMT/spm_train.py \
 # done
 
 #Make SPM Training data for SC-applied data (Same process as Cognate Training data, but this time we're applying it to the the SC-processed data)
-
-
-#### TRAIN NMT MODEL ####
 
 echo "Created by Cognate/code/Pipeline/train_tokenizer.sh ${config_file}" > ${TOK_TRAIN_DATA_DIR}/notes
 date >> ${TOK_TRAIN_DATA_DIR}/notes

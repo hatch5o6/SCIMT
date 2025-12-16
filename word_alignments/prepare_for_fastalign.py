@@ -39,6 +39,9 @@ word_tokenize_langs = {
 from indicnlp.tokenize import indic_tokenize 
 indicnlp_langs = {"hi", "as", "bn", "bho"}
 
+from camel_tools.tokenizers.word import simple_word_tokenize as camel_simple_word_tokenize
+arabic_langs = {"ar", "aeb", "apc"}
+
 def prep(
     src_f,
     tgt_f,
@@ -62,6 +65,8 @@ def prep(
     elif src_lang in word_tokenize_langs:
         print("src_tokenize=nltk_tokenize, lang:", src_lang)
         src_tokenize = nltk_tokenize
+    elif src_lang in arabic_langs:
+        src_tokenize = camel_tokenize
     else:
         # src_tokenize = nltk_tokenize
         assert False
@@ -75,6 +80,8 @@ def prep(
     elif tgt_lang in word_tokenize_langs:
         print("tgt_tokenize=nltk_tokenize, lang:", tgt_lang)
         tgt_tokenize = nltk_tokenize
+    elif tgt_lang in arabic_langs:
+        tgt_tokenize = camel_tokenize
     else:
         # tgt_tokenize = nltk_tokenize
         assert False
@@ -111,6 +118,12 @@ def indic_word_tokenize(line, lang):
     tokens = indic_tokenize.trivial_tokenize_indic(line)
     return " ".join(tokens)
 
+def camel_tokenize(line, lang):
+    global arabic_langs
+    assert lang in arabic_langs
+    tokens = camel_simple_word_tokenize(line, split_digits=True)
+    return " ".join(tokens)
+
 def read_file(f):
     with open(f) as inf:
         lines = [line.strip() for line in inf]
@@ -129,6 +142,8 @@ def get_args():
     return args
 
 if __name__ == "__main__":
-    print("prepare_for_fastlign.py")
+    print("###########################")
+    print("# prepare_for_fastlign.py #")
+    print("###########################")
     args = get_args()
     prep(args.src, args.tgt, args.out)

@@ -1,0 +1,41 @@
+(sound) bash-5.1$ ls -l /home/hatch5o6/Cognate/code/Pipeline/cfg/SC
+total 19
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1350 Sep  4 13:08 bho-hi.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 2082 Sep  4 13:09 bn-as.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 2119 Sep  4 13:09 cs-hsb.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1298 Sep  4 13:09 djk-en.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1917 Sep  4 13:10 es-an.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1522 Sep  4 13:10 ewe-fon.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1522 Sep  4 13:10 fon-ewe.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1842 Sep  4 13:11 fr-mfe.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1557 Sep  4 13:11 hi-bho.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1561 Sep  4 13:11 lua-bem.cfg
+(sound) bash-5.1$ 
+(sound) bash-5.1$ 
+(sound) bash-5.1$ ls -l /home/hatch5o6/Cognate/code/Pipeline/cfg/SC_SMT
+total 18
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1305 Sep 12 13:07 bho-hi.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 2037 Sep 12 13:07 bn-as.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 2074 Sep 12 13:07 cs-hsb.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1253 Sep 12 13:07 djk-en.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1872 Sep 12 13:07 es-an.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1477 Sep 12 13:07 ewe-fon.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1477 Sep 12 13:07 fon-ewe.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1797 Sep 12 13:07 fr-mfe.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1512 Sep 12 13:07 hi-bho.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1516 Sep 12 13:07 lua-bem.smt.cfg
+(sound) bash-5.1$ 
+(sound) bash-5.1$ 
+(sound) bash-5.1$ 
+(sound) bash-5.1$ ls -l /home/hatch5o6/Cognate/code/Pipeline/cfg/SC_SMT_OLD
+total 17
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1277 Jul 16 12:51 bho-hi.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1981 Jul 31 14:04 bn-as.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 2018 Jul 16 12:51 cs-hsb.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1225 Jul 16 12:51 djk-en.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1816 Jul 16 12:51 es-an.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1421 Jul 16 12:51 ewe-fon.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1421 Jul 16 12:51 fon-ewe.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1741 Jul 16 12:51 fr-mfe.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1456 Jul 16 12:51 hi-bho.smt.cfg
+-rw-rw-r-- 1 hatch5o6 hatch5o6 1460 Jul 16 12:51 lua-bem.smt.cfg

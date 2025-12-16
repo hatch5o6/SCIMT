@@ -1,0 +1,1 @@
+tensorboard --logdir /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates --port 6007 --host 0.0.0.0

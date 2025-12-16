@@ -1,0 +1,7 @@
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TEST/mfe-en/AUGMENT.SC_fr2mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TEST/mfe-en/AUGMENT.mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TEST/mfe-en/CHAR-PRETRAIN.SC_fr2mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TEST/mfe-en/CHAR-PRETRAIN.fr-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TEST/mfe-en/NMT.mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TEST/mfe-en/PRETRAIN.SC_fr2mfe-en.sh
+sbatch /home/hatch5o6/Cognate/code/NMT/sbatch/TEST/mfe-en/PRETRAIN.fr-en.sh

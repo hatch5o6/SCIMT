@@ -1,3 +1,0 @@
-src_lang,tgt_lang,src_path,tgt_path
-hsb,de,/home/hatch5o6/nobackup/archive/data/WMT2021/train/cleaned/cleaned/src.txt,/home/hatch5o6/nobackup/archive/data/WMT2021/train/cleaned/cleaned/tgt.txt
-cs,de,/home/hatch5o6/nobackup/archive/data/CCMatrix_de_cs/cs-de/cleaned/src.10M.SC_{SC_MODEL_ID}_cs2hsb.txt,/home/hatch5o6/nobackup/archive/data/CCMatrix_de_cs/cs-de/cleaned/tgt.10M.txt

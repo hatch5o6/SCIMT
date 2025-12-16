@@ -7,6 +7,7 @@ def make_word_list(sent_pairs, alignments, VERBOSE=False, STOP=None):
     word_list = Counter()
 
     data = list(zip(sent_pairs, alignments))
+    ct_nbsp = 0
     for idx, ((src_sent, tgt_sent), word_alignments) in tqdm(enumerate(data), total=len(data)):
         if idx == STOP:
             break
@@ -16,18 +17,57 @@ def make_word_list(sent_pairs, alignments, VERBOSE=False, STOP=None):
             print(tgt_sent)
             print(word_alignments)
         # should already be tokenized and joined on whitespace, so no need for word_tokenize function
+            
+        # Found a NBSP in a fon (or ewe, but I think fon) sent, so we need to handle that.
+        FOUND_NBSP = False
+        if " " in src_sent:
+            src_sent = src_sent.replace(" ", "<NBSP>")
+            FOUND_NBSP = True
+        if " " in tgt_sent:
+            tgt_sent = tgt_sent.replace(" ", "<NBSP>")
+            FOUND_NBSP = True
+
+        if FOUND_NBSP:
+            ct_nbsp += 1
+
         src_words = src_sent.split()
+        src_words = replace_word_in_sent(src_words, "<NBSP>", " ")
         tgt_words = tgt_sent.split()
+        tgt_words = replace_word_in_sent(tgt_words, "<NBSP>", " ")
         max_len = max(len(src_words), len(tgt_words))
         word_alignments = word_alignments.split()
 
         for word_alignment in word_alignments:
             w1, w2 = tuple(word_alignment.split("-"))
             w1, w2 = int(w1), int(w2)
+            
+            try:
+                word_pair_x = (src_words[w1], tgt_words[w2])
 
-            word_list[(src_words[w1], tgt_words[w2])] += 1
+                # don't add cognate pairs with the NBSP
+                if " " not in word_pair_x:
+                    word_list[word_pair_x] += 1
+            except:
+                print("CODE BROKEN:")
+                print(f"\n\n--------------------- ({idx}) ------------------------")
+                print("SRC_SENT:", src_sent)
+                print("TGT_SENT:", tgt_sent)
+                print(word_alignments)
+                print(f"--Alignment {idx}--")
+                print(word_alignment)
+                print("SRC_WORDS:", len(src_words), src_words)
+                print("TGT_WORDS:", len(tgt_words), tgt_words)
+                exit()
+
+    print(f"{ct_nbsp} sentence pairs have a NBSP")
 
     return word_list
+
+def replace_word_in_sent(sent, word, replace_word):
+    for idx, w in enumerate(sent):
+        if w == word:
+            sent[idx] = replace_word
+    return sent
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -44,7 +84,9 @@ def get_args():
     return args
 
 if __name__ == "__main__":
-    print("make_word_alignments_no_grouping.py")
+    print("#######################################")
+    print("# make_word_alignments_no_grouping.py #")
+    print("#######################################")
     args = get_args()
     with open(args.alignments) as inf:
         alignments = [line.strip() for line in inf]
@@ -62,6 +104,18 @@ if __name__ == "__main__":
         STOP=args.STOP
     )
 
-    with open(args.out, "w") as outf:
-        for word_a, word_b in word_list.keys():
-            outf.write(f"{word_a.strip()} ||| {word_b.strip()}\n")
+    word_list_ordered = []
+    for word_pair, ct in word_list.items():
+        assert isinstance(word_pair, tuple)
+        assert len(word_pair) == 2
+        word_list_ordered.append((ct, word_pair))
+    word_list_ordered.sort(reverse=True)
+
+    ordered_out = args.out # + ".ordered.txt"
+    with open(ordered_out, "w") as outf:
+        for ct, (word_a, word_b) in word_list_ordered:
+            outf.write(f"{ct} ||| {word_a.strip()} ||| {word_b.strip()}\n")
+
+    # with open(args.out, "w") as outf:
+    #     for word_a, word_b in word_list.keys():
+    #         outf.write(f"{word_a.strip()} ||| {word_b.strip()}\n")

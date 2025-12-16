@@ -1,0 +1,10 @@
+sh NMT/sbatch/TRAIN.REVERSE_SRC_TGT/hsb-de/all_except_finetune.sh 
+sh NMT/sbatch/TRAIN.REVERSE_SRC_TGT/mfe-en/all_except_finetune.sh 
+sh NMT/sbatch/TRAIN.REVERSE_SRC_TGT/an-en/all_except_finetune.sh 
+sh NMT/sbatch/TRAIN.REVERSE_SRC_TGT/as-hi/all_except_finetune.sh 
+sh NMT/sbatch/TRAIN.REVERSE_SRC_TGT/bem-en/all_except_finetune.sh 
+sh NMT/sbatch/TRAIN.REVERSE_SRC_TGT/bho-as/all_except_finetune.sh 
+sh NMT/sbatch/TRAIN.REVERSE_SRC_TGT/bho-hi/all_except_finetune.sh 
+sh NMT/sbatch/TRAIN.REVERSE_SRC_TGT/djk-en/all_except_finetune.sh 
+sh NMT/sbatch/TRAIN.REVERSE_SRC_TGT/ewe-en/all_except_finetune.sh 
+sh NMT/sbatch/TRAIN.REVERSE_SRC_TGT/fon-fr/all_except_finetune.sh 

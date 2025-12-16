@@ -1,3 +1,0 @@
-src_lang,tgt_lang,src_path,tgt_path
-ewe,fr,/home/hatch5o6/nobackup/archive/data/polynews_parallel/fra_Latn-ewe_Latn/cleaned/cleaned/tgt.SC_{SC_MODEL_ID}_ewe2fon.txt,/home/hatch5o6/nobackup/archive/data/polynews_parallel/fra_Latn-ewe_Latn/cleaned/cleaned/src.txt
-ewe,fr,/home/hatch5o6/nobackup/archive/data/NLLB/fr_ee/cleaned/src.SC_{SC_MODEL_ID}_ewe2fon.txt,/home/hatch5o6/nobackup/archive/data/NLLB/fr_ee/cleaned/tgt.txt
