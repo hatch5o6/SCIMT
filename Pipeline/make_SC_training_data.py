@@ -10,8 +10,8 @@ from parallel_datasets import MultilingualDataset
 
 def get_data(
     train_csv,
-    val_csv,
-    test_csv,
+    # val_csv,
+    # test_csv,
     src_out,
     tgt_out,
     src_lang,
@@ -25,7 +25,11 @@ def get_data(
         limit_tgt_langs = [tgt_lang]
 
     DATASETS = []
-    for f in [train_csv, val_csv, test_csv]:
+    for f in [
+        train_csv, 
+        # val_csv, 
+        # test_csv
+    ]:
         dataset = get_dataset(f, limit_src_langs, limit_tgt_langs)
         if dataset is not None:
             DATASETS.append(dataset)
@@ -62,8 +66,8 @@ def get_dataset(csv_f, limit_src_langs, limit_tgt_langs):
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--train_csv", help="csv file or string 'null'")
-    parser.add_argument("--val_csv", help="csv file or string 'null'")
-    parser.add_argument("--test_csv", help="csv file or string 'null'")
+    # parser.add_argument("--val_csv", help="csv file or string 'null'")
+    # parser.add_argument("--test_csv", help="csv file or string 'null'")
     parser.add_argument("--src_out")
     parser.add_argument("--tgt_out")
     parser.add_argument("--src", help="for filtering src langs in the data csv file")
@@ -82,8 +86,8 @@ if __name__ == "__main__":
     args = get_args()
     get_data(
         train_csv=args.train_csv,
-        val_csv=args.val_csv,
-        test_csv=args.test_csv,
+        # val_csv=args.val_csv,
+        # test_csv=args.test_csv,
         src_out=args.src_out, 
         tgt_out=args.tgt_out,
         src_lang=args.src,

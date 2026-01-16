@@ -28,6 +28,7 @@ SBATCH_TEMPLATE="""
 
 nvidia-smi
 
+python Pipeline/clean_slurm_outputs.py
 bash Pipeline/train_SC.sh {CFG}
 python Pipeline/clean_slurm_outputs.py
 rm /home/hatch5o6/Cognate/code/core*
@@ -41,7 +42,7 @@ rm /home/hatch5o6/Cognate/code/core*
 # LAYERS = [1, 2, 4]
 # # ATTS = ['luong-dot', 'luong-general', 'bahdanua-dot'] -- None, Bahdanau, Luong (dot, concat, general)
 
-# Let's start with this:
+
 LEARNING_RATES = [0.001]
 BATCH_SIZES = [16, 64, 256, 512]
 

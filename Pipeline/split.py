@@ -11,7 +11,9 @@ def split_data(
     test_rat,
     seed,
     out_dir,
-    UNIQUE_TEST
+    UNIQUE_TEST,
+    min_val_size=250,
+    max_val_size=1100
 ):
     assert train_rat + val_rat + test_rat == 1
 
@@ -42,12 +44,24 @@ def split_data(
 
     random.shuffle(data)
 
-    train_end = round(train_rat * len(data))
-    val_end = train_end + round(val_rat * len(data))
+    assert test_rat == 0
+    assert val_rat + train_rat == 1
+    val_amount = round(val_rat * len(data))
+    print(f"UNBOUNDED VAL AMMOUNT: {val_amount}")
+    # bound val_amount between 200 and 1000
+    val_amount = max(min_val_size, val_amount)
+    val_amount = min(max_val_size, val_amount)
+    print(f"VAL AMMOUNT BOUNDED ({min_val_size}-{max_val_size}): {val_amount}")
+    train_amount = len(data) - val_amount
+
+    train_end = train_amount
+    val_end = train_end + val_amount
 
     train = data[:train_end]
     val = data[train_end:val_end]
     test = data[val_end:]
+
+    assert test == []
 
     print("asserting split occurred correctly")
     assert train + val + test == data
@@ -55,6 +69,7 @@ def split_data(
 
     if UNIQUE_TEST:
         print("MAKING TEST AND VAL SOURCE-SIDE UNIQUE")
+        print(f"\tTEST before: {len(test)}")
         unique_test = {}
         for src, tgt in test:
             if src in unique_test:
@@ -62,7 +77,9 @@ def split_data(
             else:
                 unique_test[src] = tgt
         test = [(src, tgt) for src, tgt in unique_test.items()]
+        print(f"\tTEST after: {len(test)}")
 
+        print(f"\n\tVAL before: {len(val)}")
         unique_val = {}
         for src, tgt in val:
             if src in unique_val:
@@ -70,9 +87,13 @@ def split_data(
             else:
                 unique_val[src] = tgt
         val = [(src, tgt) for src, tgt in unique_val.items()]
+        print(f"\tVAL after: {len(val)}")
     else:
         print("NORMAL TEST AND VAL")
     
+    assert sorted(test) == sorted(list(set(test))), f"TEST COGNATES FAILED TO BE SOURCE-SIDE UNIQUE"
+    assert sorted(val) == sorted(list(set(val))), f"VAL COGNATES FAILED TO BE SOURCE-SIDE UNIQUE"
+
     write_split(train, train1_out_f, train2_out_f)
     write_split(val, val1_out_f, val2_out_f)
     write_split(test, test1_out_f, test2_out_f)

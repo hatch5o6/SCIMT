@@ -68,7 +68,7 @@ rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/ar-*
 # exit
 
 python Pipeline/make_hyperparam_search_space.py \
-    --cfgs Pipeline/cfg/SC/fr-mfe.cfg,Pipeline/cfg/SC/es-an.cfg,Pipeline/cfg/SC/cs-hsb.cfg,Pipeline/cfg/SC/bn-as.cfg,Pipeline/cfg/SC/bho-hi.cfg,Pipeline/cfg/SC/djk-en.cfg,Pipeline/cfg/SC/ewe-fon.cfg,Pipeline/cfg/SC/fon-ewe.cfg,Pipeline/cfg/SC/hi-bho.cfg,Pipeline/cfg/SC/lua-bem.cfg,Pipeline/cfg/SC/en-djk.ATT.cfg,Pipeline/cfg/SC/ar-aeb.cfg,Pipeline/cfg/SC/ar-apc.cfg
+    --cfgs Pipeline/cfg/SC/fr-mfe.cfg,Pipeline/cfg/SC/es-an.cfg,Pipeline/cfg/SC/bn-as.cfg,Pipeline/cfg/SC/bho-hi.cfg,Pipeline/cfg/SC/djk-en.cfg,Pipeline/cfg/SC/ewe-fon.cfg,Pipeline/cfg/SC/fon-ewe.cfg,Pipeline/cfg/SC/hi-bho.cfg,Pipeline/cfg/SC/lua-bem.cfg,Pipeline/cfg/SC/en-djk.ATT.cfg,Pipeline/cfg/SC/ar-aeb.cfg,Pipeline/cfg/SC/ar-apc.cfg
 
 # echo "CREATED SEARCH SPACE BUT DID NOT RUN"
 # exit

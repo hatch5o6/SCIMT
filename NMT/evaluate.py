@@ -90,12 +90,19 @@ if __name__ == "__main__":
     parser.add_argument("--ref")
     parser.add_argument("--hyp")
     parser.add_argument("--out")
+    parser.add_argument("--REPLACE_UNK", action="store_true", default=False, help="if passed, will replace unknown tokens `?` and `>` with `<<unk>>` in reference")
     args = parser.parse_args()
     print("Arguments:")
     for k, v in vars(args).items():
         print(f"\t- {k}: `{v}`")
     
     ref = read_data(args.ref)
+    if args.REPLACE_UNK:
+        for rx, r in enumerate(ref):
+            r = r.replace("?", "<<unk>>")
+            r = r.replace(">", "<<unk>>")
+            ref[rx] = r
+
     hyp = read_data(args.hyp)
 
     bleu_score = calc_bleu(hyp=hyp, refs=[ref])

@@ -37,7 +37,7 @@ def compile(
         "dropout": 10,
         "learning_rate": 11,
         "BLEU": 12,
-        "chrF": 13
+        # "chrF": 13
     }
 
     for lang in langs:
@@ -50,14 +50,17 @@ def compile(
         lang_workbook = xlsxwriter.Workbook(out_f)
         header_format = lang_workbook.add_format({"bold": True})
         rnn_id_format = lang_workbook.add_format({"bold": True, "bg_color": Color("#DFDFE1"), "align": "right"})
-        chrF_format = lang_workbook.add_format({"bg_color": Color("#E2DDAC")})
-        best_chrF_format = lang_workbook.add_format({"bold": True, "bg_color": Color("#E3D970")})
+        # chrF_format = lang_workbook.add_format({"bg_color": Color("#E2DDAC")})
+        # best_chrF_format = lang_workbook.add_format({"bold": True, "bg_color": Color("#E3D970")})
         BLEU_format = lang_workbook.add_format({"bg_color": Color("#AFC7F7")})
         best_BLEU_format = lang_workbook.add_format({"bold": True, "bg_color": Color("#78A3FA")})
         param_format = lang_workbook.add_format({"align": "right"})
         
         assert lang not in BEST_LANG_CONFIGS
-        BEST_LANG_CONFIGS[lang] = {"BLEU": {}, "chrF": {}}
+        BEST_LANG_CONFIGS[lang] = {
+            "BLEU": {}, 
+            # "chrF": {}
+        }
 
         worksheet = lang_workbook.add_worksheet()
         for key, idx in header.items():
@@ -65,7 +68,7 @@ def compile(
 
         visited_rnn_ids = set()
         BEST_BLEU = None
-        BEST_chrF = None
+        # BEST_chrF = None
         for f in tqdm(os.listdir(rnn_hyperparams_dir) + ["SMT"]):
             if f == "SMT":
                 results_rnn_params = {
@@ -113,13 +116,14 @@ def compile(
                 print("asserting rnn_params == results_rnn_params")
                 assert rnn_params == results_rnn_params
                 print("\tpassed :)")
-                scores_f = os.path.join(COPPERMT_results_dir, f"workspace/reference_models/bilingual/rnn_{src_lang}-{tgt_lang}/0/results/test_selected_checkpoint_{src_lang}_{tgt_lang}.{tgt_lang}/generate-test.hyp.scores.txt")
+                # scores_f = os.path.join(COPPERMT_results_dir, f"workspace/reference_models/bilingual/rnn_{src_lang}-{tgt_lang}/0/results/test_selected_checkpoint_{src_lang}_{tgt_lang}.{tgt_lang}/generate-test.hyp.scores.txt")
+                scores_f = os.path.join(COPPERMT_results_dir, f"workspace/reference_models/bilingual/rnn_{src_lang}-{tgt_lang}/0/results/test_on_val_selected_checkpoint_{src_lang}_{tgt_lang}.{tgt_lang}/generate-valid.hyp.scores.txt.wo_replace_unk.txt")
             
             
             if os.path.exists(scores_f):
-                BLEU, chrF = read_scores(scores_f)
+                BLEU = read_scores(scores_f)
             else:
-                BLEU, chrF = -1, -1
+                BLEU = -1
                 print("Scores file does not exist:", scores_f)
 
             assert rnn_id not in visited_rnn_ids
@@ -131,30 +135,38 @@ def compile(
                 if param in ["share_encoder", "share_decoder"]: continue
                 worksheet.write(int(rnn_id) + 1, header[param], param_val, param_format)
             worksheet.write(int(rnn_id) + 1, header["BLEU"], BLEU, BLEU_format)
-            worksheet.write(int(rnn_id) + 1, header["chrF"], chrF, chrF_format)
+            # worksheet.write(int(rnn_id) + 1, header["chrF"], chrF, chrF_format)
 
             if BEST_BLEU is None:
                 BEST_BLEU = (int(rnn_id) + 1, header["BLEU"], BLEU, BLEU_format)
+                BEST_LANG_CONFIGS[lang]["BLEU"]["params"] = results_rnn_params
+                BEST_LANG_CONFIGS[lang]["BLEU"]["BLEU"] = BLEU
+                # BEST_LANG_CONFIGS[lang]["BLEU"]["chrF"] = chrF
+                BEST_LANG_CONFIGS[lang]["BLEU"]["rnn_id"] = rnn_id
             else:
                 if BLEU > BEST_BLEU[2]:
                     BEST_BLEU = (int(rnn_id) + 1, header["BLEU"], BLEU, BLEU_format)
                     BEST_LANG_CONFIGS[lang]["BLEU"]["params"] = results_rnn_params
                     BEST_LANG_CONFIGS[lang]["BLEU"]["BLEU"] = BLEU
-                    BEST_LANG_CONFIGS[lang]["BLEU"]["chrF"] = chrF
+                    # BEST_LANG_CONFIGS[lang]["BLEU"]["chrF"] = chrF
                     BEST_LANG_CONFIGS[lang]["BLEU"]["rnn_id"] = rnn_id
             
-            if BEST_chrF is None:
-                BEST_chrF = (int(rnn_id) + 1, header["chrF"], chrF, chrF_format)
-            else:
-                if chrF > BEST_chrF[2]:
-                    BEST_chrF = (int(rnn_id) + 1, header["chrF"], chrF, chrF_format)
-                    BEST_LANG_CONFIGS[lang]["chrF"]["params"] = results_rnn_params
-                    BEST_LANG_CONFIGS[lang]["chrF"]["chrF"] = chrF
-                    BEST_LANG_CONFIGS[lang]["chrF"]["BLEU"] = BLEU
-                    BEST_LANG_CONFIGS[lang]["chrF"]["rnn_id"] = rnn_id
+            # if BEST_chrF is None:
+            #     BEST_chrF = (int(rnn_id) + 1, header["chrF"], chrF, chrF_format)
+            #     BEST_LANG_CONFIGS[lang]["chrF"]["params"] = results_rnn_params
+            #     BEST_LANG_CONFIGS[lang]["chrF"]["chrF"] = chrF
+            #     BEST_LANG_CONFIGS[lang]["chrF"]["BLEU"] = BLEU
+            #     BEST_LANG_CONFIGS[lang]["chrF"]["rnn_id"] = rnn_id
+            # else:
+            #     if chrF > BEST_chrF[2]:
+            #         BEST_chrF = (int(rnn_id) + 1, header["chrF"], chrF, chrF_format)
+            #         BEST_LANG_CONFIGS[lang]["chrF"]["params"] = results_rnn_params
+            #         BEST_LANG_CONFIGS[lang]["chrF"]["chrF"] = chrF
+            #         BEST_LANG_CONFIGS[lang]["chrF"]["BLEU"] = BLEU
+            #         BEST_LANG_CONFIGS[lang]["chrF"]["rnn_id"] = rnn_id
 
         worksheet.write(BEST_BLEU[0], BEST_BLEU[1], BEST_BLEU[2], best_BLEU_format)
-        worksheet.write(BEST_chrF[0], BEST_chrF[1], BEST_chrF[2], best_chrF_format)
+        # worksheet.write(BEST_chrF[0], BEST_chrF[1], BEST_chrF[2], best_chrF_format)
 
         worksheet.autofit()
         lang_workbook.close()
@@ -163,7 +175,7 @@ def compile(
     best_workbook = xlsxwriter.Workbook(best_out_f)
     best_header_format = best_workbook.add_format({"bold": True})
     best_rnn_id_format = best_workbook.add_format({"bold": True, "bg_color": Color("#DFDFE1"), "align": "right"})
-    best_best_chrF_format = best_workbook.add_format({"bold": True, "bg_color": Color("#E3D970")})
+    # best_best_chrF_format = best_workbook.add_format({"bold": True, "bg_color": Color("#E3D970")})
     best_best_BLEU_format = best_workbook.add_format({"bold": True, "bg_color": Color("#78A3FA")})
     best_param_format = lang_workbook.add_format({"align": "right"})
     
@@ -194,8 +206,8 @@ def compile(
                     best_worksheet.write((lx * 2) + cx + 1, idx + 2, configs["params"][key], best_param_format)
                 elif key == "RNN_ID":
                     best_worksheet.write((lx * 2) + cx + 1, idx + 2, configs["rnn_id"], best_rnn_id_format)
-                elif key == "chrF":
-                    best_worksheet.write((lx * 2) + cx + 1, idx + 2, configs["chrF"], best_best_chrF_format)
+                # elif key == "chrF":
+                #     best_worksheet.write((lx * 2) + cx + 1, idx + 2, configs["chrF"], best_best_chrF_format)
                 elif key == "BLEU":
                     best_worksheet.write((lx * 2) + cx + 1, idx + 2, configs["BLEU"], best_best_BLEU_format)
     best_worksheet.autofit()
@@ -239,7 +251,7 @@ def read_scores(f):
     with open(f) as inf:
         lines = [l.rstrip() for l in inf.readlines()]
     BLEU = None
-    chrF = None
+    # chrF = None
     for l, line in enumerate(lines):
         if l == 0:
             assert line == "Scores:"
@@ -250,16 +262,23 @@ def read_scores(f):
         elif l == 3:
             assert line == ""
         elif l == 4:
-            assert line.startswith("BLEU: ")
-            assert BLEU == None
-            BLEU = float(line.split("BLEU: ")[1])
+            assert line.startswith("BLEU_DETAILS: BLEU = ")
         elif l == 5:
-            assert line.startswith("chrF: ")
-            assert chrF == None
-            chrF = float(line.split("chrF: ")[1])
+            assert line.startswith("BLEU_SCORE: ")
+            BLEU = float(line.strip().split("BLEU_SCORE: ")[-1])
+        # elif l == 6:
+        #     assert line.startswith("FAIRSEQ_BLEU: BLEU = ")
+        # elif l == 4:
+        #     assert line.startswith("BLEU: ")
+        #     assert BLEU == None
+        #     BLEU = float(line.split("BLEU: ")[1])
+        # elif l == 5:
+        #     assert line.startswith("chrF: ")
+        #     assert chrF == None
+        #     chrF = float(line.split("chrF: ")[1])
     assert BLEU is not None
-    assert chrF is not None
-    return BLEU, chrF
+    # assert chrF is not None
+    return BLEU
 
 
 def read_rnn_params_f(f):

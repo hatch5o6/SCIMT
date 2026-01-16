@@ -1,2 +1,0 @@
-source,hyp,id,score
-Australopithecus,Austrałopithecus,250,-16.0207

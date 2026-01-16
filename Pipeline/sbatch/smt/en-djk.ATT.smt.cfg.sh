@@ -11,8 +11,9 @@
 #SBATCH --mail-user thebrendanhatch@gmail.com
 #SBATCH --output /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/SC_smt/%j_%x.out
 #SBATCH --job-name=SC_smt.en-djk.ATT
-#SBATCH --qos dw87
+#SBATCH --qos matrix
 
+python Pipeline/clean_slurm_outputs.py
 bash Pipeline/train_SC.sh /home/hatch5o6/Cognate/code/Pipeline/cfg/SC_SMT/en-djk.ATT.smt.cfg
 python Pipeline/clean_slurm_outputs.py
 rm /home/hatch5o6/Cognate/code/core*

@@ -111,8 +111,6 @@ echo "######## 2.2 Gather parallel data from which cognates are extracted ######
 # --src and --tgt are for filtering on $SRC and $TGT language pairs (the langauges we want cognates for)
 python Pipeline/make_SC_training_data.py \
     --train_csv $PARALLEL_TRAIN \
-    --val_csv $PARALLEL_VAL \
-    --test_csv $PARALLEL_TEST \
     --src_out $SRC_F \
     --tgt_out $TGT_F \
     --src $SRC \
@@ -437,11 +435,17 @@ echo "# 3.2.7 Train the SC model with CopperMT #"
 conda activate copper
 echo "-- Training SC MODEL --"
 echo "    TYPE=$SC_MODEL_TYPE"
+echo "    PARAMETERS_F=$PARAMETERS_F"
+echo "    SEED=$SEED"
+echo "    NBEST=$NBEST"
+echo "    BEAM=$BEAM"
 if [ $SC_MODEL_TYPE = "RNN" ]
 then
     # train RNN
     echo "    bash ${COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan.sh ${PARAMETERS_F} ${SEED} ${NBEST} ${BEAM}"
-    bash "${COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan.sh" "${PARAMETERS_F}" "${SEED} ${NBEST} ${BEAM}"
+    bash "${COPPERMT_DIR}/pipeline/main_nmt_bilingual_full_brendan.sh" "${PARAMETERS_F}" "${SEED}" "${NBEST}" "${BEAM}"
+    # echo "EXITING FOR NOW, TO TEST :) ppppppppp"
+    # exit
 
     # select best model
     WORKSPACE_SEED_DIR=$COPPERMT_DATA_DIR/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}
@@ -456,7 +460,7 @@ then
     # cleanup other checkpoints
     # rm ${WORKSPACE_SEED_DIR}/checkpoints/checkpoint*
 
-    SELECTED_RNN_CHECKPOINT=${WORKSPACE_SEED_DIR}/checkpoints/checkpoint_best.pt
+    SELECTED_RNN_CHECKPOINT=${WORKSPACE_SEED_DIR}/checkpoints/checkpoint_best.selected.pt
 
 elif [ $SC_MODEL_TYPE = "SMT" ]
 then
@@ -504,14 +508,15 @@ SPLIT_DATA=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAM
 #### TEST SC ####
 # run on cognate test data
 SRC_TEXT=${SPLIT_DATA}/fine_tune_${SRC}_${TGT}.${SRC}
+SRC_VOCAB=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/data/${SEED}/data-bin/dict.${SRC}.txt
 
 echo "Testing model"
 if [ $SC_MODEL_TYPE = "RNN" ]
 then
     echo "    main_nmt_bilingual_full_brendan_PREDICT.sh ${PARAMETERS_F} ${SELECTED_RNN_CHECKPOINT} ${SEED} test ${NBEST} ${BEAM}"
     bash "main_nmt_bilingual_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${SELECTED_RNN_CHECKPOINT}" "${SEED}" "test" "${NBEST}" "${BEAM}"
-    HYP_OUT_TXT=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.txt
-    TEST_OUT_F=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.hyp.txt
+    HYP_OUT_TXT=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_on_val_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-valid.txt
+    TEST_OUT_F=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_on_val_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-valid.hyp.txt
     
     # Go back to normal directory
     cd $MODULE_HOME_DIR
@@ -519,13 +524,16 @@ then
     python NMT/hr_CopperMT.py \
         --function get_test_results \
         --test_src $SRC_TEXT \
+        --source_vocab $SRC_VOCAB \
         --data $HYP_OUT_TXT \
         --out $TEST_OUT_F
 
-    SCORES_OUT_F=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-test.hyp.scores.txt
+    SCORES_OUT_F=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}/results/test_on_val_selected_checkpoint_${SRC}_${TGT}.${TGT}/generate-valid.hyp.scores.txt
+    FAIRSEQ_HYP=$HYP_OUT_TXT
+    TGT_VOCAB=${COPPERMT_DATA_DIR}/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/data/${SEED}/data-bin/dict.${TGT}.txt
 elif [ $SC_MODEL_TYPE = "SMT" ]
 then
-    HYP_OUT=${SPLIT_DATA}/test_${SRC}_${TGT}.${TGT}
+    HYP_OUT=${SPLIT_DATA}/fine_tune_${SRC}_${TGT}.${TGT}
     echo "    main_smt_full_brendan_PREDICT.sh ${PARAMETERS_F} ${SRC_TEXT} ${HYP_OUT} ${SEED}"
     bash "main_smt_full_brendan_PREDICT.sh" "${PARAMETERS_F}" "${SRC_TEXT}" "${HYP_OUT}" "${SEED}"
     TEST_OUT_F=$HYP_OUT.hyp.txt    
@@ -534,22 +542,32 @@ then
     # Go back to normal directory
     cd $MODULE_HOME_DIR
     conda activate sound
+    FAIRSEQ_HYP=null
+    TGT_VOCAB=null
 fi
 
 # 4.3 Calculate scores
-conda activate sound
+conda activate copper
 echo ""
 echo ""
 echo "######## 4.3 Calculate scores ########"
 # REF_TEXT=${SPLIT_DATA}/test_${SRC}_${TGT}.${TGT}
 REF_TEXT=${SPLIT_DATA}/fine_tune_${SRC}_${TGT}.${TGT}
 echo "Calculating Scores"
-echo "    NMT/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_F}"
-python NMT/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_F}
+echo "    python Pipeline/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_F} --hyp_out_txt ${FAIRSEQ_HYP} --REPLACE_UNK --target_vocab ${TGT_VOCAB}"
+python Pipeline/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_F} --hyp_out_txt ${FAIRSEQ_HYP} --REPLACE_UNK --target_vocab ${TGT_VOCAB}
 echo "    scores written to ${SCORES_OUT_F}"
 cat ${SCORES_OUT_F}
+echo ""
+echo ""
+SCORES_OUT_WO_REPLACE_UNK_F=${SCORES_OUT_F}.wo_replace_unk.txt
+echo "Calculating Scores w/o replacing <unk> in the reference"
+echo "    python Pipeline/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_WO_REPLACE_UNK_F} --hyp_out_txt ${FAIRSEQ_HYP}"
+python Pipeline/evaluate.py --ref ${REF_TEXT} --hyp ${TEST_OUT_F} --out ${SCORES_OUT_WO_REPLACE_UNK_F} --hyp_out_txt ${FAIRSEQ_HYP}
+echo "    scores written to ${SCORES_OUT_WO_REPLACE_UNK_F}"
+cat ${SCORES_OUT_WO_REPLACE_UNK_F}
 
-
+conda activate sound
 echo "Finished-----------------------"
 date
 echo "-------------------------------"

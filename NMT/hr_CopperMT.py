@@ -7,12 +7,15 @@ punctuation += "-—¡¿؟؛،٪»«›‹”“〞❮❯❛❟%."
 import re
 import csv
 
+print("loading indicnlp tokenizer")
 from indicnlp.tokenize import indic_tokenize 
 indicnlp_langs = {"hi", "as", "bn", "bho"}
 
+print("loading camel_tools tokenizer")
 from camel_tools.tokenizers.word import simple_word_tokenize as camel_simple_word_tokenize
 arabic_langs = {"ar", "aeb", "apc"}
 
+print("loading nltk tokenizer")
 import nltk
 from nltk.tokenize import word_tokenize as NLTK_word_tokenize
 nltk_tokenize_langs = {
@@ -33,6 +36,7 @@ nltk_tokenize_langs = {
     "mas": "czech"
 }
 
+print("loading spacy tokenizer")
 import spacy
 es_nlp = spacy.load('es_core_news_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
 multi_nlp = spacy.load('xx_sent_ud_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
@@ -47,9 +51,11 @@ spacy_nlp = {
     "ewe": multi_nlp,
     "fon": multi_nlp
 }
-
+print("ALL TOKENIZERS LOADED")
 from parallel_datasets import MultilingualDataset
 from torch.utils.data import DataLoader
+
+UNK_TOK_STANDIN = "ξ"
 
 # EOS = "<EOS>"
 
@@ -329,20 +335,47 @@ def retrieve(
         print("UNIQUE WORDS IN ORIG DATA:", len(unique_orig_words))
         print("WORDS IN COPPER MT RESULTS:", len(CopperMT_results))
     
-def get_test_results(source_f, results_f, out_f):
+def read_vocab(f):
+    vocab = set()
+    with open(f) as inf:
+        for line in inf.readlines():
+            token, idx = tuple(line.rstrip().split())
+            assert token not in vocab
+            vocab.add(token)
+    return vocab
+
+def get_unique_chars(words):
+    unique_chars = set()
+    for word in words:
+        unique_chars.update(word.split())
+    return unique_chars
+
+def get_test_results(source_f, source_vocab_f, results_f, out_f):
     with open(source_f) as inf:
         source = [line.strip() for line in inf.readlines()]
+    unique_chars_in_source_words = get_unique_chars(source)
+    source_vocab = read_vocab(source_vocab_f)
+    oov = unique_chars_in_source_words.difference(source_vocab)
     results = read_CopperMT_Results(results_f, RETURN_SPACED=True)
     hyps = []
     NOT_IN_RESULTS = []
-    for src_word in source:
+    for og_src_word in source:
+        src_word = og_src_word
         # print("SRC WORD:", src_word)
         # assert src_word in results.keys()
+
+        for char in oov:
+            src_word = src_word.replace(char, UNK_TOK_STANDIN)
+        src_word = src_word.replace(UNK_TOK_STANDIN, "<unk>")
+
         if src_word not in results.keys():
             print(f"src_word `{src_word}` not in results. Will try replacing _ with <unk>: ")
             src_word = src_word.replace("_", "<unk>")
             print(f"\tFixed src_word: `{src_word}`")
             # assert src_word in results.keys()
+
+        if src_word != og_src_word:
+            print(f"Converted source word `{og_src_word}` to `{src_word}`")
 
         if src_word in results.keys():
             hyp = results[src_word].strip()
@@ -423,12 +456,14 @@ def read_CopperMT_Results(results_f, RETURN_SPACED=False, log_p_thresh=None):
     # print("\n\n")
 
     data_rows = []
-    for line in lines:
+    for lx, line in enumerate(lines):
         split_line = line.split("|")
         if len(split_line) == 4:
             assert split_line[1].strip() == "INFO"
             continue
         elif line.startswith("Generate test with beam="):
+            continue
+        elif line.startswith("Generate valid with beam="):
             continue
         else:
             # should be a good line :)
@@ -438,7 +473,7 @@ def read_CopperMT_Results(results_f, RETURN_SPACED=False, log_p_thresh=None):
                 line.startswith("H-"),
                 line.startswith("D-"),
                 line.startswith("P-"),
-            ])
+            ]), f"line ({lx}) `{line}` does not begin with S-, T-, H-, D-, or P-"
             data_rows.append(line)
     
     # print("\nLAST 10 LINES IN DATA ROWS")
@@ -597,6 +632,7 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--data")
     parser.add_argument("--test_src")
+    parser.add_argument("--source_vocab")
     parser.add_argument("--out")
     parser.add_argument("-hr", "--hr_lang")
     parser.add_argument("-lr", "--lr_lang")
@@ -665,6 +701,7 @@ if __name__ == "__main__":
         print("RUNNING 'get_test_results'")
         get_test_results(
             source_f=args.test_src,
+            source_vocab_f=args.source_vocab,
             results_f=args.data,
             out_f=args.out
         )
