@@ -1,0 +1,9 @@
+sh NMT/sbatch/TEST/an-en/all_PRETRAIN.sh
+sh NMT/sbatch/TEST/djk-en/all_PRETRAIN.sh
+sh NMT/sbatch/TEST/bem-en/all_PRETRAIN.sh
+sh NMT/sbatch/TEST/bho-as/all_PRETRAIN.sh
+sh NMT/sbatch/TEST/bho-hi/all_PRETRAIN.sh
+sh NMT/sbatch/TEST/ewe-en/all_PRETRAIN.sh
+sh NMT/sbatch/TEST/fon-fr/all_PRETRAIN.sh
+sh NMT/sbatch/TEST/mfe-en/all_PRETRAIN.sh
+sh NMT/sbatch/TEST/as-hi/all_PRETRAIN.sh

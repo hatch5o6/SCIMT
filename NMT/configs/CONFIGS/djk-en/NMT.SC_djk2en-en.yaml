@@ -17,7 +17,7 @@ test_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/SC/SC_djk2en-en/test.c
 append_src_token: False
 append_tgt_token: False
 upsample: False
-sc_model_id: DJK-EN-SMT-0-SMT-null
+sc_model_id: DJK-EN-RNN-0-RNN-9
 
 # tokenizers
 spm: /home/hatch5o6/nobackup/archive/CognateMT/spm_models/SC_djk2en_en/SC_djk2en_en/SC_djk2en_en

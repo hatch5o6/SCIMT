@@ -105,19 +105,22 @@ def get_nmt_data_dir(dir):
     
     lang_configs = []
     for lang_pair, subdirs in dirs_by_l.items():
-        assert len(subdirs) in [1, 2]
-        if len(subdirs) == 2:
-            train_dir, dev_test_dir = tuple(sorted(subdirs))
-            assert train_dir == lang_pair
-            assert dev_test_dir == f"{lang_pair}_dev_test"
-        else:
-            assert subdirs[0] in [lang_pair, f"{lang_pair}_dev_test"]
-            if subdirs[0] == lang_pair:
-                train_dir = subdirs[0]
-                dev_test_dir = None
-            else:
-                train_dir = None
-                dev_test_dir = subdirs[0]
+        # assert len(subdirs) in [1, 2]
+        assert len(subdirs) == 1
+        # if len(subdirs) == 2:
+        #     train_dir, dev_test_dir = tuple(sorted(subdirs))
+        #     assert train_dir == lang_pair
+        #     assert dev_test_dir == f"{lang_pair}_dev_test"
+        # else:
+        #     assert subdirs[0] in [lang_pair, f"{lang_pair}_dev_test"]
+        #     if subdirs[0] == lang_pair:
+        #         train_dir = subdirs[0]
+        #         dev_test_dir = None
+        #     else:
+        #         train_dir = None
+        #         dev_test_dir = subdirs[0]
+        train_dir = lang_pair
+        dev_test_dir = lang_pair
 
         lang_config = {}
 
@@ -134,8 +137,8 @@ def get_nmt_data_dir(dir):
             if os.path.exists(test_path):
                 lang_config["PARALLEL_TEST"] = test_path
         
-        modified_path = dev_test_dir.replace("_dev_test", "(_dev_test)")
-        modified_path = os.path.join(modified_path, "(train|val|test).csv")
+        # modified_path = dev_test_dir.replace("_dev_test", "(_dev_test)")
+        modified_path = os.path.join(lang_pair, "(train|val|test).csv")
         lang_configs.append((lang_config, modified_path))
 
     return lang_configs
@@ -228,7 +231,7 @@ def get_args():
                         # default="/home/hatch5o6/Cognate/code/Pipeline/cfg/SC", 
                         help="dir holding cfgs files (for SC data)")
     parser.add_argument("--nmt_data_dir", 
-                        default="/home/hatch5o6/Cognate/code/NMT/data",
+                        default="/home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/PLAIN",
                         help="NMT parallel data option"
                         )
     args = parser.parse_args()

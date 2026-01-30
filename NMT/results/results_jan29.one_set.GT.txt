@@ -1,0 +1,8 @@
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{PL/CL→TL} & \textbf{CL→TL} & \textbf{CL'→TL} & \textbf{PL'→TL >> CL→TL} \\
+\midrule
+$hi/bho \rightarrow hi$ & 1.32/16.0 & 2.0/16.55 & \textbf{4.9}/\textbf{23.77} \\
+$en/djk \rightarrow en$ & 4.07/23.05 & 3.09/22.49 & \textbf{6.4}/\textbf{25.81} \\
+\bottomrule
+\end{tabular}

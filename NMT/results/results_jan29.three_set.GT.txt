@@ -1,0 +1,13 @@
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{PL/CL→TL} & \textbf{CL→TL} & \textbf{PL→TL >> CL→TL} & \textbf{PL'→TL >> CL→TL} \\
+\midrule
+$es/an \rightarrow en$ & 1.43/20.05 & 18.15/47.84 & \textbf{20.55}/\textbf{50.72} \\
+$bn/as \rightarrow hi$ & 2.32/17.91 & 6.09/25.53 & \textbf{6.35}/\textbf{26.5} \\
+$lua/bem \rightarrow en$ & 3.17/23.26 & \textbf{4.15}/\textbf{24.29} & 4.09/23.94 \\
+$hi/bho \rightarrow as$ & 0.1/10.82 & 0.3/\textbf{15.11} & \textbf{0.44}/14.87 \\
+$fon/ewe \rightarrow en$ & 0.51/13.0 & \textbf{0.73}/17.59 & 0.66/\textbf{18.0} \\
+$ewe/fon \rightarrow fr$ & 1.04/18.67 & 1.77/\textbf{21.0} & \textbf{1.88}/20.67 \\
+$fr/mfe \rightarrow en$ & 4.31/24.81 & 15.11/36.43 & \textbf{18.38}/\textbf{42.01} \\
+\bottomrule
+\end{tabular}

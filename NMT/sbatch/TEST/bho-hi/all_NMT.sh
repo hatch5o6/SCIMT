@@ -1,0 +1,2 @@
+sbatch "/home/hatch5o6/Cognate/code/NMT/sbatch/TEST/bho-hi/NMT.SC_bho2hi-hi.sh"
+sbatch "/home/hatch5o6/Cognate/code/NMT/sbatch/TEST/bho-hi/NMT.bho-hi.sh"

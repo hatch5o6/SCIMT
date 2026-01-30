@@ -11,7 +11,7 @@
 #SBATCH --mail-user thebrendanhatch@gmail.com
 #SBATCH --output /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/bho-hi/%j_%x.out
 #SBATCH --job-name=TEST.bho-hi.NMT.SC_bho2hi-hi
-#SBATCH --qos=dw87
+#SBATCH --qos=matrix
 
 
 

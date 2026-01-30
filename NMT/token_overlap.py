@@ -11,41 +11,44 @@ from torch.utils.data import DataLoader
 from parallel_datasets import MultilingualDataset
 from parallel_datasets_sc import SCAlignedMultilingualDataset
 from spm_tokenizers import SPMTokenizer
-from sc_aligned_spm_tokenizers import SCAlignedSPMTokenizer
+# from sc_aligned_spm_tokenizers import SCAlignedSPMTokenizer
 
 
-def read_data(f, sc_f=None, sc_modelid=None):
-    if f.endswith(".txt"):
-        assert sc_f is None
-        assert sc_modelid is None
-        with open(f) as inf:
-            data = [line.strip() for line in inf]
-    else:
-        assert f.endswith(".csv")
-        if sc_f is not None:
-            assert sc_f.endswith(".csv")
-            assert sc_modelid is not None
+# def read_data(f, sc_f=None, sc_modelid=None):
+#     if f.endswith(".txt"):
+#         assert sc_f is None
+#         assert sc_modelid is None
+#         with open(f) as inf:
+#             data = [line.strip() for line in inf]
+#     else:
+#         assert f.endswith(".csv")
+#         if sc_f is not None:
+#             assert sc_f.endswith(".csv")
+#             assert sc_modelid is not None
             
-            # SHOULD ONLY DO THIS ON TRAINING PROBABLY
-            # Upsample=False and shuffle=True used for training data in pretrain -> finetune scenarios.
-            sc_dataset = SCAlignedMultilingualDataset(
-                data_csv=f,
-                sc_data_csv=sc_f,
-                append_src_lang_tok=False,
-                append_tgt_lang_tok=False,
-                append_tgt_to_src=False,
-                upsample=False,
-                shuffle=True
-            )
-            sc_dataloader = DataLoader(
-                sc_dataset,
-                batch_size=100,
-                shuffle=False
-            )
-            
+#             # SHOULD ONLY DO THIS ON TRAINING PROBABLY
+#             # Upsample=False and shuffle=True used for training data in pretrain -> finetune scenarios.
+#             sc_dataset = SCAlignedMultilingualDataset(
+#                 data_csv=f,
+#                 sc_data_csv=sc_f,
+#                 append_src_lang_tok=False,
+#                 append_tgt_lang_tok=False,
+#                 append_tgt_to_src=False,
+#                 upsample=False,
+#                 shuffle=True
+#             )
+#             sc_dataloader = DataLoader(
+#                 sc_dataset,
+#                 batch_size=100,
+#                 shuffle=False
+#             )
 
+#     return data
 
-
+def read_data(f):
+    assert f.endswith(".txt")
+    with open(f) as inf:
+        data = [l.strip() for l in inf.readlines()]
     return data
 
 def calc_overlap(

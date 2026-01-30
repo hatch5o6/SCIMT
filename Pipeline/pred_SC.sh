@@ -109,7 +109,7 @@ then
 
     # Get selected model
     WORKSPACE_SEED_DIR=$COPPERMT_DATA_DIR/${SC_MODEL_ID}_${SC_MODEL_TYPE}-${RNN_HYPERPARAMS_ID}_S-${SEED}/workspace/reference_models/bilingual/rnn_${SRC}-${TGT}/${SEED}
-    SELECTED_RNN_CHECKPOINT=${WORKSPACE_SEED_DIR}/checkpoints/selected.pt
+    SELECTED_RNN_CHECKPOINT=${WORKSPACE_SEED_DIR}/checkpoints/checkpoint_best.selected.pt
 
     echo "SELECTED_RNN_CHECKPOINT: `${SELECTED_RNN_CHECKPOINT}`"
 fi

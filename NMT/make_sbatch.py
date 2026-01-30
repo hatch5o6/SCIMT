@@ -83,7 +83,7 @@ def main(configs_dir, mode, qos, out_dir, REVERSE_SRC_TGT):
             if qos == "cs":
                 n_gpus_str = "a100:" + n_gpus_str
 
-            if qos == "dw87":
+            if qos in ["matrix", "dw87"]:
                 walltime = "72:00:00"
             else:
                 walltime = "24:00:00"
@@ -107,12 +107,23 @@ def main(configs_dir, mode, qos, out_dir, REVERSE_SRC_TGT):
                 outf.write(sbatch_content + "\n")
             sbatch_fs.append(f_out)
 
-        start_all_f = os.path.join(d_out, "all_except_finetune.sh")
-        with open(start_all_f, "w") as outf:
-            for sf in sbatch_fs:
-                sf_name = sf.split("/")[-1]
-                if not (sf_name.startswith("FINETUNE.") or sf_name.startswith("CHAR-FINETUNE.")):
-                    outf.write(f"sbatch {sf}\n")
+        # start_all_f = os.path.join(d_out, "all_except_finetune.sh")
+        # with open(start_all_f, "w") as outf:
+        #     for sf in sbatch_fs:
+        #         sf_name = sf.split("/")[-1]
+        #         if not (sf_name.startswith("FINETUNE.") or sf_name.startswith("CHAR-FINETUNE.")):
+        #             outf.write(f"sbatch {sf}\n")
+
+        for training_type in ["PRETRAIN", "FINETUNE", "NMT", "AUGMENT"]:
+            sh_path = os.path.join(d_out, f"all_{training_type}.sh")
+            with open(sh_path, "w") as outf:
+                for sf in sbatch_fs:
+                    sf_name = sf.split("/")[-1]
+                    if "CHAR" in sf_name or "TEST" in sf_name or "no_grad_clip" in sf_name:
+                        continue
+                    if sf_name.startswith(training_type):
+                        outf.write(f"sbatch \"{sf}\"\n")
+        
 
 def read_config(f):
     with open(f) as inf:
@@ -123,7 +134,7 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--configs_dir", default="/home/hatch5o6/Cognate/code/NMT/configs/CONFIGS")
     parser.add_argument("--out", default="/home/hatch5o6/Cognate/code/NMT/sbatch")
-    parser.add_argument("--qos", default="dw87", choices=["dw87", "cs"])
+    parser.add_argument("--qos", default="matrix", choices=["matrix", "dw87", "cs"])
     parser.add_argument("--mode", choices=["TRAIN", "TEST", "INFERENCE", "ALL"], default="ALL")
     # parser.add_argument("-R", "--REVERSE_SRC_TGT", action="store_true", default=False)
     return parser.parse_args()

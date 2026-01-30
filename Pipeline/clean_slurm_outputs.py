@@ -11,7 +11,8 @@ dirs = [
     "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/slurm_outputs", 
     "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/test_slurm_outputs",
     "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs",
-    "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/SC_smt"
+    "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/SC_smt",
+    "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/predict"
 ]
 for dir in dirs:
     fs = os.listdir(dir)

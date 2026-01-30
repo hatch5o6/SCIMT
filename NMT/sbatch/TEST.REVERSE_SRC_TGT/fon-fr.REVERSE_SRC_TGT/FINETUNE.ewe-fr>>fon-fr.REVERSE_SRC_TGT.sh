@@ -11,7 +11,7 @@
 #SBATCH --mail-user thebrendanhatch@gmail.com
 #SBATCH --output /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/fon-fr/%j_%x.out
 #SBATCH --job-name=TEST.fon-fr.FINETUNE.ewe-fr>>fon-fr
-#SBATCH --qos=dw87
+#SBATCH --qos=matrix
 
 
 

@@ -334,10 +334,15 @@ def test_model(config, REVERSE_SRC_TGT=False):
             config=config
         )
 
-        val_metrics, val_chkpt_predictions_dir = get_metrics(results=val_results, predictions_dir=predictions_dir, config=config, metrics_set="val")
-        test_metrics, test_chkpt_predictions_dir = get_metrics(results=test_results, predictions_dir=predictions_dir, config=config, metrics_set="test")
-        assert val_chkpt_predictions_dir == test_chkpt_predictions_dir
-        chkpt_predictions_dir = test_chkpt_predictions_dir
+        chkpt_name = config["test_checkpoint"].split("/")[-1]
+        chkpt_predictions_dir = os.path.join(predictions_dir, chkpt_name)
+        if os.path.exists(chkpt_predictions_dir):
+            shutil.rmtree(chkpt_predictions_dir)
+        if int(os.environ.get("RANK", 0)) == 0:
+            os.makedirs(chkpt_predictions_dir, exist_ok=True)
+
+        val_metrics = get_metrics(results=val_results, chkpt_predictions_dir=chkpt_predictions_dir, metrics_set="val")
+        test_metrics = get_metrics(results=test_results, chkpt_predictions_dir=chkpt_predictions_dir, metrics_set="test")
         
         metrics = {"val": val_metrics, "test": test_metrics}
 
@@ -398,7 +403,7 @@ def test_model(config, REVERSE_SRC_TGT=False):
 #     print("CHOSE CHECKPOINT", chosen_f_path)
 #     return chosen_f_path
 
-def get_metrics(results, predictions_dir, config, metrics_set="test"):
+def get_metrics(results, chkpt_predictions_dir, metrics_set="test"):
     assert metrics_set in ["test", "val"]
     src_data = []
     ref_data = []
@@ -410,15 +415,9 @@ def get_metrics(results, predictions_dir, config, metrics_set="test"):
     
     assert len(src_data) == len(ref_data) == len(preds)
     
-    chkpt_name = config["test_checkpoint"].split("/")[-1]
-    chkpt_predictions_dir = os.path.join(predictions_dir, chkpt_name)
-    if os.path.exists(chkpt_predictions_dir):
-        shutil.rmtree(chkpt_predictions_dir)
-    if int(os.environ.get("RANK", 0)) == 0:
-        os.makedirs(chkpt_predictions_dir, exist_ok=True)
-
     # Predictions
     save_preds = os.path.join(chkpt_predictions_dir, f"{metrics_set}_predictions.txt")
+    print(f"Writing predictions to {save_preds}")
     with open(save_preds, "w") as outf:
         outf.write("\n".join(preds) + "\n")
     
@@ -432,7 +431,7 @@ def get_metrics(results, predictions_dir, config, metrics_set="test"):
         # "chrF_sents": chrf_sents
         # "test_data": config["test_data"]
     }
-    return metrics, chkpt_predictions_dir
+    return metrics
 
 def choose_checkpoint(predictions_dir):
     all_metrics_f = os.path.join(predictions_dir, "all_scores.json")

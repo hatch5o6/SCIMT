@@ -16,6 +16,7 @@
 
 nvidia-smi
 
+python Pipeline/clean_slurm_outputs.py
 bash Pipeline/pred_SC.sh /home/hatch5o6/Cognate/code/Pipeline/cfg/SC-HYPERPARAM_SEARCH/lua-bem.249.cfg
 python Pipeline/clean_slurm_outputs.py
 rm /home/hatch5o6/Cognate/code/core*

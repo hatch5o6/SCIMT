@@ -1,0 +1,9 @@
+sh NMT/sbatch/TRAIN/an-en/all_FINETUNE.sh
+sh NMT/sbatch/TRAIN/djk-en/all_FINETUNE.sh
+sh NMT/sbatch/TRAIN/bem-en/all_FINETUNE.sh
+sh NMT/sbatch/TRAIN/bho-as/all_FINETUNE.sh
+sh NMT/sbatch/TRAIN/bho-hi/all_FINETUNE.sh
+sh NMT/sbatch/TRAIN/ewe-en/all_FINETUNE.sh
+sh NMT/sbatch/TRAIN/fon-fr/all_FINETUNE.sh
+sh NMT/sbatch/TRAIN/mfe-en/all_FINETUNE.sh
+sh NMT/sbatch/TRAIN/as-hi/all_FINETUNE.sh

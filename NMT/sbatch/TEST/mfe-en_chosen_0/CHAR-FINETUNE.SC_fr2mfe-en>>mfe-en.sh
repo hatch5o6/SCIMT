@@ -11,7 +11,7 @@
 #SBATCH --mail-user thebrendanhatch@gmail.com
 #SBATCH --output /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/mfe-en_chosen_0/%j_%x.out
 #SBATCH --job-name=TEST.mfe-en_chosen_0.CHAR-FINETUNE.SC_fr2mfe-en>>mfe-en
-#SBATCH --qos=dw87
+#SBATCH --qos=matrix
 
 
 

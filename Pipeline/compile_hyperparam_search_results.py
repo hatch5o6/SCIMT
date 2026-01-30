@@ -5,13 +5,23 @@ from xlsxwriter.color import Color
 from tqdm import tqdm
 import datetime
 
+WITH_ATT = {"EN-DJK"}
+
+def get_lang_pair_tag(src_lang, tgt_lang):
+    lang_pair_tag = f"{src_lang.upper()}-{tgt_lang.upper()}"
+    if lang_pair_tag in WITH_ATT:
+        lang_pair_tag += ".ATT"
+    return lang_pair_tag
+
 def compile(
     langs,
     rnn_hyperparams_dir,
     COPPERMT,
     seed,
     out_dir,
-    tag
+    tag,
+    sbatch_dir,
+    smt_sbatch_dir
 ):
     if not os.path.exists(out_dir):
         os.mkdir(out_dir)
@@ -40,8 +50,13 @@ def compile(
         # "chrF": 13
     }
 
+    REDOS = {}
+
     for lang in langs:
         print("LANG:", lang)
+        src_lang, tgt_lang = tuple(lang.split("-"))
+        lang_pair_tag = get_lang_pair_tag(src_lang, tgt_lang)
+        lang_pair_tuple = (src_lang, tgt_lang)
         out_f = os.path.join(tag_dir, f"{lang}.results.xlsx")
         if os.path.exists(out_f):
             print("Removing:", out_f)
@@ -89,9 +104,9 @@ def compile(
                 rnn_id = get_smt_id(rnn_hyperparams_dir=rnn_hyperparams_dir)
                 assert rnn_id not in visited_rnn_ids
                 assert int(rnn_id) not in visited_rnn_ids
-                COPPERMT_results_dir = os.path.join(COPPERMT, f"{src_lang}_{tgt_lang}_SMT-null_S-{seed}")
+                COPPERMT_results_dir = os.path.join(COPPERMT, f"{lang_pair_tag}-SMT-{seed}_SMT-null_S-{seed}")
                 # scores_f = os.path.join(COPPERMT_results_dir, f"workspace/reference_models/statistical/{seed}/{src_lang}_{tgt_lang}/out/??")
-                scores_f = os.path.join(COPPERMT_results_dir, f"inputs/split_data/{src_lang}_{tgt_lang}/{seed}/test_{src_lang}_{tgt_lang}.{tgt_lang}.hyp.scores.txt")
+                scores_f = os.path.join(COPPERMT_results_dir, f"inputs/split_data/{src_lang}_{tgt_lang}/{seed}/fine_tune_{src_lang}_{tgt_lang}.{tgt_lang}.hyp.scores.txt.wo_replace_unk.txt")
             else:
                 f_path = os.path.join(rnn_hyperparams_dir, f)
                 if os.path.isdir(f_path): continue
@@ -108,8 +123,7 @@ def compile(
 
                 rnn_params = read_rnn_params_f(f_path)
 
-                src_lang, tgt_lang = tuple(lang.split("-"))
-                COPPERMT_results_dir = os.path.join(COPPERMT, f"{src_lang}_{tgt_lang}_RNN-{rnn_id}_S-{seed}")
+                COPPERMT_results_dir = os.path.join(COPPERMT, f"{lang_pair_tag}-RNN-{seed}_RNN-{rnn_id}_S-{seed}")
                 results_rnn_params_f = os.path.join(COPPERMT_results_dir, f"inputs/parameters/bilingual_default/default_parameters_rnn_{lang}.txt")
                 results_rnn_params = read_rnn_params_f(results_rnn_params_f)
 
@@ -121,9 +135,13 @@ def compile(
             
             
             if os.path.exists(scores_f):
+                print("READING BLEU FROM", scores_f)
                 BLEU = read_scores(scores_f)
             else:
                 BLEU = -1
+                if lang_pair_tuple not in REDOS:
+                    REDOS[lang_pair_tuple] = []
+                REDOS[lang_pair_tuple].append((rnn_id, f))
                 print("Scores file does not exist:", scores_f)
 
             assert rnn_id not in visited_rnn_ids
@@ -196,7 +214,8 @@ def compile(
                 assert configs["params"]['model_type'] == "SMT"
                 model_id = "null"
                 MODEL_TYPE = "SMT"
-            split_data_dir = os.path.join(COPPERMT, f"{source_lang}_{target_lang}_{MODEL_TYPE}-{model_id}_S-{seed}/inputs/split_data/{source_lang}_{target_lang}/{seed}")
+            lang_pair_tag = get_lang_pair_tag(source_lang, target_lang)
+            split_data_dir = os.path.join(COPPERMT, f"{lang_pair_tag}-{MODEL_TYPE}-{seed}_{MODEL_TYPE}-{model_id}_S-{seed}/inputs/split_data/{source_lang}_{target_lang}/{seed}")
             train_size, val_size, test_size = get_train_val_test_sizes(split_data_dir, src=source_lang, tgt=target_lang)
             best_worksheet.write((lx * 2) + cx + 1, 0, lang, best_header_format)
             best_worksheet.write((lx * 2) + cx + 1, 1, criteria, best_header_format)
@@ -212,6 +231,19 @@ def compile(
                     best_worksheet.write((lx * 2) + cx + 1, idx + 2, configs["BLEU"], best_best_BLEU_format)
     best_worksheet.autofit()
     best_workbook.close()
+
+    redos_out = os.path.join(tag_dir, "REDOS.sbatch.sh")
+    with open(redos_out, "w") as outf:
+        for (src_lang, tgt_lang), rnn_ids in REDOS.items():
+            att_tag = ""
+            if get_lang_pair_tag(src_lang, tgt_lang).endswith(".ATT"):
+                att_tag = ".ATT"
+            for rnn_id, f in rnn_ids:
+                if f != "SMT":
+                    file_path = os.path.join(sbatch_dir, f"{src_lang}-{tgt_lang}{att_tag}.{rnn_id}.cfg.sh")
+                else:
+                    file_path = os.path.join(smt_sbatch_dir, f"{src_lang}-{tgt_lang}{att_tag}.smt.cfg.sh")
+                outf.write(f"sbatch {file_path}\n")
     
 def get_train_val_test_sizes(split_data_dir, src, tgt):
     train_f = os.path.join(split_data_dir, f"train_{src}_{tgt}.{src}")
@@ -266,6 +298,7 @@ def read_scores(f):
         elif l == 5:
             assert line.startswith("BLEU_SCORE: ")
             BLEU = float(line.strip().split("BLEU_SCORE: ")[-1])
+            break
         # elif l == 6:
         #     assert line.startswith("FAIRSEQ_BLEU: BLEU = ")
         # elif l == 4:
@@ -305,6 +338,8 @@ def get_args():
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out", default="/home/hatch5o6/Cognate/code/Pipeline/hyperparam_search_results")
     parser.add_argument("--tag")
+    parser.add_argument("--sbatch_dir", default="/home/hatch5o6/Cognate/code/Pipeline/sbatch/hyper_param_search", help="folder of sbatch scripts for hyperparam search. This is for making the redos script.")
+    parser.add_argument("--smt_sbatch_dir", default="/home/hatch5o6/Cognate/code/Pipeline/sbatch/smt", help="folder of smt sbatch scripts for hyperparam search. This is for making the redos script.")
     return parser.parse_args()
 
 if __name__ == "__main__":
@@ -316,5 +351,7 @@ if __name__ == "__main__":
         COPPERMT=args.COPPERMT,
         seed=args.seed,
         out_dir=args.out,
-        tag=args.tag
+        tag=args.tag,
+        sbatch_dir=args.sbatch_dir,
+        smt_sbatch_dir=args.smt_sbatch_dir
     )

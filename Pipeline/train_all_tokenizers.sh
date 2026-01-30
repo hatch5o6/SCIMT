@@ -19,6 +19,10 @@ rm /home/hatch5o6/nobackup/archive/CognateMT/spm_models/notes
 set -e
 
 for FILE in Pipeline/cfg/tok/*; do
+    if [ $FILE == "Pipeline/cfg/tok/archive"  ]
+    then
+        continue
+    fi
     echo "##################################################################################################################################"
     echo "    train_srctgt_tokenizer.sh ${FILE}"
     bash Pipeline/train_srctgt_tokenizer.sh $FILE

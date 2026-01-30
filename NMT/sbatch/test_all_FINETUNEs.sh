@@ -1,0 +1,9 @@
+sh NMT/sbatch/TEST/an-en/all_FINETUNE.sh
+sh NMT/sbatch/TEST/djk-en/all_FINETUNE.sh
+sh NMT/sbatch/TEST/bem-en/all_FINETUNE.sh
+sh NMT/sbatch/TEST/bho-as/all_FINETUNE.sh
+sh NMT/sbatch/TEST/bho-hi/all_FINETUNE.sh
+sh NMT/sbatch/TEST/ewe-en/all_FINETUNE.sh
+sh NMT/sbatch/TEST/fon-fr/all_FINETUNE.sh
+sh NMT/sbatch/TEST/mfe-en/all_FINETUNE.sh
+sh NMT/sbatch/TEST/as-hi/all_FINETUNE.sh

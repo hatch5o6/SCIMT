@@ -91,8 +91,7 @@ def read_data(fs):
 def write_file(data, f):
     print("writing", f)
     with open(f, "w") as outf:
-        if len(data) > 0:
-            outf.write("\n".join(data) + "\n")
+        outf.write("\n".join(data) + "\n")
 
 def reverse_data(data):
     reverse = []
