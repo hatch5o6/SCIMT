@@ -11,6 +11,7 @@ def split_data(
     test_rat,
     seed,
     out_dir,
+    cap_val_size,
     UNIQUE_TEST,
     min_val_size=250,
     max_val_size=1100
@@ -94,6 +95,12 @@ def split_data(
     assert sorted(test) == sorted(list(set(test))), f"TEST COGNATES FAILED TO BE SOURCE-SIDE UNIQUE"
     assert sorted(val) == sorted(list(set(val))), f"VAL COGNATES FAILED TO BE SOURCE-SIDE UNIQUE"
 
+    if cap_val_size:
+        print(f"CAP_VAL_SIZE was set: {cap_val_size}")
+        print(f"val size was {len(val)}")
+        val = val[:cap_val_size]
+        print(f"val size now {len(val)}")
+
     write_split(train, train1_out_f, train2_out_f)
     write_split(val, val1_out_f, val2_out_f)
     write_split(test, test1_out_f, test2_out_f)
@@ -124,6 +131,7 @@ def get_args():
     parser.add_argument("--test", type=float)
     parser.add_argument("--seed", type=int, default=1420)
     parser.add_argument("--out_dir")
+    parser.add_argument("--cap_val_size")
     parser.add_argument("--UNIQUE_TEST", action="store_true")
     args = parser.parse_args()
     print("Arguments:")
@@ -137,6 +145,10 @@ if __name__ == "__main__":
     print("# split.py #")
     print("############")
     args = get_args()
+    if args.cap_val_size == "null":
+        cap_val_size = None
+    else:
+        cap_val_size = int(args.cap_val_size)
     split_data(
         args.data1,
         args.data2,
@@ -145,5 +157,6 @@ if __name__ == "__main__":
         args.test,
         args.seed,
         args.out_dir,
+        cap_val_size,
         args.UNIQUE_TEST
     )

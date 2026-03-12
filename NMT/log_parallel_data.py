@@ -35,7 +35,8 @@ def main(
 
 def log_data_and_training_params(
     configs_dir,
-    out
+    out,
+    skip=[]
 ):
     with open(out, "w", newline="") as outf:
         writer = csv.writer(outf)
@@ -121,6 +122,7 @@ def log_data_and_training_params(
         for lang_d in os.listdir(configs_dir):
             if lang_d.endswith(".csv"): continue
             if lang_d == "_archive": continue
+            if lang_d in skip: continue
             lang_d_path = os.path.join(configs_dir, lang_d)
             print("LANG D PATH:", lang_d_path)
             for f in os.listdir(lang_d_path):
@@ -204,10 +206,15 @@ def get_args():
     parser.add_argument("--configs_dir", default="/home/hatch5o6/Cognate/code/NMT/configs/CONFIGS")
     parser.add_argument("--out", default="/home/hatch5o6/Cognate/code/NMT/configs/CONFIGS/data_params_log.csv")
     parser.add_argument("--mode", default="all", choices=["sizes_only", "all"])
+    parser.add_argument("--skip", help="lang pairs to skip, comma-delimited list")
     return parser.parse_args()
 
 if __name__ == "__main__":
     args = get_args()
+    skip = []
+    if args.skip:
+        skip = [l.strip() for l in args.skip.split(",")]
+    print("Will skip", skip)
     if args.mode == "sizes_only":
         main(
             configs_dir=args.configs_dir,
@@ -216,5 +223,6 @@ if __name__ == "__main__":
     else:
         log_data_and_training_params(
             configs_dir=args.configs_dir,
-            out=args.out
+            out=args.out,
+            skip=skip
         )

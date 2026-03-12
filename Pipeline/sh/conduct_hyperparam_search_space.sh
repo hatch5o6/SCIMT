@@ -22,33 +22,33 @@ echo "Removing smt slurm outputs"
 rm /home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/SC_smt/*
 
 echo "Removing parameters"
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*bn-as*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*cs-hsb*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*es-an*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*fr-mfe*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*bho-hi*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*djk-en*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*en-djk*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*ewe-fon*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*fon-ewe*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*hi-bho*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*lua-bem*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*ar-aeb*
-rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*ar-apc*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*BN-AS*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*CS-HSB*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*ES-AN*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*FR-MFE*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*BHO-HI*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*DJK-EN*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*EN-DJK*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*EWE-FON*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*FON-EWE*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*HI-BHO*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*LUA-BEM*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*AR-AEB*
+rm /home/hatch5o6/Cognate/code/Pipeline/parameters/*AR-APC*
 
 echo "Removing CoppertMT lang subdirs"
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/bn_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/cs_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/es_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/fr_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/bho_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/djk_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/en_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/ewe_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/fon_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/hi_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/lua_*
-rm -r /home/hatch5o6/nobackup/archive/CopperMT/ar_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/BN_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/CS_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/ES_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/FR_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/BHO_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/DJK_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/EN_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/EWE_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/FON_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/HI_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/LUA_*
+rm -r /home/hatch5o6/nobackup/archive/CopperMT/AR_*
 
 echo "Removing COGNATE_TRAIN lang subdirs"
 rm -r /home/hatch5o6/nobackup/archive/data/COGNATE_TRAIN/bn-*

@@ -1,0 +1,1 @@
+python Pipeline/check_duplicate_xy_data.py --langs es,an,en > Pipeline/check_duplicate_xy_data.es.an.en.out

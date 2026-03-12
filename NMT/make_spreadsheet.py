@@ -2,8 +2,10 @@ import argparse
 import os
 import xlsxwriter
 import json
+import csv
 import pandas as pd
 from decimal import Decimal, ROUND_HALF_UP
+import math
 
 ONE_SET = {
     "bho-hi": ("hi", "bho", "hi"),
@@ -13,30 +15,78 @@ THREE_SET = {
     "aeb-en": ("ar", "aeb", "en"),
     "apc-en": ("ar", "apc", "en"),
     "an-en": ("es", "an", "en"),
+    "anx-enx": ("esx", "anx", "enx"),
     "as-hi": ("bn", "as", "hi"),
     "bem-en": ("lua", "bem", "en"),
     "bho-as": ("hi", "bho", "as"),
     "ewe-en": ("fon", "ewe", "en"),
     "fon-fr": ("ewe", "fon", "fr"),
-    "mfe-en": ("fr", "mfe", "en")
+    "mfe-en": ("fr", "mfe", "en"),
+    "mfx-enx": ("frx", "mfx", "enx"),
+    "mfy-eny": ("fry", "mfy", "eny"),
+    "oc-en": ("fr", "oc", "en")
 }
 
 def main(
     results_dir,
     include_lang_pairs,
     include_model_types,
-    latex_out
+    nmt_data_params_log,
+    sc_best_configs,
+    latex_out,
+    REVERSE=False
 ):
     all_l_results = {}
     for l in include_lang_pairs:
         l_dir = os.path.join(results_dir, l)
         if not os.path.exists(l_dir): continue
 
-        l_results = write_sheet(l_dir, include_model_types)
+        l_results = write_sheet(l_dir, include_model_types, REVERSE=REVERSE)
         l_results = find_best_scores(l_results)
         assert l not in all_l_results
         all_l_results[l] = l_results
-    make_latex(all_l_results, latex_out)
+    sc_best_cf = read_sc_best_config(sc_best_configs)
+    nmt_log = read_nmt_log(nmt_data_params_log)
+    make_latex(all_l_results, latex_out, sc_best_cf, nmt_log)
+
+def read_nmt_log(f):
+    with open(f, newline='') as inf:
+        rows = [r for r in csv.reader(inf)]
+    header = {col: c for c, col in enumerate(rows[0])}
+    data = rows[1:]
+    data_dict = {}
+    for row in data:
+        if not is_empty_row(row):
+            config_file = row[header["config"]]
+            num_train = int(row[header["train"]].replace(",", ""))
+            num_val = int(row[header["val"]].replace(",", ""))
+            num_test = int(row[header["test"]].replace(",", ""))
+            assert config_file not in data_dict
+            data_dict[config_file] = [num_train, num_val, num_test]
+    return data_dict
+
+def is_empty_row(row):
+    for elem in row:
+        if elem.strip() != "":
+            return False
+    return True
+
+def read_sc_best_config(f):
+    df = pd.read_excel(f)
+    data_dict = {}
+    for idx, row in df.iterrows():
+        lang = row["LANG"]
+        if isinstance(lang, float):
+            assert math.isnan(lang)
+            continue
+        else:
+            assert isinstance(lang, str)
+            lang = lang.strip()
+        train_val_test = row["TRAIN / VAL / TEST SIZE"]
+        train, val, test = [int(item.replace(",", "").strip()) for item in train_val_test.split("/")]
+        assert lang not in data_dict
+        data_dict[lang] = [train, val, test]
+    return data_dict
 
 def find_best_scores(l_results):
     best_BLEU, best_chrF = None, None
@@ -63,10 +113,10 @@ def find_best_scores(l_results):
     l_results[best_chrF_model]["best_chrF"] = True
     return l_results
     
-def make_latex(all_l_results, latex_out):
+def make_latex(all_l_results, latex_out, sc_best_cf, nmt_log):
     assert latex_out.endswith(".txt")
-    df_one_set = make_df(all_l_results, scen_set=ONE_SET)
-    df_three_set = make_df(all_l_results, scen_set=THREE_SET)
+    df_one_set = make_df(all_l_results, sc_best_cf, nmt_log, scen_set=ONE_SET)
+    df_three_set = make_df(all_l_results, sc_best_cf, nmt_log, scen_set=THREE_SET)
 
     write_latex(df_one_set, latex_out[:-3] + "one_set.txt")
     write_latex(df_three_set, latex_out[:-3] + "three_set.txt")
@@ -79,18 +129,30 @@ def write_latex(df, latex_out):
 
 def get_scen_string(scen):
     pl, cl, tl = scen
-    return f"${pl}/{cl} \\rightarrow {tl}$"
+    return f"${pl}/{cl} \\rightarrow {tl}$", pl, cl, tl
 
-def make_df(all_l_results, scen_set):
-    SCEN = "\\textbf{PL/CL→TL}"
-    CL_TL = "\\textbf{CL→TL}"
-    CLp_TL = "\\textbf{CL'→TL}"
-    PRE_PL_TL = "\\textbf{PL→TL}"
-    PRE_PLp_TL = "\\textbf{PL'→TL}"
-    FIN_PL_TL = "\\textbf{PL→TL >> CL→TL}"
-    FIN_PLp_TL = "\\textbf{PL'→TL >> CL→TL}"
+def make_df(all_l_results, sc_best_cf, nmt_log, scen_set):
+    SCEN = "\\textbf{Scenario}"
+    TRAIN_PL_TL = "\\textbf{\\textit{n}P→T}"
+    TRAIN_CL_TL = "\\textbf{\\textit{n}C→T}"
+    TRAIN_PL_CL = "\\textbf{\\textit{n}P/C}"
+    CL_TL = "\\textbf{C→T}"
+    CLp_TL = "\\textbf{C'→T}"
+    PRE_PL_TL = "\\textbf{P→T}"
+    PRE_PLp_TL = "\\textbf{P'→T}"
+    FIN_PL_TL = "\\textbf{P→T>>C→T}"
+    FIN_PLp_TL = "\\textbf{P'→T>>C→T}"
+
+    if scen_set == ONE_SET:
+        TRAIN_PL_TL = "\\textbf{\\textit{n}T'→T}"
+        TRAIN_PL_CL = "\\textbf{\\textit{n}T/C}"
+        FIN_PLp_TL = "\\textbf{T'→T>>C→T}"
+
     data = {
-        SCEN:[], 
+        SCEN:[],
+        TRAIN_PL_CL: [],
+        TRAIN_PL_TL: [],
+        TRAIN_CL_TL: [],
         CL_TL: [],
         CLp_TL: [],
         PRE_PL_TL: [], 
@@ -100,8 +162,22 @@ def make_df(all_l_results, scen_set):
     }
     for l, l_results in all_l_results.items():
         if l not in scen_set: continue
-        scen = get_scen_string(scen_set[l])
+        scen, pl, cl, tl = get_scen_string(scen_set[l])
         data[SCEN].append(scen)
+
+        pl_cl_pairs = sc_best_cf[f"{pl}-{cl}"][0]
+        if scen_set == THREE_SET:
+            pl_tl_pairs = nmt_log[f"{cl}-{tl}/PRETRAIN.{pl}-{tl}.yaml"][0]
+            cl_tl_pairs = nmt_log[f"{cl}-{tl}/FINETUNE.{pl}-{tl}>>{cl}-{tl}.yaml"][0]
+        else:
+            assert scen_set == ONE_SET
+            pl_tl_pairs = nmt_log[f"{cl}-{tl}/PRETRAIN.SC_{pl}2{cl}-{tl}.ATT.yaml"][0]
+            cl_tl_pairs = nmt_log[f"{cl}-{tl}/FINETUNE.SC_{pl}2{cl}-{tl}>>{cl}-{tl}.ATT.yaml"][0]
+
+        data[TRAIN_PL_CL].append(round_letter(pl_cl_pairs))
+        data[TRAIN_PL_TL].append(round_letter(pl_tl_pairs))
+        data[TRAIN_CL_TL].append(round_letter(cl_tl_pairs))
+
         for model_dir, results in l_results.items():
             BLEU = str(float(round_bleu(results["BLEU"])))
             chrF = str(float(round_bleu(results["chrF"])))
@@ -134,6 +210,17 @@ def make_df(all_l_results, scen_set):
     df = pd.DataFrame.from_dict(data)
     return df
     
+def round_letter(x):
+    if x >= 1000000:
+        return round_M(x)
+    else:
+        return round_K(x)
+
+def round_K(x):
+    return f"{(x + 500) // 1000}K"
+
+def round_M(x):
+    return f"{(x + 500000) // 1000000}M"
 
 def round_bleu(x):
     return (
@@ -142,7 +229,7 @@ def round_bleu(x):
         if isinstance(x, float) else x
     )
 
-def write_sheet(l_dir, include_model_types):
+def write_sheet(l_dir, include_model_types, REVERSE=False):
     workbook = xlsxwriter.Workbook(os.path.join(l_dir, "scores.xlsx"))
     header_format = workbook.add_format({'bold': True, 'bg_color': "#f2f2f2"})
     worksheet = workbook.add_worksheet()
@@ -153,6 +240,11 @@ def write_sheet(l_dir, include_model_types):
     all_results = {}
     r = 1
     for model_dir in os.listdir(l_dir):
+        if REVERSE == False and "REVERSE_TRIAL" in model_dir:
+            continue
+        elif REVERSE == True and "REVERSE_TRIAL" not in model_dir:
+            continue
+
         model_dir_path = os.path.join(l_dir, model_dir)
         if not os.path.isdir(model_dir_path): continue
         prefix = model_dir.split(".")[0]
@@ -190,7 +282,10 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--NMT_results_dir", "-d", default="/home/hatch5o6/nobackup/archive/CognateMT/PredictCognates")
     parser.add_argument("--include_lang_pairs", "-l", default="an-en,as-hi,bem-en,bho-as,bho-hi,djk-en,ewe-en,fon-fr,hsb-de,mfe-en,aeb-en,apc-en", help="comma-delimited list of NMT lang pairs")
-    parser.add_argument("--include_model_types", "-m", default="FINETUNE,NMT,AUGMENT", help="Model types, comma-delimited list")
+    parser.add_argument("--include_model_types", "-m", default="FINETUNE,NMT", help="Model types, comma-delimited list")
+    parser.add_argument("--sc_best_configs", "-c", default="/home/hatch5o6/Cognate/code/Pipeline/hyperparam_search_results/CUR_01_20_2026_15:23/best_configs.xlsx", help="best_configs.xlsx file from the sc hyperparameter search")
+    parser.add_argument("--nmt_data_params_log", "-n", default="/home/hatch5o6/Cognate/code/NMT/configs/CONFIGS/data_params_log.csv", help="data_params_log.csv file from NMT experiments")
+    parser.add_argument("--REVERSE", action="store_true", help="if passed, will do table of scores for REVERSE NMT directions")
     parser.add_argument("--latex_out", "-o")
     args = parser.parse_args()
     print("Arguments:")
@@ -213,6 +308,9 @@ if __name__ == "__main__":
         results_dir=args.NMT_results_dir,
         include_lang_pairs=include_lang_pairs,
         include_model_types=include_model_types,
-        latex_out=args.latex_out
+        nmt_data_params_log=args.nmt_data_params_log,
+        sc_best_configs=args.sc_best_configs,
+        latex_out=args.latex_out,
+        REVERSE=args.REVERSE
     )
 

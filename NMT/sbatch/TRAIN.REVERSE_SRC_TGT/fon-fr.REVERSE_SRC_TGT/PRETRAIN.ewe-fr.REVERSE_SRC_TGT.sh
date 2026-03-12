@@ -10,7 +10,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user thebrendanhatch@gmail.com
 #SBATCH --output /home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/fon-fr/%j_%x.out
-#SBATCH --job-name=TRAIN.fon-fr.PRETRAIN.ewe-fr
+#SBATCH --job-name=TRAIN.fon-fr.PRETRAIN.ewe-fr.REVERSE_SRC_TGT
 #SBATCH --qos=matrix
 
 

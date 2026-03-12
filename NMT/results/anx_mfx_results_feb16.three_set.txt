@@ -1,0 +1,9 @@
+\begin{tabular}{lrrrrrrr}
+\toprule
+\textbf{Scenario} & \textbf{\textit{n}P/C} & \textbf{\textit{n}P→T} & \textbf{\textit{n}C→T} & \textbf{C→T} & \textbf{P→T>>C→T} & \textbf{P'→T>>C→T} \\
+\midrule
+$esx/anx \rightarrow enx$ & 111K & 10M & 20K & 1.43/20.05 & 18.15/47.84 & \textbf{19.17}/\textbf{49.42} \\
+$frx/mfx \rightarrow enx$ & 7K & 10M & 19K & 4.31/24.81 & 13.1/33.84 & \textbf{14.45}/\textbf{37.22} \\
+$fry/mfy \rightarrow eny$ & 6K & 10M & 19K & 4.31/24.81 & 15.11/36.43 & \textbf{18.68}/\textbf{41.91} \\
+\bottomrule
+\end{tabular}

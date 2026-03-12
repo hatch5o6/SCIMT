@@ -16,21 +16,25 @@ def read_data(f):
         data = [l.strip() for l in inf.readlines()]
     return data
 
-def read_csv(f, sc_model_id=None):
+def read_csv(f, sc_model_id=None, read_tgt=False):
     with open(f) as inf:
         lines = [l for l in csv.reader(inf)]
     assert len(lines) == 2
     assert lines[0] == ["src_lang","tgt_lang","src_path","tgt_path"]
     src_lang, tgt_lang, src_path, tgt_path = lines[1]
     if sc_model_id == None:
-        assert "SC_{SC_MODEL_ID}_" not in src_path
+        assert "SC_{SC_MODEL_ID}_" not in src_path, f"SC tag IS in src_path of csv: `{f}`, but shoudln't be"
     else:
-        assert "SC_{SC_MODEL_ID}_" in src_path
+        assert "SC_{SC_MODEL_ID}_" in src_path, f"SC tag IS NOT in src_path of csv: `{f}`"
         src_path = src_path.replace("{SC_MODEL_ID}", sc_model_id)
         src_lang += f"_{sc_model_id}"
     print(f"reading sents from `{src_path}`")
-    sents = read_data(src_path)
-    return sents, src_lang
+    if read_tgt:
+        sents = read_data(tgt_path)
+        return sents, tgt_lang
+    else:
+        sents = read_data(src_path)
+        return sents, src_lang
 
 
 def calc_overlap(
@@ -43,7 +47,10 @@ def calc_overlap(
     sc_model_id_2,
 
     is_parallel,
-    out_f
+    out_f,
+
+    read_tgt1=False,
+    read_tgt2=False,
 ):
     print("calc_overlap(")
     print(f"\tdata1_f=`{data1_f}`")
@@ -58,10 +65,10 @@ def calc_overlap(
     print("\tout_f=`{out_f}`")
     print(")")
 
-    data1, src1 = read_csv(data1_f, sc_model_id=sc_model_id_1)
+    data1, _ = read_csv(data1_f, sc_model_id=sc_model_id_1, read_tgt=read_tgt1)
     print("data1: ", type(data1))
     # print(data1[:5])
-    data2, src2 = read_csv(data2_f, sc_model_id=sc_model_id_2)
+    data2, _ = read_csv(data2_f, sc_model_id=sc_model_id_2, read_tgt=read_tgt2)
     
     tokenizer1 = SPMTokenizer(spm_name=spm1)
     tokenizer2 = SPMTokenizer(spm_name=spm2)
@@ -122,7 +129,7 @@ def calc_jaccard_overlap(data1_toks, data2_toks, is_parallel=False):
         avg_sent_score = sum_sent_scores / len(data1_toks)
         scores["avg_sent_jaccard"] = avg_sent_score
     
-    print(scores)
+    # print(scores)
     return scores
 
 def jaccard_score(set1, set2):

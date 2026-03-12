@@ -14,6 +14,7 @@ from_pretrained: null
 train_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/PLAIN/es-en/train.csv
 val_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/PLAIN/es-en/val.csv
 test_data: /home/hatch5o6/Cognate/code/NMT/data/CharLOTTE/PLAIN/an-en/test.csv
+predictions_dir: predictions_an-en_test
 append_src_token: False
 append_tgt_token: False
 upsample: False

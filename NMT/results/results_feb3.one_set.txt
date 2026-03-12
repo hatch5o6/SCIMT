@@ -1,0 +1,8 @@
+\begin{tabular}{lrrrrrrr}
+\toprule
+\textbf{Scenario} & \textbf{\textit{n}T/C} & \textbf{\textit{n}T'→T} & \textbf{\textit{n}C→T} & \textbf{C→T} & \textbf{C'→T} & \textbf{T'→T>>C→T} \\
+\midrule
+$hi/bho \rightarrow hi$ & 36K & 3M & 346K & 1.32/16.0 & 2.0/16.55 & \textbf{4.9}/\textbf{23.77} \\
+$en/djk \rightarrow en$ & 1K & 10M & 9K & 4.07/23.05 & 3.09/22.49 & \textbf{6.4}/\textbf{25.81} \\
+\bottomrule
+\end{tabular}

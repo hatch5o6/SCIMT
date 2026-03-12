@@ -14,6 +14,6 @@
 
 python NMT/clean_slurm_outputs.py
 
-python NMT/token_overlap_spm_all.py
+python NMT/token_overlap_spm_all.py -l an-en,mfe-en,oc-en,anx-enx,mfx-enx,mfy-eny
 
 python NMT/clean_slurm_outputs.py

@@ -1,0 +1,10 @@
+echo "######################### an-en:anx-enx #########################"
+
+REF="/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/an-en/test.en.txt"
+BAS="/home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/anx-enx/FINETUNE.SC_esx2anx-enx>>anx-enx_TRIAL_s=1000/predictions/epoch=5-step=3454-val_loss=2.1988.ckpt/test_predictions.txt"
+HYP="/home/hatch5o6/nobackup/archive/CognateMT/PredictCognates/an-en/FINETUNE.SC_es2an-en>>an-en_TRIAL_s=1000/predictions/epoch=5-step=3768-val_loss=2.1628.ckpt/test_predictions.txt"
+
+echo "sacrebleu \"$REF\" -i \"$BAS\" \"$HYP\" -m bleu chrf -w 4"
+
+sacrebleu "$REF" -i "$BAS" "$HYP" -m bleu chrf -w 4 --paired-ar
+

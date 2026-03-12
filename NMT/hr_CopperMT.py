@@ -23,11 +23,17 @@ nltk_tokenize_langs = {
     "hsb": "czech",
     "cs": "czech",
     "en": "english",
+    "enx": "english",
+    "eny": "english",
     "djk": "english",
     "NGfr": "french",
     "NGmfe": "french",
     "fr": "french",
+    "frx": "french",
+    "fry": "french",
     "mfe": "french",
+    "mfx": "french",
+    "mfy": "french",
     
     # fake langs for testing:
     "bren": "french",
@@ -42,7 +48,9 @@ es_nlp = spacy.load('es_core_news_sm', exclude=["tagger", "parser", "ner", "lemm
 multi_nlp = spacy.load('xx_sent_ud_sm', exclude=["tagger", "parser", "ner", "lemmatizer", "textcat", "custom", "entity_linker", "entity_ruler", "textcat_multilabel", "trainable_lemmatizer", "morphologizer", "attribute_ruler", "senter", "sentencizer", "tok2vec", "transformer"])
 spacy_nlp = {
     "es": es_nlp,
+    "esx": es_nlp,
     "an": es_nlp,
+    "anx": es_nlp,
     "oc": es_nlp,
     "ast": es_nlp,
 

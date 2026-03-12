@@ -10,11 +10,14 @@ top = args.top
 dirs = [
     "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/slurm_outputs", 
     "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/test_slurm_outputs",
+    "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs_oc_abl/",
     "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/hyper_param_search_outputs",
     "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/SC_smt",
+    "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/SC",
     "/home/hatch5o6/Cognate/code/Pipeline/slurm_outputs/predict"
 ]
 for dir in dirs:
+    if not os.path.exists(dir): continue
     fs = os.listdir(dir)
     files = {}
     for f in fs:

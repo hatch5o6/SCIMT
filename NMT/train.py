@@ -32,6 +32,9 @@ def train_model(config, REVERSE_SRC_TGT=False):
         tgt_lang = config["tgt"]
         config["src"] = tgt_lang
         config["tgt"] = src_lang
+        config["save"] = config["save"] + ".REVERSE"
+        if config["from_pretrained"] not in [None, "None"] and not config["from_pretrained"].endswith(".ckpt"):
+            config["from_pretrained"] = config["from_pretrained"].replace("_TRIAL_s=", ".REVERSE_TRIAL_s=")
         rank_zero_info("Reversed source lang '{src_lang}' and target lang '{tgt_lang}'.\n")
 
     rank_zero_info("train_model")
@@ -268,6 +271,9 @@ def test_model(config, REVERSE_SRC_TGT=False):
         tgt_lang = config["tgt"]
         config["src"] = tgt_lang
         config["tgt"] = src_lang
+        config["save"] = config["save"] + ".REVERSE"
+        if config["from_pretrained"] not in [None, "None"] and not config["from_pretrained"].endswith(".ckpt"):
+            config["from_pretrained"] = config["from_pretrained"].replace("_TRIAL_s=", ".REVERSE_TRIAL_s=")
         rank_zero_info("Reversed source lang '{src_lang}' and target lang '{tgt_lang}'.\n")
 
     print("test_model")
@@ -744,7 +750,22 @@ def test_dataloaders(config, REVERSE_SRC_TGT=False):
 
     dataloaders = get_multilingual_dataloaders(config, REVERSE_SRC_TGT=REVERSE_SRC_TGT, sections=["train", "val"])
     train_dataloader = dataloaders["train"]
+    print("\n\n- train_dataloader -")
+    print_sample(train_dataloader)
     val_dataloader = dataloaders["val"]
+    print("\n\n- val_dataloader -")
+    print_sample(val_dataloader)
+
+def print_sample(dataloader):
+    for b, batch in enumerate(dataloader):
+        src_sents, tgt_sents = batch
+        print(f"-----{b}-----")
+        for i in range(2):
+            print(src_sents[i])
+            print(tgt_sents[i])
+            print("*")
+        if b == 5:
+            break
 
 
 def get_args():

@@ -17,7 +17,15 @@ print("reading", args.file2)
 with open(args.file2) as inf:
     lines2 = [line.strip() for line in tqdm(inf.readlines())]
 
-assert len(lines1) == len(lines2)
+if not (len(lines1) == len(lines2)):
+    print(f"LINES NOT EQUAL ({len(lines1)} v. {len(lines2)})")
+    cont = input("Continue? (Y or N)>").upper()
+    if cont != "Y":
+        exit()
+    else:
+        min_len = min(len(lines1), len(lines2))
+        lines1 = lines1[:min_len]
+        lines2 = lines2[:min_len]
 
 pairs = list(zip(lines1, lines2))
 

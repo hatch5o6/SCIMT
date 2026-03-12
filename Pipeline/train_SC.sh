@@ -262,6 +262,10 @@ then
     VAL_COGNATES_SRC=${WORD_LIST_SRC:0:-3}val-s=${SEED}.txt
     VAL_COGNATES_TGT=${WORD_LIST_TGT:0:-3}val-s=${SEED}.txt
 
+    if [[ ! -v CAP_VAL_SIZE ]]; then
+        CAP_VAL_SIZE=null
+    fi
+
     python Pipeline/split.py \
         --data1 $WORD_LIST_SRC \
         --data2 $WORD_LIST_TGT \
@@ -270,6 +274,7 @@ then
         --test $COGNATE_TEST_RATIO \
         --seed $SEED \
         --out_dir $FASTALIGN_DIR \
+        --cap_val_size $CAP_VAL_SIZE \
         --UNIQUE_TEST
 else
     TRAIN_COGNATES_SRC=$WORD_LIST_SRC
@@ -400,9 +405,9 @@ python -m CopperMT.assert_no_overlap_in_formatted_data \
 
 echo "train_SC.sh: PASSED CopperMT/assert_no_overlap_in_formatted_data"
 
-# 3.2.5 Log the cognate predition data
+# 3.2.5 Log the cognate prediction data
 echo ""
-echo "# 3.2.5 Log the cognate predition data #"
+echo "# 3.2.5 Log the cognate prediction data #"
 if [ $NO_GROUPING = true ]
 then
     LOG_F=cognate_dataset_log_NG=True.json

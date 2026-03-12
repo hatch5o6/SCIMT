@@ -1,0 +1,8 @@
+\begin{tabular}{lrrrrrrr}
+\toprule
+\textbf{Scenario} & \textbf{\textit{n}P/C} & \textbf{\textit{n}P→T} & \textbf{\textit{n}C→T} & \textbf{C→T} & \textbf{P→T>>C→T} & \textbf{P'→T>>C→T} \\
+\midrule
+$es/an \rightarrow en$ & 48K & 10M & 20K & 0.88/19.53 & 11.14/43.04 & \textbf{12.44}/\textbf{45.44} \\
+$fr/mfe \rightarrow en$ & 6K & 10M & 19K & 5.97/22.88 & 15.44/37.51 & \textbf{19.94}/\textbf{43.94} \\
+\bottomrule
+\end{tabular}

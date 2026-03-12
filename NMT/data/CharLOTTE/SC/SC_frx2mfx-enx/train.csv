@@ -1,0 +1,2 @@
+src_lang,tgt_lang,src_path,tgt_path
+frx,enx,/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/train.frx.SC_{SC_MODEL_ID}_frx2mfx.txt,/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/train.enx.txt

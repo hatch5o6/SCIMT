@@ -1,7 +1,7 @@
 {
   "latest": {
     "aeb-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 169861,
@@ -36,7 +36,7 @@
       }
     },
     "an-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 20089,
@@ -71,7 +71,7 @@
       }
     },
     "apc-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 116869,
@@ -106,7 +106,7 @@
       }
     },
     "ar-aeb/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 15555,
@@ -141,7 +141,7 @@
       }
     },
     "ar-apc/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 130890,
@@ -176,7 +176,7 @@
       }
     },
     "ar-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 9999960,
@@ -211,7 +211,7 @@
       }
     },
     "as-bn/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 1013015,
@@ -246,7 +246,7 @@
       }
     },
     "as-hi/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 478962,
@@ -281,7 +281,7 @@
       }
     },
     "bem-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 462128,
@@ -316,7 +316,7 @@
       }
     },
     "bho-as/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 82100,
@@ -351,7 +351,7 @@
       }
     },
     "bho-hi/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 345722,
@@ -386,7 +386,7 @@
       }
     },
     "bn-as/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 1013015,
@@ -421,7 +421,7 @@
       }
     },
     "bn-hi/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 3481537,
@@ -456,7 +456,7 @@
       }
     },
     "cs-de/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 10000000,
@@ -491,7 +491,7 @@
       }
     },
     "cs-hsb/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 323,
@@ -526,7 +526,7 @@
       }
     },
     "djk-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 9335,
@@ -561,7 +561,7 @@
       }
     },
     "en-djk/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 9335,
@@ -596,7 +596,7 @@
       }
     },
     "en-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 9999989,
@@ -631,7 +631,7 @@
       }
     },
     "es-an/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 28594,
@@ -666,7 +666,7 @@
       }
     },
     "es-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 9999993,
@@ -701,7 +701,7 @@
       }
     },
     "ewe-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 22196,
@@ -736,7 +736,7 @@
       }
     },
     "ewe-fon/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 72424,
@@ -771,7 +771,7 @@
       }
     },
     "ewe-fr/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 924526,
@@ -806,7 +806,7 @@
       }
     },
     "fon-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 1788438,
@@ -841,7 +841,7 @@
       }
     },
     "fon-ewe/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 72424,
@@ -876,7 +876,7 @@
       }
     },
     "fon-fr/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 543482,
@@ -911,7 +911,7 @@
       }
     },
     "fr-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 9999989,
@@ -946,7 +946,7 @@
       }
     },
     "fr-mfe/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 13319,
@@ -981,7 +981,7 @@
       }
     },
     "hi-as/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 478962,
@@ -1016,7 +1016,7 @@
       }
     },
     "hi-bho/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 345722,
@@ -1051,7 +1051,7 @@
       }
     },
     "hi-hi/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 3481537,
@@ -1086,7 +1086,7 @@
       }
     },
     "hsb-de/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 58286,
@@ -1121,7 +1121,7 @@
       }
     },
     "lua-bem/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 115432,
@@ -1156,7 +1156,7 @@
       }
     },
     "lua-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 2065546,
@@ -1191,7 +1191,7 @@
       }
     },
     "mfe-en/(train|val|test).csv": {
-      "date": "01/29/2026 13:39:55",
+      "date": "02/16/2026 12:49:43",
       "sizes": {
         "train": {
           "dataset_length": 19140,
@@ -1222,6 +1222,391 @@
             "mfe-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfe-en/test.mfe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfe-en/test.en.txt`": 811
           },
           "total_raw_lengths": 811
+        }
+      }
+    },
+    "anx-enx/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 20089,
+          "lengths_by_pair": {
+            "anx-enx": 20089
+          },
+          "raw_lengths": {
+            "anx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/train.anx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/train.enx.txt`": 20089
+          },
+          "total_raw_lengths": 20089
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "anx-enx": 997
+          },
+          "raw_lengths": {
+            "anx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/val.anx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/val.enx.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "anx-enx": 1012
+          },
+          "raw_lengths": {
+            "anx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/test.anx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/test.enx.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "esx-anx/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 28594,
+          "lengths_by_pair": {
+            "esx-anx": 28594
+          },
+          "raw_lengths": {
+            "esx-anx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/train.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/train.anx.txt`": 28594
+          },
+          "total_raw_lengths": 28594
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "esx-anx": 997
+          },
+          "raw_lengths": {
+            "esx-anx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/val.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/val.anx.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "esx-anx": 1012
+          },
+          "raw_lengths": {
+            "esx-anx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/test.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/test.anx.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "esx-enx/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 9999993,
+          "lengths_by_pair": {
+            "esx-enx": 9999993
+          },
+          "raw_lengths": {
+            "esx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/train.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/train.enx.txt`": 9999993
+          },
+          "total_raw_lengths": 9999993
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "esx-enx": 997
+          },
+          "raw_lengths": {
+            "esx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/val.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/val.enx.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "esx-enx": 1012
+          },
+          "raw_lengths": {
+            "esx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/test.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/test.enx.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fr-oc/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 8767173,
+          "lengths_by_pair": {
+            "fr-oc": 8767173
+          },
+          "raw_lengths": {
+            "fr-oc, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/train.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/train.oc.txt`": 8767173
+          },
+          "total_raw_lengths": 8767173
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fr-oc": 997
+          },
+          "raw_lengths": {
+            "fr-oc, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/val.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/val.oc.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fr-oc": 1012
+          },
+          "raw_lengths": {
+            "fr-oc, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/test.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/test.oc.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "frx-enx/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 9999989,
+          "lengths_by_pair": {
+            "frx-enx": 9999989
+          },
+          "raw_lengths": {
+            "frx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/train.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/train.enx.txt`": 9999989
+          },
+          "total_raw_lengths": 9999989
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "frx-enx": 997
+          },
+          "raw_lengths": {
+            "frx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/val.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/val.enx.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "frx-enx": 1012
+          },
+          "raw_lengths": {
+            "frx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/test.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/test.enx.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "frx-mfx/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 13319,
+          "lengths_by_pair": {
+            "frx-mfx": 13319
+          },
+          "raw_lengths": {
+            "frx-mfx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/train.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/train.mfx.txt`": 13319
+          },
+          "total_raw_lengths": 13319
+        },
+        "val": {
+          "dataset_length": 148,
+          "lengths_by_pair": {
+            "frx-mfx": 148
+          },
+          "raw_lengths": {
+            "frx-mfx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/val.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/val.mfx.txt`": 148
+          },
+          "total_raw_lengths": 148
+        },
+        "test": {
+          "dataset_length": 312,
+          "lengths_by_pair": {
+            "frx-mfx": 312
+          },
+          "raw_lengths": {
+            "frx-mfx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/test.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/test.mfx.txt`": 312
+          },
+          "total_raw_lengths": 312
+        }
+      }
+    },
+    "fry-eny/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 9999989,
+          "lengths_by_pair": {
+            "fry-eny": 9999989
+          },
+          "raw_lengths": {
+            "fry-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/train.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/train.eny.txt`": 9999989
+          },
+          "total_raw_lengths": 9999989
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fry-eny": 997
+          },
+          "raw_lengths": {
+            "fry-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/val.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/val.eny.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fry-eny": 1012
+          },
+          "raw_lengths": {
+            "fry-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/test.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/test.eny.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fry-mfy/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 13319,
+          "lengths_by_pair": {
+            "fry-mfy": 13319
+          },
+          "raw_lengths": {
+            "fry-mfy, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/train.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/train.mfy.txt`": 13319
+          },
+          "total_raw_lengths": 13319
+        },
+        "val": {
+          "dataset_length": 148,
+          "lengths_by_pair": {
+            "fry-mfy": 148
+          },
+          "raw_lengths": {
+            "fry-mfy, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/val.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/val.mfy.txt`": 148
+          },
+          "total_raw_lengths": 148
+        },
+        "test": {
+          "dataset_length": 312,
+          "lengths_by_pair": {
+            "fry-mfy": 312
+          },
+          "raw_lengths": {
+            "fry-mfy, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/test.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/test.mfy.txt`": 312
+          },
+          "total_raw_lengths": 312
+        }
+      }
+    },
+    "mfx-enx/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 19140,
+          "lengths_by_pair": {
+            "mfx-enx": 19140
+          },
+          "raw_lengths": {
+            "mfx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/train.mfx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/train.enx.txt`": 19140
+          },
+          "total_raw_lengths": 19140
+        },
+        "val": {
+          "dataset_length": 472,
+          "lengths_by_pair": {
+            "mfx-enx": 472
+          },
+          "raw_lengths": {
+            "mfx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/val.mfx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/val.enx.txt`": 472
+          },
+          "total_raw_lengths": 472
+        },
+        "test": {
+          "dataset_length": 811,
+          "lengths_by_pair": {
+            "mfx-enx": 811
+          },
+          "raw_lengths": {
+            "mfx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/test.mfx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/test.enx.txt`": 811
+          },
+          "total_raw_lengths": 811
+        }
+      }
+    },
+    "mfy-eny/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 19140,
+          "lengths_by_pair": {
+            "mfy-eny": 19140
+          },
+          "raw_lengths": {
+            "mfy-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/train.mfy.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/train.eny.txt`": 19140
+          },
+          "total_raw_lengths": 19140
+        },
+        "val": {
+          "dataset_length": 472,
+          "lengths_by_pair": {
+            "mfy-eny": 472
+          },
+          "raw_lengths": {
+            "mfy-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/val.mfy.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/val.eny.txt`": 472
+          },
+          "total_raw_lengths": 472
+        },
+        "test": {
+          "dataset_length": 811,
+          "lengths_by_pair": {
+            "mfy-eny": 811
+          },
+          "raw_lengths": {
+            "mfy-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/test.mfy.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/test.eny.txt`": 811
+          },
+          "total_raw_lengths": 811
+        }
+      }
+    },
+    "oc-en/(train|val|test).csv": {
+      "date": "02/16/2026 12:49:43",
+      "sizes": {
+        "train": {
+          "dataset_length": 1536211,
+          "lengths_by_pair": {
+            "oc-en": 1536211
+          },
+          "raw_lengths": {
+            "oc-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/train.oc.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/train.en.txt`": 1536211
+          },
+          "total_raw_lengths": 1536211
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "oc-en": 997
+          },
+          "raw_lengths": {
+            "oc-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/val.oc.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "oc-en": 1012
+          },
+          "raw_lengths": {
+            "oc-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/test.oc.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
         }
       }
     }
@@ -1259,10 +1644,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 169861,
+          "lengths_by_pair": {
+            "aeb-en": 169861
+          },
+          "raw_lengths": {
+            "aeb-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/aeb-en/train.aeb.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/aeb-en/train.en.txt`": 169861
+          },
+          "total_raw_lengths": 169861
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "aeb-en": 997
+          },
+          "raw_lengths": {
+            "aeb-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/aeb-en/val.aeb.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/aeb-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "aeb-en": 1012
+          },
+          "raw_lengths": {
+            "aeb-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/aeb-en/test.aeb.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/aeb-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "an-en/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 20089,
+          "lengths_by_pair": {
+            "an-en": 20089
+          },
+          "raw_lengths": {
+            "an-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/an-en/train.an.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/an-en/train.en.txt`": 20089
+          },
+          "total_raw_lengths": 20089
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "an-en": 997
+          },
+          "raw_lengths": {
+            "an-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/an-en/val.an.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/an-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "an-en": 1012
+          },
+          "raw_lengths": {
+            "an-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/an-en/test.an.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/an-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 20089,
           "lengths_by_pair": {
@@ -1327,10 +1776,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 116869,
+          "lengths_by_pair": {
+            "apc-en": 116869
+          },
+          "raw_lengths": {
+            "apc-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/apc-en/train.apc.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/apc-en/train.en.txt`": 116869
+          },
+          "total_raw_lengths": 116869
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "apc-en": 997
+          },
+          "raw_lengths": {
+            "apc-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/apc-en/val.apc.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/apc-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "apc-en": 1012
+          },
+          "raw_lengths": {
+            "apc-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/apc-en/test.apc.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/apc-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "ar-aeb/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 15555,
+          "lengths_by_pair": {
+            "ar-aeb": 15555
+          },
+          "raw_lengths": {
+            "ar-aeb, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-aeb/train.ar.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-aeb/train.aeb.txt`": 15555
+          },
+          "total_raw_lengths": 15555
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ar-aeb": 997
+          },
+          "raw_lengths": {
+            "ar-aeb, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-aeb/val.ar.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-aeb/val.aeb.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ar-aeb": 1012
+          },
+          "raw_lengths": {
+            "ar-aeb, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-aeb/test.ar.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-aeb/test.aeb.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 15555,
           "lengths_by_pair": {
@@ -1395,10 +1908,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 130890,
+          "lengths_by_pair": {
+            "ar-apc": 130890
+          },
+          "raw_lengths": {
+            "ar-apc, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-apc/train.ar.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-apc/train.apc.txt`": 130890
+          },
+          "total_raw_lengths": 130890
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ar-apc": 997
+          },
+          "raw_lengths": {
+            "ar-apc, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-apc/val.ar.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-apc/val.apc.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ar-apc": 1012
+          },
+          "raw_lengths": {
+            "ar-apc, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-apc/test.ar.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-apc/test.apc.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "ar-en/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 9999960,
+          "lengths_by_pair": {
+            "ar-en": 9999960
+          },
+          "raw_lengths": {
+            "ar-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-en/train.ar.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-en/train.en.txt`": 9999960
+          },
+          "total_raw_lengths": 9999960
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ar-en": 997
+          },
+          "raw_lengths": {
+            "ar-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-en/val.ar.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ar-en": 1012
+          },
+          "raw_lengths": {
+            "ar-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-en/test.ar.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_arabic/ar-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 9999960,
           "lengths_by_pair": {
@@ -1463,10 +2040,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 1013015,
+          "lengths_by_pair": {
+            "as-bn": 1013015
+          },
+          "raw_lengths": {
+            "as-bn, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-bn/train.as.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-bn/train.bn.txt`": 1013015
+          },
+          "total_raw_lengths": 1013015
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "as-bn": 997
+          },
+          "raw_lengths": {
+            "as-bn, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-bn/val.as.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-bn/val.bn.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "as-bn": 1012
+          },
+          "raw_lengths": {
+            "as-bn, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-bn/test.as.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-bn/test.bn.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "as-hi/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 478962,
+          "lengths_by_pair": {
+            "as-hi": 478962
+          },
+          "raw_lengths": {
+            "as-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-hi/train.as.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-hi/train.hi.txt`": 478962
+          },
+          "total_raw_lengths": 478962
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "as-hi": 997
+          },
+          "raw_lengths": {
+            "as-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-hi/val.as.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-hi/val.hi.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "as-hi": 1012
+          },
+          "raw_lengths": {
+            "as-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-hi/test.as.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/as-hi/test.hi.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 478962,
           "lengths_by_pair": {
@@ -1531,10 +2172,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 462128,
+          "lengths_by_pair": {
+            "bem-en": 462128
+          },
+          "raw_lengths": {
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bem-en/train.bem.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bem-en/train.en.txt`": 462128
+          },
+          "total_raw_lengths": 462128
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bem-en": 997
+          },
+          "raw_lengths": {
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bem-en/val.bem.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bem-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bem-en": 1012
+          },
+          "raw_lengths": {
+            "bem-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bem-en/test.bem.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bem-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "bho-as/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 82100,
+          "lengths_by_pair": {
+            "bho-as": 82100
+          },
+          "raw_lengths": {
+            "bho-as, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-as/train.bho.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-as/train.as.txt`": 82100
+          },
+          "total_raw_lengths": 82100
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bho-as": 997
+          },
+          "raw_lengths": {
+            "bho-as, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-as/val.bho.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-as/val.as.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bho-as": 1012
+          },
+          "raw_lengths": {
+            "bho-as, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-as/test.bho.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-as/test.as.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 82100,
           "lengths_by_pair": {
@@ -1599,10 +2304,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 345722,
+          "lengths_by_pair": {
+            "bho-hi": 345722
+          },
+          "raw_lengths": {
+            "bho-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-hi/train.bho.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-hi/train.hi.txt`": 345722
+          },
+          "total_raw_lengths": 345722
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bho-hi": 997
+          },
+          "raw_lengths": {
+            "bho-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-hi/val.bho.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-hi/val.hi.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bho-hi": 1012
+          },
+          "raw_lengths": {
+            "bho-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-hi/test.bho.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bho-hi/test.hi.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "bn-as/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 1013015,
+          "lengths_by_pair": {
+            "bn-as": 1013015
+          },
+          "raw_lengths": {
+            "bn-as, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-as/train.bn.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-as/train.as.txt`": 1013015
+          },
+          "total_raw_lengths": 1013015
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bn-as": 997
+          },
+          "raw_lengths": {
+            "bn-as, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-as/val.bn.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-as/val.as.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bn-as": 1012
+          },
+          "raw_lengths": {
+            "bn-as, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-as/test.bn.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-as/test.as.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 1013015,
           "lengths_by_pair": {
@@ -1667,10 +2436,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 3481537,
+          "lengths_by_pair": {
+            "bn-hi": 3481537
+          },
+          "raw_lengths": {
+            "bn-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/train.bn.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/train.hi.txt`": 3481537
+          },
+          "total_raw_lengths": 3481537
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "bn-hi": 997
+          },
+          "raw_lengths": {
+            "bn-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/val.bn.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/val.hi.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "bn-hi": 1012
+          },
+          "raw_lengths": {
+            "bn-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/test.bn.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/test.hi.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "cs-de/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 10000000,
+          "lengths_by_pair": {
+            "cs-de": 10000000
+          },
+          "raw_lengths": {
+            "cs-de, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-de/train.cs.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-de/train.de.txt`": 10000000
+          },
+          "total_raw_lengths": 10000000
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "cs-de": 997
+          },
+          "raw_lengths": {
+            "cs-de, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-de/val.cs.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-de/val.de.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "cs-de": 1012
+          },
+          "raw_lengths": {
+            "cs-de, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-de/test.cs.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-de/test.de.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 10000000,
           "lengths_by_pair": {
@@ -1735,10 +2568,74 @@
           },
           "total_raw_lengths": 8
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 323,
+          "lengths_by_pair": {
+            "cs-hsb": 323
+          },
+          "raw_lengths": {
+            "cs-hsb, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-hsb/train.cs.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-hsb/train.hsb.txt`": 323
+          },
+          "total_raw_lengths": 323
+        },
+        "val": {
+          "dataset_length": 8,
+          "lengths_by_pair": {
+            "cs-hsb": 8
+          },
+          "raw_lengths": {
+            "cs-hsb, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-hsb/val.cs.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-hsb/val.hsb.txt`": 8
+          },
+          "total_raw_lengths": 8
+        },
+        "test": {
+          "dataset_length": 8,
+          "lengths_by_pair": {
+            "cs-hsb": 8
+          },
+          "raw_lengths": {
+            "cs-hsb, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-hsb/test.cs.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/cs-hsb/test.hsb.txt`": 8
+          },
+          "total_raw_lengths": 8
+        }
       }
     },
     "djk-en/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 9335,
+          "lengths_by_pair": {
+            "djk-en": 9335
+          },
+          "raw_lengths": {
+            "djk-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/djk-en/train.djk.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/djk-en/train.en.txt`": 9335
+          },
+          "total_raw_lengths": 9335
+        },
+        "val": {
+          "dataset_length": 565,
+          "lengths_by_pair": {
+            "djk-en": 565
+          },
+          "raw_lengths": {
+            "djk-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/djk-en/val.djk.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/djk-en/val.en.txt`": 565
+          },
+          "total_raw_lengths": 565
+        },
+        "test": {
+          "dataset_length": 1180,
+          "lengths_by_pair": {
+            "djk-en": 1180
+          },
+          "raw_lengths": {
+            "djk-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/djk-en/test.djk.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/djk-en/test.en.txt`": 1180
+          },
+          "total_raw_lengths": 1180
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 9335,
           "lengths_by_pair": {
@@ -1803,10 +2700,74 @@
           },
           "total_raw_lengths": 1180
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 9335,
+          "lengths_by_pair": {
+            "en-djk": 9335
+          },
+          "raw_lengths": {
+            "en-djk, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/en-djk/train.en.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/en-djk/train.djk.txt`": 9335
+          },
+          "total_raw_lengths": 9335
+        },
+        "val": {
+          "dataset_length": 565,
+          "lengths_by_pair": {
+            "en-djk": 565
+          },
+          "raw_lengths": {
+            "en-djk, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/en-djk/val.en.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/en-djk/val.djk.txt`": 565
+          },
+          "total_raw_lengths": 565
+        },
+        "test": {
+          "dataset_length": 1180,
+          "lengths_by_pair": {
+            "en-djk": 1180
+          },
+          "raw_lengths": {
+            "en-djk, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/en-djk/test.en.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/en-djk/test.djk.txt`": 1180
+          },
+          "total_raw_lengths": 1180
+        }
       }
     },
     "en-en/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 9999989,
+          "lengths_by_pair": {
+            "en-en": 9999989
+          },
+          "raw_lengths": {
+            "en-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/train.en.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/train.en.txt`": 9999989
+          },
+          "total_raw_lengths": 9999989
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "en-en": 997
+          },
+          "raw_lengths": {
+            "en-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/val.en.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "en-en": 1012
+          },
+          "raw_lengths": {
+            "en-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/test.en.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 9999989,
           "lengths_by_pair": {
@@ -1871,10 +2832,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 28594,
+          "lengths_by_pair": {
+            "es-an": 28594
+          },
+          "raw_lengths": {
+            "es-an, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-an/train.es.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-an/train.an.txt`": 28594
+          },
+          "total_raw_lengths": 28594
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "es-an": 997
+          },
+          "raw_lengths": {
+            "es-an, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-an/val.es.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-an/val.an.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "es-an": 1012
+          },
+          "raw_lengths": {
+            "es-an, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-an/test.es.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-an/test.an.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "es-en/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 9999993,
+          "lengths_by_pair": {
+            "es-en": 9999993
+          },
+          "raw_lengths": {
+            "es-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-en/train.es.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-en/train.en.txt`": 9999993
+          },
+          "total_raw_lengths": 9999993
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "es-en": 997
+          },
+          "raw_lengths": {
+            "es-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-en/val.es.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "es-en": 1012
+          },
+          "raw_lengths": {
+            "es-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-en/test.es.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/es-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 9999993,
           "lengths_by_pair": {
@@ -1939,10 +2964,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 22196,
+          "lengths_by_pair": {
+            "ewe-en": 22196
+          },
+          "raw_lengths": {
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-en/train.ewe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-en/train.en.txt`": 22196
+          },
+          "total_raw_lengths": 22196
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ewe-en": 997
+          },
+          "raw_lengths": {
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-en/val.ewe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ewe-en": 1012
+          },
+          "raw_lengths": {
+            "ewe-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-en/test.ewe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "ewe-fon/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 72424,
+          "lengths_by_pair": {
+            "ewe-fon": 72424
+          },
+          "raw_lengths": {
+            "ewe-fon, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fon/train.ewe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fon/train.fon.txt`": 72424
+          },
+          "total_raw_lengths": 72424
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ewe-fon": 997
+          },
+          "raw_lengths": {
+            "ewe-fon, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fon/val.ewe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fon/val.fon.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ewe-fon": 1012
+          },
+          "raw_lengths": {
+            "ewe-fon, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fon/test.ewe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fon/test.fon.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 72424,
           "lengths_by_pair": {
@@ -2007,10 +3096,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 924526,
+          "lengths_by_pair": {
+            "ewe-fr": 924526
+          },
+          "raw_lengths": {
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fr/train.ewe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fr/train.fr.txt`": 924526
+          },
+          "total_raw_lengths": 924526
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "ewe-fr": 997
+          },
+          "raw_lengths": {
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fr/val.ewe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fr/val.fr.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "ewe-fr": 1012
+          },
+          "raw_lengths": {
+            "ewe-fr, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fr/test.ewe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/ewe-fr/test.fr.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "fon-en/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 1788438,
+          "lengths_by_pair": {
+            "fon-en": 1788438
+          },
+          "raw_lengths": {
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-en/train.fon.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-en/train.en.txt`": 1788438
+          },
+          "total_raw_lengths": 1788438
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fon-en": 997
+          },
+          "raw_lengths": {
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-en/val.fon.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fon-en": 1012
+          },
+          "raw_lengths": {
+            "fon-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-en/test.fon.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 1788438,
           "lengths_by_pair": {
@@ -2075,10 +3228,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 72424,
+          "lengths_by_pair": {
+            "fon-ewe": 72424
+          },
+          "raw_lengths": {
+            "fon-ewe, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-ewe/train.fon.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-ewe/train.ewe.txt`": 72424
+          },
+          "total_raw_lengths": 72424
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fon-ewe": 997
+          },
+          "raw_lengths": {
+            "fon-ewe, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-ewe/val.fon.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-ewe/val.ewe.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fon-ewe": 1012
+          },
+          "raw_lengths": {
+            "fon-ewe, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-ewe/test.fon.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-ewe/test.ewe.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "fon-fr/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 543482,
+          "lengths_by_pair": {
+            "fon-fr": 543482
+          },
+          "raw_lengths": {
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-fr/train.fon.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-fr/train.fr.txt`": 543482
+          },
+          "total_raw_lengths": 543482
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fon-fr": 997
+          },
+          "raw_lengths": {
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-fr/val.fon.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-fr/val.fr.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fon-fr": 1012
+          },
+          "raw_lengths": {
+            "fon-fr, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-fr/test.fon.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fon-fr/test.fr.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 543482,
           "lengths_by_pair": {
@@ -2143,10 +3360,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 9999989,
+          "lengths_by_pair": {
+            "fr-en": 9999989
+          },
+          "raw_lengths": {
+            "fr-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/train.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/train.en.txt`": 9999989
+          },
+          "total_raw_lengths": 9999989
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fr-en": 997
+          },
+          "raw_lengths": {
+            "fr-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/val.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fr-en": 1012
+          },
+          "raw_lengths": {
+            "fr-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/test.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "fr-mfe/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 13319,
+          "lengths_by_pair": {
+            "fr-mfe": 13319
+          },
+          "raw_lengths": {
+            "fr-mfe, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-mfe/train.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-mfe/train.mfe.txt`": 13319
+          },
+          "total_raw_lengths": 13319
+        },
+        "val": {
+          "dataset_length": 148,
+          "lengths_by_pair": {
+            "fr-mfe": 148
+          },
+          "raw_lengths": {
+            "fr-mfe, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-mfe/val.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-mfe/val.mfe.txt`": 148
+          },
+          "total_raw_lengths": 148
+        },
+        "test": {
+          "dataset_length": 312,
+          "lengths_by_pair": {
+            "fr-mfe": 312
+          },
+          "raw_lengths": {
+            "fr-mfe, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-mfe/test.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fr-mfe/test.mfe.txt`": 312
+          },
+          "total_raw_lengths": 312
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 13319,
           "lengths_by_pair": {
@@ -2211,10 +3492,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 478962,
+          "lengths_by_pair": {
+            "hi-as": 478962
+          },
+          "raw_lengths": {
+            "hi-as, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-as/train.hi.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-as/train.as.txt`": 478962
+          },
+          "total_raw_lengths": 478962
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "hi-as": 997
+          },
+          "raw_lengths": {
+            "hi-as, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-as/val.hi.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-as/val.as.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "hi-as": 1012
+          },
+          "raw_lengths": {
+            "hi-as, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-as/test.hi.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-as/test.as.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "hi-bho/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 345722,
+          "lengths_by_pair": {
+            "hi-bho": 345722
+          },
+          "raw_lengths": {
+            "hi-bho, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-bho/train.hi.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-bho/train.bho.txt`": 345722
+          },
+          "total_raw_lengths": 345722
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "hi-bho": 997
+          },
+          "raw_lengths": {
+            "hi-bho, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-bho/val.hi.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-bho/val.bho.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "hi-bho": 1012
+          },
+          "raw_lengths": {
+            "hi-bho, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-bho/test.hi.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hi-bho/test.bho.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 345722,
           "lengths_by_pair": {
@@ -2279,10 +3624,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 3481537,
+          "lengths_by_pair": {
+            "hi-hi": 3481537
+          },
+          "raw_lengths": {
+            "hi-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/train.hi.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/train.hi.txt`": 3481537
+          },
+          "total_raw_lengths": 3481537
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "hi-hi": 997
+          },
+          "raw_lengths": {
+            "hi-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/val.hi.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/val.hi.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "hi-hi": 1012
+          },
+          "raw_lengths": {
+            "hi-hi, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/test.hi.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/bn-hi/test.hi.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "hsb-de/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 58286,
+          "lengths_by_pair": {
+            "hsb-de": 58286
+          },
+          "raw_lengths": {
+            "hsb-de, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hsb-de/train.hsb.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hsb-de/train.de.txt`": 58286
+          },
+          "total_raw_lengths": 58286
+        },
+        "val": {
+          "dataset_length": 2000,
+          "lengths_by_pair": {
+            "hsb-de": 2000
+          },
+          "raw_lengths": {
+            "hsb-de, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hsb-de/val.hsb.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hsb-de/val.de.txt`": 2000
+          },
+          "total_raw_lengths": 2000
+        },
+        "test": {
+          "dataset_length": 2000,
+          "lengths_by_pair": {
+            "hsb-de": 2000
+          },
+          "raw_lengths": {
+            "hsb-de, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hsb-de/test.hsb.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/hsb-de/test.de.txt`": 2000
+          },
+          "total_raw_lengths": 2000
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 58286,
           "lengths_by_pair": {
@@ -2347,10 +3756,74 @@
           },
           "total_raw_lengths": 1012
         }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 115432,
+          "lengths_by_pair": {
+            "lua-bem": 115432
+          },
+          "raw_lengths": {
+            "lua-bem, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-bem/train.lua.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-bem/train.bem.txt`": 115432
+          },
+          "total_raw_lengths": 115432
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "lua-bem": 997
+          },
+          "raw_lengths": {
+            "lua-bem, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-bem/val.lua.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-bem/val.bem.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "lua-bem": 1012
+          },
+          "raw_lengths": {
+            "lua-bem, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-bem/test.lua.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-bem/test.bem.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
       }
     },
     "lua-en/(train|val|test).csv": {
       "01/29/2026 13:39:55": {
+        "train": {
+          "dataset_length": 2065546,
+          "lengths_by_pair": {
+            "lua-en": 2065546
+          },
+          "raw_lengths": {
+            "lua-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-en/train.lua.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-en/train.en.txt`": 2065546
+          },
+          "total_raw_lengths": 2065546
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "lua-en": 997
+          },
+          "raw_lengths": {
+            "lua-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-en/val.lua.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-en/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "lua-en": 1012
+          },
+          "raw_lengths": {
+            "lua-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-en/test.lua.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/lua-en/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      },
+      "02/16/2026 12:49:43": {
         "train": {
           "dataset_length": 2065546,
           "lengths_by_pair": {
@@ -2414,6 +3887,412 @@
             "mfe-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfe-en/test.mfe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfe-en/test.en.txt`": 811
           },
           "total_raw_lengths": 811
+        }
+      },
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 19140,
+          "lengths_by_pair": {
+            "mfe-en": 19140
+          },
+          "raw_lengths": {
+            "mfe-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfe-en/train.mfe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfe-en/train.en.txt`": 19140
+          },
+          "total_raw_lengths": 19140
+        },
+        "val": {
+          "dataset_length": 472,
+          "lengths_by_pair": {
+            "mfe-en": 472
+          },
+          "raw_lengths": {
+            "mfe-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfe-en/val.mfe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfe-en/val.en.txt`": 472
+          },
+          "total_raw_lengths": 472
+        },
+        "test": {
+          "dataset_length": 811,
+          "lengths_by_pair": {
+            "mfe-en": 811
+          },
+          "raw_lengths": {
+            "mfe-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfe-en/test.mfe.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfe-en/test.en.txt`": 811
+          },
+          "total_raw_lengths": 811
+        }
+      }
+    },
+    "anx-enx/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 20089,
+          "lengths_by_pair": {
+            "anx-enx": 20089
+          },
+          "raw_lengths": {
+            "anx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/train.anx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/train.enx.txt`": 20089
+          },
+          "total_raw_lengths": 20089
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "anx-enx": 997
+          },
+          "raw_lengths": {
+            "anx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/val.anx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/val.enx.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "anx-enx": 1012
+          },
+          "raw_lengths": {
+            "anx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/test.anx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/anx-enx/test.enx.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "esx-anx/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 28594,
+          "lengths_by_pair": {
+            "esx-anx": 28594
+          },
+          "raw_lengths": {
+            "esx-anx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/train.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/train.anx.txt`": 28594
+          },
+          "total_raw_lengths": 28594
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "esx-anx": 997
+          },
+          "raw_lengths": {
+            "esx-anx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/val.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/val.anx.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "esx-anx": 1012
+          },
+          "raw_lengths": {
+            "esx-anx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/test.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-anx/test.anx.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "esx-enx/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 9999993,
+          "lengths_by_pair": {
+            "esx-enx": 9999993
+          },
+          "raw_lengths": {
+            "esx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/train.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/train.enx.txt`": 9999993
+          },
+          "total_raw_lengths": 9999993
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "esx-enx": 997
+          },
+          "raw_lengths": {
+            "esx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/val.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/val.enx.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "esx-enx": 1012
+          },
+          "raw_lengths": {
+            "esx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/test.esx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/esx-enx/test.enx.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fr-oc/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 8767173,
+          "lengths_by_pair": {
+            "fr-oc": 8767173
+          },
+          "raw_lengths": {
+            "fr-oc, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/train.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/train.oc.txt`": 8767173
+          },
+          "total_raw_lengths": 8767173
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fr-oc": 997
+          },
+          "raw_lengths": {
+            "fr-oc, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/val.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/val.oc.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fr-oc": 1012
+          },
+          "raw_lengths": {
+            "fr-oc, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/test.fr.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/fr-oc/test.oc.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "frx-enx/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 9999989,
+          "lengths_by_pair": {
+            "frx-enx": 9999989
+          },
+          "raw_lengths": {
+            "frx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/train.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/train.enx.txt`": 9999989
+          },
+          "total_raw_lengths": 9999989
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "frx-enx": 997
+          },
+          "raw_lengths": {
+            "frx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/val.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/val.enx.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "frx-enx": 1012
+          },
+          "raw_lengths": {
+            "frx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/test.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-enx/test.enx.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "frx-mfx/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 13319,
+          "lengths_by_pair": {
+            "frx-mfx": 13319
+          },
+          "raw_lengths": {
+            "frx-mfx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/train.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/train.mfx.txt`": 13319
+          },
+          "total_raw_lengths": 13319
+        },
+        "val": {
+          "dataset_length": 148,
+          "lengths_by_pair": {
+            "frx-mfx": 148
+          },
+          "raw_lengths": {
+            "frx-mfx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/val.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/val.mfx.txt`": 148
+          },
+          "total_raw_lengths": 148
+        },
+        "test": {
+          "dataset_length": 312,
+          "lengths_by_pair": {
+            "frx-mfx": 312
+          },
+          "raw_lengths": {
+            "frx-mfx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/test.frx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/frx-mfx/test.mfx.txt`": 312
+          },
+          "total_raw_lengths": 312
+        }
+      }
+    },
+    "fry-eny/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 9999989,
+          "lengths_by_pair": {
+            "fry-eny": 9999989
+          },
+          "raw_lengths": {
+            "fry-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/train.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/train.eny.txt`": 9999989
+          },
+          "total_raw_lengths": 9999989
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "fry-eny": 997
+          },
+          "raw_lengths": {
+            "fry-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/val.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/val.eny.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "fry-eny": 1012
+          },
+          "raw_lengths": {
+            "fry-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/test.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-eny/test.eny.txt`": 1012
+          },
+          "total_raw_lengths": 1012
+        }
+      }
+    },
+    "fry-mfy/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 13319,
+          "lengths_by_pair": {
+            "fry-mfy": 13319
+          },
+          "raw_lengths": {
+            "fry-mfy, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/train.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/train.mfy.txt`": 13319
+          },
+          "total_raw_lengths": 13319
+        },
+        "val": {
+          "dataset_length": 148,
+          "lengths_by_pair": {
+            "fry-mfy": 148
+          },
+          "raw_lengths": {
+            "fry-mfy, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/val.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/val.mfy.txt`": 148
+          },
+          "total_raw_lengths": 148
+        },
+        "test": {
+          "dataset_length": 312,
+          "lengths_by_pair": {
+            "fry-mfy": 312
+          },
+          "raw_lengths": {
+            "fry-mfy, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/test.fry.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/fry-mfy/test.mfy.txt`": 312
+          },
+          "total_raw_lengths": 312
+        }
+      }
+    },
+    "mfx-enx/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 19140,
+          "lengths_by_pair": {
+            "mfx-enx": 19140
+          },
+          "raw_lengths": {
+            "mfx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/train.mfx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/train.enx.txt`": 19140
+          },
+          "total_raw_lengths": 19140
+        },
+        "val": {
+          "dataset_length": 472,
+          "lengths_by_pair": {
+            "mfx-enx": 472
+          },
+          "raw_lengths": {
+            "mfx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/val.mfx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/val.enx.txt`": 472
+          },
+          "total_raw_lengths": 472
+        },
+        "test": {
+          "dataset_length": 811,
+          "lengths_by_pair": {
+            "mfx-enx": 811
+          },
+          "raw_lengths": {
+            "mfx-enx, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/test.mfx.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfx-enx/test.enx.txt`": 811
+          },
+          "total_raw_lengths": 811
+        }
+      }
+    },
+    "mfy-eny/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 19140,
+          "lengths_by_pair": {
+            "mfy-eny": 19140
+          },
+          "raw_lengths": {
+            "mfy-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/train.mfy.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/train.eny.txt`": 19140
+          },
+          "total_raw_lengths": 19140
+        },
+        "val": {
+          "dataset_length": 472,
+          "lengths_by_pair": {
+            "mfy-eny": 472
+          },
+          "raw_lengths": {
+            "mfy-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/val.mfy.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/val.eny.txt`": 472
+          },
+          "total_raw_lengths": 472
+        },
+        "test": {
+          "dataset_length": 811,
+          "lengths_by_pair": {
+            "mfy-eny": 811
+          },
+          "raw_lengths": {
+            "mfy-eny, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/test.mfy.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_data/mfy-eny/test.eny.txt`": 811
+          },
+          "total_raw_lengths": 811
+        }
+      }
+    },
+    "oc-en/(train|val|test).csv": {
+      "02/16/2026 12:49:43": {
+        "train": {
+          "dataset_length": 1536211,
+          "lengths_by_pair": {
+            "oc-en": 1536211
+          },
+          "raw_lengths": {
+            "oc-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/train.oc.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/train.en.txt`": 1536211
+          },
+          "total_raw_lengths": 1536211
+        },
+        "val": {
+          "dataset_length": 997,
+          "lengths_by_pair": {
+            "oc-en": 997
+          },
+          "raw_lengths": {
+            "oc-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/val.oc.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/val.en.txt`": 997
+          },
+          "total_raw_lengths": 997
+        },
+        "test": {
+          "dataset_length": 1012,
+          "lengths_by_pair": {
+            "oc-en": 1012
+          },
+          "raw_lengths": {
+            "oc-en, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/test.oc.txt`, `/home/hatch5o6/nobackup/archive/data/CharLOTTE_occitan/en-oc/test.en.txt`": 1012
+          },
+          "total_raw_lengths": 1012
         }
       }
     }

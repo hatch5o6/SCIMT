@@ -163,9 +163,10 @@ if __name__ == "__main__":
     args = get_args()
     cfgs = [c.strip() for c in args.cfgs.split(",")]
     manifest = make_stuff(args.dir)
-    if os.path.exists(args.new_cfg_dir):
-        shutil.rmtree(args.new_cfg_dir)
-    os.mkdir(args.new_cfg_dir)
+    # if os.path.exists(args.new_cfg_dir):
+    #     shutil.rmtree(args.new_cfg_dir)
+    if not os.path.exists(args.new_cfg_dir):
+        os.mkdir(args.new_cfg_dir)
     make_cfgs(
         cfgs=cfgs,
         manifest=manifest,

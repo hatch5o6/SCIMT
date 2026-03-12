@@ -47,6 +47,7 @@ def main(configs_dir, mode, qos, out_dir, REVERSE_SRC_TGT):
 
     for d in tqdm(os.listdir(configs_dir)):
         if d in ["data_log.csv", "data_params_log.csv", "_archive"]: continue
+        if "data_params_log.csv" in d: continue
         # print("D:", d)
         d_config = os.path.join(configs_dir, d)
         d_out = os.path.join(out_dir, d + RTAG)
@@ -88,7 +89,7 @@ def main(configs_dir, mode, qos, out_dir, REVERSE_SRC_TGT):
             else:
                 walltime = "24:00:00"
 
-            sbatch_content = sbatch_template.replace("{name}", name) \
+            sbatch_content = sbatch_template.replace("{name}", name + RTAG) \
                 .replace("{qos}", qos) \
                 .replace("{python_command}", python_command) \
                 .replace("{LANG_OUT}", d) \

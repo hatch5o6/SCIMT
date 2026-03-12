@@ -1,0 +1,15 @@
+\begin{tabular}{lrrrrrrr}
+\toprule
+\textbf{Scenario} & \textbf{\textit{n}P/C} & \textbf{\textit{n}P→T} & \textbf{\textit{n}C→T} & \textbf{C→T} & \textbf{P→T>>C→T} & \textbf{P'→T>>C→T} \\
+\midrule
+$es/an \rightarrow en$ & 48K & 10M & 20K & 1.43/20.05 & 18.15/47.84 & \textbf{20.55}/\textbf{50.72} \\
+$bn/as \rightarrow hi$ & 195K & 3M & 479K & 2.32/17.91 & 6.09/25.53 & \textbf{6.35}/\textbf{26.5} \\
+$lua/bem \rightarrow en$ & 31K & 2M & 462K & 3.17/23.26 & \textbf{4.15}/\textbf{24.29} & 4.09/23.94 \\
+$hi/bho \rightarrow as$ & 36K & 479K & 82K & 0.1/10.82 & 0.3/\textbf{15.11} & \textbf{0.44}/14.87 \\
+$fon/ewe \rightarrow en$ & 6K & 2M & 22K & 0.51/13.0 & \textbf{0.73}/17.59 & 0.66/\textbf{18.0} \\
+$ewe/fon \rightarrow fr$ & 6K & 925K & 543K & 1.04/18.67 & 1.77/\textbf{21.0} & \textbf{1.88}/20.67 \\
+$fr/mfe \rightarrow en$ & 6K & 10M & 19K & 4.31/24.81 & 15.11/36.43 & \textbf{18.38}/\textbf{42.01} \\
+$ar/aeb \rightarrow en$ & 9K & 10M & 170K & 1.24/20.49 & \textbf{20.46}/\textbf{50.47} & 18.71/49.56 \\
+$ar/apc \rightarrow en$ & 113K & 10M & 117K & 2.62/19.5 & 30.21/56.7 & \textbf{30.24}/\textbf{57.07} \\
+\bottomrule
+\end{tabular}

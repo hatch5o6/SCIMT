@@ -1,0 +1,7 @@
+\begin{tabular}{lrrrrrrr}
+\toprule
+\textbf{Scenario} & \textbf{\textit{n}P/C} & \textbf{\textit{n}P→T} & \textbf{\textit{n}C→T} & \textbf{C→T} & \textbf{P→T>>C→T} & \textbf{P'→T>>C→T} \\
+\midrule
+$fr/oc \rightarrow en$ & 1M & 10M & 2M & 11.76/36.08 & 26.68/53.37 & \textbf{28.22}/\textbf{55.13} \\
+\bottomrule
+\end{tabular}
